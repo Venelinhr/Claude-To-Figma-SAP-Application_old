@@ -290,3 +290,4 @@ rm -f ~/.cache/chrome-devtools-mcp/chrome-profile/Default/LOCK \
        ~/.cache/chrome-devtools-mcp/chrome-profile/SingletonSocket \
        ~/.cache/chrome-devtools-mcp/chrome-profile/SingletonCookie
 ```
+
