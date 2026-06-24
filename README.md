@@ -536,3 +536,4 @@ For a visual HTML version (local only):
 MIT — June 2026
 
 *Claude Code + Figma Plugin API + SAP Web UI Kit + Chrome DevTools MCP*
+
