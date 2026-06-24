@@ -50,3 +50,4 @@ Competing floorplan rejected: **List Report** — would require FilterBar and Va
 | **Total** | **100** |
 
 **Target: ≥ 85/100**
+
