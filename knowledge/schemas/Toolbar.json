@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Toolbar",
+  "name": "Toolbar",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Toolbar"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A toolbar for grouping actions and controls.",
+  "intentTags": [
+    "action-bar",
+    "toolbar",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "active",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the toolbar is active"
+    },
+    {
+      "name": "design",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Auto",
+          "Solid",
+          "Transparent",
+          "Info"
+        ]
+      },
+      "required": false,
+      "default": "Auto",
+      "constraints": [],
+      "description": "The toolbar design"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "content",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Toolbar content",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for grouping actions",
+      "Can be used in page headers and footers"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapNeutralBg",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "toolbar",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Toolbar content should be accessible"
+    ]
+  },
+  "examples": [
+    {
+      "id": "toolbar-basic",
+      "title": "Action Toolbar",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Toolbar",
+        "props": {
+          "design": "Solid"
+        }
+      },
+      "whenToUse": [
+        "For grouping actions",
+        "In page headers and footers"
+      ],
+      "whenNotToUse": [
+        "For main content layout"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

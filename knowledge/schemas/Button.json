@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Button",
+  "name": "Button",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Button"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A button control that can be pressed to trigger an action.",
+  "intentTags": [
+    "primary-action",
+    "secondary-action",
+    "destructive",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "text",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The text displayed on the button"
+    },
+    {
+      "name": "type",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Default",
+          "Emphasized",
+          "Accept",
+          "Reject",
+          "Transparent",
+          "Back",
+          "Up",
+          "Navigation"
+        ]
+      },
+      "required": false,
+      "default": "Default",
+      "constraints": [],
+      "description": "The button type"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the button is enabled"
+    },
+    {
+      "name": "icon",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The icon to display"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The width of the button"
+    }
+  ],
+  "events": [
+    {
+      "name": "press",
+      "parameters": [],
+      "since": "1.0",
+      "description": "Fired when the button is pressed"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Toolbar",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox",
+      "sap.m.Page",
+      "sap.m.Panel"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Prefer a single primary action per surface",
+      "Use Emphasized type for primary actions"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.primary.bg": "sapPrimary",
+      "color.primary.text": "sapPrimaryText",
+      "color.danger.bg": "sapError",
+      "color.neutral.bg": "sapNeutral",
+      "spacing.2": "sapSpace2",
+      "spacing.3": "sapSpace3",
+      "radius.sm": "sapRadiusSmall"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "button",
+    "nameFrom": [
+      "content",
+      "aria-label"
+    ],
+    "keyboard": [
+      "Enter",
+      "Space"
+    ],
+    "notes": [
+      "Buttons should have accessible names",
+      "Supports keyboard activation"
+    ]
+  },
+  "examples": [
+    {
+      "id": "button-primary",
+      "title": "Primary Action Button",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Button",
+        "props": {
+          "text": "Submit",
+          "type": "Emphasized"
+        }
+      },
+      "whenToUse": [
+        "For primary actions in forms",
+        "For main CTAs on pages"
+      ],
+      "whenNotToUse": [
+        "For secondary actions",
+        "For destructive actions"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

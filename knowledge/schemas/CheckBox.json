@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.CheckBox",
+  "name": "CheckBox",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.CheckBox"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A checkbox control for binary selection.",
+  "intentTags": [
+    "checkbox",
+    "selection",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "selected",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the checkbox is selected"
+    },
+    {
+      "name": "text",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The checkbox label text"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the checkbox is enabled"
+    },
+    {
+      "name": "editable",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the checkbox is editable"
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "parameters": [
+        {
+          "name": "selected",
+          "type": {
+            "kind": "boolean"
+          },
+          "description": "The selected state"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when selection changes"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for binary choices",
+      "Pair with label for accessibility"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "checkbox",
+    "nameFrom": [
+      "text",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Checkbox state should be announced",
+      "Should have accessible label"
+    ]
+  },
+  "examples": [
+    {
+      "id": "checkbox-basic",
+      "title": "Checkbox",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.CheckBox",
+        "props": {
+          "text": "Accept terms",
+          "selected": false
+        }
+      },
+      "whenToUse": [
+        "For binary choices",
+        "For accepting terms"
+      ],
+      "whenNotToUse": [
+        "For single selection from options (use RadioButton)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

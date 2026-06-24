@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.HBox",
+  "name": "HBox",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.HBox"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A horizontal box layout for arranging child controls horizontally.",
+  "intentTags": [
+    "horizontal-layout",
+    "flex-container",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "alignItems",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Start",
+          "Center",
+          "End",
+          "Stretch"
+        ]
+      },
+      "required": false,
+      "default": "Stretch",
+      "constraints": [],
+      "description": "Vertical alignment of items"
+    },
+    {
+      "name": "justifyContent",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Start",
+          "Center",
+          "End",
+          "SpaceBetween",
+          "SpaceAround"
+        ]
+      },
+      "required": false,
+      "default": "Start",
+      "constraints": [],
+      "description": "Horizontal distribution of items"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The width of the box"
+    },
+    {
+      "name": "height",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The height of the box"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "items",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Child controls",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for horizontal layout",
+      "Items flow left to right"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Layout should not interfere with accessibility"
+    ]
+  },
+  "examples": [
+    {
+      "id": "hbox-basic",
+      "title": "Horizontal Layout",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.HBox",
+        "props": {
+          "justifyContent": "SpaceBetween"
+        }
+      },
+      "whenToUse": [
+        "For horizontal arrangement of items",
+        "For button groups"
+      ],
+      "whenNotToUse": [
+        "For vertical layout (use VBox)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

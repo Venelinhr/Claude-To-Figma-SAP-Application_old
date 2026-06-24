@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.TextArea",
+  "name": "TextArea",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.TextArea"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A multi-line text input field for longer text entry.",
+  "intentTags": [
+    "text-entry",
+    "multi-line",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "value",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The current value"
+    },
+    {
+      "name": "placeholder",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Placeholder text"
+    },
+    {
+      "name": "rows",
+      "type": {
+        "kind": "number"
+      },
+      "required": false,
+      "default": 0,
+      "constraints": [],
+      "description": "Number of visible rows"
+    },
+    {
+      "name": "maxLength",
+      "type": {
+        "kind": "number"
+      },
+      "required": false,
+      "default": 0,
+      "constraints": [],
+      "description": "Maximum character count"
+    },
+    {
+      "name": "growing",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the area grows with content"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The new value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when value changes"
+    },
+    {
+      "name": "liveChange",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The new value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired during value change"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for multi-line text input",
+      "Pair with label for accessibility"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "textbox",
+    "nameFrom": [
+      "label",
+      "placeholder",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Multi-line text should be accessible",
+      "Should have associated label"
+    ]
+  },
+  "examples": [
+    {
+      "id": "textarea-basic",
+      "title": "Multi-line Text Area",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.TextArea",
+        "props": {
+          "placeholder": "Enter your message",
+          "rows": 4
+        }
+      },
+      "whenToUse": [
+        "For multi-line text input",
+        "For comments and descriptions"
+      ],
+      "whenNotToUse": [
+        "For single-line input (use Input)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

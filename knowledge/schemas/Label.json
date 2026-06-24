@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Label",
+  "name": "Label",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Label"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A label control for labeling form fields and other controls.",
+  "intentTags": [
+    "label",
+    "form-label",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "text",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The label text"
+    },
+    {
+      "name": "required",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the field is required"
+    },
+    {
+      "name": "labelFor",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "ID of the control this label is for"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Label width"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for labeling form fields",
+      "Should be associated with a control"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [
+      "text"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Label should be associated with its control",
+      "Required indicator should be accessible"
+    ]
+  },
+  "examples": [
+    {
+      "id": "label-basic",
+      "title": "Form Label",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Label",
+        "props": {
+          "text": "Name:",
+          "required": false
+        }
+      },
+      "whenToUse": [
+        "For labeling form fields",
+        "For accessibility"
+      ],
+      "whenNotToUse": [
+        "For display text (use Text)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

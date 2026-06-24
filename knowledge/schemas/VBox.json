@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.VBox",
+  "name": "VBox",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.VBox"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A vertical box layout for arranging child controls vertically.",
+  "intentTags": [
+    "vertical-layout",
+    "flex-container",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "alignItems",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Start",
+          "Center",
+          "End",
+          "Stretch"
+        ]
+      },
+      "required": false,
+      "default": "Stretch",
+      "constraints": [],
+      "description": "Horizontal alignment of items"
+    },
+    {
+      "name": "justifyContent",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Start",
+          "Center",
+          "End",
+          "SpaceBetween",
+          "SpaceAround"
+        ]
+      },
+      "required": false,
+      "default": "Start",
+      "constraints": [],
+      "description": "Vertical distribution of items"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The width of the box"
+    },
+    {
+      "name": "height",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The height of the box"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "items",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Child controls",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.HBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for vertical layout",
+      "Items flow top to bottom"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Layout should not interfere with accessibility"
+    ]
+  },
+  "examples": [
+    {
+      "id": "vbox-basic",
+      "title": "Vertical Layout",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.VBox",
+        "props": {
+          "justifyContent": "SpaceBetween"
+        }
+      },
+      "whenToUse": [
+        "For vertical arrangement of items",
+        "For form fields"
+      ],
+      "whenNotToUse": [
+        "For horizontal layout (use HBox)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

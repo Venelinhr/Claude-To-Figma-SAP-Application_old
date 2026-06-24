@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.FilterBar",
+  "name": "FilterBar",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.FilterBar"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "Structured search and filter toolbar for List Report and Analytical List Page screens. Provides a row of filter fields with Go and Adapt Filters buttons. Lives in DynamicPageHeader — never in the content area. Never used on Worklist screens.",
+  "intentTags": [
+    "filter",
+    "search",
+    "list-report",
+    "query",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "showGoButton",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Shows the Go button for explicit search triggering. TEAM RULE: always set true — our SAP backend does not support live filtering. Never set false for server-side filtering."
+    },
+    {
+      "name": "filterBarExpanded",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Initial expansion state of the filter bar. True (default) = filters visible. False = collapsed on load."
+    },
+    {
+      "name": "useToolbar",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "When true (default), shows the FilterBar toolbar containing the Go button and Adapt Filters button."
+    },
+    {
+      "name": "showAdaptFiltersButton",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Shows the Adapt Filters button that opens the filter personalization dialog. Set false only if personalisation is explicitly not required."
+    },
+    {
+      "name": "filterCount",
+      "type": { "kind": "number" },
+      "required": false,
+      "default": 0,
+      "constraints": [],
+      "description": "Number of active filter conditions. Shown as a badge on the Adapt Filters button. Update via binding when filter state changes."
+    },
+    {
+      "name": "search",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Current search string. Updated when Go is pressed."
+    }
+  ],
+  "events": [
+    {
+      "name": "search",
+      "parameters": [],
+      "since": "1.23",
+      "description": "Fired when the Go button is pressed or Enter is hit in a filter field. Trigger the backend data load here."
+    },
+    {
+      "name": "filterChange",
+      "parameters": [],
+      "since": "1.23",
+      "description": "Fired when any filter value changes. Update filterCount binding here."
+    },
+    {
+      "name": "filtersDialogConfirm",
+      "parameters": [],
+      "since": "1.23",
+      "description": "Fired when the user confirms the Adapt Filters dialog."
+    }
+  ],
+  "slots": [
+    {
+      "name": "filterItems",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.FilterItem"],
+      "since": "1.23",
+      "description": "Individual filter fields. Each FilterItem has a label and a control (Input, Select, DateRangeSelection, MultiComboBox, etc.). Maximum 7 visible by default — additional filters go into the Adapt Filters dialog."
+    }
+  ],
+  "composition": {
+    "allowedWith": ["sap.f.DynamicPageHeader"],
+    "forbiddenWith": [
+      "sap.f.DynamicPage",
+      "sap.m.Page",
+      "sap.m.Table"
+    ],
+    "notes": [
+      "FilterBar must be placed inside sap.f.DynamicPageHeader — never directly in DynamicPage content slot.",
+      "ONLY used on list-report and analytical-list-page floorplans.",
+      "NEVER place on worklist floorplan — the worklist is pre-scoped by the system.",
+      "showGoButton MUST be true for our team's server-side filtering — never set false.",
+      "Maximum 7 filter fields visible by default; additional ones go into the Adapt Filters dialog.",
+      "VariantManagement lives in DynamicPageTitle (heading slot), not inside FilterBar."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapBackgroundColor",
+      "color.label": "sapContent_LabelColor",
+      "spacing.field.gap": "sapContent_PaddingStandard"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "search",
+    "nameFrom": ["aria-label", "aria-labelledby"],
+    "keyboard": [
+      "Tab — move between filter fields",
+      "Enter — trigger search (same as Go button)",
+      "Escape — clear focus from current field"
+    ],
+    "notes": [
+      "FilterBar should have an aria-label or aria-labelledby pointing to the page title.",
+      "Filter field labels must be associated with their controls via labelFor.",
+      "The Go button is the primary action — it must be reachable via keyboard without needing a mouse."
+    ]
+  },
+  "examples": [
+    {
+      "id": "filterbar-list-report",
+      "title": "List Report FilterBar with 3 filter fields",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.m.FilterBar",
+        "props": {
+          "showGoButton": true,
+          "showAdaptFiltersButton": true
+        },
+        "slots": {
+          "filterItems": [
+            { "component": "sap.m.FilterItem", "props": { "label": "Status" }, "control": { "component": "sap.m.Select" } },
+            { "component": "sap.m.FilterItem", "props": { "label": "Supplier" }, "control": { "component": "sap.m.Input", "props": { "showValueHelp": true } } },
+            { "component": "sap.m.FilterItem", "props": { "label": "Date Range" }, "control": { "component": "sap.m.DateRangeSelection" } }
+          ]
+        }
+      },
+      "whenToUse": [
+        "List Report screens where users search across a large open dataset",
+        "Analytical List Page screens"
+      ],
+      "whenNotToUse": [
+        "Worklist screens — the list is pre-scoped, no filter needed",
+        "Object Page screens — filtering is not applicable to a single entity"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.23",
+    "deprecatedSince": null,
+    "ui5Version": "1.23"
+  }
+}

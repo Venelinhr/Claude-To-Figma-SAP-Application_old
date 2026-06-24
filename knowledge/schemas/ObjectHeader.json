@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.ObjectHeader",
+  "name": "ObjectHeader",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.ObjectHeader"
+  },
+  "category": "data",
+  "status": "stable",
+  "description": "An object header for displaying object information with title, subtitle, and attributes.",
+  "intentTags": [
+    "object-display",
+    "header",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The object title"
+    },
+    {
+      "name": "intro",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The object intro text"
+    },
+    {
+      "name": "number",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The object number"
+    },
+    {
+      "name": "numberUnit",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The unit for the number"
+    },
+    {
+      "name": "responsive",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the header is responsive"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "attributes",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.m.ObjectAttribute"
+      ],
+      "description": "Object attributes",
+      "since": "1.0"
+    },
+    {
+      "name": "statuses",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.m.ObjectStatus"
+      ],
+      "description": "Object statuses",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.VBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for object details display",
+      "Common in detail pages"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.text": "sapNeutralText",
+      "spacing.3": "sapSpace3"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [
+      "title",
+      "intro"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Object information should be accessible"
+    ]
+  },
+  "examples": [
+    {
+      "id": "objectheader-basic",
+      "title": "Object Header",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.ObjectHeader",
+        "props": {
+          "title": "Product Name",
+          "intro": "Product ID: 12345"
+        }
+      },
+      "whenToUse": [
+        "For object details display",
+        "In detail pages"
+      ],
+      "whenNotToUse": [
+        "For simple headers (use Title)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

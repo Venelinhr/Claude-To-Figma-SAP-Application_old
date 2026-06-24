@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Panel",
+  "name": "Panel",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Panel"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A panel container for grouping related content.",
+  "intentTags": [
+    "container",
+    "grouping",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "headerText",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The panel header text"
+    },
+    {
+      "name": "expandable",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the panel is expandable"
+    },
+    {
+      "name": "expanded",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the panel is expanded"
+    },
+    {
+      "name": "backgroundDesign",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Solid",
+          "Transparent",
+          "Translucent"
+        ]
+      },
+      "required": false,
+      "default": "Solid",
+      "constraints": [],
+      "description": "Background design"
+    }
+  ],
+  "events": [
+    {
+      "name": "expand",
+      "parameters": [],
+      "since": "1.0",
+      "description": "Fired when panel expands"
+    },
+    {
+      "name": "collapse",
+      "parameters": [],
+      "since": "1.0",
+      "description": "Fired when panel collapses"
+    }
+  ],
+  "slots": [
+    {
+      "name": "content",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Panel content",
+      "since": "1.0"
+    },
+    {
+      "name": "headerToolbar",
+      "cardinality": "0..1",
+      "allowed": [
+        "sap.m.Toolbar"
+      ],
+      "description": "Header toolbar",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.VBox",
+      "sap.m.HBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for grouping related content",
+      "Can be nested"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapNeutralBg",
+      "color.border": "sapNeutralBorder",
+      "spacing.3": "sapSpace3"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "region",
+    "nameFrom": [
+      "headerText",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Panel should have accessible label",
+      "Expand/collapse should be accessible"
+    ]
+  },
+  "examples": [
+    {
+      "id": "panel-basic",
+      "title": "Content Panel",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Panel",
+        "props": {
+          "headerText": "Settings"
+        }
+      },
+      "whenToUse": [
+        "For grouping related content",
+        "For collapsible sections"
+      ],
+      "whenNotToUse": [
+        "For page-level containers (use Page)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

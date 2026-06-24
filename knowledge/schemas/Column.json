@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Column",
+  "name": "Column",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Column"
+  },
+  "category": "data",
+  "status": "stable",
+  "description": "A column definition for table controls.",
+  "intentTags": [
+    "table-column",
+    "data-column",
+    "tier-b"
+  ],
+  "props": [
+    {
+      "name": "header",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Column header text"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Column width"
+    },
+    {
+      "name": "minScreenWidth",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Minimum screen width for column visibility"
+    },
+    {
+      "name": "demandPopin",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether column pops in on small screens"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Table"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Only used within Table",
+      "Defines table structure"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "columnheader",
+    "nameFrom": [
+      "header"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Column headers should be announced"
+    ]
+  },
+  "examples": [
+    {
+      "id": "column-basic",
+      "title": "Basic Table Column",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Column",
+        "props": {
+          "header": "Name",
+          "width": "auto"
+        }
+      },
+      "whenToUse": [
+        "As part of Table definition"
+      ],
+      "whenNotToUse": [
+        "Standalone"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

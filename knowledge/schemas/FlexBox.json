@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.FlexBox",
+  "name": "FlexBox",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.FlexBox"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A flexible box layout for arranging child controls.",
+  "intentTags": [
+    "flex-layout",
+    "responsive",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "direction",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Row",
+          "Column"
+        ]
+      },
+      "required": false,
+      "default": "Row",
+      "constraints": [],
+      "description": "Flex direction"
+    },
+    {
+      "name": "alignItems",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Start",
+          "Center",
+          "End",
+          "Stretch",
+          "Baseline"
+        ]
+      },
+      "required": false,
+      "default": "Stretch",
+      "constraints": [],
+      "description": "Cross-axis alignment"
+    },
+    {
+      "name": "justifyContent",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Start",
+          "Center",
+          "End",
+          "SpaceBetween",
+          "SpaceAround",
+          "SpaceEvenly"
+        ]
+      },
+      "required": false,
+      "default": "Start",
+      "constraints": [],
+      "description": "Main-axis distribution"
+    },
+    {
+      "name": "wrap",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "NoWrap",
+          "Wrap",
+          "WrapReverse"
+        ]
+      },
+      "required": false,
+      "default": "NoWrap",
+      "constraints": [],
+      "description": "Flex wrap behavior"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "items",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Child controls",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.HBox",
+      "sap.m.VBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for flexible layouts",
+      "More powerful than HBox/VBox"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Layout should not interfere with accessibility"
+    ]
+  },
+  "examples": [
+    {
+      "id": "flexbox-basic",
+      "title": "Flexible Layout",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.FlexBox",
+        "props": {
+          "direction": "Row",
+          "justifyContent": "SpaceBetween"
+        }
+      },
+      "whenToUse": [
+        "For complex layouts",
+        "When responsive behavior is needed"
+      ],
+      "whenNotToUse": [
+        "For simple layouts (use HBox/VBox)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

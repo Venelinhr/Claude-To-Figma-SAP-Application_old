@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Form",
+  "name": "Form",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Form"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A form container for organizing form elements.",
+  "intentTags": [
+    "form-container",
+    "form-layout",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "editable",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the form is editable"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "ResponsiveGridLayout",
+          "ResponsiveLayout",
+          "ColumnLayout",
+          "GridLayout"
+        ]
+      },
+      "required": false,
+      "default": "ResponsiveGridLayout",
+      "constraints": [],
+      "description": "Form layout type"
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "formContainers",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Form containers",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.VBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for organizing form fields",
+      "Responsive by default"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "spacing.3": "sapSpace3"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "form",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Form should have proper labels",
+      "Fields should be properly associated"
+    ]
+  },
+  "examples": [
+    {
+      "id": "form-basic",
+      "title": "Form Container",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Form",
+        "props": {
+          "editable": true
+        }
+      },
+      "whenToUse": [
+        "For organizing form fields",
+        "For data entry screens"
+      ],
+      "whenNotToUse": [
+        "For non-form content"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

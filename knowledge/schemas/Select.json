@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Select",
+  "name": "Select",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Select"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A dropdown select control for choosing from a list of options.",
+  "intentTags": [
+    "dropdown",
+    "selection",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "selectedKey",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The key of the selected item"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the select is enabled"
+    },
+    {
+      "name": "maxWidth",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Maximum width"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "parameters": [
+        {
+          "name": "selectedItem",
+          "type": {
+            "kind": "sapui5-type",
+            "sapui5Type": "sap.ui.core.Item"
+          },
+          "description": "The selected item"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when selection changes"
+    }
+  ],
+  "slots": [
+    {
+      "name": "items",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Item"
+      ],
+      "description": "Selectable items",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for single selection from predefined options",
+      "Pair with label for accessibility"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "combobox",
+    "nameFrom": [
+      "label",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Options should be announced",
+      "Should have accessible label"
+    ]
+  },
+  "examples": [
+    {
+      "id": "select-basic",
+      "title": "Dropdown Select",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Select",
+        "props": {
+          "selectedKey": "option1"
+        }
+      },
+      "whenToUse": [
+        "For single selection from options",
+        "When space is limited"
+      ],
+      "whenNotToUse": [
+        "For radio button groups (use RadioButton)",
+        "For multi-select"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

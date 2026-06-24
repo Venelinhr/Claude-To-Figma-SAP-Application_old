@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Text",
+  "name": "Text",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Text"
+  },
+  "category": "display",
+  "status": "stable",
+  "description": "A text control for displaying read-only text content.",
+  "intentTags": [
+    "text-display",
+    "read-only",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "text",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The text to display"
+    },
+    {
+      "name": "maxLines",
+      "type": {
+        "kind": "number"
+      },
+      "required": false,
+      "default": 0,
+      "constraints": [],
+      "description": "Maximum number of lines to display (0 for unlimited)"
+    },
+    {
+      "name": "wrapping",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether text should wrap"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The width of the text"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox",
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.ObjectHeader"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for static text display",
+      "Not for user input"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.text": "sapNeutralText",
+      "font.size": "sapFontSizeBase"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Text content should be readable by screen readers"
+    ]
+  },
+  "examples": [
+    {
+      "id": "text-simple",
+      "title": "Simple Text Display",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Text",
+        "props": {
+          "text": "Hello World"
+        }
+      },
+      "whenToUse": [
+        "For displaying static text",
+        "For labels and descriptions"
+      ],
+      "whenNotToUse": [
+        "For user input (use Input)",
+        "For headings (use Title)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

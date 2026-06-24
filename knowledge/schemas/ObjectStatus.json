@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.ObjectStatus",
+  "name": "ObjectStatus",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.ObjectStatus"
+  },
+  "category": "display",
+  "status": "stable",
+  "description": "Displays a status text with semantic color coding — used for approval status, workflow state, or any condition that has positive/negative/warning/neutral meaning. Always use ObjectStatus instead of plain Text for status columns — it carries semantic color that plain Text cannot provide.",
+  "intentTags": [
+    "status",
+    "semantic-status",
+    "workflow-state",
+    "approval-state",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "text",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The status text displayed. E.g. 'Approved', 'Pending', 'Rejected'."
+    },
+    {
+      "name": "state",
+      "type": {
+        "kind": "enum",
+        "enumValues": ["None", "Success", "Warning", "Error", "Information"]
+      },
+      "required": false,
+      "default": "None",
+      "constraints": [],
+      "description": "Semantic color of the status. Success=green, Warning=amber, Error=red, Information=blue, None=neutral gray. Never hardcode colors — always use state."
+    },
+    {
+      "name": "icon",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Optional icon shown before the text. Use SAP icon URI format: 'sap-icon://accept'. Provides a non-color indicator for accessibility."
+    },
+    {
+      "name": "title",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Label shown above the status text. Used when ObjectStatus is displayed in a header content area (KPI-style). Omit when used in table cells."
+    },
+    {
+      "name": "active",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, the ObjectStatus is clickable and fires a press event. Use for interactive status navigation."
+    },
+    {
+      "name": "inverted",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Inverts the color scheme — colored background with white text. Use sparingly, only for high-emphasis status indicators."
+    }
+  ],
+  "events": [
+    {
+      "name": "press",
+      "parameters": [],
+      "since": "1.54",
+      "description": "Fired when an active ObjectStatus is pressed."
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.ColumnListItem",
+      "sap.m.ObjectHeader",
+      "sap.f.DynamicPageHeader",
+      "sap.uxap.ObjectPageLayout",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.Panel"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Always use ObjectStatus for status columns in tables — never use sap.m.Text for semantic states.",
+      "State must always be set alongside text — color alone is insufficient for accessibility.",
+      "In table cells (ColumnListItem), omit the title property — it is only for header content area usage.",
+      "Provide a non-color indicator (icon) when possible for color-blind users."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.success": "sapPositiveColor",
+      "color.warning": "sapCriticalColor",
+      "color.error": "sapNegativeColor",
+      "color.information": "sapInformationColor",
+      "color.neutral": "sapNeutralColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "status",
+    "nameFrom": ["text", "title", "aria-label"],
+    "keyboard": [
+      "Enter/Space — activate when active=true"
+    ],
+    "notes": [
+      "State color alone is not sufficient — always pair with text or icon.",
+      "When used in a table, the column header provides context for screen readers.",
+      "For critical statuses, consider adding an icon alongside the state color."
+    ]
+  },
+  "examples": [
+    {
+      "id": "object-status-table",
+      "title": "Status column in a table row",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.m.ObjectStatus",
+        "props": {
+          "text": "Pending",
+          "state": "Warning"
+        }
+      },
+      "whenToUse": [
+        "Status columns in List Report and Worklist tables",
+        "Approval status on Object Page header (Approved, Rejected, Pending)",
+        "Any field where the value has semantic positive/negative/warning meaning"
+      ],
+      "whenNotToUse": [
+        "Do not use sap.m.Text for status fields — use ObjectStatus to carry semantic color",
+        "Do not hardcode status colors with CSS — always use the state property"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.12",
+    "deprecatedSince": null,
+    "ui5Version": "1.12"
+  }
+}

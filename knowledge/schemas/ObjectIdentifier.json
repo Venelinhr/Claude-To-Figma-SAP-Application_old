@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.ObjectIdentifier",
+  "name": "ObjectIdentifier",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.ObjectIdentifier"
+  },
+  "category": "display",
+  "status": "stable",
+  "description": "Displays the primary identity of a business object — a title (the object ID or name) with an optional subtitle (a secondary descriptor). Used in table rows as the clickable primary cell that navigates to the object detail. Always use ObjectIdentifier instead of two separate Text controls for title+subtitle combinations.",
+  "intentTags": [
+    "object-identity",
+    "primary-cell",
+    "table-row-title",
+    "navigation-trigger",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The primary identifier text — usually a document number, name, or ID. E.g. '4500012345' for a purchase order. When titleActive=true this becomes a clickable link."
+    },
+    {
+      "name": "text",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The subtitle / secondary descriptor shown below the title. E.g. 'Office Supplies' as the category of a purchase order."
+    },
+    {
+      "name": "titleActive",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, the title renders as a link and fires the titlePress event. Use for row-level navigation to the object detail page."
+    },
+    {
+      "name": "emptyIndicatorMode",
+      "type": {
+        "kind": "enum",
+        "enumValues": ["Off", "Auto"]
+      },
+      "required": false,
+      "default": "Off",
+      "constraints": [],
+      "description": "How to display empty values. Auto shows a dash (–) when title or text is empty."
+    }
+  ],
+  "events": [
+    {
+      "name": "titlePress",
+      "parameters": [],
+      "since": "1.26",
+      "description": "Fired when the active title is pressed. Use to navigate to the object detail page."
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.ColumnListItem",
+      "sap.m.ObjectHeader",
+      "sap.m.HBox",
+      "sap.m.VBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Always use ObjectIdentifier instead of two separate sap.m.Text controls for title+subtitle.",
+      "Set titleActive=true and attach a titlePress handler when the row navigates to a detail page.",
+      "The title is the primary identity (document number, name). The text is the secondary descriptor.",
+      "In ColumnListItem cells, ObjectIdentifier typically goes in the first column."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.title": "sapLinkColor",
+      "color.text": "sapContent_LabelColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "group",
+    "nameFrom": ["title", "text"],
+    "keyboard": [
+      "Enter/Space — activates title when titleActive=true"
+    ],
+    "notes": [
+      "When titleActive=true, the title receives focus and is announced as a link.",
+      "Both title and text are announced by screen readers — ensure both are meaningful.",
+      "The column header provides context for what the ObjectIdentifier represents."
+    ]
+  },
+  "examples": [
+    {
+      "id": "object-identifier-table",
+      "title": "Purchase order identifier in a table row",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.m.ObjectIdentifier",
+        "props": {
+          "title": "4500012345",
+          "text": "Office Supplies",
+          "titleActive": true
+        }
+      },
+      "whenToUse": [
+        "First cell of a table row for the primary object identity (PO number, invoice ID, supplier name)",
+        "When the title should be clickable for navigation to the detail page",
+        "Any cell that needs both a primary value and a secondary descriptor"
+      ],
+      "whenNotToUse": [
+        "Do not use two separate sap.m.Text controls for title+subtitle — use ObjectIdentifier",
+        "Do not use for status values — use sap.m.ObjectStatus instead"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.12",
+    "deprecatedSince": null,
+    "ui5Version": "1.12"
+  }
+}

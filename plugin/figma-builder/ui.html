@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 12px;
+      background: #1c2128;
+      color: #e6edf3;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      padding: 12px 14px 10px;
+      border-bottom: 1px solid #30363d;
+    }
+    .header h1 { font-size: 13px; font-weight: 700; color: #e6edf3; }
+    .header p  { font-size: 11px; color: #8b949e; margin-top: 3px; }
+    .footer {
+      padding: 8px 14px;
+      border-top: 1px solid #30363d;
+      background: #161b22;
+    }
+    .footer-title { font-size: 10px; font-weight: 700; color: #8b949e; margin-bottom: 4px; }
+    .changelog { font-size: 10px; color: #484f58; line-height: 1.6; }
+
+    .cache-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-bottom: 1px solid #30363d;
+      background: #161b22;
+    }
+    .cache-label {
+      font-size: 10px;
+      color: #8b949e;
+      flex: 1;
+    }
+    .cache-label span { font-weight: 600; }
+    .cache-label.ready span { color: #56d364; }
+    .cache-label.empty span { color: #e3b341; }
+    #btn-warm {
+      padding: 4px 10px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+      color: #e6edf3;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    #btn-warm:hover { background: #30363d; }
+    #btn-warm:disabled { opacity: .4; cursor: not-allowed; }
+    #btn-scan {
+      padding: 4px 10px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+      color: #8b949e;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    #btn-scan:hover { background: #30363d; color: #e6edf3; }
+
+    /* Scan output panel — hidden by default */
+    .scan-panel {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px 14px;
+      border-top: 1px solid #30363d;
+      background: #161b22;
+    }
+    .scan-panel.show { display: flex; }
+    .scan-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .scan-panel-header span { font-size: 11px; font-weight: 600; color: #8b949e; }
+    .scan-panel-header button {
+      flex: none;
+      padding: 3px 8px;
+      font-size: 10px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      color: #8b949e;
+      cursor: pointer;
+    }
+    #scan-output {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+      color: #a5d6ff;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 10px;
+      line-height: 1.6;
+      padding: 8px 10px;
+      height: 140px;
+      overflow-y: auto;
+      white-space: pre;
+      resize: none;
+      outline: none;
+      cursor: text;
+      user-select: all;
+    }
+
+    .body { flex: 1; display: flex; flex-direction: column; padding: 12px 14px; gap: 10px; overflow: hidden; }
+    textarea {
+      flex: 1;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #a5d6ff;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 11px;
+      line-height: 1.55;
+      padding: 10px;
+      resize: none;
+      outline: none;
+    }
+    textarea:focus { border-color: #388bfd; }
+    textarea::placeholder { color: #484f58; }
+
+    .buttons { display: flex; gap: 8px; }
+    button {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    button:hover { opacity: .85; }
+    button:active { opacity: .7; }
+    #btn-validate {
+      background: #21262d;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+    }
+    #btn-build {
+      background: #1f6feb;
+      color: white;
+    }
+    #btn-build:disabled {
+      background: #1c2128;
+      color: #484f58;
+      border: 1px solid #30363d;
+      cursor: not-allowed;
+    }
+
+    .status {
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      display: none;
+    }
+    .status.show { display: block; }
+    .status.info    { background: #0d2235; border: 1px solid #1f6feb; color: #79c0ff; }
+    .status.success { background: #0d1f15; border: 1px solid #238636; color: #56d364; }
+    .status.error   { background: #2a0e0e; border: 1px solid #da3633; color: #f85149; }
+    .status.warn    { background: #261a04; border: 1px solid #9e6a03; color: #e3b341; }
+
+    .progress { font-size: 10px; color: #8b949e; text-align: center; padding: 4px 0; display: none; }
+    .progress.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Claude to Figma SAP Application </h1>
+    <p>Paste a spec-schema.json spec → Build real SAP components in Figma</p>
+  </div>
+
+  <!-- Cache status bar -->
+  <div class="cache-bar">
+    <div class="cache-label empty" id="cache-label">
+      Library cache: <span id="cache-status">not warmed</span>
+    </div>
+    <button id="btn-scan" onclick="onScanLibrary()" title="List all component set names in connected library">Scan Library</button>
+    <button id="btn-warm" onclick="onWarmCache()">Warm Cache</button>
+  </div>
+
+  <!-- Scan output panel — hidden until scan runs -->
+  <div class="scan-panel" id="scan-panel">
+    <div class="scan-panel-header">
+      <span id="scan-count">—</span>
+      <button onclick="copyScanned()">Copy all</button>
+    </div>
+    <div id="scan-output" onclick="this.select()"></div>
+  </div>
+
+  <div class="body">
+    <textarea id="spec-input" placeholder='Paste your spec-schema.json spec here...
+{
+  "$schema": "...",
+  "meta": { ... },
+  "screen": { ... },
+  "hierarchy": [ ... ]
+}'></textarea>
+    <div id="status" class="status"></div>
+    <div id="progress" class="progress"></div>
+    <div class="buttons">
+      <button id="btn-validate" onclick="onValidate()">Validate</button>
+      <button id="btn-build" onclick="onBuild()" disabled>Build Screen</button>
+    </div>
+  </div>
+
+  <script>
+    let parsedSpec = null;
+
+    // ── UI helpers ────────────────────────────────────────────────────────────
+
+    function setStatus(msg, type) {
+      const el = document.getElementById('status');
+      el.textContent = msg;
+      el.className = 'status show ' + type;
+    }
+
+    function setProgress(msg) {
+      const el = document.getElementById('progress');
+      if (msg) { el.textContent = msg; el.className = 'progress show'; }
+      else { el.className = 'progress'; }
+    }
+
+    function setCacheLabel(text, ready) {
+      const label = document.getElementById('cache-label');
+      const span  = document.getElementById('cache-status');
+      span.textContent = text;
+      label.className = 'cache-label ' + (ready ? 'ready' : 'empty');
+    }
+
+    // ── Scan Library ──────────────────────────────────────────────────────────
+
+    function onScanLibrary() {
+      document.getElementById('btn-scan').disabled = true;
+      setStatus('Scanning connected libraries...', 'info');
+      parent.postMessage({ pluginMessage: { type: 'scan-library' } }, '*');
+    }
+
+    function copyScanned() {
+      const out = document.getElementById('scan-output');
+      const text = out.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        setStatus('✓ Copied to clipboard — paste it to Claude.', 'success');
+      }).catch(() => {
+        out.focus();
+        document.execCommand('selectAll');
+        setStatus('Select all text above and copy manually (Cmd+C).', 'warn');
+      });
+    }
+
+    // ── Cache ─────────────────────────────────────────────────────────────────
+
+    function onWarmCache() {
+      document.getElementById('btn-warm').disabled = true;
+      setCacheLabel('scanning library...', false);
+      parent.postMessage({ pluginMessage: { type: 'warm-cache' } }, '*');
+    }
+
+    // ── Validate ──────────────────────────────────────────────────────────────
+
+    function onValidate() {
+      const raw = document.getElementById('spec-input').value.trim();
+      document.getElementById('btn-build').disabled = true;
+      parsedSpec = null;
+
+      if (!raw) { setStatus('Paste a spec to validate.', 'warn'); return; }
+
+      let spec;
+      try { spec = JSON.parse(raw); }
+      catch (e) { setStatus('JSON parse error: ' + e.message, 'error'); return; }
+
+      const missing = [];
+      if (!spec['$schema'])                    missing.push('$schema');
+      if (!spec.meta)                          missing.push('meta');
+      if (!spec.screen)                        missing.push('screen');
+      if (!spec.hierarchy || !spec.hierarchy.length) missing.push('hierarchy');
+      if (missing.length) { setStatus('Missing required fields: ' + missing.join(', '), 'error'); return; }
+
+      if (!spec.meta.requirement) missing.push('meta.requirement');
+      if (!spec.meta.floorplan)   missing.push('meta.floorplan');
+      if (!spec.meta.rationale)   missing.push('meta.rationale');
+      if (missing.length) { setStatus('Missing meta fields: ' + missing.join(', '), 'error'); return; }
+
+      if (spec.meta.validationStatus === 'fail') {
+        setStatus('Spec has validationStatus=fail.\nUnverified: ' + (spec.meta.unverifiedComponents || []).join(', '), 'error');
+        return;
+      }
+
+      const components = [];
+      function collectComponents(node) {
+        if (node && node.component) components.push(node.component);
+        if (node.children) node.children.forEach(collectComponents);
+        if (node.slots) Object.values(node.slots).forEach(v => {
+          if (Array.isArray(v)) v.forEach(collectComponents);
+          else if (v) collectComponents(v);
+        });
+      }
+      spec.hierarchy.forEach(collectComponents);
+
+      // Send to plugin for library check
+      setStatus('Checking components against SAP library...', 'info');
+      setProgress('Searching library...');
+      parsedSpec = spec;
+      parent.postMessage({ pluginMessage: { type: 'validate', spec } }, '*');
+    }
+
+    // ── Build ─────────────────────────────────────────────────────────────────
+
+    function onBuild() {
+      if (!parsedSpec) { setStatus('Validate the spec first.', 'warn'); return; }
+      document.getElementById('btn-build').disabled = true;
+      setStatus('Building screen...', 'info');
+      setProgress('Sending spec to Figma...');
+      parent.postMessage({ pluginMessage: { type: 'build', spec: parsedSpec } }, '*');
+    }
+
+    // ── Messages from plugin ──────────────────────────────────────────────────
+
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+
+      if (msg.type === 'progress') {
+        setProgress(msg.text);
+        setStatus(msg.text, 'info');
+      }
+
+      else if (msg.type === 'success') {
+        setProgress('');
+        setStatus('✓ ' + msg.text, 'success');
+        document.getElementById('btn-build').disabled = false;
+      }
+
+      else if (msg.type === 'error') {
+        setProgress('');
+        setStatus('Error: ' + msg.text, 'error');
+        document.getElementById('btn-build').disabled = false;
+      }
+
+      else if (msg.type === 'missing-components') {
+        setProgress('');
+        setStatus(
+          'Missing in SAP library:\n' + msg.missing.join('\n') +
+          '\n\nMake sure the SAP Fiori kit is connected as a team library.',
+          'error'
+        );
+        document.getElementById('btn-build').disabled = false;
+      }
+
+      else if (msg.type === 'validate-pass') {
+        setProgress('');
+        setStatus(
+          '✓ All ' + msg.found.length + ' components are SAP kit components or valid layout containers.\n' +
+          'Floorplan: ' + (parsedSpec.meta.floorplan || '—') +
+          '  |  Density: ' + (parsedSpec.screen.density || '—') +
+          '\n\nReady to build — 100% SAP.',
+          'success'
+        );
+        document.getElementById('btn-build').disabled = false;
+      }
+
+      else if (msg.type === 'validate-fail') {
+        setProgress('');
+        setStatus(
+          '✗ ' + msg.unknown.length + ' component(s) not in SAP kit or layout set:\n' +
+          msg.unknown.join('\n') +
+          '\n\n' + msg.found.length + ' mapped OK.\n\n' + msg.message,
+          'error'
+        );
+        document.getElementById('btn-build').disabled = true;
+      }
+
+      else if (msg.type === 'warning') {
+        setStatus('⚠ ' + msg.text, 'warn');
+      }
+
+      else if (msg.type === 'scan-done') {
+        document.getElementById('btn-scan').disabled = false;
+        const panel = document.getElementById('scan-panel');
+        const output = document.getElementById('scan-output');
+        const count = document.getElementById('scan-count');
+        panel.className = 'scan-panel show';
+        count.textContent = msg.names.length + ' component sets found — copy and paste to Claude';
+        output.textContent = msg.names.join('\n');
+        setStatus('✓ ' + msg.names.length + ' component sets listed below.\nClick "Copy all" then paste to Claude to verify the mapping.', 'success');
+      }
+
+      else if (msg.type === 'scan-error') {
+        document.getElementById('btn-scan').disabled = false;
+        setStatus('Scan failed: ' + msg.text + '\n\nMake sure the SAP Fiori kit is connected as a team library.', 'error');
+      }
+
+      else if (msg.type === 'cache-done') {
+        setProgress('');
+        document.getElementById('btn-warm').disabled = false;
+        if (msg.notFound.length === 0) {
+          setCacheLabel(msg.found + '/' + msg.total + ' components cached', true);
+          setStatus('✓ Cache warmed — ' + msg.found + ' components resolved.\nBuilds will be faster.', 'success');
+        } else {
+          setCacheLabel(msg.found + '/' + msg.total + ' cached (some missing)', false);
+          setStatus(
+            '⚠ ' + msg.found + '/' + msg.total + ' components cached.\nNot found:\n' + msg.notFound.join('\n') +
+            '\n\nCheck that the SAP Fiori kit is connected as a team library.',
+            'warn'
+          );
+        }
+      }
+
+      else if (msg.type === 'cache-error') {
+        setProgress('');
+        document.getElementById('btn-warm').disabled = false;
+        setCacheLabel('cache error', false);
+        setStatus('Cache error: ' + msg.text, 'error');
+      }
+
+      else if (msg.type === 'cache-cleared') {
+        setCacheLabel('cache cleared', false);
+        setStatus('Cache cleared. Run Warm Cache to rebuild.', 'info');
+      }
+    };
+  </script>
+
+  <div class="footer">
+    <div class="footer-title">Changelog</div>
+    <div class="changelog">
+       · 2026-06-23 — Recursive buildTree renderer · Horizontal toolbar frames · KPI native tiles · DynamicPageHeader swap-slot fix · RadioButton/Switch labels · layoutGrow spacers<br>
+      v2.4 · 2026-06-22 — 37/37 schemas · Registry gate · 50+ SAP component keys<br>
+      v1.0 · 2026-06-15 — Initial flat-walk renderer
+    </div>
+  </div>
+
+</body>
+</html>

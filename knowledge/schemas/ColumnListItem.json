@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.ColumnListItem",
+  "name": "ColumnListItem",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.ColumnListItem"
+  },
+  "category": "data",
+  "status": "stable",
+  "description": "A list item for table rows with multiple cells.",
+  "intentTags": [
+    "table-row",
+    "data-row",
+    "tier-b"
+  ],
+  "props": [
+    {
+      "name": "type",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Inactive",
+          "Active",
+          "Navigation"
+        ]
+      },
+      "required": false,
+      "default": "Inactive",
+      "constraints": [],
+      "description": "Item interaction type"
+    },
+    {
+      "name": "selected",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the item is selected"
+    },
+    {
+      "name": "highlight",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "None",
+          "Information",
+          "Success",
+          "Warning",
+          "Error"
+        ]
+      },
+      "required": false,
+      "default": "None",
+      "constraints": [],
+      "description": "Highlight color"
+    }
+  ],
+  "events": [
+    {
+      "name": "press",
+      "parameters": [],
+      "since": "1.0",
+      "description": "Fired when the item is pressed"
+    }
+  ],
+  "slots": [
+    {
+      "name": "cells",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Cell contents",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Table"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Only used within Table items",
+      "Cells should match column count"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapNeutralBg",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "row",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "Row should be selectable if table is in selection mode"
+    ]
+  },
+  "examples": [
+    {
+      "id": "columnlistitem-basic",
+      "title": "Table Row Item",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.ColumnListItem",
+        "props": {
+          "type": "Active"
+        }
+      },
+      "whenToUse": [
+        "As rows in Table"
+      ],
+      "whenNotToUse": [
+        "Standalone"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

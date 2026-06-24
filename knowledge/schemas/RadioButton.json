@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.RadioButton",
+  "name": "RadioButton",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.RadioButton"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A radio button control for single selection from a group.",
+  "intentTags": [
+    "radio",
+    "single-selection",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "selected",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the radio button is selected"
+    },
+    {
+      "name": "text",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The radio button label text"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the radio button is enabled"
+    },
+    {
+      "name": "groupName",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The radio button group name"
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "parameters": [
+        {
+          "name": "selected",
+          "type": {
+            "kind": "boolean"
+          },
+          "description": "The selected state"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when selection changes"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for single selection from options",
+      "Group with same groupName"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "radio",
+    "nameFrom": [
+      "text",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Radio group should be accessible",
+      "Selection should be announced"
+    ]
+  },
+  "examples": [
+    {
+      "id": "radiobutton-basic",
+      "title": "Radio Button",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.RadioButton",
+        "props": {
+          "text": "Option A",
+          "groupName": "group1"
+        }
+      },
+      "whenToUse": [
+        "For single selection from options",
+        "For mutually exclusive choices"
+      ],
+      "whenNotToUse": [
+        "For binary choice (use CheckBox)",
+        "For dropdown selection (use Select)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

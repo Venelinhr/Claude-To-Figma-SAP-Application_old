@@ -1,0 +1,22 @@
+# Session and development files
+SESSION-RESUME.md
+SESSION-*.md
+CLAUDE.md
+GAP-ANALYSIS.html
+GUIDE.html
+INSTRUCTIONS.md
+
+# Internal snapshots and output
+snapshots/
+output/
+*.png
+*.jpg
+
+# System
+.DS_Store
+node_modules/
+
+# Local spec files generated during use
+*-spec.json
+*-rationale.md
+ARCHITECTURE.html

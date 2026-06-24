@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Venelinhr/sap-ai-design-system-c/main/schemas/component_spec.schema.json",
+  "title": "ComponentSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "source",
+    "category",
+    "status",
+    "props",
+    "events",
+    "slots",
+    "composition",
+    "tokens",
+    "a11y",
+    "examples",
+    "versioning"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$" },
+
+    "id": {
+      "type": "string",
+      "description": "Stable identifier, e.g. sap.m.Button",
+      "minLength": 1
+    },
+    "name": { "type": "string", "minLength": 1 },
+
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "ref"],
+      "properties": {
+        "system": { "type": "string", "enum": ["sapui5", "figma", "hybrid"] },
+        "ref": { "type": "string", "description": "Link or opaque identifier back to source" }
+      }
+    },
+
+    "category": {
+      "type": "string",
+      "enum": [
+        "form",
+        "display",
+        "navigation",
+        "feedback",
+        "layout",
+        "data",
+        "other"
+      ]
+    },
+
+    "status": { "type": "string", "enum": ["stable", "experimental", "deprecated"] },
+
+    "description": { "type": "string" },
+
+    "intentTags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "LLM-friendly tags like: primary-action, destructive, dense, search, filter"
+    },
+
+    "props": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/PropSpec" }
+    },
+
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/EventSpec" }
+    },
+
+    "slots": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/SlotSpec" },
+      "description": "Aggregations/slots and their allowed types"
+    },
+
+    "composition": { "$ref": "#/$defs/CompositionSpec" },
+
+    "tokens": { "$ref": "#/$defs/TokenSpec" },
+
+    "a11y": { "$ref": "#/$defs/A11ySpec" },
+
+    "examples": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ExampleSpec" }
+    },
+
+    "versioning": { "$ref": "#/$defs/VersioningSpec" }
+  },
+
+  "$defs": {
+    "TypeRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["string", "number", "boolean", "enum", "object", "array", "sapui5-type", "any"]
+        },
+        "enumValues": { "type": "array", "items": { "type": "string" } },
+        "sapui5Type": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "enum" } } },
+          "then": { "required": ["enumValues"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "sapui5-type" } } },
+          "then": { "required": ["sapui5Type"] }
+        }
+      ]
+    },
+
+    "PropSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "required", "default", "constraints"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": { "$ref": "#/$defs/TypeRef" },
+        "required": { "type": "boolean" },
+        "default": {},
+        "since": { "type": "string" },
+        "deprecatedSince": { "type": "string" },
+        "constraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ConstraintSpec" }
+        },
+        "description": { "type": "string" }
+      }
+    },
+
+    "ConstraintSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["range", "regex", "oneOf", "not", "custom"]
+        },
+        "value": {}
+      }
+    },
+
+    "EventSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "parameters", "since"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "since": { "type": "string" },
+        "parameters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/EventParameterSpec" }
+        },
+        "description": { "type": "string" }
+      }
+    },
+
+    "EventParameterSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "$ref": "#/$defs/TypeRef" },
+        "description": { "type": "string" }
+      }
+    },
+
+    "SlotSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "cardinality", "allowed"],
+      "properties": {
+        "name": { "type": "string" },
+        "cardinality": { "type": "string", "enum": ["0..1", "1..1", "0..n", "1..n"] },
+        "allowed": { "type": "array", "items": { "type": "string" } },
+        "since": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+
+    "CompositionSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowedWith", "forbiddenWith", "notes"],
+      "properties": {
+        "allowedWith": { "type": "array", "items": { "type": "string" } },
+        "forbiddenWith": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "TokenSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic", "componentOverrides"],
+      "properties": {
+        "semantic": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Semantic token roles -> token ids (e.g. color.primary.bg -> sapNeutralBg)"
+        },
+        "componentOverrides": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+
+    "A11ySpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "nameFrom", "keyboard", "notes"],
+      "properties": {
+        "role": { "type": "string" },
+        "nameFrom": { "type": "array", "items": { "type": "string" } },
+        "keyboard": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "ExampleSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "kind", "uiPlan", "whenToUse", "whenNotToUse"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "kind": { "type": "string", "enum": ["minimal", "enterprise", "anti-pattern"] },
+        "uiPlan": {
+          "type": "object",
+          "description": "A small structured UI plan (component tree) for deterministic generation",
+          "additionalProperties": true
+        },
+        "whenToUse": { "type": "array", "items": { "type": "string" } },
+        "whenNotToUse": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "VersioningSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["since"],
+      "properties": {
+        "since": { "type": "string" },
+        "deprecatedSince": { "type": ["string", "null"] },
+        "ui5Version": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
+

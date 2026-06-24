@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Table",
+  "name": "Table",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Table"
+  },
+  "category": "data",
+  "status": "stable",
+  "description": "A table control for displaying data in rows and columns.",
+  "intentTags": [
+    "data-display",
+    "list-view",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "headerText",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The table header text"
+    },
+    {
+      "name": "mode",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "None",
+          "SingleSelect",
+          "MultiSelect",
+          "Delete",
+          "SingleSelectLeft",
+          "SingleSelectMaster"
+        ]
+      },
+      "required": false,
+      "default": "None",
+      "constraints": [],
+      "description": "The table selection mode"
+    },
+    {
+      "name": "growing",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the table has growing capability"
+    },
+    {
+      "name": "sticky",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "None",
+          "Header",
+          "ColumnHeaders",
+          "All"
+        ]
+      },
+      "required": false,
+      "default": "None",
+      "constraints": [],
+      "description": "Sticky behavior for headers"
+    }
+  ],
+  "events": [
+    {
+      "name": "itemPress",
+      "parameters": [
+        {
+          "name": "item",
+          "type": {
+            "kind": "sapui5-type",
+            "sapui5Type": "sap.m.ListItemBase"
+          },
+          "description": "The pressed item"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when an item is pressed"
+    }
+  ],
+  "slots": [
+    {
+      "name": "columns",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.m.Column"
+      ],
+      "description": "Table columns",
+      "since": "1.0"
+    },
+    {
+      "name": "items",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.m.ColumnListItem"
+      ],
+      "description": "Table rows",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for tabular data display",
+      "Consider growing for large datasets"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "table",
+    "nameFrom": [
+      "headerText",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Table headers should be announced",
+      "Row selection should be accessible"
+    ]
+  },
+  "examples": [
+    {
+      "id": "table-simple",
+      "title": "Simple Data Table",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Table",
+        "props": {
+          "headerText": "Employees"
+        }
+      },
+      "whenToUse": [
+        "For displaying structured data",
+        "For list views with columns"
+      ],
+      "whenNotToUse": [
+        "For simple lists (use List)",
+        "For card-based layouts"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

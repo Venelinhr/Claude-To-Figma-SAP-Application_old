@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Title",
+  "name": "Title",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Title"
+  },
+  "category": "display",
+  "status": "stable",
+  "description": "A title control for displaying headings.",
+  "intentTags": [
+    "heading",
+    "page-title",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "text",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The title text"
+    },
+    {
+      "name": "level",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H5",
+          "H6",
+          "Auto"
+        ]
+      },
+      "required": false,
+      "default": "Auto",
+      "constraints": [],
+      "description": "The heading level"
+    },
+    {
+      "name": "width",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The width of the title"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.ObjectHeader",
+      "sap.m.HBox",
+      "sap.m.VBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use appropriate heading levels for hierarchy",
+      "One H1 per page"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.text": "sapPrimaryText",
+      "font.size": "sapFontSizeH1"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "heading",
+    "nameFrom": [
+      "content"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Proper heading levels are essential for screen reader navigation"
+    ]
+  },
+  "examples": [
+    {
+      "id": "title-page",
+      "title": "Page Title",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Title",
+        "props": {
+          "text": "My Application",
+          "level": "H1"
+        }
+      },
+      "whenToUse": [
+        "For page titles",
+        "For section headings"
+      ],
+      "whenNotToUse": [
+        "For body text (use Text)",
+        "For emphasis only"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

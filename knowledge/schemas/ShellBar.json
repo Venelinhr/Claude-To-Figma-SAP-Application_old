@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.f.ShellBar",
+  "name": "ShellBar",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.f.ShellBar"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "Top-level application shell bar. Present on every SAP Fiori screen as the first item in the layout hierarchy. Contains product name, home icon, navigation button, search, notifications, and user profile avatar.",
+  "intentTags": [
+    "shell",
+    "navigation",
+    "app-header",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "productName",
+      "type": { "kind": "string" },
+      "required": true,
+      "default": "",
+      "constraints": [],
+      "description": "The application name displayed in the bar. Always set — never leave empty."
+    },
+    {
+      "name": "showNotifications",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Shows the notification bell icon. Set true when the app has a notification center."
+    },
+    {
+      "name": "notificationsNumber",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Badge count displayed on the notification bell. Shown only when showNotifications=true."
+    },
+    {
+      "name": "showNavButton",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Shows a back navigation button. Use only on detail screens — never on root/home screens."
+    },
+    {
+      "name": "showProductSwitcher",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Shows the product switcher grid icon. Use in multi-app enterprise portals only."
+    },
+    {
+      "name": "homeIconTooltip",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Tooltip for the home icon. Required for accessibility when homeIcon is set."
+    }
+  ],
+  "events": [
+    {
+      "name": "homeIconPressed",
+      "parameters": [],
+      "since": "1.71",
+      "description": "Fired when the home icon is pressed."
+    },
+    {
+      "name": "navButtonPressed",
+      "parameters": [],
+      "since": "1.71",
+      "description": "Fired when the back navigation button is pressed."
+    },
+    {
+      "name": "notificationsPressed",
+      "parameters": [],
+      "since": "1.71",
+      "description": "Fired when the notification bell icon is pressed."
+    },
+    {
+      "name": "productSwitcherPressed",
+      "parameters": [],
+      "since": "1.71",
+      "description": "Fired when the product switcher icon is pressed."
+    }
+  ],
+  "slots": [
+    {
+      "name": "profile",
+      "cardinality": "0..1",
+      "allowed": ["sap.f.Avatar", "sap.m.Avatar"],
+      "since": "1.71",
+      "description": "User profile avatar displayed on the right side of the shell bar."
+    },
+    {
+      "name": "searchManager",
+      "cardinality": "0..1",
+      "allowed": ["sap.f.SearchManager"],
+      "since": "1.71",
+      "description": "Search input. Required when the app has global search."
+    },
+    {
+      "name": "additionalContent",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.OverflowToolbarButton", "sap.m.Button"],
+      "since": "1.71",
+      "description": "Additional action buttons placed before the profile avatar."
+    }
+  ],
+  "composition": {
+    "allowedWith": [],
+    "forbiddenWith": [
+      "sap.m.Page",
+      "sap.f.DynamicPage",
+      "sap.uxap.ObjectPageLayout",
+      "sap.f.FlexibleColumnLayout"
+    ],
+    "notes": [
+      "ShellBar is always the topmost element in the hierarchy — first item in hierarchy[], never inside any page container.",
+      "Exactly one ShellBar per screen frame.",
+      "ShellBar height is always 44px in both Cozy and Compact density modes.",
+      "Background color is sapShellColor (dark blue-gray) — this is a fixed SAP brand requirement, never override."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapShellColor",
+      "color.text": "sapShell_TextColor",
+      "color.icon": "sapShell_InteractiveTextColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "banner",
+    "nameFrom": ["productName", "homeIconTooltip"],
+    "keyboard": [
+      "Tab — move focus through interactive elements",
+      "Enter/Space — activate focused element"
+    ],
+    "notes": [
+      "homeIconTooltip must be set when homeIcon is present.",
+      "Icon-only buttons in additionalContent must have tooltip set.",
+      "notificationsNumber value is announced by screen readers when bell is focused."
+    ]
+  },
+  "examples": [
+    {
+      "id": "shellbar-standard",
+      "title": "Standard enterprise ShellBar",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.f.ShellBar",
+        "props": {
+          "productName": "Purchase Orders",
+          "showNotifications": true,
+          "notificationsNumber": "5"
+        },
+        "slots": {
+          "profile": { "component": "sap.f.Avatar" }
+        }
+      },
+      "whenToUse": [
+        "On every SAP Fiori screen as the top-level application shell",
+        "When the app requires notifications, search, or product switching"
+      ],
+      "whenNotToUse": [
+        "Never omit — every SAP Fiori screen has exactly one ShellBar",
+        "Never use sap.m.Bar or a custom frame as a substitute"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.71",
+    "deprecatedSince": null,
+    "ui5Version": "1.71"
+  }
+}

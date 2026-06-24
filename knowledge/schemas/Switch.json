@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Switch",
+  "name": "Switch",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Switch"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A toggle switch control for binary on/off selection.",
+  "intentTags": [
+    "switch",
+    "toggle",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "state",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the switch is on"
+    },
+    {
+      "name": "customTextOn",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Custom text for on state"
+    },
+    {
+      "name": "customTextOff",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Custom text for off state"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the switch is enabled"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "parameters": [
+        {
+          "name": "state",
+          "type": {
+            "kind": "boolean"
+          },
+          "description": "The new state"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when state changes"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for binary on/off choices",
+      "Modern alternative to CheckBox"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapNeutralBg",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "switch",
+    "nameFrom": [
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Switch state should be announced",
+      "Should have accessible label"
+    ]
+  },
+  "examples": [
+    {
+      "id": "switch-basic",
+      "title": "Toggle Switch",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Switch",
+        "props": {
+          "state": false,
+          "customTextOn": "On",
+          "customTextOff": "Off"
+        }
+      },
+      "whenToUse": [
+        "For on/off toggles",
+        "For settings"
+      ],
+      "whenNotToUse": [
+        "For binary choice with label (use CheckBox)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.f.DynamicPageTitle",
+  "name": "DynamicPageTitle",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.f.DynamicPageTitle"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "The always-visible sticky title area of DynamicPage. Mandatory slot — DynamicPage without DynamicPageTitle renders incorrectly. Contains the page heading, breadcrumb navigation, variant management toggle, and page-level action buttons. Remains visible even when the DynamicPageHeader collapses.",
+  "intentTags": [
+    "page-title",
+    "sticky-header",
+    "breadcrumb",
+    "variant-management",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "primaryArea",
+      "type": {
+        "kind": "enum",
+        "enumValues": ["Begin", "Middle"]
+      },
+      "required": false,
+      "default": "Begin",
+      "constraints": [],
+      "description": "Controls the layout of the title area. Begin (default) places the heading on the left. Use Begin for standard enterprise screens."
+    },
+    {
+      "name": "areaShrinkRatio",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "1:1.6:1.6",
+      "constraints": [],
+      "description": "Ratio controlling how the three areas (begin, middle, end) shrink relative to each other. Use default in most cases."
+    }
+  ],
+  "events": [
+    {
+      "name": "stateChange",
+      "parameters": [
+        {
+          "name": "isExpanded",
+          "type": { "kind": "boolean" },
+          "description": "Whether the header is expanded"
+        }
+      ],
+      "since": "1.58",
+      "description": "Fired when the DynamicPageTitle expand/collapse state changes."
+    }
+  ],
+  "slots": [
+    {
+      "name": "heading",
+      "cardinality": "0..1",
+      "allowed": ["sap.m.Title", "sap.m.Text"],
+      "since": "1.58",
+      "description": "The main page title. Use sap.m.Title with level H1 for the primary screen heading. Always set — an empty title area violates SAP Fiori guidelines."
+    },
+    {
+      "name": "snappedHeading",
+      "cardinality": "0..1",
+      "allowed": ["sap.m.Title", "sap.m.Text"],
+      "since": "1.58",
+      "description": "Title shown when the DynamicPageHeader is collapsed (snapped state). Can differ from the expanded heading — e.g. show a shorter title when space is limited."
+    },
+    {
+      "name": "breadcrumbs",
+      "cardinality": "0..1",
+      "allowed": ["sap.m.Breadcrumbs"],
+      "since": "1.58",
+      "description": "Navigation breadcrumb trail. Optional — use on screens that are reached via navigation (not root screens)."
+    },
+    {
+      "name": "actions",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.Button", "sap.m.OverflowToolbarButton"],
+      "since": "1.58",
+      "description": "Page-level action buttons (Create, Export all, Edit). These are actions on the entire page scope — NOT row actions or list actions. Use OverflowToolbar to contain them for overflow behavior."
+    },
+    {
+      "name": "navigationActions",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.Button"],
+      "since": "1.58",
+      "description": "Secondary navigation actions placed at the far right of the title area."
+    },
+    {
+      "name": "content",
+      "cardinality": "0..n",
+      "allowed": ["sap.ui.core.Control"],
+      "since": "1.58",
+      "description": "Content shown only when the header is expanded. Collapses with the header."
+    },
+    {
+      "name": "snappedContent",
+      "cardinality": "0..n",
+      "allowed": ["sap.ui.core.Control"],
+      "since": "1.58",
+      "description": "Content shown only when the header is collapsed (snapped state)."
+    },
+    {
+      "name": "expandedContent",
+      "cardinality": "0..n",
+      "allowed": ["sap.ui.core.Control"],
+      "since": "1.58",
+      "description": "Content shown only when the header is expanded."
+    }
+  ],
+  "composition": {
+    "allowedWith": ["sap.f.DynamicPage"],
+    "forbiddenWith": [],
+    "notes": [
+      "Only valid as the title slot of sap.f.DynamicPage — never used standalone.",
+      "The actions slot holds PAGE-LEVEL actions (Create, Export). List-level actions (bulk delete) go in the table toolbar. Row-level actions go in ColumnListItem.",
+      "showVariantManagement is not a property of DynamicPageTitle — VariantManagement is placed in the heading or actions slot as a separate control on List Report screens.",
+      "On worklist floorplan: no VariantManagement in any slot.",
+      "On list-report floorplan: VariantManagement control placed in the heading slot alongside the Title."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapObjectHeader_Background",
+      "color.title": "sapGroup_TitleTextColor",
+      "spacing.padding": "sapContent_PaddingStandard"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "heading",
+    "nameFrom": ["heading slot", "snappedHeading slot"],
+    "keyboard": [
+      "Enter/Space — toggle header expand/collapse when title area is focused"
+    ],
+    "notes": [
+      "heading slot should contain sap.m.Title with appropriate level (H1 for main page title).",
+      "Action buttons in actions slot must have text or tooltip for screen reader access."
+    ]
+  },
+  "examples": [
+    {
+      "id": "dynamicpagetitle-worklist",
+      "title": "Worklist title — no VariantManagement",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.f.DynamicPageTitle",
+        "slots": {
+          "heading": { "component": "sap.m.Title", "props": { "text": "My Purchase Order Approvals", "level": "H1" } },
+          "actions": [{ "component": "sap.m.Button", "props": { "text": "Approve All", "type": "Emphasized" } }]
+        }
+      },
+      "whenToUse": [
+        "Worklist screens — no VariantManagement, simple heading with optional page-level action"
+      ],
+      "whenNotToUse": [
+        "Do not add VariantManagement to Worklist — there are no user-defined filter sets to save"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.58",
+    "deprecatedSince": null,
+    "ui5Version": "1.58"
+  }
+}

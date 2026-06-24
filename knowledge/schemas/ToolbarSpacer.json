@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.ToolbarSpacer",
+  "name": "ToolbarSpacer",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.ToolbarSpacer"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "An invisible flexible spacer that fills available space inside a Toolbar or OverflowToolbar. Pushes subsequent items to the right (or left in RTL). Essential for the standard toolbar layout: Title → ToolbarSpacer → action Buttons.",
+  "intentTags": [
+    "spacer",
+    "toolbar-spacer",
+    "layout-helper",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "width",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Optional fixed width. Leave empty (default) for flexible/fill behavior — the spacer expands to fill all remaining space between preceding and following items."
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.OverflowToolbar",
+      "sap.m.Toolbar"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Always place between the title/label items and the action buttons to right-align actions.",
+      "Only one ToolbarSpacer per toolbar is needed in most cases — two spacers split the remaining space equally.",
+      "Has no visual representation — it is invisible."
+    ]
+  },
+  "tokens": {
+    "semantic": {},
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "none",
+    "nameFrom": [],
+    "keyboard": [],
+    "notes": [
+      "ToolbarSpacer has no accessibility role — it is invisible and not focusable."
+    ]
+  },
+  "examples": [
+    {
+      "id": "toolbar-spacer-standard",
+      "title": "Standard toolbar with spacer pushing actions to the right",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.OverflowToolbar",
+        "slots": {
+          "content": [
+            { "component": "sap.m.Title", "props": { "text": "Orders (20)" } },
+            { "component": "sap.m.ToolbarSpacer" },
+            { "component": "sap.m.Button", "props": { "text": "Approve", "type": "Accept" } }
+          ]
+        }
+      },
+      "whenToUse": [
+        "Inside every OverflowToolbar to separate title from action buttons",
+        "To right-align action buttons in a toolbar"
+      ],
+      "whenNotToUse": [
+        "Do not use outside of Toolbar or OverflowToolbar"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.16",
+    "deprecatedSince": null,
+    "ui5Version": "1.16"
+  }
+}

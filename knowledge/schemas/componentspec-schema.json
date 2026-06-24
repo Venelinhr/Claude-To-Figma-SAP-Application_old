@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ComponentSpec Schema for SAPUI5",
+  "description": "The standardized schema for SAPUI5 component specifications",
+  "type": "object",
+  "required": ["name", "namespace"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Component name (e.g., Input, Button, Panel)"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "SAPUI5 namespace (e.g., sap.m, sap.ui.layout)"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Component properties",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["string", "boolean", "number", "object", "array"],
+              "description": "Property type"
+            },
+            "required": {
+              "type": "boolean",
+              "description": "Whether this property is required"
+            },
+            "description": {
+              "type": "string",
+              "description": "Property description"
+            },
+            "defaultValue": {
+              "description": "Default value for the property"
+            },
+            "allowedValues": {
+              "type": "array",
+              "description": "Allowed values for enum-like properties"
+            }
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "object",
+      "description": "Component events",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Event description"
+            },
+            "parameters": {
+              "type": "array",
+              "description": "Event parameters"
+            }
+          }
+        }
+      }
+    },
+    "aggregations": {
+      "type": "object",
+      "description": "Component aggregations (child controls)",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "required": ["type", "multiple"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "Type of aggregated control"
+            },
+            "multiple": {
+              "type": "boolean",
+              "description": "Whether multiple children are allowed"
+            },
+            "singularName": {
+              "type": "string",
+              "description": "Singular name for the aggregation"
+            }
+          }
+        }
+      }
+    }
+  }
+}

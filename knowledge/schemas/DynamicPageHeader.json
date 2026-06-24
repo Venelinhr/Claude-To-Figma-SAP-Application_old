@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.f.DynamicPageHeader",
+  "name": "DynamicPageHeader",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.f.DynamicPageHeader"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "The collapsible header region of DynamicPage. Houses the FilterBar on List Report screens and attribute/KPI groups on Object Page screens. This slot is the structural differentiator between List Report (has DynamicPageHeader) and Worklist (has no DynamicPageHeader). Collapses when the user scrolls down; DynamicPageTitle remains visible.",
+  "intentTags": [
+    "collapsible-header",
+    "filter-area",
+    "list-report",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "pinnable",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "When true (default), a pin button appears allowing the user to keep the header permanently expanded. Set false to remove the pin affordance."
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "content",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.FilterBar", "sap.ui.core.Control"],
+      "since": "1.58",
+      "description": "On List Report: contains the FilterBar. On Object Page: contains attribute groups, KPI tiles, Avatar, and ObjectStatus controls. On Worklist: this slot (and therefore this entire component) must not exist."
+    }
+  ],
+  "composition": {
+    "allowedWith": ["sap.f.DynamicPage"],
+    "forbiddenWith": [],
+    "notes": [
+      "Only valid as the header slot of sap.f.DynamicPage — never standalone.",
+      "MUST be present on list-report and analytical-list-page floorplans.",
+      "MUST NOT be present on worklist floorplan — its absence is the structural marker that distinguishes Worklist from List Report.",
+      "FilterBar must be placed inside this component's content slot — never directly in DynamicPage content slot.",
+      "On Object Page: contains KPI/attribute groups, Avatar, and ObjectStatus — not a FilterBar."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapObjectHeader_Background",
+      "color.border.bottom": "sapPageHeader_BorderColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "region",
+    "nameFrom": ["aria-label"],
+    "keyboard": [
+      "Tab — navigate through interactive elements in the header"
+    ],
+    "notes": [
+      "The header expand/collapse state is announced automatically by the DynamicPage framework.",
+      "FilterBar inside this component must have an accessible label."
+    ]
+  },
+  "examples": [
+    {
+      "id": "dynamicpageheader-list-report",
+      "title": "List Report header with FilterBar",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.f.DynamicPageHeader",
+        "props": { "pinnable": true },
+        "slots": {
+          "content": [{ "component": "sap.m.FilterBar" }]
+        }
+      },
+      "whenToUse": [
+        "List Report screens where the user needs to filter a large open dataset",
+        "Analytical List Page screens"
+      ],
+      "whenNotToUse": [
+        "Worklist screens — there is nothing to filter, the list is pre-scoped by the system",
+        "Never add this component to a Worklist floorplan screen"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.58",
+    "deprecatedSince": null,
+    "ui5Version": "1.58"
+  }
+}

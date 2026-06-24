@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.ObjectNumber",
+  "name": "ObjectNumber",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.ObjectNumber"
+  },
+  "category": "display",
+  "status": "stable",
+  "description": "Displays a numeric value with a unit of measure — amounts, quantities, prices, counts. The number and unit are visually paired and can carry semantic state. Always use ObjectNumber instead of plain Text for numeric values that have a unit (EUR, kg, pcs). Supports right-aligned number display for monetary columns.",
+  "intentTags": [
+    "amount",
+    "quantity",
+    "monetary-value",
+    "numeric-display",
+    "unit-of-measure",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "number",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The numeric value as a formatted string. E.g. '1,250.00'. Use formatted strings (not raw numbers) to respect locale-specific number formatting."
+    },
+    {
+      "name": "unit",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The unit of measure shown after the number. E.g. 'EUR', 'kg', 'pcs', '%'. Displayed as a smaller secondary text next to the number."
+    },
+    {
+      "name": "state",
+      "type": {
+        "kind": "enum",
+        "enumValues": ["None", "Success", "Warning", "Error", "Information"]
+      },
+      "required": false,
+      "default": "None",
+      "constraints": [],
+      "description": "Semantic color state. Use for overdue amounts (Error/Warning), approved amounts (Success). None = neutral black."
+    },
+    {
+      "name": "emphasized",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, the number is displayed in bold. Use for totals or key financial figures that need visual emphasis."
+    },
+    {
+      "name": "textDirection",
+      "type": {
+        "kind": "enum",
+        "enumValues": ["LTR", "RTL", "Inherit"]
+      },
+      "required": false,
+      "default": "Inherit",
+      "constraints": [],
+      "description": "Text direction for the number. Numbers should always be LTR even in RTL layouts — set explicitly when needed."
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.ColumnListItem",
+      "sap.m.ObjectHeader",
+      "sap.f.DynamicPageHeader",
+      "sap.uxap.ObjectPageLayout",
+      "sap.m.HBox",
+      "sap.m.VBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Always use ObjectNumber for monetary amounts, quantities, and measurements — never use sap.m.Text.",
+      "Always set both number and unit — a number without a unit is ambiguous.",
+      "Right-align amount columns by setting hAlign='End' on the parent sap.m.Column.",
+      "Use state=Error for overdue/negative values, state=Warning for near-threshold values.",
+      "Format the number string according to locale before passing it (e.g. '1,250.00' not 1250)."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.number": "sapContent_MonitoringNeutralColor",
+      "color.success": "sapPositiveColor",
+      "color.warning": "sapCriticalColor",
+      "color.error": "sapNegativeColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "text",
+    "nameFrom": ["number", "unit"],
+    "keyboard": [],
+    "notes": [
+      "Screen readers announce both the number and the unit — ensure both are set.",
+      "For monetary columns, ensure the column header names the currency context.",
+      "In RTL layouts, numbers should remain LTR — set textDirection='LTR' explicitly."
+    ]
+  },
+  "examples": [
+    {
+      "id": "object-number-amount",
+      "title": "Monetary amount in a table cell",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.m.ObjectNumber",
+        "props": {
+          "number": "1,250.00",
+          "unit": "EUR",
+          "state": "None"
+        }
+      },
+      "whenToUse": [
+        "Amount columns in List Report and Worklist tables (order value, invoice total)",
+        "Quantity columns (stock count, line item quantity)",
+        "KPI figures in Object Page header content area",
+        "Any numeric value that has a unit of measure"
+      ],
+      "whenNotToUse": [
+        "Do not use sap.m.Text for monetary or quantity values — use ObjectNumber",
+        "Do not omit the unit — a bare number is ambiguous to the user"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.12",
+    "deprecatedSince": null,
+    "ui5Version": "1.12"
+  }
+}

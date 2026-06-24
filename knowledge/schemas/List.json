@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.List",
+  "name": "List",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.List"
+  },
+  "category": "data",
+  "status": "stable",
+  "description": "A list control for displaying items.",
+  "intentTags": [
+    "list",
+    "items",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "headerText",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The list header text"
+    },
+    {
+      "name": "mode",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "None",
+          "SingleSelect",
+          "MultiSelect",
+          "Delete",
+          "SingleSelectLeft",
+          "SingleSelectMaster"
+        ]
+      },
+      "required": false,
+      "default": "None",
+      "constraints": [],
+      "description": "The list selection mode"
+    },
+    {
+      "name": "growing",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether the list has growing capability"
+    },
+    {
+      "name": "showNoData",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether to show no data text"
+    }
+  ],
+  "events": [
+    {
+      "name": "itemPress",
+      "parameters": [
+        {
+          "name": "item",
+          "type": {
+            "kind": "sapui5-type",
+            "sapui5Type": "sap.m.ListItemBase"
+          },
+          "description": "The pressed item"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when an item is pressed"
+    },
+    {
+      "name": "selectionChange",
+      "parameters": [
+        {
+          "name": "item",
+          "type": {
+            "kind": "sapui5-type",
+            "sapui5Type": "sap.m.ListItemBase"
+          },
+          "description": "The selected item"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when selection changes"
+    }
+  ],
+  "slots": [
+    {
+      "name": "items",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.m.ListItemBase"
+      ],
+      "description": "List items",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Page",
+      "sap.m.Panel",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for simple item lists",
+      "Consider Table for columnar data"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "list",
+    "nameFrom": [
+      "headerText",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "List items should be navigable",
+      "Header should be announced"
+    ]
+  },
+  "examples": [
+    {
+      "id": "list-basic",
+      "title": "Simple List",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.List",
+        "props": {
+          "headerText": "Items"
+        }
+      },
+      "whenToUse": [
+        "For simple item lists",
+        "For navigation lists"
+      ],
+      "whenNotToUse": [
+        "For tabular data (use Table)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

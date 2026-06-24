@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.f.DynamicPage",
+  "name": "DynamicPage",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.f.DynamicPage"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "Primary page container for List Report and Worklist floorplans. Provides the collapsible header pattern: the header (DynamicPageHeader) collapses as the user scrolls, while the title (DynamicPageTitle) remains always visible. The title slot is mandatory; the header slot is present only on List Report, absent on Worklist.",
+  "intentTags": [
+    "page-container",
+    "list-report",
+    "worklist",
+    "collapsible-header",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "headerExpanded",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Initial expansion state of the collapsible header. Default true (expanded). Set false to start with the header collapsed."
+    },
+    {
+      "name": "toggleHeaderOnTitleClick",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "When true (default), the user can expand or collapse the header by clicking the title area."
+    },
+    {
+      "name": "preserveHeaderStateOnScroll",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, the header stays open even when the user scrolls down. Use sparingly — the collapsible pattern is a key Fiori UX behavior."
+    },
+    {
+      "name": "fitContent",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "CRITICAL: Set true when the content slot contains a Table. Without this, the table does not fill the remaining viewport height and whitespace appears below it."
+    },
+    {
+      "name": "showFooter",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Shows the sticky footer slot. Set true only for the draft save pattern (Save/Discard buttons). Never use the footer for informational content."
+    }
+  ],
+  "events": [
+    {
+      "name": "pinnedStateChange",
+      "parameters": [
+        {
+          "name": "pinned",
+          "type": { "kind": "boolean" },
+          "description": "Whether the header is pinned"
+        }
+      ],
+      "since": "1.93",
+      "description": "Fired when the header pinned state changes."
+    }
+  ],
+  "slots": [
+    {
+      "name": "title",
+      "cardinality": "1..1",
+      "allowed": ["sap.f.DynamicPageTitle"],
+      "since": "1.58",
+      "description": "REQUIRED. The always-visible sticky title area. Contains page heading, breadcrumbs, variant management toggle, and page-level action buttons."
+    },
+    {
+      "name": "header",
+      "cardinality": "0..1",
+      "allowed": ["sap.f.DynamicPageHeader"],
+      "since": "1.58",
+      "description": "CONDITIONAL. Present on list-report and analytical-list-page floorplans (contains FilterBar). MUST be absent on worklist floorplan — this is the structural differentiator between the two."
+    },
+    {
+      "name": "content",
+      "cardinality": "1..1",
+      "allowed": ["sap.ui.core.Control"],
+      "since": "1.58",
+      "description": "REQUIRED. The main scrollable content area. Typically a Table or Form. Set fitContent=true when the content is a Table."
+    },
+    {
+      "name": "footer",
+      "cardinality": "0..1",
+      "allowed": ["sap.m.OverflowToolbar"],
+      "since": "1.58",
+      "description": "Sticky footer for finalising actions only (Save draft, Submit, Discard). Never use for informational content or navigation."
+    }
+  ],
+  "composition": {
+    "allowedWith": [],
+    "forbiddenWith": [
+      "sap.uxap.ObjectPageLayout",
+      "sap.f.DynamicPage"
+    ],
+    "notes": [
+      "title slot is mandatory — DynamicPage renders incorrectly without DynamicPageTitle.",
+      "header slot MUST be absent on worklist floorplan. MUST be present on list-report.",
+      "FilterBar belongs inside DynamicPageHeader (header slot) — never in the content slot.",
+      "DynamicPage and ObjectPageLayout are peer containers — never nest one inside the other.",
+      "fitContent must be true when content is sap.m.Table to fill viewport height correctly.",
+      "footer slot is for finalising actions only (Save/Discard draft) — never informational."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapBackgroundColor",
+      "color.header.bg": "sapObjectHeader_Background",
+      "spacing.content": "sapContent_PaddingStandard"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "main",
+    "nameFrom": ["title slot heading"],
+    "keyboard": [
+      "Tab — navigate through interactive elements",
+      "Enter/Space — toggle header expand/collapse when title is focused"
+    ],
+    "notes": [
+      "The page title in DynamicPageTitle must have a heading level (H1 recommended for the main page).",
+      "The collapsible header transition is announced to screen readers automatically."
+    ]
+  },
+  "examples": [
+    {
+      "id": "dynamicpage-worklist",
+      "title": "Worklist screen (no header slot)",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.f.DynamicPage",
+        "props": { "fitContent": true },
+        "slots": {
+          "title": { "component": "sap.f.DynamicPageTitle" },
+          "content": { "component": "sap.m.Table" }
+        }
+      },
+      "whenToUse": [
+        "As the root page container for Worklist and List Report floorplans",
+        "When the screen requires a collapsible header with sticky title"
+      ],
+      "whenNotToUse": [
+        "For Object Page floorplan — use sap.uxap.ObjectPageLayout instead",
+        "For simple single-section forms without a collapsible header — use sap.m.Page"
+      ]
+    },
+    {
+      "id": "dynamicpage-list-report",
+      "title": "List Report screen (with header and FilterBar)",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.f.DynamicPage",
+        "props": { "fitContent": true },
+        "slots": {
+          "title": { "component": "sap.f.DynamicPageTitle" },
+          "header": {
+            "component": "sap.f.DynamicPageHeader",
+            "slots": { "content": [{ "component": "sap.m.FilterBar" }] }
+          },
+          "content": { "component": "sap.m.Table" }
+        }
+      },
+      "whenToUse": [
+        "List Report: user needs to filter a large open dataset before seeing results"
+      ],
+      "whenNotToUse": [
+        "Worklist: user processes their own pre-scoped task queue — no header slot, no FilterBar"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.58",
+    "deprecatedSince": null,
+    "ui5Version": "1.58"
+  }
+}

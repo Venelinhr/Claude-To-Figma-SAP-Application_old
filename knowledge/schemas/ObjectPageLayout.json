@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.uxap.ObjectPageLayout",
+  "name": "ObjectPageLayout",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.uxap.ObjectPageLayout"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "Root container for the Object Page floorplan. Displays all information about a single business entity (a purchase order, a supplier, an employee) with a sticky header for identity information and scrollable sections for related data. Requires the sap.uxap library in the bootstrap — this is separate from sap.m and sap.f.",
+  "intentTags": [
+    "object-page",
+    "entity-detail",
+    "multi-section",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "useIconTabBar",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, sections are shown as tabs (icon tab bar pattern). Use for screens with 2–5 sections. When false (default), sections use anchor navigation on the left side. Use false for screens with 5+ sections where the user needs to see all section names while scrolling."
+    },
+    {
+      "name": "showFooter",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Shows a sticky footer. Set true for the draft save pattern (Save/Discard buttons). The footer persists as the user scrolls through sections."
+    },
+    {
+      "name": "alwaysShowContentHeader",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, the header content (KPIs, attributes) is always visible and does not collapse on scroll. Use when the header attributes are essential context for all sections."
+    },
+    {
+      "name": "isChildPage",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Set true when ObjectPageLayout is placed inside a FlexibleColumnLayout mid or end column. Renders a back navigation button in the header."
+    },
+    {
+      "name": "headerContentPinnable",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "When true (default), the user can pin the header content open permanently. Set false to remove the pin affordance."
+    }
+  ],
+  "events": [
+    {
+      "name": "navigate",
+      "parameters": [
+        {
+          "name": "section",
+          "type": { "kind": "sapui5-type", "sapui5Type": "sap.uxap.ObjectPageSection" },
+          "description": "The section that was navigated to"
+        }
+      ],
+      "since": "1.40",
+      "description": "Fired when the user navigates to a different section."
+    },
+    {
+      "name": "editHeaderButtonPress",
+      "parameters": [],
+      "since": "1.52",
+      "description": "Fired when the edit header button is pressed. Use to toggle between display and edit mode."
+    }
+  ],
+  "slots": [
+    {
+      "name": "headerTitle",
+      "cardinality": "1..1",
+      "allowed": ["sap.uxap.ObjectPageDynamicHeaderTitle"],
+      "since": "1.38",
+      "description": "REQUIRED. The sticky identity header. Use ObjectPageDynamicHeaderTitle (NOT the deprecated ObjectPageHeader). Contains: object title, subtitle, image/avatar, status, and header-level action buttons."
+    },
+    {
+      "name": "headerContent",
+      "cardinality": "0..n",
+      "allowed": ["sap.ui.core.Control"],
+      "since": "1.38",
+      "description": "Collapsible header content area below the title. Use for KPI tiles, attribute groups, ObjectStatus indicators, and the object avatar/image. Collapses as the user scrolls down."
+    },
+    {
+      "name": "sections",
+      "cardinality": "1..n",
+      "allowed": ["sap.uxap.ObjectPageSection"],
+      "since": "1.38",
+      "description": "REQUIRED. At least one section must be present. Each section contains subSections, which contain the actual content blocks (forms, tables, etc.)."
+    },
+    {
+      "name": "footer",
+      "cardinality": "0..1",
+      "allowed": ["sap.m.OverflowToolbar"],
+      "since": "1.52",
+      "description": "Sticky footer for the draft save pattern. Contains Save and Discard buttons. Only shown when showFooter=true."
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.f.FlexibleColumnLayout"
+    ],
+    "forbiddenWith": [
+      "sap.f.DynamicPage",
+      "sap.uxap.ObjectPageLayout"
+    ],
+    "notes": [
+      "REQUIRES sap.uxap library in the bootstrap — this is separate from sap.m and sap.f: data-sap-ui-libs must include 'sap.uxap'.",
+      "headerTitle slot is mandatory — use ObjectPageDynamicHeaderTitle, NOT the deprecated sap.uxap.ObjectPageHeader.",
+      "sections slot requires at least one ObjectPageSection.",
+      "Section hierarchy: ObjectPageLayout > ObjectPageSection > ObjectPageSubSection > blocks[] (Form, Table, etc.).",
+      "useIconTabBar=true for 2-5 sections (tab navigation). useIconTabBar=false for 5+ sections (anchor navigation).",
+      "ObjectPageLayout and DynamicPage are peer containers — never nest one inside the other.",
+      "isChildPage=true when placed inside FlexibleColumnLayout mid or end column."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.header.bg": "sapObjectHeader_Background",
+      "color.section.title": "sapGroup_TitleTextColor",
+      "color.bg": "sapBackgroundColor",
+      "spacing.section.padding": "sapContent_PaddingStandard"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "main",
+    "nameFrom": ["headerTitle slot object title"],
+    "keyboard": [
+      "Tab — navigate interactive elements",
+      "F6 — jump between header, navigation, and content areas",
+      "Arrow keys — navigate between section anchors or tabs"
+    ],
+    "notes": [
+      "The object title in headerTitle must be a heading (sap.m.Title with appropriate level).",
+      "Section titles are automatically rendered as headings — do not suppress them.",
+      "When useIconTabBar=true, tab selection must be keyboard-accessible.",
+      "Footer Save/Discard buttons must be reachable by keyboard without scrolling."
+    ]
+  },
+  "examples": [
+    {
+      "id": "objectpagelayout-purchase-order",
+      "title": "Purchase Order Object Page",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.uxap.ObjectPageLayout",
+        "props": {
+          "useIconTabBar": true,
+          "showFooter": true
+        },
+        "slots": {
+          "headerTitle": {
+            "component": "sap.uxap.ObjectPageDynamicHeaderTitle",
+            "props": {
+              "objectTitle": "Purchase Order 4500012345",
+              "objectSubtitle": "Office Supplies — Müller GmbH"
+            }
+          },
+          "headerContent": [
+            { "component": "sap.m.ObjectStatus", "props": { "title": "Amount", "text": "1,250.00 EUR" } },
+            { "component": "sap.m.ObjectStatus", "props": { "title": "Status", "text": "Pending", "state": "Warning" } }
+          ],
+          "sections": [
+            {
+              "component": "sap.uxap.ObjectPageSection",
+              "props": { "title": "General Information" },
+              "slots": {
+                "subSections": [{ "component": "sap.uxap.ObjectPageSubSection", "slots": { "blocks": [{ "component": "sap.ui.layout.form.SimpleForm" }] } }]
+              }
+            },
+            {
+              "component": "sap.uxap.ObjectPageSection",
+              "props": { "title": "Line Items" },
+              "slots": {
+                "subSections": [{ "component": "sap.uxap.ObjectPageSubSection", "slots": { "blocks": [{ "component": "sap.m.Table" }] } }]
+              }
+            }
+          ],
+          "footer": {
+            "component": "sap.m.OverflowToolbar",
+            "slots": {
+              "content": [
+                { "component": "sap.m.Button", "props": { "text": "Save", "type": "Emphasized" } },
+                { "component": "sap.m.Button", "props": { "text": "Discard" } }
+              ]
+            }
+          }
+        }
+      },
+      "whenToUse": [
+        "Displaying all information about a single business entity with multiple groups of related data",
+        "Edit flows for complex entities requiring draft save pattern",
+        "Detail view in a Master-Detail (FlexibleColumnLayout) screen"
+      ],
+      "whenNotToUse": [
+        "List or search screens — use DynamicPage with Table",
+        "Simple single-section forms — use DynamicPage with Form content",
+        "Never use sap.uxap.ObjectPageHeader — it is deprecated; use ObjectPageDynamicHeaderTitle"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.38",
+    "deprecatedSince": null,
+    "ui5Version": "1.38"
+  }
+}

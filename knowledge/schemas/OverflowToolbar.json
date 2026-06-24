@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.OverflowToolbar",
+  "name": "OverflowToolbar",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.OverflowToolbar"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A toolbar that moves items that do not fit into the available space into an overflow menu (three-dot button). Used as the table header toolbar on every SAP Fiori screen — contains the table title, ToolbarSpacer, and action buttons. Also used as the DynamicPage footer for draft-save actions.",
+  "intentTags": [
+    "toolbar",
+    "table-toolbar",
+    "action-bar",
+    "overflow",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "design",
+      "type": {
+        "kind": "enum",
+        "enumValues": ["Auto", "Transparent", "Solid", "Info"]
+      },
+      "required": false,
+      "default": "Auto",
+      "constraints": [],
+      "description": "Visual style of the toolbar. Auto adapts to context. Transparent removes the background. Use Auto (default) in most cases."
+    },
+    {
+      "name": "height",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Toolbar height. Leave empty to use the default height determined by density (44px Cozy, 36px Compact)."
+    },
+    {
+      "name": "active",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "If true, the toolbar has hover and press states. Use false (default) for non-interactive toolbars."
+    }
+  ],
+  "events": [
+    {
+      "name": "press",
+      "parameters": [],
+      "since": "1.22",
+      "description": "Fired when the toolbar is pressed. Only fires when active=true."
+    }
+  ],
+  "slots": [
+    {
+      "name": "content",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.m.Button",
+        "sap.m.Title",
+        "sap.m.Text",
+        "sap.m.SearchField",
+        "sap.m.ToolbarSpacer",
+        "sap.m.OverflowToolbarButton",
+        "sap.m.Select",
+        "sap.ui.core.Control"
+      ],
+      "since": "1.22",
+      "description": "Toolbar content. Standard pattern: Title → ToolbarSpacer → action Buttons. Items that don't fit move to the overflow menu automatically."
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Table",
+      "sap.f.DynamicPage",
+      "sap.m.Panel",
+      "sap.f.DynamicPageTitle"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Always use OverflowToolbar (not sap.m.Toolbar) for table header toolbars — it handles overflow automatically.",
+      "Standard content order: Title (with item count) → ToolbarSpacer → action Buttons.",
+      "Place in Table headerToolbar slot for table actions, or in DynamicPage footer slot for Save/Discard.",
+      "Never put FilterBar inside OverflowToolbar — FilterBar belongs in DynamicPageHeader."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapPageHeader_Background",
+      "color.border.bottom": "sapPageHeader_BorderColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "toolbar",
+    "nameFrom": ["aria-label", "aria-labelledby"],
+    "keyboard": [
+      "Tab — move focus to next toolbar item",
+      "Left/Right arrow — move between toolbar items",
+      "Enter/Space — activate focused item"
+    ],
+    "notes": [
+      "OverflowToolbar should have an aria-label when it cannot be labelled by an adjacent heading.",
+      "The overflow button (three dots) is automatically labelled 'More' by the framework.",
+      "Action buttons inside the toolbar must have visible text or a tooltip."
+    ]
+  },
+  "examples": [
+    {
+      "id": "overflow-toolbar-table",
+      "title": "Standard table header toolbar",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.m.OverflowToolbar",
+        "slots": {
+          "content": [
+            { "component": "sap.m.Title", "props": { "text": "Purchase Orders (143)", "level": "H3" } },
+            { "component": "sap.m.ToolbarSpacer" },
+            { "component": "sap.m.Button", "props": { "text": "Approve", "type": "Accept" } },
+            { "component": "sap.m.Button", "props": { "text": "Reject", "type": "Reject" } },
+            { "component": "sap.m.Button", "props": { "icon": "sap-icon://excel-attachment", "tooltip": "Export" } }
+          ]
+        }
+      },
+      "whenToUse": [
+        "As the headerToolbar of every sap.m.Table",
+        "As the footer of DynamicPage for draft save actions (Save + Discard)"
+      ],
+      "whenNotToUse": [
+        "Do not use sap.m.Toolbar instead — it has no overflow handling",
+        "Do not put FilterBar inside OverflowToolbar"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.22",
+    "deprecatedSince": null,
+    "ui5Version": "1.22"
+  }
+}

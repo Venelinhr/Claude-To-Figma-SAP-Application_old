@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.DatePicker",
+  "name": "DatePicker",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.DatePicker"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A date picker control for selecting dates.",
+  "intentTags": [
+    "date-input",
+    "calendar",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "value",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The date value"
+    },
+    {
+      "name": "placeholder",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Placeholder text"
+    },
+    {
+      "name": "displayFormat",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Date display format"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the picker is enabled"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The new date value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when date changes"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for date input",
+      "Provides calendar picker on mobile"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [
+      "label",
+      "placeholder"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Date should be announced in accessible format"
+    ]
+  },
+  "examples": [
+    {
+      "id": "datepicker-basic",
+      "title": "Date Picker",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.DatePicker",
+        "props": {
+          "placeholder": "Select date"
+        }
+      },
+      "whenToUse": [
+        "For date input",
+        "When calendar picker is needed"
+      ],
+      "whenNotToUse": [
+        "For time input (use TimePicker)",
+        "For date ranges (use DateRangeSelection)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

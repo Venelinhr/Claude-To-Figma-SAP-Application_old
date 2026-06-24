@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Page",
+  "name": "Page",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Page"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "A page control that provides the main container for application content.",
+  "intentTags": [
+    "page-container",
+    "main-layout",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The page title"
+    },
+    {
+      "name": "showNavButton",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether to show the navigation back button"
+    },
+    {
+      "name": "enableScrolling",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the page content is scrollable"
+    },
+    {
+      "name": "backgroundDesign",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Solid",
+          "Transparent",
+          "List"
+        ]
+      },
+      "required": false,
+      "default": "Solid",
+      "constraints": [],
+      "description": "The background design"
+    }
+  ],
+  "events": [
+    {
+      "name": "navButtonPress",
+      "parameters": [],
+      "since": "1.0",
+      "description": "Fired when the navigation button is pressed"
+    }
+  ],
+  "slots": [
+    {
+      "name": "content",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "The page content",
+      "since": "1.0"
+    },
+    {
+      "name": "headerContent",
+      "cardinality": "0..n",
+      "allowed": [
+        "sap.ui.core.Control"
+      ],
+      "description": "Header content",
+      "since": "1.0"
+    },
+    {
+      "name": "footer",
+      "cardinality": "0..1",
+      "allowed": [
+        "sap.m.IBar"
+      ],
+      "description": "Footer bar",
+      "since": "1.0"
+    }
+  ],
+  "composition": {
+    "allowedWith": [
+      "sap.m.NavContainer",
+      "sap.m.App"
+    ],
+    "forbiddenWith": [
+      "sap.m.Page"
+    ],
+    "notes": [
+      "Pages are the main container in mobile apps",
+      "Use in NavContainer for navigation"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.bg": "sapNeutralBg",
+      "spacing.3": "sapSpace3"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "",
+    "nameFrom": [
+      "title"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Page title should be announced on navigation"
+    ]
+  },
+  "examples": [
+    {
+      "id": "page-simple",
+      "title": "Simple Page",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Page",
+        "props": {
+          "title": "My Page"
+        },
+        "content": [
+          {
+            "component": "sap.m.Text",
+            "props": {
+              "text": "Page content"
+            }
+          }
+        ]
+      },
+      "whenToUse": [
+        "As main container in mobile apps",
+        "For fullscreen views"
+      ],
+      "whenNotToUse": [
+        "Inside another page",
+        "For small containers"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

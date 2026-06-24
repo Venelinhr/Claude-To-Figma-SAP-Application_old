@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.f.FlexibleColumnLayout",
+  "name": "FlexibleColumnLayout",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.f.FlexibleColumnLayout"
+  },
+  "category": "layout",
+  "status": "stable",
+  "description": "The only correct container for the Master-Detail floorplan. Provides a responsive 1–3 column layout where a list (master) and a detail view (object page) appear side by side. The layout property controls which columns are visible and their widths, and changes programmatically as the user navigates.",
+  "intentTags": [
+    "master-detail",
+    "multi-column",
+    "responsive-layout",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "layout",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "OneColumn",
+          "TwoColumnsBeginExpanded",
+          "TwoColumnsMidExpanded",
+          "ThreeColumnsMidExpanded",
+          "ThreeColumnsBeginExpandedEndHidden",
+          "ThreeColumnsMidExpandedEndHidden",
+          "MidColumnFullScreen",
+          "EndColumnFullScreen",
+          "ThreeColumnsEndExpanded"
+        ]
+      },
+      "required": false,
+      "default": "OneColumn",
+      "constraints": [],
+      "description": "Controls which columns are visible and their relative widths. Changed programmatically on navigation events. TwoColumnsBeginExpanded is the standard two-column starting layout (list wider than detail). MidColumnFullScreen is used for focus mode on the detail view."
+    },
+    {
+      "name": "defaultTransitionNameBeginColumn",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "slide",
+      "constraints": [],
+      "description": "Page transition animation for the begin (master) column. Values: slide, fade, show, flip. Use slide (default) for standard enterprise apps."
+    },
+    {
+      "name": "defaultTransitionNameMidColumn",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "slide",
+      "constraints": [],
+      "description": "Page transition animation for the mid (detail) column."
+    },
+    {
+      "name": "defaultTransitionNameEndColumn",
+      "type": { "kind": "string" },
+      "required": false,
+      "default": "slide",
+      "constraints": [],
+      "description": "Page transition animation for the end (sub-detail) column."
+    },
+    {
+      "name": "restoreFocusOnBackNavigation",
+      "type": { "kind": "boolean" },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "When true, focus is returned to the triggering element after back navigation. Always set true for accessibility compliance."
+    }
+  ],
+  "events": [
+    {
+      "name": "stateChange",
+      "parameters": [
+        {
+          "name": "layout",
+          "type": {
+            "kind": "enum",
+            "enumValues": ["OneColumn", "TwoColumnsBeginExpanded", "TwoColumnsMidExpanded", "ThreeColumnsMidExpanded", "MidColumnFullScreen", "EndColumnFullScreen"]
+          },
+          "description": "The new layout after the state change"
+        },
+        {
+          "name": "maxColumnsCount",
+          "type": { "kind": "number" },
+          "description": "Maximum number of columns that can be displayed given the current screen width"
+        }
+      ],
+      "since": "1.58",
+      "description": "Fired when the layout changes (column visibility or width distribution changes). Update the layout property here in response to navigation."
+    },
+    {
+      "name": "columnResize",
+      "parameters": [],
+      "since": "1.93",
+      "description": "Fired when a column is resized."
+    }
+  ],
+  "slots": [
+    {
+      "name": "beginColumnPages",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.Page", "sap.f.DynamicPage", "sap.m.NavContainer"],
+      "since": "1.58",
+      "description": "The master/list column. Contains a full page — DynamicPage with a Table (Worklist or List Report). Use NavContainer if the column needs internal navigation."
+    },
+    {
+      "name": "midColumnPages",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.Page", "sap.uxap.ObjectPageLayout", "sap.f.DynamicPage", "sap.m.NavContainer"],
+      "since": "1.58",
+      "description": "The detail column. Contains a full page — typically ObjectPageLayout showing the selected entity. Use NavContainer for internal navigation within this column."
+    },
+    {
+      "name": "endColumnPages",
+      "cardinality": "0..n",
+      "allowed": ["sap.m.Page", "sap.uxap.ObjectPageLayout", "sap.m.NavContainer"],
+      "since": "1.58",
+      "description": "The sub-detail column. Use for three-level drill-down only (rarely needed). Most master-detail screens use only begin and mid columns."
+    }
+  ],
+  "composition": {
+    "allowedWith": [],
+    "forbiddenWith": [
+      "sap.m.Page",
+      "sap.f.DynamicPage",
+      "sap.uxap.ObjectPageLayout"
+    ],
+    "notes": [
+      "The only correct container for the master-detail floorplan — never simulate with HBox/VBox.",
+      "Each column slot holds a FULL PAGE (DynamicPage, ObjectPageLayout, or NavContainer) — not individual components.",
+      "The layout property is changed programmatically by the controller on navigation events — do not hardcode to a fixed value.",
+      "restoreFocusOnBackNavigation must be true for accessibility.",
+      "Most master-detail screens only use beginColumnPages and midColumnPages — endColumnPages is for rare three-level flows.",
+      "On mobile (S breakpoint), FCL automatically switches to OneColumn and renders only the active column."
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.separator": "sapGroup_ContentBorderColor",
+      "color.bg": "sapBackgroundColor"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "region",
+    "nameFrom": ["aria-label"],
+    "keyboard": [
+      "Tab — navigate between columns and interactive elements",
+      "F6 — jump between columns (standard SAP keyboard shortcut)"
+    ],
+    "notes": [
+      "restoreFocusOnBackNavigation must be set to true.",
+      "Column headings should use appropriate landmark roles (main, complementary) via the page containers inside each column."
+    ]
+  },
+  "examples": [
+    {
+      "id": "fcl-master-detail",
+      "title": "Standard Master-Detail two-column layout",
+      "kind": "enterprise",
+      "uiPlan": {
+        "component": "sap.f.FlexibleColumnLayout",
+        "props": {
+          "layout": "TwoColumnsBeginExpanded",
+          "restoreFocusOnBackNavigation": true
+        },
+        "slots": {
+          "beginColumnPages": [{ "component": "sap.f.DynamicPage" }],
+          "midColumnPages": [{ "component": "sap.uxap.ObjectPageLayout" }]
+        }
+      },
+      "whenToUse": [
+        "Master-Detail floorplan where list and detail must be visible simultaneously on desktop",
+        "When navigating from a list item should show the detail without full page navigation"
+      ],
+      "whenNotToUse": [
+        "List Report without a detail pane — use DynamicPage alone",
+        "Mobile-only screens — FCL is primarily a desktop/tablet pattern",
+        "When only one column is ever needed — use DynamicPage or ObjectPageLayout directly"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.58",
+    "deprecatedSince": null,
+    "ui5Version": "1.58"
+  }
+}

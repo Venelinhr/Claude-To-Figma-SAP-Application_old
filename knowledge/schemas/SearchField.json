@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.SearchField",
+  "name": "SearchField",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.SearchField"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A search input field with search functionality.",
+  "intentTags": [
+    "search",
+    "filter",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "value",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The search value"
+    },
+    {
+      "name": "placeholder",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Placeholder text"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the search field is enabled"
+    },
+    {
+      "name": "showSearchButton",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether to show the search button"
+    },
+    {
+      "name": "showRefreshButton",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": false,
+      "constraints": [],
+      "description": "Whether to show the refresh button"
+    }
+  ],
+  "events": [
+    {
+      "name": "search",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The search value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when search is triggered"
+    },
+    {
+      "name": "liveChange",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The new value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired during value change"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Toolbar",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox",
+      "sap.m.Page"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Use for search functionality",
+      "Often placed in toolbars"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "search",
+    "nameFrom": [
+      "placeholder",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Search functionality should be accessible",
+      "Should have accessible label"
+    ]
+  },
+  "examples": [
+    {
+      "id": "searchfield-basic",
+      "title": "Search Field",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.SearchField",
+        "props": {
+          "placeholder": "Search..."
+        }
+      },
+      "whenToUse": [
+        "For search functionality",
+        "In toolbars and headers"
+      ],
+      "whenNotToUse": [
+        "For simple text input (use Input)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}

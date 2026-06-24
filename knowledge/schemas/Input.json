@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "sap.m.Input",
+  "name": "Input",
+  "source": {
+    "system": "sapui5",
+    "ref": "https://ui5.sap.com/#/api/sap.m.Input"
+  },
+  "category": "form",
+  "status": "stable",
+  "description": "A single-line text input field for user data entry.",
+  "intentTags": [
+    "text-entry",
+    "form-input",
+    "tier-a"
+  ],
+  "props": [
+    {
+      "name": "value",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "The current value of the input"
+    },
+    {
+      "name": "placeholder",
+      "type": {
+        "kind": "string"
+      },
+      "required": false,
+      "default": "",
+      "constraints": [],
+      "description": "Placeholder text displayed when the input is empty"
+    },
+    {
+      "name": "enabled",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the input is enabled"
+    },
+    {
+      "name": "editable",
+      "type": {
+        "kind": "boolean"
+      },
+      "required": false,
+      "default": true,
+      "constraints": [],
+      "description": "Whether the input is editable"
+    },
+    {
+      "name": "maxLength",
+      "type": {
+        "kind": "number"
+      },
+      "required": false,
+      "default": 0,
+      "constraints": [],
+      "description": "Maximum number of characters allowed"
+    },
+    {
+      "name": "type",
+      "type": {
+        "kind": "enum",
+        "enumValues": [
+          "Text",
+          "Email",
+          "Number",
+          "Password",
+          "Tel",
+          "Url"
+        ]
+      },
+      "required": false,
+      "default": "Text",
+      "constraints": [],
+      "description": "The input type"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The new value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired when the value changes"
+    },
+    {
+      "name": "liveChange",
+      "parameters": [
+        {
+          "name": "value",
+          "type": {
+            "kind": "string"
+          },
+          "description": "The new value"
+        }
+      ],
+      "since": "1.0",
+      "description": "Fired during value change"
+    }
+  ],
+  "slots": [],
+  "composition": {
+    "allowedWith": [
+      "sap.m.Form",
+      "sap.m.HBox",
+      "sap.m.VBox",
+      "sap.m.FlexBox",
+      "sap.m.Panel"
+    ],
+    "forbiddenWith": [],
+    "notes": [
+      "Always pair with a label for accessibility",
+      "Use appropriate input types for validation"
+    ]
+  },
+  "tokens": {
+    "semantic": {
+      "color.border": "sapNeutralBorder",
+      "color.text": "sapNeutralText",
+      "spacing.2": "sapSpace2",
+      "radius.sm": "sapRadiusSmall"
+    },
+    "componentOverrides": {}
+  },
+  "a11y": {
+    "role": "textbox",
+    "nameFrom": [
+      "label",
+      "placeholder",
+      "aria-label"
+    ],
+    "keyboard": [],
+    "notes": [
+      "Inputs should have associated labels",
+      "Supports screen reader announcements"
+    ]
+  },
+  "examples": [
+    {
+      "id": "input-text",
+      "title": "Text Input Field",
+      "kind": "minimal",
+      "uiPlan": {
+        "component": "sap.m.Input",
+        "props": {
+          "placeholder": "Enter your name",
+          "type": "Text"
+        }
+      },
+      "whenToUse": [
+        "For short text input",
+        "In forms"
+      ],
+      "whenNotToUse": [
+        "For multi-line text (use TextArea)",
+        "For selecting from options (use Select)"
+      ]
+    }
+  ],
+  "versioning": {
+    "since": "1.0",
+    "deprecatedSince": null,
+    "ui5Version": "1.0"
+  }
+}
