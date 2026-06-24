@@ -134,3 +134,4 @@ echo "  Optional: add your Figma API key to ~/.claude/settings.json"
 echo "  under mcpServers.figma if you want Claude to browse your Figma files."
 echo "  Get your key at: https://www.figma.com/settings → Personal access tokens"
 echo ""
+
