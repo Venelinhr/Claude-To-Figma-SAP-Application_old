@@ -487,3 +487,4 @@ await figma.teamLibrary.importComponentSetByKeyAsync(key);
 ```
 
 The `componentKey` values in `code.js` were verified by querying the SAP Web UI Kit team library directly via the Figma `search_design_system` MCP tool.
+
