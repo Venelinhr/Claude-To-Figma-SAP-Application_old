@@ -158,21 +158,25 @@ Plugin LOC history: 10,767 (legacy) → 9,136 (MCP-first migration) → 3,534 (b
 
 ## The Loop — Learning · Improving · Better Ecosystem
 
-**A. Per-Edit Loop:** Edit registry JSON → `registry-rebuild.sh` hook fires → bundle rebuilt, tests green.
+The system gets smarter every session. Each loop is marked **[enforced]** (a hook/script fires mechanically) or **[guided]** (a hook surfaces a durable reminder; capture is done by Claude following it — verified honestly, not overstated).
 
-**B. Per-Build Loop:** New frame → spec-validator + `lint-mcp-frame.js` → RULE 25 tag contract checked → Build → Bind → a11y report.
+**A. Per-Edit** — **[enforced]** Edit a registry JSON → `registry-rebuild.sh` (PostToolUse) auto-rebuilds the bundle. No discretion in the path.
 
-**C. Feedback Learning Loop (the key one):**
+**B. Per-Build quality gate** — **[enforced]** When Claude finishes, `lint-on-stop.sh` (Stop hook) auto-runs `lint-mcp-frame.js` on the latest spec — a RULE 25 tag-contract violation (raw hex, bad token/role/icon) is caught mechanically. `manifest-sync-check.sh` guards manifest drift.
+
+**C. Feedback Learning (the key one)** — **[enforced trigger + durable ledger + guided capture]**
 ```
 User: "bravo" / "wrong" / "not acceptable"
-    → feedback-learn.sh hook detects signal
-    → Lesson captured to memory (Why + How to apply)
-    → Promoted to hard rule if pattern repeats
-    → Next build starts with the lesson baked in
+  → feedback-learn.sh (UserPromptSubmit) detects the signal
+  → writes a durable entry to .claude/pending-learnings.jsonl   ← survives the session
+  → surface-learnings.sh (SessionStart) resurfaces uncaptured entries next session
+  → Claude captures the lesson to memory; marks the entry captured
 ```
-Every correction becomes a durable memory. The 3 hard rules exist *because* they were corrected repeatedly, then captured. Positive feedback promotes a result to **canonical reference** that seeds future builds.
+The signal detection AND the durable write are mechanical — a lesson is no longer lost if Claude forgets. Capturing it into a memory file is the guided step. The 3 hard rules exist *because* corrections were captured this way; positive feedback promotes a result to **canonical reference**.
 
-**D. Post-Build Ground-Truth Loop:** User confirms quality → `get_design_context(nodeId)` reads exact measurements → updates `token-assignment-rules.md` → next session starts smarter.
+**D. Post-Build Ground-Truth** — **[guided]** On confirmed quality, the `ground-truth-updater` agent reads exact measurements via `get_design_context` and updates `knowledge/guidelines/token-assignment-rules.md`. Dispatch is instruction-driven (RULE 27) — surfaced by the pending-learnings ledger so it isn't missed.
+
+> **Honest status:** Loops A & B and the trigger+ledger of C are mechanically enforced. Capture (C) and ground-truth dispatch (D) are guided by durable reminders, not forced. This is a real, working loop — not fully autonomous.
 
 ---
 
