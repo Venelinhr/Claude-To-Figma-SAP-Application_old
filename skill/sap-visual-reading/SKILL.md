@@ -90,22 +90,36 @@ For every major region, answer all six questions:
 
 This pass must come before component selection. It prevents generic output and grounds every decision in observable design evidence.
 
-**Then divide the screen into named zones:**
+**Then apply the Sector-Based Analysis method (mandatory — never analyze the screen as one unit):**
+
+Understand each PART before the whole. Divide → analyze one sector at a time → local recommendation → merge.
+
+**Phase 1 — Divide the reference** into logical sectors following the interface's natural structure (not a fixed grid). Label each with a letter.
+```
+Simple:            Complex:
+A | B              A → Header      E → Main Content
+-----              B → Navigation  F → Side Panel
+C | D              C → Toolbar     G → Footer
+                   D → Filters
+```
+
+**Phase 2 — Analyze ONE sector at a time**, in reading order (top-left → A → B → C → next row → … → bottom-right). Finish each sector fully before moving to the next. Per sector determine: business purpose · information hierarchy · candidate floorplan/pattern · SAP components · parent-child · Auto Layout · spacing/alignment · typography/tokens · interactions · dependencies on neighboring sectors.
+
+**Phase 3 — Local recommendation per sector**: best floorplan contribution · recommended SAP components · layout strategy · grouping/containment · interaction · a11y. Think locally before globally.
+
+**Phase 4 — Merge into a unified architecture** (only after ALL sectors analyzed): connect related regions → resolve cross-sector dependencies → build the full hierarchy → select the OVERALL floorplan → validate it forms a coherent SAP Fiori app. Only then plan implementation.
 
 ```
+Sector map (required artifact — label every sector A, B, C...):
 Screen
-├── Zone A — [semantic name]
-├── Zone B — [semantic name]
-│     ├── Sub-zone B1
-│     └── Sub-zone B2
-├── Zone N — [semantic name]
-└── Footer / Actions
+├── Sector A — [name]   → [floorplan contribution + components]
+├── Sector B — [name]   → [...]
+│     ├── A1 sub-sector
+│     └── A2 sub-sector
+└── Sector N — [name]   → [...]
 ```
 
-Label every zone with a letter (A, B, C...) for reference in the output.
-Never analyze the screen as one image. Each zone gets its own reading pass.
-
-**Reading order within each zone:**
+**Reading order within each sector:**
 Top → Bottom → Left → Right → Primary → Secondary → Container → Component → Detail
 
 **For every element detected, record:**

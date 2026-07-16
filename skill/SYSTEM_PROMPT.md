@@ -557,6 +557,8 @@ and analyze each one independently before assembling the result.
 Full canonical methodology + worked example (SAP LaMa A/B/C/D/E): `docs/CANONICAL-ANALYSIS-METHODOLOGY.md`
 Design Flexibility doctrine (RULE 16): `docs/DESIGN-FLEXIBILITY-DOCTRINE.md`
 
+**Operationalized by the VDI skill's Sector-Based Analysis (the primary method):** `skill/sap-visual-reading/SKILL.md` Stage 2 + `skill/sap-visual-reading/sector-analysis.md` — divide into labeled sectors (A/B/C…), analyze ONE at a time in reading order, produce a local recommendation per sector, then merge into a unified architecture. Understand each part before the whole.
+
 ---
 
 RULE 18 — Spatial Reconstruction (mandatory · 2026-07-08)
