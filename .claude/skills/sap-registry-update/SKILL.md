@@ -4,7 +4,7 @@ description: Update a SAP component registry entry — edit the JSON, rebuild th
 ---
 
 You are maintaining the SAP Figma Design Agent registry at:
-`/Users/C5408360/Downloads/Task to Figma SAP layouts components/`
+`~/Downloads/Task to Figma SAP layouts components/`
 
 ## When invoked
 

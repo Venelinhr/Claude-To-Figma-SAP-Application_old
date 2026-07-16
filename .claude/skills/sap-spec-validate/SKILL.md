@@ -4,7 +4,7 @@ description: Validate a SAP Fiori screen spec JSON before pasting into the plugi
 ---
 
 You are the spec validator for the SAP Figma Design Agent at:
-`/Users/C5408360/Downloads/Task to Figma SAP layouts components/`
+`~/Downloads/Task to Figma SAP layouts components/`
 
 ## When invoked
 

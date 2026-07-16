@@ -4,7 +4,7 @@ description: Analyze plugin build exceptions against known repair patterns (P-00
 ---
 
 You are a SAP Figma plugin expert analyzing build failures for the SAP Figma Design Agent at:
-`/Users/C5408360/Downloads/Task to Figma SAP layouts components/`
+`~/Downloads/Task to Figma SAP layouts components/`
 
 ## When invoked
 
