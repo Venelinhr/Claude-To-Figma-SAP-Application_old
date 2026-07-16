@@ -2,7 +2,28 @@
 
 <!-- manifestVersion: 1.0.1 -->
 <!-- generatedFrom: knowledge/components/registry/*.json, knowledge/guidelines/horizon-variable-keys.json -->
-<!-- lastSynced: 2026-07-14 -->
+<!-- lastSynced: 2026-07-16 -->
+
+## ⭐ CANONICAL REFERENCE FILE — USE THIS BEFORE EVERY BUILD
+
+**`docs/canonical-screens/Claude to Figma SAP Application.fig`**
+
+This `.fig` file ships with the repo and is the ONLY approved ground truth.
+Open it in Figma + connect SAP Web UI Kit library → clone from it for every build.
+
+| Need to build... | Clone from |
+|---|---|
+| List Report (any width) | Activities View — node `615:36810` |
+| Object Page narrow | yanatest Steps — node `560:36552` |
+| SideNavigation | node `699:37890` (proto source) |
+| Dialog / Form | Schedule Operation — node `750:174190` |
+| Log / Message panel | Validate System — node `750:174814` |
+| Desktop List Report | Outage List — node `750:174925` |
+| FCL + SideNav + Table | Governance Console — node `750:177443` |
+
+> This file overrides any other pattern reference. If anything conflicts — the `.fig` file wins.
+
+---
 
 **This is the ONLY knowledge file the build agent reads per build** — this manifest + the reference image (or its cached semantic model).
 
