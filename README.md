@@ -174,9 +174,9 @@ User: "bravo" / "wrong" / "not acceptable"
 ```
 The signal detection AND the durable write are mechanical — a lesson is no longer lost if Claude forgets. Capturing it into a memory file is the guided step. The 3 hard rules exist *because* corrections were captured this way; positive feedback promotes a result to **canonical reference**.
 
-**D. Post-Build Ground-Truth** — **[guided]** On confirmed quality, the `ground-truth-updater` agent reads exact measurements via `get_design_context` and updates `knowledge/guidelines/token-assignment-rules.md`. Dispatch is instruction-driven (RULE 27) — surfaced by the pending-learnings ledger so it isn't missed.
+**D. Post-Build Ground-Truth** — **[enforced trigger + durable task + guided capture]** On a canonical confirmation ("perfect", "use this as canonical", "ship it"), `feedback-learn.sh` logs a durable `ground-truth` task; `surface-learnings.sh` resurfaces it every session with a RULE 27 callout until Claude runs the `ground-truth-updater` (reads exact measurements via `get_design_context` → writes `knowledge/guidelines/token-assignment-rules.md`). The trigger + task are now mechanical — no longer lost if not acted on immediately.
 
-> **Honest status:** Loops A & B and the trigger+ledger of C are mechanically enforced. Capture (C) and ground-truth dispatch (D) are guided by durable reminders, not forced. This is a real, working loop — not fully autonomous.
+> **Honest status:** Loops A & B are fully mechanical. Loops C & D have mechanical trigger + durable ledger; the final capture step (writing the memory / measurements) is guided by a persistent reminder that survives sessions. This is a real, working, self-surfacing loop — not silent, not fully autonomous.
 
 ---
 
