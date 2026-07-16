@@ -1,5 +1,9 @@
 # Validation Checklist
 
+> **Path note:** This checklist governs the legacy JSON-spec → plugin path. The current DEFAULT is
+> RULE 25 MCP-first (`use_figma` + plugin "Bind SAP Tokens") — for that path the equivalent gate is
+> `build/lint-mcp-frame.js` (the RULE 25 tag contract) plus the ASCII wireframe gate (RULE 19).
+
 The orchestrator runs this checklist at Step 5 — the hard gate between component design and spec generation.
 Every item must pass before `meta.validationStatus` can be set to `"pass"`.
 A single failure sends the pipeline back to the responsible agent with the specific failure listed.

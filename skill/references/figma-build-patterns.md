@@ -1,8 +1,9 @@
 # Figma Build Patterns
 
-The figma-builder agent reads this file at Step 6 when generating the JSON spec and when
-writing instructions for the Figma plugin. These are hard-won lessons — each one corresponds
-to a real failure mode in the Figma Plugin API or SAP library.
+Read this file BEFORE any `use_figma` build — it is the pattern library for the RULE 25 / 28 / 29
+MCP-first default path (Claude builds real SAP instances directly, plugin binds tokens). These are
+hard-won lessons — each corresponds to a real failure mode in the Figma Plugin API or SAP library.
+(Historically read by the figma-builder agent at Step 6 of the now-legacy JSON-spec path; still valid there.)
 
 ---
 
@@ -595,3 +596,20 @@ for (const item of navItems) {
 
 ### General principle
 Applies to ALL SAP composite screens — clone existing correctly-built node, update text nodes (`t.characters`), use `setProperties` for variant/icon changes. Never use raw hex — clone inherits correct `var(--sapXxx)` fills automatically.
+
+---
+
+## Prototype Motion Defaults (confirmed 2026-07-14)
+
+When building an interactive prototype (section expand/collapse, page transitions):
+
+| Interaction | Easing | Duration |
+|---|---|---|
+| Micro (hover, toggle, checkbox) | Ease-In-Out | 150–200ms |
+| Section expand / collapse | Ease-In-Out `cubic-bezier(0.4, 0, 0.2, 1)` → Figma `EASE_IN_AND_OUT` | ~300ms |
+| Page / full-screen transition | Ease-In-Out | ~400ms |
+
+- Default easing for SAP Fiori = **Ease-In-Out** (`EASE_IN_AND_OUT` in Figma reactions), NOT linear.
+- Add a small **purple DEMO pill** at the top-left of every prototype frame so it's clear the frame is a demo, not production.
+- Prototype NAVIGATE reactions still require top-level frames (a frame inside a group won't bind a reaction).
+

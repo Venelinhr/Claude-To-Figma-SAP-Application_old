@@ -2,6 +2,8 @@
 ## Stage 6.5 — Validate Before Handoff (RULE 21)
 ## Runs: after Step 6 (JSON spec generated) — before presenting to user
 
+> Pipeline note: the default build path is RULE 25 MCP-first (`use_figma` + plugin bind). This agent's role fits within ANALYZE→PLAN→EXECUTE→VALIDATE→LEARN.
+
 ---
 
 ## Mission
@@ -328,7 +330,7 @@ Verify that every design decision in the spec resolves through SAP design system
 | What | Rule | Check |
 |---|---|---|
 | Every text node | Must use SAP typography token (Title/Label/Text/FormattedText) | No `props.fontSize` or `props.fontFamily` in spec |
-| Every color | Must be from 52-token MANDATORY_TOKENS whitelist | No `#hex` values in spec |
+| Every color | Must be from 80-token MANDATORY_TOKENS whitelist | No `#hex` values in spec |
 | Every spacing | Must follow SAP density (8px compact / 16px cozy) | meta.decisions.layout.paddingRationale documents this |
 | Every icon | Must use `sap-icon://` URI format | Check all icon references |
 | Every component | Must be in the registry | Run registry gate check |
@@ -372,7 +374,7 @@ PRE-GENERATION REASONING (Stage 1.5)
 GENERATION
   [✓/⚠/✗] SAP floorplan selected and confirmed (RULE 3)
   [✓/⚠/✗] All components in registry (RULE 1)
-  [✓/⚠/✗] All colors from 52-token whitelist (RULE 2)
+  [✓/⚠/✗] All colors from 80-token whitelist (RULE 2)
   [✓/⚠/✗] Typography tokens applied, no raw px
   [✓/⚠/✗] Auto Layout values documented with confidence (RULE 18)
   [✓/⚠/✗] SAP guidelines reviewed per component (RULE 9)
@@ -601,10 +603,10 @@ ARCHITECTURAL SUGGESTIONS
 DESIGN SYSTEM COMPLIANCE
 ───────────────────────────────────────────
 Typography tokens:   ✓ All text via Title/Label/Text components
-Color tokens:        ✓ 0 raw hex values; 16 tokens, all in 52-token whitelist
+Color tokens:        ✓ 0 raw hex values; 16 tokens, all in 80-token whitelist
 SAP spacing rhythm:  ✓ 16px padding, 8px gap documented in meta.decisions.layout
 SAP icons:           ✓ All icons use sap-icon:// format
-Registry gate:       ✓ All 18 distinct components in registry (151/151 enriched)
+Registry gate:       ✓ All 18 distinct components in registry (152/152 enriched)
 Detached components: ✓ 0 detached components
 ───────────────────────────────────────────
 
@@ -626,7 +628,7 @@ PRE-GENERATION REASONING (Stage 1.5)
 GENERATION
   ✓ SAP floorplan selected (master-detail, FCL)
   ✓ All 18 components in registry
-  ✓ All colors from 52-token whitelist
+  ✓ All colors from 80-token whitelist
   ✓ Typography tokens applied
   ✓ Auto Layout values documented with confidence
   ✓ SAP guidelines reviewed per component

@@ -1,7 +1,7 @@
 # SAP Figma Design Agent
 
 **From any reference to a verified, token-bound SAP Fiori screen.**
-30 Rules · 8 MCPs · 152 Components · 2,391 Plugin LOC · ~3k tokens/build · Self-optimizing
+30 Rules · 5 core MCPs (+3 optional) · 152 Components · 2,391 Plugin LOC · ~3k tokens/build · Self-optimizing
 
 ---
 
@@ -109,18 +109,22 @@ The waste was never stable rules. It was reading huge files that weren't needed,
 
 ---
 
-## 8 MCP Servers — What Each Does & Why
+## MCP Servers — What Each Does & Why
 
-| MCP | Type | What | Why |
-|---|---|---|---|
-| `figma` | Official | Live Figma read/write — `get_design_context`, `use_figma`, `get_screenshot` | The execution engine. Without it there is no build. |
-| `sap-fiori-guidelines` | Custom | 154 cached Fiori guidelines: when/how to use each component | Powers SAP Compliance check — offline, fast, official |
-| `sap-figma-community` | Custom | Registry drift detection — detects stale component keys | The SAP kit gets republished. Catches stale keys before build-time failures. |
-| `sap-application-analysis` | Custom | Screenshot/wireframe → SAP pattern mapping. 30+ region types | Turns a raw image into SAP vocabulary. Powers wireframe gate. |
-| `chrome-devtools` | Official | Web scraping fallback — fetches live SAP Fiori guideline pages | When local cache is stale — fetch the authoritative live source. |
-| `sapui5` | Custom | Live UI5 API reference — properties, aggregations, enums | Prevents hallucinated properties. ObjectStatus uses `Semantic` not `State`. |
-| `context7` | Official | Live library documentation for correct API signatures | Correct method signatures when writing UI5 code. |
-| `fundamental-styles` | Official | 120+ CSS components, 1,522 design tokens | Fallback for edge cases the SAP Web UI Kit registry doesn't cover. |
+**5 servers are registered automatically by `install.sh`** (2 official + 3 custom local). 3 more are optional add-ons.
+
+| MCP | Type | Installed by install.sh? | What | Why |
+|---|---|---|---|---|
+| `figma` | Official | ✅ (needs your token) | Live Figma read/write — `get_design_context`, `use_figma`, `get_screenshot` | The execution engine. Without it there is no build. |
+| `chrome-devtools` | Official | ✅ | Web scraping fallback — fetches live SAP Fiori guideline pages | When local cache is stale — fetch the authoritative live source. |
+| `sap-fiori-guidelines` | Custom (local) | ✅ | 154 cached Fiori guidelines: when/how to use each component | Powers SAP Compliance check — offline, fast, official |
+| `sap-figma-community` | Custom (local) | ✅ | Registry drift detection — detects stale component keys | The SAP kit gets republished. Catches stale keys before build-time failures. |
+| `sap-application-analysis` | Custom (local) | ✅ | Screenshot/wireframe → SAP pattern mapping. 30+ region types | Turns a raw image into SAP vocabulary. Powers wireframe gate. |
+| `sapui5` | Optional | ➖ add manually | Live UI5 API reference — properties, aggregations, enums | Prevents hallucinated properties. ObjectStatus uses `Semantic` not `State`. |
+| `context7` | Optional | ➖ add manually | Live library documentation for correct API signatures | Correct method signatures when writing UI5 code. |
+| `fundamental-styles` | Optional | ➖ add manually | 120+ CSS components, 1,522 design tokens | Fallback for edge cases the SAP Web UI Kit registry doesn't cover. |
+
+> The 3 optional servers are not required for the core workflow — the 5 auto-installed servers cover the full build pipeline. Add the optional ones to `~/.claude/settings.json` if you want live UI5 API lookups.
 
 ---
 

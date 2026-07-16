@@ -2,6 +2,8 @@
 ## Stage 1.5 — Think Before Building (RULE 20)
 ## Runs: after Step 2 (floorplan confirmed) + Step 0.5 (region map produced) — before Step 4 (hierarchy design)
 
+> Pipeline note: the default build path is RULE 25 MCP-first (`use_figma` + plugin bind). This agent's role fits within ANALYZE→PLAN→EXECUTE→VALIDATE→LEARN.
+
 ---
 
 ## Mission

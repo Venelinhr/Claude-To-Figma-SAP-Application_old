@@ -149,7 +149,7 @@ After a confirmed-quality build (user confirms "this is good" OR bind reports 0 
 2. Extract actual CSS measurements (padding, gap, font-size, token names)
 3. Compare against A3 (Spatial Measurement) proposals
 4. Write confirmed values to `knowledge/guidelines/token-assignment-rules.md`
-5. Write confirmed component choices to `sap-visual-reading_skill/examples/` if a new pattern
+5. Write confirmed component choices to `skill/sap-visual-reading/component-map.md` if a new pattern
 
 Report: "Learned from build: [N] measurements confirmed, [N] token assignments verified, [N] new rules added."
 

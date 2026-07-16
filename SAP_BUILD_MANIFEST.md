@@ -53,8 +53,13 @@ RULE 29: Visual Recovery Protocol. The .fig file IS the answer.
 ## §1 — The 3 HARD RULES (never violate)
 
 1. **Real SAP instances only** — every UI element via `importComponentSetByKeyAsync(key)` → `.defaultVariant.createInstance()`. NEVER `figma.createFrame()` for a real component (header, toolbar, button, input, select, label, icon, status, list item, tab bar).
+   **⛔ FAIL-CLOSED (the #1 root cause):** if a component key 404s or `importComponentSetByKeyAsync` fails — **STOP and re-harvest the key**. NEVER silently substitute `figma.createFrame()`. A silent native-frame fallback is what produces "not SAP" disasters. Report the failed key; do not build past it.
 2. **L1–L5 semantic naming always** — no `Frame 1`, `Group`, `Rectangle`, `Spacer`, `Container`, `Auto Layout`. No decorative chars or token tags in *final* layer names (tags are stripped at Bind).
 3. **No Spacer frames** — space with `itemSpacing`, `paddingX`, `primaryAxisAlignItems:'SPACE_BETWEEN'`, or `layoutGrow:1` on a real child. Never an empty frame to push things apart. **⚠ Even a frame named `Toolbar Fill` or `Tab Fill` with `layoutGrow:1` is a spacer — banned.**
+
+### §1b — Workflow gates (before you build)
+- **When a reference image is present:** run VDI analysis (RULE 26) + present ASCII wireframe + component list, get user approval (RULE 19 HARD GATE) BEFORE building. Use semantic components (ObjectIdentifier/ObjectNumber/ObjectAttribute/ObjectStatus), not raw text.
+- **Field/input sizing:** set field/input/select/date-picker instances to `layoutSizingHorizontal='FILL'` AFTER stripping `minWidth`/`maxWidth` — otherwise they crop at their hardcoded ~272px. Parent column must be FIXED-width first (see figma-build-patterns.md §Form Field FILL).
 
 ---
 
@@ -155,6 +160,22 @@ Clone these — don't build from scratch. These nodes carry correct SAP tokens a
 | SideNavigation (full) | `701:119633` | Complete slot-injection build — confirmed Jul 15 |
 | SideNavigation (proto source) | `699:37890` | Use as prototype source for slot injection |
 | Dialog Header (canonical) | `560:36171` | Clone for any Dialog Header — confirmed Jul 13 |
+
+**750:174xxx benchmark screens (in the .fig file — the mandated quality bar):**
+
+| Screen | Node | Clone for |
+|---|---|---|
+| Design System Governance Console | `750:177443` | FCL + SideNav + nested Table + DynamicSideContent |
+| Side Navigation (full 20-item tree) | `750:174158` | Any SideNavigation |
+| Schedule Operation — Daily | `750:174190` | Dialog / Form, SegmentedButton recurrence |
+| Schedule Operation — Monthly pattern | `750:174290` | Dialog with Panel + RadioButton pattern |
+| Activities View (List Report) | `750:174442` | List Report + Progress Rows |
+| Schedule Operation — Monthly + End date | `750:174786` | Fully-expanded dialog state |
+| Validate System Log Panel | `750:174814` | Log/message panel, severity pills, SegmentedButton filter |
+| Schedule Operation Form (base) | `750:174866` | Collapsed dialog base state |
+| Outage List Overview | `750:174925` | Desktop List Report, status pills, inline filter bar |
+| Design System Governance (worklist) | `750:174960` | Worklist variant |
+| Flight Result Card (cross-ref) | `472:34431` | Card build — spec in knowledge/, node here |
 
 ---
 
