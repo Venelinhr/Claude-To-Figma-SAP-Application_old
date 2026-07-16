@@ -6,6 +6,33 @@ to a real failure mode in the Figma Plugin API or SAP library.
 
 ---
 
+## ⭐ WHEN LOST — Visual Recovery Protocol (RULE 29)
+
+**If output is wrong, guessing is happening, or user says "that's not right" — STOP and do this:**
+
+```
+1. STOP. Do not retry. Do not guess.
+2. Open docs/canonical-screens/Claude to Figma SAP Application.fig in Figma
+3. Call get_design_context on the closest canonical node (table below)
+4. Read the reference PNG from docs/canonical-screens/
+5. Extract ground truth: component names, layer structure, token names, slot frames
+6. NOW build — clone from canonical, one use_figma call, never from scratch
+```
+
+| Building... | Read this node first |
+|---|---|
+| List Report / list items / progress | `615:36810` Activities View |
+| Object Page narrow / DPH / IconTabBar | `560:36552` yanatest Steps |
+| SideNavigation | `699:37890` |
+| Dialog / Form / date+time fields | `750:174190` Schedule Op Daily |
+| Log panel / severity pills | `750:174814` Validate System |
+| Desktop List Report / status pills | `750:174925` Outage List |
+| Full app / FCL + SideNav + Table | `750:177443` Governance Console |
+
+**The .fig file IS the answer. Reading it takes 30 seconds. Re-building wrong takes 30 minutes.**
+
+---
+
 ## Critical Figma Plugin API rules
 
 These must be followed in the plugin's `code.js`. Violating them causes silent failures or

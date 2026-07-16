@@ -40,6 +40,14 @@ If you are about to open any of these files, STOP — everything you need is in 
 
 - kitFile (components/icons) = `SILcWzK5uFghKun9jx6D7c` · libraryFileId = `p7zm5EMBk5DRRZdxNeJ4f5`
 
+### ⚠ If you are lost, guessing, or output is wrong — STOP and read the .fig file
+```
+get_design_context on the closest canonical node from §3b
++ read the PNG from docs/canonical-screens/
+= ground truth. Build from that, not from memory.
+```
+RULE 29: Visual Recovery Protocol. The .fig file IS the answer.
+
 ---
 
 ## §1 — The 3 HARD RULES (never violate)

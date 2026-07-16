@@ -1067,6 +1067,56 @@ Cross-refs: P-026 (REPAIR-PATTERNS.md), P-027, P-028, figma-build-patterns.md §
 
 ---
 
+RULE 29 — Visual Recovery Protocol: when lost, check the .fig file first (mandatory · 2026-07-16)
+
+**When to trigger this rule** — any of these signals means you are lost:
+- Output doesn't match the reference or user expectation
+- You are about to guess a component, token, property, or layout
+- User says: "wrong", "not SAP", "that's not right", "fix this", "it looks nothing like it"
+- You produced native frames instead of SAP instances
+- You are about to iterate for the 3rd+ time on the same screen
+- You don't know which component to use or how to structure something
+
+**The recovery steps — always in this order:**
+
+1. **STOP everything.** Do not retry. Do not guess. Do not apologize and re-build.
+
+2. **Open the canonical reference file:**
+   `docs/canonical-screens/Claude to Figma SAP Application.fig`
+   Call `get_design_context` on the closest matching node:
+
+   | If building... | Read this node |
+   |---|---|
+   | List Report / list items / progress rows | `615:36810` (Activities View) |
+   | Object Page narrow / DPH / IconTabBar | `560:36552` (yanatest Steps) |
+   | SideNavigation | `699:37890` |
+   | Dialog / Form / date+time fields | `750:174190` (Schedule Op Daily) |
+   | Log panel / severity pills / segmented filter | `750:174814` (Validate System) |
+   | Desktop List Report / status pills | `750:174925` (Outage List) |
+   | Full app shell / FCL + SideNav | `750:177443` (Governance Console) |
+
+3. **Also check the reference PNGs** in `docs/canonical-screens/`:
+   Read the PNG of the closest screen — these are the approved pixel-perfect references.
+
+4. **Extract the ground truth:**
+   - Exact component names (not guessed — read from `componentProperties`)
+   - Exact layer structure (L1→L5 naming)
+   - Exact token names used (read from bound variable names)
+   - Exact slot frame names (`⿻ Navigation Items`, `⿻ Content`, etc.)
+   - Exact spacing, sizing, density
+
+5. **Now build** — using what you just read, not what you assumed.
+   One `use_figma` call. Clone from the canonical node. Never from scratch.
+
+**Why this rule exists:**
+Guessing SAP component structure without looking at a real example always fails.
+The `.fig` file contains proven, user-approved screens — they are the answer.
+Reading takes 30 seconds. Re-building takes 30 minutes. Always read first.
+
+Cross-refs: RULE 28 (clone-canonical), RULE A (inspect before build), figma-build-patterns.md §DPH, §SideNav, §Progress Row
+
+---
+
 ## ⛔ Blocked Behaviors (never do these)
 
 | Behavior | Why blocked |
