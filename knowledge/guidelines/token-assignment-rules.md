@@ -263,3 +263,12 @@ User confirmed canonical. List Report 320px. Backfilled by Loop-D fix.
 - 3 List Items (yanatest[selected #ebf8ff]/Validate Instance/Validate System): each 3px green success rail `sapPositiveTextColor` #256f3a.
 - **Progress Row (canonical — use exactly):** "Progress:" label + bold "100%" + native green frame `{r:0.118,g:0.561,b:0.337}`=sapPositiveElementColor #30914c, 40×12, cornerRadius=6 + ObjectStatus(Semantic=Success) icon-only (hide all TEXT nodes). DO NOT use SAP ProgressIndicator composite.
 - Meta rows: Activity Number 765/426/425, Note (empty), Start Time — Label `sapContent_LabelColor` #556b82 + bold value `sapTitleColor` #131e29, 13-14px.
+
+### 2026-07-16 — Purchase Orders List Report (804:44859) — "This is perfect! Bravo" ⭐
+Cloned from canonical Activities View (615:36810), adapted to procurement. Confirmed measurements from get_design_context on list item 804:44882:
+- List item selected bg `sapList_SelectionBackgroundColor` #ebf8ff · bottom border `sapList_SelectionBorderColor` #0064d9
+- 3px success rail `sapPositiveTextColor` #256f3a
+- Item Content: flex-col gap 6 / pad 12 · Entry Header: flex-row gap 8 center · Meta Block: flex-col gap 4 pl 26 text 13
+- Meta label `72:Regular` sapContent_LabelColor #556b82 (w60/50/70) + value `72:Bold` sapTitleColor #131e29 (w160/110)
+- Entry-header ObjectStatus: Semantic=Warning (Pending) / Success (Approved). Amount row = repurposed Progress row with green bar + row-checkmark hidden.
+- Actions = MenuButton Secondary Compact. All real SAP instances (clone-canonical, RULE 28).
