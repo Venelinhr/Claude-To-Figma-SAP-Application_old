@@ -23,6 +23,7 @@ grep -qiE 'Signal:'             "$FILE" || MISSING="$MISSING Signal"
 grep -qiE 'Mistake|What-worked' "$FILE" || MISSING="$MISSING Mistake/What-worked"
 grep -qiE '\*\*Why'             "$FILE" || MISSING="$MISSING Why"
 grep -qiE 'How.to.apply'        "$FILE" || MISSING="$MISSING How-to-apply"
+grep -qiE 'Evidence:'           "$FILE" || MISSING="$MISSING Evidence"
 
 if [ -n "$MISSING" ]; then
   echo "<lesson-schema-warning file=\"$(basename "$FILE")\">This feedback memory is missing required lesson fields:${MISSING}. Per skill/references/lesson-template.md, a lesson needs Applies-to (for recall matching), Signal, Mistake/What-worked, Why (root cause), and How-to-apply. Add the missing field(s) so the lesson is teachable and surfaces correctly via recall-lessons.sh. A lesson without Why is a symptom note, not a lesson.</lesson-schema-warning>"

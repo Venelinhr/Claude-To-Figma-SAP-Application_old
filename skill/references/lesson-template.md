@@ -31,13 +31,18 @@ metadata:
 **Why:** <why it worked / why it was wrong — the root cause, not just the symptom>
 
 **How-to-apply:** <the concrete rule to follow next time — imperative, checkable>
+
+**Evidence:** <date + node/session ID + confidence — e.g. "2026-07-15, node 615:36810, confirmed 'Perfect'". Makes stale lessons auditable.>
 ```
+
+Optional frontmatter for ranking: add `severity: hard-rule | canonical | guidance` to `metadata:` so recall can surface load-bearing rules above notes.
 
 ## Rules
 - `Applies-to:` is MANDATORY (recall depends on it). Use lowercase tags matching the recall keyword list.
 - One lesson = one authoritative file. If the lesson also belongs in REPAIR-PATTERNS.md, **cross-link**, don't restate (no-duplication rule — see `docs/OPERATING-MANIFEST.md`).
 - Positive lessons that confirm a canonical build → also flagged in MEMORY.md with ⭐ and "READ BEFORE any <X> build".
 - Keep `Why` about root cause. A lesson with no `Why` is a symptom note, not a lesson.
+- `Evidence` makes a lesson auditable — a lesson with no date/node can't be checked for staleness.
 
 ## Example (correction)
 ```markdown
@@ -48,4 +53,5 @@ metadata:
 **Mistake:** Built the header + tabs as figma.createFrame() instead of real SAP kit instances.
 **Why:** Native frames can't bind SAP tokens; the plugin can't ink them; result looks SAP but is a wireframe.
 **How-to-apply:** Every UI element via importComponentSetByKeyAsync → createInstance. On key 404, STOP + re-harvest (fail-closed, SAP_BUILD_MANIFEST §1). Cross-ref: RULE 25, RULE 1.
+**Evidence:** 2026-07-14, repeated user directive, hard-rule confidence.
 ```

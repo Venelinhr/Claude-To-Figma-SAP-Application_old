@@ -33,3 +33,7 @@ Final memory-write = guided (by a persistent self-surfacing reminder). Not fully
 All 9 hooks valid bash · settings.json valid · test-build.sh exit 0 · detection tested (negation/dedup/hedged/mixed/boundary all correct) · recall surfaces right lesson per task.
 
 [[july915_recovery_complete]] [[operating_manifest]] [[rule_29_visual_recovery_protocol]]
+
+**Signal:** "how to improve this loop feedback and remember lessons - good and bad?"
+**Why:** All 4 loop concerns (detect/capture/recall/quality) had gaps; a lesson that evaporates or never surfaces is a repeated mistake waiting to happen.
+**Evidence:** 2026-07-16, deep-map audit + live-tested hooks.
