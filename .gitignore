@@ -28,3 +28,4 @@ node_modules/
 *-rationale.md
 ARCHITECTURE.html
 docs/canonical-screens/_private-refs/
+.claude/pending-learnings.jsonl
