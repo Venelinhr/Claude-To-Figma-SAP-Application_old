@@ -11,6 +11,8 @@ snapshots/
 output/
 *.png
 *.jpg
+# Exception: canonical reference screens are permanent ground truth
+!docs/canonical-screens/*.png
 
 # System
 .DS_Store
