@@ -1,0 +1,86 @@
+{
+  "componentName": "MultiInput",
+  "slug": "multi-input",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/multi-input/",
+  "purpose": "A free-text input that creates tokens. User types and presses Enter (or comma) to create a removable token. Used for tags, email lists, comma-separated free entry.",
+  "whenToUse": [
+    "Free-text multi-value entry (tags, emails)",
+    "When values are not from a predefined list",
+    "For input where order matters and items are user-defined"
+  ],
+  "whenNotToUse": [
+    "When values come from a fixed list \u2014 use MultiComboBox",
+    "For single-value entry \u2014 use Input",
+    "For paragraph text \u2014 use TextArea"
+  ],
+  "doRules": [
+    "Show clear hint that Enter or comma creates a token",
+    "Allow inline editing of tokens",
+    "Validate each token format if applicable (email, number, etc.)"
+  ],
+  "dontRules": [
+    "Do not allow duplicates if uniqueness matters",
+    "Do not lose typed text on focus loss without warning"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Dialog, Toolbar.",
+    "sizing": "256px default; grows with tokens.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Tokens flow inline; wrap to next row."
+  },
+  "contentGuidance": {
+    "labelLength": "Token text varies.",
+    "contentRules": [
+      "Token shows token value",
+      "Long tokens truncate"
+    ],
+    "examples": [
+      "john@sap.com",
+      "alpha",
+      "beta"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Tokens inline; flexible width",
+    "L": "Tokens inline",
+    "M": "Tokens inline; wrap as needed",
+    "S": "Tokens stacked"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter creates token; Backspace removes last; arrow keys navigate tokens",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Token created/removed announced"
+    }
+  ],
+  "patterns": [
+    "Tag input",
+    "Recipient list",
+    "Free-tag entry"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "Tokenizer",
+      "Token"
+    ],
+    "incompatible": [
+      "Without Label"
+    ]
+  },
+  "exceptions": [
+    "enableMultiLineMode=true allows tokens to wrap multiple lines"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

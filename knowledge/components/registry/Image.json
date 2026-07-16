@@ -1,0 +1,155 @@
+{
+  "componentName": "Image",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "Mode",
+      "ui5Property": "mode",
+      "values": [
+        "Image",
+        "Background"
+      ],
+      "default": "Image"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "src",
+      "ui5Name": "src",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "alt",
+      "ui5Name": "alt",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "height",
+      "ui5Name": "height",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "decorative",
+      "ui5Name": "decorative",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Loading",
+    "Error"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [
+    {
+      "role": "placeholder-bg",
+      "token": "sapContent_Placeholderloading_Background",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "placeholder-border",
+      "token": "sapContent_ImagePlaceholderColor",
+      "fallbackHex": "#E5E7EA"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide `alt` text unless the image is purely decorative (`decorative: true`)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "If the image conveys information, ensure sufficient contrast against surrounding background"
+    }
+  ],
+  "doRules": [
+    "Set decorative:true when the image is purely visual and alt would be redundant",
+    "Provide meaningful alt text for informational images",
+    "Constrain via width/height props; do not rely on parent auto-layout alone"
+  ],
+  "dontRules": [
+    "Do not use Image where an Icon is appropriate — icons scale better and support tokens",
+    "Do not stretch an Image beyond native aspect ratio",
+    "Do not use Image inside table cells for icons — use IconButton"
+  ],
+  "compatibleComponents": [
+    "Card",
+    "Panel",
+    "Dialog",
+    "ObjectPageHeader",
+    "Carousel",
+    "FeedListItem",
+    "ObjectListItem",
+    "StandardListItem"
+  ],
+  "incompatiblePatterns": [
+    "Inside ShellBar (use logo prop instead)",
+    "Inside Toolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/image/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Image",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Image",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Native Figma frame with image fill. Width/height explicit in spec.",
+    "knownIssues": [
+      "SAP Web UI Kit has no dedicated Image component — plugin renders as a native Figma frame with a rounded-rectangle placeholder fill (sapContent_Placeholderloading token) plus a stroke. Spec.props.src is documented but not fetched at build time; use Figma's Insert Image after build if a real image is needed."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Carousel",
+      "FeedListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "ColumnListItem",
+      "Column",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "Form",
+      "SimpleForm",
+      "SapFormSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "Label",
+      "ObjectAttribute"
+    ]
+  },
+  "schemaNotes": {
+    "typographyRules": "n/a"
+  }
+}

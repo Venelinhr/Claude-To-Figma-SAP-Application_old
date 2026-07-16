@@ -1,0 +1,102 @@
+{
+  "componentName": "Footer",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "e563bc3291a07a5eb4d97b2083355cc54023c377",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "design",
+      "ui5Name": "design",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Footer"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "footer-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapPageFooter_Background",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "border",
+      "token": "sapPageFooter_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    },
+    {
+      "role": "text",
+      "token": "sapPageFooter_TextColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use Footer as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/page-footer-bar/)"
+  ],
+  "dontRules": [
+    "Do not use Footer outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/page-footer-bar/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Footer' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "ObjectPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

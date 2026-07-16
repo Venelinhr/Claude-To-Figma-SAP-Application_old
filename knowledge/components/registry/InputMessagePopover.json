@@ -1,0 +1,136 @@
+{
+  "componentName": "InputMessagePopover",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "1acdc092cfb399b0c33d1d6484c77ae58fe75242",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "messages",
+      "ui5Name": "items",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "valueState",
+      "ui5Name": "valueState",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "message-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 13,
+      "sapStyleName": "SmallText/LHAuto/Bold"
+    },
+    {
+      "role": "message-detail",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapList_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapList_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    },
+    {
+      "role": "error-icon",
+      "token": "sapNegativeElementColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "warning-icon",
+      "token": "sapCriticalElementColor",
+      "fallbackHex": "#E76500"
+    },
+    {
+      "role": "success-icon",
+      "token": "sapPositiveElementColor",
+      "fallbackHex": "#256F3A"
+    },
+    {
+      "role": "info-icon",
+      "token": "sapInformativeElementColor",
+      "fallbackHex": "#0070F2"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use InputMessagePopover as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/message-popover/)"
+  ],
+  "dontRules": [
+    "Do not use InputMessagePopover outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/message-popover/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Input Message Popover' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

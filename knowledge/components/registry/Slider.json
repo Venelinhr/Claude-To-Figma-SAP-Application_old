@@ -1,0 +1,156 @@
+{
+  "componentName": "Slider",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "ee3b9995f1484c6d008bbac9dba2bd8a0026c160",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "0"
+    },
+    {
+      "name": "min",
+      "ui5Name": "min",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "0"
+    },
+    {
+      "name": "max",
+      "ui5Name": "max",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "100"
+    },
+    {
+      "name": "step",
+      "ui5Name": "step",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "1"
+    },
+    {
+      "name": "showHandleTooltip",
+      "ui5Name": "showHandleTooltip",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill-active",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "fill-inactive",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys move; PageUp/Down jump; Home/End jump to bounds"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label; show current value"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Value announced as percentage or absolute"
+    }
+  ],
+  "doRules": [
+    "Use for continuous numeric input where precision is less important",
+    "Show current value via tooltip on handle"
+  ],
+  "dontRules": [
+    "Do not use Slider when exact value entry is required \u2014 use Input",
+    "Do not use without clear min/max"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Without bounds"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/slider/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Slider",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Slider",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Full width of container.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "OverflowToolbar",
+      "Toolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "RangeSlider"
+    ]
+  }
+}

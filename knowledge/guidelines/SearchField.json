@@ -1,0 +1,73 @@
+{
+  "componentName": "SearchField",
+  "slug": "search-field",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/search-field/",
+  "purpose": "Input control specialized for filter/search queries. Visually identical to Input with a leading magnifier icon, used to narrow lists, tables, or filter results.",
+  "whenToUse": [
+    "Filter a visible list or table by free-text query",
+    "Trigger a search action that returns a result set",
+    "In OverflowToolbar of a list-report or worklist page",
+    "In FilterBar as the global text filter"
+  ],
+  "whenNotToUse": [
+    "As a generic text input — use Input",
+    "As a form field with validation — use Input with type",
+    "Inside a table cell — use Input",
+    "When the action is navigation (jump to page) — use Link"
+  ],
+  "doRules": [
+    "Place in OverflowToolbar at the right, before the spacer or after the title",
+    "Provide a specific placeholder ('Filter Invoices', 'Search Suppliers')",
+    "Show the magnifier icon (default behavior — do not suppress)",
+    "Make filter behavior immediate (typeahead) where dataset size permits"
+  ],
+  "dontRules": [
+    "Do not use generic placeholders like just 'Search'",
+    "Do not stack multiple SearchFields in one toolbar",
+    "Do not omit the icon — it is the visual cue for search semantics",
+    "Do not use SearchField for non-search purposes"
+  ],
+  "layoutGuidance": {
+    "placement": "Right side of OverflowToolbar, after ToolbarSpacer.",
+    "sizing": "Auto width up to ~280px; height 26px Compact / 36px Cozy.",
+    "spacing": "8px gap from adjacent buttons.",
+    "alignment": "Right-aligned within toolbar."
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder 2-4 words ('Filter Artifacts', 'Search Invoices').",
+    "contentRules": [
+      "Placeholder uses sentence case: 'Filter exceptions' not 'FILTER EXCEPTIONS'",
+      "Avoid 'Type to search' — be specific about what is searched",
+      "Localize all placeholders"
+    ],
+    "examples": [
+      "Filter Artifacts",
+      "Search Invoices",
+      "Find Supplier",
+      "Filter exceptions by vendor or status"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width up to 280px.",
+    "L":  "Full width up to 280px.",
+    "M":  "May shrink to 200px; icon stays visible.",
+    "S":  "Collapses to icon-only; tap expands to full overlay."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "<input role='searchbox' aria-label='...'>. Maps to <search> landmark when wrapping content.",
+    "contrast": "Border ≥ 3:1 with bg (WCAG AA non-text 1.4.11).",
+    "keyboard": "Tab to focus; Enter to submit search; Escape to clear.",
+    "screenReader": "Announced as 'search, [placeholder]'."
+  },
+  "patterns": [
+    "OverflowToolbar — global filter",
+    "FilterBar — text filter alongside select filters",
+    "DynamicPageTitle — global search (rare)"
+  ],
+  "compatibility": ["OverflowToolbar", "Toolbar", "FilterBar", "DynamicPageTitle"],
+  "exceptions": [
+    "The SAP Figma library does not ship a distinct SearchField component — plugin maps SearchField → Input and uses the placeholder as the search prompt."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

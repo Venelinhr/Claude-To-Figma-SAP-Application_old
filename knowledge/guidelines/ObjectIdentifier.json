@@ -1,0 +1,83 @@
+{
+  "componentName": "ObjectIdentifier",
+  "slug": "object-identifier",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-identifier/",
+  "purpose": "The primary identifier of an object \u2014 title plus optional secondary text. Used as the lead cell in tables/lists and headlines in ObjectHeader.",
+  "whenToUse": [
+    "First/primary column in tables",
+    "Headline of master list items",
+    "Title in ObjectHeader",
+    "When the object title needs an associated description"
+  ],
+  "whenNotToUse": [
+    "As page title \u2014 use DynamicPageTitle",
+    "For body text \u2014 use Text",
+    "When title alone suffices \u2014 use Title or Text"
+  ],
+  "doRules": [
+    "Use as the first/primary cell content in tables and lists",
+    "Use titleActive=true when title is clickable to drill down",
+    "Keep title short; use text for the description",
+    "Pair with ObjectStatus for status columns"
+  ],
+  "dontRules": [
+    "Do not use as standalone \u2014 always inside a row/item context",
+    "Do not duplicate title and text content",
+    "Do not omit the secondary text when context aids clarity"
+  ],
+  "layoutGuidance": {
+    "placement": "Table cell, List item, ObjectHeader.",
+    "sizing": "Fits row height.",
+    "spacing": "2\u20134px vertical between title and text.",
+    "alignment": "Title above text; both left-aligned."
+  },
+  "contentGuidance": {
+    "labelLength": "Title 1\u20135 words; text 1 line.",
+    "contentRules": [
+      "Title is primary identifier (name, ID)",
+      "Text is supplementary (description, ID number)"
+    ],
+    "examples": [
+      "Order #12345",
+      "Pending review"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Title + text inline",
+    "L": "Title + text inline",
+    "M": "Title + text stacked",
+    "S": "Title + text stacked"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "labeling",
+      "requirement": "Title is the primary identifier; text gives secondary context",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "When titleActive=true, title is keyboard-activatable as link",
+      "wcag": "2.1.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Primary table column",
+    "List item title"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Table",
+      "List",
+      "ColumnListItem",
+      "ObjectHeader"
+    ],
+    "incompatible": [
+      "As page title"
+    ]
+  },
+  "exceptions": [
+    "emphasized=true for high-priority items"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

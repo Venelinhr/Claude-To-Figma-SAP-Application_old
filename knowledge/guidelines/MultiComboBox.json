@@ -1,0 +1,91 @@
+{
+  "componentName": "MultiComboBox",
+  "slug": "multi-combobox",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/multi-combobox/",
+  "purpose": "A multi-select dropdown with type-ahead filter. User can select multiple items from a list; selected items appear as tokens above the input. Suited for 10+ options where search helps.",
+  "whenToUse": [
+    "Multiple selections from a fixed list of 10+ options",
+    "When type-ahead search aids selection",
+    "For filter dimensions in FilterBar",
+    "When users may add/remove items frequently"
+  ],
+  "whenNotToUse": [
+    "For single selection \u2014 use ComboBox",
+    "For <10 options \u2014 use CheckBox group",
+    "For free-text multi-value \u2014 use MultiInput"
+  ],
+  "doRules": [
+    "Sort options logically (alphabetical, frequency, category)",
+    "Show selected items as removable tokens",
+    "Provide Select All when applicable",
+    "Indicate when no matches via empty state"
+  ],
+  "dontRules": [
+    "Do not omit Label",
+    "Do not allow duplicates if uniqueness matters",
+    "Do not display fewer than 4 options in the dropdown"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, FilterBar, Dialog body.",
+    "sizing": "256px default; grows with tokens.",
+    "spacing": "8px vertical between filter fields.",
+    "alignment": "Tokens wrap above input."
+  },
+  "contentGuidance": {
+    "labelLength": "Token text 1\u20133 words.",
+    "contentRules": [
+      "Token contains item label",
+      "Long items truncate with ellipsis"
+    ],
+    "examples": [
+      "Cloud Integration",
+      "API",
+      "Integration Flow"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full multi-line tokens visible",
+    "L": "Full multi-line tokens visible",
+    "M": "Tokens may compress to overflow indicator",
+    "S": "Tokens stacked vertically"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Type-ahead filters; arrows traverse suggestions; Enter selects; Backspace removes last token",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Number of selected items announced when count changes",
+      "wcag": "4.1.3 (AA)"
+    }
+  ],
+  "patterns": [
+    "FilterBar field",
+    "Multi-select form field"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "FilterBar",
+      "Toolbar",
+      "Tokenizer"
+    ],
+    "incompatible": [
+      "Without Label",
+      "Table cell at S viewport"
+    ]
+  },
+  "exceptions": [
+    "Use showSelectAll for select-all action; some implementations omit"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

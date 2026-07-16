@@ -1,0 +1,93 @@
+{
+  "componentName": "MessageStrip",
+  "slug": "message-strip",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/message-strip/",
+  "purpose": "A horizontal message bar for inline feedback (Information, Positive, Warning, Error). Persistent message about page or section state.",
+  "whenToUse": [
+    "Page-level or section-level status message",
+    "Validation summary in forms",
+    "Action result (e.g. \"Saved successfully\")",
+    "Persistent contextual information"
+  ],
+  "whenNotToUse": [
+    "For transient toasts \u2014 use MessageToast",
+    "For destructive confirmations \u2014 use Dialog",
+    "As primary CTA container"
+  ],
+  "doRules": [
+    "Use Information for neutral context",
+    "Use Positive for success confirmations",
+    "Use Warning for non-blocking issues",
+    "Use Error for blocking issues",
+    "Always show icon alongside text",
+    "Include close button when message is dismissible"
+  ],
+  "dontRules": [
+    "Do not use MessageStrip for transient toasts \u2014 use MessageToast",
+    "Do not use as primary CTA container",
+    "Do not stack multiple MessageStrips of same type",
+    "Do not omit icon \u2014 status by color alone violates WCAG"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of Page content, Dialog body, Form section.",
+    "sizing": "Full width of parent.",
+    "spacing": "16px below; before main content.",
+    "alignment": "Icon left, text middle, close right."
+  },
+  "contentGuidance": {
+    "labelLength": "Message 1\u20132 sentences.",
+    "contentRules": [
+      "Concise, action-oriented text",
+      "Include link to detailed help when needed"
+    ],
+    "examples": [
+      "Settings saved successfully.",
+      "Could not save \u2014 check your connection."
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width",
+    "L": "Full width",
+    "M": "Full width; text wraps",
+    "S": "Full width; close may collapse"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "status",
+      "requirement": "Type communicated by icon AND text \u2014 not color alone",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Message announced via aria-live=\"polite\"",
+      "wcag": "4.1.3 (AA)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Close button activatable via Enter/Space",
+      "wcag": "2.1.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Inline feedback",
+    "Validation summary",
+    "Status banner"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Page",
+      "DynamicPage",
+      "Dialog",
+      "Form"
+    ],
+    "incompatible": [
+      "Inside Table cell",
+      "As toolbar item"
+    ]
+  },
+  "exceptions": [
+    "showCloseButton=true allows user dismissal"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,176 @@
+{
+  "componentName": "Popover",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "5f472d6482ed33c9967694fa411c675e3b214d39",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Overlay",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    },
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "header-bg",
+      "state": "Default",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Anchor to the triggering element clearly (arrow / tail)",
+    "Provide a close affordance (× or Esc)",
+    "Limit content to a single task — Popover should not branch into sub-tasks",
+    "Bind fill to sapShellColor, border to sapShell_BorderColor"
+  ],
+  "dontRules": [
+    "Do not nest Popovers (Popover-from-Popover)",
+    "Do not use Popover for forms with > 3 fields — use Dialog",
+    "Do not auto-dismiss on hover-out for click-triggered Popovers",
+    "Do not use Popover for navigation (use SideNavigation)"
+  ],
+  "compatibleComponents": [
+    "Button",
+    "IconButton",
+    "MenuButton",
+    "Link"
+  ],
+  "incompatiblePatterns": [
+    "Inside Dialog (overlay-in-overlay)",
+    "Inside table cells (anchoring fails on scroll)"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/popover/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Popover",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Popover",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Popover/sample/sap.m.sample.Popover"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Popover is a SAP instance for floating panels. Plugin places via SAP_KEYS. In design mockups, Popovers are typically shown in their open state next to (not overlapping) their trigger element — actual modal/floating overlay behavior is runtime-only and not represented in static Figma frames.",
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Button",
+      "Link",
+      "Form",
+      "SimpleForm",
+      "List",
+      "StandardListItem",
+      "ActionListItem",
+      "MessageStrip",
+      "IllustratedMessage",
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "Toolbar",
+      "OverflowToolbar",
+      "Avatar",
+      "Tag",
+      "ObjectStatus",
+      "ObjectIdentifier"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "Popover"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "content",
+    "beginButton",
+    "endButton",
+    "footer",
+    "subHeader"
+  ]
+}

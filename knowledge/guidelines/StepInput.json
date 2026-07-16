@@ -1,0 +1,85 @@
+{
+  "componentName": "StepInput",
+  "slug": "step-input",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/step-input/",
+  "purpose": "A bounded numeric input with up/down stepper buttons. Used for counts and small numeric values with min/max bounds.",
+  "whenToUse": [
+    "Bounded numeric input with min/max (Qty, count, percent)",
+    "Small integer values where stepping is faster than typing",
+    "Currency or unit values"
+  ],
+  "whenNotToUse": [
+    "For unbounded numbers \u2014 use Input type=Number",
+    "For large numeric ranges (>1000) \u2014 typing is faster",
+    "For non-numeric input"
+  ],
+  "doRules": [
+    "Use for bounded numeric input with min/max",
+    "Show units when applicable (Qty, %, etc.)",
+    "Set step size based on context (1 for counts, 0.1 for decimals)",
+    "Default to a sensible starting value"
+  ],
+  "dontRules": [
+    "Do not use for unbounded numbers",
+    "Do not use for currency without specialized formatting",
+    "Do not allow steps that bypass min/max constraints"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Toolbar, FilterBar.",
+    "sizing": "120px default.",
+    "spacing": "8px between fields.",
+    "alignment": "Number left, steppers right."
+  },
+  "contentGuidance": {
+    "labelLength": "Numeric value display.",
+    "contentRules": [
+      "Number formatted to locale",
+      "Negative values allowed if min<0"
+    ],
+    "examples": [
+      "1",
+      "5",
+      "99"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full input + steppers",
+    "L": "Full input + steppers",
+    "M": "Full input + steppers",
+    "S": "Native mobile number input"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Up/Down arrows step value; type to override",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label including units",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Value change announced"
+    }
+  ],
+  "patterns": [
+    "Quantity input",
+    "Numeric form field"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form"
+    ],
+    "incompatible": [
+      "Without min/max bounds"
+    ]
+  },
+  "exceptions": [
+    "displayValuePrecision controls decimal places"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,68 @@
+{
+  "componentName": "ObjectMarker",
+  "slug": "object-marker",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-marker/",
+  "purpose": "Status indicator with icon + label for an object's state (Draft, Locked, Unsaved, Flagged, Favorite).",
+  "whenToUse": [
+    "Object state in a list row or object header",
+    "Indicate locked-by-other, draft, unsaved changes",
+    "Read-only state visualization"
+  ],
+  "whenNotToUse": [
+    "Semantic status (Error/Warning/Success) \u2014 use ObjectStatus",
+    "Free-form tags \u2014 use Tag",
+    "For numeric values \u2014 use ObjectNumber"
+  ],
+  "doRules": [
+    "Use predefined types: Draft, Locked, LockedBy, Unsaved, Favorite, Flagged",
+    "Pair icon with text label",
+    "Bind text to sapContent_LabelColor"
+  ],
+  "dontRules": [
+    "Do not invent new marker types",
+    "Do not use ObjectMarker for action-required state \u2014 use MessageStrip"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ObjectMarker inside a compatible container (ColumnListItem, ObjectListItem, DynamicPageHeader).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for object display.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside ColumnListItem",
+    "Used inside ObjectListItem",
+    "Used inside DynamicPageHeader"
+  ],
+  "compatibility": [
+    "ColumnListItem",
+    "ObjectListItem",
+    "DynamicPageHeader",
+    "Card"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

@@ -1,0 +1,82 @@
+{
+  "componentName": "DateRangePicker",
+  "slug": "date-range-picker",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/date-range-picker/",
+  "purpose": "Two-date input with shared calendar. User selects start and end dates. Used for filters like \"From \u2013 To\" or date-range constraints.",
+  "whenToUse": [
+    "Date-range filters (date ranges in lists, reports)",
+    "Period selection (vacation, report range)",
+    "Constraining a range of values"
+  ],
+  "whenNotToUse": [
+    "For a single date \u2014 use DatePicker",
+    "For predefined ranges only \u2014 use Select with presets"
+  ],
+  "doRules": [
+    "Use for date range filters (e.g. \"From \u2013 To\")",
+    "Provide preset ranges (Last 7 days, This month, etc.) when relevant",
+    "Highlight selected range visually in calendar"
+  ],
+  "dontRules": [
+    "Do not allow end date before start date",
+    "Do not omit clear-action affordance"
+  ],
+  "layoutGuidance": {
+    "placement": "FilterBar, Form.",
+    "sizing": "300px default; wider than DatePicker.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Two date displays side-by-side or stacked."
+  },
+  "contentGuidance": {
+    "labelLength": "Format hint in placeholder.",
+    "contentRules": [
+      "Format like \"MM/dd/yyyy \u2013 MM/dd/yyyy\"",
+      "Show preset shortcuts above calendar"
+    ],
+    "examples": [
+      "Last 7 days",
+      "01/01/2026 \u2013 06/25/2026"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Two dates inline",
+    "L": "Two dates inline",
+    "M": "Two dates inline; calendar may stack vertically",
+    "S": "Native mobile range picker"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Two-step calendar: select start, then end. Arrow keys navigate",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Both bounds announced when range changes"
+    }
+  ],
+  "patterns": [
+    "Filter range",
+    "Period selection"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "FilterBar"
+    ],
+    "incompatible": [
+      "Without Label"
+    ]
+  },
+  "exceptions": [
+    "Locale-specific separator (\u2014, \u2013, \"to\") in display"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

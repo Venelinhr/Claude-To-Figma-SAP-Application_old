@@ -1,0 +1,116 @@
+{
+  "componentName": "Notifications",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "af1b29be8db435ed790d87721cff4d7efe2217bd",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "badgeCount",
+      "ui5Name": "badgeCount",
+      "type": "number",
+      "exposedInLibrary": true,
+      "default": 0
+    },
+    {
+      "name": "showBadge",
+      "ui5Name": "showBadge",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "default",
+    "unread",
+    "withBadge"
+  ],
+  "typographyRules": [
+    {
+      "role": "badge",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 11,
+      "sapStyleName": "SmallText/LHAuto/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "badge-background",
+      "token": "sapNegativeElementColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "badge-text",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "icon",
+      "token": "sapShell_InteractiveTextColor",
+      "fallbackHex": "#FFFFFF"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use Notifications as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/notification/)"
+  ],
+  "dontRules": [
+    "Do not use Notifications outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/notification/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Notifications' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "componentName": "TextArea",
+  "slug": "text-area",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/text-area/",
+  "purpose": "A multi-line text input for free-form content. Supports auto-grow, character counting, and value state validation.",
+  "whenToUse": [
+    "Multi-line free text (comments, descriptions, notes)",
+    "When user input may exceed one line",
+    "For long-form input in dialogs and forms"
+  ],
+  "whenNotToUse": [
+    "For single-line input \u2014 use Input",
+    "For structured multi-value \u2014 use MultiInput",
+    "For rich text \u2014 use rich text editor"
+  ],
+  "doRules": [
+    "Use for multi-line free text (comments, descriptions)",
+    "Set rows to indicate expected length",
+    "Show character counter when maxLength applies",
+    "Enable growing=true to expand as user types"
+  ],
+  "dontRules": [
+    "Do not use for single-line input \u2014 use Input",
+    "Do not omit Label",
+    "Do not set maxLength below realistic length"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Dialog, Panel.",
+    "sizing": "Width fills container; height by rows.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Left-aligned with Label above."
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder hints expected content.",
+    "contentRules": [
+      "Use placeholder for examples",
+      "Show character count near maxLength"
+    ],
+    "examples": [
+      "Add a comment...",
+      "Describe the issue"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width of form column",
+    "L": "Full width of form column",
+    "M": "Single column stacked",
+    "S": "Full viewport width"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter creates newline; Tab moves focus",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Character count announced when maxLength set",
+      "wcag": "4.1.3 (AA)"
+    }
+  ],
+  "patterns": [
+    "Comment field",
+    "Description input",
+    "Long-form entry"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "Dialog"
+    ],
+    "incompatible": [
+      "Without Label"
+    ]
+  },
+  "exceptions": [
+    "growing=true allows auto-resize on content"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

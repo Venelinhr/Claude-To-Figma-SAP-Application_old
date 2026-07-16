@@ -1,0 +1,75 @@
+{
+  "componentName": "Breadcrumb",
+  "slug": "breadcrumb",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/breadcrumb/",
+  "purpose": "Shows the user's current location within a hierarchy and lets them navigate back to ancestor pages. Appears above the page title and provides one-click traversal upward through the app structure.",
+  "whenToUse": [
+    "App has deep hierarchy (depth > 1) and user navigation comes from above",
+    "Object Page or List Report screens where users drill in from a parent",
+    "When users need to navigate back to ancestor contexts without using browser back",
+    "When the path itself carries meaning users may want to share or bookmark"
+  ],
+  "whenNotToUse": [
+    "On root pages (Home) where there is no parent hierarchy",
+    "When app navigation is shallow (1 level only)",
+    "Inside modal Dialogs (no hierarchy context)",
+    "On worklist screens where users come from a single 'my queue' entry point"
+  ],
+  "doRules": [
+    "Place the Breadcrumb above the page title in the DynamicPageTitle component",
+    "Show the full path from root to current page",
+    "Make every item before current a clickable link (sapLinkColor)",
+    "Render the current item as plain text (not a link)",
+    "Use forward slash ('/') as separator between items"
+  ],
+  "dontRules": [
+    "Do not include the current page as a clickable link",
+    "Do not show more than 5 levels — collapse middle levels with ellipsis if deeper",
+    "Do not use Breadcrumb in lieu of a working back button",
+    "Do not use bold or large fonts — Breadcrumb is supporting context, not primary",
+    "Do not hardcode colors — bind to sapLinkColor / sapContent_LabelColor"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of page header, above the H1 Title within DynamicPageTitle.",
+    "sizing": "Auto height (single line). Each item auto-width.",
+    "spacing": "4-8px between items and separators.",
+    "alignment": "Left-aligned to page content edge."
+  },
+  "contentGuidance": {
+    "labelLength": "Match the destination page title verbatim. 1-3 words per item.",
+    "contentRules": [
+      "Use the same exact label as the destination page header",
+      "Localize all labels",
+      "Avoid abbreviations unless the destination page itself uses them"
+    ],
+    "examples": [
+      "Home / Inventory / Suppliers",
+      "Invoices / Exceptions",
+      "Integration and APIs / Packages"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Show full path at all levels.",
+    "L":  "Show full path at all levels.",
+    "M":  "If path > 4 items, collapse middle items with '…' button.",
+    "S":  "Show only current + immediate parent; offer '…' menu for deeper ancestors."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Wrap in <nav aria-label='Breadcrumb'>. Final item gets aria-current='page'.",
+    "contrast": "Link items meet 4.5:1 against page bg (WCAG AA). Current item meets text contrast standards.",
+    "keyboard": "Tab to enter; left/right arrow not used (single linear order is fine). Enter to follow link.",
+    "screenReader": "Reads as 'Breadcrumb, list of N, X of N, link, ...; current page, ...'"
+  },
+  "patterns": [
+    "Object Page — always include Breadcrumb",
+    "List Report — include when accessed from a parent section",
+    "Drill-down detail — required to make 'back to list' obvious"
+  ],
+  "compatibility": ["DynamicPageTitle", "DynamicPage", "ObjectPageLayout", "ShellBar"],
+  "exceptions": [
+    "Single-level apps (no hierarchy) — omit Breadcrumb entirely",
+    "Mobile / narrow viewport — use a back button + page title, no breadcrumb trail"
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

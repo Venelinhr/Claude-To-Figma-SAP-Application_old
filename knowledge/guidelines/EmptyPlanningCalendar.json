@@ -1,0 +1,61 @@
+{
+  "componentName": "EmptyPlanningCalendar",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustrated-message/",
+  "purpose": "Empty-state illustration for a planning calendar with no scheduled events, meetings, or bookings. Signals 'no events in this range — either extend the range or create the first event'.",
+  "whenToUse": [
+    "Weekly/monthly planning calendar with no bookings in the visible range",
+    "Fresh calendar view for a newly-created project",
+    "Filtered calendar where the filter matches nothing",
+    "Booking flows before any dates have been picked"
+  ],
+  "whenNotToUse": [
+    "When a query returns zero results in a busy calendar — different UX",
+    "For a general no-data state — use appropriate illustration",
+    "In non-calendar contexts",
+    "As decoration"
+  ],
+  "doRules": [
+    "Pair with a 'Create event' or 'Schedule meeting' CTA",
+    "Include description with contextual hint (e.g. 'or try a different date range')",
+    "Use appropriate size for the calendar's viewport",
+    "Keep the illustration on-brand with the calendar theme"
+  ],
+  "dontRules": [
+    "Do not use for a calendar that just failed to load — use error state",
+    "Do not omit the CTA — user needs a next step",
+    "Do not shrink illustration below Spot size",
+    "Do not overlay on top of pre-loaded events"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside IllustratedMessage in the empty calendar body",
+    "sizing": "Spot 48×48 · Dialog 120×120 · Scene 240×240",
+    "spacing": "16px between elements",
+    "alignment": "Centered in the empty calendar region"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 40 chars; description ≤ 120 chars",
+    "contentRules": "Title states the empty state; description offers a next step",
+    "examples": ["Title: 'Nothing scheduled' · Description: 'Your calendar is clear — create an event to get started' · Button: 'Create event'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Scene / Dialog size",
+    "L": "Dialog size",
+    "M": "Dialog size",
+    "S": "Spot size"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "role='img' with descriptive aria-label",
+      "Title uses semantic heading",
+      "CTA describes the action clearly",
+      "Focus moves to CTA on show"
+    ]
+  },
+  "patterns": ["Empty calendar view", "Fresh scheduling flow", "Filtered calendar with no results"],
+  "compatibility": {"allowedWith": ["IllustratedMessage (only)"], "forbiddenWith": ["Standalone", "Any other parent"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

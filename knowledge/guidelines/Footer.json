@@ -1,0 +1,64 @@
+{
+  "componentName": "Footer",
+  "slug": "footer",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/bar/",
+  "purpose": "A page-level footer region containing primary and secondary actions. Sits at the bottom of a Page, Dialog, or DynamicPage. Under the hood, this is a Bar with design=Footer. Used when actions should always be visible at the bottom regardless of content scroll.",
+  "whenToUse": [
+    "Bottom-of-page primary action rows (Save / Cancel / Submit)",
+    "Fullscreen Dialog footers with confirm/cancel",
+    "Wizard footer with Back / Next / Finish buttons",
+    "Any page needing a persistent action row at the bottom"
+  ],
+  "whenNotToUse": [
+    "For an in-content actions bar — use Toolbar",
+    "For an object detail's actions — use ObjectPageHeader actions instead",
+    "For content that scrolls off — actions should stay visible",
+    "For notifications or messages — use MessageStrip or NotificationBanner"
+  ],
+  "doRules": [
+    "Right-align primary action (Emphasized style)",
+    "Left-align secondary actions (Cancel, Back)",
+    "Use ToolbarSpacer to push primary right",
+    "Keep footer height consistent across pages"
+  ],
+  "dontRules": [
+    "Do not put unrelated content in the footer",
+    "Do not stack multiple footers",
+    "Do not use for status messages — footer is for actions",
+    "Do not hide the footer on scroll if actions are still relevant"
+  ],
+  "layoutGuidance": {
+    "placement": "Bottom of Page, DynamicPage, or Dialog",
+    "sizing": "Height 48px compact, 56px cozy; full container width",
+    "spacing": "16px internal padding, 8px between buttons",
+    "alignment": "contentLeft (cancel) · spacer · contentRight (primary)"
+  },
+  "contentGuidance": {
+    "labelLength": "Button labels ≤ 20 chars",
+    "contentRules": "Only action buttons; no arbitrary text",
+    "examples": ["[Cancel]  spacer  [Save Draft] [Submit]"]
+  },
+  "responsiveBehavior": {
+    "XL": "All actions visible inline",
+    "L": "All actions visible inline",
+    "M": "May collapse secondary actions into a MenuButton",
+    "S": "Primary action full-width; secondary in overflow"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.1 Info and Relationships (Level A)", "WCAG 2.1 · 2.4.6 Headings and Labels (AA)"],
+    "requirements": [
+      "role='contentinfo' or 'region' with aria-label='Actions'",
+      "Focus order: left actions → primary right",
+      "Primary action reachable via Enter from anywhere on the page (when appropriate)",
+      "Sticky positioning does not overlap focused inputs"
+    ]
+  },
+  "patterns": ["Page footer", "Dialog footer", "Wizard footer"],
+  "compatibility": {
+    "allowedWith": ["Page", "DynamicPage", "Dialog", "Wizard"],
+    "forbiddenWith": ["Toolbar (they are different components)", "Nested Footer"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

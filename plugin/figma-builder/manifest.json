@@ -2,7 +2,7 @@
   "name": "Claude to Figma SAP Application",
   "id": "claude-to-figma-sap",
   "api": "1.0.0",
-  "main": "code.js",
+  "main": "code.bundled.js",
   "ui": "ui.html",
   "editorType": [
     "figma"

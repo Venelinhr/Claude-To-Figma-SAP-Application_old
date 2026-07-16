@@ -1,0 +1,86 @@
+{
+  "componentName": "BusyIndicator",
+  "slug": "busy-indicator",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/busy-indicator/",
+  "purpose": "A loading spinner used to indicate that an asynchronous operation is in progress. Shows user that the system is working.",
+  "whenToUse": [
+    "During data loading (table, list, page)",
+    "During save/submit operations",
+    "When operation takes longer than 1 second",
+    "Page-level loading states"
+  ],
+  "whenNotToUse": [
+    "For instant operations (<1s) \u2014 no feedback needed",
+    "For empty/no-data states \u2014 use IllustratedMessage",
+    "For static placeholders \u2014 use skeleton UI",
+    "For long-running tasks (>10s) \u2014 use ProgressIndicator with progress"
+  ],
+  "doRules": [
+    "Use when operation takes longer than 1 second",
+    "Show descriptive text (\"Loading orders...\", \"Saving...\")",
+    "Use Small for inline contexts; Large for full-page",
+    "Block interaction only when necessary"
+  ],
+  "dontRules": [
+    "Do not use for instant operations",
+    "Do not block entire UI for non-critical operations",
+    "Do not omit text when context unclear",
+    "Do not show busy state on a control that has no operation pending"
+  ],
+  "layoutGuidance": {
+    "placement": "Inline beside control, centered in container, full-page overlay.",
+    "sizing": "Small=16, Medium=32, Large=64 px.",
+    "spacing": "8px between spinner and text.",
+    "alignment": "Spinner left, text right."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words describing operation.",
+    "contentRules": [
+      "Use gerund verbs (Loading, Saving)",
+      "Include what is loading when ambiguous"
+    ],
+    "examples": [
+      "Loading...",
+      "Saving order",
+      "Validating"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Small or Medium inline",
+    "L": "Small or Medium inline",
+    "M": "Medium",
+    "S": "Large overlay if blocking"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "announcements",
+      "requirement": "Busy state announced via aria-busy=true",
+      "wcag": "4.1.3 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Text describes what is loading",
+      "wcag": "1.3.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Loading state",
+    "Async operation feedback"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Dialog",
+      "Page",
+      "Table",
+      "List"
+    ],
+    "incompatible": [
+      "As replacement for empty state \u2014 use IllustratedMessage"
+    ]
+  },
+  "exceptions": [
+    "busyIndicatorDelay prevents flash on fast operations"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

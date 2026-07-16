@@ -1,0 +1,176 @@
+{
+  "componentName": "DatePicker",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "ad1f84e6293671f80ff8dd174b1da0cbacf0fa48",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning",
+        "Success",
+        "Information"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "minDate",
+      "ui5Name": "minDate",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "maxDate",
+      "ui5Name": "maxDate",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success",
+    "Information"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Calendar icon opens picker; arrow keys navigate dates; Enter selects"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label; format hint in placeholder"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Selected date announced"
+    }
+  ],
+  "doRules": [
+    "Use locale-aware date format",
+    "Provide minDate/maxDate when range is constrained",
+    "Show format hint in placeholder"
+  ],
+  "dontRules": [
+    "Do not require user to type the format manually",
+    "Do not use for date range \u2014 use DateRangePicker"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "FilterBar"
+  ],
+  "incompatiblePatterns": [
+    "Without Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/datepicker/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.DatePicker",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.DatePicker",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "256px default.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select"
+    ]
+  }
+}

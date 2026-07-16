@@ -1,0 +1,6094 @@
+{
+  "_meta": {
+    "description": "Single lookup table: component → variant properties + allowed values + defaults. Generated from knowledge/components/registry/*.json. Do NOT edit manually — re-run generate-property-reference.js.",
+    "source": "knowledge/components/registry/*.json",
+    "generated": "2026-07-13",
+    "components": 152
+  },
+  "AIButton": {
+    "figmaComponentId": "6d9a69eec5a716375ccd5e7272c6193dbe8718ce",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text",
+      "icon"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "otherProperties": [
+      {
+        "name": "state",
+        "type": "variant",
+        "default": "Default"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Button' component for native dimensions"
+    }
+  },
+  "AIInput": {
+    "figmaComponentId": "0098668d77c18b019e726dc9cce843cee360c4d5",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "value",
+      "placeholder"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Input' component for native dimensions"
+    }
+  },
+  "AIMenuButton": {
+    "figmaComponentId": "af7726506b902ae0a80daa2950f890d6b4c275c6",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text",
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Menu Button' component for native dimensions"
+    }
+  },
+  "AIPromptInput": {
+    "figmaComponentId": "73c83eecc6edcaf572bca3c411b7345a5d398b3c",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "value",
+      "placeholder"
+    ],
+    "otherProperties": [
+      {
+        "name": "rows",
+        "type": "number",
+        "default": 3
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Prompt Input' component for native dimensions"
+    }
+  },
+  "AIRichTextEditor": {
+    "figmaComponentId": "259171690780bc94b6900bc4975d6bb81d5a089f",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "value"
+    ],
+    "otherProperties": [
+      {
+        "name": "rows",
+        "type": "number",
+        "default": 5
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Rich Text Editor' component for native dimensions"
+    }
+  },
+  "AISplitMenuButton": {
+    "figmaComponentId": "3eedca60790fbfc4a87e2cc2aaf9a7774c68b6ca",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text",
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Split Menu Button' component for native dimensions"
+    }
+  },
+  "AITextArea": {
+    "figmaComponentId": "b5bb525824429489a2f6e5657e91240a605014a8",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "value",
+      "placeholder"
+    ],
+    "otherProperties": [
+      {
+        "name": "rows",
+        "type": "number",
+        "default": 4
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'AI Text Area' component for native dimensions"
+    }
+  },
+  "ActionListItem": {
+    "figmaComponentId": "063b8ffd9f963d3cf574092e4dd53809ecb3a5ee",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List Item",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "AddDimensions": {
+    "figmaComponentId": "c3564e4ca303313fb07aaac5da07480c871c97d1",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "EmptyState",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "illustrationSize",
+        "type": "variant",
+        "default": "Spot"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Add Dimensions' component for native dimensions"
+    }
+  },
+  "AddPeopleToCalendar": {
+    "figmaComponentId": "26306cac62e9ba9937807b7ab8cbcedf0bec3e65",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "EmptyState",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "illustrationSize",
+        "type": "variant",
+        "default": "Spot"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Add People To Calendar' component for native dimensions"
+    }
+  },
+  "App": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "textProperties": [
+      "width",
+      "height"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.App — root application container. SAP kit has no Figma component; plugin treats as pass-through."
+      ]
+    }
+  },
+  "Avatar": {
+    "figmaComponentId": "71a3389ecbd47822b3184700766e30963fc2f220",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Shape": {
+        "values": [
+          "Circle",
+          "Square"
+        ],
+        "default": "Circle",
+        "ui5Property": "displayShape"
+      },
+      "Size": {
+        "values": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "Custom"
+        ],
+        "default": "M",
+        "ui5Property": "displaySize"
+      }
+    },
+    "textProperties": [
+      "initials",
+      "tooltip"
+    ],
+    "iconProperties": [
+      "src",
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "XS=24, S=32, M=48, L=72, XL=128 px."
+    }
+  },
+  "AvatarGroup": {
+    "figmaComponentId": "composed:Avatar[]",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Object Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Banner": {
+    "figmaComponentId": "64034a60b543539b407e8534b05454add9a49baf",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "design",
+        "type": "variant",
+        "default": "Standard"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Banner' component for native dimensions"
+    }
+  },
+  "Bar": {
+    "figmaComponentId": "d4560b56c7b5aa9476e6b23bfaf869166b7fff47",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Design": {
+        "values": [
+          "Auto",
+          "Header",
+          "SubHeader",
+          "Footer"
+        ],
+        "default": "Auto",
+        "ui5Property": "design"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular"
+        ],
+        "default": "Regular"
+      }
+    },
+    "booleanProperties": [
+      "translucent",
+      "showTitle"
+    ],
+    "otherProperties": [
+      {
+        "name": "design",
+        "type": "string",
+        "default": "Auto"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Full-width horizontal band. Height depends on Design: Header ~44px, SubHeader ~44px, Footer ~48px.",
+      "knownIssues": [
+        "SAP kit exposes this as 'Header' component_set. Plugin's SAP_KEYS maps Bar → the Header key. The Design variant selects Header/SubHeader/Footer visuals."
+      ]
+    }
+  },
+  "Breadcrumb": {
+    "figmaComponentId": "5743166bac11fdf110a54fd7d85436fed186d3b2",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Type": {
+        "values": [
+          "Standard",
+          "Current"
+        ],
+        "default": "Standard"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "isCurrent"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Breadcrumbs": {
+    "figmaComponentId": "alias:Breadcrumb",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "textProperties": [
+      "currentLocationText"
+    ],
+    "otherProperties": [
+      {
+        "name": "links",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "separatorStyle",
+        "type": "variant",
+        "default": "Slash"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "Plural form; alias to Breadcrumb registry entry."
+      ]
+    }
+  },
+  "BusyDialog": {
+    "figmaComponentId": "alias:Dialog",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "BusyIndicator": {
+    "figmaComponentId": "e328630d6c564d1f312256254e0543d41bacbb84",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Size": {
+        "values": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "default": "Medium",
+        "ui5Property": "size"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "otherProperties": [
+      {
+        "name": "size",
+        "type": "variant",
+        "default": "Medium"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Small=16, Medium=32, Large=64 px."
+    }
+  },
+  "Button": {
+    "figmaComponentId": "91805fa199b1fd247d76a9c08bbe0982b49065c4",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Type": {
+        "values": [
+          "Default",
+          "Emphasized",
+          "Accept",
+          "Reject",
+          "Negative",
+          "Critical",
+          "Success",
+          "Attention",
+          "Transparent",
+          "Ghost",
+          "Unstyled",
+          "Back",
+          "Up",
+          "Neutral"
+        ],
+        "default": "Default",
+        "ui5Property": "type"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "iconFirst",
+      "enabled"
+    ],
+    "iconProperties": [
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width auto-grows with text; height 26px (Compact) / 36px (Cozy)"
+    }
+  },
+  "Calendar": {
+    "figmaComponentId": "16743cba69c57792417e8f6b51d347cc29bd2d95",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "DatePicker",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Selection": {
+        "values": [
+          "Day",
+          "Month",
+          "Year",
+          "Year Range"
+        ],
+        "default": "Day",
+        "ui5Property": "selection"
+      },
+      "Mixed Calendar": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "mixedCalendar"
+      }
+    },
+    "booleanProperties": [
+      "singleSelection"
+    ],
+    "otherProperties": [
+      {
+        "name": "selection",
+        "type": "string",
+        "default": "Day"
+      },
+      {
+        "name": "months",
+        "type": "int",
+        "default": 1
+      },
+      {
+        "name": "startDate",
+        "type": "object",
+        "default": null
+      },
+      {
+        "name": "selectedDates",
+        "type": "array",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Selected",
+      "Marked",
+      "Today",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Single-month (Selection=Day, Mixed Calendar=False): 272×272. Mixed Calendar=True: 296×338. Two-Month variant is a separate component (Two-Month Calendar).",
+      "knownIssues": [
+        "SAP Calendar component_set has 16 variants. Default variant is 'Form Factor=Compact, Selection=Day, Mixed Calendar=False' (272×272 single month). If a spec needs the two-month layout, use 'Two-Month Calendar' component instead."
+      ]
+    }
+  },
+  "Card": {
+    "figmaComponentId": "76fbadb97db272943b14aff18ee5809d0360795f",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Carousel": {
+    "figmaComponentId": "bf174ffb841e4b27947d0be558656bb80238fe0d",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "CheckBox": {
+    "figmaComponentId": "23b4a2ca030e4bd2ff3bdd5b97b70f646ec09071",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Selection",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Check": {
+        "values": [
+          "Unchecked",
+          "Checked",
+          "Tristate"
+        ],
+        "default": "Unchecked",
+        "ui5Property": "selected"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "selected",
+      "partiallySelected"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "Error",
+      "Warning"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "16×16px box + label text. Touch area extends to label."
+    }
+  },
+  "Column": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Table",
+    "textProperties": [
+      "width"
+    ],
+    "otherProperties": [
+      {
+        "name": "hAlign",
+        "type": "variant",
+        "default": "Begin"
+      },
+      {
+        "name": "sortIndicator",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width auto or fixed per Column.width."
+    }
+  },
+  "ColumnListItem": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Table",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Type": {
+        "values": [
+          "Inactive",
+          "Active",
+          "Navigation",
+          "Detail",
+          "DetailAndActive"
+        ],
+        "default": "Inactive",
+        "ui5Property": "type"
+      }
+    },
+    "booleanProperties": [
+      "selected"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Inactive"
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Selected",
+      "Focused"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "live-text-node",
+      "sizingConstraints": "Height 48px Compact / 64px Cozy by default. Custom rows up to 114px."
+    }
+  },
+  "ComboBox": {
+    "figmaComponentId": "alias:Select",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled",
+          "Readonly",
+          "Error",
+          "Warning",
+          "Information",
+          "Success"
+        ],
+        "default": "Regular"
+      }
+    },
+    "booleanProperties": [
+      "editable",
+      "showButton"
+    ],
+    "otherProperties": [
+      {
+        "name": "value",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "default": ""
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled",
+      "Error",
+      "Warning",
+      "Information",
+      "Success"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Same as Select. Min 120px useful width; grows to fill parent by default.",
+      "knownIssues": [
+        "SAP Web UI Kit explicitly directs 'If you want to use the Combobox please use the Select component.' The plugin aliases ComboBox → Select. Same visual rendering."
+      ]
+    }
+  },
+  "DatePicker": {
+    "figmaComponentId": "ad1f84e6293671f80ff8dd174b1da0cbacf0fa48",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning",
+          "Success",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "placeholder",
+      "value",
+      "minDate",
+      "maxDate"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "256px default."
+    }
+  },
+  "DateRangePicker": {
+    "figmaComponentId": "ad1f84e6293671f80ff8dd174b1da0cbacf0fa48",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "placeholder",
+      "value"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "300px default; wider than DatePicker."
+    }
+  },
+  "DateTimePicker": {
+    "figmaComponentId": "377d76d309f4e5ee7e12132eba0df4e29686a4f7",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "placeholder",
+      "value"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "256px default."
+    }
+  },
+  "Dialog": {
+    "figmaComponentId": "5b965b1eda133ac521b42fa20b201e9491f4bf83",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Overlay",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Type": {
+        "values": [
+          "Standard",
+          "Message"
+        ],
+        "default": "Standard",
+        "ui5Property": "type"
+      },
+      "State": {
+        "values": [
+          "None",
+          "Information",
+          "Success",
+          "Warning",
+          "Error"
+        ],
+        "default": "None",
+        "ui5Property": "state"
+      }
+    },
+    "textProperties": [
+      "title"
+    ],
+    "booleanProperties": [
+      "resizable",
+      "draggable"
+    ],
+    "otherProperties": [
+      {
+        "name": "state",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "None",
+      "Information",
+      "Success",
+      "Warning",
+      "Error"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width 320–80% viewport. Height hugs content."
+    }
+  },
+  "DropDown": {
+    "figmaComponentId": "d74d4ae8eb549d3cc54b7d345e3b17f90c543817",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "selectedKey",
+      "placeholder"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Drop-Down' component for native dimensions"
+    }
+  },
+  "DynamicPage": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page",
+    "textProperties": [
+      "title"
+    ],
+    "booleanProperties": [
+      "showFooter",
+      "headerExpanded"
+    ],
+    "otherProperties": [
+      {
+        "name": "backgroundDesign",
+        "type": "variant",
+        "default": "Standard"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "not-injectable",
+      "sizingConstraints": "Full viewport height; resizes with viewport.",
+      "knownIssues": [
+        "Page-layout wrapper — plugin uses SKIP_SELF to recurse into slots."
+      ]
+    }
+  },
+  "DynamicPageHeader": {
+    "figmaComponentId": "dc90c8dbf7714f165ed79357e9ba6ade5b3701ae",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page",
+    "otherProperties": [
+      {
+        "name": "content",
+        "type": "aggregation",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Snapped"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "not-injectable",
+      "sizingConstraints": "Width fills DynamicPage. Height varies by content; collapses on scroll.",
+      "knownIssues": [
+        "SAP DynamicPageHeader instance has empty swap slots — plugin uses native PageHeader frame."
+      ]
+    }
+  },
+  "DynamicPageTitle": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page",
+    "otherProperties": [
+      {
+        "name": "heading",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "actions",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "breadcrumbs",
+        "type": "aggregation",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "not-injectable",
+      "sizingConstraints": "Full width of DynamicPage.",
+      "knownIssues": [
+        "Plugin uses native DynamicPageTitle frame builder."
+      ]
+    }
+  },
+  "DynamicSideContent": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "SideContentPosition": {
+        "values": [
+          "Begin",
+          "End"
+        ],
+        "default": "End",
+        "ui5Property": "sideContentPosition"
+      },
+      "SideContentVisibility": {
+        "values": [
+          "AlwaysShow",
+          "ShowAboveL",
+          "ShowAboveM",
+          "ShowAboveS",
+          "NeverShow"
+        ],
+        "default": "ShowAboveM",
+        "ui5Property": "sideContentVisibility"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "mainContent",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "sideContent",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "sideContentVisibility",
+        "type": "variant",
+        "default": "ShowAboveL"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Horizontal split. Main: layoutGrow=1 (fills). Side: fixed width ~320px unless equalSplit=true.",
+      "knownIssues": [
+        "SAP Web UI Kit has no dedicated DynamicSideContent component — this is a composed native layout: HORIZONTAL auto-layout frame with a Main column (grow) + Side column (fixed width). Renderer supports slots.mainContent and slots.sideContent."
+      ]
+    }
+  },
+  "EmptyPlanningCalendar": {
+    "figmaComponentId": "ac477531c451a7b1f76d1df712c92aa7e6d75868",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "EmptyState",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "illustrationSize",
+        "type": "variant",
+        "default": "Spot"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Empty Planning Calendar' component for native dimensions"
+    }
+  },
+  "FeedInput": {
+    "figmaComponentId": "f1d392d8546edf20ef209cd39cb624ac7bd6b482",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "FeedListItem": {
+    "figmaComponentId": "composed:ListItem+Avatar",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List Item",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "FileUploader": {
+    "figmaComponentId": "b7532a6da2cb7677348b5d4bbb81952c9224e984",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "buttonText",
+      "placeholder",
+      "mimeType",
+      "maximumFileSize"
+    ],
+    "booleanProperties": [
+      "multiple"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "Error",
+      "Warning"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width fills container."
+    }
+  },
+  "FilterBar": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "booleanProperties": [
+      "showFilterConfiguration",
+      "showRestoreButton"
+    ],
+    "otherProperties": [
+      {
+        "name": "filterItems",
+        "type": "aggregation",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "not-injectable",
+      "sizingConstraints": "Full width of parent.",
+      "knownIssues": [
+        "Plugin renders as native FilterBar frame with filter children placed inline."
+      ]
+    }
+  },
+  "FlexBox": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "textProperties": [
+      "width",
+      "height"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.FlexBox — responsive flex container. Handled by plugin's LAYOUT_CONTAINERS set (flat-walked)."
+      ]
+    }
+  },
+  "FlexibleColumnLayout": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "otherProperties": [
+      {
+        "name": "beginColumnPages",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "midColumnPages",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "endColumnPages",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "layout",
+        "type": "variant",
+        "default": "OneColumn"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.f.FlexibleColumnLayout — master/detail/subdetail responsive split. Handled natively by plugin."
+      ]
+    }
+  },
+  "Footer": {
+    "figmaComponentId": "e563bc3291a07a5eb4d97b2083355cc54023c377",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "design",
+        "type": "variant",
+        "default": "Footer"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Footer' component for native dimensions"
+    }
+  },
+  "Form": {
+    "figmaComponentId": "6603eb3ebde2c1c763f2ae450df2cbb799ba640d",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Form",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Editable": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True",
+        "ui5Property": "editable"
+      }
+    },
+    "textProperties": [
+      "width"
+    ],
+    "booleanProperties": [
+      "editable"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "not-injectable",
+      "sizingConstraints": "Width fills parent. Field column widths defined by FormLayout.",
+      "knownIssues": [
+        "Plugin treats Form as OPAQUE_SAP — places instance without recursing."
+      ]
+    }
+  },
+  "FormContainer": {
+    "figmaComponentId": "alias:Form",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Forms",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "FormElement": {
+    "figmaComponentId": "alias:Form",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Forms",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "FormattedText": {
+    "figmaComponentId": "alias:Text",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Typography",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "GenericTag": {
+    "figmaComponentId": "alias:Tag",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Design": {
+        "values": [
+          "Full",
+          "StatusIconHidden"
+        ],
+        "default": "Full",
+        "ui5Property": "design"
+      },
+      "Status": {
+        "values": [
+          "None",
+          "Success",
+          "Warning",
+          "Error",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "status"
+      },
+      "ValueState": {
+        "values": [
+          "None",
+          "Success",
+          "Warning",
+          "Error",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "text",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "default": "None"
+      },
+      {
+        "name": "value",
+        "type": "ObjectNumber",
+        "default": null
+      }
+    ],
+    "supportedStates": [
+      "None",
+      "Success",
+      "Warning",
+      "Error",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width to hug content. Height ~24px compact, ~32px cozy.",
+      "knownIssues": [
+        "SAP Web UI Kit doesn't ship a dedicated 'Generic Tag' component — the visual pattern is a variant of the Tag component. Plugin aliases GenericTag → Tag."
+      ]
+    }
+  },
+  "GroupHeaderListItem": {
+    "figmaComponentId": "composed:ListItem-header",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List Item",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "GroupingColumns": {
+    "figmaComponentId": "1286a1119579e51cf54a9cd47c0e9d62d9d7bd05",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "EmptyState",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "illustrationSize",
+        "type": "variant",
+        "default": "Spot"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Grouping Columns' component for native dimensions"
+    }
+  },
+  "HBox": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "textProperties": [
+      "width",
+      "height"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.HBox — horizontal layout primitive. Handled by plugin's LAYOUT_CONTAINERS set (flat-walked)."
+      ]
+    }
+  },
+  "HomepageHeroBanner": {
+    "figmaComponentId": "6b540d39a63d837e652b82675136e991ebdd0192",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "subtitle",
+      "backgroundImage"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Homepage Hero Banner' component for native dimensions"
+    }
+  },
+  "IconButton": {
+    "figmaComponentId": "c1ee1ca76974c720ecd4b1888e1e23ac8a36ec63",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Type": {
+        "values": [
+          "Default",
+          "Emphasized",
+          "Transparent",
+          "Ghost"
+        ],
+        "default": "Transparent",
+        "ui5Property": "type"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "icon",
+      "tooltip"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Default"
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "32×32px Compact / 44×44px Cozy. Square aspect."
+    }
+  },
+  "IconMenuButton": {
+    "figmaComponentId": "c455c46ed2cea345c534193c1598e5459aaadd11",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text",
+      "icon"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Default"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Icon Menu Button' component for native dimensions"
+    }
+  },
+  "IconSplitButton": {
+    "figmaComponentId": "9afdf08f8ae226b175d0a3be79f24454d4b12928",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text",
+      "icon"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Default"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Icon Split Button' component for native dimensions"
+    }
+  },
+  "IconTabBar": {
+    "figmaComponentId": "4aafcbf55528c439876b314d155438884b614722",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Tab Density": {
+        "values": [
+          "Cozy",
+          "Compact",
+          "Inherit"
+        ],
+        "default": "Compact",
+        "ui5Property": "tabDensityMode"
+      },
+      "Background Design": {
+        "values": [
+          "Solid",
+          "Translucent",
+          "Transparent"
+        ],
+        "default": "Solid",
+        "ui5Property": "backgroundDesign"
+      },
+      "Header Mode": {
+        "values": [
+          "Standard",
+          "Inline"
+        ],
+        "default": "Standard",
+        "ui5Property": "headerMode"
+      }
+    },
+    "textProperties": [
+      "selectedKey"
+    ],
+    "booleanProperties": [
+      "expanded",
+      "expandable",
+      "upperCase"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Selected"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Tab text in SAP library kit cannot be overridden via direct text node injection. Must use IconTabFilter child instances with `text` property via setProperties.",
+      "knownIssues": [
+        "Plugin currently falls back to native frame when tab text injection fails — loses SAP token bindings"
+      ]
+    }
+  },
+  "IconTabFilter": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Selected": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False"
+      },
+      "Design": {
+        "values": [
+          "Vertical",
+          "Horizontal"
+        ],
+        "default": "Vertical",
+        "ui5Property": "design"
+      }
+    },
+    "textProperties": [
+      "text",
+      "key",
+      "count"
+    ],
+    "iconProperties": [
+      "icon"
+    ],
+    "otherProperties": [
+      {
+        "name": "iconColor",
+        "type": "variant",
+        "default": "Default"
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Selected",
+      "Hover",
+      "Focused"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width by label.",
+      "knownIssues": [
+        "Figma library variant may use \"Tab Text\" or \"text\" — try both."
+      ]
+    }
+  },
+  "IconTabHeader": {
+    "figmaComponentId": "alias:IconTabBar",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "IconTabSeparator": {
+    "figmaComponentId": "a4bdf360217f604b116f179144b02ef74dee7dca",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "IllustratedMessage": {
+    "figmaComponentId": "eba579505df21536654910797f94b3784248807b",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Image": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Mode": {
+        "values": [
+          "Image",
+          "Background"
+        ],
+        "default": "Image",
+        "ui5Property": "mode"
+      }
+    },
+    "textProperties": [
+      "src",
+      "alt",
+      "width",
+      "height"
+    ],
+    "booleanProperties": [
+      "decorative"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Loading",
+      "Error"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Native Figma frame with image fill. Width/height explicit in spec.",
+      "knownIssues": [
+        "SAP Web UI Kit has no dedicated Image component — plugin renders as a native Figma frame with a rounded-rectangle placeholder fill (sapContent_Placeholderloading token) plus a stroke. Spec.props.src is documented but not fetched at build time; use Figma's Insert Image after build if a real image is needed."
+      ]
+    }
+  },
+  "InfoLabel": {
+    "figmaComponentId": "alias:Tag",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "ColorScheme": {
+        "values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "default": "7",
+        "ui5Property": "colorScheme"
+      },
+      "Rendermode": {
+        "values": [
+          "Loose",
+          "Narrow"
+        ],
+        "default": "Loose",
+        "ui5Property": "renderMode"
+      }
+    },
+    "booleanProperties": [
+      "displayOnly"
+    ],
+    "otherProperties": [
+      {
+        "name": "text",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "colorScheme",
+        "type": "int",
+        "default": 7
+      },
+      {
+        "name": "icon",
+        "type": "URI",
+        "default": ""
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width, height ~20px Loose / ~16px Narrow. 10 color schemes available.",
+      "knownIssues": [
+        "SAP Web UI Kit doesn't ship InfoLabel as its own component — plugin aliases InfoLabel → Tag. Color-scheme prop maps to Tag color variants where possible."
+      ]
+    }
+  },
+  "Input": {
+    "figmaComponentId": "0f4366cb3065919e8f3deb0462f1a5a3633d6b50",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning",
+          "Success",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "value",
+      "placeholder"
+    ],
+    "booleanProperties": [
+      "enabled",
+      "editable",
+      "showValueHelp",
+      "showClearIcon"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Text"
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Default 256px wide; resize via instance.resize() supported."
+    }
+  },
+  "InputListItem": {
+    "figmaComponentId": "composed:ListItem+Input",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List Item",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "InputMessagePopover": {
+    "figmaComponentId": "1acdc092cfb399b0c33d1d6484c77ae58fe75242",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "messages",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "valueState",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Input Message Popover' component for native dimensions"
+    }
+  },
+  "Item": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "ListItem",
+    "textProperties": [
+      "key",
+      "text"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.ui.core.Item — sub-item primitive; composed by parents (Select, ComboBox, etc.). No direct render."
+      ]
+    }
+  },
+  "Label": {
+    "figmaComponentId": "b38ac753648ad298c1e2dd02d71417566dd6095c",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Typography",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Required": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "required"
+      },
+      "Display Only": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "displayOnly"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "required"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto height; fits parent width when inside Form."
+    }
+  },
+  "Legend": {
+    "figmaComponentId": "f63dd9489c7cec0c2af11da655c58e86cee54771",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "items",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "orientation",
+        "type": "variant",
+        "default": "Horizontal"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Legend' component for native dimensions"
+    }
+  },
+  "Link": {
+    "figmaComponentId": "2e67b5399e9f05950c6f6ea6f244a1a9736c8a56",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Visited",
+          "Disabled"
+        ],
+        "default": "Regular"
+      },
+      "Subtle": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "subtle"
+      },
+      "Emphasized": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "emphasized"
+      }
+    },
+    "textProperties": [
+      "text",
+      "href",
+      "target"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Visited",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width."
+    }
+  },
+  "List": {
+    "figmaComponentId": "4fb0a3e2fc56fb58d9904d68eb4ac58b9fb1bd25",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Mode": {
+        "values": [
+          "None",
+          "SingleSelect",
+          "MultiSelect",
+          "Delete"
+        ],
+        "default": "None",
+        "ui5Property": "mode"
+      }
+    },
+    "textProperties": [
+      "noDataText"
+    ],
+    "otherProperties": [
+      {
+        "name": "mode",
+        "type": "variant",
+        "default": "None"
+      },
+      {
+        "name": "showSeparators",
+        "type": "variant",
+        "default": "All"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "live-text-node",
+      "sizingConstraints": "Full width. Item height varies by type (48px–96px).",
+      "knownIssues": [
+        "SAP List instance shows \"List Header / Group Header / List Item\" demo. Use flat StandardListItem for custom data."
+      ]
+    }
+  },
+  "ListItem": {
+    "figmaComponentId": "f7bc6526a9f16608747a4141800146ebd3f4e835",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "ListItem",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description",
+      "icon"
+    ],
+    "booleanProperties": [
+      "selected"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Active"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'List Item' component for native dimensions"
+    }
+  },
+  "MaskInput": {
+    "figmaComponentId": "alias:MaskedInput",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "textProperties": [
+      "value",
+      "mask",
+      "placeholderSymbol",
+      "placeholder"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "Legacy naming; alias to MaskedInput registry entry."
+      ]
+    }
+  },
+  "MaskedInput": {
+    "figmaComponentId": "alias:Input",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Menu": {
+    "figmaComponentId": "ba51eb54cba79d6795057e5df5ff853d361ee799",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Popup",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover"
+        ],
+        "default": "Regular"
+      }
+    },
+    "booleanProperties": [
+      "showTitle"
+    ],
+    "otherProperties": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": ""
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto-sized to widest MenuListItem. Positioned by opener (MenuButton)."
+    }
+  },
+  "MenuButton": {
+    "figmaComponentId": "1d667088d93c355c2bd9bafac57147286206e799",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Type": {
+        "values": [
+          "Default",
+          "Emphasized",
+          "Transparent"
+        ],
+        "default": "Default",
+        "ui5Property": "type"
+      },
+      "Button Mode": {
+        "values": [
+          "Regular",
+          "Split"
+        ],
+        "default": "Regular",
+        "ui5Property": "buttonMode"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "iconProperties": [
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width; height 26px Compact / 36px Cozy."
+    }
+  },
+  "MenuListItem": {
+    "figmaComponentId": "689013924aedb868b8d65be6f249643d45e00a44",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List Item",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      },
+      "Selected": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "selected"
+      }
+    },
+    "booleanProperties": [
+      "hasSubmenu"
+    ],
+    "otherProperties": [
+      {
+        "name": "text",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "icon",
+        "type": "URI",
+        "default": ""
+      },
+      {
+        "name": "shortcut",
+        "type": "string",
+        "default": ""
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled",
+      "Selected"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Full width of parent Menu. Height ~32px Compact / ~44px Cozy."
+    }
+  },
+  "MessageBox": {
+    "figmaComponentId": "alias:Dialog",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "MessagePopover": {
+    "figmaComponentId": "alias:Popover",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "MessagePopoverItem": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "ListItem",
+    "textProperties": [
+      "key",
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Error"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.MessagePopoverItem — composed by MessagePopover parent. No direct render."
+      ]
+    }
+  },
+  "MessageStrip": {
+    "figmaComponentId": "f0e77f8888796e35c0e791ddc0b38535eda6ec31",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Type": {
+        "values": [
+          "Information",
+          "Positive",
+          "Warning",
+          "Error"
+        ],
+        "default": "Information",
+        "ui5Property": "type"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Show Icon": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True",
+        "ui5Property": "showIcon"
+      },
+      "Show Close Button": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "showCloseButton"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Information"
+      }
+    ],
+    "supportedStates": [
+      "Information",
+      "Positive",
+      "Warning",
+      "Error"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Full width of parent."
+    }
+  },
+  "MessageToast": {
+    "figmaComponentId": "alias:Toast",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "MultiComboBox": {
+    "figmaComponentId": "cc0631141a7083096632c6161ee15448ced39ec3",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning",
+          "Success",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "placeholder",
+      "selectedKeys"
+    ],
+    "booleanProperties": [
+      "showSelectAll"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "256px default, resizable."
+    }
+  },
+  "MultiInput": {
+    "figmaComponentId": "1dac6b2be28e60c6ff7a5752182d97f5033d3fc8",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning",
+          "Success",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "placeholder"
+    ],
+    "booleanProperties": [
+      "enableMultiLineMode"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "256px default, grows with tokens."
+    }
+  },
+  "NavigationItem": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Type": {
+        "values": [
+          "Navigation Item",
+          "Child Item"
+        ],
+        "default": "Navigation Item"
+      },
+      "Selected": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False"
+      },
+      "Expanded": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "Nav Item",
+      "Child Item"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Selected",
+      "Focused"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Height 32px. Full width of parent SideNavigation."
+    }
+  },
+  "NoNotifications": {
+    "figmaComponentId": "10a5a1ec70cdc2a5979563f9021c49d2363fb6d6",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "EmptyState",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "illustrationSize",
+        "type": "variant",
+        "default": "Spot"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'No Notifications' component for native dimensions"
+    }
+  },
+  "NotificationBanner": {
+    "figmaComponentId": "aa8ef403a7c765acf86d2e6fc887a6cb496a3371",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "booleanProperties": [
+      "showCloseButton"
+    ],
+    "otherProperties": [
+      {
+        "name": "type",
+        "type": "variant",
+        "default": "Standard"
+      }
+    ],
+    "supportedStates": [
+      "Information",
+      "Success",
+      "Warning",
+      "Error"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Notification Banner' component for native dimensions"
+    }
+  },
+  "NotificationListItem": {
+    "figmaComponentId": "6fe89ae5f6a512bebad2f9737ed134bccac1faed",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description",
+      "datetime",
+      "authorName"
+    ],
+    "booleanProperties": [
+      "unread"
+    ],
+    "otherProperties": [
+      {
+        "name": "priority",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "default",
+      "unread",
+      "read"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Notification List Item' component for native dimensions"
+    }
+  },
+  "Notifications": {
+    "figmaComponentId": "af1b29be8db435ed790d87721cff4d7efe2217bd",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "booleanProperties": [
+      "showBadge"
+    ],
+    "otherProperties": [
+      {
+        "name": "badgeCount",
+        "type": "number",
+        "default": 0
+      }
+    ],
+    "supportedStates": [
+      "default",
+      "unread",
+      "withBadge"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Notifications' component for native dimensions"
+    }
+  },
+  "ObjectAttribute": {
+    "figmaComponentId": "080ead216322befe153704bf8f11373158fea34a",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Object Display",
+    "variantProperties": {
+      "Type": {
+        "values": [
+          "Standard",
+          "Active"
+        ],
+        "default": "Standard"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "text"
+    ],
+    "booleanProperties": [
+      "active"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ObjectHeader": {
+    "figmaComponentId": "alias:ObjectPageHeader",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Responsive": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "responsive"
+      }
+    },
+    "booleanProperties": [
+      "responsive"
+    ],
+    "otherProperties": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "intro",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "number",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "numberUnit",
+        "type": "string",
+        "default": ""
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Full-width banner. Title + intro + number + numberUnit stacked vertically.",
+      "knownIssues": [
+        "ObjectHeader is a legacy sap.m component superseded by ObjectPageHeader in Fiori 2+. Plugin aliases ObjectHeader → ObjectPageHeader (same visual container, richer variant support)."
+      ]
+    }
+  },
+  "ObjectIdentifier": {
+    "figmaComponentId": "8e1e45c5a89b540f6ec53542279c7711d4020d81",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Title Active": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "titleActive"
+      }
+    },
+    "textProperties": [
+      "title",
+      "text"
+    ],
+    "booleanProperties": [
+      "titleActive"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Fits row height."
+    }
+  },
+  "ObjectListItem": {
+    "figmaComponentId": "composed:ObjectIdentifier+ObjectStatus",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List Item",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ObjectMarker": {
+    "figmaComponentId": "composed:MessageStrip-styled",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Object Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ObjectNumber": {
+    "figmaComponentId": "7b67d22ed19f246b708dc4664808a45f314a7414",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "State": {
+        "values": [
+          "None",
+          "Success",
+          "Warning",
+          "Error",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "state"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Emphasized": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True",
+        "ui5Property": "emphasized"
+      }
+    },
+    "textProperties": [
+      "number",
+      "unit"
+    ],
+    "otherProperties": [
+      {
+        "name": "state",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "None",
+      "Success",
+      "Warning",
+      "Error",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width."
+    }
+  },
+  "ObjectPageHeader": {
+    "figmaComponentId": "alias:DynamicPageHeader",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ObjectPageLayout": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page",
+    "booleanProperties": [
+      "showFooter",
+      "upperCaseAnchorBar",
+      "useIconTabBar"
+    ],
+    "otherProperties": [
+      {
+        "name": "backgroundDesignAnchorBar",
+        "type": "variant",
+        "default": "Solid"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "not-injectable",
+      "sizingConstraints": "Full viewport.",
+      "knownIssues": [
+        "Plugin uses SKIP_SELF — recurses into sections."
+      ]
+    }
+  },
+  "ObjectPageSection": {
+    "figmaComponentId": "alias:Panel",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ObjectPageSubSection": {
+    "figmaComponentId": "alias:Panel",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ObjectStatus": {
+    "figmaComponentId": "748d609ead5d4a246d7cd7c144b94b518c467e58",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Status",
+    "variantProperties": {
+      "Semantic": {
+        "values": [
+          "None",
+          "Information",
+          "Success",
+          "Warning",
+          "Error"
+        ],
+        "default": "None",
+        "ui5Property": "state"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Show Icon": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True",
+        "ui5Property": "showStateIcon"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "inverted"
+    ],
+    "iconProperties": [
+      "icon"
+    ],
+    "otherProperties": [
+      {
+        "name": "state",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "None",
+      "Information",
+      "Success",
+      "Warning",
+      "Error"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width."
+    }
+  },
+  "OverflowToolbar": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "width"
+    ],
+    "booleanProperties": [
+      "active",
+      "enabled",
+      "visible"
+    ],
+    "otherProperties": [
+      {
+        "name": "design",
+        "type": "enum",
+        "default": "Auto"
+      },
+      {
+        "name": "style",
+        "type": "enum",
+        "default": "Standard"
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "title-via-Title-child",
+      "sizingConstraints": "Full width of parent container by default. Height auto-fits to tallest child.",
+      "knownIssues": [
+        "Plugin renders OverflowToolbar as a horizontal AutoLayout frame (gap=8, padding=8/16) with children placed in declared order. ToolbarSpacer becomes a layoutGrow=1 spacer. Overflow-into-More-menu behavior is not visual-only in Figma — show the inline actions and represent overflow as an IconButton with the 'overflow' icon at the right edge."
+      ]
+    }
+  },
+  "Page": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "textProperties": [
+      "width",
+      "height"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.Page — page wrapper with header/footer. Rendered by plugin's page-layout logic."
+      ]
+    }
+  },
+  "Panel": {
+    "figmaComponentId": "4d19c2a24896033fe5b04bcc5dfdf43e9626283d",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Expandable": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False",
+        "ui5Property": "expandable"
+      },
+      "Expanded": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True",
+        "ui5Property": "expanded"
+      }
+    },
+    "textProperties": [
+      "headerText"
+    ],
+    "booleanProperties": [
+      "expandable",
+      "expanded"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Expanded",
+      "Collapsed"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width fills parent. Height hugs content.",
+      "knownIssues": [
+        "SAP Panel content slot cannot be filled via Plugin API — plugin places Panel as opaque or replaces with content."
+      ]
+    }
+  },
+  "Popover": {
+    "figmaComponentId": "5f472d6482ed33c9967694fa411c675e3b214d39",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Overlay",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ProductSwitch": {
+    "figmaComponentId": "22a7c83b19c183e92577ec43dd01eaa188739cd9",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Shell",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "products",
+        "type": "aggregation",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Product Switch' component for native dimensions"
+    }
+  },
+  "ProgressIndicator": {
+    "figmaComponentId": "c355f86d77c4e5a8aa2366b83179896f7d172462",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ProgressStep": {
+    "figmaComponentId": "composed:Wizard-child",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Feedback",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "QuickView": {
+    "figmaComponentId": "alias:Popover",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Overlay",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "RadioButton": {
+    "figmaComponentId": "9308f27ef27fbb28bc7d167c52494aa41a21610f",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Selection",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Selected": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "False"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "text",
+      "groupName"
+    ],
+    "booleanProperties": [
+      "selected"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "Error",
+      "Warning"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "16×16px circle + label."
+    }
+  },
+  "RadioButtonGroup": {
+    "figmaComponentId": "composed:RadioButton[]",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "RangeSlider": {
+    "figmaComponentId": "34d973fcb4c85d6517c8e5c3079e2b40d14d0fe8",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "startValue",
+      "endValue",
+      "min",
+      "max"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Full width of container."
+    }
+  },
+  "RatingIndicator": {
+    "figmaComponentId": "4e75dd8968be7061ba703e3f5fb4364b558acb04",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "Readonly"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "iconSize"
+    ],
+    "booleanProperties": [
+      "editable"
+    ],
+    "otherProperties": [
+      {
+        "name": "value",
+        "type": "number",
+        "default": 0
+      },
+      {
+        "name": "maxValue",
+        "type": "number",
+        "default": 5
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "Readonly"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "5 stars at 16px = ~112px native. Editable adds ~16px hover halo. Do not force width < 96px."
+    }
+  },
+  "ResponsiveTable": {
+    "figmaComponentId": "alias:Table",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Data Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Scrollbar": {
+    "figmaComponentId": "ccf83f17bfdbce52e81e61d775c4eed5d41b2258",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "orientation",
+        "type": "variant",
+        "default": "Vertical"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Scrollbar' component for native dimensions"
+    }
+  },
+  "SearchField": {
+    "figmaComponentId": "alias:Input",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "Read Only"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "placeholder",
+      "value"
+    ],
+    "booleanProperties": [
+      "showSearch",
+      "showRefresh"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "Read Only"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "SegmentedButton": {
+    "figmaComponentId": "308476a5285b5a132241dc1c118d09ecf8d82273",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "SegmentedButtonItem": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "ListItem",
+    "textProperties": [
+      "key",
+      "text",
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.SegmentedButtonItem — composed by SegmentedButton parent. No direct render."
+      ]
+    }
+  },
+  "Select": {
+    "figmaComponentId": "5ce369ff7fb0cce28984eec8dd9973ccde82facb",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning",
+          "Success",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "selectedKey",
+      "selectedItemId"
+    ],
+    "booleanProperties": [
+      "enabled"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Default 256px wide; resize via instance.resize()."
+    }
+  },
+  "ShellBar": {
+    "figmaComponentId": "169cfd74c0be329c56b4c79b9404c978ff10cb60",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Shell",
+    "variantProperties": {
+      "Size": {
+        "values": [
+          "XL",
+          "L",
+          "M",
+          "S"
+        ],
+        "default": "XL"
+      },
+      "Hamburger": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True"
+      }
+    },
+    "textProperties": [
+      "title",
+      "secondaryTitle"
+    ],
+    "booleanProperties": [
+      "showCopilot",
+      "showSearch"
+    ],
+    "iconProperties": [
+      "homeIcon"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Always full viewport width. Height fixed at 52px. Use FILL horizontal sizing after appendChild.",
+      "knownIssues": [
+        "secondaryTitle property may not be exposed in current Figma kit — verify per library version"
+      ]
+    }
+  },
+  "ShellSearch": {
+    "figmaComponentId": "e60b0ec134635c92ca558125083fe11242997e98",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Shell",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "placeholder"
+    ],
+    "booleanProperties": [
+      "showSearchButton"
+    ],
+    "otherProperties": [
+      {
+        "name": "maxLength",
+        "type": "number",
+        "default": 0
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Shell Search' component for native dimensions"
+    }
+  },
+  "SideNavigation": {
+    "figmaComponentId": "d680af6d72f9421fe3f8712bf0ce171308963d3a",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Type": {
+        "values": [
+          "Expanded",
+          "Collapsed"
+        ],
+        "default": "Expanded"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Hamburger": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True"
+      }
+    },
+    "booleanProperties": [
+      "collapsed"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width 224–256px Expanded, 48px Collapsed. Height fills parent column.",
+      "knownIssues": [
+        "layoutSizingHorizontal=FILL must be set AFTER appendChild to sidebar column"
+      ]
+    }
+  },
+  "SimpleForm": {
+    "figmaComponentId": "alias:Form",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Forms",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Slider": {
+    "figmaComponentId": "ee3b9995f1484c6d008bbac9dba2bd8a0026c160",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "value",
+      "min",
+      "max",
+      "step"
+    ],
+    "booleanProperties": [
+      "showHandleTooltip"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Full width of container."
+    }
+  },
+  "SplitButton": {
+    "figmaComponentId": "8aba512152f89d81e9c9b804d8da3114b1a83a93",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Type": {
+        "values": [
+          "Default",
+          "Emphasized",
+          "Attention",
+          "Accept",
+          "Reject",
+          "Transparent",
+          "Ghost"
+        ],
+        "default": "Default",
+        "ui5Property": "type"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "booleanProperties": [
+      "enabled"
+    ],
+    "otherProperties": [
+      {
+        "name": "text",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "icon",
+        "type": "URI",
+        "default": ""
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "default": "Default"
+      }
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width hugs text + arrow. Height ~26px Compact / ~36px Cozy."
+    }
+  },
+  "StandardListItem": {
+    "figmaComponentId": "f7bc6526a9f16608747a4141800146ebd3f4e835",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "List",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Type": {
+        "values": [
+          "Inactive",
+          "Active",
+          "Navigation",
+          "Detail"
+        ],
+        "default": "Inactive",
+        "ui5Property": "type"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description",
+      "info"
+    ],
+    "iconProperties": [
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Selected",
+      "Focused"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Height 48px Compact / 64px Cozy."
+    }
+  },
+  "StepInput": {
+    "figmaComponentId": "69f0f7acf68766ac89890d0c119f64bfd50e693a",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "value",
+      "min",
+      "max",
+      "step"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "120px default."
+    }
+  },
+  "Switch": {
+    "figmaComponentId": "c63509f642cdabbeb8c1878dd125ee006481631c",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Selection",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "State": {
+        "values": [
+          "On",
+          "Off"
+        ],
+        "default": "Off"
+      },
+      "Type": {
+        "values": [
+          "Default",
+          "AcceptReject"
+        ],
+        "default": "Default",
+        "ui5Property": "type"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "customTextOn",
+      "customTextOff"
+    ],
+    "booleanProperties": [
+      "state"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "52×24px Compact / 60×32px Cozy."
+    }
+  },
+  "Table": {
+    "figmaComponentId": "03ea321822c4e99c27de4d9c2524bdec9c6e0972",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Table",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Mode": {
+        "values": [
+          "None",
+          "SingleSelect",
+          "SingleSelectMaster",
+          "MultiSelect",
+          "Delete"
+        ],
+        "default": "None",
+        "ui5Property": "mode"
+      },
+      "Show No Data": {
+        "values": [
+          "True",
+          "False"
+        ],
+        "default": "True",
+        "ui5Property": "showNoData"
+      }
+    },
+    "textProperties": [
+      "noDataText"
+    ],
+    "booleanProperties": [
+      "fixedLayout"
+    ],
+    "otherProperties": [
+      {
+        "name": "mode",
+        "type": "variant",
+        "default": "None"
+      },
+      {
+        "name": "sticky",
+        "type": "variant",
+        "default": ""
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "live-text-node",
+      "sizingConstraints": "Full width of content area. Header 32px, row 48px Compact / 64px Cozy.",
+      "knownIssues": [
+        "SAP Table instance shows \"Sales Orders (15)\" demo content that cannot be overridden. Use Ref79TableRow native renderer for custom data."
+      ]
+    }
+  },
+  "TableCell": {
+    "figmaComponentId": "e717737e98a40a8619e315ca1b4b04646b93b541",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Table",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "otherProperties": [
+      {
+        "name": "valueState",
+        "type": "variant",
+        "default": "None"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Table Cell' component for native dimensions"
+    }
+  },
+  "Tabs": {
+    "figmaComponentId": "32b02147dfb27790749b83fe3c8b6e01975dab4e",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Navigation",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Tag": {
+    "figmaComponentId": "9b55bf702befd73b2e28f800ee4d0033bc0e0e95",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Display",
+    "variantProperties": {
+      "Color Scheme": {
+        "values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "default": "1",
+        "ui5Property": "colorScheme"
+      },
+      "Design": {
+        "values": [
+          "Default",
+          "Set 2"
+        ],
+        "default": "Default",
+        "ui5Property": "design"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "iconProperties": [
+      "icon"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Auto width by text."
+    }
+  },
+  "Text": {
+    "figmaComponentId": "native:text",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Typography",
+    "variantProperties": {
+      "Weight": {
+        "values": [
+          "Regular",
+          "Medium",
+          "Bold"
+        ],
+        "default": "Regular"
+      },
+      "Size": {
+        "values": [
+          "xs",
+          "sm",
+          "md",
+          "lg"
+        ],
+        "default": "md"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "wrapping"
+    ],
+    "otherProperties": [
+      {
+        "name": "maxLines",
+        "type": "number",
+        "default": null
+      },
+      {
+        "name": "textAlign",
+        "type": "enum",
+        "default": "Begin"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "TextArea": {
+    "figmaComponentId": "bee4738dd5e5856a3b88eae341b47376a3269d87",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      },
+      "Value State": {
+        "values": [
+          "None",
+          "Error",
+          "Warning",
+          "Success",
+          "Information"
+        ],
+        "default": "None",
+        "ui5Property": "valueState"
+      }
+    },
+    "textProperties": [
+      "value",
+      "placeholder",
+      "rows",
+      "maxLength"
+    ],
+    "booleanProperties": [
+      "growing"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success",
+      "Information"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "Width fills container; height by rows."
+    }
+  },
+  "TimePicker": {
+    "figmaComponentId": "f07044ee64f4abfc857543051806986d49a54b68",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Disabled",
+          "ReadOnly"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "placeholder",
+      "value"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Disabled",
+      "ReadOnly",
+      "Error",
+      "Warning",
+      "Success"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "160px default."
+    }
+  },
+  "Timeline": {
+    "figmaComponentId": "ccfde6024cdc9d35a75755a5c070b062e75d714a",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Data Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "TimelineItem": {
+    "figmaComponentId": "composed:Timeline-child",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Data Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Title": {
+    "figmaComponentId": "alias:Label",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Typography",
+    "variantProperties": {
+      "Level": {
+        "values": [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H5",
+          "H6",
+          "Auto"
+        ],
+        "default": "Auto",
+        "ui5Property": "level"
+      },
+      "TitleStyle": {
+        "values": [
+          "Auto",
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H5",
+          "H6"
+        ],
+        "default": "Auto",
+        "ui5Property": "titleStyle"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "booleanProperties": [
+      "wrapping"
+    ],
+    "otherProperties": [
+      {
+        "name": "wrappingType",
+        "type": "enum",
+        "default": "Normal"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ToggleButton": {
+    "figmaComponentId": "2e756084e95280f469617b07a64ea44a0b2415fa",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Button",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Token": {
+    "figmaComponentId": "5664972429518d07040a3cadfa2d5a28cf19b8a7",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Tokenizer": {
+    "figmaComponentId": "da76d0413ed1f1f40d6f23e7732c9aca0b17ef5b",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Input",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "Toolbar": {
+    "figmaComponentId": "58a258bf5813e59cec4dfc684c8cdb2a6ca6721f",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Container",
+    "variantProperties": {
+      "Style": {
+        "values": [
+          "Standard",
+          "Clear",
+          "Info"
+        ],
+        "default": "Standard",
+        "ui5Property": "style"
+      },
+      "Design": {
+        "values": [
+          "Solid",
+          "Transparent",
+          "Auto"
+        ],
+        "default": "Auto",
+        "ui5Property": "design"
+      },
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "height",
+      "width"
+    ],
+    "booleanProperties": [
+      "active",
+      "enabled"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "ToolbarItems": {
+    "figmaComponentId": "ad45e5bf267d83ee320902263db8887f71e97026",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "content",
+        "type": "aggregation",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Toolbar Items' component for native dimensions"
+    }
+  },
+  "ToolbarSpacer": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "textProperties": [
+      "width"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Not a real Figma component. Plugin sets layoutGrow=1 on the PREVIOUS sibling so it stretches, pushing subsequent siblings to the trailing edge.",
+      "knownIssues": [
+        "ToolbarSpacer is a plugin-side layout marker, not a SAP library component. It has no renderable Figma node — the effect is achieved by setting layoutGrow=1 on the previous sibling in the toolbar. See plugin code.js line ~2200."
+      ]
+    }
+  },
+  "Tree": {
+    "figmaComponentId": "93fca87e34305e0a8e036acdd51e7cdc870d4e0d",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Data Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "TreeItem": {
+    "figmaComponentId": "5142305385e26387daddd9af7b58a7da66a9f8fd",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Data Display",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "TwoMonthCalendar": {
+    "figmaComponentId": "ad5ce462d34460d73eda13cd7ea3e2677fc27048",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "DatePicker",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "otherProperties": [
+      {
+        "name": "selectedDates",
+        "type": "aggregation",
+        "default": []
+      },
+      {
+        "name": "disabledDates",
+        "type": "aggregation",
+        "default": []
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Two-Month Calendar' component for native dimensions"
+    }
+  },
+  "UnableToLoadImage": {
+    "figmaComponentId": "2fd55933a857129cecd41af651432c541ce466f5",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "EmptyState",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "title",
+      "description"
+    ],
+    "otherProperties": [
+      {
+        "name": "illustrationSize",
+        "type": "variant",
+        "default": "Spot"
+      }
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'Unable to Load Image' component for native dimensions"
+    }
+  },
+  "UserMenu": {
+    "figmaComponentId": "c9bbc83c501d55048df4f68df50d920a9e85002c",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Popup",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      }
+    },
+    "textProperties": [
+      "userName",
+      "userEmail",
+      "avatarSrc"
+    ],
+    "booleanProperties": [
+      "showManagementActions"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "setProperties",
+      "sizingConstraints": "See SAP kit 'User Menu' component for native dimensions"
+    }
+  },
+  "VBox": {
+    "figmaComponentId": null,
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Layout",
+    "textProperties": [
+      "width",
+      "height"
+    ],
+    "supportedStates": [
+      "Regular"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": "none",
+      "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+      "knownIssues": [
+        "sap.m.VBox — vertical layout primitive. Handled by plugin's LAYOUT_CONTAINERS set (flat-walked)."
+      ]
+    }
+  },
+  "Wizard": {
+    "figmaComponentId": "a1a11b0486b9b7e748ae57ff032d4d43bdd1389a",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  },
+  "WizardStep": {
+    "figmaComponentId": "composed:Wizard-child",
+    "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+    "componentCategory": "Page Layout",
+    "variantProperties": {
+      "Form Factor": {
+        "values": [
+          "Compact",
+          "Cozy"
+        ],
+        "default": "Compact"
+      },
+      "Interaction State": {
+        "values": [
+          "Regular",
+          "Hover",
+          "Focused",
+          "Active",
+          "Disabled"
+        ],
+        "default": "Regular"
+      }
+    },
+    "textProperties": [
+      "text"
+    ],
+    "supportedStates": [
+      "Regular",
+      "Hover",
+      "Focused",
+      "Active",
+      "Disabled"
+    ],
+    "pluginNotes": {
+      "textInjectionMethod": null,
+      "sizingConstraints": null
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "componentName": "HomepageHeroBanner",
+  "slug": "home-page",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/home-page/",
+  "purpose": "A large hero banner at the top of a home page or launchpad. Communicates brand identity, primary welcome message, and optional call-to-action. Usually spans full width with a background image and prominent typography.",
+  "whenToUse": [
+    "Landing page for a role-based SAP app",
+    "Fiori Launchpad home tile with welcome content",
+    "Marketing-style intro to a business flow",
+    "Brand-forward first-impression pages"
+  ],
+  "whenNotToUse": [
+    "On task-focused screens — use a plain DynamicPageTitle",
+    "For a small header — use ShellBar's brand area",
+    "For product cards — use Card or GenericTile",
+    "Inside dialogs or popovers — too much visual weight"
+  ],
+  "doRules": [
+    "Keep title short (≤ 60 chars) and easy to scan",
+    "Include a clear call-to-action button when there is a primary next step",
+    "Use a background image that reinforces the brand or context",
+    "Ensure title contrast against background image (dark overlay if needed)"
+  ],
+  "dontRules": [
+    "Do not use hero banner on every page — reserve for landings",
+    "Do not put critical actions here alone — repeat them elsewhere",
+    "Do not omit the overlay if background image is busy — text won't read",
+    "Do not use for status messages or errors"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of home / landing page, below ShellBar",
+    "sizing": "Height 240–320px desktop, 180px mobile; full width",
+    "spacing": "48px internal padding",
+    "alignment": "Title + subtitle + CTA left-aligned or centered"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 60 chars; subtitle ≤ 140 chars",
+    "contentRules": "Title is welcome/orientation; subtitle offers context; CTA is verb-first",
+    "examples": ["Welcome, Nadia — your dashboard is ready", "Get started with Purchase Orders — Create new PO ▸"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full hero with image + text + CTA",
+    "L": "Full hero",
+    "M": "Reduced height, image may crop",
+    "S": "Title + CTA only, image may hide or be simplified"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.4.3 Contrast (Level AA)", "WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "Title contrast against background ≥ 4.5:1 (add overlay if needed)",
+      "Background image has alt='' (decorative) or descriptive alt",
+      "H1 semantic role for the title",
+      "CTA button clearly labeled with the destination action"
+    ]
+  },
+  "patterns": ["Fiori Launchpad landing", "Initial Page floorplan", "Product marketing home"],
+  "compatibility": {
+    "allowedWith": ["DynamicPage (as first child)", "Page (as first child)"],
+    "forbiddenWith": ["Dialog", "Popover", "Panel", "Card"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

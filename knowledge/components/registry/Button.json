@@ -1,0 +1,216 @@
+{
+  "componentName": "Button",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "91805fa199b1fd247d76a9c08bbe0982b49065c4",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Default",
+        "Emphasized",
+        "Accept",
+        "Reject",
+        "Negative",
+        "Critical",
+        "Success",
+        "Attention",
+        "Transparent",
+        "Ghost",
+        "Unstyled",
+        "Back",
+        "Up",
+        "Neutral"
+      ],
+      "default": "Default"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "icon",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "iconFirst",
+      "ui5Name": "iconFirst",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "enabled",
+      "ui5Name": "enabled",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "label-emphasized",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    },
+    {
+      "role": "label-default",
+      "fontFamily": "72",
+      "fontStyle": "Semibold Duplex",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/SemiboldDuplex"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Emphasized",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "text",
+      "state": "Emphasized",
+      "token": "sapButton_Emphasized_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text",
+      "state": "Transparent",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text-to-background contrast \u2265 4.5:1 (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min touch target 32px (Compact) / 44px (Cozy)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Icon-only buttons MUST have accessible label via tooltip or aria-label"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator required"
+    }
+  ],
+  "doRules": [
+    "Use Emphasized type for the single primary action per screen",
+    "Pair an icon with a label for clarity when the icon is not universally recognized",
+    "Keep button labels short and action-oriented (verb-first)"
+  ],
+  "dontRules": [
+    "Do not use multiple Emphasized buttons in one toolbar \u2014 confuses primary intent",
+    "Do not use vague labels like 'OK', 'Click here', 'Submit' when more specific text fits",
+    "Do not use a Button when a Link is more appropriate (navigation vs action)"
+  ],
+  "compatibleComponents": [
+    "Toolbar",
+    "OverflowToolbar",
+    "Dialog",
+    "Form",
+    "Panel",
+    "MenuButton"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells at small sizes \u2014 use Link or IconButton instead",
+    "Stacked vertically when horizontal toolbar layout applies"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/button/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Button",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Button",
+  "sampleUrls": [
+    "https://sapui5.hana.ondemand.com/#/entity/sap.m.Button/sample/sap.m.sample.Button"
+  ],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width auto-grows with text; height 26px (Compact) / 36px (Cozy)",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Wizard",
+      "WizardStep",
+      "Timeline",
+      "TimelineItem",
+      "Carousel",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton",
+      "ToolbarSpacer",
+      "SearchField",
+      "Input"
+    ]
+  }
+}

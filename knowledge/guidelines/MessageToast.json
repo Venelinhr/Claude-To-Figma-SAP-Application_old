@@ -1,0 +1,65 @@
+{
+  "componentName": "MessageToast",
+  "slug": "message-toast",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/message-toast/",
+  "purpose": "Transient bottom-of-screen toast notification. Auto-dismisses after a few seconds. Non-blocking.",
+  "whenToUse": [
+    "Successful save confirmation",
+    "Background action completed",
+    "Non-critical info that does not block workflow"
+  ],
+  "whenNotToUse": [
+    "Critical errors \u2014 use MessageBox",
+    "Validation feedback \u2014 use MessageStrip",
+    "Permanent status \u2014 use ObjectStatus"
+  ],
+  "doRules": [
+    "Use short messages (5-10 words)",
+    "Position bottom-center by default",
+    "Set duration 3-5 seconds",
+    "Make dismissible by tap"
+  ],
+  "dontRules": [
+    "Do not use MessageToast for critical info",
+    "Do not stack multiple MessageToasts simultaneously",
+    "Do not include actions (use MessageStrip)"
+  ],
+  "layoutGuidance": {
+    "placement": "Place MessageToast inside a compatible container (Anywhere \u2014 appears as overlay).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for feedback.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Anywhere \u2014 appears as overlay"
+  ],
+  "compatibility": [
+    "Anywhere \u2014 appears as overlay"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

@@ -1,0 +1,67 @@
+{
+  "componentName": "ProgressStep",
+  "slug": "progress-step",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/progress-step/",
+  "purpose": "Single visual progress step in a horizontal sequence. Used to show position in a multi-step flow without the full Wizard layout.",
+  "whenToUse": [
+    "Top-of-page progress for a multi-step flow",
+    "Order tracking visualizations",
+    "Approval pipeline status"
+  ],
+  "whenNotToUse": [
+    "Loading progress (use ProgressIndicator)",
+    "Single-step status (use ObjectStatus)",
+    "For more than 7 steps \u2014 collapse"
+  ],
+  "doRules": [
+    "Mark exactly one as current",
+    "Number steps sequentially",
+    "Show step name below the circle"
+  ],
+  "dontRules": [
+    "Do not exceed 7 steps",
+    "Do not omit step labels"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ProgressStep inside a compatible container (Wizard, DynamicPage, Panel).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for feedback.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Wizard",
+    "Used inside DynamicPage",
+    "Used inside Panel"
+  ],
+  "compatibility": [
+    "Wizard",
+    "DynamicPage",
+    "Panel"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

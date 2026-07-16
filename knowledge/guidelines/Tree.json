@@ -1,0 +1,72 @@
+{
+  "componentName": "Tree",
+  "slug": "tree",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/tree/",
+  "purpose": "Hierarchical list of nested items. Displays parent-child relationships through indentation and expand/collapse affordances.",
+  "whenToUse": [
+    "Hierarchical data with arbitrary depth (file trees, org charts, category hierarchies)",
+    "Drill-down navigation in worklists",
+    "When list of items has parent-child relationships users need to expand/collapse"
+  ],
+  "whenNotToUse": [
+    "Flat lists \u2014 use List",
+    "Tabular data \u2014 use Table",
+    "Two-level hierarchy only \u2014 use grouped List with section headers",
+    "When user needs to compare attributes across items \u2014 use Table"
+  ],
+  "doRules": [
+    "Bind row text to sapList_TextColor",
+    "Limit indent to 4 levels max \u2014 beyond that, redesign as filtered list",
+    "Use a chevron icon for expandable nodes (rotates on expand)",
+    "Show expand/collapse state in the icon orientation"
+  ],
+  "dontRules": [
+    "Do not use Tree for non-hierarchical data",
+    "Do not nest Tree inside another Tree",
+    "Do not omit the expand/collapse affordance \u2014 users cannot discover nesting otherwise",
+    "Do not show more than ~200 visible nodes at once \u2014 virtualize or filter"
+  ],
+  "layoutGuidance": {
+    "placement": "Place Tree inside a compatible container (Panel, Dialog, DynamicPage).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid punctuation in short labels",
+      "Localize all text"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense or collapse \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern (Popover, Dialog) on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for data display \u2014 see SAP Fiori a11y docs.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used in Panel",
+    "Used in Dialog",
+    "Used in DynamicPage"
+  ],
+  "compatibility": [
+    "Panel",
+    "Dialog",
+    "DynamicPage",
+    "List"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

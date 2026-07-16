@@ -1,0 +1,165 @@
+{
+  "componentName": "NavigationItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [
+    {
+      "property": "Type",
+      "values": [
+        "Navigation Item",
+        "Child Item"
+      ],
+      "default": "Navigation Item"
+    },
+    {
+      "property": "Selected",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Expanded",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "Nav Item",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "Child Item",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Selected",
+    "Focused"
+  ],
+  "typographyRules": [
+    {
+      "role": "label-l0",
+      "fontFamily": "72",
+      "fontStyle": "Semibold Duplex",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/SemiboldDuplex"
+    },
+    {
+      "role": "label-l1",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "state": "Regular",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "background",
+      "state": "Selected",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#EBF8FF"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "border",
+      "state": "Selected",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Selected state contrast ≥ 4.5:1",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible 2px focus ring"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Every nav item must have text or aria-label"
+    }
+  ],
+  "doRules": [
+    "Use Semibold Duplex for top-level items, Regular for sub-items",
+    "Indicate current page with Selected variant — 3px left bar + tinted bg",
+    "Indent child items 24px under parent"
+  ],
+  "dontRules": [
+    "Do not change text color via direct override — use Selected variant",
+    "Do not add custom corner radius — use sapButton_BorderCornerRadius"
+  ],
+  "compatibleComponents": [
+    "SideNavigation"
+  ],
+  "incompatiblePatterns": [
+    "Standalone outside SideNavigation",
+    "Inside Toolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/navigationitem/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.NavigationItem",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.NavigationItem",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Height 32px. Full width of parent SideNavigation.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "SideNavigation",
+      "NavigationList",
+      "NavigationListItem",
+      "NavigationItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "NavigationItem",
+      "Text",
+      "Icon"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "NavigationItem"
+    ]
+  }
+}

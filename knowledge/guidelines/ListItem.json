@@ -1,0 +1,61 @@
+{
+  "componentName": "ListItem",
+  "slug": "list",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/list/",
+  "purpose": "The base class for all List row types (StandardListItem, ObjectListItem, ColumnListItem, ActionListItem, etc.). Rarely used directly — most consumers pick a specific subclass. Provides shared behavior (selection, actions, type=Active/Detail/Navigation).",
+  "whenToUse": [
+    "As a base for custom list-item variants that need shared List behavior",
+    "When you need highlight + press + selection semantics without a specific subclass",
+    "For minimal placeholder rows during load",
+    "For a generic clickable row where no other subclass fits"
+  ],
+  "whenNotToUse": [
+    "For a standard text row — use StandardListItem",
+    "For an object summary row — use ObjectListItem",
+    "For a table row — use ColumnListItem (inside Table)",
+    "For a menu action — use ActionListItem or MenuListItem"
+  ],
+  "doRules": [
+    "Prefer a specific subclass when one fits — better semantics + prebuilt layout",
+    "Set type=Active for clickable rows, Detail for view-detail, Navigation for drill-in",
+    "Support selection modes if the parent List has selectionMode configured",
+    "Use consistent height across list rows"
+  ],
+  "dontRules": [
+    "Do not build custom variants on top of ListItem if a specific subclass exists",
+    "Do not omit type — defaults to Inactive which is not clickable",
+    "Do not use for non-list contexts (Menu, Table cells)",
+    "Do not stack multiple actions inside without a clear primary"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside a List",
+    "sizing": "Height 32/48px compact/cozy for standard; varies by subclass",
+    "spacing": "8px horizontal padding",
+    "alignment": "Left-aligned content; navigation chevron right"
+  },
+  "contentGuidance": {
+    "labelLength": "Depends on subclass",
+    "contentRules": "Content and layout provided by subclasses",
+    "examples": ["Base row: text + navigation chevron"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full row",
+    "L": "Full row",
+    "M": "Full row",
+    "S": "Full row; may drop secondary content"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 2.5.5 Target Size (AAA)"],
+    "requirements": [
+      "role='listitem' (implicit)",
+      "aria-selected when list has selection",
+      "Focusable when type is Active / Detail / Navigation",
+      "Minimum 32px compact / 44px cozy tap target"
+    ]
+  },
+  "patterns": ["Custom list variants", "Base for ObjectListItem etc.", "Placeholder rows"],
+  "compatibility": {"allowedWith": ["List (parent only)"], "forbiddenWith": ["Toolbar", "Table body", "Standalone"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

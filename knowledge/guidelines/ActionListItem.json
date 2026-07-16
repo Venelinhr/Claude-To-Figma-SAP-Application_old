@@ -1,0 +1,65 @@
+{
+  "componentName": "ActionListItem",
+  "slug": "action-list-item",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/action-list-item/",
+  "purpose": "List row that triggers an action when tapped, instead of navigating to a detail page. Used in setting menus, command palettes, action lists.",
+  "whenToUse": [
+    "Settings menus that toggle modes or run actions",
+    "Quick-access action palettes",
+    "Sub-menu rows that fire an event rather than navigate"
+  ],
+  "whenNotToUse": [
+    "Navigation \u2014 use StandardListItem with arrow",
+    "Object summary \u2014 use ObjectListItem",
+    "Selection \u2014 use CheckBox list"
+  ],
+  "doRules": [
+    "Use verb-first labels (Action-oriented)",
+    "Add a leading icon for recognition",
+    "Bind label to sapList_TextColor or sapButton_TextColor if emphasized"
+  ],
+  "dontRules": [
+    "Do not use ActionListItem for navigation",
+    "Do not omit icons when icon-only ActionListItem siblings exist"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ActionListItem inside a compatible container (List, Popover).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for list item.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside List",
+    "Used inside Popover"
+  ],
+  "compatibility": [
+    "List",
+    "Popover"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

@@ -1,0 +1,64 @@
+{
+  "componentName": "ProductSwitch",
+  "slug": "product-switch",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/product-switch/",
+  "purpose": "A tile grid popover anchored to the ShellBar that lets users jump to other SAP products or apps. Shows product logos + names in a compact grid. Distinct from UserMenu (personal) and Notifications (alerts).",
+  "whenToUse": [
+    "As the app-switcher in ShellBar for SAP products (Cloud ERP, SuccessFactors, Ariba, etc.)",
+    "When users have multiple entitled products",
+    "For cross-product navigation in a multi-app landscape",
+    "As the 'waffle menu' pattern of the SAP shell"
+  ],
+  "whenNotToUse": [
+    "For in-app page navigation — use SideNavigation",
+    "For user account actions — use UserMenu",
+    "For notifications — use Notifications popover",
+    "For a small number of app links (< 4) — put them directly in ShellBar"
+  ],
+  "doRules": [
+    "Show product logos alongside names for scannability",
+    "Group products by category (Core / Add-ons / External) when the list is long",
+    "Highlight the current product visually",
+    "Support keyboard navigation across the grid"
+  ],
+  "dontRules": [
+    "Do not include non-SAP or non-entitled products",
+    "Do not use for a single product — omit the switch entirely",
+    "Do not put per-page actions inside — that belongs elsewhere",
+    "Do not exceed 20 products in the base view — paginate or search"
+  ],
+  "layoutGuidance": {
+    "placement": "Anchored to ShellBar (typically left of user avatar)",
+    "sizing": "Width 400–560px; grid of 3–4 columns; item ~120×120",
+    "spacing": "16px grid gap",
+    "alignment": "Icon top, label below, centered per cell"
+  },
+  "contentGuidance": {
+    "labelLength": "Product name ≤ 30 chars",
+    "contentRules": "Standardized product names; icons match brand marks",
+    "examples": ["SAP S/4HANA · SuccessFactors · Ariba · Concur"]
+  },
+  "responsiveBehavior": {
+    "XL": "3–4 column grid",
+    "L": "3 column grid",
+    "M": "2 column grid",
+    "S": "Full-height slide-in with 1-column list"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "Trigger has aria-label='Switch products'",
+      "Each tile has aria-label='Open [Product Name]'",
+      "Product logos have alt text (product name)",
+      "Keyboard: Arrow keys navigate grid; Enter selects; Escape closes"
+    ]
+  },
+  "patterns": ["Multi-product SAP landscape", "Fiori Launchpad app switcher"],
+  "compatibility": {
+    "allowedWith": ["ShellBar (as anchor)"],
+    "forbiddenWith": ["Standalone", "Inside other components"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

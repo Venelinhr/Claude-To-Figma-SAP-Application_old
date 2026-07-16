@@ -1,0 +1,119 @@
+{
+  "componentName": "TableCell",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "e717737e98a40a8619e315ca1b4b04646b93b541",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Table",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "valueState",
+      "ui5Name": "valueState",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "cell-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapList_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "border",
+      "token": "sapList_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    },
+    {
+      "role": "error-text",
+      "token": "sapNegativeTextColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "warning-text",
+      "token": "sapCriticalTextColor",
+      "fallbackHex": "#E76500"
+    },
+    {
+      "role": "success-text",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#107E3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use TableCell as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/table/)"
+  ],
+  "dontRules": [
+    "Do not use TableCell outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/table/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Table Cell' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "ColumnListItem",
+      "SapTableRow",
+      "Table",
+      "Column"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

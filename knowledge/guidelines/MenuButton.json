@@ -1,0 +1,94 @@
+{
+  "componentName": "MenuButton",
+  "slug": "menu-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/menu-button/",
+  "purpose": "A button that opens a menu of related actions when clicked. Supports Regular mode (entire button opens menu) or Split mode (text fires default action, arrow opens menu).",
+  "whenToUse": [
+    "When 2+ related actions can be grouped under one trigger",
+    "For \"Add\" with multiple type options (Add API, Add Flow, etc.)",
+    "For \"Actions\" with bulk operations",
+    "In Split mode when one action is more common than others"
+  ],
+  "whenNotToUse": [
+    "When fewer than 2 menu items exist \u2014 use Button",
+    "For navigation \u2014 use Link",
+    "When actions are unrelated"
+  ],
+  "doRules": [
+    "Use Split mode when default action is common (e.g. \"Save\" + \"Save and Close\")",
+    "Use Regular mode for \"Add\", \"Actions\", \"More\" menus",
+    "Show \u25be arrow to indicate menu",
+    "Group related menu items together"
+  ],
+  "dontRules": [
+    "Do not use MenuButton when fewer than 2 menu items exist",
+    "Do not nest MenuButton inside MenuButton",
+    "Do not use long menu items (keep under 30 chars)"
+  ],
+  "layoutGuidance": {
+    "placement": "In toolbars, page actions.",
+    "sizing": "Auto width; height 26px Compact / 36px Cozy.",
+    "spacing": "8px gap to adjacent buttons.",
+    "alignment": "Menu opens below or above based on viewport space."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20132 words on the button; menu items max 30 chars.",
+    "contentRules": [
+      "Button text describes menu purpose",
+      "Menu items are specific actions"
+    ],
+    "examples": [
+      "Add \u25be",
+      "Actions \u25be",
+      "More \u25be"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full button + menu",
+    "L": "Full button + menu",
+    "M": "Full button + menu",
+    "S": "May collapse to icon-only on tight viewports"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter/Space opens menu; arrow keys navigate items; Escape closes",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Button text describes the menu purpose; menu items have accessible names",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Focus stays on trigger when menu opens; moves to first item on arrow down",
+      "wcag": "2.4.3 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "aria-haspopup and aria-expanded states announced"
+    }
+  ],
+  "patterns": [
+    "Bulk action menu",
+    "Add menu",
+    "Split action"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Toolbar",
+      "OverflowToolbar",
+      "Menu"
+    ],
+    "incompatible": [
+      "Inside table cell",
+      "Inside form field"
+    ]
+  },
+  "exceptions": [
+    "Use SplitButton component (not MenuButton) when default action and dropdown share the same icon"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

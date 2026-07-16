@@ -1,0 +1,3704 @@
+{
+  "_meta": {
+    "description": "Composition rules for every SAP component: validParents, validChildren, slots, mustInclude, mustExclude. Generated from knowledge/components/registry/*.json. Do NOT edit manually.",
+    "source": "knowledge/components/registry/*.json",
+    "generated": "2026-07-13",
+    "components": 152
+  },
+  "AIButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  },
+  "AIInput": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  },
+  "AIMenuButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  },
+  "AIPromptInput": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  },
+  "AIRichTextEditor": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  },
+  "AISplitMenuButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  },
+  "AITextArea": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  },
+  "ActionListItem": {
+    "validParents": [
+      "List",
+      "Popover",
+      "MessagePopover",
+      "Dialog"
+    ],
+    "validChildren": [
+      "Link",
+      "Button",
+      "Text"
+    ],
+    "commonSiblings": [
+      "ActionListItem",
+      "StandardListItem"
+    ]
+  },
+  "AddDimensions": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "SapFormSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ]
+  },
+  "AddPeopleToCalendar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "SapFormSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ]
+  },
+  "App": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "*"
+    ],
+    "slotNames": [
+      "pages"
+    ]
+  },
+  "Avatar": {
+    "validParents": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Card",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "AvatarGroup",
+      "SapTableRow",
+      "ColumnListItem",
+      "StandardListItem",
+      "FeedListItem",
+      "TimelineItem",
+      "MessagePopover",
+      "ShellBar",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "Label",
+      "ObjectStatus",
+      "ObjectIdentifier"
+    ]
+  },
+  "AvatarGroup": {
+    "validParents": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Panel",
+      "Card",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "TimelineItem",
+      "FeedListItem",
+      "DynamicPage",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ],
+    "validChildren": [
+      "Avatar"
+    ],
+    "mustInclude": [
+      "Avatar"
+    ],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "ObjectStatus"
+    ]
+  },
+  "Banner": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "Bar": {
+    "validParents": [
+      "Dialog",
+      "Popover",
+      "Panel",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "IconTabBar"
+    ],
+    "validChildren": [
+      "Button",
+      "IconButton",
+      "Title",
+      "Label",
+      "Text",
+      "SearchField",
+      "SegmentedButton",
+      "MenuButton",
+      "SplitButton",
+      "ToolbarSpacer",
+      "Toolbar"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "slotNames": [
+      "contentLeft",
+      "contentMiddle",
+      "contentRight"
+    ]
+  },
+  "Breadcrumb": {
+    "validParents": [
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "validChildren": [
+      "Link",
+      "Text"
+    ],
+    "mustExclude": [
+      "Dialog",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "Title"
+    ],
+    "slotNames": [
+      "links"
+    ]
+  },
+  "Breadcrumbs": {
+    "slotNames": [
+      "links"
+    ]
+  },
+  "BusyDialog": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "BusyIndicator",
+      "Text",
+      "Label",
+      "Button"
+    ],
+    "mustInclude": [
+      "BusyIndicator"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Form",
+      "Table"
+    ]
+  },
+  "BusyIndicator": {
+    "validParents": [
+      "Dialog",
+      "BusyDialog",
+      "Panel",
+      "Card",
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Form",
+      "Table",
+      "List",
+      "IconTabBar",
+      "Popover",
+      "MessageStrip"
+    ],
+    "commonSiblings": [
+      "Text",
+      "Label"
+    ]
+  },
+  "Button": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Wizard",
+      "WizardStep",
+      "Timeline",
+      "TimelineItem",
+      "Carousel",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton",
+      "ToolbarSpacer",
+      "SearchField",
+      "Input"
+    ]
+  },
+  "Calendar": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "DynamicSideContent",
+      "IconTabBar",
+      "IconTabFilter",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ],
+    "mustExclude": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "SapTableRow",
+      "ColumnListItem"
+    ],
+    "commonSiblings": [
+      "Legend",
+      "MessageStrip"
+    ]
+  },
+  "Card": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Dialog",
+      "IconTabBar",
+      "Carousel",
+      "FlexibleColumnLayout"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "Tag",
+      "Link",
+      "Button",
+      "IconButton",
+      "MessageStrip",
+      "ProgressIndicator",
+      "Form",
+      "SimpleForm",
+      "List",
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "Timeline",
+      "TimelineItem",
+      "IllustratedMessage"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "SideNavigation",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageLayout",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "Card",
+      "Panel"
+    ],
+    "slotNames": [
+      "header",
+      "content",
+      "footer"
+    ]
+  },
+  "Carousel": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "validChildren": [
+      "Card",
+      "Panel",
+      "Avatar",
+      "IllustratedMessage",
+      "*"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "slotNames": [
+      "pages",
+      "customLayout"
+    ]
+  },
+  "CheckBox": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapColHeader",
+      "SapTableRow",
+      "ColumnListItem",
+      "Toolbar",
+      "OverflowToolbar",
+      "InputListItem",
+      "DynamicPageTitle",
+      "Card"
+    ],
+    "commonSiblings": [
+      "Label",
+      "CheckBox",
+      "RadioButton"
+    ]
+  },
+  "Column": {
+    "validParents": [
+      "Table",
+      "SapColHeader"
+    ],
+    "validChildren": [
+      "Text",
+      "Label",
+      "Title"
+    ],
+    "commonSiblings": [
+      "Column"
+    ]
+  },
+  "ColumnListItem": {
+    "validParents": [
+      "Table",
+      "SapTableRow"
+    ],
+    "validChildren": [
+      "Text",
+      "Label",
+      "Link",
+      "Avatar",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "ObjectMarker",
+      "Tag",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "CheckBox",
+      "Switch",
+      "Input",
+      "Select",
+      "ProgressIndicator",
+      "AvatarGroup",
+      "RatingIndicator"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Form",
+      "Table"
+    ],
+    "commonSiblings": [
+      "ColumnListItem"
+    ]
+  },
+  "ComboBox": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  },
+  "DatePicker": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select"
+    ]
+  },
+  "DateRangePicker": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select"
+    ]
+  },
+  "DateTimePicker": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select"
+    ]
+  },
+  "Dialog": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "List",
+      "StandardListItem",
+      "ColumnListItem",
+      "MessageStrip",
+      "IllustratedMessage",
+      "BusyIndicator",
+      "Button",
+      "SearchField",
+      "Input",
+      "Select",
+      "ComboBox",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "Label",
+      "Text",
+      "Title",
+      "Wizard",
+      "IconTabBar",
+      "IconTabFilter",
+      "ProgressIndicator"
+    ],
+    "mustInclude": [
+      "Button"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "SideNavigation",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageLayout",
+      "FlexibleColumnLayout",
+      "UserMenu",
+      "NotificationListItem",
+      "Notifications",
+      "ProductSwitch"
+    ],
+    "slotNames": [
+      "title",
+      "content",
+      "beginButton",
+      "endButton",
+      "buttons",
+      "subHeader",
+      "customHeader",
+      "footer"
+    ]
+  },
+  "DropDown": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  },
+  "DynamicPage": {
+    "validParents": [
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": true,
+    "validChildren": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "IconTabBar",
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "SapColHeader",
+      "SapTableRow",
+      "Table",
+      "List",
+      "Card",
+      "Carousel",
+      "Panel",
+      "Form",
+      "SimpleForm",
+      "MessageStrip",
+      "IllustratedMessage",
+      "ProgressIndicator",
+      "SapFormSection",
+      "Bar",
+      "DynamicSideContent"
+    ],
+    "mustInclude": [
+      "DynamicPageTitle"
+    ],
+    "mustExclude": [
+      "Dialog",
+      "Popover",
+      "Menu"
+    ],
+    "commonSiblings": [
+      "ShellBar",
+      "NativeSideNav"
+    ],
+    "slotNames": [
+      "title",
+      "header",
+      "content",
+      "footer"
+    ]
+  },
+  "DynamicPageHeader": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectMarker",
+      "Tag",
+      "Link",
+      "Breadcrumb",
+      "MessageStrip"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "DynamicPageTitle"
+    ],
+    "slotNames": [
+      "content"
+    ]
+  },
+  "DynamicPageTitle": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "Breadcrumb",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "Link",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "Tag",
+      "SearchField",
+      "Select",
+      "SegmentedButton"
+    ],
+    "mustInclude": [
+      "Title"
+    ],
+    "mustExclude": [
+      "Table",
+      "Form",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "DynamicPageHeader"
+    ],
+    "slotNames": [
+      "heading",
+      "snappedContent",
+      "expandedContent",
+      "actions",
+      "navigationActions",
+      "breadcrumbs"
+    ]
+  },
+  "DynamicSideContent": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "validChildren": [
+      "Panel",
+      "Table",
+      "List",
+      "Form",
+      "SimpleForm",
+      "Card",
+      "Calendar",
+      "IllustratedMessage",
+      "MessageStrip",
+      "Toolbar",
+      "OverflowToolbar",
+      "MessageStrip",
+      "Text",
+      "Title"
+    ],
+    "mustExclude": [
+      "Dialog",
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "slotNames": [
+      "mainContent",
+      "sideContent"
+    ]
+  },
+  "EmptyPlanningCalendar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "SapFormSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ]
+  },
+  "FeedInput": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "DynamicPage",
+      "ObjectPageSection",
+      "Form"
+    ],
+    "mustExclude": [
+      "Table",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "Avatar",
+      "Button",
+      "Link"
+    ]
+  },
+  "FeedListItem": {
+    "validParents": [
+      "List",
+      "Panel",
+      "Card",
+      "DynamicPageSection",
+      "Dialog"
+    ],
+    "validChildren": [
+      "Avatar",
+      "Title",
+      "Text",
+      "Link",
+      "Button",
+      "MessageStrip"
+    ],
+    "commonSiblings": [
+      "FeedListItem",
+      "FeedInput"
+    ]
+  },
+  "FileUploader": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Button"
+    ]
+  },
+  "FilterBar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "DynamicPageHeader",
+      "DynamicPageTitle",
+      "Card",
+      "VBox",
+      "HBox",
+      "FlexBox"
+    ],
+    "validChildren": [
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "DatePicker",
+      "DateRangePicker",
+      "SearchField",
+      "Tokenizer",
+      "Token",
+      "Button",
+      "Label",
+      "Slider",
+      "RangeSlider",
+      "CheckBox",
+      "Switch",
+      "TimePicker",
+      "DateTimePicker",
+      "StepInput"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "Table",
+      "SapColHeader",
+      "OverflowToolbar"
+    ],
+    "slotNames": [
+      "filterItems",
+      "filterGroupItems",
+      "content"
+    ]
+  },
+  "FlexBox": {
+    "validParents": [
+      "DynamicPage",
+      "Page",
+      "App",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "SapFormSection",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "Form",
+      "SimpleForm"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "FlexibleColumnLayout": {
+    "validParents": [
+      "DynamicPage",
+      "Page",
+      "App",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "SapFormSection",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "Form",
+      "SimpleForm"
+    ],
+    "validChildren": [
+      "*"
+    ],
+    "slotNames": [
+      "beginColumnPages",
+      "midColumnPages",
+      "endColumnPages"
+    ]
+  },
+  "Footer": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "ObjectPageSection"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "Form": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Dialog",
+      "SapFormSection",
+      "Card",
+      "IconTabBar"
+    ],
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "DatePicker",
+      "DateTimePicker",
+      "DateRangePicker",
+      "TimePicker",
+      "TextArea",
+      "CheckBox",
+      "RadioButton",
+      "RadioButtonGroup",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "StepInput",
+      "FileUploader",
+      "FormContainer",
+      "FormElement",
+      "MessageStrip"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Table",
+      "SapTableRow"
+    ],
+    "commonSiblings": [
+      "MessageStrip",
+      "Toolbar"
+    ],
+    "slotNames": [
+      "formContainers",
+      "title",
+      "toolbar"
+    ]
+  },
+  "FormContainer": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog"
+    ],
+    "validChildren": [
+      "FormElement",
+      "Label",
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "DatePicker",
+      "DateTimePicker",
+      "DateRangePicker",
+      "TimePicker",
+      "TextArea",
+      "CheckBox",
+      "RadioButton",
+      "RadioButtonGroup",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "StepInput",
+      "FileUploader",
+      "Title",
+      "Text",
+      "MessageStrip"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "commonSiblings": [
+      "FormContainer"
+    ],
+    "slotNames": [
+      "formElements",
+      "title"
+    ]
+  },
+  "FormElement": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer"
+    ],
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "DatePicker",
+      "DateTimePicker",
+      "DateRangePicker",
+      "TimePicker",
+      "TextArea",
+      "CheckBox",
+      "RadioButton",
+      "RadioButtonGroup",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "StepInput",
+      "FileUploader",
+      "Link",
+      "Text",
+      "Button"
+    ],
+    "mustInclude": [
+      "Label"
+    ],
+    "commonSiblings": [
+      "FormElement"
+    ],
+    "slotNames": [
+      "fields",
+      "label"
+    ]
+  },
+  "FormattedText": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "MessageStrip",
+      "Form",
+      "SimpleForm",
+      "ObjectPageSection",
+      "IconTabBar"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "Table"
+    ],
+    "commonSiblings": [
+      "Text",
+      "Title"
+    ]
+  },
+  "GenericTag": {
+    "validParents": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Card",
+      "Panel",
+      "Toolbar",
+      "OverflowToolbar",
+      "ObjectListItem",
+      "ColumnListItem",
+      "StandardListItem",
+      "Dialog",
+      "Popover",
+      "SapTableRow"
+    ],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "ObjectStatus",
+      "Tag",
+      "ObjectNumber"
+    ]
+  },
+  "GroupHeaderListItem": {
+    "validParents": [
+      "List",
+      "Table"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label"
+    ],
+    "commonSiblings": [
+      "StandardListItem",
+      "ColumnListItem"
+    ]
+  },
+  "GroupingColumns": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "SapFormSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ]
+  },
+  "HBox": {
+    "validParents": [
+      "DynamicPage",
+      "Page",
+      "App",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "SapFormSection",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "Form",
+      "SimpleForm"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "HomepageHeroBanner": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "IconButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "ColumnListItem",
+      "SapTableRow",
+      "ListItem"
+    ],
+    "commonSiblings": [
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "ToolbarSpacer"
+    ]
+  },
+  "IconMenuButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  },
+  "IconSplitButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  },
+  "IconTabBar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "validChildren": [
+      "IconTabFilter",
+      "IconTabSeparator",
+      "IconTabHeader",
+      "OverflowToolbar",
+      "Toolbar",
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "List",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "MessageStrip",
+      "IllustratedMessage"
+    ],
+    "mustInclude": [
+      "IconTabFilter"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage"
+    ],
+    "commonSiblings": [
+      "Table",
+      "List",
+      "Form"
+    ],
+    "slotNames": [
+      "items",
+      "content"
+    ]
+  },
+  "IconTabFilter": {
+    "validParents": [
+      "IconTabBar",
+      "IconTabHeader"
+    ],
+    "validChildren": [
+      "Text",
+      "Icon"
+    ],
+    "commonSiblings": [
+      "IconTabFilter",
+      "IconTabSeparator"
+    ],
+    "slotNames": [
+      "items",
+      "content"
+    ]
+  },
+  "IconTabHeader": {
+    "validParents": [
+      "IconTabBar",
+      "DynamicPage",
+      "Panel"
+    ],
+    "validChildren": [
+      "IconTabFilter",
+      "IconTabSeparator"
+    ]
+  },
+  "IconTabSeparator": {
+    "validParents": [
+      "IconTabBar",
+      "IconTabHeader"
+    ],
+    "commonSiblings": [
+      "IconTabFilter"
+    ]
+  },
+  "IllustratedMessage": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "IconTabBar"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Button",
+      "Link"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ]
+  },
+  "Image": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Carousel",
+      "FeedListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "ColumnListItem",
+      "Column",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "Form",
+      "SimpleForm",
+      "SapFormSection"
+    ],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "Label",
+      "ObjectAttribute"
+    ]
+  },
+  "InfoLabel": {
+    "validParents": [
+      "Title",
+      "Text",
+      "Label",
+      "ObjectStatus",
+      "Panel",
+      "Card",
+      "StandardListItem",
+      "ColumnListItem",
+      "ObjectListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "Dialog",
+      "Popover",
+      "SapTableRow"
+    ],
+    "commonSiblings": [
+      "Tag",
+      "GenericTag",
+      "ObjectStatus",
+      "Title",
+      "Text",
+      "Label"
+    ]
+  },
+  "Input": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Select",
+      "Button",
+      "Input"
+    ]
+  },
+  "InputListItem": {
+    "validParents": [
+      "List",
+      "Dialog",
+      "Popover"
+    ],
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "Switch",
+      "CheckBox",
+      "DatePicker"
+    ],
+    "mustInclude": [
+      "Label"
+    ],
+    "commonSiblings": [
+      "InputListItem"
+    ]
+  },
+  "InputMessagePopover": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ]
+  },
+  "Item": {
+    "validParents": [
+      "Select",
+      "ComboBox",
+      "MultiComboBox"
+    ]
+  },
+  "Label": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "SapColHeader",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "MessageStrip",
+      "Wizard",
+      "WizardStep",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Bar",
+      "*"
+    ],
+    "commonSiblings": [
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch"
+    ]
+  },
+  "Legend": {
+    "validParents": [
+      "DynamicPage",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "ColumnListItem",
+      "StandardListItem",
+      "ObjectListItem",
+      "SapTableRow",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Text",
+      "ObjectStatus"
+    ]
+  },
+  "Link": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "MessageStrip",
+      "MessagePopover",
+      "ColumnListItem",
+      "SapTableRow",
+      "TimelineItem",
+      "FeedListItem",
+      "StandardListItem",
+      "Text",
+      "IconTabBar",
+      "Breadcrumb",
+      "DynamicPageTitle",
+      "ObjectPageSection"
+    ],
+    "commonSiblings": [
+      "Text",
+      "Label",
+      "Button"
+    ]
+  },
+  "List": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "MessagePopover",
+      "IconTabBar",
+      "SapFormSection"
+    ],
+    "validChildren": [
+      "StandardListItem",
+      "ColumnListItem",
+      "ActionListItem",
+      "InputListItem",
+      "FeedListItem",
+      "GroupHeaderListItem",
+      "ObjectListItem",
+      "MessageStrip",
+      "IllustratedMessage"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Form"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "Toolbar",
+      "SearchField"
+    ],
+    "slotNames": [
+      "items",
+      "headerToolbar",
+      "infoToolbar"
+    ]
+  },
+  "ListItem": {
+    "validParents": [
+      "List",
+      "Popover",
+      "MessagePopover",
+      "Dialog"
+    ],
+    "validChildren": [
+      "Icon",
+      "Avatar",
+      "ObjectStatus",
+      "Button",
+      "Link",
+      "Text",
+      "Label"
+    ]
+  },
+  "MaskInput": {},
+  "MaskedInput": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "Table"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  },
+  "Menu": {
+    "validParents": [
+      "MenuButton",
+      "SplitButton",
+      "IconMenuButton",
+      "Toolbar",
+      "OverflowToolbar",
+      "Dialog",
+      "Popover"
+    ],
+    "validChildren": [
+      "MenuListItem"
+    ],
+    "slotNames": [
+      "items"
+    ]
+  },
+  "MenuButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "Panel",
+      "Dialog",
+      "Card",
+      "ColumnListItem",
+      "ObjectListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Button",
+      "IconButton",
+      "ToolbarSpacer"
+    ]
+  },
+  "MenuListItem": {
+    "validParents": [
+      "Menu"
+    ],
+    "commonSiblings": [
+      "MenuListItem"
+    ]
+  },
+  "MessageBox": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Button",
+      "MessageStrip",
+      "Link"
+    ],
+    "mustInclude": [
+      "Button"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Table",
+      "Form",
+      "Panel"
+    ]
+  },
+  "MessagePopover": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "OverflowToolbar",
+      "Toolbar",
+      "DynamicPageTitle"
+    ],
+    "validChildren": [
+      "MessageStrip",
+      "Text",
+      "Title",
+      "Link",
+      "Button",
+      "List",
+      "StandardListItem"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "commonSiblings": [
+      "Button"
+    ],
+    "slotNames": [
+      "items",
+      "headerButton"
+    ]
+  },
+  "MessagePopoverItem": {
+    "validParents": [
+      "MessagePopover"
+    ]
+  },
+  "MessageStrip": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "Table",
+      "List",
+      "IconTabBar",
+      "MessagePopover",
+      "SapFormSection",
+      "Wizard",
+      "WizardStep"
+    ],
+    "validChildren": [
+      "Link",
+      "Button"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "Form",
+      "Table",
+      "MessageStrip"
+    ]
+  },
+  "MessageToast": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "Text"
+    ],
+    "mustExclude": [
+      "*"
+    ]
+  },
+  "MultiComboBox": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Tokenizer"
+    ]
+  },
+  "MultiInput": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "InputListItem"
+    ],
+    "validChildren": [
+      "Token",
+      "Tokenizer"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Tokenizer"
+    ]
+  },
+  "NavigationItem": {
+    "validParents": [
+      "SideNavigation",
+      "NavigationList",
+      "NavigationListItem",
+      "NavigationItem"
+    ],
+    "validChildren": [
+      "NavigationItem",
+      "Text",
+      "Icon"
+    ],
+    "commonSiblings": [
+      "NavigationItem"
+    ]
+  },
+  "NoNotifications": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "SapFormSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ]
+  },
+  "NotificationBanner": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ]
+  },
+  "NotificationListItem": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ]
+  },
+  "Notifications": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ]
+  },
+  "ObjectAttribute": {
+    "validParents": [
+      "DynamicPageHeader",
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "ColumnListItem",
+      "SapTableRow",
+      "ObjectListItem",
+      "TimelineItem",
+      "FeedListItem"
+    ],
+    "commonSiblings": [
+      "ObjectAttribute",
+      "ObjectIdentifier",
+      "ObjectStatus"
+    ]
+  },
+  "ObjectHeader": {
+    "validParents": [
+      "Card",
+      "Dialog",
+      "Panel",
+      "Popover",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectMarker",
+      "Tag",
+      "GenericTag",
+      "InfoLabel",
+      "Link",
+      "Breadcrumb",
+      "MessageStrip",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "mustExclude": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ShellBar"
+    ],
+    "slotNames": [
+      "attributes",
+      "statuses",
+      "additionalNumbers",
+      "markers"
+    ]
+  },
+  "ObjectIdentifier": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "FeedListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "TimelineItem"
+    ],
+    "commonSiblings": [
+      "ObjectStatus",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "Avatar",
+      "Title"
+    ]
+  },
+  "ObjectListItem": {
+    "validParents": [
+      "List"
+    ],
+    "validChildren": [
+      "ObjectIdentifier",
+      "ObjectStatus",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "ObjectMarker",
+      "Avatar",
+      "Tag",
+      "Button"
+    ],
+    "commonSiblings": [
+      "ObjectListItem"
+    ]
+  },
+  "ObjectMarker": {
+    "validParents": [
+      "ColumnListItem",
+      "SapTableRow",
+      "ObjectListItem",
+      "DynamicPageHeader",
+      "Card",
+      "Panel"
+    ],
+    "commonSiblings": [
+      "ObjectStatus",
+      "ObjectIdentifier"
+    ]
+  },
+  "ObjectNumber": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Toolbar",
+      "OverflowToolbar",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "FilterBar"
+    ],
+    "commonSiblings": [
+      "ObjectIdentifier",
+      "ObjectStatus",
+      "Title",
+      "Text"
+    ]
+  },
+  "ObjectPageHeader": {
+    "validParents": [
+      "ObjectPageLayout"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectMarker",
+      "Tag",
+      "Link",
+      "Breadcrumb",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "MessageStrip"
+    ],
+    "mustInclude": [
+      "Title"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "Table",
+      "Form"
+    ]
+  },
+  "ObjectPageLayout": {
+    "validParents": [
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": true,
+    "validChildren": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "IconTabBar",
+      "Panel",
+      "Card",
+      "Form",
+      "SimpleForm",
+      "Table",
+      "List",
+      "SapColHeader",
+      "SapTableRow",
+      "OverflowToolbar",
+      "MessageStrip",
+      "IllustratedMessage"
+    ],
+    "mustInclude": [
+      "DynamicPageTitle"
+    ],
+    "mustExclude": [
+      "Dialog",
+      "Popover"
+    ],
+    "commonSiblings": [
+      "ShellBar",
+      "NativeSideNav"
+    ],
+    "slotNames": [
+      "headerTitle",
+      "headerContent",
+      "sections",
+      "footer"
+    ]
+  },
+  "ObjectPageSection": {
+    "validParents": [
+      "ObjectPageLayout"
+    ],
+    "validChildren": [
+      "ObjectPageSubSection",
+      "Title",
+      "Text",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "Table",
+      "List",
+      "SapColHeader",
+      "SapTableRow",
+      "MessageStrip",
+      "IllustratedMessage",
+      "Carousel",
+      "Timeline",
+      "IconTabBar",
+      "OverflowToolbar"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "ObjectPageSection"
+    ],
+    "slotNames": [
+      "subSections",
+      "actions"
+    ]
+  },
+  "ObjectPageSubSection": {
+    "validParents": [
+      "ObjectPageSection"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "Table",
+      "List",
+      "SapColHeader",
+      "SapTableRow",
+      "MessageStrip",
+      "Button",
+      "Link"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "ObjectPageSubSection"
+    ],
+    "slotNames": [
+      "blocks",
+      "moreBlocks",
+      "actions"
+    ]
+  },
+  "ObjectStatus": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "FeedListItem",
+      "TimelineItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "MessagePopover",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "commonSiblings": [
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "ObjectMarker",
+      "Tag"
+    ]
+  },
+  "OverflowToolbar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "DynamicPageTitle",
+      "FilterBar",
+      "Table",
+      "List"
+    ],
+    "validChildren": [
+      "Title",
+      "Label",
+      "Text",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "SplitButton",
+      "ToggleButton",
+      "SegmentedButton",
+      "Input",
+      "SearchField",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "CheckBox",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "DatePicker",
+      "TimePicker",
+      "DateTimePicker",
+      "ToolbarSpacer",
+      "OverflowToolbar",
+      "Toolbar",
+      "Link"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "List",
+      "Form"
+    ],
+    "slotNames": [
+      "content"
+    ]
+  },
+  "Page": {
+    "validParents": [
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": true,
+    "validChildren": [
+      "*"
+    ],
+    "slotNames": [
+      "content",
+      "customHeader",
+      "footer",
+      "headerContent",
+      "subHeader"
+    ]
+  },
+  "Panel": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Dialog",
+      "Panel",
+      "IconTabBar",
+      "IconTabFilter",
+      "Card",
+      "SapFormSection",
+      "DynamicSideContent",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "FlexibleColumnLayout"
+    ],
+    "validChildren": [
+      "*"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage"
+    ],
+    "slotNames": [
+      "headerToolbar",
+      "content",
+      "infoToolbar"
+    ]
+  },
+  "Popover": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Button",
+      "Link",
+      "Form",
+      "SimpleForm",
+      "List",
+      "StandardListItem",
+      "ActionListItem",
+      "MessageStrip",
+      "IllustratedMessage",
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "Toolbar",
+      "OverflowToolbar",
+      "Avatar",
+      "Tag",
+      "ObjectStatus",
+      "ObjectIdentifier"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "Popover"
+    ],
+    "slotNames": [
+      "content",
+      "beginButton",
+      "endButton",
+      "footer",
+      "subHeader"
+    ]
+  },
+  "ProductSwitch": {
+    "validParents": [
+      "ShellBar"
+    ]
+  },
+  "ProgressIndicator": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Form",
+      "SimpleForm",
+      "SapTableRow",
+      "ColumnListItem",
+      "Wizard",
+      "WizardStep",
+      "IconTabBar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Title",
+      "Text"
+    ]
+  },
+  "ProgressStep": {
+    "validParents": [
+      "Wizard",
+      "DynamicPage",
+      "Panel"
+    ],
+    "commonSiblings": [
+      "ProgressStep"
+    ]
+  },
+  "QuickView": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "Avatar",
+      "Title",
+      "Text",
+      "Label",
+      "Link",
+      "Button",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "Tag"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "slotNames": [
+      "pages"
+    ]
+  },
+  "RadioButton": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "RadioButtonGroup",
+      "InputListItem",
+      "OverflowToolbar",
+      "Toolbar",
+      "DynamicPageTitle"
+    ],
+    "commonSiblings": [
+      "Label",
+      "RadioButton"
+    ]
+  },
+  "RadioButtonGroup": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection"
+    ],
+    "validChildren": [
+      "RadioButton"
+    ],
+    "mustInclude": [
+      "RadioButton"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "Table"
+    ],
+    "commonSiblings": [
+      "Label",
+      "CheckBox"
+    ]
+  },
+  "RangeSlider": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "OverflowToolbar",
+      "Toolbar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Slider"
+    ]
+  },
+  "RatingIndicator": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "StandardListItem",
+      "ColumnListItem",
+      "ObjectListItem",
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "IconTabBar",
+      "SapFormSection",
+      "SapTableRow",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Text",
+      "ObjectStatus"
+    ]
+  },
+  "ResponsiveTable": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "SapFormSection"
+    ],
+    "validChildren": [
+      "SapColHeader",
+      "SapTableRow",
+      "Column",
+      "ColumnListItem",
+      "MessageStrip"
+    ],
+    "mustInclude": [
+      "SapColHeader"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "FilterBar"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "SearchField"
+    ],
+    "slotNames": [
+      "columns",
+      "items",
+      "headerToolbar",
+      "infoToolbar"
+    ]
+  },
+  "Scrollbar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "ObjectPageSection"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "SearchField": {
+    "validParents": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "Panel",
+      "Card",
+      "Dialog",
+      "ShellBar",
+      "IconTabBar",
+      "Popover"
+    ],
+    "commonSiblings": [
+      "Button",
+      "Input"
+    ]
+  },
+  "SegmentedButton": {
+    "validParents": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Button",
+      "ToggleButton"
+    ]
+  },
+  "SegmentedButtonItem": {
+    "validParents": [
+      "SegmentedButton"
+    ]
+  },
+  "Select": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "DynamicPageTitle"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  },
+  "ShellBar": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "ProductSwitch",
+      "UserMenu",
+      "Notifications",
+      "SearchField"
+    ],
+    "mustExclude": [
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form",
+      "Panel"
+    ],
+    "commonSiblings": [
+      "NativeSideNav",
+      "DynamicPage"
+    ],
+    "slotNames": [
+      "searchField",
+      "startButton",
+      "profile",
+      "menu",
+      "additionalContext"
+    ]
+  },
+  "ShellSearch": {
+    "validParents": [
+      "ShellBar"
+    ]
+  },
+  "SideNavigation": {
+    "topLevelOnly": true,
+    "validChildren": [
+      "NavigationItem",
+      "NavigationList",
+      "NavigationListItem"
+    ],
+    "mustExclude": [
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "slotNames": [
+      "item",
+      "fixedItem",
+      "header",
+      "footer"
+    ]
+  },
+  "SimpleForm": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "SapFormSection"
+    ],
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "DatePicker",
+      "DateTimePicker",
+      "DateRangePicker",
+      "TimePicker",
+      "TextArea",
+      "CheckBox",
+      "RadioButton",
+      "RadioButtonGroup",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "StepInput",
+      "FileUploader",
+      "FormContainer",
+      "FormElement",
+      "Title",
+      "Text",
+      "Link",
+      "MessageStrip",
+      "Button",
+      "SegmentedButton",
+      "ProgressIndicator",
+      "RatingIndicator",
+      "Tag"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Table",
+      "SapTableRow"
+    ],
+    "commonSiblings": [
+      "MessageStrip",
+      "Toolbar"
+    ],
+    "slotNames": [
+      "content",
+      "title",
+      "toolbar"
+    ]
+  },
+  "Slider": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "OverflowToolbar",
+      "Toolbar"
+    ],
+    "commonSiblings": [
+      "Label",
+      "RangeSlider"
+    ]
+  },
+  "SplitButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "Bar",
+      "DynamicPageTitle",
+      "Dialog",
+      "Popover",
+      "Card",
+      "Panel",
+      "ObjectPageHeader",
+      "Footer",
+      "SapFormSection",
+      "FilterBar"
+    ],
+    "validChildren": [
+      "Menu"
+    ],
+    "commonSiblings": [
+      "Button",
+      "MenuButton"
+    ]
+  },
+  "StandardListItem": {
+    "validParents": [
+      "List",
+      "Popover",
+      "MessagePopover",
+      "Dialog"
+    ],
+    "validChildren": [
+      "Icon",
+      "Avatar",
+      "ObjectStatus",
+      "Button",
+      "Link",
+      "Text",
+      "Label"
+    ],
+    "commonSiblings": [
+      "StandardListItem",
+      "GroupHeaderListItem"
+    ]
+  },
+  "StepInput": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  },
+  "Switch": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "Card"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Switch"
+    ]
+  },
+  "Table": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "SapFormSection",
+      "VBox",
+      "HBox",
+      "FlexBox",
+      "DynamicPageSection"
+    ],
+    "validChildren": [
+      "SapColHeader",
+      "SapTableRow",
+      "Column",
+      "ColumnListItem",
+      "MessageStrip"
+    ],
+    "mustInclude": [
+      "SapColHeader"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "FilterBar"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "SearchField"
+    ],
+    "slotNames": [
+      "columns",
+      "items",
+      "headerToolbar",
+      "infoToolbar"
+    ]
+  },
+  "TableCell": {
+    "validParents": [
+      "ColumnListItem",
+      "SapTableRow",
+      "Table",
+      "Column"
+    ]
+  },
+  "Tabs": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "validChildren": [
+      "IconTabFilter",
+      "Text",
+      "Icon"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav"
+    ]
+  },
+  "Tag": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Form",
+      "SimpleForm",
+      "Tokenizer",
+      "Toolbar",
+      "OverflowToolbar",
+      "TimelineItem"
+    ],
+    "commonSiblings": [
+      "Tag",
+      "ObjectStatus"
+    ]
+  },
+  "Text": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "DynamicPageHeader",
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "MessageStrip",
+      "MessagePopover",
+      "Wizard",
+      "WizardStep",
+      "IconTabBar",
+      "ObjectPageSection",
+      "TimelineItem",
+      "FeedListItem",
+      "Carousel",
+      "StandardListItem",
+      "*"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Title",
+      "Link"
+    ]
+  },
+  "TextArea": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection"
+    ],
+    "commonSiblings": [
+      "Label"
+    ]
+  },
+  "TimePicker": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "commonSiblings": [
+      "Label",
+      "DatePicker"
+    ]
+  },
+  "Timeline": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "validChildren": [
+      "TimelineItem"
+    ],
+    "mustInclude": [
+      "TimelineItem"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "Card",
+      "Panel"
+    ],
+    "slotNames": [
+      "content",
+      "headerBar"
+    ]
+  },
+  "TimelineItem": {
+    "validParents": [
+      "Timeline"
+    ],
+    "validChildren": [
+      "Avatar",
+      "Text",
+      "Title",
+      "Link",
+      "Button",
+      "ObjectStatus",
+      "Tag",
+      "Label"
+    ],
+    "commonSiblings": [
+      "TimelineItem"
+    ]
+  },
+  "Title": {
+    "validParents": [
+      "DynamicPage",
+      "DynamicPageTitle",
+      "ObjectPageLayout",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "Form",
+      "SimpleForm",
+      "IconTabBar",
+      "MessageStrip",
+      "Wizard",
+      "WizardStep",
+      "SapFormSection",
+      "Carousel",
+      "Timeline",
+      "TimelineItem",
+      "Breadcrumb",
+      "*"
+    ],
+    "commonSiblings": [
+      "Text",
+      "Label"
+    ]
+  },
+  "ToggleButton": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "Panel"
+    ],
+    "commonSiblings": [
+      "ToggleButton",
+      "Button",
+      "SegmentedButton"
+    ]
+  },
+  "Token": {
+    "validParents": [
+      "Tokenizer",
+      "MultiInput",
+      "MultiComboBox",
+      "FilterBar"
+    ],
+    "commonSiblings": [
+      "Token"
+    ]
+  },
+  "Tokenizer": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "validChildren": [
+      "Token"
+    ],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  },
+  "Toolbar": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "Form",
+      "DynamicPageTitle",
+      "FilterBar",
+      "Table",
+      "List",
+      "VBox",
+      "HBox",
+      "FlexBox",
+      "DynamicPageHeader"
+    ],
+    "validChildren": [
+      "Title",
+      "Label",
+      "Text",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "SegmentedButton",
+      "ToggleButton",
+      "Input",
+      "SearchField",
+      "Select",
+      "ToolbarSpacer",
+      "Link"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "Table",
+      "List",
+      "Form"
+    ],
+    "slotNames": [
+      "content"
+    ]
+  },
+  "ToolbarItems": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "ObjectPageSection"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "ToolbarSpacer": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "Bar"
+    ],
+    "commonSiblings": [
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "SearchField",
+      "Title",
+      "Label",
+      "Text"
+    ]
+  },
+  "Tree": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "validChildren": [
+      "TreeItem"
+    ],
+    "mustInclude": [
+      "TreeItem"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "SearchField",
+      "Toolbar"
+    ],
+    "slotNames": [
+      "items",
+      "headerToolbar"
+    ]
+  },
+  "TreeItem": {
+    "validParents": [
+      "Tree",
+      "TreeItem"
+    ],
+    "validChildren": [
+      "TreeItem",
+      "Text",
+      "Label",
+      "Icon",
+      "Link"
+    ],
+    "commonSiblings": [
+      "TreeItem"
+    ]
+  },
+  "TwoMonthCalendar": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "DynamicSideContent",
+      "IconTabBar",
+      "IconTabFilter",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ]
+  },
+  "UnableToLoadImage": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "SapFormSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ]
+  },
+  "UserMenu": {
+    "validParents": [
+      "ShellBar",
+      "MenuButton",
+      "SplitButton",
+      "IconMenuButton",
+      "Toolbar",
+      "OverflowToolbar",
+      "Dialog",
+      "Popover"
+    ],
+    "validChildren": [
+      "MenuListItem",
+      "StandardListItem",
+      "List",
+      "Text",
+      "Label",
+      "Title",
+      "Avatar",
+      "Button",
+      "Link"
+    ]
+  },
+  "VBox": {
+    "validParents": [
+      "DynamicPage",
+      "Page",
+      "App",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "SapFormSection",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "Form",
+      "SimpleForm"
+    ],
+    "validChildren": [
+      "*"
+    ]
+  },
+  "Wizard": {
+    "validParents": [
+      "DynamicPage",
+      "Dialog",
+      "ObjectPageLayout",
+      "Panel"
+    ],
+    "validChildren": [
+      "WizardStep",
+      "ProgressStep"
+    ],
+    "mustInclude": [
+      "WizardStep"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav"
+    ],
+    "commonSiblings": [
+      "Button"
+    ],
+    "slotNames": [
+      "steps"
+    ]
+  },
+  "WizardStep": {
+    "validParents": [
+      "Wizard"
+    ],
+    "validChildren": [
+      "Title",
+      "Text",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "MessageStrip",
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "Button",
+      "Link",
+      "*"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "WizardStep"
+    ],
+    "slotNames": [
+      "content"
+    ]
+  }
+}

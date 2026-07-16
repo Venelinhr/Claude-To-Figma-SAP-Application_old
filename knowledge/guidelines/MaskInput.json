@@ -1,0 +1,64 @@
+{
+  "componentName": "MaskInput",
+  "slug": "mask-input",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/masked-input/",
+  "purpose": "A text input with a fixed format mask (e.g. phone numbers, credit cards, dates). Guides user input by showing placeholder characters and enforcing the pattern as they type.",
+  "whenToUse": [
+    "Input has a known, fixed format (phone, tax ID, credit card, product code)",
+    "You want to prevent invalid characters at input time",
+    "The user should see the format they're entering (visual scaffold)",
+    "Data must be normalized to a specific format for storage"
+  ],
+  "whenNotToUse": [
+    "Format is variable or optional — use Input with validation",
+    "For free-text or long descriptions — use TextArea",
+    "For dates — use DatePicker (better a11y and locale-aware)",
+    "For passwords — use Input with type=password"
+  ],
+  "doRules": [
+    "Show the mask as a placeholder (___-___-____)",
+    "Auto-advance through separators (- / etc.)",
+    "Accept paste with normalization (strip separators from pasted text)",
+    "Show validation state (Error/Success) via valueState"
+  ],
+  "dontRules": [
+    "Do not use for locale-sensitive formats without locale awareness (dates, currency)",
+    "Do not require an exact match if the last few characters are optional — use validation",
+    "Do not hide the mask on focus — user needs to see the format",
+    "Do not use for search — SearchField is the correct control"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside Forms, FilterBars, Dialogs",
+    "sizing": "Min width fits the mask + padding (e.g. 200px for phone)",
+    "spacing": "Standard field spacing (16px between form rows)",
+    "alignment": "Full width in FormElement; hug in HBox"
+  },
+  "contentGuidance": {
+    "labelLength": "Mask is fixed-width (e.g. 14 chars for phone with separators)",
+    "contentRules": "Mask characters describe format: 9=digit, A=letter, *=any",
+    "examples": ["(999) 999-9999", "AAA-9999", "9999-9999-9999-9999"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full field width",
+    "L": "Full field width",
+    "M": "Full field width",
+    "S": "Full field width; keyboard may need numeric mode"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 3.3.2 Labels or Instructions (Level A)", "WCAG 2.1 · 3.3.3 Error Suggestion (Level AA)"],
+    "requirements": [
+      "Visible label describes the expected format",
+      "aria-describedby points to a hint explaining the mask",
+      "Screen reader announces the mask on focus",
+      "Type-appropriate keyboard on mobile (numeric for phone)"
+    ]
+  },
+  "patterns": ["Registration forms", "Payment forms", "ID entry", "Filter bars for coded values"],
+  "compatibility": {
+    "allowedWith": ["Form", "SimpleForm", "FormElement", "FilterBar", "Dialog"],
+    "forbiddenWith": ["Table cells (too narrow)", "Toolbar"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

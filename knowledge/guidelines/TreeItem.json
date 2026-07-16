@@ -1,0 +1,64 @@
+{
+  "componentName": "TreeItem",
+  "slug": "tree-item",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/treeitem/",
+  "purpose": "A single row within a Tree. Carries text, optional icon, and expand/collapse affordance for child items.",
+  "whenToUse": [
+    "Inside a Tree as a tree node",
+    "When child items are nested directly under this item via the children property"
+  ],
+  "whenNotToUse": [
+    "Outside of a Tree \u2014 TreeItem only works inside Tree",
+    "As a list item \u2014 use StandardListItem instead",
+    "For interactive actions \u2014 TreeItem is a row, not an action"
+  ],
+  "doRules": [
+    "Provide text for every TreeItem",
+    "Use level (depth) to indicate nesting",
+    "Mark expandable items with hasChildren=true to render the chevron",
+    "Bind text to sapList_TextColor"
+  ],
+  "dontRules": [
+    "Do not use TreeItem without a parent Tree",
+    "Do not nest TreeItem markup; nesting is by level/parent metadata not DOM nesting",
+    "Do not omit text on a TreeItem"
+  ],
+  "layoutGuidance": {
+    "placement": "Place TreeItem inside a compatible container (Tree).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid punctuation in short labels",
+      "Localize all text"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense or collapse \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern (Popover, Dialog) on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for data display \u2014 see SAP Fiori a11y docs.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used in Tree"
+  ],
+  "compatibility": [
+    "Tree"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

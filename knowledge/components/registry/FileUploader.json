@@ -1,0 +1,165 @@
+{
+  "componentName": "FileUploader",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "b7532a6da2cb7677348b5d4bbb81952c9224e984",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "buttonText",
+      "ui5Name": "buttonText",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "Browse..."
+    },
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "mimeType",
+      "ui5Name": "mimeType",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "maximumFileSize",
+      "ui5Name": "maximumFileSize",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "multiple",
+      "ui5Name": "multiple",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "Error",
+    "Warning"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "button-text",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter activates browse; file dialog uses native OS controls"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label describing what to upload"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Upload progress announced; success/error states announced"
+    }
+  ],
+  "doRules": [
+    "Specify accepted mimeType for clarity",
+    "Show file size limit before upload",
+    "Allow drag-and-drop where supported"
+  ],
+  "dontRules": [
+    "Do not omit file size limit",
+    "Do not silently fail on rejected file types"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "Dialog"
+  ],
+  "incompatiblePatterns": [
+    "Without mimeType constraint"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/fileuploader/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.FileUploader",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.FileUploader",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width fills container.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Button"
+    ]
+  }
+}

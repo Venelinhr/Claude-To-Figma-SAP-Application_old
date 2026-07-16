@@ -1,0 +1,144 @@
+{
+  "componentName": "FormattedText",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Text",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Typography",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "text-link",
+      "state": "Default",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "text-emphasis",
+      "state": "Emphasis",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Sanitize HTML before rendering",
+    "Bind base text to sapList_TextColor",
+    "Use sapLinkColor for inline links"
+  ],
+  "dontRules": [
+    "Do not render unsanitized user-supplied HTML",
+    "Do not use FormattedText for layout (no positioned content)",
+    "Do not embed forms inside FormattedText"
+  ],
+  "compatibleComponents": [
+    "Panel",
+    "Dialog",
+    "Card",
+    "MessageStrip"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/formatted-text/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.FormattedText",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.FormattedText",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.FormattedText/sample/sap.m.sample.FormattedText"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "FormattedText is sap.m.FormattedText. Plugin renders as a single Text node with mixed font styles via setRangeFontName. Inline links bind to sapLinkColor.",
+  "composition": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "MessageStrip",
+      "Form",
+      "SimpleForm",
+      "ObjectPageSection",
+      "IconTabBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "Table"
+    ],
+    "commonSiblings": [
+      "Text",
+      "Title"
+    ]
+  }
+}

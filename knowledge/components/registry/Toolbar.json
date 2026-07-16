@@ -1,0 +1,208 @@
+{
+  "componentName": "Toolbar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "58a258bf5813e59cec4dfc684c8cdb2a6ca6721f",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Style",
+      "ui5Property": "style",
+      "values": [
+        "Standard",
+        "Clear",
+        "Info"
+      ],
+      "default": "Standard"
+    },
+    {
+      "property": "Design",
+      "ui5Property": "design",
+      "values": [
+        "Solid",
+        "Transparent",
+        "Auto"
+      ],
+      "default": "Auto"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "active",
+      "ui5Name": "active",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "enabled",
+      "ui5Name": "enabled",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "height",
+      "ui5Name": "height",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "auto"
+    },
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "100%"
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "toolbar-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "Toolbar Title"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Solid",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "fill",
+      "state": "Transparent",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "landmark",
+      "requirement": "Use role='toolbar' with aria-label describing the toolbar's purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Tab moves between toolbars; arrow keys move within toolbar"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Border \u2265 3:1 with surrounding bg (WCAG AA non-text)",
+      "wcag": "1.4.11"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Toolbar children inherit min 32/44 px tap target rules"
+    }
+  ],
+  "doRules": [
+    "Use Toolbar for simple horizontal action groups when overflow management is NOT needed",
+    "Use OverflowToolbar instead when actions may exceed available width",
+    "Place primary action right-aligned; secondary actions left or centered",
+    "Bind fill to sapShellColor (Solid) or sapBackgroundColor (Transparent)"
+  ],
+  "dontRules": [
+    "Do not use Toolbar when OverflowToolbar is needed (most cases \u2014 when in doubt, use OverflowToolbar)",
+    "Do not stack toolbars vertically \u2014 use a single combined toolbar",
+    "Do not put a primary CTA on the left of the toolbar \u2014 convention is right-aligned",
+    "Do not mix Toolbar and Footer for the same purpose \u2014 pick one"
+  ],
+  "compatibleComponents": [
+    "Button",
+    "MenuButton",
+    "IconButton",
+    "ToolbarSpacer",
+    "Title",
+    "Label",
+    "Input",
+    "SearchField",
+    "Select"
+  ],
+  "incompatiblePatterns": [
+    "Inside a table cell",
+    "Inside a Dialog body \u2014 use Dialog action buttons instead",
+    "When overflow management is needed \u2014 use OverflowToolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/toolbar/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Toolbar",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Toolbar",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Toolbar/sample/sap.m.sample.Toolbar"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Toolbar is a real SAP component (id 58a258bf...) but the plugin's HORIZ_CONTAINERS handler treats Toolbar and OverflowToolbar identically \u2014 both render as a native HORIZONTAL Auto Layout frame with sapShellColor fill and sapShell_BorderColor stroke. The SAP Toolbar instance ships with hardcoded 'Create Copy Paste' demo content that the Plugin API can't override per-instance, so the native frame is the canonical workflow. Status: AI specs SHOULD prefer OverflowToolbar unless they specifically need a non-overflowing toolbar; Toolbar exists in registry for completeness.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "Form",
+      "DynamicPageTitle",
+      "FilterBar",
+      "Table",
+      "List",
+      "VBox",
+      "HBox",
+      "FlexBox",
+      "DynamicPageHeader"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Label",
+      "Text",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "SegmentedButton",
+      "ToggleButton",
+      "Input",
+      "SearchField",
+      "Select",
+      "ToolbarSpacer",
+      "Link"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "Table",
+      "List",
+      "Form"
+    ]
+  },
+  "slotNames": [
+    "content"
+  ]
+}

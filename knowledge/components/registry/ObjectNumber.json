@@ -1,0 +1,165 @@
+{
+  "componentName": "ObjectNumber",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "7b67d22ed19f246b708dc4664808a45f314a7414",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "State",
+      "ui5Property": "state",
+      "values": [
+        "None",
+        "Success",
+        "Warning",
+        "Error",
+        "Information"
+      ],
+      "default": "None"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Emphasized",
+      "ui5Property": "emphasized",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "number",
+      "ui5Name": "number",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "unit",
+      "ui5Name": "unit",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "state",
+      "ui5Name": "state",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    }
+  ],
+  "supportedStates": [
+    "None",
+    "Success",
+    "Warning",
+    "Error",
+    "Information"
+  ],
+  "typographyRules": [
+    {
+      "role": "number",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 20,
+      "sapStyleName": "App Headers/Section Title"
+    },
+    {
+      "role": "unit",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "number-text",
+      "state": "None",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#32363A"
+    },
+    {
+      "role": "unit-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#6A6D70"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "status",
+      "requirement": "Critical numbers (Error/Warning) accompanied by ObjectStatus text"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Number + unit read together"
+    }
+  ],
+  "doRules": [
+    "Use for prominent KPI display (counts, amounts, percentages)",
+    "Include unit alongside the number",
+    "Use state to communicate semantic meaning (over budget, low stock)"
+  ],
+  "dontRules": [
+    "Do not omit unit when ambiguous",
+    "Do not use Error state for non-critical numbers"
+  ],
+  "compatibleComponents": [
+    "Table",
+    "ObjectHeader",
+    "Card"
+  ],
+  "incompatiblePatterns": [
+    "Without unit when unit matters"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/objectnumber/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ObjectNumber",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ObjectNumber",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Toolbar",
+      "OverflowToolbar",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "FilterBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ObjectIdentifier",
+      "ObjectStatus",
+      "Title",
+      "Text"
+    ]
+  }
+}

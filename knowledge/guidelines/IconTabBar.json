@@ -1,0 +1,108 @@
+{
+  "componentName": "IconTabBar",
+  "slug": "icontabbar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/icontabbar/",
+  "purpose": "A navigation container that organizes content into labeled tabs with optional icons. Tabs can show counters and badges. Used as a secondary navigation within a page.",
+  "whenToUse": [
+    "Organize related content into separate views at the top of a content area",
+    "Show category-based content (Header / Overview / Artifacts / Documents)",
+    "Allow users to switch between content panels without page reload",
+    "Display item counts in tab badges (e.g. \"Artifacts (2)\")"
+  ],
+  "whenNotToUse": [
+    "Inside a dialog \u2014 use a Form or Panel instead",
+    "Inside a table cell or list item",
+    "As the only navigation on a page \u2014 use SideNavigation for primary nav",
+    "When tabs exceed ~7 \u2014 split into separate pages or use hierarchical navigation"
+  ],
+  "doRules": [
+    "Place at top of content area below page header",
+    "Use Bold weight for active tab and Semibold Duplex for inactive \u2014 same size",
+    "Indicate active tab with 3px bottom bar in sapShell_Navigation_SelectedColor",
+    "Keep tab labels short (1\u20133 words) and consistent in length",
+    "Show count in parens for tab badges"
+  ],
+  "dontRules": [
+    "Do not nest IconTabBar inside another IconTabBar",
+    "Do not use more than 7 tabs \u2014 split into multiple pages",
+    "Do not change tab text via direct text node injection \u2014 use selectedKey + setProperties on IconTabFilter children",
+    "Do not communicate active state by color alone \u2014 use the bottom bar"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of content area, below DynamicPageHeader, full width.",
+    "sizing": "Height 44px. Full container width with horizontal scroll if tabs overflow.",
+    "spacing": "32px gap between tabs.",
+    "alignment": "Tabs left-aligned with 48px left padding."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words. Add (count) badge when applicable.",
+    "contentRules": [
+      "Use noun labels for content categories (Header, Overview, Artifacts)",
+      "Pluralize counted entities",
+      "Keep tab order stable across visits"
+    ],
+    "examples": [
+      "Header",
+      "Overview",
+      "Artifacts (2)",
+      "Documents",
+      "Tags"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "All tabs visible inline",
+    "L": "All tabs visible inline",
+    "M": "Tabs visible inline; horizontal scroll if needed",
+    "S": "Overflow menu replaces inline tabs; selected tab + dropdown for others"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "contrast",
+      "requirement": "Active tab text contrast \u2265 4.5:1 with background",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate between tabs; Enter activates",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on focused tab",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "status",
+      "requirement": "Active tab distinguishable by more than color (uses 3px bar)",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Each tab has accessible name from text property"
+    }
+  ],
+  "patterns": [
+    "Object Page sections",
+    "List Report views",
+    "Wizard steps (when nonlinear)"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "IconTabFilter",
+      "DynamicPage",
+      "ObjectPageLayout",
+      "DynamicPageHeader"
+    ],
+    "incompatible": [
+      "Dialog",
+      "Table cell",
+      "List item"
+    ]
+  },
+  "exceptions": [
+    "Inline mode (headerMode=Inline) places tabs in the page title area",
+    "For very wide tabs, allow horizontal scroll with shadows indicating overflow"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

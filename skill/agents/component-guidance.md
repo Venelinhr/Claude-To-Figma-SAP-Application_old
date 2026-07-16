@@ -8,6 +8,39 @@ You operate in two modes depending on user intent:
 
 ---
 
+## Worked Example Prompts (route here when the user asks any of these)
+
+| User asks | Expected answer shape |
+|---|---|
+| *"I need to show 'Approved / Pending / Rejected' status on each row of my table. Which component?"* | Recommended: `ObjectStatus` (state + text + optional icon). Alternatives: `GenericTag` (numeric KPIs), `InfoLabel` (categorical labels, no state). Guideline URL. Accessibility note: never state-by-color-only. |
+| *"Should I use `Bar` or `OverflowToolbar` for the dialog footer?"* | Recommended: `Bar` with `design: Footer`. Reason: dialog footers are fixed-region; `OverflowToolbar` is for page toolbars that must collapse under narrow widths. |
+| *"What are the accessibility requirements for `RatingIndicator`?"* | AA contrast on rated vs. non-rated colors, keyboard nav (Arrow keys), aria-label with current value, focus outline, min 32px Compact / 44px Cozy tap target. |
+| *"Compare `ObjectStatus` vs `GenericTag` vs `InfoLabel` — when do I use which?"* | 3-column comparison: state semantics · numeric KPI · categorical label. Include the do/don't and a decision tree ending. |
+| *"What's the correct empty state pattern inside a `Card`?"* | `IllustratedMessage` inside the card content region — never a plain "No data" string. Use appropriate `sapIllus-` name. |
+
+Each answer follows the **guidance report shape** in Step 4 below: recommended component + configuration + do/don't + accessibility + alternatives + guideline source URL.
+
+---
+
+## MCP Wire-Through (call these before answering)
+
+Wave A of 2026-07-07 registered three custom MCPs alongside `figma`, `chrome-devtools`, and `ui5-mcp-server`. Call the local MCPs first — they are the fastest source of truth:
+
+| MCP | Tool | Use for |
+|---|---|---|
+| `sap-fiori-guidelines` | `getFioriGuideline(componentName)` | Full design guidance (purpose · when · do/don't · patterns · a11y) |
+| `sap-fiori-guidelines` | `searchGuidelines(query)` | Fuzzy search across all cached guidelines |
+| `sap-fiori-guidelines` | `getPattern(patternName)` | List components that participate in a UX pattern |
+| `sap-fiori-guidelines` | `listComponents()` | Which components have a cached guideline |
+| `sap-figma-community` | `getRegistryEntry(componentName)` | Local registry entry: figmaComponentId, variants, properties, tokens |
+| `sap-figma-community` | `listKnownComponents()` | 151-component registry roster |
+| `ui5-mcp-server` | `get_api_reference(query)` | Live UI5 API JSON (properties, aggregations, events, `uxGuidelinesLink`) |
+| `chrome-devtools` | `navigate_page` + `take_snapshot` | Fallback when the guideline isn't in the local cache |
+
+**Order of operations:** local MCP cache first → UI5 API JSON second → Chrome scrape only as fallback. This keeps the flow offline-preferring and cheap.
+
+---
+
 ## Data Sources — Priority Order
 
 Always fetch live data before giving advice. Use these sources in order:
@@ -72,9 +105,9 @@ wait_for(['Sample'])
 take_snapshot()  → shows all available samples
 ```
 
-### Source 4 — knowledge/schemas/ (local fallback)
+### Source 4 — knowledge/components/registry/ (local fallback)
 
-If Chrome MCP is unavailable, fall back to `knowledge/schemas/{Component}.json` which contains props, composition rules, a11y, intentTags.
+If Chrome MCP is unavailable, fall back to `knowledge/components/registry/{Component}.json` which contains props, composition rules, a11y, intentTags.
 
 ### Source 5 — knowledge/guidelines/ (cached summaries)
 
@@ -120,7 +153,7 @@ For each component you plan to recommend:
 
 4. **Cache the result** in `knowledge/guidelines/{slug}.md` using the format in `knowledge/guidelines/README.md`
 
-5. **If Chrome MCP fails:** Use `knowledge/schemas/{Component}.json` + training knowledge of SAP Fiori guidelines
+5. **If Chrome MCP fails:** Use `knowledge/components/registry/{Component}.json` + training knowledge of SAP Fiori guidelines
 
 ---
 
@@ -181,7 +214,7 @@ NOT COMPATIBLE WITH: {composition.forbiddenWith}
 After the guidance report is confirmed, generate the complete spec-schema.json.
 
 **Rules:**
-1. Every component must exist in `knowledge/schemas/` — check before including
+1. Every component must exist in `knowledge/components/registry/` — check before including
 2. Only non-default props
 3. ShellBar must be first in `hierarchy[]`
 4. `density: "compact"` for back-office unless user said Cozy

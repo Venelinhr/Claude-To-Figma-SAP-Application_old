@@ -1,0 +1,139 @@
+{
+  "componentName": "SideNavigation",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "d680af6d72f9421fe3f8712bf0ce171308963d3a",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [
+    {
+      "property": "Type",
+      "values": [
+        "Expanded",
+        "Collapsed"
+      ],
+      "default": "Expanded"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Hamburger",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "collapsed",
+      "ui5Name": "collapsed",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "group-label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab through items in DOM order; arrow keys traverse hierarchy"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on focused nav item"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Each item needs accessible name; icon-only items need aria-label"
+    }
+  ],
+  "doRules": [
+    "Use Expanded variant when sidebar width ≥ 224px",
+    "Use Collapsed (icon-only) when space is constrained",
+    "Group related items under collapsible Navigation Group",
+    "Mark current page with Selected state"
+  ],
+  "dontRules": [
+    "Do not place more than 2 levels of nesting",
+    "Do not mix icons-only and icon+label items in same group",
+    "Do not put primary actions in side nav — use ShellBar or toolbar"
+  ],
+  "compatibleComponents": [
+    "NavigationItem",
+    "ShellBar"
+  ],
+  "incompatiblePatterns": [
+    "Inside a Dialog",
+    "Inside a Panel content area"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/sidenavigation/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.SideNavigation",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.SideNavigation",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width 224–256px Expanded, 48px Collapsed. Height fills parent column.",
+    "knownIssues": [
+      "layoutSizingHorizontal=FILL must be set AFTER appendChild to sidebar column"
+    ]
+  },
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "NavigationItem",
+      "NavigationList",
+      "NavigationListItem"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "ShellBar",
+      "DynamicPage"
+    ]
+  },
+  "slotNames": [
+    "item",
+    "fixedItem",
+    "header",
+    "footer"
+  ]
+}

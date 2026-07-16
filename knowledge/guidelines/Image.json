@@ -1,0 +1,66 @@
+{
+  "componentName": "Image",
+  "slug": "image",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/image/",
+  "purpose": "Displays a raster image (photo, product shot, avatar). Supports lazy loading and fallback content. Use for content imagery, not for iconography (use Icon component instead).",
+  "whenToUse": [
+    "Show a product photo, user avatar (photo), or content image",
+    "Display a brand mark or logo in a fixed layout",
+    "As part of a card or list item showing rich content",
+    "For screenshots or diagrams inline with text"
+  ],
+  "whenNotToUse": [
+    "For icons — use Icon (better a11y, resolution-independent)",
+    "For decorative backgrounds — use CSS background-image at the frame level",
+    "For inline emoji — use text with emoji chars",
+    "For SVG-based art — use Vector or a proper icon library"
+  ],
+  "doRules": [
+    "Always provide alt text for content images",
+    "Use decorativeImage=true (or empty alt) for purely decorative images",
+    "Constrain size explicitly (width + height) to prevent layout shift",
+    "Provide fallback content when image fails to load"
+  ],
+  "dontRules": [
+    "Do not use for icons — Icon is the correct control",
+    "Do not omit alt text on content images (fails WCAG 1.1.1)",
+    "Do not stretch images beyond native resolution",
+    "Do not use images to convey text content that could be text"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside cards, list items, page content areas, avatars",
+    "sizing": "Constrained by parent; explicit width and height required",
+    "spacing": "Padding depends on parent (Card: 16px, List item: 8px)",
+    "alignment": "Object-fit contain or cover based on use case"
+  },
+  "contentGuidance": {
+    "labelLength": "Alt text 5-125 characters describing the image content",
+    "contentRules": "Alt text describes the image's role in the page, not its visual",
+    "examples": ["'Product: red ergonomic chair'", "'CEO Nadia Fischer'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Native or upscaled with quality settings",
+    "L": "Same",
+    "M": "May crop with object-fit: cover",
+    "S": "May hide non-essential images or use smaller variants"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)", "WCAG 2.1 · 1.4.5 Images of Text (Level AA)"],
+    "requirements": [
+      "Alt text required for content images",
+      "Empty alt='' for purely decorative images",
+      "Avoid text embedded in images (use real text instead)",
+      "Provide long descriptions for complex images via aria-describedby"
+    ]
+  },
+  "patterns": ["Card thumbnail", "List item avatar", "Page hero image", "Product cards"],
+  "compatibility": {
+    "allowedWith": ["Card", "StandardListItem", "ObjectListItem", "Page", "Panel"],
+    "forbiddenWith": ["ShellBar (use logo prop)", "Dialog title bar"]
+  },
+  "exceptions": [
+    "Web pages that must be text-only should hide images completely, not use empty alt"
+  ],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

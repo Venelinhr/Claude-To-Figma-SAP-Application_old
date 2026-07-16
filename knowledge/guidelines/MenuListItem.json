@@ -1,0 +1,64 @@
+{
+  "componentName": "MenuListItem",
+  "slug": "menu",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/menu/",
+  "purpose": "A single item inside a Menu — a clickable action with optional icon, shortcut, and submenu chevron. Never used standalone; always inside a Menu.",
+  "whenToUse": [
+    "As an item in a Menu popover",
+    "When the menu needs icons for scannability",
+    "When keyboard shortcuts should be visible",
+    "For hierarchical menus (with submenu chevron)"
+  ],
+  "whenNotToUse": [
+    "As a standalone list row — use StandardListItem",
+    "For form values — use Item (inside Select/ComboBox)",
+    "For toolbar actions — use Button directly",
+    "For navigation — use NavigationItem"
+  ],
+  "doRules": [
+    "Use verb-first labels (Delete, Edit, Duplicate)",
+    "Show shortcut on the right when the action has a keyboard binding",
+    "Use a chevron ▸ to indicate a submenu",
+    "Group destructive actions at the bottom with a separator above"
+  ],
+  "dontRules": [
+    "Do not use MenuListItem outside a Menu",
+    "Do not omit icons in a mixed icon/no-icon menu — pick one style",
+    "Do not disable without a hint why (tooltip or grayed reason)",
+    "Do not nest more than 2 submenu levels"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside a Menu popover",
+    "sizing": "Height 32px compact, 40px cozy; width fills menu",
+    "spacing": "Icon 24px left · 12px gap · text · shortcut right",
+    "alignment": "Left-aligned text; right-aligned shortcut/chevron"
+  },
+  "contentGuidance": {
+    "labelLength": "≤ 30 characters, verb-first",
+    "contentRules": "Imperative phrases, no punctuation",
+    "examples": ["Edit  ⌘E", "Export ▸", "Delete permanently"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full label + icon + shortcut",
+    "L": "Full label + icon + shortcut",
+    "M": "Same",
+    "S": "Shortcut may hide"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "role='menuitem'",
+      "aria-disabled when non-actionable",
+      "Keyboard: Arrow keys navigate; Enter activates",
+      "Submenu items have aria-haspopup"
+    ]
+  },
+  "patterns": ["Menu items", "Context menu items", "Overflow menu items"],
+  "compatibility": {
+    "allowedWith": ["Menu (only)"],
+    "forbiddenWith": ["Any parent other than Menu"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

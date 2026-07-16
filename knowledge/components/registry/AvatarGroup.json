@@ -1,0 +1,152 @@
+{
+  "componentName": "AvatarGroup",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "composed:Avatar[]",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Object Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "counter-bg",
+      "state": "Default",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "counter-text",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Cap visible avatars at 5; show +N for overflow",
+    "Order by most-relevant-first",
+    "Each avatar should have tooltip with name"
+  ],
+  "dontRules": [
+    "Do not show more than 5 visible avatars + counter",
+    "Do not use AvatarGroup as a primary action surface",
+    "Do not omit the overflow counter"
+  ],
+  "compatibleComponents": [
+    "DynamicPageHeader",
+    "ObjectPageLayout",
+    "Panel",
+    "Card",
+    "ColumnListItem"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/avatar-group/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.AvatarGroup",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.AvatarGroup",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.AvatarGroup/sample/sap.m.sample.AvatarGroup"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "AvatarGroup is sap.f.AvatarGroup. Plugin composes N Avatar instances horizontally with -8px overlap. The +N counter is a synthesized circle.",
+  "composition": {
+    "validParents": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Panel",
+      "Card",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "TimelineItem",
+      "FeedListItem",
+      "DynamicPage",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Avatar"
+    ],
+    "mustInclude": [
+      "Avatar"
+    ],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "ObjectStatus"
+    ]
+  }
+}

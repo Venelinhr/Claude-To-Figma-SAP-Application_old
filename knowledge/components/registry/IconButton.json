@@ -1,0 +1,173 @@
+{
+  "componentName": "IconButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "c1ee1ca76974c720ecd4b1888e1e23ac8a36ec63",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Default",
+        "Emphasized",
+        "Transparent",
+        "Ghost"
+      ],
+      "default": "Transparent"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Default"
+    },
+    {
+      "name": "enabled",
+      "ui5Name": "enabled",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    },
+    {
+      "name": "tooltip",
+      "ui5Name": "tooltip",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapButton_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "icon",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "border",
+      "token": "sapButton_BorderColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "hover-bg",
+      "token": "sapButton_Hover_Background",
+      "fallbackHex": "#EBF5FE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Icon-only buttons MUST have tooltip (aria-label)"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732px (Compact) / 44\u00d744px (Cozy)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring"
+    }
+  ],
+  "doRules": [
+    "Use a tooltip explaining the action",
+    "Pair with a well-known icon metaphor",
+    "Keep touch area \u226532px even if icon is smaller"
+  ],
+  "dontRules": [
+    "Do not use IconButton for primary actions \u2014 use Button with label",
+    "Do not use unfamiliar custom icons"
+  ],
+  "compatibleComponents": [
+    "Toolbar",
+    "OverflowToolbar",
+    "ShellBar",
+    "Table"
+  ],
+  "incompatiblePatterns": [
+    "As primary CTA without label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/iconbutton/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.IconButton",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.IconButton",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "32\u00d732px Compact / 44\u00d744px Cozy. Square aspect.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "ColumnListItem",
+      "SapTableRow",
+      "ListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "ToolbarSpacer"
+    ]
+  },
+  "schemaNotes": {
+    "typographyRules": "n/a"
+  }
+}

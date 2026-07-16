@@ -1,0 +1,61 @@
+{
+  "componentName": "Item",
+  "slug": "select",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/select/",
+  "purpose": "A generic option element used inside Select, ComboBox, MultiComboBox, and other selection controls. Represents a single choice with a key and a text label. Never used standalone; always inside a parent selection control.",
+  "whenToUse": [
+    "As an option in a Select or ComboBox",
+    "For picker items in Select/ComboBox/MultiComboBox",
+    "For dropdown entries in DropDown",
+    "As a composed sub-item — parent handles rendering"
+  ],
+  "whenNotToUse": [
+    "As a standalone visible node — Item has no independent rendering",
+    "For interactive rows in a list — use StandardListItem",
+    "For form values — use Input or the appropriate typed control",
+    "As a Menu entry — use MenuListItem"
+  ],
+  "doRules": [
+    "Provide a unique 'key' identifier",
+    "Set the 'text' property to a human-readable label",
+    "Group related items with GroupHeaderListItem in the same parent",
+    "Keep labels short and scannable"
+  ],
+  "dontRules": [
+    "Do not use Item outside a supported parent (Select/ComboBox/MultiComboBox)",
+    "Do not put long descriptions in the text property",
+    "Do not skip the key property — it is required for tracking",
+    "Do not duplicate keys within the same parent"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside Select/ComboBox/MultiComboBox as an option",
+    "sizing": "Height 32px compact, 40px cozy",
+    "spacing": "4px vertical padding",
+    "alignment": "Left-aligned text"
+  },
+  "contentGuidance": {
+    "labelLength": "≤ 30 characters; longer wraps or truncates",
+    "contentRules": "Plain text label; no formatting or icons",
+    "examples": ["'Germany' · 'High Priority' · 'Draft'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full label visible",
+    "L": "Full label visible",
+    "M": "Full label visible",
+    "S": "Same — parent handles overall responsive behavior"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "role='option' (implicit inside listbox)",
+      "aria-selected reflects selection state",
+      "aria-disabled when non-actionable",
+      "Screen reader announces label + selection state"
+    ]
+  },
+  "patterns": ["Select option", "ComboBox option", "MultiComboBox option"],
+  "compatibility": {"allowedWith": ["Select", "ComboBox", "MultiComboBox"], "forbiddenWith": ["Any parent other than the above"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

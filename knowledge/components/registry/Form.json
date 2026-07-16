@@ -1,0 +1,175 @@
+{
+  "componentName": "Form",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "6603eb3ebde2c1c763f2ae450df2cbb799ba640d",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Form",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Editable",
+      "ui5Property": "editable",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "editable",
+      "ui5Name": "editable",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "group-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Section Title"
+    },
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "group-title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "label-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab navigates through fields in DOM order"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Every form field paired with Label"
+    }
+  ],
+  "doRules": [
+    "Group related fields under a FormContainer with title",
+    "Use SimpleForm for basic forms; Form for complex layouts",
+    "Mark required fields with required=true"
+  ],
+  "dontRules": [
+    "Do not skip Labels",
+    "Do not put unrelated fields in same group"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Input",
+    "Select",
+    "CheckBox",
+    "RadioButton",
+    "Switch",
+    "Panel"
+  ],
+  "incompatiblePatterns": [
+    "Inside Toolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/form/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Form",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Form",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "not-injectable",
+    "sizingConstraints": "Width fills parent. Field column widths defined by FormLayout.",
+    "knownIssues": [
+      "Plugin treats Form as OPAQUE_SAP — places instance without recursing."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Dialog",
+      "SapFormSection",
+      "Card",
+      "IconTabBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "DatePicker",
+      "DateTimePicker",
+      "DateRangePicker",
+      "TimePicker",
+      "TextArea",
+      "CheckBox",
+      "RadioButton",
+      "RadioButtonGroup",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "StepInput",
+      "FileUploader",
+      "FormContainer",
+      "FormElement",
+      "MessageStrip"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Table",
+      "SapTableRow"
+    ],
+    "commonSiblings": [
+      "MessageStrip",
+      "Toolbar"
+    ]
+  },
+  "slotNames": [
+    "formContainers",
+    "title",
+    "toolbar"
+  ]
+}

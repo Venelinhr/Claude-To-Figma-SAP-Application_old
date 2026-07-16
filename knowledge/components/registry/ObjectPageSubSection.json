@@ -1,0 +1,139 @@
+{
+  "componentName": "ObjectPageSubSection",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Panel",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Provide H3-level title",
+    "Group related Form fields or content here",
+    "Keep content focused"
+  ],
+  "dontRules": [
+    "Do not nest SubSections",
+    "Do not skip ObjectPageSection (always wrap in Section)"
+  ],
+  "compatibleComponents": [
+    "ObjectPageSection"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/object-page-sub-section/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ObjectPageSubSection",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ObjectPageSubSection",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ObjectPageSubSection/sample/sap.m.sample.ObjectPageSubSection"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ObjectPageSubSection aliases to Panel with H3 title. Plugin renders inside parent ObjectPageSection with reduced visual prominence.",
+  "composition": {
+    "validParents": [
+      "ObjectPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "Table",
+      "List",
+      "SapColHeader",
+      "SapTableRow",
+      "MessageStrip",
+      "Button",
+      "Link"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "ObjectPageSubSection"
+    ]
+  },
+  "slotNames": [
+    "blocks",
+    "moreBlocks",
+    "actions"
+  ]
+}

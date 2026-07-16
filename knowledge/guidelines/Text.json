@@ -1,0 +1,76 @@
+{
+  "componentName": "Text",
+  "slug": "text",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/text/",
+  "purpose": "Plain text node for body content, descriptions, paragraph copy, and inline labels. The most basic text primitive in the SAP UI vocabulary.",
+  "whenToUse": [
+    "Body copy, descriptions, paragraphs in cards, panels, dialogs",
+    "Secondary text in object cells (after the primary title)",
+    "Help text, hint text, supporting copy in forms",
+    "Static labels that are NOT associated with an input (those use Label)"
+  ],
+  "whenNotToUse": [
+    "For headings — use Title with appropriate Level",
+    "For interactive elements — use Link or Button",
+    "For input labels — use Label so screen readers associate it",
+    "For status messages — use MessageStrip"
+  ],
+  "doRules": [
+    "Bind fill to sapList_TextColor (primary) or sapContent_LabelColor (subtle/secondary)",
+    "Use SAP font family 72 at standard sizes (12, 14, 16)",
+    "Enable wrapping for long text; set maxLines to truncate gracefully",
+    "Keep paragraph text under ~3 sentences in cards and condensed contexts"
+  ],
+  "dontRules": [
+    "Do not use Text where bold heading semantics apply — use Title",
+    "Do not hardcode font sizes outside the SAP scale",
+    "Do not put Text inside a table cell when ObjectIdentifier or ObjectAttribute is appropriate",
+    "Do not use Text for status — use ObjectStatus or MessageStrip"
+  ],
+  "layoutGuidance": {
+    "placement": "Inline within Form fields, Panels, Cards, Dialogs, and DynamicPageHeader slots.",
+    "sizing": "Auto height; width inherits from parent. Set textAutoResize to HEIGHT for wrap.",
+    "spacing": "8px line spacing implicit via font metrics; 16px between paragraphs.",
+    "alignment": "Default left-aligned (Begin); use End only for numeric or right-rail data."
+  },
+  "contentGuidance": {
+    "labelLength": "Body 1-3 sentences; description 1 sentence; label 1-3 words.",
+    "contentRules": [
+      "Use plain language — avoid jargon",
+      "Localize all text",
+      "Capitalize only the first letter (sentence case)",
+      "End sentences with a period; omit period from single-fragment labels"
+    ],
+    "examples": [
+      "Package containing employee data replication integration scenarios",
+      "Created by ranjan@sap.com on Mar 10, 2026",
+      "API",
+      "Active"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full text shown.",
+    "L":  "Full text shown.",
+    "M":  "Wrapping enabled where width contracts.",
+    "S":  "May truncate with maxLines or wrap; ensure readability."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to plain text node (no aria role). Inherits from parent landmark.",
+    "contrast": "Body text contrast ≥ 4.5:1 against bg (WCAG AA).",
+    "keyboard": "Not interactive; tab passes over Text nodes.",
+    "screenReader": "Announced as plain text within its parent landmark."
+  },
+  "patterns": [
+    "Card body — Text for description",
+    "Object header — Text for subtitle / metadata",
+    "Form — Text for help/hint",
+    "Empty state — Text for explanatory copy"
+  ],
+  "compatibility": ["Form", "Panel", "Dialog", "DynamicPage", "Card", "Table", "List", "ColumnListItem"],
+  "exceptions": [
+    "Native renderer — no SAP instance for sap.m.Text. Plugin creates figma.createText() with bound SAP variables.",
+    "When wrapping is critical (long descriptions), explicitly set props.wrap=true."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

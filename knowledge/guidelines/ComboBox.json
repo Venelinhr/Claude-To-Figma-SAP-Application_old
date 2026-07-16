@@ -1,0 +1,64 @@
+{
+  "componentName": "ComboBox",
+  "slug": "combo-box",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/combo-box/",
+  "purpose": "A dropdown selector that combines typing with a scrollable list — user can type to filter or click to choose. Handles known finite lists (10-100 items) better than Select.",
+  "whenToUse": [
+    "10-100 items in a known list (countries, categories, sizes)",
+    "User might know the answer and prefers typing",
+    "Values are strings, not numbers or ranges",
+    "You need auto-complete but not free-text (which would be Input)"
+  ],
+  "whenNotToUse": [
+    "Fewer than 10 items — use Select (simpler)",
+    "More than 100 items — use MultiInput with async search",
+    "Free-text — use Input",
+    "Multiple selections — use MultiComboBox"
+  ],
+  "doRules": [
+    "Show all matching items as user types (case-insensitive prefix match)",
+    "Provide a Reset (X) affordance to clear",
+    "Default to placeholder text when empty",
+    "Show validation state (Error/Warning/Success) via state property"
+  ],
+  "dontRules": [
+    "Do not allow arbitrary text if the value must be in the list",
+    "Do not scroll the dropdown to more than 8 visible items — use MultiInput for large sets",
+    "Do not use for numeric ranges — use Slider or StepInput",
+    "Do not hide the dropdown chevron"
+  ],
+  "layoutGuidance": {
+    "placement": "Inline in forms, filter bars, dialogs",
+    "sizing": "Min width 200px; height 32px compact, 40px cozy",
+    "spacing": "Standard field spacing (16px between form rows)",
+    "alignment": "Full width in FormElement; left-aligned in HBox"
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder up to 40 chars",
+    "contentRules": "Item labels are noun phrases; consistent format across items",
+    "examples": ["Country: [Germany|]", "Priority: [High     ▼]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full field width",
+    "L": "Full field width",
+    "M": "Full field width",
+    "S": "May become full-screen picker on tap"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 3.3.2 Labels or Instructions (Level A)"],
+    "requirements": [
+      "role='combobox' with aria-expanded reflecting dropdown state",
+      "Associated Label element (visible or aria-labelledby)",
+      "Selected value announced by screen reader",
+      "Keyboard: Down opens dropdown; Arrow keys navigate; Enter selects; Escape closes"
+    ]
+  },
+  "patterns": ["Form field", "FilterBar item", "Dialog input"],
+  "compatibility": {
+    "allowedWith": ["Form", "FormElement", "FilterBar", "Dialog", "Panel"],
+    "forbiddenWith": ["Table cells (too dense)", "Toolbar"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

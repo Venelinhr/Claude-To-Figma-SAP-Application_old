@@ -1,0 +1,74 @@
+{
+  "componentName": "ProgressIndicator",
+  "slug": "progress-indicator",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/progressindicator/",
+  "purpose": "Horizontal bar showing the completion percentage of a long-running task or quantitative state (storage used, completion progress, score).",
+  "whenToUse": [
+    "Long-running tasks (upload, sync, processing)",
+    "Quantitative state of a single dimension (storage, quota, completion %)",
+    "Multi-step wizards to show overall progress",
+    "KPI tiles showing percentage of target"
+  ],
+  "whenNotToUse": [
+    "For indeterminate progress \u2014 use BusyIndicator",
+    "For categorical status \u2014 use ObjectStatus",
+    "For ratings \u2014 use RatingIndicator",
+    "For percentages alone (no progress connotation) \u2014 use Text with %"
+  ],
+  "doRules": [
+    "Always show percent + descriptive label (\"47% \u2014 235 of 500 invoices\")",
+    "Pick state color based on value (positive >= 80%, critical <= 20%)",
+    "Use sapPositiveTextColor / sapCriticalTextColor / sapNegativeTextColor for semantic state",
+    "Bind fill to a SAP variable matching state"
+  ],
+  "dontRules": [
+    "Do not use ProgressIndicator without a label",
+    "Do not animate when stalled \u2014 show static state",
+    "Do not stack multiple ProgressIndicators for the same metric",
+    "Do not use hardcoded color \u2014 bind to state-aware SAP token"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ProgressIndicator inside a compatible container (Card, Panel, ColumnListItem).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid punctuation in short labels",
+      "Localize all text"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense or collapse \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern (Popover, Dialog) on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for feedback \u2014 see SAP Fiori a11y docs.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used in Card",
+    "Used in Panel",
+    "Used in ColumnListItem"
+  ],
+  "compatibility": [
+    "Card",
+    "Panel",
+    "ColumnListItem",
+    "Form",
+    "DynamicPageHeader"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

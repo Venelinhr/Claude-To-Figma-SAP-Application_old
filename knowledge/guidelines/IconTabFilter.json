@@ -1,0 +1,81 @@
+{
+  "componentName": "IconTabFilter",
+  "slug": "icontabbar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/icontabbar/",
+  "purpose": "A single tab within an IconTabBar. Holds the tab label, optional icon, count badge, and selected state.",
+  "whenToUse": [
+    "As child of IconTabBar only",
+    "For each tab in the bar"
+  ],
+  "whenNotToUse": [
+    "Outside IconTabBar",
+    "For navigation across pages \u2014 use SideNavigation"
+  ],
+  "doRules": [
+    "Use short labels (1\u20133 words)",
+    "Show count in parens for tab badges like \"Artifacts (2)\"",
+    "Use design=Vertical for label-only tabs; Horizontal for icon+label",
+    "Set key for selectedKey binding"
+  ],
+  "dontRules": [
+    "Do not change tab label text via direct injection \u2014 use text property",
+    "Do not nest IconTabFilter inside IconTabFilter",
+    "Do not use long labels"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside IconTabBar items aggregation.",
+    "sizing": "Auto width by label; height matches IconTabBar.",
+    "spacing": "32px gap to next tab.",
+    "alignment": "Center within tab area."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words.",
+    "contentRules": [
+      "Use noun labels",
+      "Add (count) for badges"
+    ],
+    "examples": [
+      "Header",
+      "Overview",
+      "Artifacts (2)"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Inline with full label",
+    "L": "Inline with full label",
+    "M": "Inline; horizontal scroll if overflow",
+    "S": "Collapsed into overflow menu"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate tabs",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "status",
+      "requirement": "Selected state shown by color AND underline",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Selected state announced as \"selected\""
+    }
+  ],
+  "patterns": [
+    "Tab within IconTabBar"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "IconTabBar"
+    ],
+    "incompatible": [
+      "Outside IconTabBar"
+    ]
+  },
+  "exceptions": [
+    "IconTabSeparator for visual grouping between tabs"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

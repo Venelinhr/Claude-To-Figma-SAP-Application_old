@@ -1,0 +1,132 @@
+{
+  "componentName": "BusyIndicator",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "e328630d6c564d1f312256254e0543d41bacbb84",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Size",
+      "ui5Property": "size",
+      "values": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "default": "Medium"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "size",
+      "ui5Name": "size",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Medium"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "spinner",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#6A6D70"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "announcements",
+      "requirement": "Busy state announced via aria-busy=true",
+      "wcag": "4.1.3 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Text describes what is loading"
+    }
+  ],
+  "doRules": [
+    "Use when operation takes longer than 1 second",
+    "Show descriptive text (\"Loading orders...\", \"Saving...\")",
+    "Use Small for inline contexts; Large for full-page"
+  ],
+  "dontRules": [
+    "Do not use for instant operations (<1s) \u2014 no feedback needed",
+    "Do not block entire UI for non-critical operations",
+    "Do not omit text when context unclear"
+  ],
+  "compatibleComponents": [
+    "Dialog",
+    "Page",
+    "Table",
+    "List"
+  ],
+  "incompatiblePatterns": [
+    "As replacement for empty state \u2014 use IllustratedMessage"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/busyindicator/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.BusyIndicator",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.BusyIndicator",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Small=16, Medium=32, Large=64 px.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Dialog",
+      "BusyDialog",
+      "Panel",
+      "Card",
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Form",
+      "Table",
+      "List",
+      "IconTabBar",
+      "Popover",
+      "MessageStrip"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Text",
+      "Label"
+    ]
+  }
+}

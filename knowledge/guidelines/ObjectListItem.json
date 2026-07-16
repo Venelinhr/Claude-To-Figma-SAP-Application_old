@@ -1,0 +1,63 @@
+{
+  "componentName": "ObjectListItem",
+  "slug": "object-list-item",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-list-item/",
+  "purpose": "Rich List item showing an object summary \u2014 title, identifier, attributes, status, optional icon/avatar. Used in master-list views to summarize objects before drilling in.",
+  "whenToUse": [
+    "Master-detail list views (drill into Object Page)",
+    "List that summarizes objects with multiple attributes",
+    "When ObjectIdentifier alone is insufficient"
+  ],
+  "whenNotToUse": [
+    "Simple text list \u2014 use StandardListItem",
+    "Tabular comparison \u2014 use Table",
+    "Single attribute \u2014 use StandardListItem"
+  ],
+  "doRules": [
+    "Title is the primary identifier (verb-first if action-oriented)",
+    "Use ObjectStatus for status",
+    "Bind title to sapTitleColor, attrs to sapContent_LabelColor"
+  ],
+  "dontRules": [
+    "Do not exceed 4 attributes inline \u2014 readability suffers",
+    "Do not omit title \u2014 required"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ObjectListItem inside a compatible container (List).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for list item.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside List"
+  ],
+  "compatibility": [
+    "List"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

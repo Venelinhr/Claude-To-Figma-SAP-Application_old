@@ -1,0 +1,154 @@
+{
+  "componentName": "Carousel",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "bf174ffb841e4b27947d0be558656bb80238fe0d",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "dot-active",
+      "state": "Active",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "dot-inactive",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Show paging dots so users can see total count",
+    "Set itemHeight large enough that content is readable on first slide",
+    "Provide keyboard navigation (Left/Right arrows)",
+    "Bind background to sapBackgroundColor"
+  ],
+  "dontRules": [
+    "Do not auto-rotate — let users control pace",
+    "Do not hide paging dots",
+    "Do not exceed ~7 items",
+    "Do not use Carousel for primary navigation"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "Panel",
+    "Card",
+    "Dialog"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells",
+    "Inside OverflowToolbar",
+    "Nested in another Carousel"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/carousel/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Carousel",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Carousel",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Carousel/sample/sap.m.sample.Carousel"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Carousel is a SAP instance. Plugin places it via SAP_KEYS. SAP Carousel ships with hardcoded sample pages that can't be easily replaced per-instance — for production specs, the plugin builds a native Auto Layout horizontal scroll container with the same paging dots styling.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Card",
+      "Panel",
+      "Avatar",
+      "IllustratedMessage",
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "pages",
+    "customLayout"
+  ]
+}

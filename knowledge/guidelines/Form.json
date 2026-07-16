@@ -1,0 +1,89 @@
+{
+  "componentName": "Form",
+  "slug": "simple-form",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/form/",
+  "purpose": "A container that arranges form fields and labels in a responsive grid. Supports edit and display modes with consistent spacing.",
+  "whenToUse": [
+    "For creating, editing, or displaying structured data",
+    "In Object Page sections",
+    "In dialogs requiring multiple inputs",
+    "For settings pages"
+  ],
+  "whenNotToUse": [
+    "For single-field input \u2014 use field component directly",
+    "For freeform layout \u2014 use FlexBox or VBox",
+    "For tabular data \u2014 use Table"
+  ],
+  "doRules": [
+    "Group related fields under a FormContainer with title",
+    "Use SimpleForm for basic forms; Form for complex layouts",
+    "Mark required fields with required=true",
+    "Use editable=false for display mode"
+  ],
+  "dontRules": [
+    "Do not skip Labels on fields",
+    "Do not put unrelated fields in same group",
+    "Do not stretch the form to full width on wide viewports"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside page content, ObjectPageSection, Dialog.",
+    "sizing": "Max width 1024px preferred; width fills parent up to max.",
+    "spacing": "8px Compact / 16px Cozy between fields.",
+    "alignment": "Labels left, fields right (or labels above on narrow)."
+  },
+  "contentGuidance": {
+    "labelLength": "Field labels 1\u20133 words.",
+    "contentRules": [
+      "Group with FormContainer",
+      "Use FormElement per Label+field pair"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Multi-column layout (2\u20133 columns)",
+    "L": "2-column layout",
+    "M": "Single column with labels left",
+    "S": "Single column with labels above fields"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab navigates through fields in DOM order",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Every form field paired with Label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Required fields announced; errors announced via valueState"
+    }
+  ],
+  "patterns": [
+    "Create form",
+    "Edit form",
+    "Settings"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "Panel"
+    ],
+    "incompatible": [
+      "Inside Toolbar",
+      "Inside Table cell"
+    ]
+  },
+  "exceptions": [
+    "SimpleForm has a different child API but same visual output"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,144 @@
+{
+  "componentName": "DateRangePicker",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "ad1f84e6293671f80ff8dd174b1da0cbacf0fa48",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Two-step calendar: select start, then end"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label"
+    }
+  ],
+  "doRules": [
+    "Use for date range filters (e.g. \"From \u2013 To\")",
+    "Provide preset ranges (Last 7 days, This month, etc.)"
+  ],
+  "dontRules": [
+    "Do not use for single date \u2014 use DatePicker",
+    "Do not allow end date before start date"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "FilterBar"
+  ],
+  "incompatiblePatterns": [
+    "Without Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/daterangepicker/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.DateRangePicker",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.DateRangePicker",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "300px default; wider than DatePicker.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select"
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "componentName": "AvatarGroup",
+  "slug": "avatar-group",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/avatar-group/",
+  "purpose": "Group of overlapping Avatars showing multiple users or entities. Final Avatar can be a +N counter for overflow.",
+  "whenToUse": [
+    "List of users assigned to a task",
+    "Attendees on an event",
+    "Object collaborators in a header",
+    "Up to ~5 visible + counter"
+  ],
+  "whenNotToUse": [
+    "Single user \u2014 use Avatar",
+    "When all users must be individually identifiable \u2014 use a list",
+    "For non-user entities use Tag or ObjectMarker"
+  ],
+  "doRules": [
+    "Cap visible avatars at 5; show +N for overflow",
+    "Order by most-relevant-first",
+    "Each avatar should have tooltip with name"
+  ],
+  "dontRules": [
+    "Do not show more than 5 visible avatars + counter",
+    "Do not use AvatarGroup as a primary action surface",
+    "Do not omit the overflow counter"
+  ],
+  "layoutGuidance": {
+    "placement": "Place AvatarGroup inside a compatible container (DynamicPageHeader, ObjectPageLayout, Panel).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for object display.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside DynamicPageHeader",
+    "Used inside ObjectPageLayout",
+    "Used inside Panel"
+  ],
+  "compatibility": [
+    "DynamicPageHeader",
+    "ObjectPageLayout",
+    "Panel",
+    "Card",
+    "ColumnListItem"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

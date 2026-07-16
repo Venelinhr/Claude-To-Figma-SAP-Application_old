@@ -1,0 +1,160 @@
+{
+  "componentName": "Label",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "b38ac753648ad298c1e2dd02d71417566dd6095c",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Typography",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Required",
+      "ui5Property": "required",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Display Only",
+      "ui5Property": "displayOnly",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "required",
+      "ui5Name": "required",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "text",
+      "state": "Required",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Always associate with the field it labels via labelFor"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Label-to-background contrast \u2265 4.5:1",
+      "wcag": "1.4.3"
+    }
+  ],
+  "doRules": [
+    "Place Label above or to the left of the field",
+    "Mark required fields with the * indicator",
+    "Keep labels concise (1\u20133 words)"
+  ],
+  "dontRules": [
+    "Do not use Label as body text",
+    "Do not skip Label and rely on placeholder"
+  ],
+  "compatibleComponents": [
+    "Input",
+    "Select",
+    "CheckBox",
+    "RadioButton",
+    "Switch",
+    "DatePicker",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Standalone with no field associated"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/label/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Label",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Label",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto height; fits parent width when inside Form.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "SapColHeader",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "MessageStrip",
+      "Wizard",
+      "WizardStep",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Bar",
+      "*"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch"
+    ]
+  }
+}

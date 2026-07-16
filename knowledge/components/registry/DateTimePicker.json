@@ -1,0 +1,142 @@
+{
+  "componentName": "DateTimePicker",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "377d76d309f4e5ee7e12132eba0df4e29686a4f7",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab between date and time fields; arrows navigate within"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label"
+    }
+  ],
+  "doRules": [
+    "Use when both date AND time are required",
+    "Show 24-hour or AM/PM based on locale"
+  ],
+  "dontRules": [
+    "Do not use when only date or only time is needed"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Without Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/datetimepicker/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.DateTimePicker",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.DateTimePicker",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "256px default.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select"
+    ]
+  }
+}

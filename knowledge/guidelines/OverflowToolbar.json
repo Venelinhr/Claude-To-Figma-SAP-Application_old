@@ -1,0 +1,89 @@
+{
+  "componentName": "OverflowToolbar",
+  "slug": "toolbar-overflow",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/toolbar-overflow/",
+  "purpose": "A horizontal action bar that automatically collapses its less-important actions into an overflow ⋮ menu when the available width is insufficient. Used above tables, in dialogs, and as a section-level action toolbar.",
+  "whenToUse": [
+    "Above a Table or List to host bulk-action buttons (Add, Delete, Approve, Export)",
+    "As a section toolbar in an Object Page with section-scoped actions",
+    "When the action count varies based on selection or context and may exceed available width",
+    "When you need an inline title + search input + multiple action buttons in one row",
+    "In Dialogs with multiple actions where some may need to overflow"
+  ],
+  "whenNotToUse": [
+    "For page-level actions tied to the entity title — those belong in DynamicPageTitle's actions slot",
+    "When there is only ONE action — use a single Button placed in the relevant slot instead",
+    "For navigation between sections — use IconTabBar or Breadcrumb",
+    "Inside a Table cell — table rows should use IconButton/MenuButton, not a toolbar"
+  ],
+  "doRules": [
+    "Place the section title on the left edge",
+    "Use itemSpacing of 8px between action items",
+    "Order actions left-to-right by importance: primary right-side actions last",
+    "Keep at most 1 Emphasized button — represents the section's primary action",
+    "Show the most-used 2-3 actions inline; let the rest overflow into the ⋮ menu",
+    "Place destructive actions inside the overflow menu, never inline (prevent mis-click)",
+    "Use SearchField inline for table-scoped search; keep it left of action buttons"
+  ],
+  "dontRules": [
+    "Do not put primary CTAs inside the overflow menu — they must always be visible",
+    "Do not exceed 5 inline actions before letting overflow take over",
+    "Do not stack two OverflowToolbars vertically — combine into one",
+    "Do not put long labels on inline buttons when space is tight — use IconButton with tooltip",
+    "Do not nest one OverflowToolbar inside another",
+    "Do not use color alone to differentiate action types — rely on Button.type semantics"
+  ],
+  "layoutGuidance": {
+    "placement": "Full-width row directly above the Table or section it controls.",
+    "sizing": "Height 44px (matches SAP control standard). Width = parent content width.",
+    "spacing": "16px horizontal padding. 8px gap between items. Title left-edge, actions right-edge via ToolbarSpacer or layoutGrow.",
+    "alignment": "Items vertically centered. Title and action group horizontally distributed (SPACE_BETWEEN behavior — implement via layoutGrow on the spacer node)."
+  },
+  "contentGuidance": {
+    "titleLength": "1-3 words + optional counter (e.g. 'Artifacts (2)', 'Pending Approvals (47)').",
+    "contentRules": [
+      "Counter in parentheses matches the row count of the table below",
+      "Action labels are short, verb-first (Add, Delete, Approve, Export)",
+      "Overflow menu items use the same labels as if they were inline",
+      "SearchField placeholder describes the scope ('Search artifacts' not just 'Search')"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "All inline actions visible; SearchField shown.",
+    "L": "All inline actions visible; SearchField may shrink.",
+    "M": "Lower-priority actions move to overflow ⋮; SearchField narrows.",
+    "S": "Most actions in overflow ⋮; title and primary action remain visible."
+  },
+  "accessibilityGuidance": {
+    "WCAG_2_4_3_FocusOrder": "Tab order: Title → SearchField → inline actions (left to right) → overflow button.",
+    "WCAG_2_1_1_Keyboard": "Every action reachable by keyboard. Enter/Space triggers; Escape closes overflow menu.",
+    "WCAG_2_4_7_FocusVisible": "Every interactive child has a visible focus ring.",
+    "WCAG_4_1_2_NameRoleValue": "Toolbar has role=toolbar. Overflow button has aria-haspopup=true and aria-expanded reflecting open state.",
+    "WCAG_1_4_3_Contrast": "Title text 4.5:1 against toolbar background. Action button text per Button component's a11y rules."
+  },
+  "patterns": [
+    "Table headerToolbar — OverflowToolbar above a Table holding title + search + actions",
+    "Object Page section header — OverflowToolbar at the top of a section",
+    "Filter Bar actions — Go / Adapt Filters / Save buttons in an OverflowToolbar within DynamicPageHeader",
+    "Dialog footer — multiple actions with overflow fallback for confirm/cancel groupings"
+  ],
+  "compatibility": [
+    "Title",
+    "Label",
+    "Button",
+    "IconButton",
+    "MenuButton",
+    "SearchField",
+    "ToolbarSpacer",
+    "ToggleButton",
+    "Select",
+    "ComboBox"
+  ],
+  "exceptions": [
+    "Inside a Table cell — use IconButton or MenuButton directly, not a toolbar",
+    "As Dialog primary content — Dialog has its own footer for actions",
+    "Nested inside another OverflowToolbar — combine into a single toolbar"
+  ],
+  "version": "1.149.0",
+  "lastChecked": "2026-06-26"
+}

@@ -1,0 +1,68 @@
+{
+  "componentName": "MaskedInput",
+  "slug": "masked-input",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/masked-input/",
+  "purpose": "Input that enforces a character mask (phone numbers, SSN, credit cards, postal codes). User can only enter characters matching the mask pattern.",
+  "whenToUse": [
+    "Phone numbers, SSN, credit card, postal code",
+    "Any structured numeric input with fixed formatting",
+    "When typo prevention via input format is needed"
+  ],
+  "whenNotToUse": [
+    "Free-form text \u2014 use Input",
+    "Numeric with range \u2014 use StepInput",
+    "Currency \u2014 use Input with type=Number"
+  ],
+  "doRules": [
+    "Provide a clear placeholder showing the mask format",
+    "Use the correct mask character (9 for digit, A for letter, etc.)",
+    "Validate completeness before submit"
+  ],
+  "dontRules": [
+    "Do not use MaskedInput for variable-length data",
+    "Do not omit the mask placeholder",
+    "Do not localize without re-checking mask format"
+  ],
+  "layoutGuidance": {
+    "placement": "Place MaskedInput inside a compatible container (Form, Dialog, Panel).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for input.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Form",
+    "Used inside Dialog",
+    "Used inside Panel"
+  ],
+  "compatibility": [
+    "Form",
+    "Dialog",
+    "Panel"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

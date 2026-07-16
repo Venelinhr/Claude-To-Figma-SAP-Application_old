@@ -1,0 +1,62 @@
+{
+  "componentName": "ObjectPageSection",
+  "slug": "object-page-section",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-page-section/",
+  "purpose": "Major section of an ObjectPageLayout \u2014 has a title, optional anchor in the navigation menu, contains SubSections.",
+  "whenToUse": [
+    "Inside ObjectPageLayout",
+    "When detail page has multiple major themes (General / Schedule / Notes)"
+  ],
+  "whenNotToUse": [
+    "Outside ObjectPageLayout",
+    "For minor groupings \u2014 use ObjectPageSubSection or Panel"
+  ],
+  "doRules": [
+    "Provide a clear, scoped title",
+    "Use 2-7 SubSections per Section",
+    "Make title navigable via the page anchor menu"
+  ],
+  "dontRules": [
+    "Do not nest Sections",
+    "Do not exceed 7 SubSections per Section",
+    "Do not omit the title"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ObjectPageSection inside a compatible container (ObjectPageLayout).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for page layout.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside ObjectPageLayout"
+  ],
+  "compatibility": [
+    "ObjectPageLayout"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

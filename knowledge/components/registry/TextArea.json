@@ -1,0 +1,183 @@
+{
+  "componentName": "TextArea",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "bee4738dd5e5856a3b88eae341b47376a3269d87",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning",
+        "Success",
+        "Information"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "rows",
+      "ui5Name": "rows",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "2"
+    },
+    {
+      "name": "maxLength",
+      "ui5Name": "maxLength",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "growing",
+      "ui5Name": "growing",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success",
+    "Information"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "placeholder",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter creates newline; Tab moves focus"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Character count announced when maxLength set"
+    }
+  ],
+  "doRules": [
+    "Use for multi-line free text (comments, descriptions)",
+    "Set rows to indicate expected length",
+    "Show character counter when maxLength applies"
+  ],
+  "dontRules": [
+    "Do not use for single-line input \u2014 use Input",
+    "Do not omit Label"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "Dialog"
+  ],
+  "incompatiblePatterns": [
+    "Without Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/textarea/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.TextArea",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.TextArea",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width fills container; height by rows.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label"
+    ]
+  }
+}

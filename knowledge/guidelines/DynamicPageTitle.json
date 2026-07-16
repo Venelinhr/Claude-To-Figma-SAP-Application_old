@@ -1,0 +1,78 @@
+{
+  "componentName": "DynamicPageTitle",
+  "slug": "dynamic-page-layout",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/dynamic-page-layout/",
+  "purpose": "The sticky title bar of a DynamicPage. Contains breadcrumbs, page title, action buttons, and optionally an avatar/icon.",
+  "whenToUse": [
+    "As child of DynamicPage or ObjectPageLayout",
+    "For page identification and primary actions"
+  ],
+  "whenNotToUse": [
+    "Outside DynamicPage",
+    "As page section header (use Panel)"
+  ],
+  "doRules": [
+    "Use one DynamicPageTitle per page",
+    "Place primary actions in actions slot",
+    "Place navigation breadcrumb in breadcrumbs slot",
+    "Use 72:Black 24px for the main heading"
+  ],
+  "dontRules": [
+    "Do not include more than 4 primary actions",
+    "Do not duplicate ShellBar content",
+    "Do not omit the title"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of DynamicPage, sticky on scroll.",
+    "sizing": "Full width, height 48px (collapsed) to 96px (expanded).",
+    "spacing": "Breadcrumb above title; actions right-aligned.",
+    "alignment": "Title left, actions right."
+  },
+  "contentGuidance": {
+    "labelLength": "Title 1\u20135 words preferred.",
+    "contentRules": [
+      "Title in Black 24px",
+      "Use sentence case"
+    ],
+    "examples": [
+      "Purchase Order",
+      "AKS_PKG"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full layout",
+    "L": "Full layout",
+    "M": "Actions may collapse to overflow",
+    "S": "Sticky compact title only"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "labeling",
+      "requirement": "Heading text is the accessible name of the page",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Title contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    }
+  ],
+  "patterns": [
+    "Page title",
+    "Sticky header"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "DynamicPage",
+      "ObjectPageLayout"
+    ],
+    "incompatible": [
+      "Outside DynamicPage"
+    ]
+  },
+  "exceptions": [
+    "Snapped state hides description/metadata for scroll efficiency"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

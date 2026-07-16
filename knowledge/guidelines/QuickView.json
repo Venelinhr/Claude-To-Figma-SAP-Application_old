@@ -1,0 +1,64 @@
+{
+  "componentName": "QuickView",
+  "slug": "quick-view",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/quick-view/",
+  "purpose": "Object summary preview shown in a Popover anchored to a list row or link. Avatar + title + key facts + actions, without leaving the current page.",
+  "whenToUse": [
+    "Hover-preview of a user, customer, or object from a table row",
+    "Quick-glance detail without full navigation",
+    "Right-click context summaries"
+  ],
+  "whenNotToUse": [
+    "Full editing \u2014 open Object Page",
+    "Static text \u2014 use Popover with text",
+    "Critical decisions \u2014 use Dialog"
+  ],
+  "doRules": [
+    "Include Avatar + title + 3-5 key attributes",
+    "Provide \"Open\" link to full detail page",
+    "Bind background to sapShellColor"
+  ],
+  "dontRules": [
+    "Do not embed forms in QuickView",
+    "Do not exceed 5 attributes",
+    "Do not nest QuickViews"
+  ],
+  "layoutGuidance": {
+    "placement": "Place QuickView inside a compatible container (Triggered from List rows, Link, Avatar).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for overlay.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Triggered from List rows, Link, Avatar"
+  ],
+  "compatibility": [
+    "Triggered from List rows, Link, Avatar"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

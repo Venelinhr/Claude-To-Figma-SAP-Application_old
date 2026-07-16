@@ -1,0 +1,64 @@
+{
+  "componentName": "AIButton",
+  "slug": "ai-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/joule/",
+  "purpose": "A button variant that triggers an AI-powered action (Joule integration). Visually distinguished with the SAP AI accent color and often a spark or wand icon. Used to signal AI-assisted features to users.",
+  "whenToUse": [
+    "Trigger an AI-generated action (draft an email, summarize, translate)",
+    "Open a Joule assistant panel or overlay",
+    "Invoke autocomplete, suggestion, or generation flows",
+    "Distinguish AI actions from standard actions in the same toolbar"
+  ],
+  "whenNotToUse": [
+    "For non-AI actions — use standard Button",
+    "For destructive actions — even AI-driven destructive actions should use standard Button with type=Negative",
+    "For navigation — use Link",
+    "For settings toggles — use Switch"
+  ],
+  "doRules": [
+    "Pair with a Joule spark or wand icon for immediate recognition",
+    "Keep labels action-oriented ('Draft response', 'Summarize', 'Suggest values')",
+    "Show a loading state during AI processing",
+    "Provide undo or edit for AI-generated content — never make it final without user consent"
+  ],
+  "dontRules": [
+    "Do not use the AI style for non-AI actions — misleading",
+    "Do not omit the icon — the visual cue is essential",
+    "Do not use for silent background AI (that should have no button)",
+    "Do not chain AI Buttons without user confirmation between steps"
+  ],
+  "layoutGuidance": {
+    "placement": "In toolbars, form actions, empty states, alongside AI-generated content",
+    "sizing": "Height 32px compact, 40px cozy",
+    "spacing": "Standard button spacing (8px)",
+    "alignment": "Same as regular buttons"
+  },
+  "contentGuidance": {
+    "labelLength": "≤ 25 chars, verb-first",
+    "contentRules": "Action-oriented ('Draft', 'Summarize', 'Explain')",
+    "examples": ["✨ Draft response", "✨ Summarize with Joule"]
+  },
+  "responsiveBehavior": {
+    "XL": "Icon + label",
+    "L": "Icon + label",
+    "M": "Icon + label",
+    "S": "Icon only, label in tooltip"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "aria-label describes the AI action ('Draft response with Joule')",
+      "Loading state announced (aria-busy='true')",
+      "AI accent color meets 4.5:1 contrast against background",
+      "Icon has meaningful role (not decorative)"
+    ]
+  },
+  "patterns": ["Joule integration", "AI-assisted form fill", "Content generation"],
+  "compatibility": {
+    "allowedWith": ["Toolbar", "Form", "Card", "Panel", "DynamicPageTitle actions"],
+    "forbiddenWith": ["Inside another AI element without visual separation"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

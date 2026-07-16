@@ -1,0 +1,61 @@
+{
+  "componentName": "AITextArea",
+  "slug": "joule-text-area",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/joule/",
+  "purpose": "A multi-line text input with AI-assisted content generation, correction, or expansion. Distinguished from plain TextArea by the Joule accent border and inline AI suggestion capability.",
+  "whenToUse": [
+    "Long-form text fields where AI can draft or improve content (emails, descriptions, notes)",
+    "Feedback or comment fields with tone-check assistance",
+    "Any TextArea where AI can meaningfully reduce user effort",
+    "As part of a form where AI generates sections on demand"
+  ],
+  "whenNotToUse": [
+    "For structured multi-line data (addresses, code) — use TextArea",
+    "For a Joule conversation — use AIPromptInput",
+    "For rich formatted content — use AIRichTextEditor",
+    "When AI adds no value (very short field, pure data entry)"
+  ],
+  "doRules": [
+    "Provide clear AI actions ('Rephrase', 'Shorten', 'Expand', 'Fix grammar')",
+    "Let user accept, reject, or edit AI suggestions inline",
+    "Preserve original text as user can undo AI changes",
+    "Show a visible AI badge so users know AI is active"
+  ],
+  "dontRules": [
+    "Do not overwrite user text without explicit action",
+    "Do not run AI on every keystroke — too aggressive",
+    "Do not hide the raw text — AI suggestions are additive, not replacements",
+    "Do not use in high-stakes contexts (legal, medical) without clear disclaimers"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside forms, cards, panels",
+    "sizing": "Min height 96px; grow to max 320px with scroll",
+    "spacing": "Standard field spacing",
+    "alignment": "Full width in FormElement"
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder ≤ 60 chars",
+    "contentRules": "Free-form text; AI can suggest completions or improvements",
+    "examples": ["\"Draft your response — Joule can help\""]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width",
+    "L": "Full width",
+    "M": "Full width",
+    "S": "Full width"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 3.3.2 Labels or Instructions (Level A)"],
+    "requirements": [
+      "AI actions have aria-labels ('Rephrase with Joule')",
+      "Suggested changes announced via aria-live='polite'",
+      "Undo/redo keyboard shortcuts work as expected",
+      "AI badge is announced as 'AI-assisted' on focus"
+    ]
+  },
+  "patterns": ["AI-assisted content drafting", "Feedback field with tone check", "Email composer with Joule"],
+  "compatibility": {"allowedWith": ["Form", "FormElement", "Card", "Panel", "Dialog"], "forbiddenWith": ["Table cells", "ShellBar"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sap-fiori-ai-designer/guideline-entry.json",
+  "title": "SAP Fiori Design Guideline Cache Entry",
+  "description": "Section 1 MCP 1 — cached guideline content per component. Populated by MCP 1 (Fiori Guidelines scraper) from experience.sap.com/fiori-design-web/{slug}/",
+  "type": "object",
+  "required": [
+    "componentName",
+    "slug",
+    "sourceUrl",
+    "purpose",
+    "whenToUse",
+    "whenNotToUse",
+    "doRules",
+    "dontRules",
+    "layoutGuidance",
+    "contentGuidance",
+    "responsiveBehavior",
+    "accessibilityGuidance",
+    "patterns",
+    "compatibility",
+    "exceptions",
+    "version",
+    "lastChecked"
+  ],
+  "properties": {
+    "componentName": {
+      "type": "string",
+      "description": "Canonical SAP component name — matches registry/{name}.json"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL slug on experience.sap.com — e.g. 'icon-tab-bar', 'shell-bar'"
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Official guideline URL"
+    },
+    "purpose": {
+      "type": "string",
+      "description": "What this component is for, in 1–2 sentences"
+    },
+    "whenToUse": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Specific scenarios where this is the right choice"
+    },
+    "whenNotToUse": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Specific scenarios where alternatives are better"
+    },
+    "doRules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dontRules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "layoutGuidance": {
+      "type": "object",
+      "description": "Placement, sizing, spacing rules",
+      "properties": {
+        "placement": { "type": "string" },
+        "sizing": { "type": "string" },
+        "spacing": { "type": "string" },
+        "alignment": { "type": "string" }
+      }
+    },
+    "contentGuidance": {
+      "type": "object",
+      "description": "Text length, content patterns, examples",
+      "properties": {
+        "labelLength": { "type": "string" },
+        "contentRules": { "type": "array", "items": { "type": "string" } },
+        "examples": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "responsiveBehavior": {
+      "type": "object",
+      "description": "Behavior at different breakpoints (XL/L/M/S)",
+      "properties": {
+        "XL": { "type": "string", "description": "≥1440px" },
+        "L":  { "type": "string", "description": "1024–1439px" },
+        "M":  { "type": "string", "description": "600–1023px" },
+        "S":  { "type": "string", "description": "<600px" }
+      }
+    },
+    "accessibilityGuidance": {
+      "type": "array",
+      "description": "WCAG and SAP accessibility requirements",
+      "items": {
+        "type": "object",
+        "required": ["category", "requirement"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["contrast", "keyboard", "labeling", "focus", "tap-target", "status", "announcements"]
+          },
+          "requirement": { "type": "string" },
+          "wcag": { "type": "string", "description": "e.g. '1.4.3 (AA)'" }
+        }
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Recognized UX patterns this component participates in",
+      "items": { "type": "string" }
+    },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "worksWith": { "type": "array", "items": { "type": "string" } },
+        "incompatible": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "description": "Known edge cases, deprecations, version-specific notes",
+      "items": { "type": "string" }
+    },
+    "version": {
+      "type": "string",
+      "description": "SAP Fiori Design System version when scraped"
+    },
+    "lastChecked": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

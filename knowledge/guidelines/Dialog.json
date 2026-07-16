@@ -1,0 +1,103 @@
+{
+  "componentName": "Dialog",
+  "slug": "dialog",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/dialog/",
+  "purpose": "A modal overlay that interrupts the user flow to present a focused task, confirmation, or information. Blocks interaction with the underlying page until dismissed.",
+  "whenToUse": [
+    "For confirmations of destructive or critical actions",
+    "For focused short tasks requiring user input",
+    "For detail views requiring action",
+    "For error/warning messages requiring acknowledgment"
+  ],
+  "whenNotToUse": [
+    "For non-blocking notifications \u2014 use Toast or MessageStrip",
+    "For long forms \u2014 use a new page",
+    "For navigation \u2014 use Link"
+  ],
+  "doRules": [
+    "Use for confirmations, focused tasks, or detail views requiring user action",
+    "Include primary action button (right) and Cancel (left)",
+    "Use State variant for semantic messages (Information, Warning, Error)",
+    "Provide title that summarizes the dialog purpose"
+  ],
+  "dontRules": [
+    "Do not stack dialogs",
+    "Do not put long forms in Dialog \u2014 use a new page",
+    "Do not omit close affordance (Cancel button or X)",
+    "Do not block escape key from closing"
+  ],
+  "layoutGuidance": {
+    "placement": "Centered over the application; backdrop dims underlying content.",
+    "sizing": "Auto width 320\u201380% viewport; height hugs content up to 80% viewport.",
+    "spacing": "Internal padding 16px.",
+    "alignment": "Title top, content middle, action bar bottom."
+  },
+  "contentGuidance": {
+    "labelLength": "Title 1\u20138 words; body content as needed.",
+    "contentRules": [
+      "Title summarizes purpose",
+      "Body explains what user must decide",
+      "Action labels are verbs"
+    ],
+    "examples": [
+      "Delete Package?",
+      "Confirm Save",
+      "Validation Error"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Centered with auto width",
+    "L": "Centered with auto width",
+    "M": "80% viewport width",
+    "S": "Full-screen dialog"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Escape closes; Tab cycles within dialog (focus trap)",
+      "wcag": "2.1.2 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Focus moves into dialog on open; returns to trigger on close",
+      "wcag": "2.4.3 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Dialog has accessible title via aria-labelledby",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "status",
+      "requirement": "Destructive dialogs use State=Warning or Error with text \u2014 not color alone",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Dialog open/close announced; content announced when opened"
+    }
+  ],
+  "patterns": [
+    "Confirmation",
+    "Focused task",
+    "Error acknowledgment"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Button",
+      "Form",
+      "List",
+      "MessageStrip"
+    ],
+    "incompatible": [
+      "Inside another Dialog",
+      "Inside Toolbar"
+    ]
+  },
+  "exceptions": [
+    "Message type for short confirmations (no custom content)",
+    "Resizable/draggable variants for tool-like dialogs"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

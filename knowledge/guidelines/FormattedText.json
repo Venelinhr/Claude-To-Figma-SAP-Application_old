@@ -1,0 +1,71 @@
+{
+  "componentName": "FormattedText",
+  "slug": "formatted-text",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/formatted-text/",
+  "purpose": "Text container that supports inline HTML-like markup \u2014 bold, italic, links, line breaks. Used for rich text in object descriptions, help content, formatted messages.",
+  "whenToUse": [
+    "Object descriptions with mixed formatting",
+    "Help text with inline links",
+    "Localized messages with bold/italic emphasis",
+    "Server-supplied formatted content"
+  ],
+  "whenNotToUse": [
+    "Plain text \u2014 use Text",
+    "Headings \u2014 use Title",
+    "Lists \u2014 use List",
+    "Editable rich text \u2014 use TextArea + format toolbar"
+  ],
+  "doRules": [
+    "Sanitize HTML before rendering",
+    "Bind base text to sapList_TextColor",
+    "Use sapLinkColor for inline links"
+  ],
+  "dontRules": [
+    "Do not render unsanitized user-supplied HTML",
+    "Do not use FormattedText for layout (no positioned content)",
+    "Do not embed forms inside FormattedText"
+  ],
+  "layoutGuidance": {
+    "placement": "Place FormattedText inside a compatible container (Panel, Dialog, Card).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for typography.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Panel",
+    "Used inside Dialog",
+    "Used inside Card"
+  ],
+  "compatibility": [
+    "Panel",
+    "Dialog",
+    "Card",
+    "MessageStrip"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

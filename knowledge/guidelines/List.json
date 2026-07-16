@@ -1,0 +1,85 @@
+{
+  "componentName": "List",
+  "slug": "list",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/list/",
+  "purpose": "A vertical list of similar items, typically with title, description, and optional status or icon. Simpler than Table; no multi-column alignment.",
+  "whenToUse": [
+    "For 3\u201320 similar items with consistent structure",
+    "For master lists in split-screen flows",
+    "When items have title + 1\u20132 secondary attributes",
+    "For notification or message lists"
+  ],
+  "whenNotToUse": [
+    "For tabular data with multiple aligned columns \u2014 use Table",
+    "For very few items (<3) \u2014 inline them",
+    "For complex hierarchical data \u2014 use Tree"
+  ],
+  "doRules": [
+    "Use List for ~3\u201320 items with consistent structure",
+    "Show title + optional description per item",
+    "Use MultiSelect mode for bulk actions",
+    "Show item count or filter in toolbar"
+  ],
+  "dontRules": [
+    "Do not use List for tabular data with multiple aligned columns \u2014 use Table",
+    "Do not put unrelated content types in one list",
+    "Do not skip item type when row is interactive"
+  ],
+  "layoutGuidance": {
+    "placement": "In page content, master pane of split-screen.",
+    "sizing": "Full width; item height varies by type (48\u201396px).",
+    "spacing": "Separator border between items.",
+    "alignment": "Left-aligned content."
+  },
+  "contentGuidance": {
+    "labelLength": "Title 1\u20138 words; description 1 line preferred.",
+    "contentRules": [
+      "Use ObjectIdentifier or StandardListItem",
+      "Group related items",
+      "Sort meaningfully"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full list visible",
+    "L": "Full list visible",
+    "M": "Scrollable list",
+    "S": "Full viewport width"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate items; Enter activates",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "List has accessible name",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Item position announced (e.g. \"item 3 of 10\")"
+    }
+  ],
+  "patterns": [
+    "Master list",
+    "Notification list",
+    "Item picker"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "StandardListItem",
+      "ListItem",
+      "OverflowToolbar"
+    ],
+    "incompatible": [
+      "As primary navigation \u2014 use SideNavigation"
+    ]
+  },
+  "exceptions": [
+    "GrowingList for incremental loading; FixedList for finite known set"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

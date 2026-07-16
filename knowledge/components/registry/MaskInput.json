@@ -1,0 +1,121 @@
+{
+  "componentName": "MaskInput",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:MaskedInput",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "mask",
+      "ui5Name": "mask",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "placeholderSymbol",
+      "ui5Name": "placeholderSymbol",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "_"
+    },
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "enabled",
+      "ui5Name": "enabled",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "input-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "mask-placeholder",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapField_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapField_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "mask-placeholder",
+      "token": "sapField_PlaceholderTextColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Semantic layout element — no accessible name required unless labeled by role"
+    }
+  ],
+  "doRules": [
+    "Use MaskInput as documented in SAPUI5 API — it is a foundational primitive"
+  ],
+  "dontRules": [
+    "Do not use MaskInput for content that has a semantic SAP component available"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/MaskInput",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+    "knownIssues": [
+      "Legacy naming; alias to MaskedInput registry entry."
+    ]
+  },
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "componentName": "OverflowToolbar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "design",
+      "ui5Name": "design",
+      "type": "enum",
+      "values": [
+        "Auto",
+        "Solid",
+        "Transparent",
+        "Info"
+      ],
+      "exposedInLibrary": false,
+      "default": "Auto"
+    },
+    {
+      "name": "active",
+      "ui5Name": "active",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "style",
+      "ui5Name": "style",
+      "type": "enum",
+      "values": [
+        "Standard",
+        "Clear"
+      ],
+      "exposedInLibrary": false,
+      "default": "Standard"
+    },
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "enabled",
+      "ui5Name": "enabled",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "visible",
+      "ui5Name": "visible",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "slot": "title",
+      "fontFamily": "72",
+      "size": "16",
+      "weight": "Bold",
+      "token": "Text/Title/Regular"
+    },
+    {
+      "slot": "label",
+      "fontFamily": "72",
+      "size": "14",
+      "weight": "Regular",
+      "token": "Text/Body/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "slot": "background",
+      "token": "sapShell_Background",
+      "design": "Solid"
+    },
+    {
+      "slot": "background",
+      "token": "sapShell_BorderColor",
+      "design": "Transparent"
+    },
+    {
+      "slot": "border",
+      "token": "sapShell_BorderColor",
+      "side": "bottom"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "wcag": "1.4.3",
+      "rule": "Title and button text must meet 4.5:1 contrast ratio against the toolbar background"
+    },
+    {
+      "wcag": "2.1.1",
+      "rule": "All toolbar actions must be reachable by keyboard. Tab traverses left to right."
+    },
+    {
+      "wcag": "2.4.7",
+      "rule": "Visible focus indicator on every interactive child."
+    },
+    {
+      "wcag": "4.1.2",
+      "rule": "Toolbar has role=toolbar; overflow menu has aria-haspopup=true and aria-expanded reflecting state."
+    }
+  ],
+  "doRules": [
+    "Place the title on the left edge",
+    "Use ToolbarSpacer to push actions to the right edge",
+    "Show the most-used 1-2 actions inline; let the rest overflow into the More menu",
+    "Place destructive actions inside the overflow menu, not inline",
+    "Use SearchField inline for table-toolbar search; keep it left of the primary action"
+  ],
+  "dontRules": [
+    "Do not put primary CTAs inside the overflow menu — they must always be visible",
+    "Do not exceed 5 inline actions before letting overflow take over",
+    "Do not stack two OverflowToolbars vertically — combine them",
+    "Do not put long labels on inline buttons; use IconButton with tooltip when space is tight"
+  ],
+  "compatibleComponents": [
+    "Title",
+    "Label",
+    "Button",
+    "IconButton",
+    "MenuButton",
+    "SearchField",
+    "ToolbarSpacer",
+    "ToggleButton",
+    "Select",
+    "ComboBox"
+  ],
+  "incompatiblePatterns": [
+    "Inside a Table cell",
+    "As Dialog content (use Dialog footer buttons instead)",
+    "Nested inside another OverflowToolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/toolbar-overflow/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.OverflowToolbar",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.OverflowToolbar",
+  "sampleUrls": [
+    "https://sapui5.hana.ondemand.com/#/entity/sap.m.OverflowToolbar/sample/sap.m.sample.OverflowToolbar"
+  ],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "title-via-Title-child",
+    "sizingConstraints": "Full width of parent container by default. Height auto-fits to tallest child.",
+    "knownIssues": [
+      "Plugin renders OverflowToolbar as a horizontal AutoLayout frame (gap=8, padding=8/16) with children placed in declared order. ToolbarSpacer becomes a layoutGrow=1 spacer. Overflow-into-More-menu behavior is not visual-only in Figma — show the inline actions and represent overflow as an IconButton with the 'overflow' icon at the right edge."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "DynamicPageTitle",
+      "FilterBar",
+      "Table",
+      "List"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Label",
+      "Text",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "SplitButton",
+      "ToggleButton",
+      "SegmentedButton",
+      "Input",
+      "SearchField",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "CheckBox",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "DatePicker",
+      "TimePicker",
+      "DateTimePicker",
+      "ToolbarSpacer",
+      "OverflowToolbar",
+      "Toolbar",
+      "Link"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "List",
+      "Form"
+    ]
+  },
+  "slotNames": [
+    "content"
+  ]
+}

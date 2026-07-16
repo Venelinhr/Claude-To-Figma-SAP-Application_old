@@ -1,0 +1,145 @@
+{
+  "componentName": "IllustratedMessage",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "eba579505df21536654910797f94b3784248807b",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "description",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Pick an illustration matching the context (NoData / NoTasks / NoFilter / NoActivities)",
+    "Provide a one-line title explaining the state",
+    "Provide a description suggesting what to do next",
+    "Include an action button when the user can recover (Refresh, Create, etc.)"
+  ],
+  "dontRules": [
+    "Do not show IllustratedMessage if the cause is unclear",
+    "Do not use generic illustrations when a specific one exists",
+    "Do not omit the action when the user can recover",
+    "Do not nest IllustratedMessage inside another IllustratedMessage"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "Panel",
+    "Dialog",
+    "Table",
+    "List"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells",
+    "Inside OverflowToolbar",
+    "Side-by-side with content (must replace, not coexist)"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/illustratedmessage/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.IllustratedMessage",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.IllustratedMessage",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.IllustratedMessage/sample/sap.m.sample.IllustratedMessage"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "IllustratedMessage is a SAP instance. Plugin places it via SAP_KEYS. The illustration property (NoData, NoTasks, NoFilter, NoActivities, NoEntries, NoNotifications, NoSearchResults, UnableToLoad, NoSavedItems) is set via setProperties. Title and description text are injected into nested text nodes.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Table",
+      "List",
+      "IconTabBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Button",
+      "Link"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "commonSiblings": []
+  }
+}

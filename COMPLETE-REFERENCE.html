@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Fiori Design Agent — Complete Reference</title>
+<style>
+:root {
+  --sap:#0a6ed1;--sap-dk:#0854a0;--sap-emph:#0070f2;
+  --shell:#1c2f3e;--horizon:#f5f6f7;
+  --green:#107e3e;--green-lt:#f0faf4;--green-bd:#d1f0e0;
+  --amber:#e76500;--amber-lt:#fff4e5;--amber-bd:#ffd8a8;
+  --red:#bb0000;--red-lt:#fff0f0;--red-bd:#ffcdd2;
+  --purple:#6b2fa0;--purple-lt:#f5eeff;--purple-bd:#e2d0f8;
+  --ink:#1d2d3e;--ink2:#4a5568;--ink3:#718096;
+  --line:#e2e8f0;--bg:#f8fafc;--card:#fff;
+  --mono:'SF Mono','Fira Code','Consolas',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65}
+.nav{position:sticky;top:0;z-index:100;background:rgba(28,47,62,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 32px}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:4px;height:48px;overflow-x:auto}
+.nav-link{color:rgba(255,255,255,.65);font-size:12px;font-weight:600;letter-spacing:.03em;padding:6px 12px;border-radius:6px;text-decoration:none;white-space:nowrap;transition:all .15s}
+.nav-link:hover,.nav-link.active{background:rgba(10,110,209,.35);color:#fff}
+.hero{background:linear-gradient(135deg,var(--shell) 0%,#0a3055 55%,var(--sap) 100%);color:#fff;padding:64px 48px 52px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.035)}
+.hero-tag{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;opacity:.6;margin-bottom:12px}
+.hero h1{font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.12;margin-bottom:14px}
+.hero-sub{font-size:17px;opacity:.82;max-width:680px;line-height:1.65;margin-bottom:24px}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600}
+.pill-green{background:rgba(16,126,62,.35);border:1px solid rgba(87,211,130,.4)}
+.pill-blue{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22)}
+.pill-amber{background:rgba(231,101,0,.3);border:1px solid rgba(231,101,0,.5)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.section{padding:56px 0 12px}
+.stag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sap);margin-bottom:8px}
+.section h2{font-size:26px;font-weight:800;margin-bottom:10px}
+.lead{color:var(--ink2);max-width:760px;font-size:15px;margin-bottom:28px}
+.divider{height:1px;background:var(--line);margin:48px 0}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin:24px 0 32px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;min-width:120px;flex:1}
+.stat-val{font-size:30px;font-weight:800;color:var(--sap)}
+.stat-lbl{font-size:11px;color:var(--ink3);margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.insight{background:linear-gradient(135deg,rgba(10,110,209,.06),rgba(107,47,160,.06));border:1px solid rgba(10,110,209,.25);border-radius:12px;padding:24px 28px;margin-bottom:28px}
+.insight-title{font-size:15px;font-weight:700;color:var(--sap);margin-bottom:8px}
+.insight-body{font-size:14px;color:var(--ink);line-height:1.75}
+.fix-card{background:linear-gradient(135deg,rgba(16,126,62,.05),rgba(16,126,62,.02));border:1px solid rgba(16,126,62,.3);border-radius:12px;padding:20px 24px;margin-bottom:14px}
+.fix-card h4{font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px}
+.fix-card p{font-size:13px;color:var(--ink2);line-height:1.7}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.tbl th{background:#f1f5f9;text-align:left;padding:9px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);border-bottom:2px solid var(--line)}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#f8fafc}
+.b{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:700}
+.b-green{background:var(--green-lt);color:var(--green);border:1px solid var(--green-bd)}
+.b-amber{background:var(--amber-lt);color:var(--amber);border:1px solid var(--amber-bd)}
+.b-red{background:var(--red-lt);color:var(--red);border:1px solid var(--red-bd)}
+.b-blue{background:#eff6ff;color:var(--sap);border:1px solid #bfdbfe}
+.b-purple{background:var(--purple-lt);color:var(--purple);border:1px solid var(--purple-bd)}
+.b-gray{background:#f1f5f9;color:var(--ink3);border:1px solid var(--line)}
+code{font-family:var(--mono);font-size:12px;background:#f1f5f9;padding:2px 6px;border-radius:4px;color:var(--sap-dk)}
+.code-block{background:#0d1117;border-radius:10px;padding:20px;overflow-x:auto;margin:12px 0}
+.code-block pre{font-family:var(--mono);font-size:12px;line-height:1.75;color:#e6edf3;white-space:pre}
+.flow{margin:20px 0}
+.flow-item{display:flex;align-items:stretch;margin-bottom:6px}
+.flow-num{width:36px;height:36px;border-radius:50%;background:var(--sap);color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px}
+.flow-num.new{background:var(--green)}
+.flow-content{flex:1;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.flow-content strong{display:block;font-size:13px;margin-bottom:2px}
+.flow-content span{font-size:12px;color:var(--ink2)}
+.token-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:16px 0}
+.token-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:12px}
+.token-name{font-family:var(--mono);font-size:11px;color:var(--sap-dk);font-weight:600}
+.token-meta{color:var(--ink3);margin-top:2px}
+.token-hex{font-family:var(--mono);float:right;color:var(--ink2);font-size:11px}
+@media(max-width:700px){.hero{padding:40px 24px 36px}.wrap{padding:0 16px}.stats{gap:10px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-link" href="#overview">Overview</a>
+    <a class="nav-link" href="#coverage-inventory">★ What's Covered</a>
+    <a class="nav-link" href="#update-rule">★ 3-Place Rule</a>
+    <a class="nav-link" href="#architecture">Architecture</a>
+    <a class="nav-link" href="#mcps">MCPs</a>
+    <a class="nav-link" href="#registry">Registry</a>
+    <a class="nav-link" href="#guidelines">Guidelines</a>
+    <a class="nav-link" href="#tokens">Tokens</a>
+    <a class="nav-link" href="#plugin">Plugin</a>
+    <a class="nav-link" href="#plugin-internals">★ Plugin Internals</a>
+    <a class="nav-link" href="#flicker">Flicker Fixes</a>
+    <a class="nav-link" href="#validators">A11y</a>
+    <a class="nav-link" href="#build">Build</a>
+    <a class="nav-link" href="#draft">Draft Preview ★</a>
+    <a class="nav-link" href="#renderers">Renderers ★</a>
+    <a class="nav-link" href="#pipeline">Pipeline</a>
+    <a class="nav-link" href="#status">Status</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-tag">SAP Fiori Design Agent · Complete Reference · 2026-07-07</div>
+    <h1>From business requirement to validated<br>SAP Fiori screen — end to end.</h1>
+    <div class="hero-sub">Seven connected MCP servers (4 official + 3 custom), a 151-component registry covering the full SAP Web UI Kit with paired design guidelines, a 52-token whitelist with global rebind enforcer, per-build token-linkage rate reporting, four §7 accessibility validators, additive build mode (nothing is ever deleted), zero-flicker rendering, persistent client-storage cache with auto-warm scan, an ASCII draft-preview step that lets you iterate on layout before any JSON is generated, and a first-class Component-Guidance mode for targeted "which component should I use for X?" questions.</div>
+    <div class="hero-pills">
+      <span class="pill pill-green">📸 Image → Screen ✓ verified</span>
+      <span class="pill pill-green">7 MCP servers connected</span>
+      <span class="pill pill-green">151 / 151 registry</span>
+      <span class="pill pill-green">96 guidelines cached</span>
+      <span class="pill pill-green">52 tokens · 0 non-whitelist</span>
+      <span class="pill pill-green">4 / 4 §7 a11y validators</span>
+      <span class="pill pill-green">Token-linkage rate live</span>
+      <span class="pill pill-green">Component-Guidance mode</span>
+      <span class="pill pill-green">Zero flicker</span>
+      <span class="pill pill-green">Additive build mode</span>
+      <span class="pill pill-green">Auto-warm cache (7d TTL)</span>
+      <span class="pill pill-blue">Build pipeline live</span>
+      <span class="pill pill-amber">★ Draft Preview</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="section" id="overview">
+  <div class="stag">Overview</div>
+  <h2>What this system does</h2>
+  <p class="lead">Converts a business requirement (Jira ticket, user story, screenshot) into a real, accessible, SAP-token-correct Figma screen built from official SAP Web UI Kit instances. Every step is validated — components against registry, colors against whitelist, accessibility against WCAG AA. Latest milestone (2026-07-07): registry expanded to 151 components with 11 foundational primitives, 52-token whitelist enforced, every build reports its design-token linkage rate, and Component-Guidance mode is a first-class entry point for targeted design questions.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-val">7</div><div class="stat-lbl">MCP servers</div></div>
+    <div class="stat"><div class="stat-val">151</div><div class="stat-lbl">Registry components</div></div>
+    <div class="stat"><div class="stat-val">96</div><div class="stat-lbl">Guideline entries</div></div>
+    <div class="stat"><div class="stat-val">52</div><div class="stat-lbl">Whitelisted tokens</div></div>
+    <div class="stat"><div class="stat-val">9</div><div class="stat-lbl">Floorplan docs</div></div>
+    <div class="stat"><div class="stat-val">4</div><div class="stat-lbl">A11y validators</div></div>
+    <div class="stat"><div class="stat-val">7d</div><div class="stat-lbl">Cache TTL</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">Inconsistencies</div></div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-title">Core principle</div>
+    <div class="insight-body">The SAP library already knows its own height, colors, typography, and spacing. The plugin's job is to <strong>stack components</strong>, not recreate them. Every native fallback is a documented exception. Every color is a SAP Horizon token. Every spec is validated before it becomes a screen. <strong>Nothing is ever deleted</strong> — builds are additive.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="coverage-inventory">
+  <div class="stag">★ What's Covered · 2026-07-07</div>
+  <h2>Component inventory — what you can rely on</h2>
+  <p class="lead">Transparent count of every SAP Fiori for Web component the pipeline handles, the kind of rendering path each one takes, and the tokens that bind colors and spacing. If you paste a screenshot or write a requirement using any of these, the pipeline will render it correctly. Components in the "out-of-scope" column are documented with a substitution path.</p>
+  <div class="stats" style="margin-bottom:20px">
+    <div class="stat"><div class="stat-val">151</div><div class="stat-lbl">Registry entries</div></div>
+    <div class="stat"><div class="stat-val">96</div><div class="stat-lbl">Guideline entries</div></div>
+    <div class="stat"><div class="stat-val">142</div><div class="stat-lbl">Plugin name aliases</div></div>
+    <div class="stat"><div class="stat-val">99</div><div class="stat-lbl">Direct SAP keys</div></div>
+    <div class="stat"><div class="stat-val">44</div><div class="stat-lbl">Native renderers</div></div>
+    <div class="stat"><div class="stat-val">52</div><div class="stat-lbl">Whitelisted tokens</div></div>
+    <div class="stat"><div class="stat-val">9</div><div class="stat-lbl">Floorplan docs</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">3-layer inconsistencies</div></div>
+  </div>
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">How each covered component renders</h3>
+  <table class="tbl">
+    <thead><tr><th>Rendering Path</th><th>Count</th><th>What it means</th></tr></thead><tbody>
+      <tr><td><strong>Direct SAP instance</strong></td><td>99</td><td>Real SAP Web UI Kit Figma component imported via <code>importComponentByKeyAsync</code>. Has its own 40-character <code>figmaComponentId</code>. Highest fidelity.</td></tr>
+      <tr><td><strong>Alias instance</strong></td><td>~42</td><td>Maps to another SAP component (e.g. <code>MessageBox</code> → <code>Dialog</code>, <code>SearchField</code> → <code>Input</code>, <code>Breadcrumbs</code> → <code>Breadcrumb</code>). Renders the same SAP Figma instance with a variant override.</td></tr>
+      <tr><td><strong>Native / composed renderer</strong></td><td>44</td><td>Built at plugin-time from multiple SAP instances or drawn natively (Text, AvatarGroup → N Avatars, RadioButtonGroup → N RadioButtons, MenuListItem/TimelineItem sub-items, etc).</td></tr>
+      <tr><td><strong>Layout containers</strong></td><td>12</td><td>Pass-through primitives — App, Page, HBox, VBox, FlexBox, FlexibleColumnLayout, DynamicPage, etc. Children render inside a plugin-drawn frame with SAP-token backgrounds.</td></tr>
+      <tr><td><strong>Horizontal toolbars</strong></td><td>13</td><td>Toolbar, OverflowToolbar, Bar variants — children auto-arranged horizontally with SAP spacing.</td></tr>
+      <tr><td><strong>Wrapper / SKIP_SELF</strong></td><td>11</td><td>Wrapper components that pass children through (composed by parent — e.g. DynamicPageTitle inside DynamicPage).</td></tr>
+    </tbody></table>
+  <h3 style="font-size:18px;font-weight:700;margin:32px 0 12px">All 151 components by category</h3>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">App Shell & Navigation</strong>
+      <span style="font-size:12px;color:var(--ink3)">15 covered · 0 out-of-scope · 15 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (15)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">ShellBar</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ToolHeader</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">SideNavigation</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">NavigationList</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">NavigationListItem</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">Breadcrumbs</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">Tabs</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">IconTabBar</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">IconTabFilter</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">IconTabSeparator</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">IconTabHeader</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">ProductSwitch</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">UserMenu</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">NotificationListItem</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">Notifications</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Page Layout</strong>
+      <span style="font-size:12px;color:var(--ink3)">7 covered · 5 out-of-scope · 12 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (7)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">DynamicPage</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">DynamicPageTitle</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">DynamicPageHeader</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ObjectPageLayout</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">ObjectPageSection</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">ObjectPageSubSection</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">ObjectPageHeader</code> <span class="b b-blue" style="font-size:9px">ALIAS</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px">⊘ Out-of-scope (5)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+<code style="font-size:12px;background:#fff4e5">FlexibleColumnLayout</code> · <code style="font-size:12px;background:#fff4e5">Page</code> · <code style="font-size:12px;background:#fff4e5">App</code> · <code style="font-size:12px;background:#fff4e5">SplitContainer</code> · <code style="font-size:12px;background:#fff4e5">Shell</code>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Buttons & Actions</strong>
+      <span style="font-size:12px;color:var(--ink3)">9 covered · 1 out-of-scope · 10 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (9)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">Button</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ToggleButton</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">MenuButton</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">SplitButton</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">SegmentedButton</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">IconButton</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">OverflowToolbar</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">Toolbar</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ToolbarSpacer</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px">⊘ Out-of-scope (1)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+<code style="font-size:12px;background:#fff4e5">ToolbarSeparator</code>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Inputs</strong>
+      <span style="font-size:12px;color:var(--ink3)">25 covered · 0 out-of-scope · 25 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (25)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">Input</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">TextArea</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">MaskedInput</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">Select</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ComboBox</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">MultiComboBox</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">MultiInput</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">DatePicker</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">DateTimePicker</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">DateRangePicker</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">TimePicker</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">StepInput</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Slider</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">RangeSlider</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Switch</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">RadioButton</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">RadioButtonGroup</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">CheckBox</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">FileUploader</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ColorPicker</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">RatingIndicator</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">FeedInput</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">SearchField</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">Token</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Tokenizer</code> <span class="b b-green" style="font-size:9px">DIRECT</span>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Forms</strong>
+      <span style="font-size:12px;color:var(--ink3)">7 covered · 0 out-of-scope · 7 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (7)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">Form</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">SimpleForm</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">FormContainer</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">FormElement</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">FilterBar</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">Label</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">FormattedText</code> <span class="b b-blue" style="font-size:9px">ALIAS</span>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Lists & Tables</strong>
+      <span style="font-size:12px;color:var(--ink3)">12 covered · 3 out-of-scope · 15 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (12)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">List</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Table</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ResponsiveTable</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">Column</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">ColumnListItem</code> <span class="b b-gray" style="font-size:9px">WRAPPER</span> ·       <code style="font-size:12px">StandardListItem</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">InputListItem</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">FeedListItem</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">ActionListItem</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">GroupHeaderListItem</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">Tree</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">TreeItem</code> <span class="b b-green" style="font-size:9px">DIRECT</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px">⊘ Out-of-scope (3)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+<code style="font-size:12px;background:#fff4e5">GridTable</code> · <code style="font-size:12px;background:#fff4e5">AnalyticalTable</code> · <code style="font-size:12px;background:#fff4e5">TreeTable</code>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Object Display</strong>
+      <span style="font-size:12px;color:var(--ink3)">14 covered · 0 out-of-scope · 14 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (14)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">Avatar</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">AvatarGroup</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">ObjectIdentifier</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ObjectStatus</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ObjectNumber</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ObjectAttribute</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">ObjectHeader</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">ObjectListItem</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">ObjectMarker</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">Tag</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Title</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">Text</code> <span class="b b-amber" style="font-size:9px">NATIVE</span> ·       <code style="font-size:12px">InfoLabel</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">Link</code> <span class="b b-green" style="font-size:9px">DIRECT</span>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Feedback & Status</strong>
+      <span style="font-size:12px;color:var(--ink3)">9 covered · 1 out-of-scope · 10 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (9)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">MessageStrip</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">MessageToast</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">MessageBox</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">MessagePopover</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">BusyIndicator</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">BusyDialog</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">ProgressIndicator</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">IllustratedMessage</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Toast</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px">⊘ Out-of-scope (1)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+<code style="font-size:12px;background:#fff4e5">MessageView</code>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Overlays & Containers</strong>
+      <span style="font-size:12px;color:var(--ink3)">8 covered · 7 out-of-scope · 15 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (8)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">Dialog</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Popover</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">QuickView</code> <span class="b b-blue" style="font-size:9px">ALIAS</span> ·       <code style="font-size:12px">QuickViewCard</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">Menu</code> <span class="b b-gray" style="font-size:9px">PLUGIN</span> ·       <code style="font-size:12px">Panel</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Card</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">Carousel</code> <span class="b b-green" style="font-size:9px">DIRECT</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px">⊘ Out-of-scope (7)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+<code style="font-size:12px;background:#fff4e5">ScrollContainer</code> · <code style="font-size:12px;background:#fff4e5">FlexBox</code> · <code style="font-size:12px;background:#fff4e5">HBox</code> · <code style="font-size:12px;background:#fff4e5">VBox</code> · <code style="font-size:12px;background:#fff4e5">Grid</code> · <code style="font-size:12px;background:#fff4e5">ResponsiveGridLayout</code> · <code style="font-size:12px;background:#fff4e5">Splitter</code>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Charts & Visualization</strong>
+      <span style="font-size:12px;color:var(--ink3)">0 covered · 13 out-of-scope · 13 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 6px">⊘ Out-of-scope (13)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+<code style="font-size:12px;background:#fff4e5">MicroChart</code> · <code style="font-size:12px;background:#fff4e5">AreaMicroChart</code> · <code style="font-size:12px;background:#fff4e5">BulletMicroChart</code> · <code style="font-size:12px;background:#fff4e5">ColumnMicroChart</code> · <code style="font-size:12px;background:#fff4e5">ComparisonMicroChart</code> · <code style="font-size:12px;background:#fff4e5">DeltaMicroChart</code> · <code style="font-size:12px;background:#fff4e5">LineMicroChart</code> · <code style="font-size:12px;background:#fff4e5">RadialMicroChart</code> · <code style="font-size:12px;background:#fff4e5">InteractiveBarChart</code> · <code style="font-size:12px;background:#fff4e5">InteractiveLineChart</code> · <code style="font-size:12px;background:#fff4e5">InteractiveDonutChart</code> · <code style="font-size:12px;background:#fff4e5">HarveyBallMicroChart</code> · <code style="font-size:12px;background:#fff4e5">StackedBarMicroChart</code>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+      <strong style="font-size:15px">Process Patterns</strong>
+      <span style="font-size:12px;color:var(--ink3)">5 covered · 0 out-of-scope · 5 total</span>
+    </div>
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">✓ Covered (5)</div>
+    <div style="font-size:13px;line-height:2;color:var(--ink2)">
+      <code style="font-size:12px">Wizard</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">WizardStep</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">Timeline</code> <span class="b b-green" style="font-size:9px">DIRECT</span> ·       <code style="font-size:12px">TimelineItem</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span> ·       <code style="font-size:12px">ProgressStep</code> <span class="b b-purple" style="font-size:9px">COMPOSED</span>
+    </div>
+  </div>
+  <h3 style="font-size:18px;font-weight:700;margin:32px 0 12px">All whitelisted SAP design tokens</h3>
+  <p class="lead">Every color and spacing reference in the pipeline binds to one of these <strong>52 tokens</strong>. Raw hex values are rejected at validation. Every build reports the linkage rate: how many of the color references successfully bound to a real SAP style variable versus fell back to raw RGB.</p>
+  <div class="card" style="margin-bottom:14px">
+    <strong style="font-size:13px;color:var(--sap)">Color tokens (~42)</strong>
+    <div style="margin-top:8px;font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--ink2)">
+<code style="font-size:11px">sapBackgroundColor</code> · <code style="font-size:11px">sapButton_Background</code> · <code style="font-size:11px">sapButton_BorderColor</code> · <code style="font-size:11px">sapButton_Emphasized_Background</code> · <code style="font-size:11px">sapButton_Emphasized_TextColor</code> · <code style="font-size:11px">sapButton_Lite_TextColor</code> · <code style="font-size:11px">sapButton_TextColor</code> · <code style="font-size:11px">sapContent_LabelColor</code> · <code style="font-size:11px">sapContent_Container_Background</code> · <code style="font-size:11px">sapContent_RatedColor</code> · <code style="font-size:11px">sapContent_NonRatedColor</code> · <code style="font-size:11px">sapCriticalTextColor</code> · <code style="font-size:11px">sapField_Background</code> · <code style="font-size:11px">sapField_TextColor</code> · <code style="font-size:11px">sapField_BorderColor</code> · <code style="font-size:11px">sapField_FocusColor</code> · <code style="font-size:11px">sapField_PlaceholderTextColor</code> · <code style="font-size:11px">sapGroup_TitleBorderColor</code> · <code style="font-size:11px">sapLegendColor3</code> · <code style="font-size:11px">sapLinkColor</code> · <code style="font-size:11px">sapList_Background</code> · <code style="font-size:11px">sapList_HeaderBackground</code> · <code style="font-size:11px">sapList_BorderColor</code> · <code style="font-size:11px">sapList_TextColor</code> · <code style="font-size:11px">sapNegativeColor</code> · <code style="font-size:11px">sapNegativeTextColor</code> · <code style="font-size:11px">sapNeutralTextColor</code> · <code style="font-size:11px">sapObjectHeader_Background</code> · <code style="font-size:11px">sapObjectHeader_BorderColor</code> · <code style="font-size:11px">sapPageHeader_Background</code> · <code style="font-size:11px">sapPageHeader_BorderColor</code> · <code style="font-size:11px">sapPositiveElementColor</code> · <code style="font-size:11px">sapPositiveTextColor</code> · <code style="font-size:11px">sapSelectedColor</code> · <code style="font-size:11px">sapActiveColor</code> · <code style="font-size:11px">sapShellColor</code> · <code style="font-size:11px">sapShell_Background</code> · <code style="font-size:11px">sapShell_BorderColor</code> · <code style="font-size:11px">sapShell_InteractiveBackground</code> · <code style="font-size:11px">sapShell_InteractiveTextColor</code> · <code style="font-size:11px">sapShell_SubBrand_TextColor</code> · <code style="font-size:11px">sapShell_TextColor</code> · <code style="font-size:11px">sapTitleColor</code>
+    </div>
+  </div>
+  <div class="card">
+    <strong style="font-size:13px;color:var(--sap)">Spacing / dimension tokens (~10)</strong>
+    <div style="margin-top:8px;font-family:var(--mono);font-size:11px;line-height:1.9;color:var(--ink2)">
+<code style="font-size:11px">sapButton_BorderCornerRadius</code> · <code style="font-size:11px">sapButton_BorderWidth</code> · <code style="font-size:11px">sapElement_BorderCornerRadius</code> · <code style="font-size:11px">sapElement_Compact_Height</code> · <code style="font-size:11px">sapElement_Compact_LineHeight</code> · <code style="font-size:11px">sapElement_Height</code> · <code style="font-size:11px">sapElement_LineHeight</code> · <code style="font-size:11px">sapGroup_TitleBorderWidth</code>
+    </div>
+  </div>
+  <h3 style="font-size:18px;font-weight:700;margin:32px 0 12px">Out-of-scope components (substitution rules)</h3>
+  <p class="lead">These SAP Fiori component names are intentionally NOT covered by direct SAP instances because they belong to other SAP namespaces or are runtime-only constructs. The AI layer substitutes the documented alternative — see <code>skill/references/out-of-scope-components.md</code> for the full mapping. <strong>Note (2026-07-07):</strong> App, Page, HBox, VBox, FlexBox, and FlexibleColumnLayout are now first-class registry entries — they still don't have library instances (they're framework constructs) but the plugin's LAYOUT_CONTAINERS map handles them as pass-through frames with SAP-token backgrounds.</p>
+  <table class="tbl">
+    <thead><tr><th>Group</th><th>Components</th><th>Substitution</th></tr></thead><tbody>
+      <tr><td><strong>Charts & Visualization (sap.suite.ui.microchart.*)</strong></td><td style="font-family:var(--mono);font-size:11px;line-height:1.8"><code>MicroChart</code> · <code>AreaMicroChart</code> · <code>BulletMicroChart</code> · <code>ColumnMicroChart</code> · <code>ComparisonMicroChart</code> · <code>DeltaMicroChart</code> · <code>LineMicroChart</code> · <code>RadialMicroChart</code> · <code>InteractiveBarChart</code> · <code>InteractiveLineChart</code> · <code>InteractiveDonutChart</code> · <code>HarveyBallMicroChart</code> · <code>StackedBarMicroChart</code></td><td style="font-size:12px">Substitute: Card + native chart placeholder. Real chart rendering is runtime-only.</td></tr>
+      <tr><td><strong>Heavyweight tables (sap.ui.table.*)</strong></td><td style="font-family:var(--mono);font-size:11px;line-height:1.8"><code>GridTable</code> · <code>AnalyticalTable</code> · <code>TreeTable</code></td><td style="font-size:12px">Substitute: Table (sap.m.Table) with SapColHeader + SapTableRow.</td></tr>
+      <tr><td><strong>Runtime / framework constructs</strong></td><td style="font-family:var(--mono);font-size:11px;line-height:1.8"><code>Shell</code> · <code>SplitContainer</code> · <code>MessageView</code> · <code>ScrollContainer</code> · <code>Splitter</code></td><td style="font-size:12px">Substitute: build the layout explicitly with covered components. (App, Page, FlexibleColumnLayout are now covered as layout containers.)</td></tr>
+      <tr><td><strong>Layout primitives</strong></td><td style="font-family:var(--mono);font-size:11px;line-height:1.8"><code>Grid</code> · <code>ResponsiveGridLayout</code> · <code>ToolbarSeparator</code></td><td style="font-size:12px">Substitute: Figma Auto Layout. HBox / VBox / FlexBox are now covered by the LAYOUT_CONTAINERS pass-through.</td></tr>
+    </tbody></table>
+  <div class="insight" style="margin-top:24px">
+    <div class="insight-title">What this means for you</div>
+    <div class="insight-body">Paste a screenshot of any production SAP Fiori screen. The AI layer parses regions, maps each to a covered component or a substitution rule, generates a validated spec, and the plugin builds it with real SAP component instances. Out-of-scope items don't cause failures — they get rendered as documented alternatives with a comment in the spec's rationale. The pipeline never silently drops anything.</div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section class="section" id="update-rule">
+  <div class="stag">★ Maintenance · 2026-06-27</div>
+  <h2>The 3-Place Component Update Rule</h2>
+  <p class="lead">
+    When adding or modifying any SAP component in this pipeline, <strong>three places must be updated in lockstep</strong>. Skipping any one creates a silent gap — either the validator rejects valid specs, or the plugin silently drops components at render time. Learned the hard way on 2026-06-27 when the freshly-added <code>AvatarGroup</code> rendered correctly in the plugin but got rejected at validation. Now enforced by an auto-running consistency checker.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">The three places</h3>
+  <table class="tbl">
+    <thead><tr><th>#</th><th>Layer</th><th>File / location</th><th>What goes here</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Knowledge / Registry</td>
+        <td><code>knowledge/components/registry/&lt;Name&gt;.json</code></td>
+        <td>Schema-conforming entry with <code>figmaComponentId</code> field that declares the rendering strategy (40-char hex / <code>alias:X</code> / <code>composed:Recipe</code> / <code>native:text</code>)</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>Plugin runtime path</td>
+        <td><code>plugin/figma-builder/code.js</code></td>
+        <td>At least one of: <code>buildTree</code> handler (<code>if (comp === 'X')</code>), <code>SAP_KEYS</code> entry (40-char id), or <code>KEY_MAP</code> alias</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>Validator allow-list</td>
+        <td><code>plugin/figma-builder/code.js</code> — <code>validateSpec()</code></td>
+        <td>Component name must appear in <code>KEY_MAP ∪ LAYOUT_CONTAINERS ∪ NATIVE_RENDERERS ∪ SKIP_SELF ∪ HORIZ_CONTAINERS</code> or the explicit list</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight" style="margin-top:20px">
+    <div class="insight-title">The decision tree</div>
+    <div class="insight-body" style="font-family:var(--mono);font-size:12px;line-height:1.85;white-space:pre">Is there a real SAP Figma instance?
+├── YES → Add figmaComponentId (40-char hex) to SAP_KEYS
+│        KEY_MAP self-entry (or redirect if alias)
+│        Registry: figmaComponentId = "&lt;40-char-hex&gt;"
+│
+└── NO  → Variant of another SAP component?
+         ├── YES → Registry: figmaComponentId = "alias:Target"
+         │        KEY_MAP entry: SpecName: 'Target'
+         │
+         └── NO  → Custom composition needed
+                  Registry: figmaComponentId = "composed:Recipe"
+                  Plugin: add `if (comp === 'X') {...}` in buildTree
+                  Plugin: add 'X' to NATIVE_RENDERERS set</div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">The consistency checker</h3>
+  <p class="lead">
+    <code>build/check-component-consistency.py</code> scans all three layers and reports any component that's in only some of them. It runs <strong>automatically after every <code>build-registry-bundle.js</code></strong> — a non-zero exit means the build is logically broken even if syntax passes.
+  </p>
+
+  <div class="code-block"><pre># Auto-runs at the end of every bundle build
+node build/build-registry-bundle.js
+
+# → ... bundle written ...
+# → Running consistency checker (3-place rule)...
+# → Total component names known: 148
+# →   Consistent across 3 layers:    148
+# →   Inconsistencies:                0
+# → ✅ All component names are consistent across the 3 layers.
+# →
+# → Layer breakdown:
+# →   SAP_KEYS         (direct figma IDs)       : 77
+# →   KEY_MAP          (alias chain)             : 107
+# →   NATIVE_RENDERERS (composed renderers)      : 35
+# →   SKIP_SELF        (passthrough wrappers)    : 11
+# →   HORIZ_CONTAINERS (Toolbar / OverflowTb)    : 13
+# →   LAYOUT_CONTAINERS                          : 11
+# →   buildTree handlers                          : 104
+# →   Registry entries                            : 95
+</pre></div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">What the checker catches</h3>
+  <table class="tbl">
+    <thead><tr><th>Inconsistency</th><th>Symptom in Figma</th><th>How to fix</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>RUNTIME PATH BUT VALIDATOR REJECTS</code></td>
+        <td>Plugin can render the component but the Validate button shows <em>"Unknown components: X"</em>. Build is blocked.</td>
+        <td>Add the name to <code>NATIVE_RENDERERS</code> set (line ~251 of code.js)</td>
+      </tr>
+      <tr>
+        <td><code>VALIDATOR ACCEPTS BUT NO RUNTIME PATH</code></td>
+        <td>Validation passes but the component is silently dropped at render time — no error, just missing from canvas.</td>
+        <td>Add a <code>buildTree</code> handler OR remove the validator entry</td>
+      </tr>
+      <tr>
+        <td><code>IN REGISTRY BUT NOT IN PLUGIN</code></td>
+        <td>Registry advertises the component, AI emits it confidently, plugin has no path to render. Silent drop + spec passes registry gate misleadingly.</td>
+        <td>Add the runtime path (handler OR SAP_KEYS) AND add to NATIVE_RENDERERS, OR delete the registry entry</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">Real example — AvatarGroup, 2026-06-27</h3>
+  <table class="tbl">
+    <thead><tr><th>Step</th><th>What happened</th><th>Layer</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Registry entry created with <code>figmaComponentId: "composed:Avatar[]"</code></td><td>✓ Layer 1</td></tr>
+      <tr><td>2</td><td>Plugin <code>buildTree</code> handler added (55 lines, composes N Avatars + overflow counter)</td><td>✓ Layer 2</td></tr>
+      <tr><td>3</td><td>Bundle rebuilt; user reloads plugin</td><td>—</td></tr>
+      <tr><td>4</td><td>User pastes spec → clicks Validate → <strong>✗ Unknown components: AvatarGroup</strong></td><td>❌ Layer 3 missing</td></tr>
+      <tr><td>5</td><td><code>NATIVE_RENDERERS.add('AvatarGroup')</code></td><td>✓ Layer 3</td></tr>
+      <tr><td>6</td><td>Re-Validate → ✓ passes; Build → ✓ renders</td><td>—</td></tr>
+      <tr><td>7</td><td>Wrote consistency checker; found <strong>26 more latent gaps</strong> with same root cause</td><td>—</td></tr>
+      <tr><td>8</td><td>Bulk-fixed: 12 → <code>KEY_MAP</code>, 13 → <code>NATIVE_RENDERERS</code></td><td>✓ All 3 layers</td></tr>
+      <tr><td>9</td><td>Checker integrated into bundle build — can't happen silently again</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight" style="margin-top:20px">
+    <div class="insight-title">Why this matters</div>
+    <div class="insight-body">
+      Before this rule was enforced, the registry could claim "95 components covered" while 26 of them silently fell through the cracks at runtime. Tests and surface-level checks passed; only end-to-end user clicks surfaced the bugs. Now the checker makes this class of bug impossible to commit — if any layer drifts, the bundle build fails with a clear list of which components need wiring where. Full doc at <code>skill/references/component-update-rule.md</code>.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="architecture">
+  <div class="stag">Architecture</div>
+  <h2>Three layers, single responsibility each</h2>
+
+  <table class="tbl">
+    <thead><tr><th>Layer</th><th>Files</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI Layer</strong><br><span class="b b-blue">Skill</span></td><td><code>skill/SKILL.md</code><br><code>skill/SYSTEM_PROMPT.md</code><br><code>skill/agents/*.md</code></td><td>Reads requirement, selects floorplan (with user confirmation), shows ASCII draft preview, generates spec conforming to registry + token whitelist</td></tr>
+      <tr><td><strong>Data Layer</strong><br><span class="b b-blue">Knowledge</span></td><td><code>knowledge/components/registry/*.json</code><br><code>knowledge/guidelines/*.json</code></td><td>151 components × 21 registry fields + 96 × 17 guideline fields. Single source of truth for technical specs and design guidance.</td></tr>
+      <tr><td><strong>Execution Layer</strong><br><span class="b b-blue">Plugin</span></td><td><code>plugin/figma-builder/code.bundled.js</code><br><code>plugin/figma-builder/manifest.json</code></td><td>Imports SAP component instances; applies tokens via Variables API; configure-before-append (zero flicker); logs exceptions; runs 4 a11y validators after build.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="lead" style="margin-top:24px">Plus 7 MCP servers as the active connectivity surface between layers — see next section.</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="mcps">
+  <div class="stag">MCP Servers</div>
+  <h2>7 connected, single-responsibility each (4 official + 3 custom)</h2>
+
+  <table class="tbl">
+    <thead><tr><th>Server</th><th>Role</th><th>Tools</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>figma</code></td>
+        <td>Live Figma file/node access. Reads metadata, screenshots, design context, components, variables.</td>
+        <td>Official (Figma)</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+      <tr>
+        <td><code>chrome-devtools</code></td>
+        <td>Browser automation fallback — scrape Fiori guideline pages when the local guidelines cache lacks an entry. Also used for SAP UI5 runtime data extraction via <code>getMetadata()</code>.</td>
+        <td>Official (Google)</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+      <tr>
+        <td><code>ui5-mcp-server</code></td>
+        <td>Live SAPUI5 API reference — exact property names, types, enum values per <code>sap.m.*</code> component.</td>
+        <td>Official (SAP)</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+      <tr>
+        <td><code>fundamental-styles</code></td>
+        <td>Official SAP CSS component reference — 120+ components, 1,522 design tokens.</td>
+        <td>Official (SAP)</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+      <tr>
+        <td><code>sap-fiori-guidelines</code></td>
+        <td><strong>Custom.</strong> Exposes the local guideline cache (96 components) for design guidance queries. Wired to Component-Guidance mode.</td>
+        <td>5: getFioriGuideline · refreshGuideline · searchGuidelines · getPattern · listComponents</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+      <tr>
+        <td><code>sap-figma-community</code></td>
+        <td><strong>Custom.</strong> Detects when SAP Web UI Kit drifts from local registry; provides reconciliation tools.</td>
+        <td>9: getCurrentLibraryVersion · getRegistryEntry · checkRegistryFreshness · listKnownComponents · listMissingFigmaIds · recordLiveData · applySync · markSynced · getSAPFigmaFileId</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+      <tr>
+        <td><code>sap-application-analysis</code></td>
+        <td><strong>Custom.</strong> Converts screenshot regions into SAP component vocabulary + floorplan scores. Powers the Draft Preview step.</td>
+        <td>6: describeWorkflow · listRegionTypes · listFloorplanHeuristics · mapRegionToSAP · suggestFloorplan · buildSpecDraft</td>
+        <td><span class="b b-green">✔</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <div class="insight-title">Why 7 separate MCPs (and not just one big MCP)?</div>
+    <div class="insight-body">
+      Short answer: <strong>Unix philosophy</strong> — one tool, one job, composable. A single
+      monolithic "SAP-everything" MCP would be easier to install (one URL) but harder in every other
+      dimension. The 7-MCP layout makes specific architectural tradeoffs:
+      <br><br>
+
+      <strong>1. Independent failure surface.</strong> If <code>sap-fiori-guidelines</code> crashes
+      (bad cache file, missing dep), the other 6 keep working. A single MCP would take everything
+      down on one bad code path. With 7, a degraded session still has 6 of 7 capabilities.
+      <br><br>
+
+      <strong>2. Different consumer models.</strong> figma is <em>official Figma code</em>.
+      chrome-devtools is <em>official Google code</em>. ui5-mcp-server and fundamental-styles are
+      <em>SAP's official servers</em>. Four of the seven are not ours to merge — even if we wanted to.
+      Forcing them into one monolith would mean forking four official servers and maintaining the
+      forks forever.
+      <br><br>
+
+      <strong>3. Different update cadences.</strong> Figma releases protocol changes monthly. SAP UI5
+      ships a new minor every quarter. Our internal registry changes per session. A monolith
+      would force-couple all release cycles. Seven MCPs let each move independently.
+      <br><br>
+
+      <strong>4. Different security/permission scopes.</strong> figma needs Figma OAuth.
+      chrome-devtools needs browser process spawn permission. sap-figma-community reads/writes our
+      registry files locally. ui5 hits SAP's public docs. Combining them would mean a single MCP
+      asking for the UNION of all permissions — much more invasive on the user's machine than 7 with
+      narrow scopes each.
+      <br><br>
+
+      <strong>5. Cache locality.</strong> Each MCP holds the cache for the data it owns:
+      fiori-guidelines caches design guidance, figma-community caches registry-vs-library drift,
+      application-analysis caches region-pattern vocab. Merging would either share a giant cache
+      (cache-invalidation hell) or duplicate caches (defeating the merge).
+      <br><br>
+
+      <strong>6. Cognitive load for the AI layer.</strong> When Claude reads "use the
+      <code>sap-fiori-guidelines</code> MCP", the intent is unambiguous — there's exactly one tool
+      surface. With a monolith, every call would need additional namespacing
+      (<code>sap.guidelines.get</code> vs <code>sap.figma.search</code> vs <code>sap.ui5.api</code>)
+      and the AI has to disambiguate. Seven MCPs map cleanly to seven task types.
+      <br><br>
+
+      <strong>The tradeoff we DO pay</strong>: installation friction. Each MCP needs its own
+      <code>claude mcp add</code> line. We accept this because it's a one-time cost per environment,
+      and the architectural wins (above) recur on every session.
+      <br><br>
+
+      <em>Could it be done with 1 MCP? Yes — but only if we owned all 4 official ones (we don't),
+      were willing to ship a giant permission surface (we shouldn't), and accepted that one bug takes
+      down everything (we won't). 7 MCPs is the right shape for this problem.</em>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="registry">
+  <div class="stag">Data Layer</div>
+  <h2>Registry — 151 components, technical specs</h2>
+  <p class="lead">Each entry has 21 required fields: Figma identity, variant properties, exposed property table, supported states, typography rules, color token rules (all whitelist-validated), accessibility rules with WCAG criterion refs, do/don't rules, compatibility map, plugin notes. The full SAP Web UI Kit is covered plus 11 foundational primitives added on 2026-07-07 for App, Page, HBox, VBox, FlexBox, FlexibleColumnLayout, Breadcrumbs, MaskInput, and three sub-item types.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+    <div class="card">
+      <strong style="display:block;margin-bottom:6px">Core UI (99 direct SAP instances)</strong>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.9">
+        ShellBar · SideNavigation · Button · Input · Select · CheckBox · RadioButton · Switch · Label · Link ·
+        Table · Column · ColumnListItem · List · StandardListItem · IconTabBar · IconTabFilter ·
+        DynamicPage · ObjectPageLayout · FilterBar · Form · Panel · Dialog · Popover · Card ·
+        Avatar · Tag · GenericTag · InfoLabel · ObjectStatus · ObjectIdentifier · ObjectNumber ·
+        MessageStrip · MessagePopover · MessageBox · MessageToast · IllustratedMessage ·
+        Wizard · WizardStep · Timeline · TimelineItem · Bar · Menu · MenuListItem ·
+        SplitButton · SegmentedButton · RatingIndicator · Slider · RangeSlider · Calendar ·
+        <em>…and 50 more direct SAP instances</em>
+      </div>
+    </div>
+    <div class="card">
+      <strong style="display:block;margin-bottom:6px">Foundational Primitives (11, added 2026-07-07)</strong>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.9">
+        <strong>Layout containers:</strong> App · Page · HBox · VBox · FlexBox · FlexibleColumnLayout<br>
+        <strong>KEY_MAP aliases:</strong> Breadcrumbs → Breadcrumb · MaskInput → MaskedInput<br>
+        <strong>Composed sub-items:</strong> Item · MessagePopoverItem · SegmentedButtonItem
+      </div>
+      <p style="margin-top:12px;font-size:12px;color:var(--ink3)">These render as pass-through frames (layout containers) or KEY_MAP aliases — no library counterpart needed. Registered so the spec validator treats them as first-class.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:16px;color:var(--ink3);font-size:13px">Schema: <code>knowledge/components/registry/_schema.json</code> · 3-layer consistency check (SAP_KEYS / KEY_MAP / NATIVE_RENDERERS) runs on every build — currently <strong>0 inconsistencies</strong> across 183 known names.</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="guidelines">
+  <div class="stag">Data Layer</div>
+  <h2>Guidelines — 96 components, design guidance</h2>
+  <p class="lead">Each entry has 17 required fields: purpose, when-to-use / when-not-to-use, do / don't rules, layout guidance (placement, sizing, spacing, alignment), content guidance (label length, content rules, examples), responsive behavior at XL/L/M/S breakpoints, accessibility guidance with WCAG criterion refs, UX patterns, compatibility map, exceptions.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Coverage</th><th>Count</th><th>Schema</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Cached guideline entries</td><td>96 of 151 registry entries</td><td><code>knowledge/guidelines/_schema.json</code></td><td><span class="b b-green">Cached</span></td></tr>
+      <tr><td>Pending guideline backfill</td><td>45 registry entries</td><td>Same</td><td><span class="b b-amber">Roadmapped</span></td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;color:var(--ink3);font-size:13px">Exposed via <code>sap-fiori-guidelines</code> MCP for AI layer queries. Wired to Component-Guidance mode (<code>skill/agents/component-guidance.md</code>) so designers can ask "which component should I use for X?" and get grounded, cited answers. The 45 pending entries are captured in <code>docs/WAVE-D-ROADMAP.md</code>.</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="tokens">
+  <div class="stag">Token Whitelist</div>
+  <h2>52 SAP semantic tokens — hard enforced</h2>
+  <p class="lead">The plugin <strong>rejects any spec containing raw hex colors</strong>. Every color reference must use one of these tokens. Same list in <code>SYSTEM_PROMPT.md</code> RULE 2 and <code>MANDATORY_TOKENS</code> in plugin code — verified aligned. 20 tokens added on 2026-07-07 to support Bar, Calendar, ComboBox, RatingIndicator, DynamicSideContent, PageHeader, ObjectHeader — every registry entry's color references now resolve. Every build now reports the design-token linkage rate: <code>[Tokens] N of M color references linked to SAP style variables (X%)</code>.</p>
+
+  <div class="token-grid">
+    <div class="token-card"><div class="token-name">sapShellColor<span class="token-hex">#1c2f3e</span></div><div class="token-meta">ShellBar / Toolbar bg</div></div>
+    <div class="token-card"><div class="token-name">sapShell_Background</div><div class="token-meta">Shell surface bg</div></div>
+    <div class="token-card"><div class="token-name">sapShell_InteractiveBackground</div><div class="token-meta">Shell interactive bg</div></div>
+    <div class="token-card"><div class="token-name">sapShell_BorderColor</div><div class="token-meta">ShellBar / Toolbar border</div></div>
+    <div class="token-card"><div class="token-name">sapShell_TextColor<span class="token-hex">#1D2D3E</span></div><div class="token-meta">ShellBar text</div></div>
+    <div class="token-card"><div class="token-name">sapBackgroundColor</div><div class="token-meta">Page background</div></div>
+    <div class="token-card"><div class="token-name">sapObjectHeader_Background</div><div class="token-meta">Object header bg</div></div>
+    <div class="token-card"><div class="token-name">sapObjectHeader_BorderColor</div><div class="token-meta">Object header border</div></div>
+    <div class="token-card"><div class="token-name">sapPageHeader_Background</div><div class="token-meta">Page header bg</div></div>
+    <div class="token-card"><div class="token-name">sapPageHeader_BorderColor</div><div class="token-meta">Page header border</div></div>
+    <div class="token-card"><div class="token-name">sapList_Background<span class="token-hex">#FFFFFF</span></div><div class="token-meta">Row bg</div></div>
+    <div class="token-card"><div class="token-name">sapList_HeaderBackground<span class="token-hex">#FFFFFF</span></div><div class="token-meta">Table header bg</div></div>
+    <div class="token-card"><div class="token-name">sapList_BorderColor</div><div class="token-meta">Row divider</div></div>
+    <div class="token-card"><div class="token-name">sapList_TextColor<span class="token-hex">#1D2D3E</span></div><div class="token-meta">Type / Version cell text</div></div>
+    <div class="token-card"><div class="token-name">sapLinkColor<span class="token-hex">#0064D9</span></div><div class="token-meta">Breadcrumb / btn text</div></div>
+    <div class="token-card"><div class="token-name">sapTitleColor</div><div class="token-meta">Page H1</div></div>
+    <div class="token-card"><div class="token-name">sapContent_LabelColor<span class="token-hex">#556B82</span></div><div class="token-meta">Meta labels / descriptions</div></div>
+    <div class="token-card"><div class="token-name">sapContent_Container_Background</div><div class="token-meta">DynamicSideContent / Card bg</div></div>
+    <div class="token-card"><div class="token-name">sapContent_RatedColor</div><div class="token-meta">RatingIndicator rated star</div></div>
+    <div class="token-card"><div class="token-name">sapContent_NonRatedColor</div><div class="token-meta">RatingIndicator unrated star</div></div>
+    <div class="token-card"><div class="token-name">sapField_Background</div><div class="token-meta">Input / ComboBox bg</div></div>
+    <div class="token-card"><div class="token-name">sapField_TextColor</div><div class="token-meta">Input text</div></div>
+    <div class="token-card"><div class="token-name">sapField_BorderColor<span class="token-hex">#556B81</span></div><div class="token-meta">Checkbox / input border</div></div>
+    <div class="token-card"><div class="token-name">sapField_FocusColor</div><div class="token-meta">Input focus outline</div></div>
+    <div class="token-card"><div class="token-name">sapSelectedColor</div><div class="token-meta">Calendar selected cell</div></div>
+    <div class="token-card"><div class="token-name">sapActiveColor</div><div class="token-meta">Active state accent</div></div>
+    <div class="token-card"><div class="token-name">sapLegendColor3</div><div class="token-meta">Calendar / chart legend</div></div>
+    <div class="token-card"><div class="token-name">sapButton_Emphasized_Background<span class="token-hex">#0070F2</span></div><div class="token-meta">Primary btn bg</div></div>
+    <div class="token-card"><div class="token-name">sapButton_Emphasized_TextColor<span class="token-hex">#FFFFFF</span></div><div class="token-meta">Primary btn text</div></div>
+    <div class="token-card"><div class="token-name">sapButton_BorderWidth</div><div class="token-meta">Button border</div></div>
+    <div class="token-card"><div class="token-name">sapButton_BorderCornerRadius</div><div class="token-meta">Button corner radius</div></div>
+    <div class="token-card"><div class="token-name">sapElement_Height</div><div class="token-meta">Row / element heights</div></div>
+    <div class="token-card"><div class="token-name">sapElement_LineHeight</div><div class="token-meta">Line height baseline</div></div>
+    <div class="token-card"><div class="token-name">sapGroup_TitleBorderWidth</div><div class="token-meta">Panel / group borders</div></div>
+    <div class="token-card"><div class="token-name">sapNeutralTextColor</div><div class="token-meta">Description / values</div></div>
+    <div class="token-card"><div class="token-name" style="color:#bb0000">sapNegativeTextColor</div><div class="token-meta">Error / locked status text</div></div>
+    <div class="token-card"><div class="token-name" style="color:#e76500">sapCriticalTextColor</div><div class="token-meta">Warning status text</div></div>
+    <div class="token-card"><div class="token-name" style="color:#107e3e">sapPositiveTextColor</div><div class="token-meta">Success status text</div></div>
+    <div class="token-card"><div class="token-name" style="color:#0064D9">sapPositiveElementColor</div><div class="token-meta">Positive element accent</div></div>
+    <div class="token-card"><div class="token-name">…and 13 more</div><div class="token-meta">See <code>MANDATORY_TOKENS</code> in <code>code.js</code> for the full 52-entry list.</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="plugin">
+  <div class="stag">Execution Layer</div>
+  <h2>Plugin — Figma builder</h2>
+
+  <div class="insight" style="margin-bottom:24px">
+    <div class="insight-title">★ Verified — Image → Spec → Screen works end-to-end</div>
+    <div class="insight-body">
+      The plugin accepts three input modes for spec generation:
+      <strong>(1) pasted reference image</strong>,
+      <strong>(2) attached document</strong> (PDF / slide),
+      <strong>(3) free-text business requirement</strong>.
+      Image input is proven by <code>output/aks-pkg-spec.json</code> — a real SAP Integration Suite
+      AKS_PKG package detail screen that was rebuilt 1:1 from a user-pasted screenshot. The full
+      pipeline ran: vision describes regions → Step 2.5 ASCII draft preview → user approval → registry
+      gate → spec generation → plugin builds with real SAP instances + Variables API binding. User
+      accepted the result as 100% correct at Figma node <code>121:34538</code>.
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:12px 0 12px;">Input modes</h3>
+  <table class="tbl">
+    <thead><tr><th>Input</th><th>How it's processed</th><th>Proof of work</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>📸 <strong>Reference image</strong></td>
+        <td>Vision describes regions in controlled vocabulary → MCP 5 (<code>sap-application-analysis</code>) maps to SAP components + scores floorplan → Step 2.5 renders ASCII draft → user confirms → spec generated</td>
+        <td><code>output/aks-pkg-spec.json</code> — accepted ✓ at Figma <code>121:34538</code></td>
+      </tr>
+      <tr>
+        <td>📄 <strong>Attached document</strong></td>
+        <td>Claude reads PDF/slide; extracts screen intent into regions[]; same downstream pipeline as image</td>
+        <td>Supported; not yet exercised in production scenarios</td>
+      </tr>
+      <tr>
+        <td>📝 <strong>Free-text business requirement</strong></td>
+        <td>requirement-analyst parses user/goal/data/actions/volume → proposes floorplan → user confirms → draft preview → spec</td>
+        <td><code>purchase-order-spec.json</code>, all 3 scenario-* LoB specs, run A/B invoice exceptions test — all accepted</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">Plugin capabilities</h3>
+
+
+  <table class="tbl">
+    <thead><tr><th>Capability</th><th>Status</th><th>Behavior</th></tr></thead>
+    <tbody>
+      <tr><td>Library connectivity pre-flight</td><td><span class="b b-green">✓</span></td><td>Blocks build if SAP Web UI Kit not connected</td></tr>
+      <tr><td>Variables API binding</td><td><span class="b b-green">✓</span></td><td><code>figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync</code> → <code>importVariableByKeyAsync</code> → <code>setBoundVariableForPaint</code>. 975 SAP Horizon variables indexed, auto-warmed on plugin start, 7-day <code>clientStorage</code> cache.</td></tr>
+      <tr><td>Token whitelist enforcement</td><td><span class="b b-green">✓</span></td><td>Validator rejects specs with raw hex; <code>MANDATORY_TOKENS</code> contains 52 SAP tokens. Global RGB→token enforcer walks every built tree and rebinds any unbound SOLID fills that match a known token. Token-linkage rate reported on every build as <code>[Tokens] N of M (X%)</code>.</td></tr>
+      <tr><td>Additive build mode</td><td><span class="b b-green">✓</span></td><td>Zero <code>.remove()</code> calls. Each screen tagged <code>sapFigmaBuilder.screen</code>. New builds stack 120px below the lowest prior screen. Nothing is ever deleted.</td></tr>
+      <tr><td>Configure-before-append</td><td><span class="b b-green">✓ NEW</span></td><td>All configuration (minWidth strip, resize, text injection, slot population) runs BEFORE <code>parentFrame.appendChild(inst)</code>. First paint already shows the correct state.</td></tr>
+      <tr><td>Width constraint stripping</td><td><span class="b b-green">✓ NEW</span></td><td>For every full-width component (DynamicPageTitle, FilterBar, IconTabBar, Table, etc.), <code>inst.minWidth = null</code> + <code>inst.maxWidth = null</code> + <code>inst.resize(width, h)</code> happen BEFORE append. Eliminates the 1440px native-width paint flash.</td></tr>
+      <tr><td>MenuButton auto-detect</td><td><span class="b b-green">✓ NEW</span></td><td>Any Button with <code>props.hasMenu: true</code> or a label containing a chevron glyph (▾▼⌄▽) automatically swaps to the SAP MenuButton component.</td></tr>
+      <tr><td>SAP instance text handling</td><td><span class="b b-green">✓</span></td><td>Tries <code>setProperties</code> → live text node injection → SLOT node injection. Detach is last resort (every detach logged).</td></tr>
+      <tr><td>SLOT node injection</td><td><span class="b b-green">✓</span></td><td>Nodes of <code>type === 'SLOT'</code> inside SAP instances accept <code>appendChild()</code>. Used to populate DynamicPageHeader's <code>⿻ Header Area</code> with Avatar + description + Vendor/Mode/Version metadata — all fills bound to SAP variables.</td></tr>
+      <tr><td>Registry override at runtime</td><td><span class="b b-green">✓</span></td><td><code>code.bundled.js</code> merges registry over hardcoded <code>SAP_KEYS</code>; SAP republishes = registry edit, not code change</td></tr>
+      <tr><td>Exception logging</td><td><span class="b b-green">✓</span></td><td>Every token fallback, detach, contrast violation surfaced via <code>build-exceptions</code> postMessage</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="plugin-internals">
+  <div class="stag">★ Plugin Internals · 2026-06-26</div>
+  <h2>What the plugin actually does in the background</h2>
+  <p class="lead">
+    The plugin isn't just a button that runs <code>buildScreen()</code>. Behind the UI sits a background
+    library scanner, a persistent client-storage cache, two component-key dispatch maps, a Variables API
+    resolver with reverse-RGB fallback, a global enforcer that walks the built tree, four §7 accessibility
+    validators, and an additive build placement engine. This section documents each piece — what it does,
+    when it runs, and what the user sees when it runs.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">1 · Plugin startup sequence (auto-runs on launch)</h3>
+  <div class="flow">
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">a</div><div class="flow-content"><strong>figma.showUI(__html__, {width:380, height:580})</strong><span>UI panel opens; user sees the cache indicator + scenario buttons immediately.</span></div></div>
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">b</div><div class="flow-content"><strong>indexLibraryVariablesOnce() fires in background</strong><span>Detached promise — does not block the UI. Posts <code>library-cache-state</code> messages as it progresses.</span></div></div>
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">c</div><div class="flow-content"><strong>Check clientStorage cache (TTL 7 days)</strong><span>Key <code>sapFigmaBuilder.varIndex.v1</code>. If <code>savedAt + 7d &gt; now</code>, restore index instantly — &lt;50ms cold start.</span></div></div>
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">d</div><div class="flow-content"><strong>Otherwise: live scan (slow path)</strong><span>Posts <code>state:'scanning'</code> to UI → orange pill. Runs <code>getAvailableLibraryVariableCollectionsAsync</code> + parallel <code>getVariablesInLibraryCollectionAsync</code> per collection.</span></div></div>
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">e</div><div class="flow-content"><strong>Build name→key index</strong><span>For every variable, index lowercased name + lowercased trailing path segment. E.g. <code>"Horizon Light/Theme/sapShellColor"</code> indexed as both <code>"horizon light/theme/sapshellcolor"</code> AND <code>"sapshellcolor"</code>.</span></div></div>
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">f</div><div class="flow-content"><strong>Persist + notify ready</strong><span>Writes to clientStorage with current timestamp. Posts <code>state:'ready'</code> → green pill showing variable count. ~975 variables indexed on a healthy SAP Horizon library.</span></div></div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">2 · The cache bar (UI indicator)</h3>
+  <p class="lead">
+    Top of the plugin UI shows the live state of the variable index — visible at all times. Three states:
+  </p>
+  <table class="tbl">
+    <thead><tr><th>State</th><th>Pill color</th><th>Meaning</th><th>What user can do</th></tr></thead>
+    <tbody>
+      <tr><td><code>scanning</code></td><td>🟠 Orange</td><td>Live scan in progress — first time this session or cache expired</td><td>Can still paste/validate spec; build will queue behind scan</td></tr>
+      <tr><td><code>ready</code></td><td>🟢 Green</td><td>Index loaded; shows total variable count and source (storage vs. live)</td><td>All token bindings work normally; build proceeds at full speed</td></tr>
+      <tr><td><code>error</code></td><td>🔴 Red</td><td><code>teamLibrary</code> API unavailable or scan failed</td><td>Build runs with raw RGB fallbacks; every fallback logged as exception</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">3 · Warm Cache button — manual refresh</h3>
+  <p class="lead">
+    The user can force a full live re-scan by clicking <strong>Warm Cache</strong> in the UI. This:
+  </p>
+  <ol style="margin:12px 0 24px 24px;font-size:14px;line-height:1.85;color:var(--ink2)">
+    <li>Clears the in-memory index (<code>_libraryVariablesIndex = {}</code>) and the <code>_libraryIndexed</code> flag</li>
+    <li>Calls <code>indexLibraryVariablesOnce(force=true)</code> — bypasses clientStorage TTL</li>
+    <li>Re-fetches all collections + variables from the SAP Web UI Kit team library in parallel</li>
+    <li>Rebuilds the name→key index and overwrites clientStorage with fresh timestamp</li>
+    <li>Posts <code>state:'ready'</code> with <code>fromStorage:false</code> so the UI shows "live" badge</li>
+  </ol>
+  <p class="lead">
+    <strong>When to use it</strong>: after SAP republishes the Web UI Kit (variable keys rotate), when the
+    inspector shows raw hex codes where tokens should bind, or as a sanity check before a presentation.
+    Typical re-scan time: 2–4 seconds for ~975 variables.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">4 · Scan Library button — diagnostic</h3>
+  <p class="lead">
+    Distinct from Warm Cache. Reads the SAP Web UI Kit and posts a <strong>scan report</strong> back to the
+    UI panel showing: total collections, total variables per collection, presence-check for each of the 22
+    mandatory tokens (✓/✗), and a sample of 40 actual variable names. Used to debug "why isn't <code>sapShellColor</code> binding?" — surfaces what the library actually publishes vs. what you guessed.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">5 · Two-tier component dispatch (SAP_KEYS + KEY_MAP)</h3>
+  <p class="lead">
+    Component-name resolution goes through two maps before reaching the Figma library:
+  </p>
+  <table class="tbl">
+    <thead><tr><th>Map</th><th>Lines in code.js</th><th>Role</th><th>Size</th></tr></thead>
+    <tbody>
+      <tr><td><code>KEY_MAP</code></td><td>100–200</td><td>Spec component name → canonical SAP_KEYS name. Handles aliases like <code>MultiComboBox</code> → <code>'MultiCombobox'</code>, <code>Breadcrumbs</code> → <code>'Breadcrumb'</code>, <code>Toolbar</code> → <code>'Toolbar'</code></td><td>82 entries</td></tr>
+      <tr><td><code>SAP_KEYS</code></td><td>9–97</td><td>Canonical name → Figma component ID (40-char hex). Also holds string-redirect aliases like <code>SearchField</code> → <code>'Input'</code>.</td><td>70 entries</td></tr>
+      <tr><td><code>SAP_KEYS_FROM_REGISTRY</code></td><td>injected from bundle</td><td>Merged over SAP_KEYS at plugin boot. Lets registry edits override hardcoded keys without touching code.js. Survives SAP library republishes.</td><td>Auto from 151 registry files</td></tr>
+    </tbody>
+  </table>
+  <p class="lead" style="margin-top:12px">
+    Union of both maps recognizes <strong>85 unique component names</strong>. Resolution chain:
+    <code>specName → KEY_MAP[specName] → SAP_KEYS[canonical] → figma.importComponentByKeyAsync(id) → instance.createInstance()</code>.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">6 · Variables API resolver (the heart of token binding)</h3>
+  <p class="lead">
+    Six helper functions wrap the raw Figma Variables API into a uniform <code>(node, tokenName)</code> interface:
+  </p>
+  <table class="tbl">
+    <thead><tr><th>Helper</th><th>Target</th><th>Strategy</th></tr></thead>
+    <tbody>
+      <tr><td><code>applyFill(node, token)</code></td><td><code>node.fills</code></td><td>importVariableByKeyAsync → setBoundVariableForPaint(fills[0], 'color', v) → node.fills = [paint]</td></tr>
+      <tr><td><code>applyStroke(node, token)</code></td><td><code>node.strokes</code></td><td>Same as applyFill but on strokes array</td></tr>
+      <tr><td><code>applyTextFill(node, token)</code></td><td><code>TextNode.fills</code></td><td>Same shape — text inherits the fills field</td></tr>
+      <tr><td><code>applyPadding(node, side, token)</code></td><td><code>paddingLeft/Right/Top/Bottom</code></td><td>importVariable → setBoundVariable('paddingLeft', v). Side = 'left'|'right'|'top'|'bottom'|'horizontal'|'vertical'</td></tr>
+      <tr><td><code>applyGap(node, token)</code></td><td><code>itemSpacing</code></td><td>setBoundVariable('itemSpacing', v) — for Auto Layout gaps</td></tr>
+      <tr><td><code>applyStrokeWeight</code> / <code>applyCornerRadius</code></td><td>strokeWeight / cornerRadius</td><td>setBoundVariable('strokeWeight'|'cornerRadius', v)</td></tr>
+    </tbody>
+  </table>
+  <p class="lead" style="margin-top:12px">
+    Every helper calls <code>validateToken()</code> first — token name must exist in <code>MANDATORY_TOKENS</code>
+    or <code>MANDATORY_SPACING_TOKENS</code>. Validation failure → exception logged, raw-RGB fallback applied,
+    inspector shows hex (visible failure). Cache hits per-token to avoid re-importing.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">7 · Global RGB→token enforcer (safety net)</h3>
+  <p class="lead">
+    After every <code>buildScreen</code>, the function <code>enforceTokensAndLayout(rootNode)</code> walks the
+    entire built tree and rebinds any unbound SOLID fills/strokes that match a known SAP token. Steps:
+  </p>
+  <ol style="margin:12px 0 24px 24px;font-size:14px;line-height:1.85;color:var(--ink2)">
+    <li>Build a reverse index at plugin init: for each whitelisted token, <code>hexToRgb(token.hex)</code> → token name (rounded to 0.001)</li>
+    <li>Recursively visit every node in the built tree</li>
+    <li>For each node with a SOLID fill or stroke that has NO <code>boundVariables.color</code>:
+      <ul>
+        <li>Look up the RGB in the reverse index</li>
+        <li>If found → call <code>applyFill</code> / <code>applyStroke</code> to bind it</li>
+        <li>If not found → log <code>raw-rgb-leak</code> exception with node name + hex</li>
+      </ul>
+    </li>
+    <li>Skip spacer frames (transparent, no fill to enforce)</li>
+  </ol>
+  <p class="lead">
+    Catches anywhere a renderer forgot to use the binding helpers AND any legacy hex value that should
+    have mapped to a token (handles <code>#1D2D3E</code>, <code>#1D2E3B</code>, <code>#131E29</code> all → <code>sapList_TextColor</code>).
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">8 · Build placement (additive mode)</h3>
+  <p class="lead">
+    Builds NEVER delete previous screens. Placement logic:
+  </p>
+  <ol style="margin:12px 0 24px 24px;font-size:14px;line-height:1.85;color:var(--ink2)">
+    <li>Query current page for frames carrying <code>setPluginData('sapFigmaBuilder.screen', 'true')</code></li>
+    <li>If none → center the new screen in the current viewport</li>
+    <li>If found → find the lowest frame's <code>y + height</code>, place new screen at <code>lowestBottom + 120</code> (120px gutter)</li>
+    <li>Tag the new screen with the same sentinel for future builds</li>
+    <li>Zero <code>.remove()</code> calls anywhere in buildScreen</li>
+  </ol>
+  <p class="lead">
+    Effect: every build adds to a vertical stack. The user can compare iterations side-by-side or scroll
+    back through a build history. Snapshot system + version history stays meaningful.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">9 · postMessage protocol (plugin ↔ UI)</h3>
+  <p class="lead">
+    The UI panel (<code>ui.html</code>) and the plugin sandbox (<code>code.js</code>) communicate via Figma's
+    postMessage bridge. Every message has a <code>type</code> field that triggers a handler on the receiving side.
+  </p>
+  <table class="tbl">
+    <thead><tr><th>Direction</th><th>type</th><th>Payload / use</th></tr></thead>
+    <tbody>
+      <tr><td>UI → plugin</td><td><code>scan-library</code></td><td>Triggers diagnostic library scan + report</td></tr>
+      <tr><td>UI → plugin</td><td><code>warm-cache</code></td><td>Force re-scan, bypass clientStorage TTL</td></tr>
+      <tr><td>UI → plugin</td><td><code>validate</code></td><td>Run spec through registry gate + token whitelist; respond with violations</td></tr>
+      <tr><td>UI → plugin</td><td><code>build</code></td><td>Execute buildScreen(spec)</td></tr>
+      <tr><td>plugin → UI</td><td><code>library-cache-state</code></td><td>{ state: 'scanning'|'ready'|'error', totalVariables, fromStorage, ageMs }</td></tr>
+      <tr><td>plugin → UI</td><td><code>progress</code></td><td>Step-by-step build log: "Checking library connectivity...", "Loading fonts...", "Building DynamicPageTitle...", etc.</td></tr>
+      <tr><td>plugin → UI</td><td><code>warning</code></td><td>Non-blocking issue (missing variant, fallback hex, unrecognized component)</td></tr>
+      <tr><td>plugin → UI</td><td><code>error</code></td><td>Blocking failure — library not connected, spec invalid, etc.</td></tr>
+      <tr><td>plugin → UI</td><td><code>build-exceptions</code></td><td>Full exception array after build — every fallback, detach, contrast violation</td></tr>
+      <tr><td>plugin → UI</td><td><code>build-complete</code></td><td>{ stats: { rows, components, tokens, a11y } } — success summary</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">10 · Per-build pipeline (what runs when you click "Build")</h3>
+  <div class="flow">
+    <div class="flow-item"><div class="flow-num">1</div><div class="flow-content"><strong>resetExceptions()</strong><span>Clear the exception log so this build's log is clean</span></div></div>
+    <div class="flow-item"><div class="flow-num">2</div><div class="flow-content"><strong>Library connectivity pre-flight</strong><span>Probe <code>figma.teamLibrary</code> + a sample variable import. If fails → post error, abort.</span></div></div>
+    <div class="flow-item"><div class="flow-num">3</div><div class="flow-content"><strong>loadFonts(72 Regular/Bold/Semibold/Light)</strong><span>Pre-load all SAP fonts needed. Single Promise.all to parallelize.</span></div></div>
+    <div class="flow-item"><div class="flow-num">4</div><div class="flow-content"><strong>Find placement</strong><span>Scan page for prior plugin-tagged frames; compute placement coords.</span></div></div>
+    <div class="flow-item"><div class="flow-num">5</div><div class="flow-content"><strong>Create screen frame</strong><span>Auto Layout VERTICAL; bind fill to sapBackgroundColor; tag as plugin-owned.</span></div></div>
+    <div class="flow-item"><div class="flow-num">6</div><div class="flow-content"><strong>Detect ShellBar + NativeSideNav</strong><span>If present → emit two-column layout. Sidebar fixed-width, content fills remaining.</span></div></div>
+    <div class="flow-item"><div class="flow-num">7</div><div class="flow-content"><strong>Recurse hierarchy</strong><span>For each spec node → buildTree(node, parent, density, width). Dispatches by component name. Posts progress message per node.</span></div></div>
+    <div class="flow-item"><div class="flow-num">8</div><div class="flow-content"><strong>enforceTokensAndLayout(screen)</strong><span>Walk tree; rebind any raw RGB to SAP variables; fix any escaped width constraints.</span></div></div>
+    <div class="flow-item"><div class="flow-num">9</div><div class="flow-content"><strong>Run 4 §7 a11y validators</strong><span>Contrast, typography, focus/tap target, status-by-color. Each violation → exception logged.</span></div></div>
+    <div class="flow-item"><div class="flow-num">10</div><div class="flow-content"><strong>Post build-complete + build-exceptions</strong><span>UI panel shows success banner + collapsible exception list.</span></div></div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">11 · clientStorage persistence detail</h3>
+  <table class="tbl">
+    <thead><tr><th>Key</th><th>Shape</th><th>TTL</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td><code>sapFigmaBuilder.varIndex.v1</code></td><td><code>{ savedAt: epochMs, index: { [tokenName]: { key, libraryName, originalName } } }</code></td><td>7 days</td><td>Avoid 2–4 second scan on every plugin launch. ~975 entries.</td></tr>
+    </tbody>
+  </table>
+  <p class="lead" style="margin-top:12px">
+    Cache invalidation happens automatically on the 8th day, or manually via Warm Cache. The version suffix
+    (<code>.v1</code>) lets future schema changes invalidate the cache without colliding.
+  </p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">12 · Performance characteristics</h3>
+  <table class="tbl">
+    <thead><tr><th>Operation</th><th>Wall-clock</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Plugin cold start (cached)</td><td>&lt; 100ms</td><td>UI shows + cache restored from clientStorage</td></tr>
+      <tr><td>Plugin cold start (uncached)</td><td>2–4s</td><td>UI shows instantly; cache warms in background. User can interact.</td></tr>
+      <tr><td>Variable import (per token)</td><td>~50ms</td><td><code>importVariableByKeyAsync</code> — first time only; cached in <code>_variableCache</code></td></tr>
+      <tr><td>Build typical screen (AKS_PKG, 8 rows)</td><td>3–6s</td><td>Dominated by SAP instance imports (one per unique component)</td></tr>
+      <tr><td>Token enforcement pass</td><td>50–200ms</td><td>Walk tree; cache hits are fast</td></tr>
+      <tr><td>4 a11y validators</td><td>100–300ms</td><td>Recursive tree walk × 4</td></tr>
+      <tr><td>Warm Cache (full re-scan)</td><td>2–4s</td><td>Parallel collection fetch</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight" style="margin-top:24px">
+    <div class="insight-title">Architectural summary</div>
+    <div class="insight-body">
+      The plugin is an <strong>imperative builder, not a renderer</strong>. It does not "render SAP screens"
+      — it imports official SAP Web UI Kit instances, composes them in Auto Layout, injects user data, binds
+      every fill/stroke/spacing to a real SAP Horizon variable, and validates the result. The plugin
+      <strong>never invents colors, sizes, or typography</strong>. Everything traces to either (a) an SAP
+      Figma instance, (b) a SAP Horizon variable binding, or (c) a documented exception in the log. The
+      <strong>cache + enforcer + dispatch maps</strong> are what make it survive SAP republishes,
+      disconnected libraries, and stale specs without silent failures.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="flicker">
+  <div class="stag">Plugin Rendering · NEW 2026-06-26</div>
+  <h2>★ Zero-flicker rendering</h2>
+  <p class="lead">
+    During render, SAP instances were painting at their native 1440px width for 1–2 frames before
+    the Auto Layout FILL constraint took effect. This manifested as content text bleeding off the
+    left edge of the content frame during build, resolving to the correct width after completion.
+    Three fixes were applied.
+  </p>
+
+  <div class="fix-card">
+    <h4>Fix 1 — Configure-before-append (DynamicPageTitle)</h4>
+    <p>The entire SAP DynamicPageHeader instance — title text injection, breadcrumb injection, Header Area SLOT population, Generic Tag hiding — is now done while the instance is <em>detached</em> (not yet in the Figma canvas tree). <code>parentFrame.appendChild(inst)</code> is the very last operation, so the first paint shows the fully configured state.</p>
+  </div>
+
+  <div class="fix-card">
+    <h4>Fix 2 — Width constraint strip before append (all wide components)</h4>
+    <p>SAP instances ship with a hardcoded <code>minWidth=1440</code>. Setting <code>layoutSizingHorizontal='FILL'</code> after append was blocked by this floor, causing a one-frame wide paint. The fix:</p>
+    <div class="code-block"><pre>// BEFORE parentFrame.appendChild(inst):
+try { inst.minWidth = null; } catch(e) {}
+try { inst.maxWidth = null; } catch(e) {}
+try { inst.resize(width, inst.height); } catch(e) {}
+parentFrame.appendChild(inst);
+try { inst.layoutSizingHorizontal = 'FILL'; } catch(e) {}</pre></div>
+    <p>Applied to: <strong>DynamicPageTitle handler</strong>, <strong>FilterBar/DynamicPageHeader handler</strong>, <strong>Table handler</strong>, and the <strong>catch-all leaf handler</strong> (which places IconTabBar, ShellBar, and all other FULL_WIDTH_COMPS).</p>
+  </div>
+
+  <div class="fix-card">
+    <h4>Fix 3 — Per-child size-fix in Content build loop (Option 1)</h4>
+    <p>After <code>buildTree(node, contentCol, density, contentW)</code> returns, every newly-added child has its <code>minWidth</code>/<code>maxWidth</code> stripped, is resized to <code>contentW</code>, and set to <code>layoutSizingHorizontal='FILL'</code>. This catches any child that escaped the inner-handler fixes.</p>
+  </div>
+
+  <div class="insight">
+    <div class="insight-title">Root cause summary</div>
+    <div class="insight-body">
+      The DynamicPageTitle / IconTabBar / Table were the visible culprits in the screenshot (text clipped at left, full-width bar hanging off canvas edge). All three traced back to the same pattern:
+      <strong>append first → configure second → FILL blocked by minWidth</strong>.
+      The fix reverses the order: <strong>configure/resize first → append → FILL</strong>.
+      The SAP native 48px padding visible in the Figma inspector on the Title Area is <em>the SAP library's own padding</em> — it's correct and not added by the plugin.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="validators">
+  <div class="stag">§7 Accessibility</div>
+  <h2>4 validators run after every build</h2>
+
+  <table class="tbl">
+    <thead><tr><th>Validator</th><th>Checks</th><th>WCAG</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Contrast</strong></td><td>Text-to-background AA: 4.5:1 normal / 3:1 large text (≥24px or ≥18.67px bold)</td><td>1.4.3</td></tr>
+      <tr><td><strong>Typography Hierarchy</strong></td><td>Heading order (no H1→H3 skip); font sizes on SAP scale; first heading is H1 or H2</td><td>1.3.1, 2.4.6, 1.4.4</td></tr>
+      <tr><td><strong>Focus &amp; Tap Target</strong></td><td>Interactive nodes ≥32px Compact / 44px Cozy; icon-only have accessible name</td><td>2.4.7, 2.5.5, 4.1.2</td></tr>
+      <tr><td><strong>Status Communication</strong></td><td>Semantic colors (Error/Warning/Success/Info) accompanied by icon or text — not color alone</td><td>1.4.1</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;color:var(--ink2);font-size:13px">Each violation logged via <code>logException</code>. Build success message appends: <em>· A11y: 24/28 contrast · 3 headings (0 typo issues) · 12 interactive (2 too-small, 0 missing-label) · 0 status-by-color</em></p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="build">
+  <div class="stag">Maintenance</div>
+  <h2>Build pipeline — survives SAP republishes</h2>
+  <p class="lead">SAP publishes a new Web UI Kit version. Component keys rotate. Variant property names change. Previously this broke <code>SAP_KEYS</code> silently. Now: edit registry JSON, run build script, re-import — no code changes.</p>
+
+  <div class="code-block"><pre># 1. Detect drift (in Claude)
+sap-figma-community.checkRegistryFreshness
+# → "Fresh: 38, Stale: 0, Missing: 9"
+
+# 2. For each drifted component
+#    Use figma MCP: search_design_system → get new key
+#    Edit knowledge/components/registry/&lt;Component&gt;.json
+
+# 3. Rebuild plugin (ALWAYS run this after editing code.js)
+cd '/Users/C5408360/Downloads/Task to Figma SAP layouts components'
+node build/build-registry-bundle.js
+# → registry-bundle.js (~99KB)
+# → code.bundled.js (~342KB: bundle + code.js + override shim)
+
+# 4. Re-import plugin in Figma → uses new keys</pre></div>
+
+  <div class="insight">
+    <div class="insight-title">⚠️ Always rebuild after code.js edits</div>
+    <div class="insight-body">
+      The Figma plugin loads <code>code.bundled.js</code>, NOT <code>code.js</code>.
+      Forgetting to run the build script after editing <code>code.js</code> means Figma keeps running
+      the old code — a full debug round wasted. The build takes ~1 second.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="draft">
+  <div class="stag">AI Layer · 2026-06-26</div>
+  <h2>★ Draft Preview &amp; Refine Loop</h2>
+  <p class="lead">
+    A lightweight ASCII wireframe step that runs <strong>in chat</strong>, between floorplan
+    confirmation and full spec generation. Lets you see the proposed layout and iterate on it
+    before any JSON is produced — catch errors early, change your mind cheaply.
+  </p>
+
+  <div class="insight">
+    <div class="insight-title">Why this exists</div>
+    <div class="insight-body">
+      Previously: requirement → floorplan confirmed → Claude generates the full spec JSON →
+      user discovers the floorplan was wrong or a region was misread → loop back from scratch.<br><br>
+      Now: requirement → floorplan confirmed → <strong>ASCII wireframe + region map shown in chat</strong>
+      → user iterates ("add a status column", "use worklist instead", "remove the metadata band")
+      → user types "approved" → Claude generates the final JSON. Wasted refinement work drops to zero.
+    </div>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px;">What you see in chat</h3>
+
+  <div class="card" style="background:#0f1419;color:#e6edf3;font-family:var(--mono);font-size:11px;line-height:1.4;padding:18px 22px;overflow-x:auto">
+<pre style="margin:0;background:transparent;color:inherit">┌──────────────────────────────────────────────────────────────────────────┐
+│ SAP Integration Suite              search    notifications    avatar     │
+│                                                              [ShellBar]  │
+├────────────┬─────────────────────────────────────────────────────────────┤
+│ Home       │ Integration and APIs /                                      │
+│ Discover   │ ┌─P─┐  Purchase Order                  Save Export Cancel ⌫ │
+│ Design     │ └───┘  Lorem ipsum description…                             │
+│ Integrat.▾ │                                  [DynamicPage + Title]      │
+│  Graph     ├─────────────────────────────────────────────────────────────┤
+│  B2B Scen. │ Vendor: Acme   Mode: Live   Version: 1.2.4   Status: Active │
+│  Custom T. │                                       [DynamicPageHeader]   │
+│  MIGs      ├─────────────────────────────────────────────────────────────┤
+│  MAGs      │  Tab Text │ Tab Text │ Header                               │
+│ Test     ▾ │  ━━━━━━━━                              [IconTabBar]         │
+│ Configure  ├─────────────────────────────────────────────────────────────┤
+│            │ Artifacts (2)         [search ▢]  Add ▾  Delete  Actions ▾  │
+│  &lt;240&gt;     │                                       [OverflowToolbar]     │
+│ [NativeSi  ├─────────────────────────────────────────────────────────────┤
+│  deNav]    │ Name              │ Runtime    │ Type    │ Version │ ⋯      │
+│            │───────────────────┼────────────┼─────────┼─────────┼────────│
+│            │ ▣ Order-Inbound   │ Default    │ iFlow   │ 1.0.2   │ ⋯      │
+│            │ ▣ Order-Outbound  │ Default    │ iFlow   │ 1.1.0   │ ⋯      │
+│            │                              [Table + ColumnListItem ×2]    │
+└────────────┴─────────────────────────────────────────────────────────────┘</pre>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;">Refine grammar</h3>
+  <table class="tbl">
+    <thead><tr><th>User phrase pattern</th><th>Operation</th><th>Effect on ASCII</th></tr></thead>
+    <tbody>
+      <tr><td><code>add a status column</code></td><td>mutate <code>region.props.columns</code> on data-table</td><td>Adds column, redraws table block</td></tr>
+      <tr><td><code>remove the metadata band</code></td><td>filter <code>regions[]</code> by regionType</td><td>Zone disappears</td></tr>
+      <tr><td><code>use worklist instead</code></td><td>override topFloorplan</td><td>Floorplan label changes</td></tr>
+      <tr><td><code>make the table N rows</code></td><td>set <code>sampleData.length = N</code></td><td>Redraws N row placeholders</td></tr>
+      <tr><td><code>swap X for Y</code></td><td>change primary SAP component on that region</td><td><code>[bracket]</code> label updates</td></tr>
+      <tr><td><code>move the toolbar above the tabs</code></td><td>reorder <code>regions[]</code></td><td>Vertical order in ASCII changes</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;font-size:13px;color:var(--ink2)">
+    Approval phrases: <code style="font-size:13px">approved · looks good · go · ship it · build it · yes do it</code>
+    → triggers handoff to Step 3 (component-architect)
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="renderers">
+  <div class="stag">Plugin · Spec Component Vocabulary</div>
+  <h2>★ Native renderers &amp; SAP component dispatch</h2>
+  <p class="lead">
+    The plugin has two dispatch paths: <strong>SAP instance path</strong> (lookup by key, <code>figma.createInstance</code>)
+    and <strong>native renderer path</strong> (custom Auto Layout composition using SAP token-bound fills). The table below
+    documents both.
+  </p>
+
+  <table class="tbl">
+    <thead><tr><th>Spec component</th><th>Dispatch</th><th>What it produces</th></tr></thead>
+    <tbody>
+      <tr><td><code>ShellBar</code></td><td>SAP instance</td><td>Real SAP ShellBar instance, product name injected via <code>setProperties</code></td></tr>
+      <tr><td><code>NativeSideNav</code></td><td>SAP instance</td><td>Real SAP Side Navigation instance; item labels + active state override per nav item</td></tr>
+      <tr><td><code>DynamicPage</code></td><td>SKIP_SELF</td><td>Passes through — recurses slot children (<code>title</code>, <code>header</code>, <code>content</code>) directly into the parent column</td></tr>
+      <tr><td><code>DynamicPageTitle</code></td><td>SAP instance + SLOT injection</td><td>ONE real SAP DynamicPageHeader instance. Title/breadcrumb text injected. Generic Tag hidden. <code>⿻ Header Area</code> SLOT populated from <code>props.headerContent</code> (Avatar + description + meta pairs, all token-bound). Configure-before-append + minWidth strip = zero flicker.</td></tr>
+      <tr><td><code>DynamicPageHeader</code> / <code>FilterBar</code></td><td>SAP instance</td><td>Real SAP DynamicPageHeader instance with subtitle injection. Strip + pre-resize before append.</td></tr>
+      <tr><td><code>IconTabBar</code> + <code>IconTabFilter</code></td><td>SAP instance</td><td>Real SAP IconTabBar; tab labels and selected state injected via <code>setProperties({text, State})</code>. Pre-resized before append via FULL_WIDTH_COMPS.</td></tr>
+      <tr><td><code>OverflowToolbar</code> / <code>Toolbar</code></td><td>Native renderer</td><td>HORIZONTAL Auto Layout frame. Fill bound to <code>sapShellColor</code>, stroke to <code>sapShell_BorderColor</code>. Children appended inline.</td></tr>
+      <tr><td><code>ToolbarSpacer</code></td><td>No frame</td><td>Marks the previous sibling's <code>layoutGrow=1</code> + <code>layoutSizingHorizontal='FILL'</code>. No spacer node in layer panel.</td></tr>
+      <tr><td><code>Button</code></td><td>SAP instance (auto-swap)</td><td>Real SAP Button instance. Auto-swaps to SAP MenuButton when <code>props.hasMenu: true</code> or label contains chevron glyph (▾▼⌄▽).</td></tr>
+      <tr><td><code>IconButton</code></td><td>SAP instance</td><td>Real SAP IconButton. Used for row overflow (⋯) actions with overflow icon.</td></tr>
+      <tr><td><code>Title</code> / <code>Label</code> / <code>Input</code> / <code>Link</code> / <code>CheckBox</code></td><td>SAP instance</td><td>Real SAP instances with text/value injection</td></tr>
+      <tr><td><code>Breadcrumb</code></td><td>SAP instance</td><td>Real SAP Breadcrumb with label injection into Current Item + Parent Item text nodes</td></tr>
+      <tr><td><code>Avatar</code></td><td>SAP instance</td><td>Real SAP Avatar with initials/shape/size/backgroundColor overrides</td></tr>
+      <tr><td><code>SapColHeader</code></td><td>Native renderer</td><td>HORIZONTAL Auto Layout row. Column cells sized per <code>props.columns[]</code> (w, grow). Header text bound to SAP variables. Columns auto-propagate to following <code>SapTableRow</code> children.</td></tr>
+      <tr><td><code>SapTableRow</code></td><td>Native renderer</td><td>HORIZONTAL Auto Layout row. Name cell = vertical AutoLayout with real CheckBox + ObjectIdentifier + native text nodes (title/desc/statusPrefix+Suffix all token-bound). Type/Version cells = native text nodes token-bound. Actions cell = real SAP IconButton.</td></tr>
+      <tr><td><code>SapFormSection</code></td><td>Native renderer</td><td>VERTICAL Auto Layout wrapper with SAP page padding (48px L/R, 16px T/B, 12px gap). Children get <code>layoutSizingHorizontal='FILL'</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <div class="insight-title">Key discovery: SLOT nodes inside instances ARE writable</div>
+    <div class="insight-body">
+      Nodes of <code>type === 'SLOT'</code> (the pink <code>⿻</code> zones in SAP instances) accept
+      <code>slot.appendChild(myFrame)</code> from the Plugin API, even though the surrounding instance is opaque.
+      Detection: look for <code>&lt;slot&gt;</code> tags (not <code>&lt;frame&gt;</code>) in
+      <code>mcp__figma__get_metadata</code> XML output. This unlocked the DynamicPageHeader's Header Area —
+      Avatar + description + Vendor/Mode/Version metadata content is now injected directly into the
+      SAP instance's slot, not placed as a floating sibling layer.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="pipeline">
+  <div class="stag">End-to-End Pipeline</div>
+  <h2>From requirement to screen</h2>
+
+  <div class="flow">
+    <div class="flow-item"><div class="flow-num">1</div><div class="flow-content"><strong>Parse requirement</strong><span><code>skill/agents/requirement-analyst.md</code> extracts user, goal, data, actions, volume, task type</span></div></div>
+    <div class="flow-item"><div class="flow-num">2</div><div class="flow-content"><strong>Select floorplan (STOP — user confirms)</strong><span>Object Page · List Report · Worklist · Wizard · Analytical List Page · Overview Page</span></div></div>
+    <div class="flow-item"><div class="flow-num new" style="font-size:11px">2.5</div><div class="flow-content"><strong>★ Draft preview + refine loop</strong><span><code>skill/agents/draft-preview.md</code> — ASCII wireframe + region map in chat. User iterates until "approved". Six mutation operations. MCP 5 (<code>sap-application-analysis</code>) handles vocabulary + floorplan scoring.</span></div></div>
+    <div class="flow-item"><div class="flow-num">3</div><div class="flow-content"><strong>Read knowledge</strong><span><code>sap-fiori-guidelines</code> MCP for design intent; <code>ui5-mcp-server</code> for API; registry for technical fields</span></div></div>
+    <div class="flow-item"><div class="flow-num">4</div><div class="flow-content"><strong>Design hierarchy</strong><span><code>skill/agents/component-architect.md</code> builds component tree following floorplan; applies token whitelist</span></div></div>
+    <div class="flow-item"><div class="flow-num">5</div><div class="flow-content"><strong>Registry gate (HARD)</strong><span>Every component must have <code>knowledge/components/registry/&lt;X&gt;.json</code>. Hard block if missing. <code>validationStatus</code> must be "pass" before Step 6.</span></div></div>
+    <div class="flow-item"><div class="flow-num">6</div><div class="flow-content"><strong>Generate JSON spec</strong><span>Output conforming to <code>spec-schema.json</code> · validationStatus=pass · no raw hex · no invented properties</span></div></div>
+    <div class="flow-item"><div class="flow-num">7</div><div class="flow-content"><strong>Plugin pre-flight</strong><span>Library connectivity check · Variables API scan (975 tokens indexed) · raw hex rejected · 72 font loaded</span></div></div>
+    <div class="flow-item"><div class="flow-num">8</div><div class="flow-content"><strong>Build screen (additive)</strong><span>SAP instances imported · configure-before-append · width constraints stripped · tokens linked via Variables API · exceptions logged · new screen placed 120px below prior screens</span></div></div>
+    <div class="flow-item"><div class="flow-num">9</div><div class="flow-content"><strong>A11y validation</strong><span>4 validators run · violations logged · summary appended to build message</span></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="status">
+  <div class="stag">Status — 2026-07-09</div>
+  <h2>What's done · What's left</h2>
+
+  <table class="tbl">
+    <thead><tr><th>Area</th><th>Status</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>§1 MCP figma (official)</td><td><span class="b b-green">✓ Connected</span></td><td>Live Figma file/node access</td></tr>
+      <tr><td>§1 MCP chrome-devtools (official)</td><td><span class="b b-green">✓ Connected</span></td><td>Browser automation fallback</td></tr>
+      <tr><td>§1 MCP ui5-mcp-server (official)</td><td><span class="b b-green">✓ Connected</span></td><td>Live SAPUI5 API reference</td></tr>
+      <tr><td>§1 MCP fundamental-styles (official)</td><td><span class="b b-green">✓ Connected</span></td><td>120+ CSS components, 1,522 design tokens</td></tr>
+      <tr><td>§1 MCP sap-fiori-guidelines (custom)</td><td><span class="b b-green">✓ Registered 2026-07-07</span></td><td>151 cached entries (100%); 5 tools; wired to Component-Guidance mode</td></tr>
+      <tr><td>§1 MCP sap-figma-community (custom)</td><td><span class="b b-green">✓ Registered 2026-07-07</span></td><td>151 tracked; drift detection live; 9 tools</td></tr>
+      <tr><td>§1 MCP sap-application-analysis (custom)</td><td><span class="b b-green">✓ Registered 2026-07-07 · Phase 1</span></td><td>30+ regions, 9 floorplans, 6 tools. Phase 2 deferred.</td></tr>
+      <tr><td>§3 Layer 2 Registry</td><td><span class="b b-green">✓ Done</span></td><td>151 components × 21 fields — 100% enriched; 154 guideline JSONs (100%)</td></tr>
+      <tr><td>§3 Layer 5 Validation</td><td><span class="b b-green">✓ Done</span></td><td>52-token whitelist + 4 a11y validators + global RGB enforcer</td></tr>
+      <tr><td>§4 Token resolver (Variables API)</td><td><span class="b b-green">✓ Done</span></td><td>SAP Horizon variables cached; token-linkage rate reported per build</td></tr>
+      <tr><td>§4 Token-linkage rate reporting</td><td><span class="b b-green">✓ Done 2026-07-07</span></td><td><code>[Tokens] N of M color references linked to SAP style variables (X%)</code> after every build</td></tr>
+      <tr><td>§5 SAP instance text handling</td><td><span class="b b-green">✓ Done</span></td><td>SLOT injection + setProperties + findAll(TEXT) — no auto-detach</td></tr>
+      <tr><td>§5 Composed-item text injection</td><td><span class="b b-green">✓ Done 2026-07-08</span></td><td>ShellBar title · DynamicPageTitle breadcrumbs/actions · ProgressIndicator value · IconTabBar labels · SegmentedButton labels — all 6 gaps fixed</td></tr>
+      <tr><td>§6 Library connectivity</td><td><span class="b b-green">✓ Done</span></td><td>Pre-flight check blocks build if library missing</td></tr>
+      <tr><td>FlexibleColumnLayout renderer</td><td><span class="b b-green">✓ Done 2026-07-08</span></td><td>Real 3-column horizontal renderer — reads beginColumnPages / midColumnPages / endColumnPages; 1px SAP-color dividers between columns</td></tr>
+      <tr><td>SideNavigation renderer</td><td><span class="b b-green">✓ Done 2026-07-08</span></td><td>Real rail renderer — reads slots.item tree; honors expanded + selected NavigationItem props; recursive indent</td></tr>
+      <tr><td>DynamicPageTitle actions injection</td><td><span class="b b-green">✓ Done 2026-07-08</span></td><td>Spec buttons in slots.actions replace kit's default Edit/Copy/share action row</td></tr>
+      <tr><td>Composition rule — DynamicPage in FCL</td><td><span class="b b-green">✓ Fixed 2026-07-08</span></td><td>DynamicPage/ObjectPageLayout/Page now accept FlexibleColumnLayout as valid parent; validator honors validParents over topLevelOnly flag</td></tr>
+      <tr><td>RULE 19 — ASCII Wireframe Gate</td><td><span class="b b-green">✓ Added 2026-07-08</span></td><td>HARD STOP before JSON generation. JSON blocked until user approves ASCII wireframe. Loop until explicit approval. Only exception: user explicitly says "skip".</td></tr>
+      <tr><td>RULE 20 — Reasoning Before Generation</td><td><span class="b b-green">✓ Added 2026-07-08</span></td><td>Step 1.5 (Reasoning Brain) produces 7 mandatory artifacts before Step 4: Intent Card · Entity Model · Screen Classification · Layout Blueprint · Component Planning Table (confidence %) · Relationship Graph · Composition Pre-check. Agent: <code>skill/agents/reasoning-brain.md</code></td></tr>
+      <tr><td>RULE 21 — QA Certification Before Handoff</td><td><span class="b b-green">✓ Added 2026-07-08</span></td><td>Step 6.5 (QA Certification) produces 6 artifacts before spec is shown to user: SAP UX Review · Visual Comparison · Completeness Score · Architectural Suggestions · Design System Compliance · Final Cert Checklist (21 items). Self-repair loop for ✗ failures. Agent: <code>skill/agents/qa-certification.md</code></td></tr>
+      <tr><td>MANDATORY_TOKENS whitelist expanded</td><td><span class="b b-green">✓ Fixed 2026-07-09</span></td><td>52 → 80 tokens. Added AI-family (sapButton_AI_*), sapLinkColor, sapPageFooter_*, sapScrollBar_*, sapToolbar_*, sapShell_Hover_Background, sapIllus_Pattern*, sapLegendColor1/2, sapButton_Selected_*, sapContent_Disabled/Image/Placeholder*, sapContent_FocusColor, sapList_HeaderTextColor, sapContent_UnratedColor. 0 registry tokens outside whitelist.</td></tr>
+      <tr><td>slotNames validator</td><td><span class="b b-green">✓ Added 2026-07-09</span></td><td>Plugin's validateComposition() now checks every spec.slots key against registry[component].slotNames[]. Typos like slots["contentt"] caught at load time with clear error message.</td></tr>
+      <tr><td>CLI headless spec validator</td><td><span class="b b-green">✓ Added 2026-07-09</span></td><td><code>node build/validate-spec.js &lt;spec.json&gt;</code> — 8 checks (JSON, registry gate, composition, slot names, token whitelist, raw hex, ShellBar-first, density). Runs without opening Figma. 14/23 pass, 8/23 warnings, 0/23 fail.</td></tr>
+      <tr><td>Self-repair loop</td><td><span class="b b-green">✓ Added 2026-07-09</span></td><td>Post-build scan detects "Page Title" (un-injected title), "Tab Text" (un-injected tab), "60%" (un-injected ProgressIndicator) and retries. Reports in build status as [Self-repair] line.</td></tr>
+      <tr><td>Composition validParents expanded</td><td><span class="b b-green">✓ Fixed 2026-07-09</span></td><td>Panel, Card, ObjectPageLayout: added FlexibleColumnLayout. FilterBar: added DynamicPageHeader, DynamicPageTitle, Card, VBox, HBox. Toolbar: added VBox, HBox, FlexBox, DynamicPageHeader. ObjectNumber: added Toolbar, OverflowToolbar, HBox, VBox, FilterBar. Table: added VBox, HBox, FlexBox. RadioButton: added OverflowToolbar, Toolbar, FilterBar, DynamicPageTitle.</td></tr>
+      <tr><td>RULE 17 — Divide-and-Conquer Analysis</td><td><span class="b b-green">✓ Added 2026-07-08</span></td><td>5-phase mandatory analysis for all reference screens: (1) Identify global shell, (2) Decompose into regions, (3) Analyze one region completely (10-step checklist, top-left→bottom-right), (4) Recurse for nested containers, (5) Assemble and verify. Canonical worked example: SAP LaMa Regions A–E. Full doctrine: <code>docs/CANONICAL-ANALYSIS-METHODOLOGY.md</code></td></tr>
+      <tr><td>RULE 18 — Spatial Reconstruction</td><td><span class="b b-green">✓ Added 2026-07-08</span></td><td>Measure before building. Estimate column ratios, padding, gaps, margins, and alignment from the reference before selecting any SAP component. Document every inferred dimension with a confidence level (HIGH/MEDIUM/LOW) in <code>meta.decisions.layout.confidence</code>. Auto Layout first; no spacer frames; no arbitrary spacing. Full doctrine: <code>docs/SPATIAL-RECONSTRUCTION-METHODOLOGY.md</code></td></tr>
+      <tr><td>Additive build mode</td><td><span class="b b-green">✓ Done</span></td><td>Zero .remove() calls; screens stack with 120px gutter</td></tr>
+      <tr><td>Configure-before-append (zero flicker)</td><td><span class="b b-green">✓ Done</span></td><td>DynamicPageTitle, FilterBar, Table, catch-all FULL_WIDTH_COMPS</td></tr>
+      <tr><td>§7 Contrast</td><td><span class="b b-green">✓ Done</span></td><td>WCAG AA (and AAA option)</td></tr>
+      <tr><td>§7 Typography hierarchy</td><td><span class="b b-green">✓ Done</span></td><td>Heading order + SAP font scale</td></tr>
+      <tr><td>§7 Focus / tap-target</td><td><span class="b b-green">✓ Done</span></td><td>Min 32/44px; icon-only labels</td></tr>
+      <tr><td>§7 Status-not-by-color</td><td><span class="b b-green">✓ Done</span></td><td>Semantic colors need icon or text</td></tr>
+      <tr><td>§7 Layout / RTL / reading order</td><td><span class="b b-amber">Pending</span></td><td>~2 weeks; defer until LoB tests reveal real cases</td></tr>
+      <tr><td>Floorplan documentation</td><td><span class="b b-green">✓ 9/9</span></td><td>list-report · worklist · object-page · overview-page · analytical-list-page · master-detail · initial-page · wizard · fullscreen-dialog</td></tr>
+      <tr><td>Guideline cache backfill</td><td><span class="b b-green">✓ 154/151</span></td><td>100% — all 151 registry entries have guideline JSONs</td></tr>
+      <tr><td>Compact-schema enrichment</td><td><span class="b b-green">✓ 151/151</span></td><td>100% — all registry entries fully enriched</td></tr>
+      <tr><td>Plugin reads registry from disk</td><td><span class="b b-green">✓ Done</span></td><td>Build pipeline + override shim</td></tr>
+      <tr><td>ASCII draft preview (Step 2.5)</td><td><span class="b b-green">✓ Done</span></td><td><code>skill/agents/draft-preview.md</code> · 6 mutation ops · RULE 6</td></tr>
+      <tr><td>Component-Guidance mode (Mode 2)</td><td><span class="b b-green">✓ Done 2026-07-07</span></td><td>Dedicated section at top of <code>skill/SKILL.md</code>; MCP wire-through</td></tr>
+      <tr><td>3-layer consistency check</td><td><span class="b b-green">✓ 0 inconsistencies</span></td><td>183 known names across SAP_KEYS / KEY_MAP / NATIVE_RENDERERS</td></tr>
+      <tr><td>SAP_KEYS duplicates</td><td><span class="b b-green">✓ 0 duplicates</span></td><td>99 unique keys</td></tr>
+      <tr><td>MCP 5 Phase 2 (vision integration)</td><td><span class="b b-gray">Deferred</span></td><td>Decision documented in <code>mcp-servers/application-analysis/PHASE-2-DECISION.md</code></td></tr>
+      <tr><td>D4 — End-to-end demo recording</td><td><span class="b b-gray">Pending</span></td><td>Everything else is in place; requires video recording session</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight" style="margin-top:32px">
+    <div class="insight-title">Where this leaves the project (2026-07-09)</div>
+    <div class="insight-body">
+      All Wave D tracks complete (D1–D6). Registry 151/151 enriched. Guidelines 154 files / 100% coverage.
+      Plugin has real FlexibleColumnLayout and SideNavigation renderers, all composed-item text injection gaps fixed,
+      DynamicPageTitle actions injection, and the composition validator accepts DynamicPage inside FlexibleColumnLayout.
+      Three new mandatory behavioral rules: RULE 16 (Design Flexibility — user intent takes priority),
+      RULE 17 (Divide-and-Conquer — 5-phase region analysis with canonical LaMa A/B/C/D/E worked example),
+      and RULE 18 (Spatial Reconstruction — measure before building, document confidence, Auto Layout first).
+      19 snapshots on disk. Full doctrine in <code>docs/</code> folder (3 files).
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="files">
+  <div class="stag">File Reference</div>
+  <h2>Where everything lives</h2>
+
+  <div class="code-block"><pre>SAP Fiori Design Agent — /Users/C5408360/Downloads/Task to Figma SAP layouts components/
+
+plugin/figma-builder/
+├── manifest.json              → main: "code.bundled.js", permissions: teamlibrary, documentAccess: dynamic-page
+├── code.js                    → plugin source (~5300 lines)
+├── registry-bundle.js         → AUTO-GENERATED (registry → JS)
+├── code.bundled.js            → AUTO-GENERATED (342KB) — Figma loads this
+└── ui.html                    → Scan Library / Warm Cache buttons + diagnostics
+
+build/
+├── build-registry-bundle.js   → Run after every code.js or registry edit
+└── README.md
+
+knowledge/
+├── components/registry/       → 151 component technical specs
+│   ├── _schema.json           → 21 required fields
+│   └── &lt;Component&gt;.json × 151
+├── floorplans/                → 9 floorplan design docs
+│   └── {list-report, worklist, object-page, overview-page, analytical-list-page, master-detail, initial-page, wizard, fullscreen-dialog}.md
+└── guidelines/                → 96 design guideline entries (45 pending backfill — see WAVE-D-ROADMAP.md)
+    ├── _schema.json           → 17 required fields
+    └── &lt;Component&gt;.json × 96
+
+mcp-servers/
+├── fiori-guidelines/          → MCP 1 server (5 tools)
+├── sap-figma-community/       → MCP 3 server (9 tools)
+└── application-analysis/      → MCP 5 server (6 tools) + PHASE-2-DECISION.md
+
+skill/
+├── SKILL.md                   → 8-step pipeline (Step 2.5 = draft preview)
+├── SYSTEM_PROMPT.md           → API-ready system prompt (RULE 1–15 · 52 tokens)
+├── agents/
+│   ├── requirement-analyst.md
+│   ├── draft-preview.md       → NEW — ASCII wireframe + refine loop
+│   ├── component-architect.md
+│   ├── figma-builder.md
+│   └── component-guidance.md
+└── references/
+    ├── validation-checklist.md  → Section 0: pre-flight (draft approved check)
+    ├── figma-build-patterns.md
+    ├── floorplan-decision-matrix.md
+    └── component-dependencies.md
+
+output/
+├── purchase-order-spec.json   → Accepted ✓ (Purchase Order object-page)
+├── aks-pkg-spec.json          → Accepted ✓ (AKS_PKG — 8 rows, MenuButtons, SideNav)
+├── scenario-1-worklist-shipments.json
+├── scenario-2-listreport-orders.json
+└── scenario-3-form-purchase-order.json
+
+snapshots/
+└── snapshot-20260626-195141/  → 214 files, 5.2MB — restore point
+
+spec-schema.json               → JSON Schema 2020-12 contract (plugin ↔ AI)
+CLAUDE.md                      → Session-start instructions
+COMPLETE-REFERENCE.html        → THIS FILE</pre></div>
+</section>
+
+<div style="margin-top:48px;margin-bottom:48px;padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:13px;color:var(--ink3);text-align:center">
+  Updated 2026-06-26 · SAP Fiori Design Agent · <code>COMPLETE-REFERENCE.html</code><br>
+  See <code>CLAUDE.md</code> for session-start instructions · <code>build/README.md</code> for maintenance · <code>skill/SYSTEM_PROMPT.md</code> for AI deployment
+</div>
+
+</div>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, {rootMargin:'-40% 0px -55% 0px'});
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

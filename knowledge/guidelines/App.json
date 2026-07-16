@@ -1,0 +1,66 @@
+{
+  "componentName": "App",
+  "slug": "app",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/",
+  "purpose": "The top-level structural wrapper for a SAPUI5 application. Contains a single Page or a navigation container of Pages. Provides theme context and app-wide services. Rarely visible directly — its content is what the user sees.",
+  "whenToUse": [
+    "As the outermost node of a SAPUI5 spec — one App per application",
+    "When you need to compose multiple Pages with navigation between them",
+    "As a root theme/locale/CSRF context provider",
+    "In the plugin, as a pass-through frame that hosts the ShellBar + main content"
+  ],
+  "whenNotToUse": [
+    "For per-view layout — use Page or DynamicPage",
+    "As a child of other components — App is a root wrapper only",
+    "For modal overlays — those are placed at App level but are their own components (Dialog)",
+    "For screen-specific navigation — use FlexibleColumnLayout or SplitContainer inside App"
+  ],
+  "doRules": [
+    "Have exactly one App per application",
+    "Place ShellBar as the first child of App's page hierarchy",
+    "Keep the App itself content-free — it's a structural wrapper",
+    "Let child Pages handle their own layout"
+  ],
+  "dontRules": [
+    "Do not nest App inside another App",
+    "Do not put visible content directly on App — put it in a Page",
+    "Do not use App as a modal container — use Dialog for modals",
+    "Do not overload App with per-view logic — that belongs in Pages"
+  ],
+  "layoutGuidance": {
+    "placement": "Root of the spec (before ShellBar)",
+    "sizing": "Full viewport (100vw x 100vh)",
+    "spacing": "n/a — pass-through wrapper",
+    "alignment": "Fills parent (typically the browser window)"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a",
+    "contentRules": "Contains one or more Pages",
+    "examples": ["App > Page > DynamicPage > ...", "App > FlexibleColumnLayout > pages..."]
+  },
+  "responsiveBehavior": {
+    "XL": "Full viewport",
+    "L": "Full viewport",
+    "M": "Full viewport",
+    "S": "Full viewport"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.4.1 Bypass Blocks (Level A)"],
+    "requirements": [
+      "role='application' or none (depends on context)",
+      "Provides skip-link to main content",
+      "Language attribute set on the html element it renders under",
+      "Focus management delegated to child Pages"
+    ]
+  },
+  "patterns": ["App shell", "Multi-page navigation"],
+  "compatibility": {
+    "allowedWith": ["Page", "DynamicPage", "FlexibleColumnLayout", "SplitContainer"],
+    "forbiddenWith": ["Nested App", "Dialog as direct child (Dialog belongs at App level as overlay, not child)"]
+  },
+  "exceptions": [
+    "In our plugin, App renders as a pass-through frame that hosts ShellBar + content columns"
+  ],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,120 @@
+{
+  "componentName": "ShellSearch",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "e60b0ec134635c92ca558125083fe11242997e98",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Shell",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "Search"
+    },
+    {
+      "name": "showSearchButton",
+      "ui5Name": "showSearchButton",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    },
+    {
+      "name": "maxLength",
+      "ui5Name": "maxLength",
+      "type": "number",
+      "exposedInLibrary": true,
+      "default": 0
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "placeholder",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "query-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_InteractiveBackground",
+      "fallbackHex": "#2F4053"
+    },
+    {
+      "role": "text",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "placeholder",
+      "token": "sapShell_InteractiveTextColor",
+      "fallbackHex": "#D2D8DB"
+    },
+    {
+      "role": "icon",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use ShellSearch as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/shellbar/)"
+  ],
+  "dontRules": [
+    "Do not use ShellSearch outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/shellbar/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Shell Search' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "ShellBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

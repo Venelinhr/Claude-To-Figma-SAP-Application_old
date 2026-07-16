@@ -1,0 +1,106 @@
+{
+  "componentName": "ProductSwitch",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "22a7c83b19c183e92577ec43dd01eaa188739cd9",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Shell",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "products",
+      "ui5Name": "products",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "product-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 13,
+      "sapStyleName": "SmallText/LHAuto/Bold"
+    },
+    {
+      "role": "product-subtitle",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 11,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#1C2F3E"
+    },
+    {
+      "role": "tile-background",
+      "token": "sapShell_InteractiveBackground",
+      "fallbackHex": "#2F4053"
+    },
+    {
+      "role": "tile-hover",
+      "token": "sapShell_Hover_Background",
+      "fallbackHex": "#3E526A"
+    },
+    {
+      "role": "text",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use ProductSwitch as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/product-switch/)"
+  ],
+  "dontRules": [
+    "Do not use ProductSwitch outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/product-switch/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Product Switch' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "ShellBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

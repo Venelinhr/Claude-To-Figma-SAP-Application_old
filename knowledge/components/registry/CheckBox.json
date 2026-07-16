@@ -1,0 +1,175 @@
+{
+  "componentName": "CheckBox",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "23b4a2ca030e4bd2ff3bdd5b97b70f646ec09071",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Selection",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Check",
+      "figmaNote": "Live kit property name is 'Check' (Unchecked/Checked/Tristate), NOT 'Selected' (True/False/Partial). Verified 2026-07-10.",
+      "ui5Property": "selected",
+      "values": [
+        "Unchecked",
+        "Checked",
+        "Tristate"
+      ],
+      "default": "Unchecked"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "selected",
+      "ui5Name": "selected",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "partiallySelected",
+      "ui5Name": "partiallySelected",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "Error",
+    "Warning"
+  ],
+  "typographyRules": [
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Space toggles state"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Visible label or aria-label required"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32px clickable area including label"
+    }
+  ],
+  "doRules": [
+    "Use Partial state for \"select all\" with mixed children",
+    "Place label to the right of the checkbox",
+    "Group related checkboxes vertically"
+  ],
+  "dontRules": [
+    "Do not use a CheckBox when a Switch fits better (instant action)",
+    "Do not use CheckBox for mutually exclusive options \u2014 use RadioButton"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "Table",
+    "List"
+  ],
+  "incompatiblePatterns": [
+    "Without text or aria-label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/checkbox/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.CheckBox",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.CheckBox",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "16\u00d716px box + label text. Touch area extends to label.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapColHeader",
+      "SapTableRow",
+      "ColumnListItem",
+      "Toolbar",
+      "OverflowToolbar",
+      "InputListItem",
+      "DynamicPageTitle",
+      "Card"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "CheckBox",
+      "RadioButton"
+    ]
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "componentName": "ShellBar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "169cfd74c0be329c56b4c79b9404c978ff10cb60",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Shell",
+  "supportedVariants": [
+    {
+      "property": "Size",
+      "values": [
+        "XL",
+        "L",
+        "M",
+        "S"
+      ],
+      "default": "XL"
+    },
+    {
+      "property": "Hamburger",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "secondaryTitle",
+      "ui5Name": "secondaryTitle",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "homeIcon",
+      "ui5Name": "homeIcon",
+      "type": "icon",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "showCopilot",
+      "ui5Name": "showCopilot",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "showSearch",
+      "ui5Name": "showSearch",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "brand",
+      "fontFamily": "72",
+      "fontStyle": "Semibold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Brand"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Brand text contrast ≥ 4.5:1 against shell background",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "labeling",
+      "requirement": "All shell icon buttons MUST have tooltips"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Tab order: hamburger → brand → middle area → right area → avatar"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on every interactive shell element"
+    }
+  ],
+  "doRules": [
+    "Place ShellBar as the first node in screen hierarchy",
+    "Use Branding Button slot for product name (max 2 lines)",
+    "Show only icons users need — hide others via boolean variants",
+    "Keep ShellBar height fixed at 52px regardless of variant"
+  ],
+  "dontRules": [
+    "Do not place ShellBar inside another container with padding",
+    "Do not add custom buttons outside the supported slots",
+    "Do not change ShellBar background color — it is locked to sapShellColor"
+  ],
+  "compatibleComponents": [
+    "Avatar",
+    "Shell Search",
+    "Shell Icon Button",
+    "Branding Button",
+    "User Menu"
+  ],
+  "incompatiblePatterns": [
+    "Inside a page-level container — must be top-level",
+    "Stacked with another shell-like header"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/shell-bar/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.f.ShellBar",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.f.ShellBar",
+  "sampleUrls": [
+    "https://sapui5.hana.ondemand.com/#/entity/sap.f.ShellBar/sample/sap.f.sample.ShellBar"
+  ],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Always full viewport width. Height fixed at 52px. Use FILL horizontal sizing after appendChild.",
+    "knownIssues": [
+      "secondaryTitle property may not be exposed in current Figma kit — verify per library version"
+    ]
+  },
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "ProductSwitch",
+      "UserMenu",
+      "Notifications",
+      "SearchField"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form",
+      "Panel"
+    ],
+    "commonSiblings": [
+      "NativeSideNav",
+      "DynamicPage"
+    ]
+  },
+  "slotNames": [
+    "searchField",
+    "startButton",
+    "profile",
+    "menu",
+    "additionalContext"
+  ]
+}

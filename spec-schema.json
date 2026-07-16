@@ -133,6 +133,33 @@
           "additionalProperties": true
         },
 
+        "kitProps": {
+          "type": "object",
+          "description": "PREFERRED over props when present. Exact SAP Web UI Kit component property names and values as read from the live Figma library (e.g. {\"Form Factor\":\"Compact\",\"Interaction State\":\"Regular\",\"Value State\":\"None\"}). Claude resolves these via search_design_system + get_context_for_code_connect before generating the spec. Plugin calls instance.setProperties(kitProps) directly — no alias table needed.",
+          "additionalProperties": true,
+          "examples": [
+            { "Form Factor": "Compact", "Interaction State": "Regular", "Value State": "None", "Content": "Placeholder" },
+            { "Form Factor": "Compact", "Type": "Primary", "Interaction State": "Regular" },
+            { "Form Factor": "Compact", "Interaction State": "Regular", "Value State": "None", "Check": "Unchecked" }
+          ]
+        },
+
+        "kitVariableKeys": {
+          "type": "object",
+          "description": "Pre-resolved SAP Horizon variable keys from the SAP Web UI Kit for fills/strokes/spacing on THIS node. Claude looks up the exact variable key via search_design_system. Plugin calls importVariableByKeyAsync(key) then setBoundVariable() directly — no whitelist lookup needed. Keys: fill, stroke, textFill, itemSpacing, paddingTop, paddingRight, paddingBottom, paddingLeft, cornerRadius.",
+          "additionalProperties": { "type": "string" },
+          "examples": [
+            { "fill": "81733e831b5776ab41555848ba944bb507889e2d" },
+            { "textFill": "0d4308d590acc26827e9c4f395c2c45328a1c34c" }
+          ]
+        },
+
+        "kitIconKey": {
+          "type": "string",
+          "description": "Pre-resolved SAP Web UI Kit icon component key (40 chars) for the icon on this node. Claude looks up the exact key from ICON_KEYS or via importComponentByKeyAsync. Plugin calls importComponentByKeyAsync(kitIconKey) then swaps the INSTANCE_SWAP property — no ICON_KEYS lookup needed.",
+          "examples": ["d6727620b32189e038a3bebbe10ad02b66859f47"]
+        },
+
         "label": {
           "type": "string",
           "description": "Display label — used as button text, column header, panel title, etc. Shorthand for the most common text property so it doesn't need to live in props."

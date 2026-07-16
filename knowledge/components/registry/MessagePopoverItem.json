@@ -1,0 +1,126 @@
+{
+  "componentName": "MessagePopoverItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "ListItem",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "key",
+      "ui5Name": "key",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "description",
+      "ui5Name": "description",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Error"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 13,
+      "sapStyleName": "SmallText/LHAuto/Bold"
+    },
+    {
+      "role": "description",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "error-icon",
+      "token": "sapNegativeElementColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "warning-icon",
+      "token": "sapCriticalElementColor",
+      "fallbackHex": "#E76500"
+    },
+    {
+      "role": "success-icon",
+      "token": "sapPositiveElementColor",
+      "fallbackHex": "#256F3A"
+    },
+    {
+      "role": "info-icon",
+      "token": "sapInformativeElementColor",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "description-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Semantic layout element — no accessible name required unless labeled by role"
+    }
+  ],
+  "doRules": [
+    "Use MessagePopoverItem as documented in SAPUI5 API — it is a foundational primitive"
+  ],
+  "dontRules": [
+    "Do not use MessagePopoverItem for content that has a semantic SAP component available"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/MessagePopoverItem",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+    "knownIssues": [
+      "sap.m.MessagePopoverItem — composed by MessagePopover parent. No direct render."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "MessagePopover"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

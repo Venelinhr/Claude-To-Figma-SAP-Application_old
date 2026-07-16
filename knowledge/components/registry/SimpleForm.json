@@ -1,0 +1,176 @@
+{
+  "componentName": "SimpleForm",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Form",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Forms",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "label",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "input-text",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Group related fields with FormContainer",
+    "Use FormElement for each field row",
+    "Set responsive layout (1 col mobile, 2 col tablet, 3 col desktop)"
+  ],
+  "dontRules": [
+    "Do not mix SimpleForm with Form in the same screen",
+    "Do not omit Labels",
+    "Do not use SimpleForm for complex layouts"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "Panel",
+    "Dialog",
+    "ObjectPageSection"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/simple-form/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.SimpleForm",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.SimpleForm",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.SimpleForm/sample/sap.m.sample.SimpleForm"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "SimpleForm aliases to Form. Plugin composes the same Form layout with auto-generated FormContainer/FormElement wrappers.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "SapFormSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "MultiInput",
+      "DatePicker",
+      "DateTimePicker",
+      "DateRangePicker",
+      "TimePicker",
+      "TextArea",
+      "CheckBox",
+      "RadioButton",
+      "RadioButtonGroup",
+      "Switch",
+      "Slider",
+      "RangeSlider",
+      "StepInput",
+      "FileUploader",
+      "FormContainer",
+      "FormElement",
+      "Title",
+      "Text",
+      "Link",
+      "MessageStrip",
+      "Button",
+      "SegmentedButton",
+      "ProgressIndicator",
+      "RatingIndicator",
+      "Tag"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Table",
+      "SapTableRow"
+    ],
+    "commonSiblings": [
+      "MessageStrip",
+      "Toolbar"
+    ]
+  },
+  "slotNames": [
+    "content",
+    "title",
+    "toolbar"
+  ]
+}

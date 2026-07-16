@@ -1,0 +1,131 @@
+{
+  "componentName": "ActionListItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "063b8ffd9f963d3cf574092e4dd53809ecb3a5ee",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "List Item",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "label",
+      "state": "Default",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "icon",
+      "state": "Default",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Use verb-first labels (Action-oriented)",
+    "Add a leading icon for recognition",
+    "Bind label to sapList_TextColor or sapButton_TextColor if emphasized"
+  ],
+  "dontRules": [
+    "Do not use ActionListItem for navigation",
+    "Do not omit icons when icon-only ActionListItem siblings exist"
+  ],
+  "compatibleComponents": [
+    "List",
+    "Popover"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/action-list-item/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ActionListItem",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ActionListItem",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ActionListItem/sample/sap.m.sample.ActionListItem"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ActionListItem is sap.m.ActionListItem. Plugin renders as ColumnListItem with link-styled text. Live Figma componentKey 063b8ffd9f963d3cf574092e4dd53809ecb3a5ee resolved 2026-06-27 from Quartz Web UI Kit_v1.94.",
+  "composition": {
+    "validParents": [
+      "List",
+      "Popover",
+      "MessagePopover",
+      "Dialog"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Link",
+      "Button",
+      "Text"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ActionListItem",
+      "StandardListItem"
+    ]
+  }
+}

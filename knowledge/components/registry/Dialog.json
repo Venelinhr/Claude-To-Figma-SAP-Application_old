@@ -1,0 +1,223 @@
+{
+  "componentName": "Dialog",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "5b965b1eda133ac521b42fa20b201e9491f4bf83",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Overlay",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Standard",
+        "Message"
+      ],
+      "default": "Standard"
+    },
+    {
+      "property": "State",
+      "ui5Property": "state",
+      "values": [
+        "None",
+        "Information",
+        "Success",
+        "Warning",
+        "Error"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "state",
+      "ui5Name": "state",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    },
+    {
+      "name": "resizable",
+      "ui5Name": "resizable",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "draggable",
+      "ui5Name": "draggable",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "None",
+    "Information",
+    "Success",
+    "Warning",
+    "Error"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Section Title"
+    },
+    {
+      "role": "body",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    },
+    {
+      "role": "title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "body-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Escape closes; Tab cycles within dialog (focus trap)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Focus moves into dialog on open; returns to trigger on close"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Dialog has accessible title"
+    },
+    {
+      "category": "status",
+      "requirement": "Destructive dialogs use State=Warning or Error with text — not color alone"
+    }
+  ],
+  "doRules": [
+    "Use for confirmations, focused tasks, or detail views requiring user action",
+    "Include primary action button (right) and Cancel (left)",
+    "Use State variant for semantic messages"
+  ],
+  "dontRules": [
+    "Do not stack dialogs",
+    "Do not put long forms in Dialog — use a new page",
+    "Do not omit close affordance"
+  ],
+  "compatibleComponents": [
+    "Button",
+    "Form",
+    "List",
+    "MessageStrip"
+  ],
+  "incompatiblePatterns": [
+    "Inside another Dialog",
+    "Inside Toolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/dialog/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Dialog",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Dialog",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width 320–80% viewport. Height hugs content.",
+    "knownIssues": []
+  },
+  "slotNames": [
+    "title",
+    "content",
+    "beginButton",
+    "endButton",
+    "buttons",
+    "subHeader",
+    "customHeader",
+    "footer"
+  ],
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "List",
+      "StandardListItem",
+      "ColumnListItem",
+      "MessageStrip",
+      "IllustratedMessage",
+      "BusyIndicator",
+      "Button",
+      "SearchField",
+      "Input",
+      "Select",
+      "ComboBox",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "Label",
+      "Text",
+      "Title",
+      "Wizard",
+      "IconTabBar",
+      "IconTabFilter",
+      "ProgressIndicator"
+    ],
+    "mustInclude": [
+      "Button"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "SideNavigation",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageLayout",
+      "FlexibleColumnLayout",
+      "UserMenu",
+      "NotificationListItem",
+      "Notifications",
+      "ProductSwitch"
+    ],
+    "commonSiblings": []
+  }
+}

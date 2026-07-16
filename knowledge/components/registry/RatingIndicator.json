@@ -1,0 +1,166 @@
+{
+  "componentName": "RatingIndicator",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "4e75dd8968be7061ba703e3f5fb4364b558acb04",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "Readonly"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "number",
+      "exposedInLibrary": true,
+      "default": 0
+    },
+    {
+      "name": "maxValue",
+      "ui5Name": "maxValue",
+      "type": "number",
+      "exposedInLibrary": true,
+      "default": 5
+    },
+    {
+      "name": "editable",
+      "ui5Name": "editable",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    },
+    {
+      "name": "iconSize",
+      "ui5Name": "iconSize",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "22px"
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "Readonly"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [
+    {
+      "role": "rated",
+      "token": "sapContent_RatedColor",
+      "fallbackHex": "#E76500"
+    },
+    {
+      "role": "unrated",
+      "token": "sapContent_NonRatedColor",
+      "fallbackHex": "#B0BFC9"
+    },
+    {
+      "role": "focus",
+      "token": "sapContent_FocusColor",
+      "fallbackHex": "#0070F2"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Associate a Label describing what is being rated"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys increment/decrement rating when editable"
+    }
+  ],
+  "doRules": [
+    "Use for user-facing ratings on a 5-star scale by default",
+    "Bind to a Label describing what is being rated (skill, feedback, quality)",
+    "Set displayOnly:true when the rating is informational (e.g. inside a table row)"
+  ],
+  "dontRules": [
+    "Do not use for numeric input — use StepInput or Slider",
+    "Do not exceed 5 stars — accessibility becomes fragile at higher counts",
+    "Do not use in Toolbar — space-inefficient"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "SimpleForm",
+    "StandardListItem",
+    "ColumnListItem",
+    "ObjectListItem",
+    "Card",
+    "Panel",
+    "Dialog",
+    "Popover"
+  ],
+  "incompatiblePatterns": [
+    "Inside ShellBar",
+    "Inside Toolbar as an action"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/rating-indicator/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.RatingIndicator",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.RatingIndicator",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "5 stars at 16px = ~112px native. Editable adds ~16px hover halo. Do not force width < 96px.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "StandardListItem",
+      "ColumnListItem",
+      "ObjectListItem",
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "IconTabBar",
+      "SapFormSection",
+      "SapTableRow",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Text",
+      "ObjectStatus"
+    ]
+  },
+  "schemaNotes": {
+    "typographyRules": "n/a"
+  }
+}

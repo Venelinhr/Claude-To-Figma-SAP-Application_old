@@ -1,0 +1,166 @@
+{
+  "componentName": "Avatar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "71a3389ecbd47822b3184700766e30963fc2f220",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Shape",
+      "ui5Property": "displayShape",
+      "values": [
+        "Circle",
+        "Square"
+      ],
+      "default": "Circle"
+    },
+    {
+      "property": "Size",
+      "ui5Property": "displaySize",
+      "values": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "Custom"
+      ],
+      "default": "M"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "initials",
+      "ui5Name": "initials",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "src",
+      "ui5Name": "src",
+      "type": "icon",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "icon",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "tooltip",
+      "ui5Name": "tooltip",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "initials",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#32363A"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Tooltip or aria-label describes the avatar subject"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Initials/icon contrast \u2265 4.5:1 against background",
+      "wcag": "1.4.3 (AA)"
+    }
+  ],
+  "doRules": [
+    "Always use square for products, circle for people",
+    "Show initials when no photo available",
+    "Use consistent size within a context"
+  ],
+  "dontRules": [
+    "Do not use circle for product/object avatars",
+    "Do not stretch image to non-square ratios"
+  ],
+  "compatibleComponents": [
+    "ShellBar",
+    "ObjectHeader",
+    "List",
+    "Table"
+  ],
+  "incompatiblePatterns": [
+    "As primary CTA"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/avatar/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Avatar",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Avatar",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "XS=24, S=32, M=48, L=72, XL=128 px.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "Card",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "AvatarGroup",
+      "SapTableRow",
+      "ColumnListItem",
+      "StandardListItem",
+      "FeedListItem",
+      "TimelineItem",
+      "MessagePopover",
+      "ShellBar",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Title",
+      "Text",
+      "Label",
+      "ObjectStatus",
+      "ObjectIdentifier"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "componentName": "RadioButtonGroup",
+  "slug": "radio-button-group",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/radio-button-group/",
+  "purpose": "Vertical group of mutually-exclusive RadioButton options. Composed at plugin-time from items[] \u2014 each item becomes a RadioButton instance.",
+  "whenToUse": [
+    "Single-select from 2-7 options where all should be visible",
+    "Form fields with discrete value choices",
+    "Survey-style questions"
+  ],
+  "whenNotToUse": [
+    "More than 7 options \u2014 use Select or ComboBox",
+    "Multi-select \u2014 use CheckBox group",
+    "Single yes/no \u2014 use Switch"
+  ],
+  "doRules": [
+    "Show all options at once",
+    "Mark exactly one as selected",
+    "Provide clear, distinct labels",
+    "Use vertical layout for >3 options"
+  ],
+  "dontRules": [
+    "Do not allow zero-selected state when a default is reasonable",
+    "Do not exceed 7 options",
+    "Do not use RadioButtonGroup for binary toggles (use Switch)"
+  ],
+  "layoutGuidance": {
+    "placement": "Place RadioButtonGroup inside a compatible container (Form, Dialog, Panel).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for input.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Form",
+    "Used inside Dialog",
+    "Used inside Panel"
+  ],
+  "compatibility": [
+    "Form",
+    "Dialog",
+    "Panel",
+    "FormContainer"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

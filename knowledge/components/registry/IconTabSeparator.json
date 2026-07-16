@@ -1,0 +1,116 @@
+{
+  "componentName": "IconTabSeparator",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "a4bdf360217f604b116f179144b02ef74dee7dca",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "line",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Use to separate logically distinct tab groups (Process / Settings / Help)",
+    "Keep separator visually subtle"
+  ],
+  "dontRules": [
+    "Do not abuse separators to compensate for tab overcrowding (limit tabs instead)",
+    "Do not use multiple separators in a row"
+  ],
+  "compatibleComponents": [
+    "IconTabBar"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/icon-tab-separator/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.IconTabSeparator",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.IconTabSeparator",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.IconTabSeparator/sample/sap.m.sample.IconTabSeparator"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "IconTabSeparator is sap.m.IconTabSeparator. Plugin renders as a 1px vertical divider inside IconTabBar. Live Figma componentKey a4bdf360217f604b116f179144b02ef74dee7dca resolved 2026-06-27 from Quartz Web UI Kit_v1.94.",
+  "composition": {
+    "validParents": [
+      "IconTabBar",
+      "IconTabHeader"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "IconTabFilter"
+    ]
+  }
+}

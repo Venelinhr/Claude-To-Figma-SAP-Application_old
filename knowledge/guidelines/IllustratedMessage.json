@@ -1,0 +1,74 @@
+{
+  "componentName": "IllustratedMessage",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustratedmessage/",
+  "purpose": "Empty-state placeholder with an illustration, title, description, and optional action. Used when a list/table is empty or a search returns no results.",
+  "whenToUse": [
+    "Empty state for lists, tables, or search results",
+    "Error states with a recovery action",
+    "Onboarding screens to introduce empty functionality",
+    "After dismissing all items in a queue"
+  ],
+  "whenNotToUse": [
+    "As decorative content \u2014 IllustratedMessage signals state",
+    "For loading states \u2014 use BusyIndicator",
+    "For inline form validation \u2014 use MessageStrip",
+    "When data IS present \u2014 only show when empty"
+  ],
+  "doRules": [
+    "Pick an illustration matching the context (NoData / NoTasks / NoFilter / NoActivities)",
+    "Provide a one-line title explaining the state",
+    "Provide a description suggesting what to do next",
+    "Include an action button when the user can recover (Refresh, Create, etc.)"
+  ],
+  "dontRules": [
+    "Do not show IllustratedMessage if the cause is unclear",
+    "Do not use generic illustrations when a specific one exists",
+    "Do not omit the action when the user can recover",
+    "Do not nest IllustratedMessage inside another IllustratedMessage"
+  ],
+  "layoutGuidance": {
+    "placement": "Place IllustratedMessage inside a compatible container (DynamicPage, Panel, Dialog).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid punctuation in short labels",
+      "Localize all text"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense or collapse \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern (Popover, Dialog) on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for feedback \u2014 see SAP Fiori a11y docs.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used in DynamicPage",
+    "Used in Panel",
+    "Used in Dialog"
+  ],
+  "compatibility": [
+    "DynamicPage",
+    "Panel",
+    "Dialog",
+    "Table",
+    "List"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

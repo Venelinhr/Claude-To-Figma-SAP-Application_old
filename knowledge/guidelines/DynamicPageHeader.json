@@ -1,0 +1,80 @@
+{
+  "componentName": "DynamicPageHeader",
+  "slug": "dynamic-page-layout",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/dynamic-page-layout/",
+  "purpose": "The expandable header section below the DynamicPageTitle. Holds metadata that supplements the title (vendor, mode, version, description).",
+  "whenToUse": [
+    "For supplementary metadata about the page object",
+    "In Object Page floorplan",
+    "For description, key-value attributes, status indicators"
+  ],
+  "whenNotToUse": [
+    "As page footer",
+    "For primary actions \u2014 use DynamicPageTitle",
+    "For navigation \u2014 use breadcrumbs in title"
+  ],
+  "doRules": [
+    "Place metadata that supplements the title (vendor, mode, version, etc.)",
+    "Allow user to snap (collapse) for more content room",
+    "Use 48\u00d748px icon left-aligned next to text"
+  ],
+  "dontRules": [
+    "Do not put primary actions here \u2014 use DynamicPageTitle",
+    "Do not exceed 2 rows of metadata",
+    "Do not duplicate title content"
+  ],
+  "layoutGuidance": {
+    "placement": "Below DynamicPageTitle.",
+    "sizing": "Full width; height varies by content.",
+    "spacing": "Internal padding 16px.",
+    "alignment": "Icon left, content right."
+  },
+  "contentGuidance": {
+    "labelLength": "Description 1\u20132 lines.",
+    "contentRules": [
+      "Use Label/value pairs for metadata",
+      "Group related metadata"
+    ],
+    "examples": [
+      "Vendor: SAP",
+      "Mode: Editable",
+      "Version: 1.0.0"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full expanded layout",
+    "L": "Full expanded layout",
+    "M": "Compressed metadata",
+    "S": "Collapsed by default; expand on tap"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Pin/unpin via keyboard",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Expanded/collapsed state announced"
+    }
+  ],
+  "patterns": [
+    "Object metadata",
+    "Page header"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "DynamicPage",
+      "FilterBar",
+      "ObjectPageLayout"
+    ],
+    "incompatible": [
+      "As page footer"
+    ]
+  },
+  "exceptions": [
+    "pinnable=true allows user to lock header expanded"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

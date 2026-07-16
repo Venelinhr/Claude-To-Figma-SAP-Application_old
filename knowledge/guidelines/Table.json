@@ -1,0 +1,93 @@
+{
+  "componentName": "Table",
+  "slug": "responsive-table",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/responsive-table/",
+  "purpose": "A tabular display of data with columns, rows, and optional selection. Supports sorting, filtering, multi-select, and inline actions.",
+  "whenToUse": [
+    "For structured data with multiple aligned columns",
+    "When users need to compare items across attributes",
+    "For lists requiring bulk actions",
+    "When sort/filter functionality is needed"
+  ],
+  "whenNotToUse": [
+    "For fewer than 3 rows \u2014 use List",
+    "For complex hierarchical data \u2014 use Tree or TreeTable",
+    "For single-record detail \u2014 use Form"
+  ],
+  "doRules": [
+    "Use a clear title in the Table Toolbar",
+    "Provide column headers with sort/filter affordances",
+    "Use MultiSelect mode when bulk actions exist",
+    "Use ResponsiveTable for narrow viewports"
+  ],
+  "dontRules": [
+    "Do not put primary actions inside cells \u2014 use row click or toolbar",
+    "Do not use Table for fewer than 3 rows \u2014 use List",
+    "Do not stack tables \u2014 provide tabs or filters"
+  ],
+  "layoutGuidance": {
+    "placement": "Below page header and toolbar.",
+    "sizing": "Full width of content area.",
+    "spacing": "Header 32px, rows 48px Compact / 64px Cozy.",
+    "alignment": "Headers left-aligned (numeric right)."
+  },
+  "contentGuidance": {
+    "labelLength": "Cell content varies by column type.",
+    "contentRules": [
+      "Use ObjectIdentifier for primary cell content",
+      "Use ObjectStatus for status values",
+      "Truncate long text with ellipsis"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "All columns visible inline",
+    "L": "All columns visible; minor columns may collapse",
+    "M": "Pop-in behavior \u2014 secondary columns move below primary cell",
+    "S": "Card-like layout with stacked attributes"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate cells; Enter activates row action",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Table has caption or aria-label; each column has header",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Cell text contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Row position announced (e.g. \"row 3 of 12\")"
+    }
+  ],
+  "patterns": [
+    "List Report",
+    "Master list",
+    "Bulk action surface"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "ColumnListItem",
+      "Column",
+      "OverflowToolbar",
+      "Toolbar"
+    ],
+    "incompatible": [
+      "Inside narrow card",
+      "Inside Dialog body without scrolling"
+    ]
+  },
+  "exceptions": [
+    "Use AnalyticalTable for grouped/aggregated data",
+    "Use TreeTable for hierarchical data"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

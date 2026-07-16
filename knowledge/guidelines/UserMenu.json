@@ -1,0 +1,64 @@
+{
+  "componentName": "UserMenu",
+  "slug": "user-menu",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/user-menu/",
+  "purpose": "A popover anchored to the user avatar in the ShellBar, containing profile info, preferences, and account actions. Provides consistent access to user-scoped functions (Settings, Sign Out, Help) across all SAP apps.",
+  "whenToUse": [
+    "Standard ShellBar user avatar dropdown",
+    "Access to user preferences, theme, language",
+    "Sign Out affordance",
+    "Access to user profile page"
+  ],
+  "whenNotToUse": [
+    "For product switch — use ProductSwitch instead",
+    "For notifications — use Notifications popover",
+    "For app navigation — use SideNavigation",
+    "For per-page actions — use DynamicPageTitle actions"
+  ],
+  "doRules": [
+    "Show user avatar + name + email at the top",
+    "Group actions by scope: Profile · Preferences · Session (with dividers)",
+    "Always include a Sign Out action as the last item",
+    "Support keyboard navigation and focus trap"
+  ],
+  "dontRules": [
+    "Do not put app-level actions in UserMenu — those belong elsewhere",
+    "Do not exceed 8 items — trim to essentials",
+    "Do not omit avatar/name header — user needs identity confirmation",
+    "Do not use the UserMenu for chat, notifications, or search"
+  ],
+  "layoutGuidance": {
+    "placement": "Anchored to user avatar in ShellBar (right side)",
+    "sizing": "Width 320–360px; height max 480px with scroll",
+    "spacing": "8px between items; dividers between groups",
+    "alignment": "Header centered/left-aligned; items left-aligned"
+  },
+  "contentGuidance": {
+    "labelLength": "Item labels ≤ 30 chars; user name ≤ 40",
+    "contentRules": "User info + grouped preference actions + sign-out",
+    "examples": ["Nadia Fischer / nadia@example.com · [Profile] [Settings] [Help] [Sign out]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Popover from ShellBar avatar",
+    "L": "Same",
+    "M": "Same",
+    "S": "May become full-height slide-in from right"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "Popover has role='dialog' with aria-label='User menu'",
+      "Avatar trigger has aria-label with user name",
+      "Keyboard: Enter opens; Escape closes; Arrow keys navigate items",
+      "Focus returns to trigger on close"
+    ]
+  },
+  "patterns": ["ShellBar user avatar dropdown", "User profile access", "Sign-out flow"],
+  "compatibility": {
+    "allowedWith": ["ShellBar (as anchor)"],
+    "forbiddenWith": ["Standalone (must be anchored)", "Inside any other component"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,62 @@
+{
+  "componentName": "InputListItem",
+  "slug": "input-list-item",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/input-list-item/",
+  "purpose": "List row containing a Label + inline Input control. Used in settings screens, mobile form layouts, profile edit pages.",
+  "whenToUse": [
+    "Mobile-optimized form layouts",
+    "Settings screens (label + value)",
+    "Quick edit lists where each row contains one field"
+  ],
+  "whenNotToUse": [
+    "Multi-field forms \u2014 use Form / SimpleForm",
+    "Read-only display \u2014 use DisplayListItem"
+  ],
+  "doRules": [
+    "Each row has exactly one Label + one Input",
+    "Bind Label color to sapContent_LabelColor",
+    "Validate inputs inline"
+  ],
+  "dontRules": [
+    "Do not stack multiple Inputs in one row",
+    "Do not omit the Label"
+  ],
+  "layoutGuidance": {
+    "placement": "Place InputListItem inside a compatible container (List).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for list item.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside List"
+  ],
+  "compatibility": [
+    "List"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

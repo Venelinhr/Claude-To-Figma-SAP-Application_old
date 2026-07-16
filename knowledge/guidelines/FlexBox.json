@@ -1,0 +1,61 @@
+{
+  "componentName": "FlexBox",
+  "slug": "flexbox",
+  "sourceUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.FlexBox",
+  "purpose": "A flexbox layout primitive with configurable direction, wrap, and alignment. Base class of HBox and VBox. Use directly when children need to reflow (wrap) or when direction changes at runtime.",
+  "whenToUse": [
+    "Row of items that should wrap to multiple lines when space is tight",
+    "Layout where direction changes (row on desktop, column on mobile)",
+    "Compose responsive card grids without a full ResponsiveGridLayout",
+    "As a flexible container for custom composite layouts"
+  ],
+  "whenNotToUse": [
+    "For a fixed horizontal row — use HBox (simpler)",
+    "For a fixed vertical column — use VBox (simpler)",
+    "For a form column layout — use FormContainer",
+    "For a strict grid — use Grid or ResponsiveGridLayout"
+  ],
+  "doRules": [
+    "Set direction ('Row' / 'Column' / 'RowReverse' / 'ColumnReverse') explicitly",
+    "Set wrap='Wrap' when children should reflow",
+    "Use consistent itemSpacing (default: 8px)",
+    "Set alignItems and justifyContent for controlled positioning"
+  ],
+  "dontRules": [
+    "Do not use FlexBox with wrap=NoWrap when children exceed width — they'll overflow",
+    "Do not nest FlexBoxes deeply — flatten when possible",
+    "Do not use for form-field alignment — use FormContainer",
+    "Do not mix with absolute-positioned children"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside pages, panels, cards, custom composites",
+    "sizing": "Configurable; may hug content or fill parent",
+    "spacing": "Configurable itemSpacing",
+    "alignment": "direction + justifyContent + alignItems + wrap control layout"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — layout container",
+    "contentRules": "Children are any renderable components",
+    "examples": ["Row of KPI tiles that wraps to next line on narrow viewport"]
+  },
+  "responsiveBehavior": {
+    "XL": "Follows configured direction",
+    "L": "Same",
+    "M": "May wrap if wrap=Wrap",
+    "S": "May reflow to column if direction switches"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.2 Meaningful Sequence (Level A)", "WCAG 2.1 · 1.4.10 Reflow (AA)"],
+    "requirements": [
+      "role='group' when children share purpose; otherwise none",
+      "Focus order follows visual order per current direction",
+      "Content reflows without horizontal scroll at 320px",
+      "Children provide their own accessible names"
+    ]
+  },
+  "patterns": ["Responsive card grid", "Wrapping tag row", "Direction-switching layouts"],
+  "compatibility": {"allowedWith": ["Page", "Panel", "Card", "Dialog", "DynamicPage content", "HBox", "VBox"], "forbiddenWith": ["FormContainer (use it directly)"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,226 @@
+{
+  "componentName": "IconTabBar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "4aafcbf55528c439876b314d155438884b614722",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Tab Density",
+      "ui5Property": "tabDensityMode",
+      "values": [
+        "Cozy",
+        "Compact",
+        "Inherit"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Background Design",
+      "ui5Property": "backgroundDesign",
+      "values": [
+        "Solid",
+        "Translucent",
+        "Transparent"
+      ],
+      "default": "Solid"
+    },
+    {
+      "property": "Header Mode",
+      "ui5Property": "headerMode",
+      "values": [
+        "Standard",
+        "Inline"
+      ],
+      "default": "Standard"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "selectedKey",
+      "ui5Name": "selectedKey",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "expanded",
+      "ui5Name": "expanded",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "expandable",
+      "ui5Name": "expandable",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "upperCase",
+      "ui5Name": "upperCase",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Selected"
+  ],
+  "typographyRules": [
+    {
+      "role": "tab-label-active",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    },
+    {
+      "role": "tab-label-inactive",
+      "fontFamily": "72",
+      "fontStyle": "Semibold Duplex",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/SemiboldDuplex"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text",
+      "state": "Selected",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "text",
+      "state": "Regular",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "border",
+      "state": "selection-bar",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Active tab text contrast ≥ 4.5:1 with background",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate between tabs; Enter activates"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on focused tab"
+    },
+    {
+      "category": "status",
+      "requirement": "Active tab must be distinguishable by more than color (uses underline bar)"
+    }
+  ],
+  "doRules": [
+    "Place at top of content area below page header",
+    "Use Bold weight for active tab and Semibold Duplex for inactive — same size",
+    "Indicate active tab with 3px bottom bar in sapList_HighlightColor",
+    "Keep tab labels short (1–3 words) and consistent in length"
+  ],
+  "dontRules": [
+    "Do not nest IconTabBar inside another IconTabBar",
+    "Do not use more than ~7 tabs — split into multiple pages if more needed",
+    "Do not change tab text via direct text node injection — use selectedKey + setProperties on IconTabFilter children"
+  ],
+  "compatibleComponents": [
+    "IconTabFilter",
+    "DynamicPage",
+    "ObjectPageLayout"
+  ],
+  "incompatiblePatterns": [
+    "Inside a dialog",
+    "Inside a table cell or list item",
+    "As the only navigation on a page (use SideNavigation for primary nav)"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/icontabbar/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.IconTabBar",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.IconTabBar",
+  "sampleUrls": [
+    "https://sapui5.hana.ondemand.com/#/entity/sap.m.IconTabBar/sample/sap.m.sample.IconTabBar"
+  ],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Tab text in SAP library kit cannot be overridden via direct text node injection. Must use IconTabFilter child instances with `text` property via setProperties.",
+    "knownIssues": [
+      "Plugin currently falls back to native frame when tab text injection fails — loses SAP token bindings"
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "IconTabFilter",
+      "IconTabSeparator",
+      "IconTabHeader",
+      "OverflowToolbar",
+      "Toolbar",
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "List",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "MessageStrip",
+      "IllustratedMessage"
+    ],
+    "mustInclude": [
+      "IconTabFilter"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage"
+    ],
+    "commonSiblings": [
+      "Table",
+      "List",
+      "Form"
+    ]
+  },
+  "slotNames": [
+    "items",
+    "content"
+  ]
+}

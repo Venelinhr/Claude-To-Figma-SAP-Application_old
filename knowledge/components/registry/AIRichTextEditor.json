@@ -1,0 +1,123 @@
+{
+  "componentName": "AIRichTextEditor",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "259171690780bc94b6900bc4975d6bb81d5a089f",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "rows",
+      "ui5Name": "rows",
+      "type": "number",
+      "exposedInLibrary": true,
+      "default": 5
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "input-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapField_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border-ai",
+      "token": "sapButton_AI_BorderColor",
+      "fallbackHex": "#5D36FF"
+    },
+    {
+      "role": "text",
+      "token": "sapField_TextColor",
+      "fallbackHex": "#1A2733"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use AIRichTextEditor as documented in SAP Fiori Design Guidelines"
+  ],
+  "dontRules": [
+    "Do not use AIRichTextEditor outside its documented placements \u2014 see composition.validParents"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Input",
+    "Select",
+    "MultiComboBox"
+  ],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/joule/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'AI Rich Text Editor' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "FilterBar",
+      "Toolbar",
+      "OverflowToolbar",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "SapFormSection",
+      "Bar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input",
+      "Select",
+      "MultiComboBox"
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "componentName": "ObjectStatus",
+  "slug": "object-status",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-status/",
+  "purpose": "A semantic status indicator combining icon, text, and semantic color. The standard SAP pattern for communicating state.",
+  "whenToUse": [
+    "Showing status (Success/Warning/Error/Information) on objects",
+    "In tables for status columns",
+    "In ObjectHeader for prominent status display"
+  ],
+  "whenNotToUse": [
+    "For categorical labels (non-semantic) \u2014 use Tag",
+    "For interactive controls \u2014 use Button",
+    "Without text \u2014 status by color alone violates WCAG"
+  ],
+  "doRules": [
+    "Always pair state color with state icon",
+    "Use clear, concise status text",
+    "Use semantic state property (Success/Warning/Error/Information)",
+    "Combine with ObjectNumber for KPI display"
+  ],
+  "dontRules": [
+    "Do not communicate status by color alone",
+    "Do not use Error state for warnings \u2014 use the right semantic level",
+    "Do not omit text \u2014 color + icon alone is insufficient"
+  ],
+  "layoutGuidance": {
+    "placement": "Table cell, List item, ObjectHeader, Form.",
+    "sizing": "Auto width by text.",
+    "spacing": "Inherits surrounding spacing.",
+    "alignment": "Icon left, text right."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words.",
+    "contentRules": [
+      "Status text describes state",
+      "Combine with semantic state prop"
+    ],
+    "examples": [
+      "Approved",
+      "Pending Review",
+      "Failed",
+      "Draft"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Icon + text inline",
+    "L": "Icon + text inline",
+    "M": "Icon + text inline",
+    "S": "Icon + text inline"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "status",
+      "requirement": "State communicated by icon AND text \u2014 not color alone",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Status text contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "State announced via aria-label",
+      "wcag": "4.1.2 (A)"
+    }
+  ],
+  "patterns": [
+    "Status column",
+    "KPI indicator",
+    "Object state"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Table",
+      "List",
+      "Form",
+      "ObjectHeader"
+    ],
+    "incompatible": [
+      "Without text \u2014 icon-only status"
+    ]
+  },
+  "exceptions": [
+    "Inverted style for dark backgrounds"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

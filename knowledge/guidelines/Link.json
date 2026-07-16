@@ -1,0 +1,99 @@
+{
+  "componentName": "Link",
+  "slug": "link",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/link/",
+  "purpose": "A navigational text element that takes the user to another page, view, or external URL. Distinct from Button (which triggers actions).",
+  "whenToUse": [
+    "For navigation between pages or to external URLs",
+    "For breadcrumbs",
+    "In tables to navigate to detail views",
+    "For inline references within prose"
+  ],
+  "whenNotToUse": [
+    "For actions \u2014 use Button",
+    "As primary CTA",
+    "When the destination is unclear"
+  ],
+  "doRules": [
+    "Use Link for navigation between pages or external URLs",
+    "Use descriptive text that makes sense out of context",
+    "Mark external links with an icon or indicator",
+    "Use Subtle variant in secondary contexts"
+  ],
+  "dontRules": [
+    "Do not use Link for actions \u2014 use Button",
+    "Do not use \"click here\" as link text",
+    "Do not style arbitrary text blue to imitate Link \u2014 use the component"
+  ],
+  "layoutGuidance": {
+    "placement": "Inline within text; in toolbars; in table cells.",
+    "sizing": "Auto width.",
+    "spacing": "Inherits surrounding text spacing.",
+    "alignment": "Inherits text alignment."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20138 words; descriptive.",
+    "contentRules": [
+      "Describe the destination",
+      "Avoid \"click here\", \"more\"",
+      "Use sentence case"
+    ],
+    "examples": [
+      "View order details",
+      "SAP documentation",
+      "ranjan@sap.com"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Standard inline",
+    "L": "Standard inline",
+    "M": "Standard inline",
+    "S": "May wrap to new line"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter activates link",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Link text describes destination \u2014 avoid \"click here\"",
+      "wcag": "2.4.4 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "External links announced as opening in new window"
+    }
+  ],
+  "patterns": [
+    "Breadcrumb",
+    "Inline reference",
+    "Table cell navigation",
+    "External link"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Toolbar",
+      "OverflowToolbar",
+      "Form",
+      "List",
+      "Table"
+    ],
+    "incompatible": [
+      "As primary CTA",
+      "In tight icon-only toolbar"
+    ]
+  },
+  "exceptions": [
+    "Subtle variant for de-emphasized links",
+    "Emphasized variant for key inline references"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

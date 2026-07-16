@@ -1,0 +1,150 @@
+{
+  "componentName": "ListItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "f7bc6526a9f16608747a4141800146ebd3f4e835",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "ListItem",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "description",
+      "ui5Name": "description",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Active"
+    },
+    {
+      "name": "selected",
+      "ui5Name": "selected",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "description",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapList_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "background-selected",
+      "token": "sapList_SelectionBackgroundColor",
+      "fallbackHex": "#EBF5FE"
+    },
+    {
+      "role": "title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "description-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "border",
+      "token": "sapList_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use ListItem as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/list/)"
+  ],
+  "dontRules": [
+    "Do not use ListItem outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/list/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'List Item' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "List",
+      "Popover",
+      "MessagePopover",
+      "Dialog"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Icon",
+      "Avatar",
+      "ObjectStatus",
+      "Button",
+      "Link",
+      "Text",
+      "Label"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

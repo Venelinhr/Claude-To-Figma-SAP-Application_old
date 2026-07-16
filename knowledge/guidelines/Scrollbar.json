@@ -1,0 +1,60 @@
+{
+  "componentName": "Scrollbar",
+  "slug": "scrollbar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/scrolling/",
+  "purpose": "A styled scrollbar that appears inside scrollable containers (Panel content, Table body, Popover). Follows the SAP Horizon theme colors and hides/shows based on hover/scroll activity. Rarely rendered directly — it's an artifact of scrollable regions.",
+  "whenToUse": [
+    "Automatically appears in any scrollable container",
+    "As a visual indication that content overflows the container",
+    "In custom scrollable regions inside cards or dialogs"
+  ],
+  "whenNotToUse": [
+    "As a decorative element — Scrollbar is always tied to real overflow",
+    "Standalone — never rendered outside a scrollable parent",
+    "For a progress indicator — use ProgressIndicator instead",
+    "For a slider control — use Slider"
+  ],
+  "doRules": [
+    "Let it appear automatically — don't force-show unless needed for touch",
+    "Match SAP Horizon theme (uses sapScrollBar_TrackColor / FaceColor tokens)",
+    "Support both vertical and horizontal orientations",
+    "Hide when the container is not being interacted with (auto-hide)"
+  ],
+  "dontRules": [
+    "Do not use as a custom slider — that's not its purpose",
+    "Do not hide always — users need to know overflow exists",
+    "Do not style with non-theme colors — breaks Horizon consistency",
+    "Do not use to indicate progress"
+  ],
+  "layoutGuidance": {
+    "placement": "Right edge (vertical) or bottom edge (horizontal) of scrollable container",
+    "sizing": "Width/height 8–12px; length matches container",
+    "spacing": "n/a — sits at container edge",
+    "alignment": "Anchored to container edge"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — visual only",
+    "contentRules": "n/a",
+    "examples": ["Right-edge scrollbar in a scrollable Panel content"]
+  },
+  "responsiveBehavior": {
+    "XL": "Auto-hide on desktop",
+    "L": "Auto-hide",
+    "M": "Auto-hide",
+    "S": "Always visible on touch (per platform convention)"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "Scrollable container is reachable via keyboard (Tab)",
+      "Arrow keys scroll when container has focus",
+      "Scrollbar thumb has 3:1 contrast against track",
+      "No independent aria — the scrollbar is a child of a scrollable container"
+    ]
+  },
+  "patterns": ["Scrollable table body", "Scrollable panel content", "Popover with overflow"],
+  "compatibility": {"allowedWith": ["Any scrollable container (Panel, Table, Popover, Dialog content)"], "forbiddenWith": ["Standalone", "Non-scrollable containers"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

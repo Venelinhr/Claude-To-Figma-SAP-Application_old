@@ -1,0 +1,102 @@
+{
+  "componentName": "SegmentedButtonItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "ListItem",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "key",
+      "ui5Name": "key",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "item-text",
+      "fontFamily": "72",
+      "fontStyle": "Medium",
+      "fontSize": 13,
+      "sapStyleName": "SmallText/LHAuto/Medium"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "background",
+      "token": "sapButton_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "selected-bg",
+      "token": "sapButton_Selected_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "selected-text",
+      "token": "sapButton_Selected_TextColor",
+      "fallbackHex": "#FFFFFF"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Semantic layout element — no accessible name required unless labeled by role"
+    }
+  ],
+  "doRules": [
+    "Use SegmentedButtonItem as documented in SAPUI5 API — it is a foundational primitive"
+  ],
+  "dontRules": [
+    "Do not use SegmentedButtonItem for content that has a semantic SAP component available"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/SegmentedButtonItem",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+    "knownIssues": [
+      "sap.m.SegmentedButtonItem — composed by SegmentedButton parent. No direct render."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "SegmentedButton"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

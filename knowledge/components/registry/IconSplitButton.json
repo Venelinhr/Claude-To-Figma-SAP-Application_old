@@ -1,0 +1,133 @@
+{
+  "componentName": "IconSplitButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "9afdf08f8ae226b175d0a3be79f24454d4b12928",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Default"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "button-text",
+      "fontFamily": "72",
+      "fontStyle": "Medium",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Medium"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapButton_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "border",
+      "token": "sapButton_BorderColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use IconSplitButton as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/split-button/)"
+  ],
+  "dontRules": [
+    "Do not use IconSplitButton outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [
+    "Button",
+    "MenuButton",
+    "IconButton"
+  ],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/split-button/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Icon Split Button' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  }
+}

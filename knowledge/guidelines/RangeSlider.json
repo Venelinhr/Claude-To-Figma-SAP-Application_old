@@ -1,0 +1,83 @@
+{
+  "componentName": "RangeSlider",
+  "slug": "range-slider",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/range-slider/",
+  "purpose": "A two-handle slider for selecting a numeric range (start, end) within a bounded scale.",
+  "whenToUse": [
+    "Numeric range filter (price, quantity, age)",
+    "When both bounds need visual control",
+    "In FilterBar for ranges"
+  ],
+  "whenNotToUse": [
+    "For single value \u2014 use Slider",
+    "For precise range entry \u2014 use two Input fields"
+  ],
+  "doRules": [
+    "Use for numeric range selection",
+    "Show both start and end value labels via tooltips",
+    "Allow drag of either handle to adjust bounds"
+  ],
+  "dontRules": [
+    "Do not use when only single value is needed",
+    "Do not allow start > end",
+    "Do not omit visible value labels"
+  ],
+  "layoutGuidance": {
+    "placement": "FilterBar, Form.",
+    "sizing": "Full width of container.",
+    "spacing": "16px vertical between sliders.",
+    "alignment": "Both handles draggable along track."
+  },
+  "contentGuidance": {
+    "labelLength": "Tooltips show start and end.",
+    "contentRules": [
+      "Tooltips above each handle",
+      "Optionally show selected range below"
+    ],
+    "examples": [
+      "10\u201350",
+      "0\u2013100"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width with handles",
+    "L": "Full width with handles",
+    "M": "Full width",
+    "S": "Full width; touch targets enlarged"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab between handles; arrows adjust selected handle",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label; announce both bounds",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Both range bounds announced when changed"
+    }
+  ],
+  "patterns": [
+    "Range filter",
+    "Constraint selection"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "FilterBar"
+    ],
+    "incompatible": [
+      "Without bounds"
+    ]
+  },
+  "exceptions": [
+    "Constraint: end \u2265 start enforced automatically"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

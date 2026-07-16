@@ -1,0 +1,185 @@
+{
+  "componentName": "SearchField",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Input",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "Read Only"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "Search"
+    },
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "showSearch",
+      "ui5Name": "showSearchButton",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "showRefresh",
+      "ui5Name": "showRefreshButton",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "Read Only"
+  ],
+  "typographyRules": [
+    {
+      "role": "input-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "input-placeholder",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Regular",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "state": "Regular",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "state": "WithValue",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "placeholder",
+      "state": "Regular",
+      "token": "sapField_PlaceholderTextColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "icon",
+      "state": "Regular",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "SearchField MUST have an accessible name via aria-label or associated <label>",
+      "wcag": "4.1.2, 3.3.2"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 (Compact) / 44\u00d744 (Cozy)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on keyboard navigation"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Border \u2265 3:1 with background (WCAG AA non-text)",
+      "wcag": "1.4.11"
+    }
+  ],
+  "doRules": [
+    "Use SearchField in OverflowToolbar at the right of the toolbar, before action buttons",
+    "Provide a meaningful placeholder (e.g. 'Filter Artifacts', 'Search Invoices')",
+    "Enable showSearchButton when search is the primary action; disable on instant filter",
+    "Bind border to sapField_BorderColor and placeholder to sapField_PlaceholderTextColor"
+  ],
+  "dontRules": [
+    "Do not use SearchField as a generic text input \u2014 use Input instead",
+    "Do not use vague placeholders like 'Search' alone; specify what is searched",
+    "Do not stack multiple SearchFields in one toolbar",
+    "Do not omit the magnifier icon \u2014 it is the visual signal that this is search"
+  ],
+  "compatibleComponents": [
+    "OverflowToolbar",
+    "DynamicPageTitle",
+    "FilterBar"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells \u2014 use Input instead",
+    "Inside Dialog footer \u2014 use Input"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/search-field/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.SearchField",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.SearchField",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.SearchField/sample/sap.m.sample.SearchField"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "The SAP Figma library does NOT ship a distinct SearchField component. The plugin maps SearchField \u2192 Input instance and prepends a magnifier glyph in the placeholder when no leading icon is configured. SAP_KEYS: SearchField \u2192 'Input'. Status: AI specs MAY emit { component: 'SearchField', props: { placeholder: 'Filter X' } }. For visual consistency, prefer placing it after a ToolbarSpacer in OverflowToolbar.",
+  "composition": {
+    "validParents": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "Panel",
+      "Card",
+      "Dialog",
+      "ShellBar",
+      "IconTabBar",
+      "Popover"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "Input"
+    ]
+  }
+}

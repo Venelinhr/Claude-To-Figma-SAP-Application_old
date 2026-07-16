@@ -1,0 +1,156 @@
+{
+  "componentName": "IconTabFilter",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [
+    {
+      "property": "Selected",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Design",
+      "ui5Property": "design",
+      "values": [
+        "Vertical",
+        "Horizontal"
+      ],
+      "default": "Vertical"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "key",
+      "ui5Name": "key",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "count",
+      "ui5Name": "count",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "icon",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "iconColor",
+      "ui5Name": "iconColor",
+      "type": "variant",
+      "exposedInLibrary": false,
+      "default": "Default"
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Selected",
+    "Hover",
+    "Focused"
+  ],
+  "typographyRules": [
+    {
+      "role": "label-active",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    },
+    {
+      "role": "label-inactive",
+      "fontFamily": "72",
+      "fontStyle": "Semibold Duplex",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/SemiboldDuplex"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "state": "Selected",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "text",
+      "state": "Regular",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate tabs"
+    },
+    {
+      "category": "status",
+      "requirement": "Selected state shown by color AND underline"
+    }
+  ],
+  "doRules": [
+    "Use short labels (1–3 words)",
+    "Show count in parens for tab badges like \"Artifacts (2)\""
+  ],
+  "dontRules": [
+    "Do not change tab label text via direct injection — use text property"
+  ],
+  "compatibleComponents": [
+    "IconTabBar"
+  ],
+  "incompatiblePatterns": [
+    "Outside IconTabBar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/icontabfilter/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.IconTabFilter",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.IconTabFilter",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width by label.",
+    "knownIssues": [
+      "Figma library variant may use \"Tab Text\" or \"text\" — try both."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "IconTabBar",
+      "IconTabHeader"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Text",
+      "Icon"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "IconTabFilter",
+      "IconTabSeparator"
+    ]
+  },
+  "slotNames": [
+    "items",
+    "content"
+  ]
+}

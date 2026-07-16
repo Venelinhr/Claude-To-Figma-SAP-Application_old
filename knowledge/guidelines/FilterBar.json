@@ -1,0 +1,85 @@
+{
+  "componentName": "FilterBar",
+  "slug": "filter-bar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/filter-bar/",
+  "purpose": "A panel that holds filter input fields above a list or table. Allows users to refine displayed results without leaving the page.",
+  "whenToUse": [
+    "Above List or Table when filtering is needed",
+    "For List Report floorplan",
+    "When \u22652 filter dimensions exist"
+  ],
+  "whenNotToUse": [
+    "For single search input \u2014 use SearchField in toolbar",
+    "For sort-only \u2014 use column sort affordance",
+    "When all data should be shown by default"
+  ],
+  "doRules": [
+    "Place in DynamicPageHeader slot",
+    "Show most important filters by default",
+    "Provide Go button to execute filter",
+    "Allow filter configuration for advanced users"
+  ],
+  "dontRules": [
+    "Do not stack filter rows when horizontal space allows",
+    "Do not skip Labels on filter fields",
+    "Do not require user to learn all filters at once"
+  ],
+  "layoutGuidance": {
+    "placement": "In DynamicPageHeader, above main content.",
+    "sizing": "Full width.",
+    "spacing": "16px between filter fields.",
+    "alignment": "Horizontal flow; wraps to multiple rows if needed."
+  },
+  "contentGuidance": {
+    "labelLength": "Label text 1\u20132 words.",
+    "contentRules": [
+      "Use Input, Select, DateRangePicker as filter children",
+      "Pair each with Label"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Multiple filters per row",
+    "L": "Multiple filters per row",
+    "M": "Fewer filters per row; rest in \"More Filters\" dialog",
+    "S": "Single filter per row or in dialog"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab through filter fields in DOM order",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Each filter has Label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Filter applied state announced"
+    }
+  ],
+  "patterns": [
+    "List Report filtering",
+    "Search and filter"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "DynamicPage",
+      "DynamicPageHeader",
+      "Input",
+      "Select",
+      "DateRangePicker"
+    ],
+    "incompatible": [
+      "Inside Table cell",
+      "As Dialog content"
+    ]
+  },
+  "exceptions": [
+    "Adaptive filter shows hidden filters via \"Adapt Filters\" dialog"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,150 @@
+{
+  "componentName": "DynamicPageTitle",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "heading",
+      "ui5Name": "heading",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "actions",
+      "ui5Name": "actions",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "breadcrumbs",
+      "ui5Name": "breadcrumbs",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "heading",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 24,
+      "sapStyleName": "App Headers/Page Title"
+    },
+    {
+      "role": "subtitle",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapPageHeader_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "heading-text",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "subtitle-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Heading text is the accessible name of the page"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Title contrast ≥ 4.5:1",
+      "wcag": "1.4.3"
+    }
+  ],
+  "doRules": [
+    "Use one DynamicPageTitle per page",
+    "Place primary actions in actions slot",
+    "Place navigation breadcrumb in breadcrumbs slot"
+  ],
+  "dontRules": [
+    "Do not include more than 4 primary actions"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "ObjectPageLayout"
+  ],
+  "incompatiblePatterns": [
+    "Outside DynamicPage"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/dynamicpagetitle/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.DynamicPageTitle",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.DynamicPageTitle",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "not-injectable",
+    "sizingConstraints": "Full width of DynamicPage.",
+    "knownIssues": [
+      "Plugin uses native DynamicPageTitle frame builder."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "Breadcrumb",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "Link",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "Tag",
+      "SearchField",
+      "Select",
+      "SegmentedButton"
+    ],
+    "mustInclude": [
+      "Title"
+    ],
+    "mustExclude": [
+      "Table",
+      "Form",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "DynamicPageHeader"
+    ]
+  },
+  "slotNames": [
+    "heading",
+    "snappedContent",
+    "expandedContent",
+    "actions",
+    "navigationActions",
+    "breadcrumbs"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "componentName": "SimpleForm",
+  "slug": "simple-form",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/simple-form/",
+  "purpose": "Simplified Form alternative \u2014 automatically lays out Label + Input pairs in responsive columns. Less verbose than Form, more rigid.",
+  "whenToUse": [
+    "Standard label-input form layouts",
+    "Settings pages",
+    "Object edit screens with mostly text/select fields"
+  ],
+  "whenNotToUse": [
+    "Custom field layouts \u2014 use Form",
+    "Single-field input \u2014 use Input",
+    "Multi-line data entry \u2014 use multiple Forms"
+  ],
+  "doRules": [
+    "Group related fields with FormContainer",
+    "Use FormElement for each field row",
+    "Set responsive layout (1 col mobile, 2 col tablet, 3 col desktop)"
+  ],
+  "dontRules": [
+    "Do not mix SimpleForm with Form in the same screen",
+    "Do not omit Labels",
+    "Do not use SimpleForm for complex layouts"
+  ],
+  "layoutGuidance": {
+    "placement": "Place SimpleForm inside a compatible container (DynamicPage, Panel, Dialog).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for forms.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside DynamicPage",
+    "Used inside Panel",
+    "Used inside Dialog"
+  ],
+  "compatibility": [
+    "DynamicPage",
+    "Panel",
+    "Dialog",
+    "ObjectPageSection"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

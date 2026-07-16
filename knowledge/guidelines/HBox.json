@@ -1,0 +1,61 @@
+{
+  "componentName": "HBox",
+  "slug": "flexbox",
+  "sourceUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.HBox",
+  "purpose": "A horizontal flexbox layout primitive. Arranges children in a horizontal row with configurable justification, alignment, and spacing. The horizontal-only sibling of VBox. Rendered by the plugin as a pass-through frame using Figma Auto Layout (HORIZONTAL).",
+  "whenToUse": [
+    "Group child components in a horizontal row inside a page or panel",
+    "Compose custom action bars or button clusters",
+    "Align related items side-by-side (icon + text, avatar + name)",
+    "As a lightweight alternative to Toolbar when semantics don't matter"
+  ],
+  "whenNotToUse": [
+    "For a semantic action bar — use Toolbar or Bar",
+    "For a top-of-page shell — use ShellBar",
+    "When children need to wrap responsively — use FlexBox with wrap",
+    "As a page-level layout — use DynamicPage or Page"
+  ],
+  "doRules": [
+    "Set consistent itemSpacing across the row",
+    "Use justifyContent for alignment (Start, End, Center, SpaceBetween)",
+    "Set width='100%' when the box should stretch to parent",
+    "Prefer HBox over inline styles when the layout is reusable"
+  ],
+  "dontRules": [
+    "Do not use HBox for form field layout — use Form / SimpleForm",
+    "Do not nest deeply — becomes hard to reason about",
+    "Do not use for a full-width toolbar — use Toolbar/Bar",
+    "Do not mix with absolute-positioned children"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside pages, panels, cards, custom composite components",
+    "sizing": "Width hugs content or fills parent; height hugs tallest child",
+    "spacing": "Configurable via itemSpacing (default: 8px)",
+    "alignment": "justifyContent + alignItems props control child positioning"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — layout container",
+    "contentRules": "Children are any renderable components; not semantic",
+    "examples": ["[Icon] [Label] [Button]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full row",
+    "L": "Full row",
+    "M": "Full row; may wrap if items overflow",
+    "S": "May wrap to multiple rows"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.2 Meaningful Sequence (Level A)"],
+    "requirements": [
+      "role='group' when children share semantic purpose; otherwise none",
+      "Focus order follows left-to-right visual order",
+      "Children provide their own accessible names",
+      "No aria-label on HBox itself (it's a layout, not a landmark)"
+    ]
+  },
+  "patterns": ["Icon + label pairing", "Button cluster", "Card header actions row", "Custom composite layouts"],
+  "compatibility": {"allowedWith": ["Page", "Panel", "Card", "Dialog", "DynamicPage content", "VBox", "FlexBox"], "forbiddenWith": ["Form field container (use Form)", "Toolbar (they overlap; pick one)"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

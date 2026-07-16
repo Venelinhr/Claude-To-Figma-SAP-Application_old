@@ -1,0 +1,81 @@
+{
+  "componentName": "ColumnListItem",
+  "slug": "responsive-table",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/responsive-table/",
+  "purpose": "A row in a Table containing one cell per column. Supports type variants (Inactive, Active, Navigation, Detail) for different interaction patterns.",
+  "whenToUse": [
+    "As a child of Table only",
+    "For each data row"
+  ],
+  "whenNotToUse": [
+    "Outside Table",
+    "For grouping headers (use GroupHeaderListItem)"
+  ],
+  "doRules": [
+    "Use Navigation type when row click opens detail page",
+    "Use Active type when row click triggers action",
+    "Keep row height consistent across the table",
+    "Use ObjectIdentifier in the primary column"
+  ],
+  "dontRules": [
+    "Do not nest interactive elements inside Active or Navigation rows",
+    "Do not vary row height arbitrarily",
+    "Do not skip row click behavior when defined"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside Table items aggregation.",
+    "sizing": "Height 48px Compact / 64px Cozy by default. Custom rows up to 114px.",
+    "spacing": "1px row border.",
+    "alignment": "Cell alignment inherited from Column.hAlign."
+  },
+  "contentGuidance": {
+    "labelLength": "Cell content varies by column.",
+    "contentRules": [
+      "First column: ObjectIdentifier with title + optional description",
+      "Status columns: ObjectStatus with semantic state",
+      "Numeric columns: ObjectNumber"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "All cells inline",
+    "L": "All cells inline",
+    "M": "Pop-in: secondary cells appear below primary",
+    "S": "Card-like layout, attributes stacked"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter on Navigation type opens detail; arrow keys move between cells",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring on row",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Row click affordance announced via type variant"
+    }
+  ],
+  "patterns": [
+    "Table row",
+    "Master list row",
+    "Drilldown item"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Table",
+      "Column"
+    ],
+    "incompatible": [
+      "Outside Table"
+    ]
+  },
+  "exceptions": [
+    "DetailAndActive type when row has both detail-action and primary click"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

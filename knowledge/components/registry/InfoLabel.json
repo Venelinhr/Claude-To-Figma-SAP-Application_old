@@ -1,0 +1,63 @@
+{
+  "componentName": "InfoLabel",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Tag",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    { "property": "ColorScheme", "ui5Property": "colorScheme", "values": ["1","2","3","4","5","6","7","8","9","10"], "default": "7" },
+    { "property": "Rendermode",  "ui5Property": "renderMode",  "values": ["Loose","Narrow"], "default": "Loose" }
+  ],
+  "supportedProperties": [
+    { "name": "text",         "ui5Name": "text",         "type": "string",  "exposedInLibrary": true, "default": "" },
+    { "name": "colorScheme",  "ui5Name": "colorScheme",  "type": "int",     "exposedInLibrary": true, "default": 7 },
+    { "name": "displayOnly",  "ui5Name": "displayOnly",  "type": "boolean", "exposedInLibrary": false, "default": true },
+    { "name": "icon",         "ui5Name": "icon",         "type": "URI",     "exposedInLibrary": false, "default": "" }
+  ],
+  "supportedStates": ["Regular"],
+  "typographyRules": [
+    { "role": "text", "fontFamily": "72", "fontStyle": "Regular", "fontSize": 12, "sapStyleName": "SmallText/LHAuto/Regular" }
+  ],
+  "colorTokenRules": [
+    { "role": "text",        "token": "sapContent_LabelColor",        "fallbackHex": "#556B82" },
+    { "role": "bg-scheme-7", "token": "sapContent_Container_Background","fallbackHex": "#F5F6F7" },
+    { "role": "border",      "token": "sapContent_Container_BorderColor","fallbackHex": "#D5DADE" }
+  ],
+  "accessibilityRules": [
+    { "category": "contrast", "requirement": "Text ≥ 4.5:1 against the color-scheme background" },
+    { "category": "labeling", "requirement": "Color must not be the sole conveyor of meaning" }
+  ],
+  "doRules": [
+    "Use for compact categorical labels (status categories, priority tiers, tags)",
+    "Pair with descriptive text — do not rely on color scheme alone",
+    "Keep text ≤ 12 characters for narrow render mode"
+  ],
+  "dontRules": [
+    "Do not use for editable input — use Token or Input",
+    "Do not exceed 3 InfoLabels side by side — density becomes noisy",
+    "Do not use as a Button substitute"
+  ],
+  "compatibleComponents": ["Title","Text","Label","ObjectStatus","Tag","Panel","Card","StandardListItem","ColumnListItem","ObjectListItem","DynamicPageTitle","ObjectPageHeader","Toolbar","OverflowToolbar"],
+  "incompatiblePatterns": ["Inside ShellBar","Inside table header row"],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/info-label/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.InfoLabel",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.InfoLabel",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-07",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width, height ~20px Loose / ~16px Narrow. 10 color schemes available.",
+    "knownIssues": [
+      "SAP Web UI Kit doesn't ship InfoLabel as its own component — plugin aliases InfoLabel → Tag. Color-scheme prop maps to Tag color variants where possible."
+    ]
+  },
+  "composition": {
+    "validParents": ["Title","Text","Label","ObjectStatus","Panel","Card","StandardListItem","ColumnListItem","ObjectListItem","DynamicPageTitle","DynamicPageHeader","ObjectPageHeader","Toolbar","OverflowToolbar","FilterBar","Dialog","Popover","SapTableRow"],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": ["Tag","GenericTag","ObjectStatus","Title","Text","Label"]
+  }
+}

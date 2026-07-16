@@ -1,0 +1,133 @@
+{
+  "componentName": "InputListItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "composed:ListItem+Input",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "List Item",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "label",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "input-text",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Each row has exactly one Label + one Input",
+    "Bind Label color to sapContent_LabelColor",
+    "Validate inputs inline"
+  ],
+  "dontRules": [
+    "Do not stack multiple Inputs in one row",
+    "Do not omit the Label"
+  ],
+  "compatibleComponents": [
+    "List"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/input-list-item/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.InputListItem",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.InputListItem",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.InputListItem/sample/sap.m.sample.InputListItem"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "InputListItem composes Label + Input. Plugin builds as ColumnListItem with HORIZONTAL Auto Layout (Label on left, Input fills right).",
+  "composition": {
+    "validParents": [
+      "List",
+      "Dialog",
+      "Popover"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Label",
+      "Input",
+      "Select",
+      "Switch",
+      "CheckBox",
+      "DatePicker"
+    ],
+    "mustInclude": [
+      "Label"
+    ],
+    "mustExclude": [],
+    "commonSiblings": [
+      "InputListItem"
+    ]
+  }
+}

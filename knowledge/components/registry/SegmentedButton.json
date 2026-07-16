@@ -1,0 +1,157 @@
+{
+  "componentName": "SegmentedButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "308476a5285b5a132241dc1c118d09ecf8d82273",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill-default",
+      "state": "Default",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "fill-selected",
+      "state": "Selected",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "text-selected",
+      "state": "Selected",
+      "token": "sapButton_Emphasized_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Mark exactly one segment as selected at all times",
+    "Use Tabs for navigation, SegmentedButton for view-state",
+    "Bind selected fill to sapButton_Emphasized_Background",
+    "Bind selected text to sapButton_Emphasized_TextColor"
+  ],
+  "dontRules": [
+    "Do not allow zero-selected state (always one is active)",
+    "Do not exceed 5 segments \u2014 readability degrades",
+    "Do not mix SegmentedButton with Select for the same axis",
+    "Do not use SegmentedButton on narrow mobile viewports (use Select)"
+  ],
+  "compatibleComponents": [
+    "OverflowToolbar",
+    "DynamicPageTitle",
+    "FilterBar",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells",
+    "Inside Dialog footer"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/segmentedbutton/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.SegmentedButton",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.SegmentedButton",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.SegmentedButton/sample/sap.m.sample.SegmentedButton"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "SegmentedButton is a SAP instance. Plugin places via SAP_KEYS. Items[] array drives the segments \u2014 plugin replicates the first segment N times with text injection per item. The 'selected' item is marked via the Selected variant property.",
+  "composition": {
+    "validParents": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Bar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "ToggleButton"
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "componentName": "Menu",
+  "slug": "menu",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/menu/",
+  "purpose": "A vertical list of clickable items shown in a Popover-like container. Used to group secondary actions, provide contextual choices, or expose overflow actions. Typically anchored to a MenuButton, IconButton, or context invocation.",
+  "whenToUse": [
+    "Group 3-10 related actions behind a single button",
+    "Show contextual actions on right-click or long-press",
+    "Overflow container for actions that don't fit in a toolbar",
+    "Cascading submenus for hierarchical action sets"
+  ],
+  "whenNotToUse": [
+    "For a single action — use Button directly",
+    "For >10 items — use a Dialog with searchable list",
+    "For navigation between pages — use SideNavigation or IconTabBar",
+    "For form field options — use Select or ComboBox"
+  ],
+  "doRules": [
+    "Order items by frequency of use (most common first)",
+    "Group related items with separators",
+    "Use icons for scannability when actions are visual",
+    "Support keyboard navigation (Arrow keys, Enter, Escape)"
+  ],
+  "dontRules": [
+    "Do not nest submenus more than 2 levels deep",
+    "Do not put destructive actions at the top — put them at the bottom",
+    "Do not omit icons in a mixed icon/no-icon menu — pick one style",
+    "Do not use for exclusive choice — use RadioButtonGroup"
+  ],
+  "layoutGuidance": {
+    "placement": "Anchored to trigger element (Button, IconButton, cell)",
+    "sizing": "Width hugs content, min 160px; height max 400px with scroll",
+    "spacing": "Item height 32px compact, 40px cozy; separator 8px",
+    "alignment": "Text left-aligned, icons on the left, shortcuts right"
+  },
+  "contentGuidance": {
+    "labelLength": "Item labels ≤ 30 characters; verb-first (e.g. 'Delete', 'Export as CSV')",
+    "contentRules": "Actions as short imperative phrases; no punctuation",
+    "examples": ["Edit · Duplicate · Export ▸ · ─ · Delete"]
+  },
+  "responsiveBehavior": {
+    "XL": "Anchored Popover",
+    "L": "Anchored Popover",
+    "M": "Anchored Popover",
+    "S": "May become full-width action sheet at bottom of screen"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "role='menu' with role='menuitem' on items",
+      "Focus moves into first item on open; returns to trigger on close",
+      "Keyboard: Arrow keys move focus; Enter activates; Escape closes",
+      "Destructive items announced with aria-label like 'Delete permanently'"
+    ]
+  },
+  "patterns": ["MenuButton", "SplitButton overflow", "Context menu on right-click", "Toolbar overflow"],
+  "compatibility": {
+    "allowedWith": ["MenuButton", "SplitButton", "IconButton", "Popover"],
+    "forbiddenWith": ["Standalone (always anchored)", "Inside Table cells directly"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

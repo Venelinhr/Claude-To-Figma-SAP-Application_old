@@ -1,0 +1,61 @@
+{
+  "componentName": "GroupingColumns",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustrated-message/",
+  "purpose": "Empty-state illustration used in analytical tables or pivot views when the user hasn't defined any grouping columns yet. Signals 'add columns to group by — the table is waiting'.",
+  "whenToUse": [
+    "Analytical Table view with no grouping columns configured",
+    "Pivot report awaiting grouping dimension selection",
+    "Any data table with a grouping UI that starts empty",
+    "Data explorer with configurable grouping"
+  ],
+  "whenNotToUse": [
+    "For empty raw data — use different empty state",
+    "For a table filter with no results — use different variant",
+    "As decoration",
+    "In non-analytical contexts"
+  ],
+  "doRules": [
+    "Pair with CTA ('Add grouping', 'Configure columns')",
+    "Include description explaining what grouping does",
+    "Use appropriate size for the container",
+    "Guide user toward the grouping affordance visually"
+  ],
+  "dontRules": [
+    "Do not use if data is loading — that's a spinner state",
+    "Do not omit the CTA",
+    "Do not use for permission errors",
+    "Do not shrink illustration below Spot size"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside IllustratedMessage in the empty table region",
+    "sizing": "Spot 48×48 · Dialog 120×120 · Scene 240×240",
+    "spacing": "16px between elements",
+    "alignment": "Centered in the empty table"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 40 chars; description ≤ 120 chars",
+    "contentRules": "Title names the state; description invites configuration",
+    "examples": ["Title: 'No grouping selected' · Description: 'Choose columns to group your data by' · Button: 'Add grouping'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Scene / Dialog size",
+    "L": "Dialog size",
+    "M": "Dialog size",
+    "S": "Spot size"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "role='img' with descriptive aria-label",
+      "Title as semantic heading",
+      "CTA clearly labeled",
+      "Focus moves to CTA on show"
+    ]
+  },
+  "patterns": ["Empty analytical table", "Pivot configuration prompt", "Data explorer setup"],
+  "compatibility": {"allowedWith": ["IllustratedMessage (only)"], "forbiddenWith": ["Standalone", "Any other parent"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

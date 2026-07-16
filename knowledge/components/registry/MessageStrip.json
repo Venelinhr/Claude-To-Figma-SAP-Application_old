@@ -1,0 +1,175 @@
+{
+  "componentName": "MessageStrip",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "f0e77f8888796e35c0e791ddc0b38535eda6ec31",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Information",
+        "Positive",
+        "Warning",
+        "Error"
+      ],
+      "default": "Information"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Show Icon",
+      "ui5Property": "showIcon",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    },
+    {
+      "property": "Show Close Button",
+      "ui5Property": "showCloseButton",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Information"
+    }
+  ],
+  "supportedStates": [
+    "Information",
+    "Positive",
+    "Warning",
+    "Error"
+  ],
+  "typographyRules": [
+    {
+      "role": "text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "state": "Information",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#EFF6FF"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "status",
+      "requirement": "Type communicated by icon AND text \u2014 not color alone",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Message announced via aria-live=\"polite\"",
+      "wcag": "4.1.3 (AA)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Close button activatable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use Information for neutral context",
+    "Use Positive for success confirmations",
+    "Use Warning for non-blocking issues",
+    "Use Error for blocking issues",
+    "Always show icon alongside text"
+  ],
+  "dontRules": [
+    "Do not use MessageStrip for transient toasts \u2014 use MessageToast",
+    "Do not use as primary CTA container",
+    "Do not stack multiple MessageStrips of same type"
+  ],
+  "compatibleComponents": [
+    "Page",
+    "DynamicPage",
+    "Dialog",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Inside Table cell",
+    "As toolbar item"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/messagestrip/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.MessageStrip",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.MessageStrip",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Full width of parent.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "Table",
+      "List",
+      "IconTabBar",
+      "MessagePopover",
+      "SapFormSection",
+      "Wizard",
+      "WizardStep"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Link",
+      "Button"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "Form",
+      "Table",
+      "MessageStrip"
+    ]
+  }
+}

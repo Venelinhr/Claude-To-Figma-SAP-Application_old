@@ -1,0 +1,61 @@
+{
+  "componentName": "ToolbarItems",
+  "slug": "toolbar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/toolbar/",
+  "purpose": "A grouping wrapper for items inside a Toolbar. Used to collect a related set of actions together — visually or semantically. Rendered by the plugin as a pass-through — parent Toolbar handles the actual layout.",
+  "whenToUse": [
+    "Group related actions inside a Toolbar (view toggles, sort options)",
+    "As an alias when the spec generator wants to group semantically",
+    "When you need a named container for a subset of toolbar items",
+    "For programmatic show/hide of an item group"
+  ],
+  "whenNotToUse": [
+    "For a single action — put it directly in the Toolbar",
+    "For a separate visual toolbar — use a second Toolbar",
+    "For unrelated actions — don't force-group them",
+    "In place of ToolbarSpacer — that's for spacing, not grouping"
+  ],
+  "doRules": [
+    "Group items that share a semantic purpose (all filter actions, all view options)",
+    "Keep group size to 2–5 items for scannability",
+    "Use ToolbarSpacer between groups when visual separation is needed",
+    "Support show/hide of the entire group as a unit"
+  ],
+  "dontRules": [
+    "Do not nest ToolbarItems inside ToolbarItems",
+    "Do not use for individual items — use direct Toolbar children",
+    "Do not stack groups without separators",
+    "Do not use outside a Toolbar"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside a Toolbar or OverflowToolbar",
+    "sizing": "Hugs content; height matches parent",
+    "spacing": "Inherits parent Toolbar spacing",
+    "alignment": "Inline with other Toolbar items"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — container",
+    "contentRules": "Contains only Toolbar-legal items (Button, IconButton, Select, etc.)",
+    "examples": ["Group 1: [Sort ▼] [Filter ▼]  ·  Group 2: [Grid] [List]"]
+  },
+  "responsiveBehavior": {
+    "XL": "All items visible inline",
+    "L": "Same",
+    "M": "May collapse via OverflowToolbar",
+    "S": "May collapse entirely into overflow menu"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.1 Info and Relationships (Level A)"],
+    "requirements": [
+      "role='group' with aria-label describing the group's purpose",
+      "Focus order follows visual order within the group",
+      "Child items provide their own labels",
+      "Group can be reached via a single Tab, then Arrow keys within"
+    ]
+  },
+  "patterns": ["Grouped toolbar actions", "View mode toggle group", "Filter action cluster"],
+  "compatibility": {"allowedWith": ["Toolbar", "OverflowToolbar"], "forbiddenWith": ["Standalone", "Any non-Toolbar parent"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

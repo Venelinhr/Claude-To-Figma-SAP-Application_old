@@ -1,0 +1,83 @@
+{
+  "componentName": "Avatar",
+  "slug": "avatar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/avatar/",
+  "purpose": "A visual representation of a person, product, or object. Supports initials, icon, photo, or custom image.",
+  "whenToUse": [
+    "Display user identity in ShellBar, comments, lists",
+    "Display product/object identity in tables",
+    "Compact visual representation when name alone is insufficient"
+  ],
+  "whenNotToUse": [
+    "For decoration without identity meaning",
+    "For complex data display \u2014 use Card or Tile"
+  ],
+  "doRules": [
+    "Always use square for products, circle for people",
+    "Show initials when no photo available",
+    "Use consistent size within a context (XS/S/M/L/XL)",
+    "Pair with name or accessible label"
+  ],
+  "dontRules": [
+    "Do not use circle for product/object avatars",
+    "Do not stretch image to non-square ratios",
+    "Do not omit aria-label for icon-only avatars"
+  ],
+  "layoutGuidance": {
+    "placement": "ShellBar, ObjectHeader, List, Table.",
+    "sizing": "XS=24, S=32, M=48, L=72, XL=128 px.",
+    "spacing": "8\u201316px between avatars and other content.",
+    "alignment": "Avatar left, content right."
+  },
+  "contentGuidance": {
+    "labelLength": "Initials 1\u20133 chars.",
+    "contentRules": [
+      "Initials are first letter of first + last name",
+      "Icon for object/role types"
+    ],
+    "examples": [
+      "JR",
+      "MS",
+      "P"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "XL or L size",
+    "L": "L or M size",
+    "M": "M or S size",
+    "S": "S size"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "labeling",
+      "requirement": "Tooltip or aria-label describes the avatar subject",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Initials/icon contrast \u2265 4.5:1 against background",
+      "wcag": "1.4.3 (AA)"
+    }
+  ],
+  "patterns": [
+    "User identity",
+    "Product avatar",
+    "Notification badge"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "ShellBar",
+      "ObjectHeader",
+      "List",
+      "Table"
+    ],
+    "incompatible": [
+      "As primary CTA"
+    ]
+  },
+  "exceptions": [
+    "Group avatars (avatar stack) for showing multiple users"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

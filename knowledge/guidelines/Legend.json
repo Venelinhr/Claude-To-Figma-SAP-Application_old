@@ -1,0 +1,64 @@
+{
+  "componentName": "Legend",
+  "slug": "chart-legend",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/analytical-list-page/",
+  "purpose": "A key that maps colors, patterns, or icons to data categories in a chart or calendar. Provides the reader with the meaning of visual encodings. Common in analytical dashboards, calendar apps, and visualization-heavy screens.",
+  "whenToUse": [
+    "Alongside any chart with more than 2 series",
+    "In calendar views with color-coded event types",
+    "For heat maps and multi-series area/line charts",
+    "When visual encoding is not self-explanatory"
+  ],
+  "whenNotToUse": [
+    "For single-series charts — legend is redundant",
+    "When the chart has direct labels on each series — legend duplicates that",
+    "For a filter — use FilterBar or MultiComboBox",
+    "For static help — use IllustratedMessage or Text"
+  ],
+  "doRules": [
+    "Place the legend at the top or right of the chart",
+    "Match the exact color/pattern used in the chart",
+    "Use short, meaningful labels (≤ 20 chars)",
+    "Support interactive filtering — clicking a legend item toggles that series"
+  ],
+  "dontRules": [
+    "Do not rely on color alone — pair with patterns or icons for accessibility",
+    "Do not use for charts with 8+ series (becomes unreadable)",
+    "Do not shrink swatches below 12×12 — must be visible",
+    "Do not detach legend from its chart"
+  ],
+  "layoutGuidance": {
+    "placement": "Top or right of the chart it describes",
+    "sizing": "Height hugs content; row height 24px",
+    "spacing": "16px between items",
+    "alignment": "Horizontal for top placement, vertical for right placement"
+  },
+  "contentGuidance": {
+    "labelLength": "Each item ≤ 20 chars",
+    "contentRules": "Swatch + label; optional value shown after the label",
+    "examples": ["■ Sales  ■ Costs  ■ Profit", "● Meetings  ● Deadlines  ● Personal"]
+  },
+  "responsiveBehavior": {
+    "XL": "Horizontal row visible",
+    "L": "Horizontal row",
+    "M": "May wrap to 2 rows",
+    "S": "Vertical stack below chart"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.4.1 Use of Color (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "Swatches use both color AND pattern/icon to distinguish series",
+      "Legend labels have 4.5:1 contrast",
+      "Interactive legend items have visible focus and aria-pressed state",
+      "Screen reader announces 'legend' role for the wrapping container"
+    ]
+  },
+  "patterns": ["Chart legend", "Calendar type key", "Heat map key"],
+  "compatibility": {
+    "allowedWith": ["Card", "Panel", "AnalyticalListPage", "Calendar", "DynamicSideContent"],
+    "forbiddenWith": ["Standalone without a chart", "Inside Dialog title", "Table cells"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

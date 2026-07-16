@@ -1,0 +1,61 @@
+{
+  "componentName": "AddPeopleToCalendar",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustrated-message/",
+  "purpose": "Empty-state illustration used inside IllustratedMessage for empty planning-calendar or scheduling views where no people/attendees have been added yet.",
+  "whenToUse": [
+    "Empty planning calendar awaiting attendees",
+    "Team scheduling view before members are assigned",
+    "Meeting scheduler with no participants",
+    "Resource planner needing user assignment"
+  ],
+  "whenNotToUse": [
+    "For general empty calendar — use EmptyPlanningCalendar",
+    "For empty user directory — use appropriate empty-state variant",
+    "In non-scheduling contexts",
+    "As decoration"
+  ],
+  "doRules": [
+    "Pair with CTA ('Add attendees', 'Assign team')",
+    "Include description explaining why users are needed",
+    "Use appropriate size for the container",
+    "Keep tone welcoming, not accusatory"
+  ],
+  "dontRules": [
+    "Do not use without a call-to-action",
+    "Do not use for permission-denied states",
+    "Do not shrink below legible size",
+    "Do not use in single-user contexts"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside IllustratedMessage in empty scheduling region",
+    "sizing": "Spot 48×48 · Dialog 120×120 · Scene 240×240",
+    "spacing": "16px between elements",
+    "alignment": "Centered in the empty region"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 40 chars; description ≤ 120 chars",
+    "contentRules": "Title names the state; description invites action",
+    "examples": ["Title: 'No attendees yet' · Description: 'Add people to see their availability' · Button: 'Add attendees'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Scene / Dialog size",
+    "L": "Dialog size",
+    "M": "Dialog size",
+    "S": "Spot size"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "role='img' with descriptive aria-label",
+      "Title as semantic heading",
+      "CTA has clear action label",
+      "Focus moves to CTA on show"
+    ]
+  },
+  "patterns": ["Empty planning calendar", "Meeting scheduler onboarding", "Team scheduler"],
+  "compatibility": {"allowedWith": ["IllustratedMessage (only)"], "forbiddenWith": ["Standalone", "Any other parent"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

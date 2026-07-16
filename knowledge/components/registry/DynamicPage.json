@@ -1,0 +1,150 @@
+{
+  "componentName": "DynamicPage",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "showFooter",
+      "ui5Name": "showFooter",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    },
+    {
+      "name": "headerExpanded",
+      "ui5Name": "headerExpanded",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    },
+    {
+      "name": "backgroundDesign",
+      "ui5Name": "backgroundDesign",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Standard"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "page-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 20,
+      "sapStyleName": "App Headers/Page Title"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapPageHeader_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapPageHeader_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    },
+    {
+      "role": "title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Header collapse/expand via keyboard"
+    }
+  ],
+  "doRules": [
+    "Use DynamicPage for Object Page floorplan",
+    "Always include DynamicPageTitle and content section",
+    "Use DynamicPageHeader for snappable metadata"
+  ],
+  "dontRules": [
+    "Do not use DynamicPage for simple forms — use Form"
+  ],
+  "compatibleComponents": [
+    "DynamicPageTitle",
+    "DynamicPageHeader",
+    "IconTabBar",
+    "ObjectPageLayout"
+  ],
+  "incompatiblePatterns": [
+    "Inside Dialog"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/dynamicpage/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.DynamicPage",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.DynamicPage",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "not-injectable",
+    "sizingConstraints": "Full viewport height; resizes with viewport.",
+    "knownIssues": [
+      "Page-layout wrapper — plugin uses SKIP_SELF to recurse into slots."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": true,
+    "validChildren": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "IconTabBar",
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "SapColHeader",
+      "SapTableRow",
+      "Table",
+      "List",
+      "Card",
+      "Carousel",
+      "Panel",
+      "Form",
+      "SimpleForm",
+      "MessageStrip",
+      "IllustratedMessage",
+      "ProgressIndicator",
+      "SapFormSection",
+      "Bar",
+      "DynamicSideContent"
+    ],
+    "mustInclude": [
+      "DynamicPageTitle"
+    ],
+    "mustExclude": [
+      "Dialog",
+      "Popover",
+      "Menu"
+    ],
+    "commonSiblings": [
+      "ShellBar",
+      "NativeSideNav"
+    ]
+  },
+  "slotNames": [
+    "title",
+    "header",
+    "content",
+    "footer"
+  ]
+}

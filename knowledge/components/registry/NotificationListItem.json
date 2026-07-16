@@ -1,0 +1,178 @@
+{
+  "componentName": "NotificationListItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "6fe89ae5f6a512bebad2f9737ed134bccac1faed",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "description",
+      "ui5Name": "description",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "datetime",
+      "ui5Name": "datetime",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "priority",
+      "ui5Name": "priority",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    },
+    {
+      "name": "authorName",
+      "ui5Name": "authorName",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "unread",
+      "ui5Name": "unread",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "default",
+    "unread",
+    "read"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "App Headers/List Item Title"
+    },
+    {
+      "role": "description",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "metadata",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 11,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapList_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "unread-indicator",
+      "token": "sapActiveColor",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "description-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "priority-high",
+      "token": "sapNegativeElementColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "priority-medium",
+      "token": "sapCriticalElementColor",
+      "fallbackHex": "#E76500"
+    },
+    {
+      "role": "priority-low",
+      "token": "sapPositiveElementColor",
+      "fallbackHex": "#256F3A"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use NotificationListItem as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/notification/)"
+  ],
+  "dontRules": [
+    "Do not use NotificationListItem outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/notification/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Notification List Item' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

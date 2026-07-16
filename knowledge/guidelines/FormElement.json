@@ -1,0 +1,62 @@
+{
+  "componentName": "FormElement",
+  "slug": "form-element",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/form-element/",
+  "purpose": "Single field row inside a FormContainer \u2014 a Label + one or more input fields.",
+  "whenToUse": [
+    "Inside FormContainer",
+    "Every input field in a Form"
+  ],
+  "whenNotToUse": [
+    "Outside FormContainer",
+    "For non-form layouts"
+  ],
+  "doRules": [
+    "Always include a Label",
+    "Bind Label to its Input via labelFor",
+    "Use one main Input per FormElement"
+  ],
+  "dontRules": [
+    "Do not omit the Label",
+    "Do not stack multiple Labels per FormElement",
+    "Do not nest FormElements"
+  ],
+  "layoutGuidance": {
+    "placement": "Place FormElement inside a compatible container (FormContainer).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for forms.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside FormContainer"
+  ],
+  "compatibility": [
+    "FormContainer"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

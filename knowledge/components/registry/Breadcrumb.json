@@ -1,0 +1,167 @@
+{
+  "componentName": "Breadcrumb",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "5743166bac11fdf110a54fd7d85436fed186d3b2",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [
+    {
+      "property": "Type",
+      "values": [
+        "Standard",
+        "Current"
+      ],
+      "default": "Standard"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "Parent Item"
+    },
+    {
+      "name": "isCurrent",
+      "ui5Name": "isCurrent",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active"
+  ],
+  "typographyRules": [
+    {
+      "role": "link-default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "current-item",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "state": "Standard",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "text",
+      "state": "Current",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "text",
+      "state": "Separator",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Link text contrast ≥ 4.5:1 against page background (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min touch target 32px (Compact) / 44px (Cozy)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Current item should NOT be a link — convey current location"
+    },
+    {
+      "category": "semantics",
+      "requirement": "Use <nav aria-label='Breadcrumb'> wrapper; final item aria-current='page'"
+    }
+  ],
+  "doRules": [
+    "Always include in app shell / object page header when hierarchy depth > 1",
+    "Show full path from root to current page",
+    "Make every item before current navigable; current item is plain text",
+    "Place above the page title in the DynamicPageTitle component"
+  ],
+  "dontRules": [
+    "Do not use Breadcrumb when the user is at the root (Home)",
+    "Do not include the current page as a link — it must be plain text",
+    "Do not show more than ~5 levels; collapse middle items with ellipsis if deeper",
+    "Do not use Breadcrumb in lieu of a working back button"
+  ],
+  "compatibleComponents": [
+    "DynamicPageTitle",
+    "DynamicPage",
+    "ObjectPageLayout",
+    "ShellBar"
+  ],
+  "incompatiblePatterns": [
+    "Inside a Dialog — modal dialogs do not have hierarchy context",
+    "On worklist screens where users come from a single 'my queue' entry point"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/breadcrumb/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Breadcrumbs",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Breadcrumbs",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Breadcrumbs/sample/sap.m.sample.Breadcrumbs"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Plugin uses SAP Breadcrumb instance. Current Item text node is at instance root; Parent Item is a nested instance with its own Text child. Both text nodes are populated via setText() with target name lookup. The instance ships with hardcoded 'Parent Item / Current item' demo content that gets replaced. See plugin code.js handler at comp === 'Breadcrumb' (~line 1899) and DynamicPageTitle breadcrumb injection (~line 4280).",
+  "composition": {
+    "validParents": [
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Link",
+      "Text"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "Dialog",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "Title"
+    ]
+  },
+  "slotNames": [
+    "links"
+  ]
+}

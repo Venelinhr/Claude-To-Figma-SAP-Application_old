@@ -1,0 +1,85 @@
+{
+  "componentName": "Panel",
+  "slug": "panel",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/panel/",
+  "purpose": "A container with a header that groups related content. Can be expandable to show/hide content.",
+  "whenToUse": [
+    "To group related content with a visible header",
+    "For expandable advanced settings",
+    "As a section within a page",
+    "For grouping form sections"
+  ],
+  "whenNotToUse": [
+    "As primary navigation",
+    "For full-page content \u2014 use DynamicPage",
+    "For modal content \u2014 use Dialog"
+  ],
+  "doRules": [
+    "Use Panel to group related content with a header",
+    "Use Expandable when content is optional or advanced",
+    "Set headerText to describe the group",
+    "Use ToolbarToolbar for header-level actions"
+  ],
+  "dontRules": [
+    "Do not nest Panel inside Panel more than 2 levels",
+    "Do not use Panel as primary navigation",
+    "Do not omit header text"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside page content, Object Page section.",
+    "sizing": "Width fills parent.",
+    "spacing": "Internal padding 16px.",
+    "alignment": "Header top, content below."
+  },
+  "contentGuidance": {
+    "labelLength": "Header text 1\u20135 words.",
+    "contentRules": [
+      "Use Bold 16px for header",
+      "Nest Form, Table, or List as content"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full layout",
+    "L": "Full layout",
+    "M": "Full layout",
+    "S": "May collapse by default if Expandable"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter on header toggles expand/collapse",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Panel has headerText",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Expanded state announced via aria-expanded"
+    }
+  ],
+  "patterns": [
+    "Content section",
+    "Advanced settings group"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Form",
+      "Table",
+      "List",
+      "IconTabBar"
+    ],
+    "incompatible": [
+      "Inside table cell",
+      "Inside ShellBar"
+    ]
+  },
+  "exceptions": [
+    "Use Card for elevated panel-like containers with shadow"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

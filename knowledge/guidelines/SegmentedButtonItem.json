@@ -1,0 +1,64 @@
+{
+  "componentName": "SegmentedButtonItem",
+  "slug": "segmented-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/segmented-button/",
+  "purpose": "A single option inside a SegmentedButton — a toggle button representing one of several mutually-exclusive choices. Shown alongside other SegmentedButtonItems in a horizontal group.",
+  "whenToUse": [
+    "As an option in a SegmentedButton (view toggles, filter modes)",
+    "For 2–5 mutually exclusive choices (Day / Week / Month view)",
+    "When the options are equally likely — no primary bias",
+    "When you want visible toggle state (unlike a Select dropdown)"
+  ],
+  "whenNotToUse": [
+    "For 6+ options — use Select or ComboBox",
+    "For multiple simultaneous selections — use CheckBox group",
+    "For a single primary action — use Button",
+    "Standalone — always inside a SegmentedButton"
+  ],
+  "doRules": [
+    "Use short labels (1–2 words)",
+    "Show icons when the choices are visual (grid vs list view)",
+    "Keep the selected state clearly visible (background + text color)",
+    "Maintain consistent width across items in the same group"
+  ],
+  "dontRules": [
+    "Do not use for more than 5 items — becomes hard to scan",
+    "Do not omit selected state — user must know current choice",
+    "Do not mix icon-only and label items in the same group",
+    "Do not use for permanent state changes without confirmation"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside SegmentedButton",
+    "sizing": "Height matches button (32/40px compact/cozy); width hugs content or fixed uniformity",
+    "spacing": "No gap between items; shared border",
+    "alignment": "Horizontal row"
+  },
+  "contentGuidance": {
+    "labelLength": "1–15 characters",
+    "contentRules": "Noun or short verb (Day, List, All, Details)",
+    "examples": ["Day · Week · Month", "[Grid] [List]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full labels visible",
+    "L": "Full labels visible",
+    "M": "May shrink; icons may replace text",
+    "S": "May collapse to a dropdown Select"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "role='button' with aria-pressed reflecting selected state",
+      "SegmentedButton parent has role='group' with aria-label",
+      "Keyboard: Arrow keys move between items; Enter/Space selects",
+      "Icon-only items have aria-label"
+    ]
+  },
+  "patterns": ["View toggle", "Filter mode toggle", "Density toggle", "Time-range toggle"],
+  "compatibility": {
+    "allowedWith": ["SegmentedButton (only)"],
+    "forbiddenWith": ["Any parent other than SegmentedButton"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

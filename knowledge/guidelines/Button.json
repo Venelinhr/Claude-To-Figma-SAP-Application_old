@@ -1,0 +1,111 @@
+{
+  "componentName": "Button",
+  "slug": "button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/button/",
+  "purpose": "A clickable control that triggers an action. Buttons come in multiple semantic types (Emphasized, Accept, Reject, Negative, Critical, Transparent) to communicate action priority and consequence.",
+  "whenToUse": [
+    "Trigger primary or secondary actions in forms, toolbars, dialogs, and pages",
+    "Use Emphasized type for the single primary action per screen",
+    "Pair an icon with a label for clarity when the icon is not universally recognized",
+    "Use Transparent or Ghost for de-emphasized secondary actions",
+    "Use Negative for destructive actions like delete or cancel-and-discard"
+  ],
+  "whenNotToUse": [
+    "Use a Link when the action is navigation (going to another page or URL)",
+    "Inside table cells at small sizes \u2014 use Link or IconButton instead",
+    "When stacking many buttons vertically \u2014 restructure with toolbars or menus"
+  ],
+  "doRules": [
+    "Use Emphasized type for the single primary action per screen",
+    "Pair an icon with a label for clarity when the icon is not universally recognized",
+    "Keep button labels short and action-oriented (verb-first)",
+    "Use Negative type with confirmation dialog for destructive actions"
+  ],
+  "dontRules": [
+    "Do not use multiple Emphasized buttons in one toolbar \u2014 confuses primary intent",
+    "Do not use vague labels like \"OK\", \"Click here\", \"Submit\" when more specific text fits",
+    "Do not use a Button when a Link is more appropriate (navigation vs action)",
+    "Do not put primary buttons on the left of toolbars \u2014 primary action goes right"
+  ],
+  "layoutGuidance": {
+    "placement": "Right-aligned in toolbars for primary actions; left for secondary/cancel.",
+    "sizing": "Auto width; height 26px Compact / 36px Cozy. Min 32\u00d732 touch target.",
+    "spacing": "8px gap between buttons in toolbar.",
+    "alignment": "Group related buttons; separate destructive with spacing."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words max. Verb-first (\"Save\", \"Add Artifact\", \"Delete Package\").",
+    "contentRules": [
+      "Use sentence case unless brand requires title case",
+      "Avoid punctuation in labels",
+      "Localize all labels"
+    ],
+    "examples": [
+      "Save",
+      "Cancel",
+      "Add",
+      "Delete Package",
+      "Export"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full button with label and optional icon",
+    "L": "Full button with label and optional icon",
+    "M": "Full button or icon-only for space-constrained toolbars",
+    "S": "Icon-only with tooltip on mobile; move secondary actions to overflow menu"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "contrast",
+      "requirement": "Text-to-background contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732px Compact / 44\u00d744px Cozy",
+      "wcag": "2.5.5 (AAA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Icon-only buttons MUST have tooltip + aria-label",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator with 3:1 contrast against adjacent colors",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Enter and Space activate; Tab moves focus",
+      "wcag": "2.1.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Toolbar action",
+    "Dialog action",
+    "Form submission",
+    "Bulk action"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Toolbar",
+      "OverflowToolbar",
+      "Dialog",
+      "Form",
+      "Panel",
+      "MenuButton",
+      "ShellBar"
+    ],
+    "incompatible": [
+      "Inside Table cells at S viewport",
+      "Stacked vertically in toolbar"
+    ]
+  },
+  "exceptions": [
+    "When used inside IconTabBar action area, hide label and show icon only",
+    "In condensed list rows, prefer Link over Button"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

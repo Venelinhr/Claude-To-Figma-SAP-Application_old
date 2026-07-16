@@ -197,3 +197,374 @@ the figma-builder agent delivers this structured creation plan instead of a JSON
 ```
 
 This plan format is human-executable in Figma and machine-parseable for future automation.
+
+---
+
+## Progress Row — Canonical Pattern (confirmed 2026-07-15, user: "Perfect")
+
+**Screen:** Activities View `615:36810` · List Report, 320px
+
+### ✅ CORRECT — native green frame (use this)
+```js
+const bar = figma.createFrame();
+bar.name = 'Progress Bar';
+bar.fills = [{type:'SOLID', color:{r:0.118, g:0.561, b:0.337}}]; // sapPositiveElementColor
+bar.resize(40, 12);
+bar.cornerRadius = 6;
+```
+Then add an `ObjectStatus` instance beside it for the checkmark:
+```js
+const osSet = await figma.importComponentSetByKeyAsync('748d609ead5d4a246d7cd7c144b94b518c467e58');
+const os = osSet.defaultVariant.createInstance();
+os.setProperties({'Semantic':'Success','Inverted':'No','Large Design':'No','Form Factor':'Compact'});
+// hide all text nodes inside for icon-only display
+const texts = os.findAll(n => n.type === 'TEXT');
+for (const t of texts) { t.visible = false; }
+```
+
+### ❌ WRONG — do NOT use SAP ProgressIndicator composite
+- Its internal bar is driven by `'✏️ Progress Bar'` text prop — unreliable via setProperties
+- Internal fill percentage can't be resized via sublayer access
+- Looks correct in kit but renders incorrectly when configured via API
+- **Always use the native green frame above instead**
+
+### Full Progress Row layout
+```
+Progress Row (HORIZONTAL auto-layout, FILL width, itemSpacing=8)
+├── "Progress:" Label [typo:label]
+├── "100%" Label [typo:label-emphasized]  
+├── Progress Bar (native frame, 40×12, cornerRadius=6, green fill)
+└── ObjectStatus (Semantic=Success, icon-only, text nodes hidden)
+```
+
+---
+
+## ObjectStatus Icon-Only Pattern (confirmed 2026-07-14/15)
+
+```js
+// Import
+const osSet = await figma.importComponentSetByKeyAsync('748d609ead5d4a246d7cd7c144b94b518c467e58');
+const os = osSet.defaultVariant.createInstance();
+
+// STEP 1: setProperties BEFORE reading sublayer nodes (P-023)
+os.setProperties({'Semantic':'Success','Inverted':'No','Large Design':'No','Form Factor':'Compact'});
+
+// STEP 2: hide all text nodes for icon-only display
+const texts = os.findAll(n => n.type === 'TEXT');
+for (const t of texts) { t.visible = false; }
+// Result: green checkmark icon only, no label text
+```
+
+**Valid Semantic values:** `None` / `Success` / `Warning` / `Error` / `Information`
+**❌ WRONG props:** Do NOT pass `Form Factor` = anything except `Compact`/`Cozy`. Do NOT pass `State` — that prop doesn't exist.
+
+---
+
+## DynamicPageHeader (DPH) — Clone and Strip Pattern
+
+**Context:** Real sap.f DPH ships heavy at 1440px with breadcrumbs, KPIs, toolbar rows. At 320px narrow it needs ~40–52 sublayer hides to clean to a simple title+subtitle header.
+
+### ✅ CORRECT method
+```js
+// Clone from clean existing DPH (do NOT import fresh — the clone already has SAP tokens)
+const srcDPH = figma.getNodeById('601:36910'); // clean yanatest DPH
+const dph = srcDPH.clone();
+screen.insertChild(0, dph);
+dph.layoutSizingHorizontal = 'FILL';
+```
+
+### Strip steps (at 320px narrow)
+1. Hide `Breadcrumb and Navigation` frame
+2. Hide `Header Content Area` (collapsible tall zone)
+3. Inside `Page Title and Actions`: hide `Toolbar` (renders as full-width row)
+4. Inside `Title Area`: hide all Breadcrumb instances, KPI instances, action instances
+5. Find H1 = **biggest `fontSize` text node** (NOT by name — find by `Math.max(fontSize)`)
+6. Set H1 text → your title
+7. Set subtitle text node
+8. **Set `Title Area itemSpacing = 4`** — SAP standard rhythm. Default is 0 → causes title/subtitle overlap
+
+### Overflow menu (three-dots top-right)
+`appendChild` into a DPH instance throws: `"Cannot move node inside of an instance"`. The DPH's internals are locked.
+
+**✅ CORRECT fix:**
+```js
+const ibSet = await figma.importComponentSetByKeyAsync('c1ee1ca76974c720ecd4b1888e1e23ac8a36ec63');
+const btn = ibSet.defaultVariant.createInstance();
+btn.setProperties({'Form Factor':'Compact','Interaction State':'Regular'});
+// swap icon to overflow/more icon
+const ico = await figma.importComponentByKeyAsync('6a0c2f0be4be541cc17870a7a633b19e3cb2d1df');
+const swapProp = Object.keys(btn.componentProperties).find(k => k.includes('icon') || k.includes('Icon'));
+if (swapProp) btn.setProperties({[swapProp]: ico.id});
+// place as ABSOLUTE sibling of DPH inside screen frame
+screen.appendChild(btn);
+btn.layoutPositioning = 'ABSOLUTE';
+btn.x = screenWidth - btn.width - 8;
+btn.y = 10;
+```
+
+**❌ WRONG:** trying to appendChild inside the DPH instance, or using `figma.createFrame()` for this button.
+
+---
+
+## IconTabBar — Active Tab Selection (confirmed 2026-07-14)
+
+**Failure:** First tab renders with blue underline; correct tab should be selected.
+**Root cause:** Default DPH state has first tab active. Must explicitly set each tab's Interaction State.
+
+### ✅ CORRECT
+```js
+// Find tab instances by walking up from their TEXT nodes
+const allTexts = itb.findAll(n => n.type === 'TEXT');
+for (const t of allTexts) {
+  // walk up to find INSTANCE parent
+  let node = t.parent;
+  while (node && node.type !== 'INSTANCE') node = node.parent;
+  if (!node) continue;
+  
+  if (t.characters === 'General') {
+    node.setProperties({'Interaction State': 'Regular Inactive'});
+  } else if (t.characters === 'Steps') {
+    node.setProperties({'Interaction State': 'Regular Active'});
+  }
+}
+```
+
+**Valid Interaction State values:** `Regular Active` / `Regular Inactive` / `Hover` / `Focused`
+**❌ WRONG:** setting text color, stroke, or background directly — use `Interaction State` only.
+
+---
+
+## SAP Toolbar Composite — WARNING (confirmed 2026-07-14)
+
+**Problem:** Real `sap.m.Toolbar` / `sap.m.OverflowToolbar` component injects its own "Create / Copy / Paste" chrome and has no `title` prop accessible via setProperties.
+
+**✅ CORRECT for custom toolbar rows (title + icon buttons only):**
+```js
+// Use: real SAP Label + real SAP IconButtons in an auto-layout frame
+const row = figma.createFrame();
+row.name = 'Toolbar'; // L3 name
+row.layoutMode = 'HORIZONTAL';
+row.primaryAxisAlignItems = 'SPACE_BETWEEN';
+row.layoutSizingHorizontal = 'FILL';
+// Left: SAP Label instance
+const lbl = lblSet.defaultVariant.createInstance();
+// Right: SAP IconButton cluster
+const actions = figma.createFrame();
+actions.name = 'Toolbar Actions';
+actions.layoutMode = 'HORIZONTAL';
+```
+
+**✅ Use REAL Toolbar component only when:** you need the full OverflowToolbar slot machinery (action items with overflow into "`...`" menu).
+
+---
+
+## Complex Screen Strategy — Skeleton + Content Split (confirmed 2026-07-14)
+
+For screens with 8+ components, split into 2 `use_figma` calls:
+
+**Call 1 — Skeleton (place zones):**
+```js
+// Import ALL components in one Promise.all (3-4× faster)
+const [dphC, itbC, btnC, ibC, selC, inpC, lblC, osC, oaC] = await Promise.all([
+  figma.importComponentSetByKeyAsync(K.DynamicPageHeader),
+  figma.importComponentSetByKeyAsync(K.IconTabBar),
+  figma.importComponentSetByKeyAsync(K.Button),
+  figma.importComponentSetByKeyAsync(K.IconButton),
+  figma.importComponentSetByKeyAsync(K.Select),
+  figma.importComponentSetByKeyAsync(K.Input),
+  figma.importComponentSetByKeyAsync(K.Label),
+  figma.importComponentSetByKeyAsync(K.ObjectStatus),
+  figma.importComponentSetByKeyAsync(K.ObjectAttribute),
+]);
+// Place instances with placeholder names — no text injection yet
+```
+
+**Call 2 — Content (inject text/variants):**
+```js
+// Read node IDs from Call 1 result, inject content
+const h1 = figma.getNodeById(titleNodeId);
+await figma.loadFontAsync({family:'72', style:'Bold'});
+h1.characters = 'My Screen Title';
+// set variant props, fill meta rows, etc.
+```
+
+**Why:** Smaller code blocks → fewer model token errors → less iteration. Confirmed ~25k→5k token reduction.
+
+**Also:** Reuse pre-imported compSet for multiple instances:
+```js
+// ✅ CORRECT — reuse compSet
+const inst1 = btnC.defaultVariant.createInstance();
+const inst2 = btnC.defaultVariant.createInstance();
+// ❌ WRONG — re-import per instance
+const inst1 = (await figma.importComponentSetByKeyAsync(K.Button)).defaultVariant.createInstance();
+const inst2 = (await figma.importComponentSetByKeyAsync(K.Button)).defaultVariant.createInstance();
+```
+
+---
+
+## Form Field FILL Fix — Full 3-Level Procedure (confirmed 2026-07-11)
+
+**Problem:** SAP kit field components (Input, DatePicker, Select, ComboBox) ship with hardcoded native width ~250–272px and `layoutSizingHorizontal='FIXED'`. Dropped into a narrower column they overflow — cropped sliver on right edge.
+
+**Root cause of SILENT FAIL:** Setting `picker.layoutSizingHorizontal='FILL'` SILENTLY FAILS when the picker's parent column is `HUG`-width (`counterAxisSizingMode='AUTO'`). A HUG column has no fixed width to fill to, so FILL is rejected and picker stays at 272px.
+
+### ✅ CORRECT — 3-level fix (order matters)
+```js
+// Level 1: Row must be FIXED width (gives columns a concrete width to fill into)
+row.layoutSizingHorizontal = 'FIXED';
+row.resize(contentWidth, row.height);
+
+// Level 2: Column FILLs the row
+col.layoutSizingHorizontal = 'FILL';
+// VERIFY: console.assert(col.layoutSizingHorizontal === 'FILL')
+
+// Level 3: Strip picker min/max, then FILL the now-fixed column
+inst.minWidth = null;
+inst.maxWidth = null;
+inst.layoutSizingHorizontal = 'FILL';
+// VERIFY: console.assert(Math.abs(inst.width - col.width) < 2)
+```
+
+**Always read back** `.width`/`.layoutSizingHorizontal` after — a silent no-op leaves the overflow bug.
+
+**Standing instruction (2026-07-11):** Proactively fix field FILL/overflow on every MCP form build — don't wait to be told.
+
+---
+
+## SegmentedButton Label Injection (confirmed 2026-07-10, Schedule Op v3)
+
+**Recurring failure:** SegmentedButton renders as "Hourly / Button / Button / Button" — extra segments show placeholder "Button" labels.
+
+**Root cause:** (1) Extra segments disabled by default, (2) raw `findAll(TEXT)` order hits hidden 5th segment text node first, offsetting all labels.
+
+### ✅ CORRECT
+```js
+const sbSet = await figma.importComponentSetByKeyAsync('308476a5285b5a132241dc1c118d09ecf8d82273');
+const sb = sbSet.defaultVariant.createInstance();
+
+// Step 1: Enable extra segments
+sb.setProperties({
+  '3rd Button#167915:5': true,
+  '4th Button#167915:10': true,
+  // '5th Button#167915:15': true  // if needed
+});
+
+// Step 2: Find VISIBLE text nodes only, sorted by X position
+const texts = sb.findAll(n => n.type === 'TEXT').filter(t => {
+  let p = t.parent;
+  while (p && p.id !== sb.id) {
+    if (p.visible === false) return false;
+    p = p.parent;
+  }
+  return t.visible !== false;
+}).sort((a, b) => a.absoluteBoundingBox.x - b.absoluteBoundingBox.x);
+
+// Step 3: Inject labels
+const labels = ['Hourly', 'Daily', 'Monthly', 'Yearly'];
+for (let i = 0; i < Math.min(texts.length, labels.length); i++) {
+  await figma.loadFontAsync(texts[i].fontName);
+  texts[i].characters = labels[i];
+}
+```
+
+**❌ WRONG:** `sb.findAll(n => n.type==='TEXT')` without visible filtering → hits hidden 5th node → "Hourly/Button/Button/Button" bug.
+
+---
+
+## SideNavigation — Exact setProperties Key Names (confirmed 2026-07-15)
+
+Component set key: `699:37890` (canonical ref) / `701:119633` (full confirmed build)
+
+```js
+inst.setProperties({
+  '✏️ Text#283293:137': 'Operations',           // item label
+  'Icon#328810:0': iconComponentId,              // icon (use importComponentByKeyAsync(key).id)
+  'Navigation Indicator / External Link Icon#283293:50': arrowComponentId, // right arrow
+  'Navigation Indicator / External Link#283218:12': true,  // show divider + arrow
+  'Two Click-Area#283293:112': true,             // enable expand/collapse
+  'Selected': 'True',                            // selected state (string, not boolean)
+});
+```
+
+**Width calibration:** After content injection, resize to minimum 260px if labels truncate.
+
+---
+
+## Figma API Gotchas (confirmed July 2026)
+
+| # | Symptom | Root cause | ✅ Fix |
+|---|---|---|---|
+| 1 | `setProperties` runs, slot items unchanged | Prior overrides on clone resist writes | Clear slot, use fresh prototypes from ORIGINAL (P-028) |
+| 2 | `t.characters` on nested instance text fails silently | Text inside nested instance = read-only | Use `setProperties` on the instance, not the text node |
+| 3 | `layoutSizingHorizontal='FILL'` silently ignored | Parent is HUG-width — no concrete width to fill | Set parent to FIXED first, then FILL child |
+| 4 | `individualStrokeWeights` throws | Not supported in `use_figma` context | Use `strokeWeight` only |
+| 5 | `counterAxisAlignItems='STRETCH'` throws | Invalid value | Use `'MIN'`, `'MAX'`, or `'CENTER'` |
+| 6 | Screenshot returns stale/cached result | Screenshot API caches parent nodes | Screenshot a CHILD node instead for fresh render |
+| 7 | `appendChild` into INSTANCE throws | Instance internals are locked | Insert into parent frame, not the instance |
+| 8 | `resize()` freezes auto-layout frame dimensions | Overrides auto-layout sizing | Use `layoutSizingHorizontal/Vertical` instead |
+| 9 | `setProperties` sees wrong sublayer structure | Sublayers shift after property change | Call `setProperties` BEFORE reading sublayer nodes (P-023) |
+| 10 | ObjectStatus shows text when icon-only needed | Text nodes not hidden | `findAll(TEXT)` after setProperties, set `visible=false` |
+| 11 | `importComponentByKeyAsync` throws "not found" | Called on a COMPONENT SET key, not a single component | Use `importComponentSetByKeyAsync` then `.defaultVariant` |
+| 12 | ObjectAttribute text clips short | Component has hardcoded ~74px max width | Use native text rows for long labels instead |
+| 13 | Fill-override on SAP instance has no effect | Library instances own their fills | Never set `.fills` on a SAP kit instance — use `setProperties` for variants |
+
+---
+
+## SAP Composite Slot Injection — Clone-Canonical Method
+
+**Applies to:** SideNavigation, Dialog, DynamicPageHeader, FilterBar, OverflowToolbar, and any SAP composite with named `⿻` slot frames.
+
+**Rule:** NEVER build SAP composites from scratch. ALWAYS clone an existing correctly-built node.
+
+### Why
+- Cloning preserves all SAP token bindings (`var(--sapXxx)` fills, font tokens) automatically
+- Cloning preserves the internal `⿻` slot frame structure that slot injection requires
+- Building from scratch produces instances with no slots → items land outside slots → `setProperties` silently fails
+
+### The 8-step method (confirmed 2026-07-15, 100% satisfaction)
+
+```javascript
+// 1. Find an existing correctly-built composite node on canvas
+const ref = figma.getNodeById('699:37890'); // canonical SideNavigation
+
+// 2. Clone it — inherits all slot frames + SAP token bindings
+const nav = ref.clone();
+figma.currentPage.appendChild(nav);
+
+// 3. Find the ⿻ slot frame inside the clone
+const slot = nav.findOne(n => n.name === '⿻ Navigation Items');
+
+// 4. Save prototype references from the ORIGINAL ref BEFORE any modification
+const itemProto = ref.findOne(n => n.name === 'Navigation Item');
+
+// 5. Clear all existing slot children
+[...slot.children].forEach(n => n.remove());
+
+// 6. For each item: clone fresh prototype from ORIGINAL, inject, configure
+for (const item of navItems) {
+  const inst = itemProto.clone();      // fresh from original — no overrides
+  slot.appendChild(inst);
+  inst.layoutSizingHorizontal = 'FILL';
+  inst.setProperties({
+    '✏️ Text#283293:137': item.label,
+    'Icon#328810:0': item.iconKey,
+  });
+}
+```
+
+### Critical rules
+- **Save prototypes BEFORE clearing slot** — once children are removed, those nodes are gone
+- **Never clone prototypes from the modified clone** — inherited overrides block `setProperties` silently (P-028)
+- **`setProperties` only works on DIRECT children of the slot frame** — double-nested items resist writes (P-027)
+- Resize to 260px minimum if text truncates after build
+
+### Canonical reference nodes (file `p7zm5EMBk5DRRZdxNeJ4f5`)
+| Node | What it is |
+|---|---|
+| `699:37890` | SideNavigation — confirmed slot structure |
+| `701:119633` | SideNavigation — complete confirmed build |
+| `709:40690` | Schedule Form Step 2 — all-SAP-token reference |
+| `709:41339` | Live Preview Panel — execution list + summary |
+
+### General principle
+Applies to ALL SAP composite screens — clone existing correctly-built node, update text nodes (`t.characters`), use `setProperties` for variant/icon changes. Never use raw hex — clone inherits correct `var(--sapXxx)` fills automatically.

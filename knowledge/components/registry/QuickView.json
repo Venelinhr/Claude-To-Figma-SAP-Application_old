@@ -1,0 +1,142 @@
+{
+  "componentName": "QuickView",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Popover",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Overlay",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "attribute",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Include Avatar + title + 3-5 key attributes",
+    "Provide \"Open\" link to full detail page",
+    "Bind background to sapShellColor"
+  ],
+  "dontRules": [
+    "Do not embed forms in QuickView",
+    "Do not exceed 5 attributes",
+    "Do not nest QuickViews"
+  ],
+  "compatibleComponents": [
+    "Triggered from List rows, Link, Avatar"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/quick-view/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.QuickView",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.QuickView",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.QuickView/sample/sap.m.sample.QuickView"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "QuickView aliases to Popover. Plugin composes Popover with Avatar + Title + ObjectAttribute list + action Link.",
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "Avatar",
+      "Title",
+      "Text",
+      "Label",
+      "Link",
+      "Button",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "Tag"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "pages"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "componentName": "DynamicPageHeader",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "dc90c8dbf7714f165ed79357e9ba6ade5b3701ae",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "content",
+      "ui5Name": "content",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Snapped"
+  ],
+  "typographyRules": [
+    {
+      "role": "header-label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapPageHeader_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapPageHeader_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Pin/unpin via keyboard"
+    }
+  ],
+  "doRules": [
+    "Place metadata that supplements the title (vendor, mode, version, etc.)",
+    "Allow user to snap (collapse) for more content room"
+  ],
+  "dontRules": [
+    "Do not put primary actions here — use DynamicPageTitle"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "FilterBar",
+    "ObjectPageLayout"
+  ],
+  "incompatiblePatterns": [
+    "As page footer"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/dynamicpageheader/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.DynamicPageHeader",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.DynamicPageHeader",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "not-injectable",
+    "sizingConstraints": "Width fills DynamicPage. Height varies by content; collapses on scroll.",
+    "knownIssues": [
+      "SAP DynamicPageHeader instance has empty swap slots — plugin uses native PageHeader frame."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectMarker",
+      "Tag",
+      "Link",
+      "Breadcrumb",
+      "MessageStrip"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "DynamicPageTitle"
+    ]
+  },
+  "slotNames": [
+    "content"
+  ]
+}

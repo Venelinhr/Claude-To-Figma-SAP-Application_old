@@ -1,0 +1,148 @@
+{
+  "componentName": "NotificationBanner",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "aa8ef403a7c765acf86d2e6fc887a6cb496a3371",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "description",
+      "ui5Name": "description",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Standard"
+    },
+    {
+      "name": "showCloseButton",
+      "ui5Name": "showCloseButton",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Information",
+    "Success",
+    "Warning",
+    "Error"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "App Headers/List Item Title"
+    },
+    {
+      "role": "description",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background-information",
+      "token": "sapInformativeElementColor",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "background-success",
+      "token": "sapPositiveElementColor",
+      "fallbackHex": "#256F3A"
+    },
+    {
+      "role": "background-warning",
+      "token": "sapCriticalElementColor",
+      "fallbackHex": "#E76500"
+    },
+    {
+      "role": "background-error",
+      "token": "sapNegativeElementColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "text",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use NotificationBanner as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/notification/)"
+  ],
+  "dontRules": [
+    "Do not use NotificationBanner outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/notification/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Notification Banner' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "SapFormSection",
+      "Table",
+      "List",
+      "IconTabBar",
+      "ObjectPageSection",
+      "ShellBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

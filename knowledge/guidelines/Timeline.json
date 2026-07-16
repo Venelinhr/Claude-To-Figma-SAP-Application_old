@@ -1,0 +1,68 @@
+{
+  "componentName": "Timeline",
+  "slug": "timeline",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/timeline/",
+  "purpose": "Vertical sequence of timestamped events. Used for activity feeds, audit logs, change history, task timelines.",
+  "whenToUse": [
+    "Activity feed of recent events on an object",
+    "Audit log / change history",
+    "Sequence of related events in chronological order"
+  ],
+  "whenNotToUse": [
+    "Hierarchical data \u2014 use Tree",
+    "Tabular comparison \u2014 use Table",
+    "Live chat \u2014 use FeedListItem in a List"
+  ],
+  "doRules": [
+    "Sort newest-first by default",
+    "Show user + action + timestamp per event",
+    "Use TimelineItem children",
+    "Bind text to sapList_TextColor"
+  ],
+  "dontRules": [
+    "Do not paginate Timeline visibly \u2014 show recent N + a \"See more\" link",
+    "Do not interleave with other content"
+  ],
+  "layoutGuidance": {
+    "placement": "Place Timeline inside a compatible container (DynamicPage, Panel, Card).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for data display.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside DynamicPage",
+    "Used inside Panel",
+    "Used inside Card"
+  ],
+  "compatibility": [
+    "DynamicPage",
+    "Panel",
+    "Card"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

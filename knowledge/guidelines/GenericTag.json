@@ -1,0 +1,63 @@
+{
+  "componentName": "GenericTag",
+  "slug": "generic-tag",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/generic-tag/",
+  "purpose": "A compact tag control used to show a numeric KPI alongside a short label. Combines a label with a value, optionally with a semantic status color. Common in dashboards and object headers.",
+  "whenToUse": [
+    "Show a KPI with label + numeric value (e.g. 'Overdue: 12')",
+    "Alongside ObjectStatus when both a metric and a categorical state are needed",
+    "In an Object Header header content region",
+    "For at-a-glance metrics that don't require a full chart"
+  ],
+  "whenNotToUse": [
+    "For purely categorical state without a value — use ObjectStatus",
+    "For a categorical label without a value or state — use InfoLabel",
+    "For long text — use Text or Title",
+    "As a status indicator in table cells — use ObjectStatus for row status"
+  ],
+  "doRules": [
+    "Keep labels to 1-2 words maximum",
+    "Pair semantic status color with icon or text for accessibility",
+    "Use design=StatusIconHidden when the status is expressed by value alone",
+    "Right-align in dashboard KPI rows for visual scanning"
+  ],
+  "dontRules": [
+    "Do not use color alone to convey status (WCAG 1.4.1)",
+    "Do not put full sentences in the label",
+    "Do not stack GenericTags vertically — use a proper KPI grid",
+    "Do not use for booleans — use Switch or CheckBox"
+  ],
+  "layoutGuidance": {
+    "placement": "Horizontal row in dashboards, object header content region, card content",
+    "sizing": "Hug content. Min height 32px compact, 40px cozy",
+    "spacing": "8px between adjacent GenericTags",
+    "alignment": "Label + value inline, or label above value in stacked mode"
+  },
+  "contentGuidance": {
+    "labelLength": "1-15 characters. Longer labels wrap.",
+    "contentRules": "Label is a noun phrase, value is a number or short string",
+    "examples": ["Overdue: 12", "Complete: 87%", "Errors: 3"]
+  },
+  "responsiveBehavior": {
+    "XL": "Inline in horizontal row",
+    "L": "Same",
+    "M": "May wrap to next row",
+    "S": "Stacks vertically or wraps"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.4.1 Use of Color (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "Semantic status colors always paired with icon or descriptive text",
+      "Value + label together form an accessible name",
+      "Focus indicator visible when interactive"
+    ]
+  },
+  "patterns": ["Object Header", "KPI dashboard row", "Card content"],
+  "compatibility": {
+    "allowedWith": ["ObjectHeader", "Card", "Panel", "HBox"],
+    "forbiddenWith": ["Inside Table cells (too small)"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

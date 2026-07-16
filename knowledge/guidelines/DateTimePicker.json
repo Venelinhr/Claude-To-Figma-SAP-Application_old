@@ -1,0 +1,76 @@
+{
+  "componentName": "DateTimePicker",
+  "slug": "date-time-picker",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/date-time-picker/",
+  "purpose": "A single date + time input combining calendar and time picker.",
+  "whenToUse": [
+    "When both date and time-of-day are required",
+    "Meeting time entry, deadline with time, scheduled tasks"
+  ],
+  "whenNotToUse": [
+    "When only date is needed \u2014 use DatePicker",
+    "When only time is needed \u2014 use TimePicker"
+  ],
+  "doRules": [
+    "Use when both date AND time are required",
+    "Show 24-hour or AM/PM based on locale",
+    "Default to current time when applicable"
+  ],
+  "dontRules": [
+    "Do not use when only date or only time is needed",
+    "Do not omit timezone indication when relevant"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Dialog.",
+    "sizing": "256px default.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Date left, time right of picker UI."
+  },
+  "contentGuidance": {
+    "labelLength": "Format hint in placeholder.",
+    "contentRules": [
+      "Locale-aware format",
+      "Optional seconds"
+    ],
+    "examples": [
+      "MM/dd/yyyy HH:mm",
+      "06/25/2026 14:30"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full input + popup",
+    "L": "Full input + popup",
+    "M": "Full input + popup",
+    "S": "Native mobile picker"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab between date and time fields; arrows navigate within",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label",
+      "wcag": "1.3.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Schedule entry",
+    "Timestamp field"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form"
+    ],
+    "incompatible": [
+      "Without Label"
+    ]
+  },
+  "exceptions": [
+    "displayFormat for fine control"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

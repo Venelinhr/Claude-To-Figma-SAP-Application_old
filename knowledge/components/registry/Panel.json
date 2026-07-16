@@ -1,0 +1,162 @@
+{
+  "componentName": "Panel",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "4d19c2a24896033fe5b04bcc5dfdf43e9626283d",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Expandable",
+      "ui5Property": "expandable",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Expanded",
+      "ui5Property": "expanded",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "headerText",
+      "ui5Name": "headerText",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "expandable",
+      "ui5Name": "expandable",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "expanded",
+      "ui5Name": "expanded",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Expanded",
+    "Collapsed"
+  ],
+  "typographyRules": [
+    {
+      "role": "header",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Section Title"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    },
+    {
+      "role": "header-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter on header toggles expand/collapse"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Panel has headerText"
+    }
+  ],
+  "doRules": [
+    "Use Panel to group related content with a header",
+    "Use Expandable when content is optional or advanced"
+  ],
+  "dontRules": [
+    "Do not nest Panel inside Panel more than 2 levels",
+    "Do not use Panel as primary navigation"
+  ],
+  "compatibleComponents": [
+    "Form",
+    "Table",
+    "List",
+    "IconTabBar"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cell",
+    "Inside ShellBar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/panel/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Panel",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Panel",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width fills parent. Height hugs content.",
+    "knownIssues": [
+      "SAP Panel content slot cannot be filled via Plugin API — plugin places Panel as opaque or replaces with content."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Dialog",
+      "Panel",
+      "IconTabBar",
+      "IconTabFilter",
+      "Card",
+      "SapFormSection",
+      "DynamicSideContent",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "headerToolbar",
+    "content",
+    "infoToolbar"
+  ]
+}

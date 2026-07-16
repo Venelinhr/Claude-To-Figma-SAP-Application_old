@@ -1,0 +1,98 @@
+{
+  "componentName": "IconButton",
+  "slug": "icon-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/icon-button/",
+  "purpose": "A button that shows only an icon, no text. Used for compact action triggers when screen space is limited or actions are universally recognized.",
+  "whenToUse": [
+    "In toolbars where space is constrained",
+    "For universally recognized actions (delete, edit, settings)",
+    "For row-level actions in tables",
+    "In ShellBar for global actions (notifications, help, account)"
+  ],
+  "whenNotToUse": [
+    "For primary actions \u2014 use Button with label",
+    "For unfamiliar icon metaphors",
+    "When label adds important clarification"
+  ],
+  "doRules": [
+    "Use a tooltip explaining the action",
+    "Pair with a well-known icon metaphor",
+    "Keep touch area \u226532px even if icon is smaller",
+    "Use Transparent type as default; Emphasized only for emphasis"
+  ],
+  "dontRules": [
+    "Do not use IconButton for primary actions \u2014 use Button with label",
+    "Do not use unfamiliar custom icons",
+    "Do not skip tooltip",
+    "Do not make touch area smaller than 32\u00d732px"
+  ],
+  "layoutGuidance": {
+    "placement": "In toolbars, ShellBar, table rows.",
+    "sizing": "32\u00d732px Compact / 44\u00d744px Cozy. Square aspect.",
+    "spacing": "4px between adjacent icon buttons.",
+    "alignment": "Right-aligned in toolbars by default."
+  },
+  "contentGuidance": {
+    "labelLength": "No label \u2014 tooltip only.",
+    "contentRules": [
+      "Icon must convey action clearly",
+      "Tooltip describes action in verb form"
+    ],
+    "examples": [
+      "Edit",
+      "Delete",
+      "More Options",
+      "Notifications"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Standard 32\u00d732px",
+    "L": "Standard 32\u00d732px",
+    "M": "Standard 32\u00d732px",
+    "S": "May grow to 44\u00d744px for touch targets"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "labeling",
+      "requirement": "Icon-only buttons MUST have tooltip (aria-label)",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732px Compact / 44\u00d744px Cozy",
+      "wcag": "2.5.5 (AAA)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Enter and Space activate",
+      "wcag": "2.1.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Toolbar action",
+    "Row action",
+    "Shell action",
+    "Settings trigger"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Toolbar",
+      "OverflowToolbar",
+      "ShellBar",
+      "Table"
+    ],
+    "incompatible": [
+      "As primary CTA without label"
+    ]
+  },
+  "exceptions": [
+    "ShellIconButton variant has different styling for the application shell"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

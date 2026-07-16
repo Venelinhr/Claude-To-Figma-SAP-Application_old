@@ -1,0 +1,138 @@
+{
+  "componentName": "TwoMonthCalendar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "ad5ce462d34460d73eda13cd7ea3e2677fc27048",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "DatePicker",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "selectedDates",
+      "ui5Name": "selectedDates",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "disabledDates",
+      "ui5Name": "disabledDates",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "month-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "App Headers/Section Title"
+    },
+    {
+      "role": "day-number",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 13,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    },
+    {
+      "role": "weekday-label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 11,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapList_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "day-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "selected-bg",
+      "token": "sapSelectedColor",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "selected-text",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "today",
+      "token": "sapActiveColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "disabled",
+      "token": "sapContent_DisabledTextColor",
+      "fallbackHex": "#B0BFC9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use TwoMonthCalendar as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/calendar/)"
+  ],
+  "dontRules": [
+    "Do not use TwoMonthCalendar outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/calendar/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Two-Month Calendar' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "DynamicSideContent",
+      "IconTabBar",
+      "IconTabFilter",
+      "ObjectPageSection",
+      "ObjectPageSubSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "componentName": "FeedInput",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "f1d392d8546edf20ef209cd39cb624ac7bd6b482",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "submit-fill",
+      "state": "Default",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Include an Avatar showing current user",
+    "Submit button is right-bottom-aligned, Emphasized type",
+    "Auto-grow textarea up to ~5 lines, then scroll",
+    "Disable submit until non-empty"
+  ],
+  "dontRules": [
+    "Do not use FeedInput as a generic textarea",
+    "Do not omit the Avatar",
+    "Do not auto-submit on Enter (use Cmd+Enter or button click)"
+  ],
+  "compatibleComponents": [
+    "List (FeedListItem context)",
+    "DynamicPage",
+    "Card"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/feed-input/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.FeedInput",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.FeedInput",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.FeedInput/sample/sap.m.sample.FeedInput"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "FeedInput is sap.m.FeedInput. Plugin composes Avatar + TextArea + Button into a horizontal Auto Layout with bottom-right submit. Live Figma componentKey f1d392d8546edf20ef209cd39cb624ac7bd6b482 resolved 2026-06-27 from Quartz Web UI Kit_v1.94.",
+  "composition": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "DynamicPage",
+      "ObjectPageSection",
+      "Form"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [
+      "Table",
+      "ShellBar"
+    ],
+    "commonSiblings": [
+      "Avatar",
+      "Button",
+      "Link"
+    ]
+  }
+}

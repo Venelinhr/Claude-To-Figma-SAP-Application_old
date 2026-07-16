@@ -1,0 +1,64 @@
+{
+  "componentName": "ObjectHeader",
+  "slug": "object-header",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-header/",
+  "purpose": "The header region of an Object Page that identifies and summarizes the object. Contains the title, subtitle, key attributes, statuses, and primary actions. Sits at the top of Object Page layouts.",
+  "whenToUse": [
+    "As the header of an Object Page (via ObjectPageDynamicHeaderTitle)",
+    "In a Fullscreen Dialog that shows a single object",
+    "As the header of a Card that summarizes an object",
+    "Anywhere the user needs to see 'what am I looking at?' at a glance"
+  ],
+  "whenNotToUse": [
+    "For a list header — use DynamicPageTitle with count instead",
+    "For a small object preview — use ObjectListItem in a list",
+    "For a modal action confirmation — use Dialog title alone",
+    "Standalone as a page — Object Header is a region, not a page"
+  ],
+  "doRules": [
+    "Show 1-3 key attributes maximum in the visible header",
+    "Include an image or Avatar for identity when available",
+    "Pair status text with icon (no state-by-color-alone)",
+    "Include primary actions in the actions slot"
+  ],
+  "dontRules": [
+    "Do not exceed 5 status indicators — becomes noisy",
+    "Do not put long descriptions in the header — use the content area",
+    "Do not hide the object title — always visible in snapped state",
+    "Do not use in place of DynamicPageTitle for list views"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of Object Page, above sections",
+    "sizing": "Height ~180px expanded, ~50px snapped",
+    "spacing": "16px between attributes; 24px between attribute groups",
+    "alignment": "Title left-aligned; actions right-aligned; attributes in horizontal wrap"
+  },
+  "contentGuidance": {
+    "labelLength": "Title up to 100 chars; subtitle up to 200 chars; attributes ≤ 40 chars each",
+    "contentRules": "Title is a name or ID; subtitle is descriptive; attributes are key-value or numeric",
+    "examples": ["Purchase Order PO-48865 · Supplier ABC Corp · Status: Pending"]
+  },
+  "responsiveBehavior": {
+    "XL": "All attributes visible horizontally",
+    "L": "Attributes may wrap to 2 rows",
+    "M": "Attributes stack to a single column",
+    "S": "Snapped state by default; expand on tap"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.1 Info and Relationships (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "Title as H1 (or semantic heading role)",
+      "Actions have accessible names (aria-label if icon-only)",
+      "Status indicators have icon + text (not color-only)",
+      "Focus order: title → attributes → actions"
+    ]
+  },
+  "patterns": ["Object Page", "Fullscreen Dialog for objects", "Card summary header"],
+  "compatibility": {
+    "allowedWith": ["ObjectPageLayout", "DynamicPage", "Dialog", "Card"],
+    "forbiddenWith": ["List (as list item)", "Table cells", "Toolbar"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

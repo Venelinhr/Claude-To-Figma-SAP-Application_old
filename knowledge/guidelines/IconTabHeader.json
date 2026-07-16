@@ -1,0 +1,62 @@
+{
+  "componentName": "IconTabHeader",
+  "slug": "icon-tab-header",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/icon-tab-header/",
+  "purpose": "Header zone of IconTabBar \u2014 the strip that holds the tab filters. Used as a standalone navigation strip when the content panel is rendered separately.",
+  "whenToUse": [
+    "Standalone tab strip without IconTabBar content panel",
+    "Detached tab navigation in a custom layout"
+  ],
+  "whenNotToUse": [
+    "Normal use \u2014 IconTabBar already includes its IconTabHeader",
+    "For top tabs without filters \u2014 use Tabs"
+  ],
+  "doRules": [
+    "Inherit visual styling from IconTabBar",
+    "Manage selected state same as IconTabBar"
+  ],
+  "dontRules": [
+    "Do not use IconTabHeader if IconTabBar is sufficient \u2014 duplication risk",
+    "Do not nest IconTabHeader"
+  ],
+  "layoutGuidance": {
+    "placement": "Place IconTabHeader inside a compatible container (IconTabBar, DynamicPage).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for navigation.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside IconTabBar",
+    "Used inside DynamicPage"
+  ],
+  "compatibility": [
+    "IconTabBar",
+    "DynamicPage"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

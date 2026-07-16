@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sap-fiori-ai-designer/component-registry-entry.json",
+  "title": "SAP Component Registry Entry",
+  "description": "Normalized record per SAP component — Section 3 Layer 2 of project spec. Single source of truth populated by MCPs and consumed by the plugin.",
+  "type": "object",
+  "required": [
+    "componentName",
+    "figmaCommunityId",
+    "figmaComponentId",
+    "figmaLibraryFileId",
+    "componentCategory",
+    "supportedVariants",
+    "supportedProperties",
+    "supportedStates",
+    "typographyRules",
+    "colorTokenRules",
+    "accessibilityRules",
+    "doRules",
+    "dontRules",
+    "compatibleComponents",
+    "incompatiblePatterns",
+    "guidelineUrl",
+    "demoKitUrl",
+    "apiUrl",
+    "sampleUrls",
+    "libraryVersion",
+    "lastValidated"
+  ],
+  "properties": {
+    "componentName": {
+      "type": "string",
+      "description": "Canonical name used in spec hierarchy[].component — e.g. Button, IconTabBar, ShellBar"
+    },
+    "figmaCommunityId": {
+      "type": "string",
+      "description": "SAP Web UI Kit Figma Community ID — the published library identifier"
+    },
+    "figmaComponentId": {
+      "type": "string",
+      "description": "Figma component set key from search_design_system or library inspection. Used with importComponentSetByKeyAsync()"
+    },
+    "figmaLibraryFileId": {
+      "type": "string",
+      "description": "Figma file ID that hosts this component"
+    },
+    "componentCategory": {
+      "type": "string",
+      "enum": [
+        "Shell", "Navigation", "Button", "Input", "Selection",
+        "Display", "Container", "Layout", "Page", "Table",
+        "List", "Form", "Feedback", "Overlay", "Status",
+        "Typography", "Icon", "Other"
+      ]
+    },
+    "supportedVariants": {
+      "type": "array",
+      "description": "Variant property names + their allowed values from sap.m.* enums",
+      "items": {
+        "type": "object",
+        "required": ["property", "values"],
+        "properties": {
+          "property": { "type": "string", "description": "Variant prop name in Figma" },
+          "ui5Property": { "type": "string", "description": "Matching UI5 API property" },
+          "values": { "type": "array", "items": { "type": "string" } },
+          "default": { "type": "string" }
+        }
+      }
+    },
+    "supportedProperties": {
+      "type": "array",
+      "description": "All settable properties on the Figma instance — names + types",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": { "type": "string" },
+          "ui5Name": { "type": "string", "description": "Matching property in sap.m.* API" },
+          "type": { "type": "string", "enum": ["text", "boolean", "instance-swap", "variant", "icon"] },
+          "exposedInLibrary": { "type": "boolean", "description": "True if Figma instance exposes this — false if internal-only" },
+          "default": { "description": "Default value from SAP defaults" }
+        }
+      }
+    },
+    "supportedStates": {
+      "type": "array",
+      "description": "Interaction states supported by the component",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Regular", "Hover", "Focused", "Active", "Pressed",
+          "Disabled", "ReadOnly", "Selected",
+          "Error", "Warning", "Success", "Information"
+        ]
+      }
+    },
+    "typographyRules": {
+      "type": "array",
+      "description": "Text element role → SAP typography style binding",
+      "items": {
+        "type": "object",
+        "required": ["role", "fontFamily", "fontStyle", "fontSize"],
+        "properties": {
+          "role": { "type": "string", "description": "title, subtitle, body, label, caption, link" },
+          "fontFamily": { "type": "string", "const": "72" },
+          "fontStyle": { "type": "string", "enum": ["Regular", "Semibold", "Bold", "Black", "Light", "Italic", "Semibold Duplex"] },
+          "fontSize": { "type": "integer" },
+          "sapStyleName": { "type": "string", "description": "e.g. MediumText/LHAuto/Regular" }
+        }
+      }
+    },
+    "colorTokenRules": {
+      "type": "array",
+      "description": "Visual role → SAP token name binding. MUST use only tokens from MANDATORY_TOKENS whitelist.",
+      "items": {
+        "type": "object",
+        "required": ["role", "token"],
+        "properties": {
+          "role": { "type": "string", "description": "fill, stroke, text, background, border, icon" },
+          "state": { "type": "string", "description": "Optional: which state this applies to" },
+          "token": { "type": "string", "description": "SAP token name — must be in MANDATORY_TOKENS" },
+          "fallbackHex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+        }
+      }
+    },
+    "accessibilityRules": {
+      "type": "array",
+      "description": "Accessibility requirements per §7 of project spec",
+      "items": {
+        "type": "object",
+        "required": ["category", "requirement"],
+        "properties": {
+          "category": { "type": "string", "enum": ["contrast", "keyboard", "labeling", "focus", "tap-target", "status"] },
+          "requirement": { "type": "string" },
+          "wcag": { "type": "string", "description": "Optional WCAG criterion ref, e.g. 1.4.3" }
+        }
+      }
+    },
+    "doRules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dontRules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "compatibleComponents": {
+      "type": "array",
+      "description": "Component names this can be nested inside or beside",
+      "items": { "type": "string" }
+    },
+    "incompatiblePatterns": {
+      "type": "array",
+      "description": "Patterns or contexts where this component must NOT be used",
+      "items": { "type": "string" }
+    },
+    "guidelineUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Official SAP Fiori design guideline URL"
+    },
+    "demoKitUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Official OpenUI5 Demo Kit URL"
+    },
+    "apiUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Official SAP UI5 API reference URL"
+    },
+    "sampleUrls": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "libraryVersion": {
+      "type": "string",
+      "description": "SAP Web UI Kit / OpenUI5 version this record was validated against"
+    },
+    "lastValidated": {
+      "type": "string",
+      "format": "date",
+      "description": "Date last verified against live SAP documentation"
+    },
+    "pluginNotes": {
+      "type": "object",
+      "description": "Plugin-specific implementation notes — text injection caveats, sizing constraints, etc.",
+      "properties": {
+        "textInjectionMethod": { "type": "string", "enum": ["setProperties", "live-text-node", "detach-required", "not-injectable"] },
+        "sizingConstraints": { "type": "string" },
+        "knownIssues": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "description": "SAP Fiori composition rules. Validates parent/child/sibling relationships at spec-emission and build time. See RULE 8 in skill/SYSTEM_PROMPT.md.",
+      "properties": {
+        "validParents":   { "type": "array", "items": { "type": "string" }, "description": "Component names that may legally contain this one. Empty array = top-level only (e.g. ShellBar, DynamicPage)." },
+        "validChildren":  { "type": "array", "items": { "type": "string" }, "description": "Component names this one may legally contain. '*' = any registered component." },
+        "mustInclude":    { "type": "array", "items": { "type": "string" }, "description": "Children required for the composition to be valid. Plugin auto-adds missing ones with defaults." },
+        "mustExclude":    { "type": "array", "items": { "type": "string" }, "description": "Children that violate SAP guidelines if nested here. Plugin rejects the spec." },
+        "commonSiblings": { "type": "array", "items": { "type": "string" }, "description": "Components that naturally co-occur. Used by the AI layer to suggest completions." },
+        "topLevelOnly":   { "type": "boolean", "description": "True for components that may only appear at the screen root (ShellBar, NativeSideNav, DynamicPage)." }
+      }
+    }
+  }
+}

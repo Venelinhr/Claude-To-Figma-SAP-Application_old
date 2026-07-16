@@ -1,0 +1,166 @@
+{
+  "componentName": "Switch",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "c63509f642cdabbeb8c1878dd125ee006481631c",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Selection",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "State",
+      "values": [
+        "On",
+        "Off"
+      ],
+      "default": "Off"
+    },
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Default",
+        "AcceptReject"
+      ],
+      "default": "Default"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "state",
+      "ui5Name": "state",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "customTextOn",
+      "ui5Name": "customTextOn",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "customTextOff",
+      "ui5Name": "customTextOff",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "state-text",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 11,
+      "sapStyleName": "SmallText/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "On",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "fill",
+      "state": "Off",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Space toggles state"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with descriptive Label or use customTextOn/Off"
+    },
+    {
+      "category": "status",
+      "requirement": "State communicated by position AND color \u2014 not color alone"
+    }
+  ],
+  "doRules": [
+    "Use Switch for instant binary settings (On/Off)",
+    "Use AcceptReject type for explicit approval workflows",
+    "Provide a clear label describing what the switch controls"
+  ],
+  "dontRules": [
+    "Do not use Switch for actions that need confirmation \u2014 use Button",
+    "Do not use Switch in forms requiring \"Save\" \u2014 use CheckBox"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Inside a form that requires explicit submit"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/switch/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Switch",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Switch",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "52\u00d724px Compact / 60\u00d732px Cozy.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "Card"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Switch"
+    ]
+  }
+}

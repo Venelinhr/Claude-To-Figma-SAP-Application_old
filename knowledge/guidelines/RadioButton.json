@@ -1,0 +1,91 @@
+{
+  "componentName": "RadioButton",
+  "slug": "radio-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/radio-button/",
+  "purpose": "A single selection within a group of mutually exclusive options. Used when 2\u20136 options are visible and user must choose one.",
+  "whenToUse": [
+    "2\u20136 mutually exclusive options where all should be visible",
+    "When the user must see all options to decide",
+    "For settings with semantic categories"
+  ],
+  "whenNotToUse": [
+    "For >6 options \u2014 use Select",
+    "For non-exclusive options \u2014 use CheckBox",
+    "For single binary choices \u2014 use Switch or CheckBox"
+  ],
+  "doRules": [
+    "Use for 2\u20136 mutually exclusive options",
+    "Always have one option selected by default when possible",
+    "Group radios with same groupName",
+    "Label the group with a header above"
+  ],
+  "dontRules": [
+    "Do not use RadioButton outside a group",
+    "Do not use with more than 6 options \u2014 use Select",
+    "Do not allow no-selection if a choice is required"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside Form, Panel, Dialog body.",
+    "sizing": "16\u00d716px circle. Touch area includes label.",
+    "spacing": "8px between circle and label; 8px between options.",
+    "alignment": "Vertical stack by default; horizontal for \u22643 options."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20135 words.",
+    "contentRules": [
+      "Use parallel construction across options",
+      "Capitalize consistently"
+    ],
+    "examples": [
+      "Cloud Integration",
+      "On-premise",
+      "Hybrid"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Inline horizontal if \u22643 options",
+    "L": "Inline horizontal if \u22643 options",
+    "M": "Vertical stack",
+    "S": "Vertical stack with full-width touch areas"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys move selection within group; Tab skips to next group",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Group has accessible name; each option has label",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus on selected radio in group",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Selected state announced as \"radio button, selected\""
+    }
+  ],
+  "patterns": [
+    "Form field group",
+    "Settings selector"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "Panel"
+    ],
+    "incompatible": [
+      "Alone without a group"
+    ]
+  },
+  "exceptions": [
+    "Use RadioButtonGroup component to enforce groupName binding"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

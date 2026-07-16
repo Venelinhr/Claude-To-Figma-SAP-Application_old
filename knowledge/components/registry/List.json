@@ -1,0 +1,176 @@
+{
+  "componentName": "List",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "4fb0a3e2fc56fb58d9904d68eb4ac58b9fb1bd25",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "List",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Mode",
+      "ui5Property": "mode",
+      "values": [
+        "None",
+        "SingleSelect",
+        "MultiSelect",
+        "Delete"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "mode",
+      "ui5Name": "mode",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    },
+    {
+      "name": "noDataText",
+      "ui5Name": "noDataText",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "No data"
+    },
+    {
+      "name": "showSeparators",
+      "ui5Name": "showSeparators",
+      "type": "variant",
+      "exposedInLibrary": false,
+      "default": "All"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Semibold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Semibold"
+    },
+    {
+      "role": "description",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#E5E5E5"
+    },
+    {
+      "role": "title-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "description-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#6A6D70"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate items; Enter activates"
+    },
+    {
+      "category": "labeling",
+      "requirement": "List has accessible name"
+    }
+  ],
+  "doRules": [
+    "Use List for ~3–20 items with consistent structure",
+    "Show title + optional description per item",
+    "Use MultiSelect mode for bulk actions"
+  ],
+  "dontRules": [
+    "Do not use List for tabular data with multiple aligned columns — use Table",
+    "Do not put unrelated content types in one list"
+  ],
+  "compatibleComponents": [
+    "StandardListItem",
+    "ListItem",
+    "OverflowToolbar"
+  ],
+  "incompatiblePatterns": [
+    "As primary navigation — use SideNavigation"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/list/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.List",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.List",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "live-text-node",
+    "sizingConstraints": "Full width. Item height varies by type (48px–96px).",
+    "knownIssues": [
+      "SAP List instance shows \"List Header / Group Header / List Item\" demo. Use flat StandardListItem for custom data."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "MessagePopover",
+      "IconTabBar",
+      "SapFormSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "StandardListItem",
+      "ColumnListItem",
+      "ActionListItem",
+      "InputListItem",
+      "FeedListItem",
+      "GroupHeaderListItem",
+      "ObjectListItem",
+      "MessageStrip",
+      "IllustratedMessage"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Form"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "Toolbar",
+      "SearchField"
+    ]
+  },
+  "slotNames": [
+    "items",
+    "headerToolbar",
+    "infoToolbar"
+  ]
+}

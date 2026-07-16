@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+# ─────────────────────────────────────────────────────────────────────────────
+# test-build.sh — Automated pipeline regression test
+# Usage:  bash build/test-build.sh
+#         bash build/test-build.sh --verbose
+#
+# Validates a set of canonical "known-good" specs against:
+#   1. JSON parse
+#   2. Registry gate (all components registered)
+#   3. Composition rules (0 violations)
+#   4. Slot-name validation (0 violations)
+#   5. Token whitelist (all tokens whitelisted)
+#   6. Component count within expected range (+/-10% of baseline)
+#   7. validationStatus = "pass"
+#
+# Exit code 0 = all pass  |  1 = any failure
+#
+# Canonical baseline specs (updated 2026-07-09):
+#   create-mcp-server-step2-spec.json     → 20 components  (Dialog + wizard)
+#   create-mcp-server-step3-spec.json     → 40 components  (Dialog + table)
+#   warehouse-shipments-worklist-spec.json → 65 components  (Worklist, FCL-ready)
+#   sap-landscape-mgmt-activities-spec.json → 91 components (FCL + SideNav + 3 cols)
+#   field-service-dispatch-console-spec.json → 64 components (complex form)
+#
+# Add new specs to SPECS[] to grow the regression suite.
+# ─────────────────────────────────────────────────────────────────────────────
+
+set -euo pipefail
+
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+VALIDATOR="$PROJECT_ROOT/build/validate-spec.js"
+VERBOSE="${1:-}"
+
+# ── Baseline definitions ──────────────────────────────────────────────────────
+# Format: "spec_filename:expected_min_components:expected_max_components"
+# Range = baseline ±10% (rounded). Set min=0 max=9999 for "any count OK".
+declare -a SPECS=(
+  "create-mcp-server-step2-spec.json:18:22"
+  "create-mcp-server-step3-spec.json:36:44"
+  "warehouse-shipments-worklist-spec.json:58:72"
+  "sap-landscape-mgmt-activities-spec.json:82:100"
+  "field-service-dispatch-console-spec.json:57:71"
+)
+
+# ── Counters ─────────────────────────────────────────────────────────────────
+pass=0; warn=0; fail=0; total=0
+
+# ── Color helpers (no-op if not a TTY) ───────────────────────────────────────
+if [ -t 1 ]; then
+  GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; NC='\033[0m'
+else
+  GREEN=''; YELLOW=''; RED=''; NC=''
+fi
+
+echo ""
+echo "SAP Figma Design Agent — Pipeline Regression Test"
+echo "$(date '+%Y-%m-%d %H:%M:%S')  |  $(node --version)"
+echo "$(printf '─%.0s' {1..60})"
+
+# ── Per-spec test ─────────────────────────────────────────────────────────────
+for entry in "${SPECS[@]}"; do
+  IFS=':' read -r spec_file min_count max_count <<< "$entry"
+  spec_path="$PROJECT_ROOT/output/$spec_file"
+  total=$((total + 1))
+
+  if [ ! -f "$spec_path" ]; then
+    echo -e "  ${RED}✗ MISSING${NC}  $spec_file"
+    fail=$((fail + 1))
+    continue
+  fi
+
+  # Run CLI validator (checks JSON, registry, composition, slots, tokens, hex, density)
+  validator_output=$(node "$VALIDATOR" "$spec_path" 2>&1)
+  validator_code=$?
+
+  # Count actual components
+  actual_count=$(python3 -c "
+import json, sys
+def count(nodes):
+    n=0
+    for node in (nodes if isinstance(nodes,list) else []):
+        if isinstance(node,dict) and node.get('component'):
+            n+=1
+            for sv in (node.get('slots') or {}).values(): n+=count(sv if isinstance(sv,list) else [sv])
+            n+=count(node.get('children'))
+    return n
+d = json.load(open('$spec_path'))
+print(count(d.get('hierarchy',[])))
+" 2>/dev/null || echo "0")
+
+  # Evaluate
+  count_ok=true
+  if [ "$actual_count" -lt "$min_count" ] || [ "$actual_count" -gt "$max_count" ]; then
+    count_ok=false
+  fi
+
+  if [ "$validator_code" -eq 0 ] && [ "$count_ok" = true ]; then
+    if echo "$validator_output" | grep -q "WARNINGS"; then
+      echo -e "  ${YELLOW}⚠ WARN${NC}    $spec_file  (${actual_count} components, expected ${min_count}–${max_count})"
+      warn=$((warn + 1))
+    else
+      echo -e "  ${GREEN}✓ PASS${NC}    $spec_file  (${actual_count} components)"
+      pass=$((pass + 1))
+    fi
+    if [ "$VERBOSE" = "--verbose" ]; then
+      echo "$validator_output" | grep -E '✓|⚠' | sed 's/^/          /'
+    fi
+  else
+    echo -e "  ${RED}✗ FAIL${NC}    $spec_file  (${actual_count} components, expected ${min_count}–${max_count})"
+    fail=$((fail + 1))
+    # Always show failure details
+    echo "$validator_output" | grep -E '✗|FAIL' | head -5 | sed 's/^/          /'
+    if [ "$count_ok" = false ]; then
+      echo "          Component count ${actual_count} outside expected range ${min_count}–${max_count}"
+    fi
+  fi
+done
+
+# ── Summary ───────────────────────────────────────────────────────────────────
+echo "$(printf '─%.0s' {1..60})"
+echo "Results:  ✓ $pass pass  ·  ⚠ $warn warnings  ·  ✗ $fail fail  (${total} specs)"
+
+if [ "$fail" -gt 0 ]; then
+  echo -e "${RED}REGRESSION DETECTED — $fail spec(s) failed${NC}"
+  echo ""
+  echo "To investigate: node build/validate-spec.js output/<spec-file>.json"
+  echo "To update baselines: edit the SPECS[] array in build/test-build.sh"
+  exit 1
+fi
+
+if [ "$warn" -gt 0 ]; then
+  echo "Warnings are expected for Dialog-based specs (no ShellBar)."
+fi
+
+# ── MCP-first path lint (RULE 25) — 2026-07-11 ───────────────────────────────
+# Headless check that the tag-contract linter (build/lint-mcp-frame.js) accepts
+# a clean MCP-built frame and rejects a broken one. This gives the MCP-first
+# path CI coverage parity with the legacy JSON path (audit P1).
+echo ""
+echo "$(printf '─%.0s' {1..60})"
+echo "MCP-first contract lint (RULE 25)"
+echo "$(printf '─%.0s' {1..60})"
+mcp_fail=0
+if node build/lint-mcp-frame.js test-fixtures/mcp-frame-clean.json >/dev/null 2>&1; then
+  echo "  ✓ clean fixture PASSES lint"
+else
+  echo -e "  ${RED}✗ clean fixture unexpectedly FAILED lint${NC}"; mcp_fail=1
+fi
+if node build/lint-mcp-frame.js test-fixtures/mcp-frame-broken.json >/dev/null 2>&1; then
+  echo -e "  ${RED}✗ broken fixture unexpectedly PASSED lint (linter not catching errors)${NC}"; mcp_fail=1
+else
+  echo "  ✓ broken fixture correctly FAILS lint (near-miss hex, bad token/role/icon caught)"
+fi
+if [ "$mcp_fail" -gt 0 ]; then
+  echo -e "${RED}MCP-path lint regression — build/lint-mcp-frame.js not behaving${NC}"
+  exit 1
+fi
+
+# ── Manifest sync check — 2026-07-14 ─────────────────────────────────────────
+# SAP_BUILD_MANIFEST.md is a derived cache of the registry + token JSONs.
+# This guards against drift: a stale component key would break the build agent's
+# importComponentSetByKeyAsync at build time.
+echo ""
+echo "$(printf '─%.0s' {1..60})"
+echo "Build manifest sync (SAP_BUILD_MANIFEST.md vs source JSONs)"
+echo "$(printf '─%.0s' {1..60})"
+if node build/check-manifest-sync.js; then
+  echo "  ✓ manifest in sync"
+else
+  echo -e "${RED}Manifest drift — regenerate SAP_BUILD_MANIFEST.md §3 from registry${NC}"
+  exit 1
+fi
+
+echo ""
+echo "All specs within baseline. Pipeline is clean."
+exit 0

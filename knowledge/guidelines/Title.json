@@ -1,0 +1,81 @@
+{
+  "componentName": "Title",
+  "slug": "title",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/title/",
+  "purpose": "Heading text that labels a page, section, or grouped content. Title carries semantic heading level (H1-H6) which screen readers use for navigation; visual size is determined by the level variant.",
+  "whenToUse": [
+    "Page-level H1 — exactly one per page, inside DynamicPageTitle.slots.heading",
+    "Section H2 — for major sections of an Object Page or detail screen",
+    "Subsection H3-H4 — for grouped content within a section",
+    "Toolbar title — when an OverflowToolbar needs a left-aligned descriptive label (e.g. 'Artifacts (47)')",
+    "Panel header — when a Panel needs an accessible heading"
+  ],
+  "whenNotToUse": [
+    "As body text or paragraphs — use Text or Label instead",
+    "As interactive control labels — use Label and associate via labelFor",
+    "As status messages or hints — use MessageStrip or Text",
+    "Inside table cells — use plain text with appropriate SAP text style binding"
+  ],
+  "doRules": [
+    "Use exactly one H1 per page (page title in DynamicPageTitle)",
+    "Use H2 for major sections, H3 for subsections; do NOT skip levels (H1→H3 breaks screen reader navigation)",
+    "Keep titles short — 1 line where possible, max 2 lines on wrap",
+    "Bind text color to sapTitleColor for page/section, sapList_TextColor for toolbar context",
+    "Use the Level/TitleStyle variant — don't hardcode font size"
+  ],
+  "dontRules": [
+    "Do not skip heading levels (H1→H3 breaks accessibility tree)",
+    "Do not hardcode color — bind to a sapTitle*/sapList_TextColor variable",
+    "Do not use Title for non-heading content (status, hints, interactive labels)",
+    "Do not repeat the same title text multiple times at the same level in a single section",
+    "Do not use ALL CAPS — relies on visual style not text content"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of the content area or section. Page H1 lives inside DynamicPageTitle.slots.heading.",
+    "sizing": "H1 = 28px Bold, H2 = 24px, H3 = 20px, H4 = 18px (page title), H5 = 16px, H6 = 14px.",
+    "spacing": "Match SAP heading rhythm: 16px below H1; 12px below H2; 8px below H3.",
+    "alignment": "Left-aligned to content edge. Page title aligns with first content column."
+  },
+  "contentGuidance": {
+    "labelLength": "Page title: 1-5 words. Section: 1-3 words. Toolbar title: 1-3 words plus optional count e.g. 'Artifacts (47)'.",
+    "contentRules": [
+      "Use sentence case unless brand requires title case",
+      "Avoid punctuation at the end (period, colon)",
+      "Localize all titles",
+      "For counts, parenthesize: 'Artifacts (47)' not 'Artifacts: 47' or '47 Artifacts'"
+    ],
+    "examples": [
+      "Purchase Order",
+      "Invoice Exceptions",
+      "Artifacts (47)",
+      "AKS_PKG",
+      "Suppliers"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full size at H1 28px / H2 24px / etc.",
+    "L":  "Full size at all levels.",
+    "M":  "Page H1 may scale to 24px on dense mobile-tablet hybrid layouts.",
+    "S":  "Page H1 scales to 20px; sub-headings may be reduced one step."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to <h1>-<h6> HTML element via Level/TitleStyle variant. Screen readers expose heading level for navigation.",
+    "contrast": "Title text contrast ≥ 4.5:1 normal (≥ 3:1 large text ≥ 18.67px bold per WCAG AA).",
+    "keyboard": "Not interactive (heading is non-interactive). Skip-to-heading shortcuts (H key in screen readers) jump between Title elements.",
+    "screenReader": "Announced as 'heading, level N, [text]'."
+  },
+  "patterns": [
+    "DynamicPageTitle.slots.heading — page H1",
+    "Object Page section header — H2",
+    "OverflowToolbar — left-aligned toolbar title (e.g. 'Artifacts (47)')",
+    "Panel — header label",
+    "Form — section grouping"
+  ],
+  "compatibility": ["DynamicPageTitle", "ObjectPageLayout", "Panel", "Form", "OverflowToolbar", "Toolbar", "Dialog"],
+  "exceptions": [
+    "The SAP Figma library does not ship a standalone Title instance — the plugin aliases Title to the SAP Label instance for rendered output, OR uses a native text node bound to SAP text style + color variables.",
+    "Native text rendering is acceptable as long as the fill is bound to a SAP variable (sapTitleColor or sapList_TextColor)."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

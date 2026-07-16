@@ -1,0 +1,97 @@
+{
+  "componentName": "Scrollbar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "ccf83f17bfdbce52e81e61d775c4eed5d41b2258",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "orientation",
+      "ui5Name": "orientation",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Vertical"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [
+    {
+      "role": "track",
+      "token": "sapScrollBar_TrackColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "thumb",
+      "token": "sapScrollBar_FaceColor",
+      "fallbackHex": "#B0BFC9"
+    },
+    {
+      "role": "thumb-hover",
+      "token": "sapScrollBar_Hover_FaceColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use Scrollbar as documented in SAP Fiori Design Guidelines"
+  ],
+  "dontRules": [
+    "Do not use Scrollbar outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Scrollbar' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "ObjectPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  },
+  "schemaNotes": {
+    "typographyRules": "n/a"
+  }
+}

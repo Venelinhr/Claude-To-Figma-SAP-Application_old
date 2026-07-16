@@ -1,0 +1,64 @@
+{
+  "componentName": "Breadcrumbs",
+  "slug": "breadcrumbs",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/breadcrumb/",
+  "purpose": "A horizontal navigation trail that shows the user's location within a hierarchy and lets them jump back to any ancestor page. Common in deep object hierarchies and drill-down flows.",
+  "whenToUse": [
+    "User navigated through 3+ levels of hierarchy",
+    "Multiple valid entry points exist (Search vs Browse)",
+    "The user needs to return to an ancestor without back-buttoning",
+    "The current page has meaningful context (Root > Category > Item)"
+  ],
+  "whenNotToUse": [
+    "Only one entry point exists (Home → Detail) — use back-button",
+    "The path is only 2 levels deep — Title with a Back button suffices",
+    "The hierarchy is a graph (many paths) — use a proper navigation menu",
+    "In modals or dialogs — they should not span hierarchical navigation"
+  ],
+  "doRules": [
+    "Show the full path from root to current",
+    "Make every ancestor a clickable Link",
+    "Make the current page the last item (non-clickable, in different style)",
+    "Truncate middle items with ellipsis when path is very long"
+  ],
+  "dontRules": [
+    "Do not make the current page clickable",
+    "Do not use a chevron other than the standard '>'",
+    "Do not truncate the root or current — always visible",
+    "Do not use inside dialogs, popovers, or table cells"
+  ],
+  "layoutGuidance": {
+    "placement": "Just below the ShellBar, above the DynamicPageTitle",
+    "sizing": "Full width, height 24px",
+    "spacing": "8px between items and separators",
+    "alignment": "Left-aligned"
+  },
+  "contentGuidance": {
+    "labelLength": "Each item ≤ 30 chars; middle items truncate with '…'",
+    "contentRules": "Item labels match the page titles they link to",
+    "examples": ["Home > Orders > PO-48865 (current)", "Home > … > Details > PO-48865"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full path visible",
+    "L": "Full path visible",
+    "M": "May collapse middle items to '…' with dropdown",
+    "S": "Show only 'Back' link + current"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.4.8 Location (Level AAA)", "WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "aria-label='breadcrumb' on the wrapping nav",
+      "Current page marked with aria-current='page'",
+      "Each link has descriptive text (not 'click here')",
+      "Keyboard: Tab moves between links; Enter navigates"
+    ]
+  },
+  "patterns": ["Object Page navigation", "Deep hierarchy drill-down", "Multi-step wizard exit"],
+  "compatibility": {
+    "allowedWith": ["DynamicPageTitle (as breadcrumbs slot)", "Page header regions"],
+    "forbiddenWith": ["Dialog", "Popover", "Table cells", "Toolbar"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

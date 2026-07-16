@@ -1,0 +1,157 @@
+{
+  "componentName": "StepInput",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "69f0f7acf68766ac89890d0c119f64bfd50e693a",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "value",
+      "ui5Name": "value",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": "0"
+    },
+    {
+      "name": "min",
+      "ui5Name": "min",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "max",
+      "ui5Name": "max",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "step",
+      "ui5Name": "step",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "1"
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Up/Down arrows step value; type to override"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label"
+    }
+  ],
+  "doRules": [
+    "Use for bounded numeric input with min/max",
+    "Show units when applicable (Qty, % etc.)",
+    "Set step size based on context (1 for integer counts, 0.1 for decimals)"
+  ],
+  "dontRules": [
+    "Do not use for unbounded numbers \u2014 use Input type=Number",
+    "Do not use for currency \u2014 use specialized currency input"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Without min/max bounds"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/stepinput/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.StepInput",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.StepInput",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "120px default.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  }
+}

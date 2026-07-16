@@ -1,0 +1,87 @@
+{
+  "componentName": "FileUploader",
+  "slug": "file-uploader",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/file-uploader/",
+  "purpose": "A control for selecting and uploading files. Combines a Browse button with file name display, supports drag-and-drop, mime-type filter, max-size limit.",
+  "whenToUse": [
+    "Single or multi-file upload in forms",
+    "Attaching documents to records",
+    "Profile photo, document upload"
+  ],
+  "whenNotToUse": [
+    "For URL-based content \u2014 use Input",
+    "For large datasets \u2014 use server-side upload tools"
+  ],
+  "doRules": [
+    "Specify accepted mimeType for clarity",
+    "Show file size limit before upload",
+    "Allow drag-and-drop where supported",
+    "Display selected file name with remove affordance"
+  ],
+  "dontRules": [
+    "Do not omit file size limit",
+    "Do not silently fail on rejected file types",
+    "Do not omit progress feedback for large files"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Dialog body.",
+    "sizing": "Width fills container.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Button left, file display right."
+  },
+  "contentGuidance": {
+    "labelLength": "Button text \"Browse...\" or context-specific.",
+    "contentRules": [
+      "Show selected file name",
+      "Show file size limit hint",
+      "List accepted formats"
+    ],
+    "examples": [
+      "Browse...",
+      "document.pdf (2 MB / 10 MB)"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full button + filename + remove",
+    "L": "Full button + filename + remove",
+    "M": "Full button + filename",
+    "S": "Native mobile file picker"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter activates browse; file dialog uses native OS controls",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label describing what to upload",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Upload progress announced; success/error states announced",
+      "wcag": "4.1.3 (AA)"
+    }
+  ],
+  "patterns": [
+    "Form attachment",
+    "Profile upload",
+    "Document upload"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "Dialog"
+    ],
+    "incompatible": [
+      "Without mimeType constraint"
+    ]
+  },
+  "exceptions": [
+    "multiple=true allows file picker to select multiple files"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,201 @@
+{
+  "componentName": "ObjectHeader",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:ObjectPageHeader",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Responsive",
+      "ui5Property": "responsive",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "string",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "intro",
+      "ui5Name": "intro",
+      "type": "string",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "number",
+      "ui5Name": "number",
+      "type": "string",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "numberUnit",
+      "ui5Name": "numberUnit",
+      "type": "string",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "responsive",
+      "ui5Name": "responsive",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 20,
+      "sapStyleName": "LargeText/LHAuto/Bold"
+    },
+    {
+      "role": "intro",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    },
+    {
+      "role": "number",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 24,
+      "sapStyleName": "LargeText/LHAuto/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapObjectHeader_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapObjectHeader_BorderColor",
+      "fallbackHex": "#EAECEE"
+    },
+    {
+      "role": "title",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1A2733"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Title is required. Intro is optional context."
+    },
+    {
+      "category": "heading",
+      "requirement": "Title renders as H2 in the document outline"
+    }
+  ],
+  "doRules": [
+    "Use in modern apps: prefer ObjectPageHeader (Object Page floorplan)",
+    "Use ObjectHeader only inside a Card or Dialog when a lightweight object banner is needed"
+  ],
+  "dontRules": [
+    "Do not use ObjectHeader as the primary page header — that's ObjectPageHeader / DynamicPageHeader",
+    "Do not nest ObjectHeader inside ObjectPageLayout"
+  ],
+  "compatibleComponents": [
+    "Card",
+    "Dialog",
+    "Panel",
+    "ObjectAttribute",
+    "ObjectStatus",
+    "ObjectNumber",
+    "Avatar",
+    "Tag",
+    "GenericTag",
+    "InfoLabel"
+  ],
+  "incompatiblePatterns": [
+    "Inside ShellBar",
+    "Inside DynamicPage (use DynamicPageHeader instead)",
+    "Inside ObjectPageLayout (use ObjectPageHeader instead)"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/object-header/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ObjectHeader",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ObjectHeader",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-07",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Full-width banner. Title + intro + number + numberUnit stacked vertically.",
+    "knownIssues": [
+      "ObjectHeader is a legacy sap.m component superseded by ObjectPageHeader in Fiori 2+. Plugin aliases ObjectHeader → ObjectPageHeader (same visual container, richer variant support)."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "Card",
+      "Dialog",
+      "Panel",
+      "Popover",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectAttribute",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectMarker",
+      "Tag",
+      "GenericTag",
+      "InfoLabel",
+      "Link",
+      "Breadcrumb",
+      "MessageStrip",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ShellBar"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "attributes",
+    "statuses",
+    "additionalNumbers",
+    "markers"
+  ]
+}

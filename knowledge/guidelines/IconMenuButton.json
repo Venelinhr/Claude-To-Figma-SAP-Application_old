@@ -1,0 +1,64 @@
+{
+  "componentName": "IconMenuButton",
+  "slug": "menu-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/menu-button/",
+  "purpose": "An icon-only button that opens a Menu when clicked. Space-efficient way to expose a menu of actions when a label would take too much space (toolbars, table row actions, dense list items).",
+  "whenToUse": [
+    "Row actions in a Table where each row has 3+ actions",
+    "Overflow menus in toolbars when horizontal space is tight",
+    "Card header 'More' menu (typically a three-dots icon)",
+    "Kebab menus for context-specific actions"
+  ],
+  "whenNotToUse": [
+    "For a single action — use IconButton",
+    "For 6+ actions — use a proper Menu with labels",
+    "When the icon meaning is unclear without a label — use MenuButton",
+    "For primary actions — use Button with a clear label"
+  ],
+  "doRules": [
+    "Always provide a tooltip and aria-label describing what the menu contains",
+    "Use standardized icons: three dots (⋮) for 'more', gear for settings, filter icon for filter menu",
+    "Show the chevron only when space allows (or omit for kebab-style)",
+    "Anchor the menu below the button by default"
+  ],
+  "dontRules": [
+    "Do not omit the tooltip — icon-only is fine, but the icon must be discoverable",
+    "Do not use ambiguous icons — pick well-known ones or fall back to labeled MenuButton",
+    "Do not use for a single action — IconButton is correct there",
+    "Do not stack multiple IconMenuButtons in the same row unless separated visually"
+  ],
+  "layoutGuidance": {
+    "placement": "Toolbars, table row action columns, card headers",
+    "sizing": "32×32 compact, 40×40 cozy",
+    "spacing": "Standard button spacing (8px)",
+    "alignment": "Right-aligned in row actions; left-aligned in toolbars"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — icon only",
+    "contentRules": "Icon must be well-known or heavily used across the app",
+    "examples": ["⋮ (More actions)", "⚙ (Settings)", "▽ (Filter)"]
+  },
+  "responsiveBehavior": {
+    "XL": "Icon only",
+    "L": "Icon only",
+    "M": "Icon only",
+    "S": "Icon only"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 2.5.5 Target Size (AAA)"],
+    "requirements": [
+      "aria-label describing the menu contents ('Row actions')",
+      "aria-haspopup='menu' and aria-expanded reflect menu state",
+      "Minimum 32px compact / 44px cozy tap target",
+      "Keyboard: Enter opens; Down opens with focus in menu; Escape closes"
+    ]
+  },
+  "patterns": ["Table row actions", "Toolbar overflow", "Card header more menu"],
+  "compatibility": {
+    "allowedWith": ["Toolbar", "OverflowToolbar", "Table (cell)", "Card (header)"],
+    "forbiddenWith": ["As primary action", "Standalone without container"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,157 @@
+{
+  "componentName": "ObjectPageLayout",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "showFooter",
+      "ui5Name": "showFooter",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    },
+    {
+      "name": "upperCaseAnchorBar",
+      "ui5Name": "upperCaseAnchorBar",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    },
+    {
+      "name": "useIconTabBar",
+      "ui5Name": "useIconTabBar",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    },
+    {
+      "name": "backgroundDesignAnchorBar",
+      "ui5Name": "backgroundDesignAnchorBar",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Solid"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "section-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Section Title"
+    },
+    {
+      "role": "anchor-bar",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "anchor-bar-background",
+      "token": "sapObjectHeader_Background",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "section-heading",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1A2733"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Anchor bar items navigate via arrow keys; Enter scrolls to section"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Each section has heading; anchor bar mirrors structure"
+    }
+  ],
+  "doRules": [
+    "Use for object detail pages with multiple sections",
+    "Use Anchor Bar for quick navigation when many sections exist",
+    "Show object header with key facts at top"
+  ],
+  "dontRules": [
+    "Do not use for simple single-section pages \u2014 use DynamicPage",
+    "Do not put a Table as the only content \u2014 use List Report"
+  ],
+  "compatibleComponents": [
+    "DynamicPageTitle",
+    "DynamicPageHeader",
+    "IconTabBar",
+    "ObjectPageSection"
+  ],
+  "incompatiblePatterns": [
+    "Inside Dialog"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/objectpagelayout/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ObjectPageLayout",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ObjectPageLayout",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "not-injectable",
+    "sizingConstraints": "Full viewport.",
+    "knownIssues": [
+      "Plugin uses SKIP_SELF \u2014 recurses into sections."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": true,
+    "validChildren": [
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "IconTabBar",
+      "Panel",
+      "Card",
+      "Form",
+      "SimpleForm",
+      "Table",
+      "List",
+      "SapColHeader",
+      "SapTableRow",
+      "OverflowToolbar",
+      "MessageStrip",
+      "IllustratedMessage"
+    ],
+    "mustInclude": [
+      "DynamicPageTitle"
+    ],
+    "mustExclude": [
+      "Dialog",
+      "Popover"
+    ],
+    "commonSiblings": [
+      "ShellBar",
+      "NativeSideNav"
+    ]
+  },
+  "slotNames": [
+    "headerTitle",
+    "headerContent",
+    "sections",
+    "footer"
+  ]
+}

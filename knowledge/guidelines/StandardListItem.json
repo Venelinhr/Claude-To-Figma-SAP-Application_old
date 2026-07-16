@@ -1,0 +1,76 @@
+{
+  "componentName": "StandardListItem",
+  "slug": "list",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/list/",
+  "purpose": "A standard item in a List with title, description, info, and optional icon. Most common list item type.",
+  "whenToUse": [
+    "As child of List for simple items",
+    "For master list rows",
+    "For notification items"
+  ],
+  "whenNotToUse": [
+    "For complex layouts \u2014 use CustomListItem",
+    "For tabular data \u2014 use ColumnListItem in a Table"
+  ],
+  "doRules": [
+    "Use Navigation type when item leads to detail",
+    "Pair title with optional description and icon",
+    "Use info property for trailing status/value",
+    "Keep title short \u2014 truncate with ellipsis if long"
+  ],
+  "dontRules": [
+    "Do not put complex layouts inside StandardListItem \u2014 use CustomListItem",
+    "Do not omit type when item is interactive",
+    "Do not stack multiple long lines"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside List items aggregation.",
+    "sizing": "Height 48px Compact / 64px Cozy.",
+    "spacing": "Separator below.",
+    "alignment": "Icon left, title+description center-left, info right."
+  },
+  "contentGuidance": {
+    "labelLength": "Title 1\u20138 words.",
+    "contentRules": [
+      "Title bold, description regular",
+      "Info trailing right"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full layout",
+    "L": "Full layout",
+    "M": "Full layout",
+    "S": "Description may wrap"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter activates Navigation type",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring",
+      "wcag": "2.4.7 (AA)"
+    }
+  ],
+  "patterns": [
+    "List item",
+    "Master list row"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "List"
+    ],
+    "incompatible": [
+      "Outside List",
+      "As table row"
+    ]
+  },
+  "exceptions": [
+    "When icon is large product image, use ProductListItem instead"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

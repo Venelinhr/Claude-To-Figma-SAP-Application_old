@@ -1,0 +1,83 @@
+{
+  "componentName": "ObjectNumber",
+  "slug": "object-number",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-number/",
+  "purpose": "A prominent numeric value (count, amount, percentage) with unit and semantic state. Used for KPIs and key metrics.",
+  "whenToUse": [
+    "Display key numeric metric (count, amount, percentage)",
+    "KPI in dashboard tiles",
+    "Critical numbers in ObjectHeader (revenue, days remaining)",
+    "In tables for numeric status (over budget, low stock)"
+  ],
+  "whenNotToUse": [
+    "For text content \u2014 use Text",
+    "For status \u2014 use ObjectStatus",
+    "For ranges \u2014 use ObjectStatus or Tag"
+  ],
+  "doRules": [
+    "Use for prominent KPI display",
+    "Include unit alongside the number",
+    "Use state to communicate semantic meaning (over budget, low stock)",
+    "Use emphasized=true for primary KPI"
+  ],
+  "dontRules": [
+    "Do not omit unit when ambiguous",
+    "Do not use Error state for non-critical numbers",
+    "Do not use larger than required font size (limits responsive design)"
+  ],
+  "layoutGuidance": {
+    "placement": "ObjectHeader, Card, Table cell.",
+    "sizing": "Auto width.",
+    "spacing": "Inherits surrounding spacing.",
+    "alignment": "Number prominent (20px Bold); unit smaller (12px Regular)."
+  },
+  "contentGuidance": {
+    "labelLength": "Number + unit.",
+    "contentRules": [
+      "Number formatted to locale",
+      "Unit follows number"
+    ],
+    "examples": [
+      "1,234 EUR",
+      "95%",
+      "12 days"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full layout",
+    "L": "Full layout",
+    "M": "Full layout",
+    "S": "Number prominent, unit may stack below"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "status",
+      "requirement": "Critical numbers (Error/Warning) accompanied by ObjectStatus text",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Number + unit read together",
+      "wcag": "1.3.1 (A)"
+    }
+  ],
+  "patterns": [
+    "KPI display",
+    "Numeric metric"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "ObjectHeader",
+      "Card",
+      "Table"
+    ],
+    "incompatible": [
+      "Without unit when unit matters"
+    ]
+  },
+  "exceptions": [
+    "inverted=true for dark backgrounds"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,116 @@
+{
+  "componentName": "FlexibleColumnLayout",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "beginColumnPages",
+      "ui5Name": "beginColumnPages",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "midColumnPages",
+      "ui5Name": "midColumnPages",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "endColumnPages",
+      "ui5Name": "endColumnPages",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "layout",
+      "ui5Name": "layout",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "OneColumn"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "divider",
+      "token": "sapList_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Semantic layout element — no accessible name required unless labeled by role"
+    }
+  ],
+  "doRules": [
+    "Use FlexibleColumnLayout as documented in SAPUI5 API — it is a foundational primitive"
+  ],
+  "dontRules": [
+    "Do not use FlexibleColumnLayout for content that has a semantic SAP component available"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/FlexibleColumnLayout",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+    "knownIssues": [
+      "sap.f.FlexibleColumnLayout — master/detail/subdetail responsive split. Handled natively by plugin."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "Page",
+      "App",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "SapFormSection",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "Form",
+      "SimpleForm"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "beginColumnPages",
+    "midColumnPages",
+    "endColumnPages"
+  ],
+  "schemaNotes": {
+    "typographyRules": "n/a"
+  }
+}

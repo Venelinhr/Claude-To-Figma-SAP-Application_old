@@ -1,0 +1,144 @@
+{
+  "componentName": "MenuButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "1d667088d93c355c2bd9bafac57147286206e799",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Default",
+        "Emphasized",
+        "Transparent"
+      ],
+      "default": "Default"
+    },
+    {
+      "property": "Button Mode",
+      "ui5Property": "buttonMode",
+      "values": [
+        "Regular",
+        "Split"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "icon",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Semibold Duplex",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/SemiboldDuplex"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter/Space opens menu; arrow keys navigate items"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Button text describes the menu purpose"
+    },
+    {
+      "category": "focus",
+      "requirement": "Focus stays on trigger when menu opens"
+    }
+  ],
+  "doRules": [
+    "Use Split mode when default action is common (e.g. \"Save\" + \"Save and Close\")",
+    "Use Regular mode for \"Add\", \"Actions\", \"More\" menus",
+    "Show \u25be arrow to indicate menu"
+  ],
+  "dontRules": [
+    "Do not use MenuButton when fewer than 2 menu items exist",
+    "Do not nest MenuButton inside MenuButton"
+  ],
+  "compatibleComponents": [
+    "Toolbar",
+    "OverflowToolbar",
+    "Menu"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cell",
+    "Inside form field"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/menubutton/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.MenuButton",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.MenuButton",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width; height 26px Compact / 36px Cozy.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "Panel",
+      "Dialog",
+      "Card",
+      "ColumnListItem",
+      "ObjectListItem",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "IconButton",
+      "ToolbarSpacer"
+    ]
+  }
+}

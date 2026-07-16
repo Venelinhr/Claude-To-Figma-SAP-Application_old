@@ -1,0 +1,61 @@
+{
+  "componentName": "TwoMonthCalendar",
+  "slug": "planning-calendar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/planning-calendar/",
+  "purpose": "A calendar view showing two consecutive months side-by-side. Used when the user needs to see current + next month at once — booking flows, date-range picking, comparing month layouts. A wider variant of Calendar.",
+  "whenToUse": [
+    "Booking or reservation flows where the range typically spans months",
+    "Date-range pickers where showing both months helps context",
+    "Comparing schedules across two months at a glance",
+    "Wide desktop calendar views (>800px available)"
+  ],
+  "whenNotToUse": [
+    "For single-month selection — use Calendar",
+    "For date-time selection — use DateTimePicker",
+    "On mobile — collapse to Calendar or single-month view",
+    "For quarter/year overview — use dedicated period picker"
+  ],
+  "doRules": [
+    "Highlight today in both months",
+    "Support keyboard navigation across the boundary between months",
+    "Show the year in each month's header (avoids ambiguity at year boundary)",
+    "Support range selection with visual highlight across both months"
+  ],
+  "dontRules": [
+    "Do not shrink below the width needed for both months",
+    "Do not omit month labels — always show 'January 2026 · February 2026'",
+    "Do not use in constrained popovers — falls back to Calendar there",
+    "Do not use for time-of-day selection"
+  ],
+  "layoutGuidance": {
+    "placement": "Standalone page, wide card, or dedicated planning view",
+    "sizing": "Min width 640px; height ~380px",
+    "spacing": "16px between the two month grids",
+    "alignment": "Side-by-side horizontal grids"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — dates",
+    "contentRules": "Days as numbers; weekday headers; month title with year",
+    "examples": ["January 2026 · February 2026"]
+  },
+  "responsiveBehavior": {
+    "XL": "Two months side-by-side",
+    "L": "Two months side-by-side",
+    "M": "May collapse to single month",
+    "S": "Single month (falls back to Calendar)"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "aria-label on each day cell with full date (including month + year)",
+      "Selected/range cells have visible highlight (not color alone)",
+      "Keyboard: Arrow keys navigate; Tab moves between months",
+      "Today marker distinguishable without color"
+    ]
+  },
+  "patterns": ["Date-range picker", "Booking flow", "Planning calendar view"],
+  "compatibility": {"allowedWith": ["Page", "Panel", "Card", "Dialog"], "forbiddenWith": ["Popover (too narrow)", "Table cells"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

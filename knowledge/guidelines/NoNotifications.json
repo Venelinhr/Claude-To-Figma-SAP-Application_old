@@ -1,0 +1,61 @@
+{
+  "componentName": "NoNotifications",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustrated-message/",
+  "purpose": "Empty-state illustration used inside the Notifications popover or notification inbox when the user has no notifications. Signals 'you're all caught up — nothing new here'.",
+  "whenToUse": [
+    "Notifications popover from ShellBar when list is empty",
+    "Notification inbox page with no items",
+    "Filtered notification view with no matches",
+    "Fresh user account before any notifications arrive"
+  ],
+  "whenNotToUse": [
+    "For unread-count zero but items exist — that's not empty",
+    "For a load failure — use error state",
+    "As decoration outside notification contexts",
+    "For general empty list without notification semantics"
+  ],
+  "doRules": [
+    "Use a friendly, positive message ('All caught up!', 'No new notifications')",
+    "Optional secondary description ('Check back later')",
+    "Use appropriate size for the popover or page",
+    "Keep tone light — this is a positive empty state"
+  ],
+  "dontRules": [
+    "Do not use apologetic or negative language",
+    "Do not add a CTA if there's no meaningful action",
+    "Do not use for error states",
+    "Do not shrink below Spot size"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside IllustratedMessage in the empty notification region",
+    "sizing": "Spot 48×48 in popover · Dialog 120×120 on page",
+    "spacing": "16px between illustration and text",
+    "alignment": "Centered vertically and horizontally"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 40 chars; description ≤ 80 chars",
+    "contentRules": "Title is positive; description is optional and brief",
+    "examples": ["Title: 'All caught up!' · Description: 'You have no new notifications'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Dialog or Spot depending on container",
+    "L": "Same",
+    "M": "Same",
+    "S": "Spot size"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "role='img' with aria-label='No notifications'",
+      "Title as semantic heading",
+      "role='status' on the containing region",
+      "Screen reader announces the empty state"
+    ]
+  },
+  "patterns": ["Empty notifications popover", "Empty notification inbox", "Positive empty state"],
+  "compatibility": {"allowedWith": ["IllustratedMessage (only)"], "forbiddenWith": ["Standalone", "Any other parent"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

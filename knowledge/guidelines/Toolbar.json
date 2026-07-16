@@ -1,0 +1,69 @@
+{
+  "componentName": "Toolbar",
+  "slug": "toolbar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/toolbar/",
+  "purpose": "Horizontal container for related actions, controls, and titles. The simpler sibling of OverflowToolbar — does NOT manage overflow when content exceeds available width.",
+  "whenToUse": [
+    "Action group with fixed, predictable content that won't overflow",
+    "Inline action row in a Panel or Form header",
+    "Simple action set in a Dialog footer (consider Dialog's own buttons instead)",
+    "When you know the viewport width is always sufficient"
+  ],
+  "whenNotToUse": [
+    "When action count may exceed width — use OverflowToolbar (almost always)",
+    "When you need responsive overflow behavior — use OverflowToolbar",
+    "Inside table cells — use IconButton or Button",
+    "For navigation — use ShellBar or DynamicPageTitle"
+  ],
+  "doRules": [
+    "Use Toolbar only when OverflowToolbar is NOT needed (rare)",
+    "Place primary action right-aligned (after a ToolbarSpacer)",
+    "Group related buttons; separate destructive actions with spacing",
+    "Bind fill to sapShellColor (Solid) or sapBackgroundColor (Transparent)"
+  ],
+  "dontRules": [
+    "Do not put a primary CTA on the left — convention is right-aligned",
+    "Do not stack Toolbars vertically — combine into one",
+    "Do not omit the ToolbarSpacer when items should be left+right aligned",
+    "Do not mix Toolbar and OverflowToolbar in the same area"
+  ],
+  "layoutGuidance": {
+    "placement": "Top of Panel/Form/section, below DynamicPageTitle, or as Dialog footer.",
+    "sizing": "Auto-width 100%; height 44px Compact / 48px Cozy.",
+    "spacing": "8px gap between buttons; 16px between groups.",
+    "alignment": "Left-anchored by default; ToolbarSpacer pushes right group."
+  },
+  "contentGuidance": {
+    "labelLength": "Inherits from children (Buttons, Title).",
+    "contentRules": [
+      "Limit to ~6 actions for predictable layouts; beyond that, use OverflowToolbar"
+    ],
+    "examples": [
+      "Title | Spacer | Search | Add | Delete | Export",
+      "Cancel | Spacer | Save"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "All items inline.",
+    "L":  "All items inline.",
+    "M":  "Risk of overflow — prefer OverflowToolbar.",
+    "S":  "High overflow risk — strongly prefer OverflowToolbar."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "role='toolbar' with aria-label describing purpose. Arrow keys navigate within toolbar.",
+    "contrast": "Border ≥ 3:1 with bg (WCAG AA non-text 1.4.11).",
+    "keyboard": "Tab enters/exits; arrow keys navigate internally.",
+    "screenReader": "Announced as 'toolbar, [label], N items'."
+  },
+  "patterns": [
+    "Panel header — title + a few actions",
+    "Form section header — section actions",
+    "Dialog footer (rare; Dialog has its own buttons)"
+  ],
+  "compatibility": ["Button", "MenuButton", "IconButton", "ToolbarSpacer", "Title", "Label", "Input", "SearchField", "Select"],
+  "exceptions": [
+    "In nearly all production cases, prefer OverflowToolbar. Toolbar is documented for completeness but its incompatibility with overflow makes it rare."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

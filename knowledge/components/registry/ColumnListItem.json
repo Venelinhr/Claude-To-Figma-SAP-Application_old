@@ -1,0 +1,154 @@
+{
+  "componentName": "ColumnListItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Table",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Type",
+      "ui5Property": "type",
+      "values": [
+        "Inactive",
+        "Active",
+        "Navigation",
+        "Detail",
+        "DetailAndActive"
+      ],
+      "default": "Inactive"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "type",
+      "ui5Name": "type",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Inactive"
+    },
+    {
+      "name": "selected",
+      "ui5Name": "selected",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Selected",
+    "Focused"
+  ],
+  "typographyRules": [
+    {
+      "role": "cell-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#E5E5E5"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter on Navigation type opens detail"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring on row"
+    }
+  ],
+  "doRules": [
+    "Use Navigation type when row click opens detail page",
+    "Use Active type when row click triggers action",
+    "Keep row height consistent across the table"
+  ],
+  "dontRules": [
+    "Do not nest interactive elements inside Active or Navigation rows",
+    "Do not vary row height arbitrarily"
+  ],
+  "compatibleComponents": [
+    "Table",
+    "Column"
+  ],
+  "incompatiblePatterns": [
+    "Outside Table"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/columnlistitem/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ColumnListItem",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ColumnListItem",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "live-text-node",
+    "sizingConstraints": "Height 48px Compact / 64px Cozy by default. Custom rows up to 114px.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Table",
+      "SapTableRow"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Text",
+      "Label",
+      "Link",
+      "Avatar",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "ObjectMarker",
+      "Tag",
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "CheckBox",
+      "Switch",
+      "Input",
+      "Select",
+      "ProgressIndicator",
+      "AvatarGroup",
+      "RatingIndicator"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Form",
+      "Table"
+    ],
+    "commonSiblings": [
+      "ColumnListItem"
+    ]
+  }
+}

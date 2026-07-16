@@ -1,0 +1,145 @@
+{
+  "componentName": "ToggleButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "2e756084e95280f469617b07a64ea44a0b2415fa",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill-pressed",
+      "state": "Pressed",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "text-pressed",
+      "state": "Pressed",
+      "token": "sapButton_Emphasized_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapButton_BorderColor",
+      "fallbackHex": "#BCC3CA"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Show pressed state via fill, not just text",
+    "Bind pressed fill to sapButton_Emphasized_Background",
+    "Provide aria-pressed attribute equivalent"
+  ],
+  "dontRules": [
+    "Do not use without a clear pressed/unpressed visual distinction",
+    "Do not stack multiple ToggleButtons that are actually mutually exclusive \u2014 use SegmentedButton"
+  ],
+  "compatibleComponents": [
+    "OverflowToolbar",
+    "Toolbar",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/toggle-button/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ToggleButton",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ToggleButton",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ToggleButton/sample/sap.m.sample.ToggleButton"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ToggleButton uses same Figma instance as Button with Pressed variant. Plugin should set property \"Pressed\": \"True\" via setProperties. Live Figma componentKey 2e756084e95280f469617b07a64ea44a0b2415fa resolved 2026-06-27 from Quartz Web UI Kit_v1.94.",
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "Panel"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ToggleButton",
+      "Button",
+      "SegmentedButton"
+    ]
+  }
+}

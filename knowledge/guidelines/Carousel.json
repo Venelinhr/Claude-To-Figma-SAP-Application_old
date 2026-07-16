@@ -1,0 +1,73 @@
+{
+  "componentName": "Carousel",
+  "slug": "carousel",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/carousel/",
+  "purpose": "Horizontally swipeable container that displays one item at a time with paging dots. Used for showcasing related images, cards, or KPIs.",
+  "whenToUse": [
+    "Hero images on an overview page",
+    "A sequence of equivalent items where the user reviews one at a time",
+    "Featured content rotators",
+    "Mobile-first layouts where horizontal scroll is natural"
+  ],
+  "whenNotToUse": [
+    "When all items must be visible simultaneously \u2014 use a grid of Cards",
+    "For navigation \u2014 use Tabs or IconTabBar",
+    "When item order matters and users must compare \u2014 use Table or Card grid",
+    "For more than ~7 items \u2014 users lose context"
+  ],
+  "doRules": [
+    "Show paging dots so users can see total count",
+    "Set itemHeight large enough that content is readable on first slide",
+    "Provide keyboard navigation (Left/Right arrows)",
+    "Bind background to sapBackgroundColor"
+  ],
+  "dontRules": [
+    "Do not auto-rotate \u2014 let users control pace",
+    "Do not hide paging dots",
+    "Do not exceed ~7 items",
+    "Do not use Carousel for primary navigation"
+  ],
+  "layoutGuidance": {
+    "placement": "Place Carousel inside a compatible container (DynamicPage, Panel, Card).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid punctuation in short labels",
+      "Localize all text"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense or collapse \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern (Popover, Dialog) on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for container \u2014 see SAP Fiori a11y docs.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used in DynamicPage",
+    "Used in Panel",
+    "Used in Card"
+  ],
+  "compatibility": [
+    "DynamicPage",
+    "Panel",
+    "Card",
+    "Dialog"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

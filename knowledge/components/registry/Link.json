@@ -1,0 +1,175 @@
+{
+  "componentName": "Link",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "2e67b5399e9f05950c6f6ea6f244a1a9736c8a56",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Visited",
+        "Disabled"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Subtle",
+      "ui5Property": "subtle",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Emphasized",
+      "ui5Property": "emphasized",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "href",
+      "ui5Name": "href",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "target",
+      "ui5Name": "target",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Visited",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "link",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter activates link"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Link text describes destination \u2014 avoid \"click here\""
+    }
+  ],
+  "doRules": [
+    "Use Link for navigation between pages or external URLs",
+    "Use descriptive text that makes sense out of context",
+    "Mark external links with an icon or indicator"
+  ],
+  "dontRules": [
+    "Do not use Link for actions \u2014 use Button",
+    "Do not use \"click here\" as link text",
+    "Do not style arbitrary text blue to imitate Link \u2014 use the component"
+  ],
+  "compatibleComponents": [
+    "Toolbar",
+    "OverflowToolbar",
+    "Form",
+    "List",
+    "Table"
+  ],
+  "incompatiblePatterns": [
+    "As primary CTA",
+    "In tight UI like icon-only toolbar"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/link/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Link",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Link",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "MessageStrip",
+      "MessagePopover",
+      "ColumnListItem",
+      "SapTableRow",
+      "TimelineItem",
+      "FeedListItem",
+      "StandardListItem",
+      "Text",
+      "IconTabBar",
+      "Breadcrumb",
+      "DynamicPageTitle",
+      "ObjectPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Text",
+      "Label",
+      "Button"
+    ]
+  }
+}

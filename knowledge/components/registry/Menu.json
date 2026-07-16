@@ -1,0 +1,134 @@
+{
+  "componentName": "Menu",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "ba51eb54cba79d6795057e5df5ff853d361ee799",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Popup",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "string",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "showTitle",
+      "ui5Name": "showTitle",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "item-text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapContent_Container_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapContent_Container_BorderColor",
+      "fallbackHex": "#D5DADE"
+    },
+    {
+      "role": "item-hover-bg",
+      "token": "sapList_Hover_Background",
+      "fallbackHex": "#F5F6F7"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate; Enter selects; Escape closes"
+    },
+    {
+      "category": "focus",
+      "requirement": "First item receives focus on open"
+    }
+  ],
+  "doRules": [
+    "Use as a popup menu opened by a MenuButton, SplitButton, IconMenuButton, or right-click context",
+    "Items are MenuListItem components (supports icon, text, submenu-arrow)",
+    "Also usable as a Submenu — overlaps parent Menu by 4px per SAP guidance"
+  ],
+  "dontRules": [
+    "Do not use for permanent navigation — use List or SideNavigation",
+    "Do not use for form input — use Select or ComboBox",
+    "Do not nest more than 2 submenu levels — becomes hard to navigate"
+  ],
+  "compatibleComponents": [
+    "MenuButton",
+    "SplitButton",
+    "IconMenuButton",
+    "MenuListItem"
+  ],
+  "incompatiblePatterns": [
+    "Inside a Dialog content area as a permanent list — use List instead"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/menu/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Menu",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Menu",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-07",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto-sized to widest MenuListItem. Positioned by opener (MenuButton).",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "MenuButton",
+      "SplitButton",
+      "IconMenuButton",
+      "Toolbar",
+      "OverflowToolbar",
+      "Dialog",
+      "Popover"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "MenuListItem"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "items"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "componentName": "ToggleButton",
+  "slug": "toggle-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/toggle-button/",
+  "purpose": "Stateful Button \u2014 visually shows pressed/unpressed state. Used for binary toggles that aren't pure switches (e.g. format toolbar bold/italic, filter chip on/off).",
+  "whenToUse": [
+    "Toolbar format toggles (Bold / Italic / Underline)",
+    "Filter mode toggle in a toolbar",
+    "When state must be visually distinct from disabled"
+  ],
+  "whenNotToUse": [
+    "Single-action triggers \u2014 use Button",
+    "Multiple mutually-exclusive options \u2014 use SegmentedButton",
+    "Enable/disable a value \u2014 use Switch"
+  ],
+  "doRules": [
+    "Show pressed state via fill, not just text",
+    "Bind pressed fill to sapButton_Emphasized_Background",
+    "Provide aria-pressed attribute equivalent"
+  ],
+  "dontRules": [
+    "Do not use without a clear pressed/unpressed visual distinction",
+    "Do not stack multiple ToggleButtons that are actually mutually exclusive \u2014 use SegmentedButton"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ToggleButton inside a compatible container (OverflowToolbar, Toolbar, Form).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for button.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside OverflowToolbar",
+    "Used inside Toolbar",
+    "Used inside Form"
+  ],
+  "compatibility": [
+    "OverflowToolbar",
+    "Toolbar",
+    "Form"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

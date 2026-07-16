@@ -1,0 +1,154 @@
+{
+  "componentName": "MessagePopover",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Popover",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "error-icon",
+      "state": "Error",
+      "token": "sapNegativeTextColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "warning-icon",
+      "state": "Warning",
+      "token": "sapCriticalTextColor",
+      "fallbackHex": "#A8650B"
+    },
+    {
+      "role": "success-icon",
+      "state": "Success",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#188919"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Anchor to a status button with error count",
+    "Group messages by severity (Errors / Warnings / Info)",
+    "Make each row navigable to the source field"
+  ],
+  "dontRules": [
+    "Do not use MessagePopover for non-form contexts",
+    "Do not omit the error count on the trigger button"
+  ],
+  "compatibleComponents": [
+    "Form",
+    "Dialog"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/message-popover/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.MessagePopover",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.MessagePopover",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.MessagePopover/sample/sap.m.sample.MessagePopover"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "MessagePopover aliases to Popover with MessageView content. Plugin composes Popover + grouped message list.",
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "OverflowToolbar",
+      "Toolbar",
+      "DynamicPageTitle"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "MessageStrip",
+      "Text",
+      "Title",
+      "Link",
+      "Button",
+      "List",
+      "StandardListItem"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "commonSiblings": [
+      "Button"
+    ]
+  },
+  "slotNames": [
+    "items",
+    "headerButton"
+  ]
+}

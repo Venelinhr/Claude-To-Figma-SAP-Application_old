@@ -1,0 +1,86 @@
+{
+  "componentName": "DatePicker",
+  "slug": "date-picker",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/date-picker/",
+  "purpose": "A single-date input with calendar popup. Type or click the calendar icon to choose a date. Respects locale formatting.",
+  "whenToUse": [
+    "Single-date input in forms",
+    "Date filters in FilterBar",
+    "Birthdate, due-date, expiration entry"
+  ],
+  "whenNotToUse": [
+    "For date range \u2014 use DateRangePicker",
+    "For date + time \u2014 use DateTimePicker",
+    "For time only \u2014 use TimePicker"
+  ],
+  "doRules": [
+    "Use locale-aware date format",
+    "Provide minDate/maxDate when range is constrained",
+    "Show format hint in placeholder",
+    "Allow keyboard entry of date string"
+  ],
+  "dontRules": [
+    "Do not require user to type format manually without hint",
+    "Do not omit calendar icon"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, FilterBar, Dialog body.",
+    "sizing": "256px default.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Calendar icon right; date left."
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder shows format hint.",
+    "contentRules": [
+      "Date shown in locale format",
+      "Calendar popup shows current month"
+    ],
+    "examples": [
+      "MM/dd/yyyy",
+      "2026-06-25",
+      "25.06.2026"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full input + calendar popup",
+    "L": "Full input + calendar popup",
+    "M": "Full input + popup",
+    "S": "Native mobile date picker"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Calendar icon opens picker; arrow keys navigate dates; Enter selects; Escape closes",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label; format hint in placeholder",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Selected date announced"
+    }
+  ],
+  "patterns": [
+    "Form field",
+    "Filter dimension",
+    "Date entry"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "FilterBar"
+    ],
+    "incompatible": [
+      "Without Label"
+    ]
+  },
+  "exceptions": [
+    "displayFormat overrides locale default"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,163 @@
+{
+  "componentName": "FilterBar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "showFilterConfiguration",
+      "ui5Name": "showFilterConfiguration",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    },
+    {
+      "name": "showRestoreButton",
+      "ui5Name": "showRestoreButton",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    },
+    {
+      "name": "filterItems",
+      "ui5Name": "filterItems",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "filter-label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    },
+    {
+      "role": "go-button",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapObjectHeader_Background",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "border",
+      "token": "sapObjectHeader_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    },
+    {
+      "role": "label-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab through filter fields in DOM order"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Each filter has Label"
+    }
+  ],
+  "doRules": [
+    "Place in DynamicPageHeader slot",
+    "Show most important filters by default",
+    "Provide Go button to execute filter",
+    "Allow filter configuration for advanced users"
+  ],
+  "dontRules": [
+    "Do not stack filter rows when horizontal space allows",
+    "Do not skip Labels on filter fields"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "DynamicPageHeader",
+    "Input",
+    "Select",
+    "DateRangePicker"
+  ],
+  "incompatiblePatterns": [
+    "Inside Table cell",
+    "As Dialog content"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/filterbar/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.FilterBar",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.FilterBar",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "not-injectable",
+    "sizingConstraints": "Full width of parent.",
+    "knownIssues": [
+      "Plugin renders as native FilterBar frame with filter children placed inline."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "DynamicPageHeader",
+      "DynamicPageTitle",
+      "Card",
+      "VBox",
+      "HBox",
+      "FlexBox"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Input",
+      "Select",
+      "ComboBox",
+      "MultiComboBox",
+      "DatePicker",
+      "DateRangePicker",
+      "SearchField",
+      "Tokenizer",
+      "Token",
+      "Button",
+      "Label",
+      "Slider",
+      "RangeSlider",
+      "CheckBox",
+      "Switch",
+      "TimePicker",
+      "DateTimePicker",
+      "StepInput"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog",
+      "Table",
+      "Form"
+    ],
+    "commonSiblings": [
+      "Table",
+      "SapColHeader",
+      "OverflowToolbar"
+    ]
+  },
+  "slotNames": [
+    "filterItems",
+    "filterGroupItems",
+    "content"
+  ]
+}

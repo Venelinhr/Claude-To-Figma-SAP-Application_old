@@ -1,0 +1,60 @@
+{
+  "componentName": "IconTabSeparator",
+  "slug": "icon-tab-separator",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/icon-tab-separator/",
+  "purpose": "Visual separator between groups of tabs inside an IconTabBar.",
+  "whenToUse": [
+    "Inside IconTabBar between logical tab groups",
+    "When tabs span multiple distinct categories"
+  ],
+  "whenNotToUse": [
+    "Outside IconTabBar",
+    "For visual padding \u2014 adjust itemSpacing instead"
+  ],
+  "doRules": [
+    "Use to separate logically distinct tab groups (Process / Settings / Help)",
+    "Keep separator visually subtle"
+  ],
+  "dontRules": [
+    "Do not abuse separators to compensate for tab overcrowding (limit tabs instead)",
+    "Do not use multiple separators in a row"
+  ],
+  "layoutGuidance": {
+    "placement": "Place IconTabSeparator inside a compatible container (IconTabBar).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for navigation.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside IconTabBar"
+  ],
+  "compatibility": [
+    "IconTabBar"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

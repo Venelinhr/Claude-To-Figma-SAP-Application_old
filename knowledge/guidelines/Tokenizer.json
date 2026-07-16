@@ -1,0 +1,72 @@
+{
+  "componentName": "Tokenizer",
+  "slug": "tokenizer",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/tokenizer/",
+  "purpose": "A horizontal container of Token chips. Used to show multiple selected values together with overflow handling and add/remove affordances.",
+  "whenToUse": [
+    "Display selected filter values from a FilterBar",
+    "Show selected tags or categories on an object",
+    "Multi-value input where each value becomes a removable chip",
+    "Anywhere MultiComboBox or MultiInput's built-in tokenizer is insufficient"
+  ],
+  "whenNotToUse": [
+    "Single-value input \u2014 use Input",
+    "For action buttons \u2014 use OverflowToolbar",
+    "For navigation tabs \u2014 use IconTabBar"
+  ],
+  "doRules": [
+    "Provide tokens via items[] array",
+    "Show \"+N more\" overflow indicator when tokens exceed available width",
+    "Allow keyboard navigation between tokens (Left/Right)",
+    "Bind background to sapBackgroundColor"
+  ],
+  "dontRules": [
+    "Do not exceed ~10 visible tokens \u2014 use overflow",
+    "Do not mix Token and other content inside Tokenizer",
+    "Do not nest Tokenizers",
+    "Do not omit the overflow indicator"
+  ],
+  "layoutGuidance": {
+    "placement": "Place Tokenizer inside a compatible container (Form, FilterBar, DynamicPageHeader).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid punctuation in short labels",
+      "Localize all text"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense or collapse \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern (Popover, Dialog) on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for input \u2014 see SAP Fiori a11y docs.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used in Form",
+    "Used in FilterBar",
+    "Used in DynamicPageHeader"
+  ],
+  "compatibility": [
+    "Form",
+    "FilterBar",
+    "DynamicPageHeader",
+    "Panel"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

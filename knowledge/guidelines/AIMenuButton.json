@@ -1,0 +1,61 @@
+{
+  "componentName": "AIMenuButton",
+  "slug": "joule-menu-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/joule/",
+  "purpose": "A menu button variant styled with the SAP AI accent, opening a menu of Joule-powered actions. Used in toolbars where multiple AI actions are grouped behind one entry point.",
+  "whenToUse": [
+    "Toolbar entry point for 2–8 AI-powered actions",
+    "Card or panel header with an AI shortcut menu",
+    "Object page actions where AI is one of several action groups",
+    "When AI actions need dedicated visual emphasis"
+  ],
+  "whenNotToUse": [
+    "For a single AI action — use AIButton",
+    "For non-AI menu — use MenuButton",
+    "For AI action with variants sharing a primary — use AISplitMenuButton",
+    "For >8 items — use a dedicated Joule panel"
+  ],
+  "doRules": [
+    "Group related AI actions (e.g. 'Summarize', 'Draft', 'Translate')",
+    "Include a Joule spark icon on the button",
+    "Order menu items by frequency of use",
+    "Keep menu concise — 3–6 items is ideal"
+  ],
+  "dontRules": [
+    "Do not mix AI and non-AI actions in the same menu — split them",
+    "Do not omit the AI visual accent — users need to know AI is invoked",
+    "Do not use for destructive actions",
+    "Do not chain AI actions without user confirmation between steps"
+  ],
+  "layoutGuidance": {
+    "placement": "Toolbars, DynamicPageTitle actions, card headers",
+    "sizing": "Height 32px compact, 40px cozy",
+    "spacing": "Standard button spacing",
+    "alignment": "Same as other buttons in the row"
+  },
+  "contentGuidance": {
+    "labelLength": "≤ 25 chars, verb-first",
+    "contentRules": "Action-oriented labels",
+    "examples": ["✨ AI Actions ▼", "✨ Joule ▼"]
+  },
+  "responsiveBehavior": {
+    "XL": "Icon + label + chevron",
+    "L": "Same",
+    "M": "Same",
+    "S": "Icon + chevron only"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "role='button' with aria-haspopup='menu' and aria-expanded",
+      "aria-label describes menu contents ('AI actions')",
+      "Menu items have role='menuitem'",
+      "Keyboard: Enter opens; Arrow keys navigate; Escape closes"
+    ]
+  },
+  "patterns": ["Toolbar AI actions", "Object page AI menu", "Card header AI shortcut"],
+  "compatibility": {"allowedWith": ["Toolbar", "OverflowToolbar", "DynamicPageTitle", "Card"], "forbiddenWith": ["Table cells", "Inline in text"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

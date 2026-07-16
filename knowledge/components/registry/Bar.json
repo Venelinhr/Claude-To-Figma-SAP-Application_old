@@ -1,0 +1,168 @@
+{
+  "componentName": "Bar",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "d4560b56c7b5aa9476e6b23bfaf869166b7fff47",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Design",
+      "ui5Property": "design",
+      "values": [
+        "Auto",
+        "Header",
+        "SubHeader",
+        "Footer"
+      ],
+      "default": "Auto"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "design",
+      "ui5Name": "design",
+      "type": "string",
+      "exposedInLibrary": true,
+      "default": "Auto"
+    },
+    {
+      "name": "translucent",
+      "ui5Name": "translucent",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "showTitle",
+      "ui5Name": "showTitle",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapPageHeader_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapPageHeader_BorderColor",
+      "fallbackHex": "#D5DADE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name via titleAlignment or aria-label"
+    },
+    {
+      "category": "landmarks",
+      "requirement": "Design=Header renders as ARIA banner; Design=Footer as contentinfo"
+    }
+  ],
+  "doRules": [
+    "Use Bar to wrap top/bottom action bars in Dialogs, Mobile Pages, or SubHeader regions",
+    "Design=Header for top action bar, Design=Footer for bottom action bar, Design=SubHeader for a secondary row below the main header",
+    "Content is organized in three slots: contentLeft, contentMiddle, contentRight"
+  ],
+  "dontRules": [
+    "Do not nest Bar inside another Bar",
+    "Do not use as a page ShellBar — use ShellBar for the top app frame",
+    "Do not use for filter refinement — use FilterBar"
+  ],
+  "compatibleComponents": [
+    "Button",
+    "IconButton",
+    "Title",
+    "Label",
+    "SearchField",
+    "SegmentedButton",
+    "MenuButton",
+    "SplitButton",
+    "Toolbar"
+  ],
+  "incompatiblePatterns": [
+    "Inside ShellBar",
+    "Inside FilterBar as filterItem"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/bar/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Bar",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Bar",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-07",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Full-width horizontal band. Height depends on Design: Header ~44px, SubHeader ~44px, Footer ~48px.",
+    "knownIssues": [
+      "SAP kit exposes this as 'Header' component_set. Plugin's SAP_KEYS maps Bar → the Header key. The Design variant selects Header/SubHeader/Footer visuals."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "Dialog",
+      "Popover",
+      "Panel",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "IconTabBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Button",
+      "IconButton",
+      "Title",
+      "Label",
+      "Text",
+      "SearchField",
+      "SegmentedButton",
+      "MenuButton",
+      "SplitButton",
+      "ToolbarSpacer",
+      "Toolbar"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "contentLeft",
+    "contentMiddle",
+    "contentRight"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "componentName": "ToolbarSpacer",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Not focusable, not announced by screen readers — purely visual layout"
+    }
+  ],
+  "doRules": [
+    "Use ToolbarSpacer between logical groups of toolbar actions to push subsequent items to the trailing edge",
+    "One spacer per Toolbar is usually sufficient",
+    "Place before trailing actions (Refresh, More, Emphasized primary) so left-side items stay left-aligned"
+  ],
+  "dontRules": [
+    "Do not use ToolbarSpacer outside a Toolbar / OverflowToolbar / Bar",
+    "Do not stack multiple spacers to fake centering — use Toolbar's own alignment options",
+    "Do not use with an explicit width — SAP spacer is a flex grower, not a fixed gap"
+  ],
+  "compatibleComponents": [
+    "Toolbar",
+    "OverflowToolbar",
+    "Bar",
+    "Button",
+    "IconButton",
+    "MenuButton",
+    "SearchField",
+    "Title",
+    "Label"
+  ],
+  "incompatiblePatterns": [
+    "Outside a Toolbar family container"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/toolbar-overview/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ToolbarSpacer",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ToolbarSpacer",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Not a real Figma component. Plugin sets layoutGrow=1 on the PREVIOUS sibling so it stretches, pushing subsequent siblings to the trailing edge.",
+    "knownIssues": [
+      "ToolbarSpacer is a plugin-side layout marker, not a SAP library component. It has no renderable Figma node — the effect is achieved by setting layoutGrow=1 on the previous sibling in the toolbar. See plugin code.js line ~2200."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "Bar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "IconButton",
+      "MenuButton",
+      "SearchField",
+      "Title",
+      "Label",
+      "Text"
+    ]
+  },
+  "schemaNotes": {
+    "typographyRules": "n/a",
+    "colorTokenRules": "n/a"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "componentName": "Tabs",
+  "slug": "tabs",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/tabs/",
+  "purpose": "Top-aligned tabbed navigation with text labels. Visual variant of IconTabBar \u2014 used when tabs do not need icons.",
+  "whenToUse": [
+    "Page-level tab navigation when icons would add noise",
+    "Sub-section navigation on detail pages"
+  ],
+  "whenNotToUse": [
+    "When tabs are critical app-level navigation \u2014 use IconTabBar",
+    "When more than ~7 tabs \u2014 use Select or ComboBox"
+  ],
+  "doRules": [
+    "Mark exactly one tab as selected",
+    "Bind selected text to sapButton_Emphasized_TextColor",
+    "Limit to 7 tabs"
+  ],
+  "dontRules": [
+    "Do not exceed 7 tabs",
+    "Do not nest Tabs inside Tabs",
+    "Do not hide the selected indicator"
+  ],
+  "layoutGuidance": {
+    "placement": "Place Tabs inside a compatible container (DynamicPage, Panel, Form).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for navigation.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside DynamicPage",
+    "Used inside Panel",
+    "Used inside Form"
+  ],
+  "compatibility": [
+    "DynamicPage",
+    "Panel",
+    "Form"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

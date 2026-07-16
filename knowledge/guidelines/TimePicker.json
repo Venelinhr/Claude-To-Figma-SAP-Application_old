@@ -1,0 +1,77 @@
+{
+  "componentName": "TimePicker",
+  "slug": "time-picker",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/time-picker/",
+  "purpose": "A single time-of-day input. User can type or use up/down spinners for hours, minutes, optional seconds.",
+  "whenToUse": [
+    "Time-only entry (alarm, business hours, meeting start)",
+    "When time without date is meaningful"
+  ],
+  "whenNotToUse": [
+    "When date is also required \u2014 use DateTimePicker",
+    "For durations \u2014 use Input type=Number"
+  ],
+  "doRules": [
+    "Use when only time-of-day is needed",
+    "Match locale 12/24 hour format",
+    "Show AM/PM toggle when applicable"
+  ],
+  "dontRules": [
+    "Do not use for date+time \u2014 use DateTimePicker",
+    "Do not allow seconds when minute precision suffices"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Dialog.",
+    "sizing": "160px default.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Field left, spinner right."
+  },
+  "contentGuidance": {
+    "labelLength": "Format hint in placeholder.",
+    "contentRules": [
+      "Locale 12/24h",
+      "AM/PM in 12h format"
+    ],
+    "examples": [
+      "HH:mm",
+      "09:30",
+      "02:45 PM"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full input + spinners",
+    "L": "Full input + spinners",
+    "M": "Full input + spinners",
+    "S": "Native mobile time picker"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys adjust hours/minutes; Tab moves between fields",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label",
+      "wcag": "1.3.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Time entry",
+    "Schedule field"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form"
+    ],
+    "incompatible": [
+      "Without Label"
+    ]
+  },
+  "exceptions": [
+    "Step value (e.g. 15-min intervals)"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

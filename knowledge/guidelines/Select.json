@@ -1,0 +1,93 @@
+{
+  "componentName": "Select",
+  "slug": "select",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/select/",
+  "purpose": "A dropdown control allowing the user to choose one option from a list of 4\u201312 mutually exclusive items. Compact alternative to RadioButton group.",
+  "whenToUse": [
+    "4\u201312 mutually exclusive options",
+    "When all options should be visible on demand",
+    "When the choice does not need search/filter",
+    "In forms and filter bars"
+  ],
+  "whenNotToUse": [
+    "Use RadioButton when \u22643 options",
+    "Use ComboBox when >12 options or search is needed",
+    "Use MultiComboBox for multi-select"
+  ],
+  "doRules": [
+    "Use Select when 4\u201312 mutually exclusive options exist",
+    "Use a clear default value when applicable",
+    "Pair every Select with a Label",
+    "Order options logically (frequency, alphabetical, recency)"
+  ],
+  "dontRules": [
+    "Do not use Select with fewer than 3 options \u2014 use RadioButton",
+    "Do not use Select with more than 12 options \u2014 use ComboBox with search",
+    "Do not nest Select inside Select"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside Form, FilterBar, Dialog body.",
+    "sizing": "Default 256px wide; resizable.",
+    "spacing": "8px vertical between fields.",
+    "alignment": "Left-aligned with Label above or to the left."
+  },
+  "contentGuidance": {
+    "labelLength": "Option text \u2264 30 chars preferred.",
+    "contentRules": [
+      "Use sentence case",
+      "Avoid repetitive words across options"
+    ],
+    "examples": [
+      "Cloud Integration",
+      "Integration Flow",
+      "API"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width of form column",
+    "L": "Full width of form column",
+    "M": "Single column stacked",
+    "S": "Native mobile select picker"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter/Space opens dropdown; arrow keys traverse options",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with a Label component",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring on closed state; option focus visible when open",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Selected value announced when changed"
+    }
+  ],
+  "patterns": [
+    "Form field",
+    "Filter dropdown"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "SimpleForm",
+      "Toolbar"
+    ],
+    "incompatible": [
+      "Without a Label"
+    ]
+  },
+  "exceptions": [
+    "When options have icons, use Select with icon+text variant"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,195 @@
+{
+  "componentName": "Text",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "native:text",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Typography",
+  "supportedVariants": [
+    {
+      "property": "Weight",
+      "values": [
+        "Regular",
+        "Medium",
+        "Bold"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Size",
+      "values": [
+        "xs",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "wrapping",
+      "ui5Name": "wrapping",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    },
+    {
+      "name": "maxLines",
+      "ui5Name": "maxLines",
+      "type": "number",
+      "exposedInLibrary": false,
+      "default": null
+    },
+    {
+      "name": "textAlign",
+      "ui5Name": "textAlign",
+      "type": "enum",
+      "exposedInLibrary": false,
+      "default": "Begin"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "body-default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "body-large",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 16,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "body-small",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "text",
+      "state": "Subtle",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Body text contrast \u2265 4.5:1 against background (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "wrap",
+      "requirement": "Long text wraps without horizontal overflow"
+    },
+    {
+      "category": "language",
+      "requirement": "Use plain language; localize all text"
+    }
+  ],
+  "doRules": [
+    "Use Text for body content, descriptions, labels, paragraph copy",
+    "Bind fill to sapList_TextColor for primary text, sapContent_LabelColor for secondary",
+    "Enable wrapping for long text; set maxLines to truncate gracefully",
+    "Use the SAP font family 72 (default)"
+  ],
+  "dontRules": [
+    "Do not use Text for headings \u2014 use Title with appropriate Level",
+    "Do not use Text for interactive elements \u2014 use Link or Button",
+    "Do not hardcode font sizes outside the SAP scale (12/14/16/18/20/24/28)",
+    "Do not use Text where Label semantics (form association) are needed"
+  ],
+  "compatibleComponents": [
+    "Form",
+    "Panel",
+    "Dialog",
+    "DynamicPage",
+    "OverflowToolbar",
+    "Table",
+    "List"
+  ],
+  "incompatiblePatterns": [
+    "As a clickable element (use Link or Button)",
+    "Multi-line within a single table cell \u2014 use ObjectIdentifier or ObjectAttribute"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/text/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Text",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Text",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Text/sample/sap.m.sample.Text"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Text is a native renderer \u2014 there is no SAP Figma instance for sap.m.Text. The plugin creates a figma.createText() node with: t.fontName = { family: '72', style: 'Regular' }; t.fontSize = 14; and fill bound to sapList_TextColor (default) or sapContent_LabelColor (subtle). Currently missing a buildTree handler \u2014 specs that emit Text fall through to buildSapNode and return null silently. This is a known gap fixed in the audit pass: handler added at comp === 'Text'. Status: AI specs MAY emit { component: 'Text', label: '...', props: { wrap?: bool, subtle?: bool } } anywhere body text is needed.",
+  "composition": {
+    "validParents": [
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "DynamicPageHeader",
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "MessageStrip",
+      "MessagePopover",
+      "Wizard",
+      "WizardStep",
+      "IconTabBar",
+      "ObjectPageSection",
+      "TimelineItem",
+      "FeedListItem",
+      "Carousel",
+      "StandardListItem",
+      "*"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Title",
+      "Link"
+    ]
+  }
+}

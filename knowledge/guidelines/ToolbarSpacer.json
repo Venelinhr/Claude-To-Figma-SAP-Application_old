@@ -1,0 +1,63 @@
+{
+  "componentName": "ToolbarSpacer",
+  "slug": "toolbar-spacer",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/toolbar/",
+  "purpose": "An invisible flex-grow element inside a Toolbar (or Bar) that pushes items apart. Used to separate a title on the left from actions on the right, or to distribute space between groups of toolbar items.",
+  "whenToUse": [
+    "Push a group of items to the right side of a Toolbar",
+    "Separate title from actions in a Bar's contentMiddle slot",
+    "Distribute items evenly in a wide toolbar",
+    "Anchor a search field to the right while other items stay left"
+  ],
+  "whenNotToUse": [
+    "For fixed spacing between items — use margin/padding instead",
+    "Between rows — Toolbar is horizontal-only",
+    "Outside a Toolbar or Bar — it has no meaning",
+    "For empty state — use IllustratedMessage instead"
+  ],
+  "doRules": [
+    "Use exactly one ToolbarSpacer to split a Toolbar into left/right",
+    "Use multiple ToolbarSpacers to distribute items evenly",
+    "Prefer ToolbarSpacer over manual widths for responsive behavior",
+    "Place it between semantic groups, not within a group"
+  ],
+  "dontRules": [
+    "Do not use as a visible separator — use ToolbarSeparator for that",
+    "Do not stack multiple ToolbarSpacers back-to-back",
+    "Do not add width to ToolbarSpacer — it should flex naturally",
+    "Do not use outside a Toolbar or Bar"
+  ],
+  "layoutGuidance": {
+    "placement": "Between items in a Toolbar or Bar",
+    "sizing": "flex-grow: 1 · min-width: 0",
+    "spacing": "n/a (fills available space)",
+    "alignment": "n/a"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a",
+    "contentRules": "No visible content",
+    "examples": ["[Title] [Spacer] [Save] [Cancel]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Fills available space",
+    "L": "Fills available space",
+    "M": "May collapse if toolbar wraps to two rows",
+    "S": "May be ignored if items stack"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.1 Info and Relationships (Level A)"],
+    "requirements": [
+      "role='presentation' — no semantic meaning for screen readers",
+      "Focus order is unaffected (spacer is not focusable)",
+      "Does not appear in the accessibility tree"
+    ]
+  },
+  "patterns": ["Toolbar with left title + right actions", "Bar footer with cancel + submit", "OverflowToolbar layouts"],
+  "compatibility": {
+    "allowedWith": ["Toolbar", "OverflowToolbar", "Bar", "FilterBar"],
+    "forbiddenWith": ["Panel content", "Card content", "Dialog content directly"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

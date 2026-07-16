@@ -1,0 +1,61 @@
+{
+  "componentName": "VBox",
+  "slug": "flexbox",
+  "sourceUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.VBox",
+  "purpose": "A vertical flexbox layout primitive. Arranges children in a vertical column with configurable justification, alignment, and spacing. The vertical-only sibling of HBox. Rendered by the plugin as a pass-through frame using Figma Auto Layout (VERTICAL).",
+  "whenToUse": [
+    "Stack child components vertically inside a page or panel",
+    "Compose form-adjacent content (form + hints + notes)",
+    "Create custom vertical composite components",
+    "As a lightweight column when a full Panel is overkill"
+  ],
+  "whenNotToUse": [
+    "For a page layout with header/content/footer — use Page or DynamicPage",
+    "For a table of stacked items — use List",
+    "For a form field column — use Form / FormContainer",
+    "When items should reflow horizontally on wide viewports — use FlexBox"
+  ],
+  "doRules": [
+    "Set consistent itemSpacing for scannability",
+    "Use justifyContent to align children vertically (Start, Center, End, SpaceBetween)",
+    "Set height='100%' to fill parent when appropriate",
+    "Group semantically-related items in the same VBox"
+  ],
+  "dontRules": [
+    "Do not use VBox for form-field columns — use FormContainer",
+    "Do not nest deeply — becomes hard to reason about",
+    "Do not put a page shell inside VBox — use Page",
+    "Do not mix with absolute-positioned children"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside pages, panels, cards, custom composites",
+    "sizing": "Height hugs content or fills parent; width hugs widest child",
+    "spacing": "Configurable via itemSpacing (default: 8px)",
+    "alignment": "justifyContent + alignItems control vertical positioning"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — layout container",
+    "contentRules": "Children are any renderable components; not semantic",
+    "examples": ["[Title] [Description] [Actions]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Column stack",
+    "L": "Column stack",
+    "M": "Column stack",
+    "S": "Column stack (no horizontal reflow — for that use FlexBox)"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.2 Meaningful Sequence (Level A)"],
+    "requirements": [
+      "role='group' when children share purpose; otherwise none",
+      "Focus order follows top-to-bottom visual order",
+      "Children provide their own accessible names",
+      "No aria-label on VBox itself"
+    ]
+  },
+  "patterns": ["Vertical stacking", "Form-adjacent info block", "Sidebar composition"],
+  "compatibility": {"allowedWith": ["Page", "Panel", "Card", "Dialog", "DynamicPage content", "HBox", "FlexBox"], "forbiddenWith": ["FormContainer (use it directly)", "Table body (use List)"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

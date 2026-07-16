@@ -1,0 +1,92 @@
+{
+  "componentName": "HBox",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "height",
+      "ui5Name": "height",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Semantic layout element — no accessible name required unless labeled by role"
+    }
+  ],
+  "doRules": [
+    "Use HBox as documented in SAPUI5 API — it is a foundational primitive"
+  ],
+  "dontRules": [
+    "Do not use HBox for content that has a semantic SAP component available"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/HBox",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+    "knownIssues": [
+      "sap.m.HBox — horizontal layout primitive. Handled by plugin's LAYOUT_CONTAINERS set (flat-walked)."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "Page",
+      "App",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "IconTabBar",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "SapFormSection",
+      "HBox",
+      "VBox",
+      "FlexBox",
+      "Form",
+      "SimpleForm"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  },
+  "schemaNotes": {
+    "typographyRules": "n/a"
+  }
+}

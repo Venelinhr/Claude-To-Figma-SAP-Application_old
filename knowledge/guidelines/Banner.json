@@ -1,0 +1,64 @@
+{
+  "componentName": "Banner",
+  "slug": "banner",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/message-page/",
+  "purpose": "A generic banner element for showing prominent messages within page content. Distinct from MessageStrip (inline validation) and NotificationBanner (system-wide, at page top). Used inside cards, panels, or content sections to highlight important information.",
+  "whenToUse": [
+    "Highlight an important content-level message inside a card or panel",
+    "Show a feature announcement inline within a business flow",
+    "Communicate context-specific information (e.g. 'This item is read-only')",
+    "Draw attention to a change or milestone in content"
+  ],
+  "whenNotToUse": [
+    "For page-level validation — use MessageStrip",
+    "For system-wide alerts — use NotificationBanner",
+    "For transient toast — use MessageToast",
+    "For empty states — use IllustratedMessage"
+  ],
+  "doRules": [
+    "Use a clear title (≤ 60 chars)",
+    "Provide a description with context",
+    "Include a dismiss action if the banner is not blocking",
+    "Pair color with icon and text — never state-by-color alone"
+  ],
+  "dontRules": [
+    "Do not stack multiple banners in the same section",
+    "Do not use as a persistent header — content moves as user scrolls",
+    "Do not use for critical errors — use MessageStrip or Dialog instead",
+    "Do not use decorative banners without a real message"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside page content, cards, or panels",
+    "sizing": "Height ~60–80px depending on density; full parent width",
+    "spacing": "16px internal padding; 16px margin from siblings",
+    "alignment": "Icon left · title+description middle · dismiss right"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 60 chars; description ≤ 160 chars",
+    "contentRules": "Title states the fact; description gives context or action",
+    "examples": ["Read-only mode — this record has been locked by another user"]
+  },
+  "responsiveBehavior": {
+    "XL": "Icon + title + description + action",
+    "L": "Same",
+    "M": "Description may truncate",
+    "S": "Title only; expand for description"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.4.1 Use of Color (Level A)", "WCAG 2.1 · 4.1.3 Status Messages (Level AA)"],
+    "requirements": [
+      "role='status' or 'alert' depending on severity",
+      "Icon paired with descriptive text",
+      "Dismiss button has aria-label",
+      "Focus is not stolen unless critical"
+    ]
+  },
+  "patterns": ["Inline content notice", "Feature announcement", "Read-only indicator"],
+  "compatibility": {
+    "allowedWith": ["Page", "Panel", "Card", "DynamicPage content", "ObjectPageSection"],
+    "forbiddenWith": ["Toolbar", "Table cells", "Dialog title bar"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,109 @@
+{
+  "componentName": "Column",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Table",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "width",
+      "ui5Name": "width",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "hAlign",
+      "ui5Name": "hAlign",
+      "type": "variant",
+      "exposedInLibrary": false,
+      "default": "Begin"
+    },
+    {
+      "name": "sortIndicator",
+      "ui5Name": "sortIndicator",
+      "type": "variant",
+      "exposedInLibrary": false,
+      "default": "None"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "header-label",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#223548"
+    },
+    {
+      "role": "border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Column header text must describe contents"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Sortable columns activate sort on Enter"
+    }
+  ],
+  "doRules": [
+    "Use clear, concise header text",
+    "Align numeric columns to End (right)",
+    "Indicate sort direction with arrow icon"
+  ],
+  "dontRules": [
+    "Do not use a Column for actions \u2014 use a separate action column",
+    "Do not stack header labels vertically"
+  ],
+  "compatibleComponents": [
+    "Table",
+    "ColumnListItem"
+  ],
+  "incompatiblePatterns": [
+    "Outside Table"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/column/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Column",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Column",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width auto or fixed per Column.width.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Table",
+      "SapColHeader"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Text",
+      "Label",
+      "Title"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Column"
+    ]
+  }
+}

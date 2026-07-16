@@ -1,0 +1,131 @@
+{
+  "componentName": "BusyDialog",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Dialog",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "message",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Include a clear message (\"Saving...\", \"Syncing...\")",
+    "Provide Cancel button for cancellable operations",
+    "Auto-dismiss when complete"
+  ],
+  "dontRules": [
+    "Do not use BusyDialog for trivial waits (< 2s)",
+    "Do not omit a descriptive message",
+    "Do not block UI unnecessarily"
+  ],
+  "compatibleComponents": [
+    "Triggered from any context"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/busy-dialog/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.BusyDialog",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.BusyDialog",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.BusyDialog/sample/sap.m.sample.BusyDialog"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "BusyDialog aliases to Dialog containing BusyIndicator. Plugin composes Dialog + BusyIndicator + native text message.",
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "BusyIndicator",
+      "Text",
+      "Label",
+      "Button"
+    ],
+    "mustInclude": [
+      "BusyIndicator"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Form",
+      "Table"
+    ],
+    "commonSiblings": []
+  }
+}

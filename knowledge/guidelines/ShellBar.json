@@ -1,0 +1,105 @@
+{
+  "componentName": "ShellBar",
+  "slug": "shell-bar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/shell-bar/",
+  "purpose": "The top-level application header bar that displays product branding, primary navigation, search, notifications, and user account. Fixed across all viewports.",
+  "whenToUse": [
+    "As the topmost element of every SAP Fiori application",
+    "To provide consistent product identity and global navigation",
+    "When users need persistent access to search, notifications, and account",
+    "To house the hamburger menu trigger for the SideNavigation"
+  ],
+  "whenNotToUse": [
+    "Inside dialogs or popovers",
+    "On printed views or PDFs",
+    "For embedded UI inside another application"
+  ],
+  "doRules": [
+    "Place ShellBar as the first node in screen hierarchy",
+    "Use Branding Button slot for product name (max 2 lines)",
+    "Show only icons users need \u2014 hide others via boolean variants",
+    "Keep ShellBar height fixed at 52px regardless of variant",
+    "Use ShellSearch for global search; Shell icon buttons for global actions"
+  ],
+  "dontRules": [
+    "Do not place ShellBar inside another container with padding",
+    "Do not add custom buttons outside the supported slots",
+    "Do not change ShellBar background color \u2014 it is locked to sapShellColor",
+    "Do not duplicate ShellBar across nested views"
+  ],
+  "layoutGuidance": {
+    "placement": "Topmost element, full viewport width, fixed position.",
+    "sizing": "Height 52px. Width = viewport width.",
+    "spacing": "Horizontal padding 48px (Size XL/L), 16px (M), 8px (S).",
+    "alignment": "Branding left, navigation center, actions+avatar right."
+  },
+  "contentGuidance": {
+    "labelLength": "Brand text \u2264 2 lines. Avatar shows initials or photo.",
+    "contentRules": [
+      "Product name in Semibold Duplex 16px",
+      "Use the SAP logo only when authorized",
+      "Show notifications badge with count"
+    ],
+    "examples": [
+      "SAP Integration Suite",
+      "SAP S/4HANA Cloud"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Size=XL variant \u2014 full layout with all slots visible",
+    "L": "Size=L variant \u2014 full layout",
+    "M": "Size=M variant \u2014 middle slots may collapse to overflow",
+    "S": "Size=S variant \u2014 minimal: hamburger + brand + avatar; rest in overflow"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "contrast",
+      "requirement": "Brand text contrast \u2265 4.5:1 against shell background",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "All shell icon buttons MUST have tooltips",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Tab order: hamburger \u2192 brand \u2192 middle \u2192 right \u2192 avatar",
+      "wcag": "2.4.3 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on every interactive shell element",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Notification badge state announced via aria-live"
+    }
+  ],
+  "patterns": [
+    "Application shell",
+    "Global navigation",
+    "Cross-app search"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Avatar",
+      "Shell Search",
+      "Shell Icon Button",
+      "Branding Button",
+      "User Menu",
+      "SideNavigation"
+    ],
+    "incompatible": [
+      "Inside any container",
+      "Stacked with another header"
+    ]
+  },
+  "exceptions": [
+    "Hamburger variant=False when SideNavigation is permanently visible",
+    "Joule (AI Copilot) button available only when AI features enabled"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

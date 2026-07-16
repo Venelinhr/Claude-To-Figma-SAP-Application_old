@@ -1,0 +1,138 @@
+{
+  "componentName": "TimelineItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "composed:Timeline-child",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Data Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "user",
+      "state": "Default",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "description",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "timestamp",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Always include user + timestamp",
+    "Use ObjectStatus or icon for event type",
+    "Keep description concise (1-2 lines)"
+  ],
+  "dontRules": [
+    "Do not omit timestamp",
+    "Do not embed long forms \u2014 link out instead",
+    "Do not nest TimelineItem inside TimelineItem"
+  ],
+  "compatibleComponents": [
+    "Timeline"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/timeline-item/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.TimelineItem",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.TimelineItem",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.TimelineItem/sample/sap.m.sample.TimelineItem"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "TimelineItem composes inside Timeline. Spec emits Timeline with items[] = [{user, action, timestamp, content}].",
+  "composition": {
+    "validParents": [
+      "Timeline"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Avatar",
+      "Text",
+      "Title",
+      "Link",
+      "Button",
+      "ObjectStatus",
+      "Tag",
+      "Label"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "TimelineItem"
+    ]
+  }
+}

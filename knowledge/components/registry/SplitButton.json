@@ -1,0 +1,65 @@
+{
+  "componentName": "SplitButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "8aba512152f89d81e9c9b804d8da3114b1a83a93",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    { "property": "Form Factor",       "values": ["Compact","Cozy"], "default": "Compact" },
+    { "property": "Type",              "ui5Property": "type",   "values": ["Default","Emphasized","Attention","Accept","Reject","Transparent","Ghost"], "default": "Default" },
+    { "property": "Interaction State", "values": ["Regular","Hover","Focused","Active","Disabled"], "default": "Regular" }
+  ],
+  "supportedProperties": [
+    { "name": "text",     "ui5Name": "text",     "type": "string",  "exposedInLibrary": true,  "default": "" },
+    { "name": "icon",     "ui5Name": "icon",     "type": "URI",     "exposedInLibrary": false, "default": "" },
+    { "name": "type",     "ui5Name": "type",     "type": "string",  "exposedInLibrary": true,  "default": "Default" },
+    { "name": "enabled",  "ui5Name": "enabled",  "type": "boolean", "exposedInLibrary": false, "default": true }
+  ],
+  "supportedStates": ["Regular","Hover","Focused","Active","Disabled"],
+  "typographyRules": [
+    { "role": "label", "fontFamily": "72", "fontStyle": "Regular", "fontSize": 14, "sapStyleName": "MediumText/LHAuto/Regular" }
+  ],
+  "colorTokenRules": [
+    { "role": "default-bg",    "token": "sapButton_Background",             "fallbackHex": "#F5F6F7" },
+    { "role": "emphasized-bg", "token": "sapButton_Emphasized_Background",  "fallbackHex": "#0070F2" },
+    { "role": "default-text",  "token": "sapButton_TextColor",              "fallbackHex": "#0064D9" },
+    { "role": "emphasized-text","token": "sapButton_Emphasized_TextColor", "fallbackHex": "#FFFFFF" },
+    { "role": "border",        "token": "sapButton_BorderColor",            "fallbackHex": "#0064D9" }
+  ],
+  "accessibilityRules": [
+    { "category": "labeling", "requirement": "Primary text is required; the split arrow has its own aria-label" },
+    { "category": "keyboard", "requirement": "Enter/Space activates primary; Alt+Down opens submenu" },
+    { "category": "tap-target", "requirement": "Min 32×32 Compact / 44×44 Cozy for each hit region" }
+  ],
+  "doRules": [
+    "Use for splitting between a default action and several secondary actions in a Menu",
+    "The default (primary) action reflects the most-used choice; secondaries live in the attached Menu",
+    "Use type: Emphasized for the primary commit action (Save, Approve, etc.)"
+  ],
+  "dontRules": [
+    "Do not use when there's no clear primary action — use MenuButton",
+    "Do not use for destructive actions without a confirmation step",
+    "Do not use inside a table row — use MenuButton"
+  ],
+  "compatibleComponents": ["Menu","MenuListItem","Toolbar","OverflowToolbar","Bar","DynamicPageTitle","Dialog"],
+  "incompatiblePatterns": ["Inside FilterBar as filterItem","Inside SearchField"],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/split-button/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.SplitButton",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.SplitButton",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-07",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Width hugs text + arrow. Height ~26px Compact / ~36px Cozy.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": ["Toolbar","OverflowToolbar","Bar","DynamicPageTitle","Dialog","Popover","Card","Panel","ObjectPageHeader","Footer","SapFormSection","FilterBar"],
+    "topLevelOnly": false,
+    "validChildren": ["Menu"],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": ["Button","MenuButton"]
+  }
+}

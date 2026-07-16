@@ -1,0 +1,156 @@
+{
+  "componentName": "UserMenu",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "c9bbc83c501d55048df4f68df50d920a9e85002c",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Popup",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "userName",
+      "ui5Name": "userName",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "userEmail",
+      "ui5Name": "userEmail",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "avatarSrc",
+      "ui5Name": "avatarSrc",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "showManagementActions",
+      "ui5Name": "showManagementActions",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "user-name",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Section Title"
+    },
+    {
+      "role": "user-email",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    },
+    {
+      "role": "action-label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "header-background",
+      "token": "sapShell_InteractiveBackground",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "user-name-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1A2733"
+    },
+    {
+      "role": "email-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "action-text",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use UserMenu as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/menu/)"
+  ],
+  "dontRules": [
+    "Do not use UserMenu outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/menu/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'User Menu' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "ShellBar",
+      "MenuButton",
+      "SplitButton",
+      "IconMenuButton",
+      "Toolbar",
+      "OverflowToolbar",
+      "Dialog",
+      "Popover"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "MenuListItem",
+      "StandardListItem",
+      "List",
+      "Text",
+      "Label",
+      "Title",
+      "Avatar",
+      "Button",
+      "Link"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}

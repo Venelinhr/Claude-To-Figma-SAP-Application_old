@@ -1,0 +1,224 @@
+{
+  "componentName": "Table",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "03ea321822c4e99c27de4d9c2524bdec9c6e0972",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Table",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Mode",
+      "ui5Property": "mode",
+      "values": [
+        "None",
+        "SingleSelect",
+        "SingleSelectMaster",
+        "MultiSelect",
+        "Delete"
+      ],
+      "default": "None"
+    },
+    {
+      "property": "Show No Data",
+      "ui5Property": "showNoData",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "mode",
+      "ui5Name": "mode",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    },
+    {
+      "name": "noDataText",
+      "ui5Name": "noDataText",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "No data"
+    },
+    {
+      "name": "sticky",
+      "ui5Name": "sticky",
+      "type": "variant",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "fixedLayout",
+      "ui5Name": "fixedLayout",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "header",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    },
+    {
+      "role": "cell",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "header-bg",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "header-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#223548"
+    },
+    {
+      "role": "row-border",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#E5E5E5"
+    },
+    {
+      "role": "cell-text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys navigate cells; Enter activates row action"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Table has caption or aria-label; each column has header"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Cell text contrast ≥ 4.5:1",
+      "wcag": "1.4.3"
+    }
+  ],
+  "doRules": [
+    "Use a clear title in the Table Toolbar",
+    "Provide column headers with sort/filter affordances",
+    "Use MultiSelect mode when bulk actions exist",
+    "Use ResponsiveTable for narrow viewports"
+  ],
+  "dontRules": [
+    "Do not put primary actions inside cells — use row click or toolbar",
+    "Do not use Table for fewer than 3 rows — use List",
+    "Do not stack tables — provide tabs or filters"
+  ],
+  "compatibleComponents": [
+    "ColumnListItem",
+    "Column",
+    "OverflowToolbar",
+    "Toolbar"
+  ],
+  "incompatiblePatterns": [
+    "Inside narrow card",
+    "Inside Dialog body without scrolling"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/table/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Table",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Table",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "live-text-node",
+    "sizingConstraints": "Full width of content area. Header 32px, row 48px Compact / 64px Cozy.",
+    "knownIssues": [
+      "SAP Table instance shows \"Sales Orders (15)\" demo content that cannot be overridden. Use Ref79TableRow native renderer for custom data."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "SapFormSection",
+      "VBox",
+      "HBox",
+      "FlexBox",
+      "DynamicPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "SapColHeader",
+      "SapTableRow",
+      "Column",
+      "ColumnListItem",
+      "MessageStrip"
+    ],
+    "validSlotChildren": {
+      "headerToolbar": [
+        "OverflowToolbar",
+        "Toolbar"
+      ],
+      "columns": [
+        "Column"
+      ],
+      "items": [
+        "ColumnListItem",
+        "SapTableRow"
+      ],
+      "infoToolbar": [
+        "OverflowToolbar",
+        "Toolbar"
+      ]
+    },
+    "mustInclude": [
+      "SapColHeader"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "DynamicPage",
+      "Dialog",
+      "FilterBar"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "Toolbar",
+      "FilterBar",
+      "SearchField"
+    ]
+  },
+  "slotNames": [
+    "columns",
+    "items",
+    "headerToolbar",
+    "infoToolbar"
+  ]
+}

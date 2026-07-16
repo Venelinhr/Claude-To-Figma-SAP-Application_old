@@ -1,0 +1,82 @@
+{
+  "componentName": "Tag",
+  "slug": "tag",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/tag/",
+  "purpose": "A categorical label or status indicator. Used for tagging objects with descriptive metadata.",
+  "whenToUse": [
+    "Category labels on objects (priority, type, status)",
+    "Tag clouds for browsing",
+    "Visual grouping by category"
+  ],
+  "whenNotToUse": [
+    "For semantic status \u2014 use ObjectStatus",
+    "For interactive filters \u2014 use Tokenizer/Token",
+    "For navigation \u2014 use Link"
+  ],
+  "doRules": [
+    "Use for categorical labels (status types, tags, badges)",
+    "Use consistent colorScheme for the same category",
+    "Keep tag text short (1\u20133 words)",
+    "Use icon prefix for clarity when needed"
+  ],
+  "dontRules": [
+    "Do not communicate status by color alone \u2014 use ObjectStatus",
+    "Do not use long tag text",
+    "Do not omit accessible label for icon-only tags"
+  ],
+  "layoutGuidance": {
+    "placement": "ObjectHeader, List, Table cells.",
+    "sizing": "Auto width by text.",
+    "spacing": "4\u20138px between tags.",
+    "alignment": "Inline with surrounding content."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words.",
+    "contentRules": [
+      "Use sentence case",
+      "Short categorical labels"
+    ],
+    "examples": [
+      "Critical",
+      "In Progress",
+      "Sales"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Inline tags",
+    "L": "Inline tags",
+    "M": "Inline tags; wrap",
+    "S": "Stacked tags or overflow"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against tag background",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Tag text alone provides meaning \u2014 do not rely on color",
+      "wcag": "1.4.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Category label",
+    "Tag badge"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "ObjectHeader",
+      "List",
+      "Table"
+    ],
+    "incompatible": [
+      "As primary CTA"
+    ]
+  },
+  "exceptions": [
+    "Inverted tag for high-emphasis use"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,96 @@
+{
+  "componentName": "SideNavigation",
+  "slug": "side-navigation",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/side-navigation/",
+  "purpose": "A vertical navigation rail at the left side of the application providing primary navigation. Can be expanded (showing labels) or collapsed (icons only).",
+  "whenToUse": [
+    "For primary application navigation when there are 5+ top-level destinations",
+    "When multi-level hierarchy needs to be shown",
+    "For long-running task views where consistent navigation is important"
+  ],
+  "whenNotToUse": [
+    "For \u22644 top-level destinations \u2014 use IconTabBar instead",
+    "For one-time wizards or guided flows",
+    "When horizontal space is severely constrained"
+  ],
+  "doRules": [
+    "Use Expanded variant when sidebar width \u2265 224px",
+    "Use Collapsed (icon-only) when space is constrained",
+    "Group related items under collapsible Navigation Group",
+    "Mark current page with Selected state"
+  ],
+  "dontRules": [
+    "Do not place more than 2 levels of nesting",
+    "Do not mix icons-only and icon+label items in same group",
+    "Do not put primary actions in side nav \u2014 use ShellBar or toolbar"
+  ],
+  "layoutGuidance": {
+    "placement": "Left side, full viewport height, below ShellBar.",
+    "sizing": "224\u2013256px Expanded, 48px Collapsed.",
+    "spacing": "4px between items.",
+    "alignment": "Items left-aligned, icons centered in 16px box."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words per item.",
+    "contentRules": [
+      "Use nouns for destinations",
+      "Maintain stable order",
+      "Group by domain"
+    ],
+    "examples": [
+      "Home",
+      "Discover",
+      "Design",
+      "Integrations and APIs"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Expanded by default with all items visible",
+    "L": "Expanded by default",
+    "M": "Collapsed by default, expand on hover/click",
+    "S": "Hidden \u2014 accessed via hamburger menu in ShellBar"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab through items in DOM order; arrow keys traverse hierarchy",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator on focused nav item",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Each item needs accessible name; icon-only items need aria-label",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Current page indicated by aria-current=page"
+    }
+  ],
+  "patterns": [
+    "Primary navigation",
+    "Hierarchical menu",
+    "Application shell"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "NavigationItem",
+      "ShellBar",
+      "AppLayout"
+    ],
+    "incompatible": [
+      "Dialog",
+      "Panel content area"
+    ]
+  },
+  "exceptions": [
+    "Floating variant for overflow on smaller viewports",
+    "Collapsed state hides labels but preserves icons + tooltips"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

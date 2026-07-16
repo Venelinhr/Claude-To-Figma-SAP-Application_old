@@ -1,0 +1,62 @@
+{
+  "componentName": "TimelineItem",
+  "slug": "timeline-item",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/timeline-item/",
+  "purpose": "Single event in a Timeline. Has user/source, action description, timestamp, optional content body.",
+  "whenToUse": [
+    "Inside Timeline",
+    "Each timestamped event in an activity feed"
+  ],
+  "whenNotToUse": [
+    "Outside Timeline",
+    "For a standalone activity card \u2014 use Card or ColumnListItem"
+  ],
+  "doRules": [
+    "Always include user + timestamp",
+    "Use ObjectStatus or icon for event type",
+    "Keep description concise (1-2 lines)"
+  ],
+  "dontRules": [
+    "Do not omit timestamp",
+    "Do not embed long forms \u2014 link out instead",
+    "Do not nest TimelineItem inside TimelineItem"
+  ],
+  "layoutGuidance": {
+    "placement": "Place TimelineItem inside a compatible container (Timeline).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for data display.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Timeline"
+  ],
+  "compatibility": [
+    "Timeline"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

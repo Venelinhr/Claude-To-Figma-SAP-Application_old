@@ -1,0 +1,161 @@
+{
+  "componentName": "MultiInput",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "1dac6b2be28e60c6ff7a5752182d97f5033d3fc8",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning",
+        "Success",
+        "Information"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "enableMultiLineMode",
+      "ui5Name": "enableMultiLineMode",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success",
+    "Information"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter creates token; Backspace removes last; arrow keys navigate tokens"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label"
+    }
+  ],
+  "doRules": [
+    "Use for free-text multi-value input (tags, emails, comma-separated)",
+    "Enter or comma creates a token"
+  ],
+  "dontRules": [
+    "Do not use when values come from a fixed list \u2014 use MultiComboBox",
+    "Do not allow duplicates if uniqueness matters"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "Tokenizer",
+    "Token"
+  ],
+  "incompatiblePatterns": [
+    "Without Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/multiinput/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.MultiInput",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.MultiInput",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "256px default, grows with tokens.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Token",
+      "Tokenizer"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Tokenizer"
+    ]
+  }
+}

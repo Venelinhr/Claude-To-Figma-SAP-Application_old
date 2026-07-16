@@ -1,0 +1,61 @@
+{
+  "componentName": "ShellSearch",
+  "slug": "shell-bar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/shell-bar/",
+  "purpose": "A search field mounted inside the ShellBar for app-wide or global search. Distinct from an inline SearchField that filters content on a page. Provides a persistent entry point to search from anywhere in the app.",
+  "whenToUse": [
+    "As the global search affordance in ShellBar",
+    "For cross-page / cross-object search",
+    "In apps where search is a primary user path",
+    "When user might arrive on any page and want to find something"
+  ],
+  "whenNotToUse": [
+    "For page-scoped filtering — use SearchField in FilterBar",
+    "For a settings quick-find — use inline SearchField",
+    "For per-page search — that's SearchField in the DynamicPageTitle",
+    "In apps without cross-page search (leave the ShellBar clean)"
+  ],
+  "doRules": [
+    "Support keyboard focus via 'S' shortcut or Cmd/Ctrl+K",
+    "Show typeahead suggestions grouped by category (Objects · Actions · Help)",
+    "Persist recent searches for the user",
+    "Take the user to a search results page on Enter"
+  ],
+  "dontRules": [
+    "Do not use for page-scoped operations — global scope only",
+    "Do not omit the placeholder — user needs to know what's searchable",
+    "Do not silently swallow input if there's no results — say 'No matches'",
+    "Do not require a specific format — accept free-text"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside ShellBar, typically right of brand area",
+    "sizing": "Expandable — icon at rest, ~400–600px wide when expanded",
+    "spacing": "16px right margin from adjacent ShellBar items",
+    "alignment": "Vertically centered in the ShellBar"
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder ≤ 30 chars",
+    "contentRules": "Placeholder hints at scope ('Search all objects…')",
+    "examples": ["\"Search everything...\"", "\"Find people, files, or actions\""]
+  },
+  "responsiveBehavior": {
+    "XL": "Expanded field always visible",
+    "L": "Expanded on hover/focus",
+    "M": "Icon at rest, expands on tap",
+    "S": "Icon only; opens full-screen search overlay on tap"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 2.1.1 Keyboard (Level A)"],
+    "requirements": [
+      "role='search' on wrapping landmark",
+      "aria-label='Search'",
+      "Global keyboard shortcut announced in tooltip",
+      "Suggestions announced via aria-live='polite'"
+    ]
+  },
+  "patterns": ["Global app search", "Cross-object find", "Fiori Launchpad search"],
+  "compatibility": {"allowedWith": ["ShellBar (only)"], "forbiddenWith": ["Standalone", "Any parent other than ShellBar"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

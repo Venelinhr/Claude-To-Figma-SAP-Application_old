@@ -1,0 +1,144 @@
+{
+  "componentName": "Tokenizer",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "da76d0413ed1f1f40d6f23e7732c9aca0b17ef5b",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Provide tokens via items[] array",
+    "Show \"+N more\" overflow indicator when tokens exceed available width",
+    "Allow keyboard navigation between tokens (Left/Right)",
+    "Bind background to sapBackgroundColor"
+  ],
+  "dontRules": [
+    "Do not exceed ~10 visible tokens \u2014 use overflow",
+    "Do not mix Token and other content inside Tokenizer",
+    "Do not nest Tokenizers",
+    "Do not omit the overflow indicator"
+  ],
+  "compatibleComponents": [
+    "Form",
+    "FilterBar",
+    "DynamicPageHeader",
+    "Panel"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells",
+    "Inside OverflowToolbar (use search instead)"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/tokenizer/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Tokenizer",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Tokenizer",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Tokenizer/sample/sap.m.sample.Tokenizer"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Tokenizer is a SAP instance that composes Token children. Plugin places via SAP_KEYS. For specs that pass items[] (array of {label}), plugin will detach and replicate the first Token N times with label injection.",
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Token"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "componentName": "NavigationItem",
+  "slug": "navigation-item",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/side-navigation/",
+  "purpose": "An individual entry in the SideNavigation. Can be a top-level Navigation Item or a nested Child Item. Supports selected and expanded states.",
+  "whenToUse": [
+    "As a child of SideNavigation only",
+    "For destinations that lead to a page or view",
+    "For grouping headers when used with hasChildren=true"
+  ],
+  "whenNotToUse": [
+    "Outside SideNavigation",
+    "For actions (use Button instead)",
+    "Standalone in toolbars"
+  ],
+  "doRules": [
+    "Use Semibold Duplex for top-level items, Regular for sub-items",
+    "Indicate current page with Selected variant \u2014 3px left bar + tinted bg",
+    "Indent child items 24px under parent",
+    "Show expand arrow when item has children"
+  ],
+  "dontRules": [
+    "Do not change text color via direct override \u2014 use Selected variant",
+    "Do not add custom corner radius \u2014 use sapButton_BorderCornerRadius (8px)",
+    "Do not skip selected indicator"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside SideNavigation Content Container.",
+    "sizing": "Height 32px; full sidebar width.",
+    "spacing": "4px between items.",
+    "alignment": "Icon left, label center, expand arrow right."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words preferred; truncate with ellipsis if longer.",
+    "contentRules": [
+      "Use nouns for destinations",
+      "Consistent capitalization"
+    ],
+    "examples": [
+      "Home",
+      "Integrations and APIs",
+      "Custom Type Systems"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full label + icon + arrow visible",
+    "L": "Full label + icon + arrow visible",
+    "M": "Icon-only when sidebar collapsed",
+    "S": "Hidden by default; full layout in expanded menu"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "contrast",
+      "requirement": "Selected state contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible 2px focus ring",
+      "wcag": "2.4.7 (AA)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Every nav item must have text or aria-label",
+      "wcag": "4.1.2 (A)"
+    },
+    {
+      "category": "status",
+      "requirement": "Selected state communicated via background + left bar (not color alone)",
+      "wcag": "1.4.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Navigation entry",
+    "Hierarchical item"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "SideNavigation"
+    ],
+    "incompatible": [
+      "Standalone",
+      "Toolbar"
+    ]
+  },
+  "exceptions": [
+    "Child Item type for nested items",
+    "Two Click-Area variant when item has both navigation and expand"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

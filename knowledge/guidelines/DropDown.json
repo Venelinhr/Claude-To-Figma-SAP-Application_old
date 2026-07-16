@@ -1,0 +1,61 @@
+{
+  "componentName": "DropDown",
+  "slug": "select",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/select/",
+  "purpose": "A single-selection dropdown control — user opens a list and picks one value. Compact and predictable for a small fixed set of options. Similar to HTML <select>. Legacy alias for Select in some SAP contexts.",
+  "whenToUse": [
+    "2–10 predefined options in a fixed list (Priority, Status, Region)",
+    "The user selects exactly one value from a small set",
+    "You want the field to occupy minimal horizontal space",
+    "The options are static and rarely change"
+  ],
+  "whenNotToUse": [
+    "For 10+ options — use ComboBox with type-to-filter",
+    "For multi-select — use MultiComboBox",
+    "For binary — use Switch or CheckBox",
+    "For free text — use Input"
+  ],
+  "doRules": [
+    "Show a default value (or 'Select…' placeholder)",
+    "Sort items alphabetically or by frequency of use",
+    "Provide a valueState (Error/Warning/Success/Information) with matching text",
+    "Use consistent capitalization across options"
+  ],
+  "dontRules": [
+    "Do not use for booleans — Switch is clearer",
+    "Do not show more than 8 items in the popup without scrolling — becomes noisy",
+    "Do not allow free-text entry (that's ComboBox)",
+    "Do not use for chained/dependent selections without clear indication"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside forms, filter bars, dialogs",
+    "sizing": "Min width 120px; height 32px compact, 40px cozy",
+    "spacing": "Standard field spacing",
+    "alignment": "Full width in FormElement"
+  },
+  "contentGuidance": {
+    "labelLength": "Option labels ≤ 30 chars; placeholder ≤ 30 chars",
+    "contentRules": "Options are nouns or short adjectives, consistent format",
+    "examples": ["Priority: [High ▼]", "Status: [Pending ▼]"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full field width",
+    "L": "Full field width",
+    "M": "Full field width",
+    "S": "May become full-screen picker on tap"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 3.3.2 Labels or Instructions (Level A)"],
+    "requirements": [
+      "role='combobox' or use native <select>",
+      "Associated Label element",
+      "Selected value announced by screen reader",
+      "Keyboard: Space/Down opens list; Arrow keys navigate; Enter selects; Escape closes"
+    ]
+  },
+  "patterns": ["Form field", "FilterBar item", "Dialog input"],
+  "compatibility": {"allowedWith": ["Form", "FormElement", "FilterBar", "Dialog", "Panel"], "forbiddenWith": ["Table cells (too dense for most cases)", "Toolbar"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

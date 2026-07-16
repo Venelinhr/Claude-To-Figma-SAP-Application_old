@@ -1,0 +1,168 @@
+{
+  "componentName": "ProgressIndicator",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "c355f86d77c4e5a8aa2366b83179896f7d172462",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill-default",
+      "state": "Default",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "fill-positive",
+      "state": "Success",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#188919"
+    },
+    {
+      "role": "fill-critical",
+      "state": "Warning",
+      "token": "sapCriticalTextColor",
+      "fallbackHex": "#A8650B"
+    },
+    {
+      "role": "fill-negative",
+      "state": "Error",
+      "token": "sapNegativeTextColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "track",
+      "state": "Default",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "label",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Always show percent + descriptive label (\"47% \u2014 235 of 500 invoices\")",
+    "Pick state color based on value (positive >= 80%, critical <= 20%)",
+    "Use sapPositiveTextColor / sapCriticalTextColor / sapNegativeTextColor for semantic state",
+    "Bind fill to a SAP variable matching state"
+  ],
+  "dontRules": [
+    "Do not use ProgressIndicator without a label",
+    "Do not animate when stalled \u2014 show static state",
+    "Do not stack multiple ProgressIndicators for the same metric",
+    "Do not use hardcoded color \u2014 bind to state-aware SAP token"
+  ],
+  "compatibleComponents": [
+    "Card",
+    "Panel",
+    "ColumnListItem",
+    "Form",
+    "DynamicPageHeader"
+  ],
+  "incompatiblePatterns": [
+    "Inside OverflowToolbar",
+    "Inside Dialog footer"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/progressindicator/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ProgressIndicator",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ProgressIndicator",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ProgressIndicator/sample/sap.m.sample.ProgressIndicator"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ProgressIndicator is a SAP instance. Plugin places via SAP_KEYS. Percent + label injected via setProperties (display.value) when supported, otherwise via text node lookup. State variant (None/Success/Warning/Error) drives the SAP-internal color binding \u2014 when state is set correctly, the fill auto-binds to the right semantic token.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Form",
+      "SimpleForm",
+      "SapTableRow",
+      "ColumnListItem",
+      "Wizard",
+      "WizardStep",
+      "IconTabBar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Title",
+      "Text"
+    ]
+  }
+}

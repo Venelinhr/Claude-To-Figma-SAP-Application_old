@@ -1,0 +1,94 @@
+{
+  "componentName": "CheckBox",
+  "slug": "checkbox",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/checkbox/",
+  "purpose": "A binary selection control (selected / not selected) with optional Partial state for indeterminate selections. Used in forms, lists, and tables for multi-select.",
+  "whenToUse": [
+    "Boolean settings (enable/disable)",
+    "Multi-select in lists and tables (select-all + items)",
+    "Multiple non-exclusive options in a form",
+    "Terms acceptance, opt-in confirmations"
+  ],
+  "whenNotToUse": [
+    "For mutually exclusive options \u2014 use RadioButton",
+    "For instant toggles without form context \u2014 use Switch",
+    "When only one choice exists \u2014 use a different pattern"
+  ],
+  "doRules": [
+    "Use Partial state for \"select all\" with mixed children",
+    "Place label to the right of the checkbox",
+    "Group related checkboxes vertically",
+    "Mark required group with Label.required=true"
+  ],
+  "dontRules": [
+    "Do not use a CheckBox when a Switch fits better (instant action)",
+    "Do not use CheckBox for mutually exclusive options \u2014 use RadioButton",
+    "Do not skip the text label"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside Form, Table header (select-all), Table row (multi-select).",
+    "sizing": "16\u00d716px box. Touch area includes label.",
+    "spacing": "8px between checkbox and label; 8px between checkboxes.",
+    "alignment": "Box left, label right."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u201310 words.",
+    "contentRules": [
+      "Use sentence case",
+      "State positive options (e.g. \"Enable\" not \"Don't disable\")"
+    ],
+    "examples": [
+      "Send me email updates",
+      "I agree to the terms"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Inline with label",
+    "L": "Inline with label",
+    "M": "Inline with label",
+    "S": "Full width with label wrapping"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Space toggles state",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Visible label or aria-label required",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32px clickable area including label",
+      "wcag": "2.5.5 (AAA)"
+    },
+    {
+      "category": "status",
+      "requirement": "Selected state announced; Partial state announced as mixed",
+      "wcag": "4.1.2 (A)"
+    }
+  ],
+  "patterns": [
+    "Form field",
+    "Multi-select",
+    "Terms acceptance"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form",
+      "Table",
+      "List"
+    ],
+    "incompatible": [
+      "Without text or aria-label"
+    ]
+  },
+  "exceptions": [
+    "Partial state when \u22651 but not all children selected"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

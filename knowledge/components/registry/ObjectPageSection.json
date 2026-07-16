@@ -1,0 +1,149 @@
+{
+  "componentName": "ObjectPageSection",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Panel",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "separator",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Provide a clear, scoped title",
+    "Use 2-7 SubSections per Section",
+    "Make title navigable via the page anchor menu"
+  ],
+  "dontRules": [
+    "Do not nest Sections",
+    "Do not exceed 7 SubSections per Section",
+    "Do not omit the title"
+  ],
+  "compatibleComponents": [
+    "ObjectPageLayout"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/object-page-section/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ObjectPageSection",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ObjectPageSection",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ObjectPageSection/sample/sap.m.sample.ObjectPageSection"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ObjectPageSection aliases to Panel. Plugin renders as Panel with bold title at H2 size and visual divider above.",
+  "composition": {
+    "validParents": [
+      "ObjectPageLayout"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "ObjectPageSubSection",
+      "Title",
+      "Text",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Card",
+      "Table",
+      "List",
+      "SapColHeader",
+      "SapTableRow",
+      "MessageStrip",
+      "IllustratedMessage",
+      "Carousel",
+      "Timeline",
+      "IconTabBar",
+      "OverflowToolbar"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "ObjectPageSection"
+    ]
+  },
+  "slotNames": [
+    "subSections",
+    "actions"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "componentName": "RadioButtonGroup",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "composed:RadioButton[]",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "selected-fill",
+      "state": "Selected",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "label",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Show all options at once",
+    "Mark exactly one as selected",
+    "Provide clear, distinct labels",
+    "Use vertical layout for >3 options"
+  ],
+  "dontRules": [
+    "Do not allow zero-selected state when a default is reasonable",
+    "Do not exceed 7 options",
+    "Do not use RadioButtonGroup for binary toggles (use Switch)"
+  ],
+  "compatibleComponents": [
+    "Form",
+    "Dialog",
+    "Panel",
+    "FormContainer"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/radio-button-group/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.RadioButtonGroup",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.RadioButtonGroup",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.RadioButtonGroup/sample/sap.m.sample.RadioButtonGroup"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "RadioButtonGroup is composed (no single Figma instance). Plugin builds VERTICAL Auto Layout containing N RadioButton instances. Spec emits { component:\"RadioButtonGroup\", props:{ items:[{label,selected?}] } }.",
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "RadioButton"
+    ],
+    "mustInclude": [
+      "RadioButton"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "Table"
+    ],
+    "commonSiblings": [
+      "Label",
+      "CheckBox"
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "componentName": "MultiComboBox",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "cc0631141a7083096632c6161ee15448ced39ec3",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning",
+        "Success",
+        "Information"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "placeholder",
+      "ui5Name": "placeholder",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "selectedKeys",
+      "ui5Name": "selectedKeys",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "showSelectAll",
+      "ui5Name": "showSelectAll",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success",
+    "Information"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Type-ahead filters; arrows traverse suggestions; Enter selects; Backspace removes last token"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Number of selected items announced"
+    }
+  ],
+  "doRules": [
+    "Use when multiple selections from a list are needed with type-ahead search",
+    "Show selected items as tokens above the input",
+    "Allow filtering as user types"
+  ],
+  "dontRules": [
+    "Do not use when only one selection is allowed \u2014 use ComboBox",
+    "Do not use with <10 options \u2014 use CheckBox group"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "FilterBar",
+    "Toolbar"
+  ],
+  "incompatiblePatterns": [
+    "Without Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/multicombobox/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.MultiComboBox",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.MultiComboBox",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "256px default, resizable.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Tokenizer"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "componentName": "WizardStep",
+  "slug": "wizard-step",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/wizard-step/",
+  "purpose": "A single step inside a Wizard. Contains a title + the content for that step (typically a Form).",
+  "whenToUse": [
+    "Inside Wizard as a step",
+    "Each logical phase of a multi-step process"
+  ],
+  "whenNotToUse": [
+    "Outside of Wizard",
+    "For non-sequential content \u2014 use Panel"
+  ],
+  "doRules": [
+    "Provide a clear step title",
+    "Validate inputs before allowing nextStep",
+    "Use Form inside the step for inputs"
+  ],
+  "dontRules": [
+    "Do not nest WizardStep",
+    "Do not allow horizontal scrolling within a step"
+  ],
+  "layoutGuidance": {
+    "placement": "Place WizardStep inside a compatible container (Wizard).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for page layout.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside Wizard"
+  ],
+  "compatibility": [
+    "Wizard"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

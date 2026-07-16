@@ -1,0 +1,146 @@
+{
+  "componentName": "RangeSlider",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "34d973fcb4c85d6517c8e5c3079e2b40d14d0fe8",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "startValue",
+      "ui5Name": "startValue",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "0"
+    },
+    {
+      "name": "endValue",
+      "ui5Name": "endValue",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "100"
+    },
+    {
+      "name": "min",
+      "ui5Name": "min",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "0"
+    },
+    {
+      "name": "max",
+      "ui5Name": "max",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": "100"
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill-active",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "fill-inactive",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#EAECEE"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Tab between handles; arrows adjust selected handle"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label; announce both bounds"
+    }
+  ],
+  "doRules": [
+    "Use for numeric range selection (e.g. price filter)",
+    "Show both start and end value labels"
+  ],
+  "dontRules": [
+    "Do not use when only single value is needed \u2014 use Slider",
+    "Do not allow start > end"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "FilterBar"
+  ],
+  "incompatiblePatterns": [
+    "Without bounds"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/rangeslider/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.RangeSlider",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.RangeSlider",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Full width of container.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "OverflowToolbar",
+      "Toolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Slider"
+    ]
+  }
+}

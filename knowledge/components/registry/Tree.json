@@ -1,0 +1,152 @@
+{
+  "componentName": "Tree",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "93fca87e34305e0a8e036acdd51e7cdc870d4e0d",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Data Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "text-secondary",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Bind row text to sapList_TextColor",
+    "Limit indent to 4 levels max — beyond that, redesign as filtered list",
+    "Use a chevron icon for expandable nodes (rotates on expand)",
+    "Show expand/collapse state in the icon orientation"
+  ],
+  "dontRules": [
+    "Do not use Tree for non-hierarchical data",
+    "Do not nest Tree inside another Tree",
+    "Do not omit the expand/collapse affordance — users cannot discover nesting otherwise",
+    "Do not show more than ~200 visible nodes at once — virtualize or filter"
+  ],
+  "compatibleComponents": [
+    "Panel",
+    "Dialog",
+    "DynamicPage",
+    "List"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells",
+    "As a navigation menu (use SideNavigation)"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/tree/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Tree",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Tree",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Tree/sample/sap.m.sample.Tree"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Tree is a SAP instance. Plugin places it via SAP_KEYS lookup. Tree contents are TreeItem children — for now, spec must enumerate items explicitly. Plugin does not auto-detach Tree to inject custom items; specs should pass a flat items[] array with level/parent metadata and let the plugin compose TreeItem instances.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "TreeItem"
+    ],
+    "mustInclude": [
+      "TreeItem"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav"
+    ],
+    "commonSiblings": [
+      "OverflowToolbar",
+      "SearchField",
+      "Toolbar"
+    ]
+  },
+  "slotNames": [
+    "items",
+    "headerToolbar"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "componentName": "Breadcrumbs",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Breadcrumb",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Navigation",
+  "supportedVariants": [],
+  "supportedProperties": [
+    {
+      "name": "links",
+      "ui5Name": "links",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "currentLocationText",
+      "ui5Name": "currentLocationText",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "separatorStyle",
+      "ui5Name": "separatorStyle",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Slash"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "link",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    },
+    {
+      "role": "current",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "link",
+      "token": "sapLinkColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "current-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "separator",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Semantic layout element — no accessible name required unless labeled by role"
+    }
+  ],
+  "doRules": [
+    "Use Breadcrumbs as documented in SAPUI5 API — it is a foundational primitive"
+  ],
+  "dontRules": [
+    "Do not use Breadcrumbs for content that has a semantic SAP component available"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "",
+  "demoKitUrl": "",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/Breadcrumbs",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Semantic layout element — no native Figma dimensions",
+    "knownIssues": [
+      "Plural form; alias to Breadcrumb registry entry."
+    ]
+  },
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "links"
+  ]
+}

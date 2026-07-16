@@ -1,0 +1,163 @@
+{
+  "componentName": "RadioButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "9308f27ef27fbb28bc7d167c52494aa41a21610f",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Selection",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Selected",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "selected",
+      "ui5Name": "selected",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    },
+    {
+      "name": "groupName",
+      "ui5Name": "groupName",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "Error",
+    "Warning"
+  ],
+  "typographyRules": [
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys move selection within group"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Group has accessible name; each option has label"
+    }
+  ],
+  "doRules": [
+    "Use for 2\u20136 mutually exclusive options",
+    "Always have one option selected by default when possible",
+    "Group radios with same groupName"
+  ],
+  "dontRules": [
+    "Do not use RadioButton outside a group",
+    "Do not use with more than 6 options \u2014 use Select"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "Panel"
+  ],
+  "incompatiblePatterns": [
+    "Alone without a group"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/radiobutton/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.RadioButton",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.RadioButton",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "16\u00d716px circle + label.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "RadioButtonGroup",
+      "InputListItem",
+      "OverflowToolbar",
+      "Toolbar",
+      "DynamicPageTitle"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "RadioButton"
+    ]
+  }
+}

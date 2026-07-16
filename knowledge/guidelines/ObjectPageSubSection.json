@@ -1,0 +1,61 @@
+{
+  "componentName": "ObjectPageSubSection",
+  "slug": "object-page-sub-section",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-page-sub-section/",
+  "purpose": "Subsection within an ObjectPageSection. Carries title + content.",
+  "whenToUse": [
+    "Inside ObjectPageSection",
+    "When a Section needs to be divided into logical groups"
+  ],
+  "whenNotToUse": [
+    "Outside ObjectPageSection",
+    "For top-level sections \u2014 use ObjectPageSection"
+  ],
+  "doRules": [
+    "Provide H3-level title",
+    "Group related Form fields or content here",
+    "Keep content focused"
+  ],
+  "dontRules": [
+    "Do not nest SubSections",
+    "Do not skip ObjectPageSection (always wrap in Section)"
+  ],
+  "layoutGuidance": {
+    "placement": "Place ObjectPageSubSection inside a compatible container (ObjectPageSection).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for page layout.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside ObjectPageSection"
+  ],
+  "compatibility": [
+    "ObjectPageSection"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

@@ -1,0 +1,63 @@
+{
+  "componentName": "InfoLabel",
+  "slug": "info-label",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/info-label/",
+  "purpose": "A compact categorical label used to tag items by category, priority, or type. Non-semantic (no state colors) — purely for classification. Common in inbox lists, message centers, and search results.",
+  "whenToUse": [
+    "Categorize list items by type (e.g. 'Invoice', 'Purchase Order', 'RFP')",
+    "Show priority levels without state colors ('P1', 'P2', 'P3')",
+    "Tag items with tenant, department, or region",
+    "Group similar items visually in a compact form"
+  ],
+  "whenNotToUse": [
+    "For semantic state (error/warning/success) — use ObjectStatus",
+    "For a KPI with a value — use GenericTag",
+    "For a full state indicator — use Tag with color",
+    "As a clickable filter — use Token or FilterItem"
+  ],
+  "doRules": [
+    "Keep labels to 1-3 words",
+    "Use consistent colors within a category set (all 'Invoice' labels same color)",
+    "Place InfoLabel before the primary text in a list item",
+    "Use the neutral palette by default; colored variant only when categories need distinction"
+  ],
+  "dontRules": [
+    "Do not use InfoLabel for state or status — that's ObjectStatus's job",
+    "Do not stack multiple InfoLabels on one item — combine or use fewer",
+    "Do not put values inside InfoLabel — that's GenericTag",
+    "Do not use as a link — InfoLabel is display-only"
+  ],
+  "layoutGuidance": {
+    "placement": "Inline at the start of a list item or table cell",
+    "sizing": "Hug content. Height 20px compact, 24px cozy",
+    "spacing": "8px right margin from adjacent content",
+    "alignment": "Vertically centered with adjacent text"
+  },
+  "contentGuidance": {
+    "labelLength": "1-15 characters",
+    "contentRules": "Noun or noun phrase; capitalized",
+    "examples": ["Invoice", "PO", "Rejected", "Tenant A"]
+  },
+  "responsiveBehavior": {
+    "XL": "Inline",
+    "L": "Inline",
+    "M": "Inline",
+    "S": "May wrap below primary text"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.4.3 Contrast (Level AA)", "WCAG 2.1 · 1.3.1 Info and Relationships (Level A)"],
+    "requirements": [
+      "Label text has 4.5:1 contrast against InfoLabel background",
+      "Provides aria-label describing the category",
+      "Color coding is decorative — semantic meaning always in text"
+    ]
+  },
+  "patterns": ["Inbox list", "Message center", "Search results", "Message popover items"],
+  "compatibility": {
+    "allowedWith": ["StandardListItem", "ObjectListItem", "MessagePopoverItem", "NotificationListItem"],
+    "forbiddenWith": ["Standalone (always paired with content)"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

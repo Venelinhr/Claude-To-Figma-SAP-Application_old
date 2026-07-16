@@ -1,0 +1,190 @@
+{
+  "componentName": "Card",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "76fbadb97db272943b14aff18ee5809d0360795f",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    },
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Provide a clear header title",
+    "Bind card background to sapBackgroundColor or sapShellColor",
+    "Bind border to sapShell_BorderColor",
+    "Keep card content focused on a single subject"
+  ],
+  "dontRules": [
+    "Do not nest Cards more than 1 level deep",
+    "Do not mix Card and Panel in the same row — pick one",
+    "Do not omit the header — a Card without a header is just a Panel",
+    "Do not exceed ~4 KPIs per card — readability degrades"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "OverflowToolbar",
+    "List",
+    "Table",
+    "Form"
+  ],
+  "incompatiblePatterns": [
+    "Inside Dialog body",
+    "Inside table cells",
+    "Stacked vertically without spacing"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/card/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Card",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Card",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Card/sample/sap.m.sample.Card"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Card is a SAP instance. Plugin places it via SAP_KEYS. Card has hardcoded demo content (title + 2 lines of sample text) that the Plugin API can't override per-instance without detaching. For specs that need custom content, the plugin builds a native Auto Layout frame matching SAP Card styling (border, padding, header) — controlled by props.useNative: true.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "Panel",
+      "Dialog",
+      "IconTabBar",
+      "Carousel",
+      "FlexibleColumnLayout"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Avatar",
+      "AvatarGroup",
+      "ObjectStatus",
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "Tag",
+      "Link",
+      "Button",
+      "IconButton",
+      "MessageStrip",
+      "ProgressIndicator",
+      "Form",
+      "SimpleForm",
+      "List",
+      "Table",
+      "SapColHeader",
+      "SapTableRow",
+      "Timeline",
+      "TimelineItem",
+      "IllustratedMessage"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav",
+      "SideNavigation",
+      "DynamicPage",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageLayout",
+      "Dialog"
+    ],
+    "commonSiblings": [
+      "Card",
+      "Panel"
+    ]
+  },
+  "slotNames": [
+    "header",
+    "content",
+    "footer"
+  ]
+}

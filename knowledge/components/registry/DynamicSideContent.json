@@ -1,0 +1,176 @@
+{
+  "componentName": "DynamicSideContent",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "SideContentPosition",
+      "ui5Property": "sideContentPosition",
+      "values": [
+        "Begin",
+        "End"
+      ],
+      "default": "End"
+    },
+    {
+      "property": "SideContentVisibility",
+      "ui5Property": "sideContentVisibility",
+      "values": [
+        "AlwaysShow",
+        "ShowAboveL",
+        "ShowAboveM",
+        "ShowAboveS",
+        "NeverShow"
+      ],
+      "default": "ShowAboveM"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "mainContent",
+      "ui5Name": "mainContent",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "sideContent",
+      "ui5Name": "sideContent",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "sideContentVisibility",
+      "ui5Name": "sideContentVisibility",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "ShowAboveL"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "side-content-title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 16,
+      "sapStyleName": "App Headers/Section Title"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "main-background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#F5F6F7"
+    },
+    {
+      "role": "side-background",
+      "token": "sapContent_Container_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "divider",
+      "token": "sapList_BorderColor",
+      "fallbackHex": "#E5E7EA"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "landmarks",
+      "requirement": "Main content should have role=main; side content role=complementary"
+    },
+    {
+      "category": "reading-order",
+      "requirement": "Main precedes side content in DOM order regardless of visual position"
+    }
+  ],
+  "doRules": [
+    "Use for Object Page auxiliary right-rail content (side facts, related items, mini calendar)",
+    "Main content is the primary information; side content is contextual / auxiliary",
+    "Prefer sideContentPosition=End for LTR locales (side rail on the right)"
+  ],
+  "dontRules": [
+    "Do not use as a page-level split — use FlexibleColumnLayout for master/detail",
+    "Do not put primary actions in side content — they belong in main",
+    "Do not stack multiple DynamicSideContent frames on one page"
+  ],
+  "compatibleComponents": [
+    "Panel",
+    "Table",
+    "List",
+    "Form",
+    "SimpleForm",
+    "Card",
+    "Calendar",
+    "IllustratedMessage",
+    "MessageStrip"
+  ],
+  "incompatiblePatterns": [
+    "Nested inside another DynamicSideContent",
+    "Inside Dialog"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/dynamic-side-content/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.ui.layout.DynamicSideContent",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.ui.layout.DynamicSideContent",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "none",
+    "sizingConstraints": "Horizontal split. Main: layoutGrow=1 (fills). Side: fixed width ~320px unless equalSplit=true.",
+    "knownIssues": [
+      "SAP Web UI Kit has no dedicated DynamicSideContent component — this is a composed native layout: HORIZONTAL auto-layout frame with a Main column (grow) + Side column (fixed width). Renderer supports slots.mainContent and slots.sideContent."
+    ]
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "Panel",
+      "Table",
+      "List",
+      "Form",
+      "SimpleForm",
+      "Card",
+      "Calendar",
+      "IllustratedMessage",
+      "MessageStrip",
+      "Toolbar",
+      "OverflowToolbar",
+      "MessageStrip",
+      "Text",
+      "Title"
+    ],
+    "mustInclude": [],
+    "mustExclude": [
+      "Dialog",
+      "ShellBar",
+      "DynamicPage"
+    ],
+    "commonSiblings": []
+  },
+  "slotNames": [
+    "mainContent",
+    "sideContent"
+  ]
+}

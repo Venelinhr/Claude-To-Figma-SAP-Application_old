@@ -1,0 +1,61 @@
+{
+  "componentName": "UnableToLoadImage",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustrated-message/",
+  "purpose": "Empty-state illustration used when an image or media asset fails to load (network error, missing file, permission denied). Replaces the broken-image placeholder with a clear, on-brand fallback.",
+  "whenToUse": [
+    "Image src fails to resolve (404, 403, timeout)",
+    "Video or media asset cannot be played",
+    "As a fallback in ProductCard, Card thumbnail, or Avatar",
+    "Any content-image failure that should not break layout"
+  ],
+  "whenNotToUse": [
+    "For expected empty states (no image required) — use different variant",
+    "For load-in-progress — use placeholder or Skeleton",
+    "As decoration",
+    "For failed-required-content (use error page)"
+  ],
+  "doRules": [
+    "Show a descriptive message ('Image failed to load')",
+    "Provide a retry action if applicable",
+    "Match the size and shape of the image slot it replaces",
+    "Use tone appropriate for the context (not alarming)"
+  ],
+  "dontRules": [
+    "Do not use for a decorative-only image — hide it silently instead",
+    "Do not use browser-default broken-image icon",
+    "Do not omit descriptive text — user needs to know what happened",
+    "Do not shrink below Spot size"
+  ],
+  "layoutGuidance": {
+    "placement": "In place of the failed image inside its container",
+    "sizing": "Matches the image container's dimensions",
+    "spacing": "n/a — fills image slot",
+    "alignment": "Centered in the container"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 30 chars; description ≤ 80 chars",
+    "contentRules": "Title states the problem; description offers retry option",
+    "examples": ["Title: 'Image unavailable' · Description: 'Could not load this image'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Matches image container",
+    "L": "Matches image container",
+    "M": "Matches image container",
+    "S": "Matches image container; may hide text if very small"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)", "WCAG 2.1 · 4.1.3 Status Messages (Level AA)"],
+    "requirements": [
+      "role='img' with aria-label describing the failure",
+      "role='status' on the wrapping element to announce the change",
+      "Retry action (if present) has clear label",
+      "Failed image src does not attempt to load repeatedly"
+    ]
+  },
+  "patterns": ["Image failure fallback", "Product card broken thumbnail", "Avatar fallback"],
+  "compatibility": {"allowedWith": ["IllustratedMessage (only)", "Image (as fallback)"], "forbiddenWith": ["Standalone without container"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

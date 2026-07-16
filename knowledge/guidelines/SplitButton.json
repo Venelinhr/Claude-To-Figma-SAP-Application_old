@@ -1,0 +1,64 @@
+{
+  "componentName": "SplitButton",
+  "slug": "split-button",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/split-button/",
+  "purpose": "A two-part button: main action on the left, dropdown arrow on the right that opens a Menu of related actions. Combines fast access to the primary action with easy access to variants.",
+  "whenToUse": [
+    "One primary action with 2-6 close variants (Save / Save as / Save & Close)",
+    "The primary action is used ~70% of the time; variants ~30%",
+    "Users benefit from a single click for the default and one extra click for alternatives",
+    "In toolbars or footers of dialogs where space is limited"
+  ],
+  "whenNotToUse": [
+    "For unrelated actions — use a MenuButton (no primary bias)",
+    "For a single action — use Button",
+    "For >6 variants — use MenuButton or dedicated menu",
+    "When all variants are equally likely — use a Segmented Button or Menu"
+  ],
+  "doRules": [
+    "Make the visible label the most-used variant",
+    "Include the current variant in the dropdown as the highlighted item",
+    "Group related variants together in the menu",
+    "Use type=Emphasized only if the primary action is truly the primary screen action"
+  ],
+  "dontRules": [
+    "Do not use for destructive actions in the main button — accidental clicks",
+    "Do not hide the dropdown arrow — must be visible",
+    "Do not swap the main action based on last selection (surprises users)",
+    "Do not use inside table cells (too small)"
+  ],
+  "layoutGuidance": {
+    "placement": "Toolbars, dialog footers, form action rows",
+    "sizing": "Height 32px compact, 40px cozy; width hugs content",
+    "spacing": "Standard button spacing (8px)",
+    "alignment": "Right-aligned in footer, left-aligned in toolbar"
+  },
+  "contentGuidance": {
+    "labelLength": "Main action ≤ 20 chars",
+    "contentRules": "Main label is verb-first; menu items are verb-first variants",
+    "examples": ["Save ▼  (menu: Save · Save as · Save & Close)"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full label + arrow",
+    "L": "Full label + arrow",
+    "M": "Full label + arrow",
+    "S": "May collapse to icon + arrow"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)"],
+    "requirements": [
+      "Main button and arrow are separate focusable elements",
+      "Arrow has aria-haspopup and aria-expanded",
+      "Keyboard: Enter on main activates primary; Down opens menu",
+      "Screen reader announces both parts distinctly"
+    ]
+  },
+  "patterns": ["Toolbar with primary action", "Dialog footer with variants", "Object header actions"],
+  "compatibility": {
+    "allowedWith": ["Toolbar", "OverflowToolbar", "Bar", "DynamicPageTitle", "ObjectHeader"],
+    "forbiddenWith": ["Table cells", "Dense List rows"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

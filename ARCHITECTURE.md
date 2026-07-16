@@ -464,7 +464,7 @@ Paste into the plugin → Validate → Build Screen → real SAP components on c
 | **Syntax error on plugin run** | Figma cached old `code.js` | Remove plugin → re-import from manifest |
 | **Chrome MCP stale lock** | Previous session left lock files | `rm -f ~/.cache/chrome-devtools-mcp/chrome-profile/Default/LOCK ~/.cache/chrome-devtools-mcp/chrome-profile/SingletonLock` |
 | **403 on SAP guidelines** | SAP site blocks automated fetch | Chrome MCP is required — run `./install.sh` to configure it |
-| **"Component not in registry"** | Component missing from `knowledge/schemas/` | Add schema file + key to `code.js` SAP_KEYS — see README |
+| **"Component not in registry"** | Component missing from `knowledge/components/registry/` | Add schema file + key to `code.js` SAP_KEYS — see README |
 
 ---
 

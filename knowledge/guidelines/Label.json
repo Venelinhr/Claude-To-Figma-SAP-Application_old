@@ -1,0 +1,91 @@
+{
+  "componentName": "Label",
+  "slug": "label",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/label/",
+  "purpose": "A text label that identifies an input field or describes a value. Supports required indicator and display-only state.",
+  "whenToUse": [
+    "To label every form field (Input, Select, CheckBox, etc.)",
+    "To identify a value in display mode",
+    "To group related fields with a section title"
+  ],
+  "whenNotToUse": [
+    "As body text \u2014 use Text or Title instead",
+    "For headings \u2014 use Title with appropriate level",
+    "Without an associated field"
+  ],
+  "doRules": [
+    "Place Label above or to the left of the field",
+    "Mark required fields with the * indicator",
+    "Keep labels concise (1\u20133 words)",
+    "Associate with the field via labelFor"
+  ],
+  "dontRules": [
+    "Do not use Label as body text",
+    "Do not skip Label and rely on placeholder",
+    "Do not use punctuation at the end"
+  ],
+  "layoutGuidance": {
+    "placement": "Above or left of the associated field.",
+    "sizing": "Auto height.",
+    "spacing": "4px gap to field (top) or 8px gap (left).",
+    "alignment": "Left-aligned with field."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words.",
+    "contentRules": [
+      "Use sentence case",
+      "No punctuation",
+      "Indicate required with *"
+    ],
+    "examples": [
+      "Vendor",
+      "Mode",
+      "Email Address"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Label left, field right (form layout)",
+    "L": "Label left, field right",
+    "M": "Label above field (stacked)",
+    "S": "Label above field (stacked)"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "labeling",
+      "requirement": "Always associate with the field via labelFor",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Label-to-background contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "status",
+      "requirement": "Required indicator visible and announced"
+    }
+  ],
+  "patterns": [
+    "Form field label",
+    "Display-only data identifier"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Input",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "Switch",
+      "DatePicker",
+      "Form"
+    ],
+    "incompatible": [
+      "Standalone with no field associated"
+    ]
+  },
+  "exceptions": [
+    "DisplayOnly mode for read-only labels (no required indicator)"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,154 @@
+{
+  "componentName": "ObjectIdentifier",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "8e1e45c5a89b540f6ec53542279c7711d4020d81",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Title Active",
+      "ui5Property": "titleActive",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "False"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "titleActive",
+      "ui5Name": "titleActive",
+      "type": "boolean",
+      "exposedInLibrary": true,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Bold"
+    },
+    {
+      "role": "text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "title-text",
+      "state": "titleActive",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    },
+    {
+      "role": "title-text",
+      "state": "default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#32363A"
+    },
+    {
+      "role": "subtitle-text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#6A6D70"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Title is the primary identifier; text gives secondary context"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "When titleActive=true, title is keyboard-activatable as link"
+    }
+  ],
+  "doRules": [
+    "Use as the first/primary cell content in tables and lists",
+    "Use titleActive=true when title is clickable to drill down",
+    "Keep title short; use text for the description"
+  ],
+  "dontRules": [
+    "Do not use as standalone \u2014 always inside a row/item context",
+    "Do not duplicate title and text content"
+  ],
+  "compatibleComponents": [
+    "Table",
+    "List",
+    "ColumnListItem"
+  ],
+  "incompatiblePatterns": [
+    "As page title \u2014 use DynamicPageTitle"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/objectidentifier/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ObjectIdentifier",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ObjectIdentifier",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Fits row height.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "FeedListItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "TimelineItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ObjectStatus",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "Avatar",
+      "Title"
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "componentName": "Legend",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "f63dd9489c7cec0c2af11da655c58e86cee54771",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "items",
+      "ui5Name": "items",
+      "type": "aggregation",
+      "exposedInLibrary": false,
+      "default": []
+    },
+    {
+      "name": "orientation",
+      "ui5Name": "orientation",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "Horizontal"
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "legend-label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "sapStyleName": "SmallText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapList_Background",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "text",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "color-1",
+      "token": "sapLegendColor1",
+      "fallbackHex": "#5D9BFF"
+    },
+    {
+      "role": "color-2",
+      "token": "sapLegendColor2",
+      "fallbackHex": "#286EB4"
+    },
+    {
+      "role": "color-3",
+      "token": "sapLegendColor3",
+      "fallbackHex": "#0A6ED1"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use Legend as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/legend/)"
+  ],
+  "dontRules": [
+    "Do not use Legend outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Text",
+    "ObjectStatus"
+  ],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/legend/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Legend' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "Popover",
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "ColumnListItem",
+      "StandardListItem",
+      "ObjectListItem",
+      "SapTableRow",
+      "Bar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Text",
+      "ObjectStatus"
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "componentName": "Calendar",
+  "slug": "calendar",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/calendar/",
+  "purpose": "Full month-view calendar for date selection and event display. Used in scheduling apps, date-range pickers, and event browsers. Supports single date, multiple dates, and date-range selection.",
+  "whenToUse": [
+    "Select a date from a visible month view (vs typing in DatePicker)",
+    "Browse events by day/week/month",
+    "Show availability or blackout dates in bookings",
+    "Enable navigation across months and years"
+  ],
+  "whenNotToUse": [
+    "For a single-field date input in a form — use DatePicker",
+    "For a date range — use DateRangePicker (compact) or Calendar with range mode",
+    "For time-of-day selection — use TimePicker or DateTimePicker",
+    "When you have >2 months to show — use CalendarLegend and multi-month view"
+  ],
+  "doRules": [
+    "Show current date highlighted with today marker",
+    "Provide navigation to switch months and years",
+    "Support keyboard navigation (Arrow keys move by day, PageUp/Down by month)",
+    "Show weekday abbreviations in the header row"
+  ],
+  "dontRules": [
+    "Do not use for years far in the future/past — becomes tedious to navigate",
+    "Do not omit the year — always visible in the header",
+    "Do not use in a Popover for range selection — becomes cramped",
+    "Do not mix compact and cozy density within the same calendar"
+  ],
+  "layoutGuidance": {
+    "placement": "Standalone in a page, inside a card, or inside a Popover (for pickers)",
+    "sizing": "320px min width; height ~360px for standard month view",
+    "spacing": "Day cells: 4px gap compact, 8px cozy",
+    "alignment": "Grid layout: 7 columns (days) × 6 rows max"
+  },
+  "contentGuidance": {
+    "labelLength": "n/a — dates",
+    "contentRules": "Days as numbers 1-31; weekday header as 2-3 letter abbreviations",
+    "examples": ["Mo Tu We Th Fr Sa Su", "1 2 3 4 5 6 7"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full month grid",
+    "L": "Full month grid",
+    "M": "Full month grid",
+    "S": "May switch to list view or DatePicker fallback"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 2.1.1 Keyboard (Level A)", "WCAG 2.1 · 1.4.3 Contrast (Level AA)"],
+    "requirements": [
+      "aria-label on every day cell ('Monday, 8 July 2026')",
+      "Selected date has 3:1 contrast against unselected cells",
+      "Keyboard: Arrow keys move focus; Enter selects; Escape closes if inside Popover",
+      "Today marker is visible without relying on color alone"
+    ]
+  },
+  "patterns": ["Date pickers (in Popover)", "Booking flows", "Event browsers", "Planning views"],
+  "compatibility": {
+    "allowedWith": ["Popover", "Page", "Panel", "Card"],
+    "forbiddenWith": ["Inline in Table cells", "Inside Dialog title bar"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

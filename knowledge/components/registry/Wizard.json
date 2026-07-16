@@ -1,0 +1,151 @@
+{
+  "componentName": "Wizard",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "a1a11b0486b9b7e748ae57ff032d4d43bdd1389a",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Page Layout",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "step-indicator-active",
+      "state": "Active",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "step-indicator-done",
+      "state": "Done",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#188919"
+    },
+    {
+      "role": "step-indicator-future",
+      "state": "Future",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast ≥ 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32×32 Compact / 44×44 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Show all steps in the header even when only one is active",
+    "Allow back navigation",
+    "Validate per-step before allowing next",
+    "Mark optional steps clearly"
+  ],
+  "dontRules": [
+    "Do not exceed ~7 steps",
+    "Do not allow Next without validation passing",
+    "Do not skip rendering disabled future steps — they should be visible"
+  ],
+  "compatibleComponents": [
+    "DynamicPage",
+    "Dialog"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/wizard/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.Wizard",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.Wizard",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.Wizard/sample/sap.m.sample.Wizard"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "Wizard is sap.m.Wizard. SAP Figma library has it as separate component set. Plugin composes step header (horizontal progress indicators + labels) + current-step content frame. Live Figma componentKey a1a11b0486b9b7e748ae57ff032d4d43bdd1389a resolved 2026-06-27 from Quartz Web UI Kit_v1.94.",
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "Dialog",
+      "ObjectPageLayout",
+      "Panel"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "WizardStep",
+      "ProgressStep"
+    ],
+    "mustInclude": [
+      "WizardStep"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "NativeSideNav"
+    ],
+    "commonSiblings": [
+      "Button"
+    ]
+  },
+  "slotNames": [
+    "steps"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "componentName": "AddDimensions",
+  "slug": "illustrated-message",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/illustrated-message/",
+  "purpose": "An empty-state illustration used inside IllustratedMessage when the user needs to add dimensions to a chart, pivot table, or analytical view. Signals 'no data because no dimensions selected yet — pick some to start'.",
+  "whenToUse": [
+    "Empty analytical chart before any dimensions are selected",
+    "Pivot table with no row/column dimensions",
+    "Report builder with no data axes configured",
+    "Any analytics view awaiting user configuration"
+  ],
+  "whenNotToUse": [
+    "For 'no data returned' after a query — use different illustration",
+    "For a general empty list — use appropriate empty-state variant",
+    "As a decorative element — always paired with actionable text",
+    "In non-analytical contexts"
+  ],
+  "doRules": [
+    "Pair the illustration with clear title and description",
+    "Provide a call-to-action button ('Add dimensions', 'Configure chart')",
+    "Use the appropriate size (Spot, Dialog, Scene) for the container",
+    "Keep description short — the illustration does the visual work"
+  ],
+  "dontRules": [
+    "Do not use in non-empty states",
+    "Do not omit the CTA — user needs a path forward",
+    "Do not shrink below Spot size (48×48) — becomes illegible",
+    "Do not use if the actual empty state has a different cause"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside IllustratedMessage container in empty chart/table region",
+    "sizing": "Spot 48×48 · Dialog 120×120 · Scene 240×240",
+    "spacing": "16px between illustration, title, description, action",
+    "alignment": "Centered vertically and horizontally in the empty region"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 40 chars; description ≤ 120 chars; button ≤ 20 chars",
+    "contentRules": "Title states the empty state; description explains; button is action-first",
+    "examples": ["Title: 'No dimensions selected' · Description: 'Add dimensions to start analyzing' · Button: 'Add dimensions'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Scene or Dialog size",
+    "L": "Dialog size",
+    "M": "Dialog size",
+    "S": "Spot size"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.1.1 Non-text Content (Level A)"],
+    "requirements": [
+      "Illustration has role='img' with meaningful aria-label",
+      "Title uses appropriate heading level",
+      "CTA button clearly describes the action",
+      "Focus moves to CTA when illustration is shown"
+    ]
+  },
+  "patterns": ["Analytical empty state", "Chart configuration prompt", "Pivot table setup"],
+  "compatibility": {"allowedWith": ["IllustratedMessage (only)"], "forbiddenWith": ["Standalone", "Any other parent"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

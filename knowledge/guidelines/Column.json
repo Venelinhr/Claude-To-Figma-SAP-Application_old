@@ -1,0 +1,80 @@
+{
+  "componentName": "Column",
+  "slug": "responsive-table",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/responsive-table/",
+  "purpose": "A column definition within a Table. Holds the header label, sort/filter affordances, and width/alignment rules.",
+  "whenToUse": [
+    "As a child of Table only",
+    "To define each data column"
+  ],
+  "whenNotToUse": [
+    "Outside Table",
+    "For non-tabular data"
+  ],
+  "doRules": [
+    "Use clear, concise header text",
+    "Align numeric columns to End (right)",
+    "Indicate sort direction with arrow icon",
+    "Set appropriate minScreenWidth for responsive collapse"
+  ],
+  "dontRules": [
+    "Do not use a Column for actions \u2014 use a separate action column",
+    "Do not stack header labels vertically",
+    "Do not skip header text"
+  ],
+  "layoutGuidance": {
+    "placement": "As child of Table.",
+    "sizing": "Width auto or fixed via Column.width.",
+    "spacing": "Inherits Table spacing.",
+    "alignment": "hAlign property: Begin (left), Center, End (right)."
+  },
+  "contentGuidance": {
+    "labelLength": "1\u20133 words.",
+    "contentRules": [
+      "Use nouns for column names",
+      "Pluralize for clarity if appropriate",
+      "Avoid abbreviations"
+    ],
+    "examples": [
+      "Name",
+      "Runtime Profile",
+      "Versions",
+      "Actions"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "All columns shown",
+    "L": "All shown; demandPopin collapses minor columns",
+    "M": "Secondary columns pop in below primary",
+    "S": "Only most important columns visible"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "labeling",
+      "requirement": "Column header text must describe contents",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Sortable columns activate sort on Enter",
+      "wcag": "2.1.1 (A)"
+    }
+  ],
+  "patterns": [
+    "Table column definition"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Table",
+      "ColumnListItem"
+    ],
+    "incompatible": [
+      "Outside Table"
+    ]
+  },
+  "exceptions": [
+    "popinDisplay determines how column content shows when collapsed"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

@@ -1,0 +1,64 @@
+{
+  "componentName": "Notifications",
+  "slug": "notifications",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/notifications-shellbar/",
+  "purpose": "A popover accessible from the ShellBar that shows a list of user notifications. Contains NotificationListItems grouped by priority or time. Central hub for user alerts, tasks, and updates.",
+  "whenToUse": [
+    "As the notifications popover triggered from ShellBar",
+    "To centralize all user-scoped alerts in one predictable place",
+    "For task-focused alerts (Approve, Review, Respond)",
+    "When you need read/unread state per notification"
+  ],
+  "whenNotToUse": [
+    "For system-wide alerts — use NotificationBanner",
+    "For toast-style transient feedback — use MessageToast",
+    "For a per-page validation message — use MessageStrip",
+    "For a full inbox — use a dedicated page with List, not the popover"
+  ],
+  "doRules": [
+    "Group notifications by priority (High → Medium → Low) or by time",
+    "Show the unread count as a badge on the ShellBar trigger",
+    "Provide 'Mark all as read' and 'Clear all' actions in the header",
+    "Support both quick actions per item and clicking through to the source"
+  ],
+  "dontRules": [
+    "Do not use for arbitrary sidebar content — Popover is more flexible",
+    "Do not exceed 20 items visible — paginate or link to full inbox",
+    "Do not hide the read/unread distinction",
+    "Do not remove notifications from the list on click — mark as read only"
+  ],
+  "layoutGuidance": {
+    "placement": "Anchored to the notifications icon in ShellBar",
+    "sizing": "Width 400–480px, height max 600px with scroll",
+    "spacing": "Divider between groups; 8px between items",
+    "alignment": "Header (title + actions) top; items scroll below"
+  },
+  "contentGuidance": {
+    "labelLength": "Popover title 'Notifications' + count badge",
+    "contentRules": "Header actions: Mark all read, Clear all, Filter",
+    "examples": ["Notifications (5)", "High priority (2), Medium (3)"]
+  },
+  "responsiveBehavior": {
+    "XL": "Standard popover",
+    "L": "Standard popover",
+    "M": "Standard popover, may narrow",
+    "S": "May become full-screen slide-in from right"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 4.1.2 Name, Role, Value (Level A)", "WCAG 2.1 · 1.3.1 Info and Relationships (Level A)"],
+    "requirements": [
+      "Popover has role='dialog' with aria-label='Notifications'",
+      "Trigger button announces unread count ('5 unread notifications')",
+      "Each NotificationListItem is focusable and keyboard-actionable",
+      "Escape closes the popover; focus returns to trigger"
+    ]
+  },
+  "patterns": ["ShellBar notifications", "User task inbox summary"],
+  "compatibility": {
+    "allowedWith": ["ShellBar (as anchor)", "NotificationListItem (as items)"],
+    "forbiddenWith": ["Inside a page (use dedicated notification inbox page instead)"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

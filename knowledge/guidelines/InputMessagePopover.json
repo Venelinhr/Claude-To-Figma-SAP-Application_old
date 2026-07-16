@@ -1,0 +1,61 @@
+{
+  "componentName": "InputMessagePopover",
+  "slug": "message-popover",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/message-popover/",
+  "purpose": "A popover that shows the current validation state and messages for a specific Input field. Anchored to the field, shows only messages relevant to that input. Distinct from MessagePopover (all messages) and inline valueStateText (short single message).",
+  "whenToUse": [
+    "Input has multiple validation issues to communicate",
+    "The issue needs a link/action to resolve (e.g. 'Import file' for an empty required field)",
+    "Long-form error explanation that doesn't fit inline",
+    "You want the user to see history of issues, not just the latest"
+  ],
+  "whenNotToUse": [
+    "For a single short message — use inline valueStateText on the Input",
+    "For form-level validation summary — use MessagePopover in the toolbar",
+    "For persistent inline hints — use aria-describedby with helper text",
+    "For a page-level notice — use MessageStrip"
+  ],
+  "doRules": [
+    "Open automatically on invalid input, close on focus loss",
+    "Order messages by severity: Error → Warning → Success → Information",
+    "Provide an action button when the issue can be fixed via the popover",
+    "Keep messages concise; use links for full details"
+  ],
+  "dontRules": [
+    "Do not detach the popover from its anchored Input",
+    "Do not stack modally over other popovers",
+    "Do not use for non-Input controls — MessagePopover is the general-purpose version",
+    "Do not include success messages if there are also errors"
+  ],
+  "layoutGuidance": {
+    "placement": "Anchored to Input field, above or below based on space",
+    "sizing": "Width 320–400px; height max ~240px with scroll",
+    "spacing": "8px between messages; divider between severities",
+    "alignment": "Items left-aligned"
+  },
+  "contentGuidance": {
+    "labelLength": "Message title ≤ 60 chars; description ≤ 160 chars",
+    "contentRules": "Title states the problem; description suggests fix",
+    "examples": ["Field 'Email' — invalid format · Description: 'Use format name@domain.com'"]
+  },
+  "responsiveBehavior": {
+    "XL": "Popover positioned near field",
+    "L": "Same",
+    "M": "Same",
+    "S": "May become inline expanded area below Input"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 3.3.1 Error Identification (Level A)", "WCAG 2.1 · 3.3.3 Error Suggestion (Level AA)", "WCAG 2.1 · 4.1.3 Status Messages (Level AA)"],
+    "requirements": [
+      "role='dialog' or 'alertdialog' depending on severity",
+      "Errors announced via aria-live='assertive'; others 'polite'",
+      "aria-describedby on the Input points to popover content",
+      "Escape closes; focus returns to Input"
+    ]
+  },
+  "patterns": ["Input field validation", "Form error explanation", "Field-scoped help"],
+  "compatibility": {"allowedWith": ["Input (anchor)", "MaskInput", "ComboBox", "MultiInput"], "forbiddenWith": ["Standalone", "Table cells"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

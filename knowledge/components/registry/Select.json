@@ -1,0 +1,171 @@
+{
+  "componentName": "Select",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "5ce369ff7fb0cce28984eec8dd9973ccde82facb",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Input",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Disabled",
+        "ReadOnly"
+      ],
+      "default": "Regular"
+    },
+    {
+      "property": "Value State",
+      "ui5Property": "valueState",
+      "values": [
+        "None",
+        "Error",
+        "Warning",
+        "Success",
+        "Information"
+      ],
+      "default": "None"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "selectedKey",
+      "ui5Name": "selectedKey",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "selectedItemId",
+      "ui5Name": "selectedItemId",
+      "type": "text",
+      "exposedInLibrary": false,
+      "default": ""
+    },
+    {
+      "name": "enabled",
+      "ui5Name": "enabled",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": true
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Disabled",
+    "ReadOnly",
+    "Error",
+    "Warning",
+    "Success"
+  ],
+  "typographyRules": [
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapBackgroundColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "token": "sapField_BorderColor",
+      "fallbackHex": "#556B81"
+    },
+    {
+      "role": "text",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "keyboard",
+      "requirement": "Enter/Space opens dropdown; arrow keys traverse options"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with a Label component"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus ring on closed state; option focus visible when open"
+    }
+  ],
+  "doRules": [
+    "Use Select when 4\u201312 mutually exclusive options exist",
+    "Use a clear default value when applicable",
+    "Pair every Select with a Label"
+  ],
+  "dontRules": [
+    "Do not use Select with fewer than 3 options \u2014 use RadioButton",
+    "Do not use Select with more than 12 options \u2014 use ComboBox with search"
+  ],
+  "compatibleComponents": [
+    "Label",
+    "Form",
+    "SimpleForm",
+    "Toolbar"
+  ],
+  "incompatiblePatterns": [
+    "Without a Label"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/select/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.Select",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.Select",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Default 256px wide; resize via instance.resize().",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Form",
+      "SimpleForm",
+      "FormContainer",
+      "FormElement",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "FilterBar",
+      "SapFormSection",
+      "IconTabBar",
+      "ObjectPageSection",
+      "Toolbar",
+      "OverflowToolbar",
+      "SapTableRow",
+      "ColumnListItem",
+      "InputListItem",
+      "DynamicPageTitle"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Label",
+      "Input"
+    ]
+  }
+}

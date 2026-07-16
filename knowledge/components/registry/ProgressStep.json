@@ -1,0 +1,138 @@
+{
+  "componentName": "ProgressStep",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "composed:Wizard-child",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "circle-current",
+      "state": "Current",
+      "token": "sapButton_Emphasized_Background",
+      "fallbackHex": "#0070F2"
+    },
+    {
+      "role": "circle-done",
+      "state": "Done",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#188919"
+    },
+    {
+      "role": "circle-future",
+      "state": "Future",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "label",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Mark exactly one as current",
+    "Number steps sequentially",
+    "Show step name below the circle"
+  ],
+  "dontRules": [
+    "Do not exceed 7 steps",
+    "Do not omit step labels"
+  ],
+  "compatibleComponents": [
+    "Wizard",
+    "DynamicPage",
+    "Panel"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/progress-step/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ProgressStep",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ProgressStep",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ProgressStep/sample/sap.m.sample.ProgressStep"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ProgressStep is part of Wizard rendering. Native helper renders circle + label per step bound to state.",
+  "composition": {
+    "validParents": [
+      "Wizard",
+      "DynamicPage",
+      "Panel"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ProgressStep"
+    ]
+  }
+}

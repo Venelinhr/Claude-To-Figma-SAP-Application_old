@@ -1,0 +1,162 @@
+{
+  "componentName": "ObjectAttribute",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "080ead216322befe153704bf8f11373158fea34a",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Object Display",
+  "supportedVariants": [
+    {
+      "property": "Type",
+      "values": [
+        "Standard",
+        "Active"
+      ],
+      "default": "Standard"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "active",
+      "ui5Name": "active",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active"
+  ],
+  "typographyRules": [
+    {
+      "role": "label",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    },
+    {
+      "role": "value",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "label-text",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    },
+    {
+      "role": "value-text",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "value-text",
+      "state": "Active",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Label and value both \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Title text serves as label for the value; relationship is visual + spatial"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "When active=true, min 32\u00d732 Compact / 44\u00d744 Cozy"
+    }
+  ],
+  "doRules": [
+    "Use ObjectAttribute for key-value pairs in DynamicPageHeader, ObjectPageLayout headers, and object cards",
+    "Title is the label (e.g. 'Vendor:', 'Status:'), text is the value ('SAP', 'Active')",
+    "Bind title color to sapContent_LabelColor, value color to sapList_TextColor",
+    "Set active=true ONLY when the value is genuinely interactive (drills to detail)"
+  ],
+  "dontRules": [
+    "Do not use ObjectAttribute for free-form text \u2014 use Text",
+    "Do not use ObjectAttribute as a form field \u2014 use Label + Input",
+    "Do not omit the title (label) \u2014 the relationship between label and value is the whole point",
+    "Do not chain more than ~4 ObjectAttributes horizontally \u2014 readability degrades"
+  ],
+  "compatibleComponents": [
+    "DynamicPageHeader",
+    "ObjectPageLayout",
+    "Panel",
+    "Form",
+    "ColumnListItem"
+  ],
+  "incompatiblePatterns": [
+    "Inside table cells \u2014 use plain text",
+    "Stacked vertically without spacing \u2014 use Form sections instead"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/object-attribute/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.ObjectAttribute",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.ObjectAttribute",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.ObjectAttribute/sample/sap.m.sample.ObjectAttribute"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "ObjectAttribute renders the SAP instance with text node injection for title (label) and text (value). The plugin's DynamicPageHeader handler also accepts ObjectAttribute as a synthesized key:value pair when used in headerContent.meta. SAP_KEYS: ObjectAttribute \u2192 '080ead216322befe153704bf8f11373158fea34a'. Status: AI specs MAY emit { component: 'ObjectAttribute', props: { title: 'Vendor:', text: 'SAP' } } inside header slots.",
+  "composition": {
+    "validParents": [
+      "DynamicPageHeader",
+      "DynamicPageTitle",
+      "ObjectPageHeader",
+      "ObjectPageLayout",
+      "Panel",
+      "Card",
+      "Dialog",
+      "ColumnListItem",
+      "SapTableRow",
+      "ObjectListItem",
+      "TimelineItem",
+      "FeedListItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ObjectAttribute",
+      "ObjectIdentifier",
+      "ObjectStatus"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "componentName": "AIPromptInput",
+  "slug": "joule-prompt-input",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/joule/",
+  "purpose": "A prominent multi-line input for prompting Joule with a question, instruction, or context. Includes a Send action, character counter, and optional attach/upload controls. The primary entry point to Joule conversations.",
+  "whenToUse": [
+    "As the main input in a Joule conversation panel",
+    "For open-ended prompts that require multiple sentences",
+    "When user needs to iterate on a prompt before sending",
+    "As a standalone entry point to AI generation"
+  ],
+  "whenNotToUse": [
+    "For single-line search — use AIInput",
+    "For rich-text with formatting — use AIRichTextEditor",
+    "For non-AI multi-line input — use TextArea",
+    "As a form field for structured data — use TextArea with validation"
+  ],
+  "doRules": [
+    "Provide a clear Send affordance (button or Enter binding)",
+    "Show a character/token counter if there's a limit",
+    "Include example prompts for first-time users",
+    "Support Cmd/Ctrl+Enter to send while Enter inserts a newline"
+  ],
+  "dontRules": [
+    "Do not auto-send without explicit user action",
+    "Do not truncate the input at a low character count without warning",
+    "Do not send an empty prompt",
+    "Do not hide previous prompts from history"
+  ],
+  "layoutGuidance": {
+    "placement": "Bottom of Joule panel, top of AI-generation flows",
+    "sizing": "Min height 96px, max 240px with scroll; full width of panel",
+    "spacing": "16px internal padding",
+    "alignment": "Text top-left, Send button bottom-right, counter bottom-left"
+  },
+  "contentGuidance": {
+    "labelLength": "Placeholder ≤ 60 chars",
+    "contentRules": "Prompt is any user text; system may add context before sending",
+    "examples": ["\"Ask Joule anything about your data...\""]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width of panel",
+    "L": "Full width",
+    "M": "Full width",
+    "S": "Full width, may fill viewport height"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 3.3.2 Labels or Instructions (Level A)", "WCAG 2.1 · 4.1.3 Status Messages (Level AA)"],
+    "requirements": [
+      "aria-label='Message Joule'",
+      "Send button has aria-label='Send prompt'",
+      "Character counter announced when nearing limit",
+      "Response streaming announced via aria-live='polite'"
+    ]
+  },
+  "patterns": ["Joule conversation input", "AI generation prompt", "Ask AI panel"],
+  "compatibility": {"allowedWith": ["Joule panel", "Popover", "Dialog"], "forbiddenWith": ["Table cells", "Inline form field"]},
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

@@ -1,0 +1,132 @@
+{
+  "componentName": "TreeItem",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "5142305385e26387daddd9af7b58a7da66a9f8fd",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Data Display",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text-default",
+      "state": "Default",
+      "token": "sapList_TextColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "icon",
+      "state": "Default",
+      "token": "sapContent_LabelColor",
+      "fallbackHex": "#556B82"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Provide text for every TreeItem",
+    "Use level (depth) to indicate nesting",
+    "Mark expandable items with hasChildren=true to render the chevron",
+    "Bind text to sapList_TextColor"
+  ],
+  "dontRules": [
+    "Do not use TreeItem without a parent Tree",
+    "Do not nest TreeItem markup; nesting is by level/parent metadata not DOM nesting",
+    "Do not omit text on a TreeItem"
+  ],
+  "compatibleComponents": [
+    "Tree"
+  ],
+  "incompatiblePatterns": [
+    "Outside of Tree",
+    "Inside table cells"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/treeitem/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.TreeItem",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.TreeItem",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.TreeItem/sample/sap.m.sample.TreeItem"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "TreeItem is composed by Tree \u2014 specs should NOT emit TreeItem directly. Spec emits Tree with items[] array; plugin generates TreeItem instances internally.",
+  "composition": {
+    "validParents": [
+      "Tree",
+      "TreeItem"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "TreeItem",
+      "Text",
+      "Label",
+      "Icon",
+      "Link"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "TreeItem"
+    ]
+  }
+}

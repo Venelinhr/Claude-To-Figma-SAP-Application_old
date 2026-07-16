@@ -1,0 +1,86 @@
+{
+  "componentName": "Slider",
+  "slug": "slider",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/slider/",
+  "purpose": "A single-value selection along a numeric range. Visual representation of value relative to min/max.",
+  "whenToUse": [
+    "Continuous numeric input where precision is less important",
+    "Visual feedback of value position (volume, brightness, opacity)",
+    "When the relationship to min/max matters visually"
+  ],
+  "whenNotToUse": [
+    "When precise value entry required \u2014 use Input or StepInput",
+    "For values without clear min/max",
+    "For multi-select \u2014 use RangeSlider"
+  ],
+  "doRules": [
+    "Use for continuous numeric input where precision is less important",
+    "Show current value via tooltip on handle",
+    "Show min/max labels at endpoints",
+    "Allow keyboard adjustment via arrow keys"
+  ],
+  "dontRules": [
+    "Do not use Slider when exact value entry is required \u2014 use Input",
+    "Do not use without clear min/max",
+    "Do not exceed 7 visible labels on the scale"
+  ],
+  "layoutGuidance": {
+    "placement": "Form, Dialog body, settings panels.",
+    "sizing": "Full width of container.",
+    "spacing": "16px vertical between sliders.",
+    "alignment": "Handle position reflects value."
+  },
+  "contentGuidance": {
+    "labelLength": "Value shown as tooltip.",
+    "contentRules": [
+      "Tooltip shows current value",
+      "Endpoints show min/max"
+    ],
+    "examples": [
+      "0",
+      "50",
+      "100"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "Full width with tooltip",
+    "L": "Full width with tooltip",
+    "M": "Full width",
+    "S": "Full width; touch target enlarged"
+  },
+  "accessibilityGuidance": [
+    {
+      "category": "keyboard",
+      "requirement": "Arrow keys move; PageUp/Down jump; Home/End jump to bounds",
+      "wcag": "2.1.1 (A)"
+    },
+    {
+      "category": "labeling",
+      "requirement": "Pair with Label; show current value visibly",
+      "wcag": "1.3.1 (A)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "Value announced as percentage or absolute",
+      "wcag": "4.1.2 (A)"
+    }
+  ],
+  "patterns": [
+    "Numeric range selection",
+    "Setting adjustment"
+  ],
+  "compatibility": {
+    "worksWith": [
+      "Label",
+      "Form"
+    ],
+    "incompatible": [
+      "Without bounds"
+    ]
+  },
+  "exceptions": [
+    "enableTickmarks shows tick marks at step intervals"
+  ],
+  "version": "2026.Q2",
+  "lastChecked": "2026-06-25"
+}

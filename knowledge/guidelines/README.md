@@ -18,7 +18,7 @@ SAP design guidelines may redirect or block automated fetching. Try in order:
 1. `https://www.sap.com/design-system/fiori-design-web/ui-elements/{slug}/`
 2. `https://experience.sap.com/fiori-design-web/{slug}/`
 3. `https://ui5.sap.com/#/entity/{SAPClass}` (DemoKit — JS SPA, may not load)
-4. Knowledge from `knowledge/schemas/{Component}.json` (fallback — always available)
+4. Knowledge from `knowledge/components/registry/{Component}.json` (fallback — always available)
 
 ## URL slug mapping
 
@@ -62,7 +62,96 @@ SAP design guidelines may redirect or block automated fetching. Try in order:
 | IllustratedMessage | `illustrated-message` |
 | Carousel | `carousel` |
 
-## File format
+---
+
+## NEW: Structured JSON Cache (Section 1 MCP 1)
+
+In addition to markdown summaries above, this directory now also stores **structured JSON cache entries** matching the `_schema.json` schema. These are consumed programmatically by MCP 1 (Fiori Guidelines server) and the AI layer.
+
+### Structured cache files (46/46 ✓ Group A + Group B complete)
+
+| Component | Status |
+|---|---|
+| **Group A (28)** | |
+| `Button.json` | ✓ |
+| `IconTabBar.json` | ✓ |
+| `Input.json` | ✓ |
+| `ShellBar.json` | ✓ |
+| `SideNavigation.json` | ✓ |
+| `NavigationItem.json` | ✓ |
+| `IconButton.json` | ✓ |
+| `MenuButton.json` | ✓ |
+| `Select.json` | ✓ |
+| `CheckBox.json` | ✓ |
+| `RadioButton.json` | ✓ |
+| `Switch.json` | ✓ |
+| `Label.json` | ✓ |
+| `Link.json` | ✓ |
+| `Table.json` | ✓ |
+| `Column.json` | ✓ |
+| `ColumnListItem.json` | ✓ |
+| `List.json` | ✓ |
+| `StandardListItem.json` | ✓ |
+| `IconTabFilter.json` | ✓ |
+| `DynamicPage.json` | ✓ |
+| `DynamicPageTitle.json` | ✓ |
+| `DynamicPageHeader.json` | ✓ |
+| `ObjectPageLayout.json` | ✓ |
+| `FilterBar.json` | ✓ |
+| `Form.json` | ✓ |
+| `Panel.json` | ✓ |
+| `Dialog.json` | ✓ |
+| **Group B (18)** | |
+| `MultiComboBox.json` | ✓ |
+| `MultiInput.json` | ✓ |
+| `DatePicker.json` | ✓ |
+| `DateRangePicker.json` | ✓ |
+| `DateTimePicker.json` | ✓ |
+| `TimePicker.json` | ✓ |
+| `StepInput.json` | ✓ |
+| `Slider.json` | ✓ |
+| `RangeSlider.json` | ✓ |
+| `TextArea.json` | ✓ |
+| `FileUploader.json` | ✓ |
+| `Avatar.json` | ✓ |
+| `Tag.json` | ✓ |
+| `ObjectStatus.json` | ✓ |
+| `ObjectIdentifier.json` | ✓ |
+| `ObjectNumber.json` | ✓ |
+| `MessageStrip.json` | ✓ |
+| `BusyIndicator.json` | ✓ |
+
+### Schema fields (per `_schema.json`)
+
+`componentName`, `slug`, `sourceUrl`, `purpose`, `whenToUse[]`, `whenNotToUse[]`,
+`doRules[]`, `dontRules[]`, `layoutGuidance{}`, `contentGuidance{}`,
+`responsiveBehavior{XL,L,M,S}`, `accessibilityGuidance[]` (with WCAG refs),
+`patterns[]`, `compatibility{}`, `exceptions[]`, `version`, `lastChecked`
+
+### MCP 1 server contract (planned)
+
+The Fiori Guidelines MCP server will expose:
+
+- `getFioriGuideline(componentName)` → returns the cached JSON
+- `refreshGuideline(componentName)` → re-scrapes and updates cache
+- `searchGuidelines(query)` → fuzzy search across all entries
+- `getPattern(patternName)` → returns components matching a pattern
+
+### How the AI uses this
+
+When generating a spec, the AI:
+1. Reads `knowledge/components/registry/{name}.json` — technical (Figma keys, properties, variants)
+2. Reads `knowledge/guidelines/{name}.json` — design (do/don't, when to use, accessibility)
+3. Combines both to make spec decisions
+4. Cites `sourceUrl` in `meta.rationale`
+
+### File format
+
+Each JSON file conforms to `_schema.json` — schema-validated.
+
+---
+
+## File format (markdown — legacy)
 
 Each cached file follows this structure:
 

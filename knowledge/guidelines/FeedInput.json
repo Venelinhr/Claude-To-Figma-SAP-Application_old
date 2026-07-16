@@ -1,0 +1,69 @@
+{
+  "componentName": "FeedInput",
+  "slug": "feed-input",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/feed-input/",
+  "purpose": "Input optimised for feed/comment posting \u2014 multi-line text area with submit button anchored to the bottom-right.",
+  "whenToUse": [
+    "Comment composers under FeedListItem",
+    "Reply boxes on activity items",
+    "Note-posting in object detail pages"
+  ],
+  "whenNotToUse": [
+    "Simple text \u2014 use Input",
+    "Long-form documents \u2014 use TextArea",
+    "Form fields \u2014 use Input or TextArea per type"
+  ],
+  "doRules": [
+    "Include an Avatar showing current user",
+    "Submit button is right-bottom-aligned, Emphasized type",
+    "Auto-grow textarea up to ~5 lines, then scroll",
+    "Disable submit until non-empty"
+  ],
+  "dontRules": [
+    "Do not use FeedInput as a generic textarea",
+    "Do not omit the Avatar",
+    "Do not auto-submit on Enter (use Cmd+Enter or button click)"
+  ],
+  "layoutGuidance": {
+    "placement": "Place FeedInput inside a compatible container (List (FeedListItem context), DynamicPage, Card).",
+    "sizing": "Auto width unless explicitly sized; height matches density (Compact 26-32px, Cozy 36-44px).",
+    "spacing": "8px gap from adjacent elements; 16px between groups.",
+    "alignment": "Inherits from parent Auto Layout."
+  },
+  "contentGuidance": {
+    "labelLength": "See doRules for specific length guidance.",
+    "contentRules": [
+      "Use sentence case",
+      "Localize all text",
+      "Avoid jargon"
+    ],
+    "examples": []
+  },
+  "responsiveBehavior": {
+    "XL": "Full size and visibility.",
+    "L": "Full size and visibility.",
+    "M": "May condense \u2014 see Fiori responsive design guidelines.",
+    "S": "May convert to alternative pattern on narrow viewports."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Maps to ARIA pattern appropriate for input.",
+    "contrast": "\u2265 4.5:1 for text, \u2265 3:1 for borders (WCAG AA).",
+    "keyboard": "Full keyboard support \u2014 Tab to focus, Enter/Space to activate.",
+    "screenReader": "Announced with role and state."
+  },
+  "patterns": [
+    "Used inside List (FeedListItem context)",
+    "Used inside DynamicPage",
+    "Used inside Card"
+  ],
+  "compatibility": [
+    "List (FeedListItem context)",
+    "DynamicPage",
+    "Card"
+  ],
+  "exceptions": [
+    "See pluginNotes for plugin-specific rendering caveats."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

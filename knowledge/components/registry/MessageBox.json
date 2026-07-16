@@ -1,0 +1,158 @@
+{
+  "componentName": "MessageBox",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "alias:Dialog",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Feedback",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Interaction State",
+      "values": [
+        "Regular",
+        "Hover",
+        "Focused",
+        "Active",
+        "Disabled"
+      ],
+      "default": "Regular"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular",
+    "Hover",
+    "Focused",
+    "Active",
+    "Disabled"
+  ],
+  "typographyRules": [
+    {
+      "role": "default",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "fill",
+      "state": "Default",
+      "token": "sapShellColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "border",
+      "state": "Default",
+      "token": "sapShell_BorderColor",
+      "fallbackHex": "#D9D9D9"
+    },
+    {
+      "role": "title",
+      "state": "Default",
+      "token": "sapTitleColor",
+      "fallbackHex": "#1D2D3E"
+    },
+    {
+      "role": "icon-error",
+      "state": "Error",
+      "token": "sapNegativeTextColor",
+      "fallbackHex": "#BB0000"
+    },
+    {
+      "role": "icon-warning",
+      "state": "Warning",
+      "token": "sapCriticalTextColor",
+      "fallbackHex": "#A8650B"
+    },
+    {
+      "role": "icon-success",
+      "state": "Success",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#188919"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "contrast",
+      "requirement": "Text contrast \u2265 4.5:1 against bg (WCAG AA)",
+      "wcag": "1.4.3"
+    },
+    {
+      "category": "tap-target",
+      "requirement": "Min 32\u00d732 Compact / 44\u00d744 Cozy"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "Fully operable via keyboard"
+    },
+    {
+      "category": "focus",
+      "requirement": "Visible focus indicator"
+    }
+  ],
+  "doRules": [
+    "Use predefined types (Confirm / Error / Warning / Information / Success)",
+    "Include explicit buttons (Yes / No, Cancel / OK)",
+    "Match button intent to action consequence"
+  ],
+  "dontRules": [
+    "Do not use MessageBox for non-critical info \u2014 use MessageToast",
+    "Do not omit confirm button on destructive actions",
+    "Do not nest MessageBox"
+  ],
+  "compatibleComponents": [
+    "Triggered from any context"
+  ],
+  "incompatiblePatterns": [
+    "See doRules and dontRules for context-specific rules."
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/message-box/",
+  "demoKitUrl": "https://sdk.openui5.org/entity/sap.m.MessageBox",
+  "apiUrl": "https://sdk.openui5.org/api/sap.m.MessageBox",
+  "sampleUrls": [
+    "https://sdk.openui5.org/entity/sap.m.MessageBox/sample/sap.m.sample.MessageBox"
+  ],
+  "libraryVersion": "2025.06",
+  "lastValidated": "2026-06-27",
+  "pluginNotes": "MessageBox aliases to Dialog with predefined State variant (Error/Warning/Information/Success/Confirm). Plugin renders Dialog with appropriate icon + colored header bar.",
+  "composition": {
+    "validParents": [],
+    "topLevelOnly": true,
+    "validChildren": [
+      "Title",
+      "Text",
+      "Label",
+      "Button",
+      "MessageStrip",
+      "Link"
+    ],
+    "mustInclude": [
+      "Button"
+    ],
+    "mustExclude": [
+      "ShellBar",
+      "DynamicPage",
+      "Table",
+      "Form",
+      "Panel"
+    ],
+    "commonSiblings": []
+  }
+}

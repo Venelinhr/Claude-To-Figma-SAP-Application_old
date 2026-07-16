@@ -1,0 +1,188 @@
+{
+  "componentName": "ObjectStatus",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "748d609ead5d4a246d7cd7c144b94b518c467e58",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Status",
+  "supportedVariants": [
+    {
+      "property": "Semantic",
+      "ui5Property": "state",
+      "figmaNote": "Live kit property name is 'Semantic', NOT 'State'. Verified 2026-07-10 via plugin componentProperties. Values: None/Information/Success/Warning/Error.",
+      "values": [
+        "None",
+        "Information",
+        "Success",
+        "Warning",
+        "Error"
+      ],
+      "default": "None"
+    },
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    },
+    {
+      "property": "Show Icon",
+      "ui5Property": "showStateIcon",
+      "values": [
+        "True",
+        "False"
+      ],
+      "default": "True"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "state",
+      "ui5Name": "state",
+      "figmaPropertyName": "Semantic",
+      "type": "variant",
+      "exposedInLibrary": true,
+      "default": "None"
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "icon",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "inverted",
+      "ui5Name": "inverted",
+      "type": "boolean",
+      "exposedInLibrary": false,
+      "default": false
+    }
+  ],
+  "supportedStates": [
+    "None",
+    "Information",
+    "Success",
+    "Warning",
+    "Error"
+  ],
+  "typographyRules": [
+    {
+      "role": "text",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Regular"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "text",
+      "state": "Success",
+      "token": "sapPositiveTextColor",
+      "fallbackHex": "#1E8F56"
+    },
+    {
+      "role": "text",
+      "state": "Warning",
+      "token": "sapCriticalTextColor",
+      "fallbackHex": "#DF7B01"
+    },
+    {
+      "role": "text",
+      "state": "Error",
+      "token": "sapNegativeTextColor",
+      "fallbackHex": "#BD2920"
+    },
+    {
+      "role": "text",
+      "state": "Information",
+      "token": "sapButton_TextColor",
+      "fallbackHex": "#0064D9"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "status",
+      "requirement": "State communicated by icon AND text \u2014 not color alone",
+      "wcag": "1.4.1 (A)"
+    },
+    {
+      "category": "contrast",
+      "requirement": "Status text contrast \u2265 4.5:1",
+      "wcag": "1.4.3 (AA)"
+    },
+    {
+      "category": "announcements",
+      "requirement": "State announced via aria-label"
+    }
+  ],
+  "doRules": [
+    "Always pair state color with state icon",
+    "Use clear, concise status text",
+    "Use semantic state property (Success/Warning/Error/Information)"
+  ],
+  "dontRules": [
+    "Do not communicate status by color alone",
+    "Do not use Error state for warnings \u2014 use the right semantic level"
+  ],
+  "compatibleComponents": [
+    "Table",
+    "List",
+    "Form",
+    "ObjectHeader"
+  ],
+  "incompatiblePatterns": [
+    "Without text \u2014 icon-only status"
+  ],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/objectstatus/",
+  "demoKitUrl": "https://sapui5.hana.ondemand.com/#/entity/sap.m.ObjectStatus",
+  "apiUrl": "https://sapui5.hana.ondemand.com/#/api/sap.m.ObjectStatus",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-10",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "Auto width.",
+    "criticalNote": "Figma kit variant property is 'Semantic' (NOT 'State'). The plugin handler at buildSapNode explicitly calls setProperties({'Semantic': value}). kitProps must use 'Semantic' as the key. See docs/REPAIR-PATTERNS.md P-024.",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Card",
+      "Panel",
+      "Dialog",
+      "SapTableRow",
+      "ColumnListItem",
+      "ObjectListItem",
+      "StandardListItem",
+      "FeedListItem",
+      "TimelineItem",
+      "DynamicPageTitle",
+      "DynamicPageHeader",
+      "ObjectPageHeader",
+      "MessagePopover",
+      "Toolbar",
+      "OverflowToolbar"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "ObjectIdentifier",
+      "ObjectNumber",
+      "ObjectAttribute",
+      "ObjectMarker",
+      "Tag"
+    ]
+  }
+}

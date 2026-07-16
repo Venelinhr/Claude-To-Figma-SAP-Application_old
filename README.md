@@ -40,7 +40,7 @@ These are verified numbers from the source code — not estimates.
 |---|---|---|
 | **SAP components the plugin can place** | **70** | `SAP_KEYS` in `plugin/figma-builder/code.js` |
 | **Spec names Claude can use** | **81** | `KEY_MAP` in `plugin/figma-builder/code.js` |
-| **Registry schemas (hard validation gate)** | **37** | `knowledge/schemas/` folder |
+| **Registry schemas (hard validation gate)** | **37** | `knowledge/components/registry/` folder |
 | **SAP Web UI Kit pages covered** | **56 of 65** | Component table in `ARCHITECTURE.md` |
 | **Kit pages not applicable** | **9** | Text, Illustrations, Icons, Grid, Focus, Scrollbar, Color Palette, Hero Banner, AI Writing Assistant |
 

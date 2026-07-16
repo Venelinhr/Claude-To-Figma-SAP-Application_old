@@ -1,0 +1,64 @@
+{
+  "componentName": "Page",
+  "slug": "page",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/",
+  "purpose": "A basic single-view container with an optional header, content, subheader, and footer. Simpler than DynamicPage — used when responsive header collapsing is not needed. Common inside FlexibleColumnLayout columns and Wizards.",
+  "whenToUse": [
+    "As a column in FlexibleColumnLayout that doesn't need a snapping header",
+    "For a simple screen inside a Wizard step",
+    "For a nested page inside a NavContainer",
+    "When you need a header + content + footer structure with no dynamic collapsing"
+  ],
+  "whenNotToUse": [
+    "For a top-level responsive page — use DynamicPage",
+    "For a modal — use Dialog",
+    "For a landing page — use DynamicPage or Initial Page floorplan",
+    "For fullscreen content without a header — use App directly"
+  ],
+  "doRules": [
+    "Set showHeader=false if you don't need the header region",
+    "Use customHeader for a fully custom header layout",
+    "Keep the content area scrollable while header/footer stay fixed",
+    "Set backgroundDesign to match the surrounding shell"
+  ],
+  "dontRules": [
+    "Do not use Page when DynamicPage is available — DynamicPage handles more cases",
+    "Do not put a ShellBar inside a Page — ShellBar is app-level",
+    "Do not nest Pages inside Pages — use NavContainer",
+    "Do not put multiple footers in a Page"
+  ],
+  "layoutGuidance": {
+    "placement": "Inside App, FlexibleColumnLayout column, or WizardStep",
+    "sizing": "Fills parent (typically full column height)",
+    "spacing": "16px internal content padding",
+    "alignment": "Header top · content scrolls · footer bottom"
+  },
+  "contentGuidance": {
+    "labelLength": "Title ≤ 60 chars",
+    "contentRules": "Header: title + navigation button. Content: main screen. Footer: actions",
+    "examples": ["Master column of FlexibleColumnLayout: Page with list of items + search header"]
+  },
+  "responsiveBehavior": {
+    "XL": "Full layout",
+    "L": "Full layout",
+    "M": "Full layout",
+    "S": "Header may collapse if space is tight"
+  },
+  "accessibilityGuidance": {
+    "wcagCriteria": ["WCAG 2.1 · 1.3.1 Info and Relationships (Level A)", "WCAG 2.1 · 2.4.1 Bypass Blocks (Level A)"],
+    "requirements": [
+      "role='main' for the content region",
+      "Header uses h1/h2 for the title",
+      "Focus order: header → content → footer",
+      "Skip-link to content if header contains many navigation items"
+    ]
+  },
+  "patterns": ["FlexibleColumnLayout column", "Wizard step content", "Nested NavContainer view"],
+  "compatibility": {
+    "allowedWith": ["App", "FlexibleColumnLayout", "NavContainer", "SplitContainer", "WizardStep"],
+    "forbiddenWith": ["Dialog (Dialog is its own container)", "Popover", "Card"]
+  },
+  "exceptions": [],
+  "version": "1.149.0",
+  "lastChecked": "2026-07-08"
+}

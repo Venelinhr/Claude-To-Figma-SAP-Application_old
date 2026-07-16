@@ -1,0 +1,75 @@
+{
+  "componentName": "ObjectAttribute",
+  "slug": "object-attribute",
+  "sourceUrl": "https://experience.sap.com/fiori-design-web/object-attribute/",
+  "purpose": "Key-value pair for object metadata. The title is the label (e.g. 'Vendor:'), the text is the value (e.g. 'SAP'). Used in DynamicPageHeader and ObjectPageLayout headers to show object descriptors.",
+  "whenToUse": [
+    "Object header metadata pairs (Vendor: SAP, Version: 1.0.0, Status: Active)",
+    "Inside ColumnListItem to show row metadata",
+    "Inside cards as labeled facts",
+    "When the relationship between a label and a value matters and a Form is overkill"
+  ],
+  "whenNotToUse": [
+    "For form input fields — use Label + Input",
+    "For status that needs color semantic — use ObjectStatus",
+    "For numbers that need emphasis — use ObjectNumber",
+    "For freeform text — use Text"
+  ],
+  "doRules": [
+    "Always include the title (label) — it gives the value context",
+    "Bind title color to sapContent_LabelColor, value color to sapList_TextColor",
+    "Use ObjectAttribute in headerContent.meta of DynamicPageTitle",
+    "Set active=true only when the value is interactive (drills to detail)"
+  ],
+  "dontRules": [
+    "Do not omit the title — the label is the whole point",
+    "Do not chain more than 4 ObjectAttributes horizontally — readability degrades",
+    "Do not use ObjectAttribute for free-form text",
+    "Do not nest ObjectAttribute inside another ObjectAttribute"
+  ],
+  "layoutGuidance": {
+    "placement": "Horizontal flow inside DynamicPageHeader metadata band, ObjectPageLayout header, or card body.",
+    "sizing": "Auto-width; auto height single line.",
+    "spacing": "24px gap between ObjectAttribute pairs; 4px gap between title and value within a pair.",
+    "alignment": "Left-aligned within container."
+  },
+  "contentGuidance": {
+    "labelLength": "Title (label) 1-2 words with trailing colon; text (value) 1-4 words.",
+    "contentRules": [
+      "Title in sentence case + colon: 'Vendor:', 'Mode:', 'Status:'",
+      "Text in sentence case: 'SAP', 'Editable', 'Active'",
+      "Localize both title and text",
+      "For numeric values with unit, use ObjectNumber instead"
+    ],
+    "examples": [
+      "Vendor: SAP",
+      "Mode: Editable",
+      "Version: 1.0.0",
+      "Status: Active"
+    ]
+  },
+  "responsiveBehavior": {
+    "XL": "All ObjectAttributes inline.",
+    "L":  "All ObjectAttributes inline.",
+    "M":  "May wrap to multiple rows; preserve title-value pairing.",
+    "S":  "Stack vertically; each pair occupies a full row."
+  },
+  "accessibilityGuidance": {
+    "ariaPattern": "Title acts as label; value acts as value. Pair as <dl><dt>title</dt><dd>value</dd></dl> semantically.",
+    "contrast": "Label and value both ≥ 4.5:1 (WCAG AA).",
+    "keyboard": "Active ObjectAttribute (active=true) is tabbable; otherwise non-interactive.",
+    "screenReader": "Announced as 'title, value' pair."
+  },
+  "patterns": [
+    "DynamicPageHeader metadata band",
+    "ObjectPageLayout header subtitle area",
+    "Card body — labeled facts",
+    "List row metadata"
+  ],
+  "compatibility": ["DynamicPageHeader", "DynamicPageTitle", "ObjectPageLayout", "Panel", "ColumnListItem", "List"],
+  "exceptions": [
+    "Inside DynamicPageHeader.props.headerContent.meta the plugin auto-generates ObjectAttribute-style pairs from { key, value } tuples — no need to emit ObjectAttribute explicitly in that slot."
+  ],
+  "version": "2025.06",
+  "lastChecked": "2026-06-26"
+}

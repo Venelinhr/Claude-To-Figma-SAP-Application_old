@@ -1,0 +1,126 @@
+{
+  "componentName": "AISplitMenuButton",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "3eedca60790fbfc4a87e2cc2aaf9a7774c68b6ca",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Button",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "text",
+      "ui5Name": "text",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "icon",
+      "ui5Name": "icon",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "button-text",
+      "fontFamily": "72",
+      "fontStyle": "Medium",
+      "fontSize": 14,
+      "sapStyleName": "MediumText/LHAuto/Medium"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapButton_AI_Background",
+      "fallbackHex": "#5D36FF"
+    },
+    {
+      "role": "text",
+      "token": "sapButton_AI_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "chevron",
+      "token": "sapButton_AI_TextColor",
+      "fallbackHex": "#FFFFFF"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use AISplitMenuButton as documented in SAP Fiori Design Guidelines"
+  ],
+  "dontRules": [
+    "Do not use AISplitMenuButton outside its documented placements \u2014 see composition.validParents"
+  ],
+  "compatibleComponents": [
+    "Button",
+    "MenuButton",
+    "IconButton"
+  ],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/joule/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'AI Split Menu Button' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "Toolbar",
+      "OverflowToolbar",
+      "FilterBar",
+      "DynamicPageTitle",
+      "ShellBar",
+      "Footer",
+      "Form",
+      "SimpleForm",
+      "Panel",
+      "Dialog",
+      "Popover",
+      "Card",
+      "MessageStrip",
+      "MessagePopover",
+      "SapFormSection",
+      "ColumnListItem",
+      "Bar",
+      "Wizard"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": [
+      "Button",
+      "MenuButton",
+      "IconButton"
+    ]
+  }
+}

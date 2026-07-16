@@ -1,0 +1,125 @@
+{
+  "componentName": "HomepageHeroBanner",
+  "figmaCommunityId": "sap-web-ui-kit",
+  "figmaComponentId": "6b540d39a63d837e652b82675136e991ebdd0192",
+  "figmaLibraryFileId": "p7zm5EMBk5DRRZdxNeJ4f5",
+  "componentCategory": "Container",
+  "supportedVariants": [
+    {
+      "property": "Form Factor",
+      "values": [
+        "Compact",
+        "Cozy"
+      ],
+      "default": "Compact"
+    }
+  ],
+  "supportedProperties": [
+    {
+      "name": "title",
+      "ui5Name": "title",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "subtitle",
+      "ui5Name": "subtitle",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    },
+    {
+      "name": "backgroundImage",
+      "ui5Name": "backgroundImage",
+      "type": "text",
+      "exposedInLibrary": true,
+      "default": ""
+    }
+  ],
+  "supportedStates": [
+    "Regular"
+  ],
+  "typographyRules": [
+    {
+      "role": "title",
+      "fontFamily": "72",
+      "fontStyle": "Bold",
+      "fontSize": 32,
+      "sapStyleName": "App Headers/App Title"
+    },
+    {
+      "role": "subtitle",
+      "fontFamily": "72",
+      "fontStyle": "Regular",
+      "fontSize": 18,
+      "sapStyleName": "App Headers/Section Title"
+    }
+  ],
+  "colorTokenRules": [
+    {
+      "role": "background",
+      "token": "sapShell_Background",
+      "fallbackHex": "#1C2F3E"
+    },
+    {
+      "role": "title",
+      "token": "sapShell_TextColor",
+      "fallbackHex": "#FFFFFF"
+    },
+    {
+      "role": "subtitle",
+      "token": "sapShell_InteractiveTextColor",
+      "fallbackHex": "#D2D8DB"
+    }
+  ],
+  "accessibilityRules": [
+    {
+      "category": "labeling",
+      "requirement": "Provide accessible name matching the visible label or purpose"
+    },
+    {
+      "category": "keyboard",
+      "requirement": "All interactive elements reachable via Tab and operable via Enter/Space"
+    }
+  ],
+  "doRules": [
+    "Use HomepageHeroBanner as documented in SAP Fiori Design Guidelines (https://experience.sap.com/fiori-design-web/banner/)"
+  ],
+  "dontRules": [
+    "Do not use HomepageHeroBanner outside its documented placements — see composition.validParents"
+  ],
+  "compatibleComponents": [],
+  "incompatiblePatterns": [],
+  "guidelineUrl": "https://experience.sap.com/fiori-design-web/banner/",
+  "demoKitUrl": "",
+  "apiUrl": "",
+  "sampleUrls": [],
+  "libraryVersion": "1.149.0",
+  "lastValidated": "2026-07-08",
+  "pluginNotes": {
+    "textInjectionMethod": "setProperties",
+    "sizingConstraints": "See SAP kit 'Homepage Hero Banner' component for native dimensions",
+    "knownIssues": []
+  },
+  "composition": {
+    "validParents": [
+      "DynamicPage",
+      "ObjectPageLayout",
+      "ObjectPageSection",
+      "ObjectPageSubSection",
+      "Panel",
+      "Card",
+      "Dialog",
+      "IconTabBar",
+      "IconTabFilter"
+    ],
+    "topLevelOnly": false,
+    "validChildren": [
+      "*"
+    ],
+    "mustInclude": [],
+    "mustExclude": [],
+    "commonSiblings": []
+  }
+}
