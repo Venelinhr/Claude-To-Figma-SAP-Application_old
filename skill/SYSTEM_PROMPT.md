@@ -1128,11 +1128,18 @@ Never skip it. Never blind-apply the 1440 default when a reference exists.
 **The rule:**
 1. **No reference, nothing specified** → default **1440px** (desktop).
 2. **A reference image or Figma node is shared** → MEASURE its actual width (image dimensions, or
-   `get_metadata`/`get_design_context` width) and build at THAT width:
-   `~320–390px` narrow (master column / mobile / FCL detail) · `~768px` tablet · `~1440px` desktop.
-3. **The user states a width** ("make it 1440", "use 768", "~340px", "tablet") → that ALWAYS wins over
-   both the default and the measured reference. Do exactly what they said.
-4. **State the measured/chosen width in the ASCII wireframe** so it's confirmed at the RULE 19 gate.
+   `get_metadata`/`get_design_context` width).
+   - **If the measured width is CLOSE to a standard breakpoint → suggest snapping to that standard**
+     (a suggestion, not a forced override): `~360–430px → mobile 375` · `~700–840px → tablet 768` ·
+     `~1280–1600px → desktop 1440`. Offer it in the wireframe: "measured 412px → suggest mobile (375)? or keep 412?"
+   - **If it's a deliberate non-standard width** (e.g. a 320px master column, a 560px dialog card) →
+     build at the exact measured width; don't force a breakpoint.
+3. **The user states or changes a width AT ANY MOMENT** ("make it 1440", "use 768", "~340px", "tablet",
+   "change it to desktop") → that ALWAYS wins over the default, the measured width, and any snap
+   suggestion. Execute it immediately, no push-back. Width is user-changeable at will.
+4. **State the measured width + any snap suggestion in the ASCII wireframe** so it's confirmed at the RULE 19 gate.
+
+**Standard breakpoints:** mobile **375** · tablet **768** · desktop **1440**. Snap is a *suggestion* when close; exact measured width is used otherwise; explicit user width always wins.
 
 **Why:** the reference is the source of intent. A ~340px design rebuilt at 1440 is the wrong screen —
 wrong proportions, density, and layout. Width is a measured property, not a default. (Precedent: yanatest

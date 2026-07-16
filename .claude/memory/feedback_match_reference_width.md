@@ -23,8 +23,9 @@ metadata:
 
 **How-to-apply:**
 1. **No reference / nothing specified** → default 1440px (desktop).
-2. **Reference image or Figma node shared** → MEASURE it (image dimensions, or `get_metadata`/`get_design_context` width) and build at THAT width. ~320–390px → narrow; ~768 → tablet; ~1440 → desktop.
-3. **User states a width** ("make it 1440", "use 768", "tablet") → that ALWAYS wins over both the default and the measured reference. Do it.
+2. **Reference shared** → MEASURE it (image dims, or `get_metadata`/`get_design_context`).
+   - **Snap suggestion:** if the measured width is CLOSE to a breakpoint, SUGGEST it (mobile 375 / tablet 768 / desktop 1440) — a suggestion, not a forced override. Deliberate non-standard widths (320 master column, 560 dialog) use the exact measured value.
+3. **User states OR CHANGES a width at any moment** → ALWAYS wins over default, measured width, and snap suggestion. Execute immediately, no push-back.
 4. Confirm the width in the ASCII wireframe proposal so it's agreed before building (part of the RULE 19 gate).
 5. Precedent: Activities View + yanatest + Purchase Orders were all built at 320px because the references were narrow — matched, not defaulted.
 
