@@ -155,6 +155,8 @@ State:
 - Why the runner-up was not chosen
 - Any constraints that override the score (mobile viewport, modal context, etc.)
 
+**Then score canonical-screen similarity** (RULE 28 clone target): run `references/canonical-similarity-rubric.md` — score each candidate canonical screen (floorplan 50% + region 30% + component 20%), pick the highest, cite the % (e.g. "Outage List 96% → clone `750:174925`"). ≥85% = clone directly; 60–84% = clone + note deltas; <60% = combine two or build fresh (flag it).
+
 ---
 
 ### Stage 5 — Component mapping with scoring

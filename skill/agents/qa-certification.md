@@ -265,7 +265,7 @@ Misplaced:
 
 ---
 
-## Artifact 3 — Completeness Score
+## Artifact 3 — Completeness Score + Reference Coverage Map
 
 Express the spec's coverage as a percentage of the reference content. List every item that is not fully covered.
 
@@ -291,6 +291,28 @@ Low confidence / not fully covered:
   · [element]: [what's missing or uncertain]
 ───────────────────────────────────────────
 ```
+
+### Reference Coverage Map (per-region — target 100% meaningful coverage)
+
+A structured per-region table proving every region of the reference was mapped to a build element.
+This is the anti-omission artifact — the #1 real failure is silently dropping a region/element.
+
+```
+REFERENCE COVERAGE MAP
+─────────────────────────────────────────────────────────────
+Region (from reference)      | SAP component(s) built        | Covered?
+─────────────────────────────────────────────────────────────
+Header / DynamicPageHeader   | DynamicPageHeader + Title     | ✓
+Filter bar                   | SearchField + Select ×2       | ✓
+Table                        | Table + 8 Columns + rows      | ✓
+Status column                | ObjectStatus (4 variants)     | ✓
+Footer action                | Button (Emphasized)           | ✓
+[side panel]                 | —                             | ✗ OMITTED — repair
+─────────────────────────────────────────────────────────────
+Coverage: 5/6 regions = 83% → the ✗ row MUST be repaired or documented as an exception.
+```
+
+Rule: every reference region gets a row. Any `✗` is either repaired or logged in the Exception Engine (Step A) with justification. No silent omissions.
 
 ---
 
@@ -383,14 +405,38 @@ GENERATION
 POST-GENERATION QA (Stage 6.5)
   [✓/⚠/✗] Visual comparison completed
   [✓/⚠/✗] Completeness score ≥ 90%
+  [✓/⚠/✗] Reference Coverage Map — 100% regions mapped (or ✗ rows justified)
   [✓/⚠/✗] Architectural suggestions produced
   [✓/⚠/✗] Design system compliance validated
+  [✓/⚠/✗] DESIGN QUALITY SCORE ≥ 95% (see below)
 
 RESULT: [CERTIFIED — ready for plugin build]
         [CERTIFIED WITH WARNINGS — N items for user review]
         [NEEDS REPAIR — N failures, initiating repair pass]
 ═══════════════════════════════════════════
 ```
+
+### Design Quality Score — the single consolidated gate (≥95%)
+
+Rolls up the sub-scores that already exist across QA into ONE number, so a screen that passes each
+sub-check individually but is weak overall is still caught. Weighted average (0–100):
+
+| Component | Weight | Source |
+|---|---|---|
+| Reference completeness | 20% | Artifact 3 Completeness Score |
+| Reference coverage | 15% | Reference Coverage Map (regions mapped) |
+| SAP compliance (tokens/typography/naming) | 20% | Artifact 5 Design System Compliance |
+| Component reuse (real SAP instances) | 15% | RULE 1 / RULE 25 conformance |
+| Layout accuracy (spacing/alignment) | 10% | Artifact 2 Visual Comparison |
+| Accessibility (WCAG AA / tap / pairing) | 10% | §7 validators |
+| Canonical similarity (cloned the right pattern) | 10% | canonical-similarity-rubric.md score |
+
+**Gate:** `DESIGN QUALITY SCORE = Σ(component × weight)`.
+- **≥95%** → CERTIFIED, present to user.
+- **85–94%** → CERTIFIED WITH WARNINGS (list the sub-scores dragging it down).
+- **<85%** → NEEDS REPAIR (self-repair loop targets the lowest-weighted-contribution first).
+
+This does NOT replace the existing sub-thresholds (95% pre-build completeness, 65%/80% per-category repair triggers) — it sits on top as the final holistic gate. Cross-ref: `docs/OPERATING-MANIFEST.md` §Success Criteria.
 
 ---
 
