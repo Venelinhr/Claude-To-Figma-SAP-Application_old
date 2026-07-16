@@ -963,7 +963,7 @@ ALL 7 VDI artifacts must be produced BEFORE any component selection or spec gene
   ○ Inferred — derived from context, strongly implied but not directly visible
   ? Ambiguous — two or more valid interpretations; MUST produce a named Open Question
 
-**IMAGE QUALITY:** Classify tier before analysis (see sap-visual-reading_skill/references/image-quality.md).
+**IMAGE QUALITY:** Classify tier before analysis (see skill/sap-visual-reading/references/image-quality.md).
   Tier 3 (photo): all ● → ○, all ○ → ?
   Tier 4 (sketch): skip layout/token stages
 
@@ -978,11 +978,11 @@ For every major region, answer 4 questions:
 question before producing output. Max 1 question per run. Stop and wait for answer.
 
 **INTERACTION MODEL:** For every interactive element document trigger → target → binding pattern.
-See sap-visual-reading_skill/references/interactions.md.
+See skill/sap-visual-reading/references/interactions.md.
 
 **STATES (mandatory for all input controls):** Document all 5 SAP field states (None/Error/Warning/
 Success/Information) for every Input, Select, DatePicker, CheckBox.
-See sap-visual-reading_skill/references/states.md.
+See skill/sap-visual-reading/references/states.md.
 
 **SAP GUIDELINE COMPLIANCE:** Flag any reference deviation from SAP Fiori guidelines.
 INFORM ONLY — follow user intent. Never block.
@@ -996,7 +996,7 @@ call get_design_context → compare vs. proposals → write confirmed values to 
 Gate phrase: `VISUAL ANALYSIS COMPLETE — 7/7 artifacts produced`
 
 Agent: skill/agents/visual-design-intelligence.md
-Reference skill: sap-visual-reading_skill/ (interactions, states, responsive, component-map, tokens)
+Reference skill: skill/sap-visual-reading/ (interactions, states, responsive, component-map, tokens)
 Cross-refs: RULE 12 (operationalized by this rule), RULE 17 (image quality tiers apply), RULE 18 (produces A3)
 
 ---
