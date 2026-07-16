@@ -26,6 +26,10 @@ Every entry is verified from `get_design_context` on confirmed-quality screens.
 | IATA airport codes (SOF, LHR) | H4/Bold | 20 | Bold | `7263cb9889e84c192d1ebf77a45cfbc8c13ca5d0` |
 | Large emphasis (times, big numbers) | H4/Bold | 20 | Bold | `7263cb9889e84c192d1ebf77a45cfbc8c13ca5d0` |
 | Prominent price / object header | Main Header / sapObjectHeader_Title | 24 | Black | `57bc266f295c53a7ba3b8dbb050a06e9ff92cde3` |
+| Toolbar title (`toolbarTitle`) | LargeText/LHAuto/Regular | 16 | Regular | `fcd48b218e51130a9fd37d5ac590587c0b86b556` |
+| Step label (`stepLabel`) | SmallText/LHAuto/Bold | 12 | Bold | `4635f9147cd7445edfd6c5095e0269a74b31d93d` |
+| H5 bold (`h5Bold`) | H5/Bold | 16 | Bold | `2f7e6166497d2aabce5becd7cca08ac983527c47` |
+| H5 regular (`h5Regular`) | H5/Regular | 16 | Regular | `eafe040ca349722d64228570677c0341f52e8ebf` |
 | **Flight departure/arrival times** | LargeText/LHAuto/Bold + 28px override | 28 | Bold | `8d0bf06542dc8fbc5b16b073e83cd2eb8f1bb061` + `overrideSize:28` |
 | **Card main price (768 €)** | LargeText/LHAuto/Bold + 28px override | 28 | Bold | `8d0bf06542dc8fbc5b16b073e83cd2eb8f1bb061` + `overrideSize:28` |
 | **Card surcharge (+92 €)** | LargeText/LHAuto/Bold + 18px override | 18 | Bold | `8d0bf06542dc8fbc5b16b073e83cd2eb8f1bb061` + `overrideSize:18` |
