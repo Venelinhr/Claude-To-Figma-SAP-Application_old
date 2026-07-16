@@ -241,3 +241,25 @@ Flight Result Card [sapGroup_ContentBackground] [stroke:sapList_BorderColor]
 4. 28px custom sizes: apply SAP style first, then override size — style provides font-family token
 5. Baggage items: wrap icon+text in HORIZONTAL auto-layout frame (gap 4)
 6. All icon instances: import via `importComponentByKeyAsync`, resize after appending to parent
+
+### 2026-07-14 — yanatest Steps (560:36552) — "Great result!" ⭐ (backfilled 2026-07-16)
+User confirmed canonical. Object Page narrow (320px). Backfilled by Loop-D fix — the confirmation predated the enforced ground-truth ledger.
+
+**Confirmed structure + tokens:**
+- DynamicPageHeader: title "yanatest" 72 Black 24px `sapObjectHeader_Title_TextColor` #131e29; subtitle "Activity | Activity Number 765" 72 Regular 14px `sapObjectHeader_Subtitle_TextColor` #556b82; padding px-16 (Content_Space_S) py-8; **Title Area itemSpacing=4** (fixes title/subtitle overlap); ~40-52 sublayer hides to strip chrome at 320px.
+- IconTabBar: General (Regular Inactive) / Steps (Regular Active, blue 3px underline) — set via `Interaction State` variant, walk TEXT→INSTANCE parent.
+- Overflow (…): absolute-positioned IconButton sibling of DPH, x=width-btnW-8, y=10 (never appendChild into DPH instance).
+- Dialog Header (cloned 560:36171): "Steps (1)" + Hide Filters (Tertiary) left; Sort + Column Settings (IconButtons) right via SPACE_BETWEEN (no spacer frames).
+- List item: 3px success rail fill `sapPositiveTextColor` #256f3a / stroke `sapPositiveElementColor` #30914c; ObjectStatus(Success, sys-enter-2) + title + nav arrow; ObjectAttribute rows (ID/Next/Previous/Hook).
+- Confirmed pattern: clone canonical, real SAP instances, SPACE_BETWEEN not spacers, IconTabBar via Interaction State.
+
+### 2026-07-15 — Activities View (615:36810) — "Perfect" ⭐ (backfilled 2026-07-16)
+User confirmed canonical. List Report 320px. Backfilled by Loop-D fix.
+
+**Confirmed structure + tokens:**
+- DynamicPageHeader (cloned 601:36910): title "Activities View" 72 Black 24px; subtitle "Latest Server Time: 2026-07-08 13:29:43 (UTC)"; overflow (…) absolute sibling top-right.
+- Filter Bar: Name (Label+Input), Status (Label+Select "Typed Text" + × clear + + add IconButtons, blue #0064d9).
+- Dialog Header: "Activities (6)" left; Sort (↕) + Column Settings (⚙) right.
+- 3 List Items (yanatest[selected #ebf8ff]/Validate Instance/Validate System): each 3px green success rail `sapPositiveTextColor` #256f3a.
+- **Progress Row (canonical — use exactly):** "Progress:" label + bold "100%" + native green frame `{r:0.118,g:0.561,b:0.337}`=sapPositiveElementColor #30914c, 40×12, cornerRadius=6 + ObjectStatus(Semantic=Success) icon-only (hide all TEXT nodes). DO NOT use SAP ProgressIndicator composite.
+- Meta rows: Activity Number 765/426/425, Note (empty), Start Time — Label `sapContent_LabelColor` #556b82 + bold value `sapTitleColor` #131e29, 13-14px.

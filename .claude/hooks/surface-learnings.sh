@@ -18,7 +18,13 @@ COUNT=$(printf '%s\n' "$PENDING" | grep -c . )
 
 if [ "$COUNT" -gt 0 ]; then
   LIST=$(printf '%s\n' "$PENDING" | jq -r '"  · [\(.type)] \(.ts): \(.prompt)"' 2>/dev/null | head -10)
-  echo "<pending-learnings count=\"$COUNT\">There are $COUNT uncaptured feedback signal(s) from prior sessions in .claude/pending-learnings.jsonl. Review whether each reflects a reusable lesson; if so, capture it as a 'feedback' memory and set that entry's status to \"captured\" (edit the JSONL line). If it was one-off with no reusable lesson, set status to \"dismissed\". Do not let them accumulate.
+  # Ground-truth tasks get a distinct, actionable callout (Loop D)
+  GT_COUNT=$(printf '%s\n' "$PENDING" | jq -c 'select(.type=="ground-truth")' 2>/dev/null | grep -c .)
+  GT_NOTE=""
+  if [ "$GT_COUNT" -gt 0 ]; then
+    GT_NOTE=" ${GT_COUNT} of these are GROUND-TRUTH tasks (RULE 27): for each, run the ground-truth-updater — read the confirmed node's exact measurements via get_design_context and write them into knowledge/guidelines/token-assignment-rules.md, then mark captured."
+  fi
+  echo "<pending-learnings count=\"$COUNT\">There are $COUNT uncaptured feedback signal(s) from prior sessions in .claude/pending-learnings.jsonl. Review whether each reflects a reusable lesson; if so, capture it as a 'feedback' memory and set that entry's status to \"captured\" (edit the JSONL line). If it was one-off with no reusable lesson, set status to \"dismissed\". Do not let them accumulate.${GT_NOTE}
 $LIST</pending-learnings>"
 fi
 
