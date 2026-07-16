@@ -1047,7 +1047,7 @@ sap-figma-community.checkRegistryFreshness
 #    Edit knowledge/components/registry/&lt;Component&gt;.json
 
 # 3. Rebuild plugin (ALWAYS run this after editing code.js)
-cd '/Users/C5408360/Downloads/Task to Figma SAP layouts components'
+cd '<your-repo-path>'
 node build/build-registry-bundle.js
 # → registry-bundle.js (~99KB)
 # → code.bundled.js (~342KB: bundle + code.js + override shim)
@@ -1277,7 +1277,7 @@ node build/build-registry-bundle.js
   <div class="stag">File Reference</div>
   <h2>Where everything lives</h2>
 
-  <div class="code-block"><pre>SAP Fiori Design Agent — /Users/C5408360/Downloads/Task to Figma SAP layouts components/
+  <div class="code-block"><pre>SAP Fiori Design Agent — <your-repo-path>/
 
 plugin/figma-builder/
 ├── manifest.json              → main: "code.bundled.js", permissions: teamlibrary, documentAccess: dynamic-page
