@@ -13,6 +13,11 @@ output/
 *.jpg
 # Exception: canonical reference screens are permanent ground truth
 !docs/canonical-screens/*.png
+# Re-exclude 4 privacy-flagged screens (structural knowledge kept in .md/.fig, raw PNG excluded)
+docs/canonical-screens/03-side-navigation.png
+docs/canonical-screens/04-schedule-operation-daily.png
+docs/canonical-screens/06-activities-view.png
+docs/canonical-screens/08-validate-system-log-panel.png
 
 # System
 .DS_Store
