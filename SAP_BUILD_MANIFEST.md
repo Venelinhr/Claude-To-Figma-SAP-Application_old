@@ -109,7 +109,11 @@ Text = native `figma.createText()` with family `72`, tagged `[typo:role]` (see �
 
 ---
 
-## §3b — Canonical Screen Nodes (file `p7zm5EMBk5DRRZdxNeJ4f5`)
+## §3b — Canonical Screen Nodes
+
+> **Reference file:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
+> Open this file in Figma, connect SAP Web UI Kit as library, then use node IDs below as clone sources.
+> The `.fig` file ships with the repo — no private Figma access needed.
 
 Clone these — don't build from scratch. These nodes carry correct SAP tokens and slot structures.
 

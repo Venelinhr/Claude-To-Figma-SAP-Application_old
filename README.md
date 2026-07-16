@@ -174,7 +174,18 @@ Every correction becomes a durable memory. The 3 hard rules exist *because* they
 
 ## Canonical Reference Screens — Ground Truth
 
-11 approved screens saved permanently in `docs/canonical-screens/` (PNGs + `.md` files + `CANONICAL-SCREENS.md`). Always clone from the nearest one — never build from scratch.
+**Reference file included in this repo:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
+
+Open it in Figma, connect SAP Web UI Kit as a library → use these screens as clone sources for every build.
+No private Figma access needed — everything ships with the repo.
+
+The file contains approved SAP Fiori screen examples demonstrating:
+- List Report with Progress Rows, DPH, Filter Bar
+- Object Page narrow (DPH + IconTabBar + Dialog Header)
+- Side Navigation (full tree, expandable groups, active state)
+- Log/message panel with severity pills and SegmentedButton filter
+
+### All canonical node IDs (for Claude to reference)
 
 | Screen | Node |
 |---|---|
