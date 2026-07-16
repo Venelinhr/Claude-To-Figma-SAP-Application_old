@@ -166,17 +166,24 @@ The system gets smarter every session. Each loop is marked **[enforced]** (a hoo
 
 **C. Feedback Learning (the key one)** — **[enforced trigger + durable ledger + guided capture]**
 ```
-User: "bravo" / "wrong" / "not acceptable"
-  → feedback-learn.sh (UserPromptSubmit) detects the signal
+User: "bravo" / "not perfect" / "close but…" / "great but you broke X"
+  → feedback-learn.sh (UserPromptSubmit) classifies the signal with:
+      • negation guard   ("not perfect" → correction, not praise)
+      • dedup            (canonical supersedes generic praise — one row, not two)
+      • hedged detection ("close but", "not quite", "isn't what I meant")
+      • mixed handling   (real praise + real correction → one "mixed" row to disambiguate)
+      • word-boundaries  ("bad" ≠ "badge", "broke" ≠ "brokerage")
   → writes a durable entry to .claude/pending-learnings.jsonl   ← survives the session
-  → surface-learnings.sh (SessionStart) resurfaces uncaptured entries next session
-  → Claude captures the lesson to memory; marks the entry captured
+  → verify-learnings.sh (Stop) re-reminds at turn end if still uncaptured
+  → surface-learnings.sh (SessionStart) resurfaces across sessions
+  → recall-lessons.sh (UserPromptSubmit) surfaces the MATCHING lesson when you build
+      (e.g. "build a SideNav" → pulls the SideNav lesson to the front, not all ~60 flat)
 ```
-The signal detection AND the durable write are mechanical — a lesson is no longer lost if Claude forgets. Capturing it into a memory file is the guided step. The 3 hard rules exist *because* corrections were captured this way; positive feedback promotes a result to **canonical reference**.
+Detection, the durable write, and cross-session + turn-end re-reminders are mechanical — a lesson can't silently evaporate. Lessons follow `skill/references/lesson-template.md` (Applies-to / Signal / What-worked-or-Mistake / Why / How-to-apply). Writing the memory file itself is the guided step.
 
-**D. Post-Build Ground-Truth** — **[enforced trigger + durable task + guided capture]** On a canonical confirmation ("perfect", "use this as canonical", "ship it"), `feedback-learn.sh` logs a durable `ground-truth` task; `surface-learnings.sh` resurfaces it every session with a RULE 27 callout until Claude runs the `ground-truth-updater` (reads exact measurements via `get_design_context` → writes `knowledge/guidelines/token-assignment-rules.md`). The trigger + task are now mechanical — no longer lost if not acted on immediately.
+**D. Post-Build Ground-Truth** — **[enforced trigger + durable task + guided capture]** On a canonical confirmation, `feedback-learn.sh` logs a durable `ground-truth` task; `surface-learnings.sh` + `verify-learnings.sh` resurface it (RULE 27 callout) until the `ground-truth-updater` writes exact measurements into `knowledge/guidelines/token-assignment-rules.md`.
 
-> **Honest status:** Loops A & B are fully mechanical. Loops C & D have mechanical trigger + durable ledger; the final capture step (writing the memory / measurements) is guided by a persistent reminder that survives sessions. This is a real, working, self-surfacing loop — not silent, not fully autonomous.
+> **Honest status:** Loops A & B fully mechanical. C & D have mechanical detection + durable ledger + task-matched recall + turn-end & cross-session re-reminders; only the final memory-write is guided (by a persistent, self-surfacing reminder). Real, working, self-surfacing — not silent, not fully autonomous.
 
 ---
 

@@ -743,6 +743,10 @@ Exception?: NO — always use this method for ANY SAP composite with named slots
 Notes:      General principle: the clone inherits all var(--sapXxx) fills and SAP
             font tokens automatically. Never use raw hex on a composite — clone from
             a canonical node and get correct tokens for free.
+            SINGLE SOURCE OF TRUTH: the full build-time method + exact setProperties keys
+            live in memory `feedback_sap_sidenav_canonical_method.md` and
+            `skill/references/figma-build-patterns.md §SAP Composite Slot Injection`.
+            This P-026 is the QA-time repair pointer — do not restate the method here; update it there.
 ```
 
 ---
