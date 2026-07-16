@@ -11,7 +11,7 @@ metadata:
   originSessionId: 8f1e0953-d5bb-448c-8c6b-dc4220c65f91
 ---
 
-# Match the reference width — don't force the 1440 default
+# Match the reference width (RULE 30) — don't force the 1440 default
 
 **Applies-to:** all-builds, list-report, object-page, dialog
 
@@ -27,6 +27,8 @@ metadata:
 3. **User states a width** ("make it 1440", "use 768", "tablet") → that ALWAYS wins over both the default and the measured reference. Do it.
 4. Confirm the width in the ASCII wireframe proposal so it's agreed before building (part of the RULE 19 gate).
 5. Precedent: Activities View + yanatest + Purchase Orders were all built at 320px because the references were narrow — matched, not defaulted.
+
+**Enforced as:** RULE 30 (SYSTEM_PROMPT.md) + analysis pipeline step 10 + SAP_BUILD_MANIFEST §1b.
 
 **Evidence:** 2026-07-16, user directive; corroborated by yanatest F2 width-assumption failure.
 

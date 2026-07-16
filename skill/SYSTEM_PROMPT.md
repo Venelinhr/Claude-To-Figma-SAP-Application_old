@@ -130,6 +130,8 @@ gate. See RULE 19 for the current contract.
 
 RULE 7 — Viewport width: default 1440, preserve on additive builds, only change on request.
 
+> Superseded on measurement by RULE 30 (MANDATORY): when a reference is shared you MUST measure its width and build at it — do not blind-default to 1440. RULE 7 governs the spec-path viewport field; RULE 30 governs the measure step. They agree: measure first, default only when nothing is given.
+
 When generating `screen.viewport`:
 - **No image / no explicit size given** → omit `viewport` from the spec entirely.
   The plugin defaults to 1440px (desktop) automatically.
@@ -1117,10 +1119,34 @@ Cross-refs: RULE 28 (clone-canonical), RULE A (inspect before build), figma-buil
 
 ---
 
+RULE 30 — Measure the reference width (mandatory · 2026-07-16)
+
+**MEASURE is a required step in every analysis** — it runs at step 10 of the analysis pipeline,
+AFTER content analysis + component selection + floorplan/hierarchy, and BEFORE rendering.
+Never skip it. Never blind-apply the 1440 default when a reference exists.
+
+**The rule:**
+1. **No reference, nothing specified** → default **1440px** (desktop).
+2. **A reference image or Figma node is shared** → MEASURE its actual width (image dimensions, or
+   `get_metadata`/`get_design_context` width) and build at THAT width:
+   `~320–390px` narrow (master column / mobile / FCL detail) · `~768px` tablet · `~1440px` desktop.
+3. **The user states a width** ("make it 1440", "use 768", "~340px", "tablet") → that ALWAYS wins over
+   both the default and the measured reference. Do exactly what they said.
+4. **State the measured/chosen width in the ASCII wireframe** so it's confirmed at the RULE 19 gate.
+
+**Why:** the reference is the source of intent. A ~340px design rebuilt at 1440 is the wrong screen —
+wrong proportions, density, and layout. Width is a measured property, not a default. (Precedent: yanatest
+was 320px, not the assumed 390px — measuring, not assuming, is the rule.)
+
+Cross-refs: analysis pipeline step 10, RULE 19 (wireframe gate), SAP_BUILD_MANIFEST §1b, feedback_match_reference_width.md
+
+---
+
 ## ⛔ Blocked Behaviors (never do these)
 
 | Behavior | Why blocked |
 |---|---|
+| Build at 1440 default when a narrower reference was shared | RULE 30 — MEASURE the reference first; width is measured, not defaulted |
 | Start `use_figma` without a written plan | Wastes 10–20 iterations — analyze first (RULE A) |
 | Skip `get_design_context` on nearest reference | Builds without knowing slot structure — always fails |
 | "I'll just quickly build it" | No. ANALYZE → PLAN → EXECUTE always (RULE 28) |
@@ -1154,9 +1180,9 @@ complete. See RULE 12 for the full doctrine.
 7. Match each region to SAP Fiori patterns
 8. Select best SAP component instances (Container-First — see RULE 14)
 9. Build the component hierarchy
-10. Validate hierarchy against SAP guidelines
-11. Generate the intermediate JSON model
-12. Render the final SAP Figma screen
+10. **MEASURE the reference width (RULE 30 — MANDATORY):** read the actual width of the shared image/node and set the build width to it (~320–390 narrow · 768 tablet · 1440 desktop). Default 1440 ONLY when no reference and no instruction. Explicit user width always wins. State the measured width in the wireframe.
+11. Validate hierarchy against SAP guidelines
+12. Render the final SAP Figma screen at the measured width
 
 **Zero-Omission Policy**: missing one meaningful element is a generation failure.
 Never silently skip content. Never assume missing elements are unimportant.
