@@ -620,7 +620,7 @@ Only after explicit confirmation ("yes", "go ahead", "generate it", "looks good"
 
 ### Save and deliver
 
-1. Save to `/Users/C5408360/Downloads/{screen-name}-spec.json`
+1. Save to `~/Downloads/{screen-name}-spec.json`
 2. Validate with `python3 -c "import json; json.load(open('...'))"` — must pass
 3. Copy to clipboard with `pbcopy`
 

@@ -1,0 +1,432 @@
+# Canonical SAP Fiori Screens — Ground Truth Reference
+
+> **These are the approved, validated reference screens. Always use them.**
+> They are the quality bar for every future build.
+> Structure, layout, components, tokens, instances — everything comes from these screens.
+> Do NOT deviate from these patterns without explicit user approval.
+
+Figma file: `p7zm5EMBk5DRRZdxNeJ4f5` (SAP application builder)
+Saved: 2026-07-16 (screens may be deleted from Figma — this doc + PNGs are the permanent record)
+
+---
+
+## How to use these references
+
+**Before every build:**
+1. Identify which canonical screen is closest to what you're building
+2. Read that screen's section below — note the components, layout, tokens
+3. Clone the canonical node (never build from scratch — RULE 28)
+4. Match the exact structure — headers, spacing, component types, naming
+
+**These screens override any other pattern.** If figma-build-patterns.md says one thing and a canonical screen shows another — the canonical screen wins.
+
+---
+
+## Screen 01 — Design System Governance Console
+**Node:** `750:177443`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-177443
+**Floorplan:** Flexible Column Layout (FCL) + SideNavigation
+**Screenshot:** `01-design-system-governance-console.png`
+
+### Layout structure
+```
+ShellBar (SAP Integration Suite branding, search, notifications, avatar)
+├── SideNavigation (260px, 20+ items, hierarchical, Monitoring selected)
+│   ├── Overview
+│   ├── Operations (expandable → Operations, Operation Templates, Schedules)
+│   ├── Automation Studio (expandable → Content Mgmt, Provider Defs, Custom Ops...)
+│   ├── UI Customizations (expandable → Links, Menu Items)
+│   ├── Monitoring (SELECTED, blue highlight, 3px left border)
+│   │   ├── Activities
+│   │   └── Logs
+│   ├── Configuration
+│   ├── Configuration Ex...
+│   └── Infrastructure
+└── Main Content (FCL mid column)
+    ├── DynamicPageHeader (breadcrumb: Design System Studio / Design System Studio)
+    │   ├── Title: "Design System Governance"
+    │   ├── Subtitle: "4 tokens · 152 components tracked · Next review: 2026-07-10"
+    │   └── Actions: Edit, Copy, share, fullscreen, ×
+    ├── IconTabBar: Proposals (active) | Token Assignments | Review Calendar | More ▾
+    ├── Main area (two columns)
+    │   ├── Left: Table "Pending Component Proposals"
+    │   │   ├── Toolbar: "Proposals (12)" search + Create + Delete + icons
+    │   │   ├── Nested Table: "Sales Orders (15)" with Search, Create, Delete, gear, export
+    │   │   └── Columns: Document Number (link), Company, City, Contact Pers., Posting Date, Amount, Currency, ›
+    │   └── Right: DynamicSideContent "Review Focus — This Week"
+    │       ├── Calendar widget (July 2023, week 27 highlighted)
+    │       └── MessageStrip (Information): "3 proposals require attention before Friday's review"
+    └── Footer: "Approve Selected" (Primary) + dropdown arrow
+```
+
+### Key components
+- `ShellBar` — SAP Integration Suite, full right-side icons
+- `SideNavigation` — hierarchical, icons, expandable groups, selected state with blue bg + 3px left border
+- `DynamicPageHeader` — breadcrumb, collapsible
+- `IconTabBar` — 3 tabs + More overflow
+- `Table` (nested) — toolbar with Create/Delete/gear/export icons
+- `DynamicSideContent` — calendar + MessageStrip(Information)
+- `Button` (Primary) + dropdown `MenuButton`
+
+### Tokens observed
+- SideNav selected: `sapList_SelectionBackgroundColor` (blue tint bg) + `sapList_SelectionBorderColor` (3px left)
+- Table bg: `sapList_Background`
+- Header: `sapObjectHeader_Background`
+- Link text: `sapLinkColor` (#0064D9)
+
+---
+
+## Screen 02 — Schedule Operation Form (Daily)
+**Node:** `750:174190`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174190
+**Floorplan:** Dialog / Form
+**Screenshot:** `02-schedule-operation-daily.png`
+
+### Layout structure
+```
+Dialog (540px wide)
+├── Dialog Header: "Schedule operation"
+│   └── Subtitle: "Define when and how often this operation runs"
+├── Content
+│   ├── Section label: "TIMING"
+│   ├── Row: Start date* (DatePicker, placeholder "e.g. Jul 15, 2026") + Start time* (TimePicker, "4:30 PM")
+│   ├── Divider
+│   ├── CheckBox: "Recurrence — repeat this operation on a schedule" (CHECKED)
+│   ├── Label: "Recurrence type"
+│   ├── SegmentedButton: Hourly | Daily (SELECTED, blue outline) | Monthly | Yearly
+│   └── Divider
+│       └── CheckBox: "End date — leave unchecked to run indefinitely" (unchecked)
+└── Footer
+    ├── Button (Tertiary/Ghost): "Cancel"
+    └── Button (Primary): "Save schedule"
+```
+
+### Key components
+- `Dialog` — standard SAP modal, 540px
+- `DatePicker` — with calendar icon
+- `TimePicker` — with clock icon
+- `CheckBox` — standard SAP
+- `SegmentedButton` — 4 segments: Hourly/Daily/Monthly/Yearly; Daily selected
+- `Button` Primary + Tertiary in footer
+
+### Critical detail
+SegmentedButton selected segment uses blue border outline (not filled). Unselected = no border.
+
+---
+
+## Screen 03 — Schedule Operation Form (Monthly pattern)
+**Node:** `750:174290`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174290
+**Floorplan:** Dialog / Form (expanded state)
+**Screenshot:** `03-schedule-operation-monthly.png`
+
+### Difference from Screen 02
+Monthly selected → shows expanded "Monthly pattern" section:
+```
+Monthly pattern (Panel, grey bg)
+├── Radio: ○ Day [1 ▾] of every [1 ▾] month(s)
+└── Radio: ○ [1st ▾] [Monday ▾] of every [1 ▾] month(s)  (greyed/disabled row)
+```
+- `Panel` background: `sapGroup_ContentBackground`
+- `Select` dropdowns for day/ordinal/weekday/month count
+- `RadioButton` pair for pattern type
+
+---
+
+## Screen 04 — Schedule Operation Form (Monthly + End date)
+**Node:** `750:174786`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174786
+**Floorplan:** Dialog / Form (fully expanded state)
+**Screenshot:** `04-schedule-operation-monthly-enddate.png`
+
+### Difference from Screen 03
+End date checkbox CHECKED → shows end date/time row:
+```
+CheckBox: "End date — leave unchecked to run indefinitely" (CHECKED)
+├── End date (DatePicker, placeholder "dd.mm.yyyy")
+└── End time (TimePicker, "23:59")
+```
+This is the tallest state of the Schedule Operation dialog.
+
+---
+
+## Screen 05 — Schedule Operation Form (full / collapsed)
+**Node:** `750:174866`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174866
+**Floorplan:** Dialog / Form (base state — recurrence unchecked)
+**Screenshot:** `05-schedule-operation-form-full.png`
+
+### Layout — base/collapsed state
+```
+Dialog
+├── Header: "Schedule operation" / "Define when and how often this operation runs"  
+├── Content
+│   ├── TIMING section: Start date* + Start time*
+│   ├── Divider
+│   └── CheckBox: "Recurrence..." (unchecked — pattern section hidden)
+└── Footer: Cancel (Tertiary) + Save schedule (Primary)
+```
+Smallest/collapsed state of the dialog.
+
+---
+
+## Screen 06 — Side Navigation
+**Node:** `750:174158`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174158
+**Floorplan:** SideNavigation component
+**Screenshot:** `06-side-navigation.png`
+
+### Full navigation tree (canonical)
+```
+SideNavigation (260px wide)
+├── 🏠 Overview                                    →
+├── ⚙ Operations                           |  ∨
+│   ├── Operations
+│   ├── Operation Templates
+│   └── Schedules
+├── ⚙ Automation Studio                    |  ∨
+│   ├── Content Management
+│   ├── Provider Definitions
+│   ├── Custom Operations
+│   ├── Custom Hooks
+│   ├── Custom Notifications
+│   ├── Custom Processes
+│   └── Auto-Heal Configurations
+├── 👤 UI Customizations                   |  ∨
+│   ├── Links
+│   └── Menu Items
+├── 👤 Monitoring  [SELECTED — blue bg]    |  ∨
+│   ├── Activities
+│   └── Logs
+├── 🔧 Configuration                               →
+├── 🔧 Configuration Ex...                         →
+└── 🏗 Infrastructure                              →
+```
+
+### Key patterns
+- Selected item: `sapList_SelectionBackgroundColor` bg + 3px left `sapList_SelectionBorderColor` border
+- Child items: 40px left padding indent
+- Separator lines between groups
+- Right arrows (›) for collapsed groups, down arrows (∨) for expanded
+- Icon + Label + indicator layout per item
+
+### setProperties keys (SideNavigation, confirmed 2026-07-15)
+```js
+inst.setProperties({
+  '✏️ Text#283293:137': 'Operations',
+  'Icon#328810:0': iconKey,
+  'Navigation Indicator / External Link Icon#283293:50': arrowKey,
+  'Navigation Indicator / External Link#283218:12': true,  // show divider+arrow
+  'Two Click-Area#283293:112': true,
+  'Selected': 'True',
+});
+```
+
+---
+
+## Screen 07 — yanatest Steps (Object Page narrow)
+**Node:** `750:174556`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174556
+**Floorplan:** Object Page (sap.f.DynamicPage + IconTabBar), ~320px narrow
+**Screenshot:** `07-yanatest-steps.png`
+**Confirmed:** 2026-07-14 — user: "Great result!"
+
+### Layout structure
+```
+Yanatest Steps (320px)
+├── DynamicPageHeader
+│   ├── Title: "yanatest" (Bold H1)
+│   ├── Subtitle: "Activity | Activity Number 765"
+│   └── ··· (absolute IconButton, overflow icon, top-right, x=width-btnW-8, y=10)
+├── IconTabBar
+│   ├── General (Regular Inactive)
+│   └── Steps (Regular Active — blue underline)
+├── Dialog Header (cloned from 560:36171)
+│   ├── Left: "Steps (1)" + Hide Filters (Tertiary Button)
+│   └── Right: Sort + Column Settings (IconButtons, SPACE_BETWEEN)
+├── Filter Bar (2 rows)
+│   ├── Status: Label + Select (Typed Text)
+│   └── Operation: Label + Input (String) + Clear IconButton + Add IconButton
+├── Section label: "Operation"
+└── List Item (blue-tinted selected bg)
+    ├── 3px green left border (sapPositiveElementColor)
+    └── Content
+        ├── Entry Header: ObjectStatus(Success) + "Validate System" (bold) + › arrow
+        └── Meta Block
+            ├── ID: 1
+            ├── Next: (empty)
+            ├── Previous: (empty)
+            └── Hook for ID: (empty)
+```
+
+### Key patterns confirmed
+- DPH: ~40 sublayer hides at 320px; H1 = biggest fontSize text node; titleArea.itemSpacing=4
+- IconTabBar: walk TEXT→INSTANCE, setProperties `Interaction State: 'Regular Active'`
+- Three-dots: absolute sibling, NOT inside DPH
+- SPACE_BETWEEN for toolbar, NO spacer frames
+- ObjectStatus(Semantic=Success) checkmark in entry header
+
+---
+
+## Screen 08 — Activities View (List Report)
+**Node:** `750:174442`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174442
+**Floorplan:** List Report, 320px
+**Screenshot:** `08-activities-view.png`
+**Confirmed:** 2026-07-15 — user: "Perfect"
+
+### Layout structure
+```
+Activities View (320px)
+├── DynamicPageHeader (cloned from 601:36910)
+│   ├── Title: "Activities View" (H1)
+│   ├── Subtitle: "Latest Server Time: 2026-07-08 13:29:43 (UTC)"
+│   └── ··· (absolute IconButton overflow, top-right)
+├── Filter Bar
+│   ├── Name: Label + Input (String)
+│   └── Status: Label + Select (Typed Text) + × clear + + add
+├── Dialog Header (cloned)
+│   ├── Left: "Activities (6)"
+│   └── Right: Sort (↕) + Column Settings (⚙)
+├── Column Header: "Name"
+└── 3 List Items
+    ├── yanatest — Actions ▾ | ›
+    │   ├── Activity Number: 765
+    │   ├── Progress: 100% ████ ✓  ← Progress Row canonical pattern
+    │   ├── Note: (empty)
+    │   └── Start Time: 2026-07-06 12:22:48
+    ├── Validate Instance — Actions ▾ | ›
+    │   └── (same structure, Activity Number: 426)
+    └── Validate System — Actions ▾ | ›
+        └── (same structure, Activity Number: 425)
+```
+
+### Canonical Progress Row (use EXACTLY this)
+```js
+// Native green frame — NOT SAP ProgressIndicator
+const bar = figma.createFrame();
+bar.name = 'Progress Bar';
+bar.fills = [{type:'SOLID', color:{r:0.118, g:0.561, b:0.337}}]; // sapPositiveElementColor
+bar.resize(40, 12);
+bar.cornerRadius = 6;
+// + ObjectStatus(Semantic=Success) with all TEXT nodes hidden (icon-only checkmark)
+```
+
+---
+
+## Screen 09 — Validate System Log Panel
+**Node:** `750:174814`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174814
+**Floorplan:** Dialog / Object Page detail panel
+**Screenshot:** `09-validate-system-log-panel.png`
+
+### Layout structure
+```
+Panel/Dialog (full width)
+├── Header
+│   ├── Title: "Validate System" (bold)
+│   ├── Subtitle: "Step | ID 1 | Activity Number 765"
+│   ├── Right: Filter (funnel icon, active blue) + Hide Filters button + Fullscreen + ×
+├── Filter Bar
+│   ├── Message: Label + Input (String)
+│   └── Severity: Label + Select ("Select Value")  + filter-add + filter-remove
+├── Dialog Header (table header)
+│   ├── Left: "Messages (10)" + SegmentedButton: All | Platform (SELECTED) | AI | Analytics
+│   └── Right: Sort (↕) + Column Settings (⚙)
+└── Message List (10 items)
+    ├── Row 1: [Trace] purple pill | "Message Code: LVM" | Time: 2026-07-06 12:22:48
+    │         Serialized Trace ID: 5edcc166deea460e93545f658a867055$db6024539ac749c2...
+    ├── Row 2: [Debug] grey pill  | "Message Code: LVM" | Time...
+    │         "Cluster integration is not enabled. No cluster related checks necessary."
+    ├── Row 3: [Trace] | "Message Code: ValSchedule"
+    │         "Scheduling validation for SystemID.A00.SystemHost.simdba00"
+    ├── Row 4: [Trace] | LVM | "Scheduled validation for SystemID..."
+    ├── Row 5: [Information] green pill | LVM | "The validations for entity with id..."
+    ├── Row 6: [Trace] | LVM | "Validations for validator 'Solution Manager Assignment'..."
+    └── Row 7: [Trace] | LVM | "Validations for validator 'Solution Manager Version'..."
+```
+
+### Key patterns
+- Severity pills: Trace=purple (`sapNeutralColor`), Debug=grey, Information=blue (`sapInformativeColor`), Warning=orange, Error=red
+- Each row: pill + bold "Message Code: X" label + timestamp on same line; body text below
+- SegmentedButton for message type filter (All/Platform/AI/Analytics)
+- Filters shown (not collapsed)
+
+---
+
+## Screen 10 — Outage List Overview
+**Node:** `750:174925`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174925
+**Floorplan:** List Report (desktop 1440px, SideNavigation + FCL)
+**Screenshot:** `10-outage-list-overview.png`
+
+### Layout structure
+```
+Full desktop (1440px)
+├── SideNavigation (left, 3 items)
+│   ├── New Outage Checklist F...
+│   ├── Outage List Overview  [SELECTED]
+│   └── Tool Registry
+└── Main Content
+    ├── Page Header
+    │   ├── Title: "Outage List Overview"
+    │   ├── Subtitle: "10 records total"
+    │   └── Actions: Manage Teams (link icon) | Tool Registry (wrench icon) | + New Outage (Primary)
+    ├── Filter Bar (inline, single row)
+    │   ├── Search input: "Search by tool, member, status..."
+    │   ├── Select: "All tools"
+    │   ├── Select: "All statuses"
+    │   ├── DatePicker: "From date..."
+    │   └── DatePicker: "To date..."
+    └── Table (10 rows)
+        Columns: ID (link) | TOOL | OUTAGE TYPE | STARTED AT (UTC) | RECEIVED AT (UTC) | STATUS | UPDATED AT | UPDATED BY
+        Row examples:
+        OC-SPC001 | SPC (NZA)      | Disruption         | 07 Jul 06:30 | 06:35 | ✓ Success (green)  | —         | —
+        OC-TIC002 | Plato / TIC    | Disruption         | 07 Jul 07:00 | 07:05 | ℹ NEW (blue)       | —         | —
+        OC-LAM005 | LAMA (LVP...) | Disruption         | 07 Jul 05:00 | 05:10 | ℹ UPDATED (blue)   | 07 Jul 07:45 | Llil Zaf
+        OC-WTS003 | ECS WTS        | Degradation        | 07 Jul 08:15 | 08:20 | ℹ NEW (blue)       | —         | —
+        OC-SPC006 | SPC (NZA)      | Degradation        | 07 Jul 05:30 | 05:40 | ⚠ UPDATED (orange) | 07 Jul 08:30 | Llil Zaf
+        OC-TIC007 | Plato / TIC    | Disruption + De... | 07 Jul 06:00 | 06:10 | ✗ UPDATED (red)    | 07 Jul 09:15 | Llil Zaf
+        OC-LAM010 | LAMA (LVP...) | Degradation        | 07 Jul 02:30 | 02:45 | ℹ CLOSED (blue)    | 07 Jul 09:45 | Llil Zaf
+```
+
+### Key patterns
+- Status ObjectStatus pills: Success=green, NEW/UPDATED/CLOSED=blue(Information), UPDATED(warning)=orange, UPDATED(error)=red
+- ID column = links (sapLinkColor)
+- Header columns: bold, all-caps
+- + New Outage = Primary Button top-right of page header (NOT in toolbar)
+- SideNavigation: minimal, 3 items only
+
+---
+
+## Screen 11 — Design System Governance (Worklist variant)
+**Node:** `750:174960`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174960
+**Floorplan:** Worklist / List Report (desktop 1440px)
+**Screenshot:** `11-design-system-governance-worklist.png`
+
+Similar to Screen 01 but worklist variant. Use Screen 01 for FCL reference, this for worklist layout.
+
+---
+
+## Summary — Clone sources by floorplan
+
+| You're building... | Clone from screen | Node |
+|---|---|---|
+| SideNavigation (any) | Screen 06 | `750:174158` or `699:37890` |
+| Dialog / Form | Screen 02-05 | `750:174190` |
+| List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
+| Object Page (narrow) | Screen 07 (yanatest) | `560:36552` |
+| Log/Message panel | Screen 09 | `750:174814` |
+| Full desktop List Report | Screen 10 | `750:174925` |
+| FCL + SideNav + Table | Screen 01 | `750:177443` |
+
+---
+
+## What NOT to do (anti-patterns visible in these screens)
+
+- Never `createFrame()` for a real SAP component — every component here is a real SAP kit instance
+- Never spacer frames — all spacing is `itemSpacing` / `SPACE_BETWEEN` / `layoutGrow` on real children
+- Never raw hex fills — all fills are SAP semantic tokens
+- Never rebuild SideNavigation from scratch — clone `699:37890`, clear slot, repopulate (P-026)
+- Never use `Regular Active` on more than one IconTabBar tab — only the selected tab is Active
