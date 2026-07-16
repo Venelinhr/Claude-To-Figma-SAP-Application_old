@@ -60,6 +60,7 @@ RULE 29: Visual Recovery Protocol. The .fig file IS the answer.
 ### §1b — Workflow gates (before you build)
 - **When a reference image is present:** run VDI analysis (RULE 26) + present ASCII wireframe + component list, get user approval (RULE 19 HARD GATE) BEFORE building. Use semantic components (ObjectIdentifier/ObjectNumber/ObjectAttribute/ObjectStatus), not raw text.
 - **Field/input sizing:** set field/input/select/date-picker instances to `layoutSizingHorizontal='FILL'` AFTER stripping `minWidth`/`maxWidth` — otherwise they crop at their hardcoded ~272px. Parent column must be FIXED-width first (see figma-build-patterns.md §Form Field FILL).
+- **Width:** default 1440px (desktop) ONLY when nothing is specified. If a reference image/node is shared, MEASURE it and build at that width (~320-390 narrow, 768 tablet, 1440 desktop). An explicit user width instruction always wins.
 
 ---
 
