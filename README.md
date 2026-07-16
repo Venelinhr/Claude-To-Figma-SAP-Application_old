@@ -1,41 +1,7 @@
 # SAP Figma Design Agent
 
-> Converts business requirements into real SAP Fiori screens in Figma.
-> Claude reasons about the design, builds directly via `use_figma`, and the plugin binds live SAP tokens.
-
----
-
-## What It Is
-
-An AI-powered pipeline that produces complete SAP Fiori screens built from real SAP Web UI Kit instances — not mockups, not placeholders, not native frames painted to look like SAP.
-
-The current workflow is **RULE 25 MCP-first**: Claude builds the screen directly in Figma via `use_figma`, then the plugin's **Bind SAP Tokens** step wires up live design tokens. A legacy JSON spec path exists for bulk standard floorplans but is not the daily workflow.
-
-```
-Business requirement (plain language / Jira ticket / screenshot)
-    ↓
-Claude reads SAP_BUILD_MANIFEST.md + reference image / cached VDI model
-    ↓
-ASCII wireframe presented — HARD GATE, user approves before build
-    ↓
-Claude calls use_figma: real SAP kit instances + L1–L5 semantic names + [sapToken] tags
-    ↓
-Select frame in Figma → run plugin → Bind SAP Tokens
-    ↓
-Live SAP Fiori screen with bound design tokens on your canvas
-```
-
----
-
-## Prerequisites
-
-| Requirement | Notes |
-|---|---|
-| Claude Code CLI | `npm install -g @anthropic-ai/claude-code` (Node.js ≥ 20) |
-| Figma desktop app | Plugin API requires desktop — browser version does not work |
-| SAP Web UI Kit as team library | Figma Community: https://www.figma.com/community/file/1494295794601744471 — duplicate, publish, enable as library in your working file |
-| Figma MCP configured | Required for Path 1. Add your Figma personal access token to `~/.claude/settings.json` under `mcpServers.figma` |
-| 72 Typeface (optional but recommended) | SAP's proprietary font. Download from the SAP Fiori Resources page, install system-wide, restart Figma |
+**From any reference to a verified, token-bound SAP Fiori screen.**
+30 Rules · 8 MCPs · 152 Components · 2,391 Plugin LOC · ~3k tokens/build · Self-optimizing
 
 ---
 
@@ -47,205 +13,250 @@ cd Claude-To-Figma-SAP-Application
 ./install.sh
 ```
 
-The installer copies the Claude skill to `~/.claude/skills/sap-figma-design-agent/`, installs custom MCP servers, and updates `~/.claude/settings.json`.
+**After install:**
+1. Add Figma API token to `~/.claude/settings.json` → `mcpServers.figma.env.FIGMA_API_TOKEN` — **REQUIRED**
+2. Figma → Plugins → Development → Import plugin from manifest → `plugin/figma-builder/manifest.json`
+3. Enable SAP Web UI Kit as a library ([free community copy](https://www.figma.com/community/file/1494295794601744471))
+4. Restart Claude Code → `claude mcp list` (should show 5+ servers)
 
-Restart Claude Code after running the installer so MCP servers load.
-
----
-
-## Load the Figma Plugin
-
-1. Open **Figma desktop app**
-2. Menu → **Plugins → Development → Import plugin from manifest**
-3. Navigate to `plugin/figma-builder/` and select `manifest.json`
-4. The plugin appears under **Plugins → Development → Claude to Figma SAP Application**
-
-The plugin has three functions: **Bind SAP Tokens**, **Harvest Icon Keys**, and **Export Variable Keys**. The old "Build Screen" button no longer exists — building is done via `use_figma` (Path 1 below).
+> **Your own Figma file:** Canonical screens live in `p7zm5EMBk5DRRZdxNeJ4f5`. Create your own file, connect the SAP Web UI Kit library, and work there.
 
 ---
 
-## How to Use — Two Paths
+## ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN
 
-### Path 1: MCP-First (DEFAULT — RULE 25)
+The mandatory methodology for every build. 14 consecutive failed iterations traced to one root cause: building without analysis.
 
-Claude builds directly in Figma. The plugin only binds tokens afterward.
-
-**Steps:**
-
-1. Open Claude Code in the project directory
-2. Describe your screen in plain language:
-   ```
-   Build me a SAP List Report for purchase orders.
-   Columns: supplier, order date, amount, status.
-   User needs to filter by date range and status, and approve in bulk.
-   ```
-3. Claude presents an ASCII wireframe — review it and approve (or ask for changes). This step is a hard gate; Claude cannot proceed without your approval.
-4. Claude builds the screen in Figma via `use_figma` using real SAP kit instances
-5. In Figma, select the built frame
-6. Run the plugin → click **Bind SAP Tokens**
-7. Done — the frame has live SAP design tokens bound
-
-**What Claude guarantees on every build:**
-- Real SAP kit instances only (no `createFrame()` for UI components)
-- L1–L5 semantic layer naming (no `Frame 1`, `Group`, `Spacer`)
-- No raw hex values — only the 80-token SAP semantic whitelist
-- Parallel imports (`Promise.all`) for 3–4× faster builds
-- §7 accessibility validators run automatically
-
----
-
-### Path 2: JSON Spec (Legacy / Bulk Floorplans)
-
-Use the `/sap-figma-design-agent` skill. Claude generates a validated JSON spec conforming to `spec-schema.json`.
-
-**When to use this path:** Bulk generation of standard List Report / Worklist / Object Page screens where you want a spec artifact for review before building.
-
-**Note:** The plugin's "Build Screen" button was removed on 2026-07-14. JSON specs are validated by the plugin but must be built via Path 1. This path is retained for spec generation and review only.
-
----
-
-## Your Figma File
-
-The canonical example screens live in the original developer's file `p7zm5EMBk5DRRZdxNeJ4f5`. You need your own Figma file for new builds.
-
-**Setup:**
-1. Create a new Figma design file
-2. Assets panel (Shift+I) → Libraries → enable **SAP Web UI Kit**
-3. Open Claude Code in the project directory, tell Claude your file URL
-4. Claude will build into your file
-
----
-
-## Canonical Reference Screens
-
-These screens in file `p7zm5EMBk5DRRZdxNeJ4f5` are confirmed quality. Claude references them as ground truth before every build.
-
-| Screen | Node | Status |
+| Stage | What | Key rule |
 |---|---|---|
-| Activities View (List Report) | `615:36810` | 2026-07-15 — "Perfect" |
-| yanatest Steps (Object Page) | `560:36552` | 2026-07-14 — "Great result!" |
-| Schedule Form Step 2 | `709:40690` | 2026-07-14 — confirmed |
-| Live Preview Panel | `709:41339` | 2026-07-14 — confirmed |
-| SideNavigation (full) | `701:119633` | 2026-07-15 — confirmed |
-| SideNavigation (proto source) | `699:37890` | 2026-07-15 — confirmed |
+| **ANALYZE** | `get_design_context` on closest working node — reveals slot frames, nesting depth, property keys | Never skip |
+| **PLAN** | Map content to slot structure, list property keys, identify prototype source (ORIGINAL only) | Before writing any code |
+| **EXECUTE** | Single `use_figma` call. Clone-Clear-Repopulate. Parallel imports. Real SAP instances only. | One shot |
+| **VALIDATE** | One screenshot. Compare vs reference. Resize if truncated. | One shot |
+| **LEARN** | "Bingo / 100% / perfect" → save canonical to memory immediately | Freeze positive feedback |
 
-A broader set of 11 benchmark screens lives at nodes `750:174xxx` in the same file — see `docs/` for details.
+### 3 Hard Build Rules
+1. **Real SAP instances only** — `importComponentSetByKeyAsync` → `.defaultVariant.createInstance()`. Never `createFrame()` for UI.
+2. **L1–L5 semantic naming** — No `Frame 1`, no `(SAP)` suffix, no redundant nesting.
+3. **No Spacer frames** — use `itemSpacing`, `SPACE_BETWEEN`, `layoutGrow` on real children. Even `Toolbar Fill` = banned.
+
+### SAP Composite Pattern (Clone-Clear-Repopulate)
+```js
+const ref = figma.getNodeById('699:37890'); // canonical SideNavigation
+const clone = ref.clone();
+const slot = clone.findOne(n => n.name === '⿻ Navigation Items');
+const proto = ref.findOne(n => n.name === 'Navigation Item'); // from ORIGINAL
+[...slot.children].forEach(n => n.remove());
+const inst = proto.clone();
+slot.appendChild(inst);
+inst.layoutSizingHorizontal = 'FILL';
+inst.setProperties({ '✏️ Text#283293:137': 'Overview', 'Icon#328810:0': iconKey });
+```
 
 ---
 
-## SAP Floorplan Reference
+## System Overview
 
-| Your scenario | Floorplan |
+Three layers, each doing only what it uniquely can:
+
+**Layer 1 — Claude (Reasoning):** Reads references, runs 30 rules, runs VDI skill, selects floorplan + components, builds via Figma MCP, QA + self-repair.
+
+**Layer 2 — Figma MCP (Execution):** Inserts real SAP kit instances via parallel `Promise.all` imports, sets variant properties, tags fills `[sapToken]` · text `[typo:role]` · drops `◆ICON/` placeholders.
+
+**Layer 3 — Plugin (Token Bridge):** The ONLY actor with `teamlibrary` permission. Reads tags → binds real SAP Horizon variables. Swaps icon placeholders. Binds text styles. Runs 4 §7 a11y validators.
+
+> **Why this split?** `use_figma` runs in a sandbox without `teamlibrary` permission — it returns 0 variable collections from the SAP kit. Only a real Figma plugin can bind SAP token variables (theme-switchable, audit-clean). Claude+MCP build the structure; the plugin does the one thing only it can do.
+
+---
+
+## How Claude Communicates With Figma
+
+**READ** → `get_design_context(nodeId)` — exact CSS, bound token names, layer tree  
+**DECIDE** → VDI analysis + confidence tiers ● confirmed / ○ inferred / ? ambiguous  
+**EXECUTE** → `use_figma` one-shot with parallel imports + SAP tag contract  
+**VERIFY** → `get_screenshot` — one shot, compare vs reference  
+**BIND** → User clicks "Bind SAP Tokens" in plugin
+
+---
+
+## Triggers — How It Starts
+
+| Input | What happens |
 |---|---|
-| Personal task queue, process assigned items, bulk actions | Worklist |
-| Search across all records, user sets their own filters | List Report |
-| Full detail view of one business object, multiple sections | Object Page |
-| KPIs, charts, and multiple lists on one dashboard | Overview Page |
-| List and detail side by side | Flexible Column Layout (FCL) |
-| Multi-step guided process | Wizard |
+| **Text** — user story, Jira, description | Stage 3: extracts persona · task · data · actions · states |
+| **Reference image** — screenshot, wireframe | RULE 26 VDI + Stage 2 visual reading. Image quality tier 1–4 assessed first. |
+| **Figma URL** — `?node-id=355-39080` | `get_design_context` → exact measurements, the ● confirmed source |
+| **Document** — PDF spec, markdown | Parsed via Stage 3, merged with Stage 4 |
 
-**Common mistake:** Using List Report for a personal task queue. If the system already knows what the user should see, use Worklist — no FilterBar, no VariantManagement.
+The skill adapts: image only → Stage 2 · text only → Stage 3 · image + text → run both, merge at Stage 4.
 
 ---
 
-## Architecture
+## Token Optimization — ~25k → ~3k per build
+
+~88% reduction. Measured and verified.
+
+| Cost source | Before | After | How |
+|---|---|---|---|
+| Reading `code.js` | ~45k (×2) | **0** | Hook blocks read · manifest has all keys |
+| VDI reference bundle | ~8k/build | ~2k | 6 files → `VDI_REFERENCE.md` (−76%) |
+| VDI analysis (repeat image) | ~13.5k | ~0.7k | SHA-1 cache in `semantic-models/` (−96%) |
+| Build knowledge (scattered) | ~15–20k | ~2k | Single `SAP_BUILD_MANIFEST.md` |
+| Iterative live-fixing | 8 calls + 6 shots | 1 call + 1 shot | Analyze before executing |
+| Sequential imports | ~2.1s+ | ~0.5s | `Promise.all` — 3–4× faster |
+
+The waste was never stable rules. It was reading huge files that weren't needed, re-analyzing the same images, and iterating live in Figma. Fix: one small manifest + SHA-1 cache + build right once.
+
+---
+
+## 8 MCP Servers — What Each Does & Why
+
+| MCP | Type | What | Why |
+|---|---|---|---|
+| `figma` | Official | Live Figma read/write — `get_design_context`, `use_figma`, `get_screenshot` | The execution engine. Without it there is no build. |
+| `sap-fiori-guidelines` | Custom | 154 cached Fiori guidelines: when/how to use each component | Powers SAP Compliance check — offline, fast, official |
+| `sap-figma-community` | Custom | Registry drift detection — detects stale component keys | The SAP kit gets republished. Catches stale keys before build-time failures. |
+| `sap-application-analysis` | Custom | Screenshot/wireframe → SAP pattern mapping. 30+ region types | Turns a raw image into SAP vocabulary. Powers wireframe gate. |
+| `chrome-devtools` | Official | Web scraping fallback — fetches live SAP Fiori guideline pages | When local cache is stale — fetch the authoritative live source. |
+| `sapui5` | Custom | Live UI5 API reference — properties, aggregations, enums | Prevents hallucinated properties. ObjectStatus uses `Semantic` not `State`. |
+| `context7` | Official | Live library documentation for correct API signatures | Correct method signatures when writing UI5 code. |
+| `fundamental-styles` | Official | 120+ CSS components, 1,522 design tokens | Fallback for edge cases the SAP Web UI Kit registry doesn't cover. |
+
+---
+
+## Skills
+
+| Skill | What | Why |
+|---|---|---|
+| `/sap-vdi` | 8-stage Visual Design Intelligence analysis. 12-part output with confidence tiers, floorplan scoring, interaction model, RCA. | MANDATORY pre-build analysis (RULE 26). Prevents generic output and wrong-floorplan rebuilds. |
+| `/sap-bind` | End-to-end MCP-first build: VDI + cache → wireframe gate → manifest-only → one-shot `use_figma` → screenshot → bind reminder. | Orchestrates the whole RULE 25 pipeline with token discipline baked in. |
+| `/sap-spec-validate` | Runs `validate-spec.js` headless: registry gate, composition rules, token whitelist, no raw hex. | Pre-flight quality gate before any build. |
+| `/sap-registry-update` | Edit component registry JSON, rebuild bundle, run regression tests. | The ONLY correct way to change a component key. |
+
+**Skill pinned to project (2026-07-14):** `skill/sap-visual-reading/` — 12 files, single source of truth. Global `/sap-vdi` points here.
+
+---
+
+## The Plugin — Token Bind Bridge
+
+**2,391 lines. MCP-bind-only. The ONLY teamlibrary actor.**
+
+Three tools:
+- **Bind SAP Tokens** — binds `[sapToken]` → SAP Horizon variables, swaps `◆ICON/` → kit icons, binds `[typo:role]` → text styles, runs 4 §7 a11y validators
+- **Harvest Icon Keys** — extracts 40-char keys from SAP icon instances on canvas
+- **Export Var Keys** — exports Horizon variable keys to `horizon-variable-keys.json`
+
+A11y validators run automatically on every bind: WCAG AA contrast · heading hierarchy · tap targets (44px Cozy / 32px Compact) · not-color-only status.
+
+Plugin LOC history: 10,767 (legacy) → 9,136 (MCP-first migration) → 3,534 (bind-only) → **2,391** (dead-code audit, −33%)
+
+---
+
+## The Loop — Learning · Improving · Better Ecosystem
+
+**A. Per-Edit Loop:** Edit registry JSON → `registry-rebuild.sh` hook fires → bundle rebuilt, tests green.
+
+**B. Per-Build Loop:** New frame → spec-validator + `lint-mcp-frame.js` → RULE 25 tag contract checked → Build → Bind → a11y report.
+
+**C. Feedback Learning Loop (the key one):**
+```
+User: "bravo" / "wrong" / "not acceptable"
+    → feedback-learn.sh hook detects signal
+    → Lesson captured to memory (Why + How to apply)
+    → Promoted to hard rule if pattern repeats
+    → Next build starts with the lesson baked in
+```
+Every correction becomes a durable memory. The 3 hard rules exist *because* they were corrected repeatedly, then captured. Positive feedback promotes a result to **canonical reference** that seeds future builds.
+
+**D. Post-Build Ground-Truth Loop:** User confirms quality → `get_design_context(nodeId)` reads exact measurements → updates `token-assignment-rules.md` → next session starts smarter.
+
+---
+
+## Canonical Reference Screens — Ground Truth
+
+11 approved screens saved permanently in `docs/canonical-screens/` (PNGs + `.md` files + `CANONICAL-SCREENS.md`). Always clone from the nearest one — never build from scratch.
+
+| Screen | Node |
+|---|---|
+| Design System Governance Console (FCL + SideNav + Table) | `750:177443` |
+| Side Navigation (full tree, 20 items, Monitoring selected) | `750:174158` |
+| Schedule Operation — Daily / Monthly / Monthly+End / Base | `750:174190/290/786/866` |
+| Activities View (List Report + Progress Rows) — *"Perfect"* | `750:174442` / `615:36810` |
+| Validate System Log Panel (severity pills) | `750:174814` |
+| Outage List Overview (desktop List Report) | `750:174925` |
+| yanatest Steps (Object Page narrow) — *"Great result!"* | `560:36552` |
+| SideNavigation proto source | `699:37890` |
+
+> Clone source by floorplan: SideNav → `750:174158` · List Report 320px → `615:36810` · Object Page → `560:36552` · Dialog/Form → `750:174190` · Desktop List Report → `750:174925` · FCL + SideNav → `750:177443`
+
+---
+
+## Project Structure
 
 ```
-Claude-To-Figma-SAP-Application/
-├── SAP_BUILD_MANIFEST.md         ← THE ONLY file a build reads
-│                                    (component keys §3, token hex §4, canonical nodes §3b)
-│
-├── skill/                        ← AI pipeline
-│   ├── SKILL.md                  ← main orchestration entry point
-│   ├── SYSTEM_PROMPT.md          ← 28 mandatory RULEs + 80-token whitelist
-│   ├── agents/                   ← 7 specialized agents
-│   │   ├── requirement-analyst.md
-│   │   ├── component-architect.md
-│   │   ├── figma-builder.md
-│   │   └── ...
-│   ├── references/
-│   │   └── figma-build-patterns.md   ← confirmed build patterns + API gotchas
-│   └── sap-visual-reading/       ← Visual Design Intelligence skill (12 files, pinned)
-│
-├── plugin/figma-builder/         ← Figma plugin (load manifest.json in Figma)
-│   ├── manifest.json
-│   └── code.js                   ← 2,398 lines — bind tokens, harvest icon keys only
-│
-├── knowledge/
-│   ├── components/registry/      ← 152-component registry (100% enriched)
-│   ├── guidelines/               ← 154 guideline JSONs (100% coverage)
-│   └── floorplans/
-│
-├── mcp-servers/                  ← 3 custom MCP servers
-│   ├── fiori-guidelines/
-│   ├── application-analysis/
-│   └── sap-figma-community/
-│
-├── docs/                         ← Architecture docs
-│   ├── HYBRID-MCP-FIRST.md       ← two-path architecture explained
-│   ├── REPAIR-PATTERNS.md        ← 28 repair patterns from real failures (P-001–P-028)
-│   └── HOOKS-REFERENCE.md
-│
-├── semantic-models/              ← VDI cache (96% token saving on repeat analysis)
-│
-├── build/                        ← Build tooling
-│   ├── build-registry-bundle.js  ← rebuild plugin bundle after registry edits
-│   ├── validate-spec.js
-│   └── check-manifest-sync.js
-│
-└── install.sh                    ← one-command setup
+/
+├── install.sh                      ← one-command setup
+├── SAP_BUILD_MANIFEST.md           ← the ONLY file a build reads (~2k tokens)
+├── skill/
+│   ├── SKILL.md + SYSTEM_PROMPT.md ← 28 RULEs + 80-token whitelist
+│   ├── agents/                     ← 7 specialized agents
+│   ├── sap-visual-reading/         ← VDI skill, 12 files (pinned 2026-07-14)
+│   └── references/figma-build-patterns.md  ← all confirmed patterns + 13 API gotchas
+├── plugin/figma-builder/
+│   ├── manifest.json               ← load this in Figma
+│   └── code.bundled.js             ← pre-built, ready to use
+├── mcp-servers/                    ← 3 custom MCP servers
+├── knowledge/                      ← 152 registry JSONs, 154 guidelines
+├── docs/
+│   ├── canonical-screens/          ← 11 PNGs + .md files
+│   ├── REPAIR-PATTERNS.md          ← 28 patterns from real failures
+│   ├── HOOKS-REFERENCE.md          ← 5 hooks, stdin format, restart note
+│   └── HYBRID-MCP-FIRST.md         ← architecture explanation
+└── semantic-models/                ← VDI cache (96% saving on repeat)
 ```
 
-**Key principle:** `SAP_BUILD_MANIFEST.md` is the single build knowledge source. Never read `code.js` (~45k tokens), `component-property-reference.json` (136 KB), or `horizon-variable-keys.json` (26 KB) — everything needed is in the manifest.
+---
+
+## 5 Automation Hooks
+
+| Hook | When fires | Purpose |
+|---|---|---|
+| `block-codejs-read.sh` | PreToolUse(Read) | Blocks reading `code.js` — redirects to manifest |
+| `block-generated-files.sh` | PreToolUse(Edit) | Blocks edits to auto-generated files |
+| `registry-rebuild.sh` | PostToolUse(Edit) | Auto-rebuilds bundle on registry change |
+| `manifest-sync-check.sh` | PostToolUse(Edit) | Drift check on manifest edit |
+| `feedback-learn.sh` | UserPromptSubmit | Detects praise/correction → captures lesson |
+
+Hooks use stdin JSON (`.tool_input.file_path`). Activate on Claude Code restart.
+
+---
+
+## Health Check
+
+```bash
+claude mcp list                               # 5+ servers
+node build/validate-spec.js output/any.json   # validate a spec
+bash build/test-build.sh                      # regression suite
+node build/check-manifest-sync.js            # manifest drift
+```
+
+---
+
+## Prerequisites
+
+- Node.js ≥ 20 · Claude Code CLI · Figma desktop app
+- Figma personal access token ([get one](https://www.figma.com/settings))
+- SAP Web UI Kit connected as library ([free](https://www.figma.com/community/file/1494295794601744471))
 
 ---
 
 ## Key Docs
 
-| File | What it is |
+| Doc | What's in it |
 |---|---|
-| `SAP_BUILD_MANIFEST.md` | Component keys (§3), token hex values (§4), canonical nodes (§3b) — single build reference |
-| `skill/SYSTEM_PROMPT.md` | 28 mandatory RULEs, 80-token whitelist, blocked behaviors |
-| `docs/HYBRID-MCP-FIRST.md` | Technical explanation of the two-path architecture |
-| `skill/references/figma-build-patterns.md` | All confirmed build patterns, clone-canonical method, API gotchas |
-| `docs/REPAIR-PATTERNS.md` | 28 repair patterns from real failures |
-
----
-
-## Project Health Checks
-
-```bash
-# Verify all MCP servers are connected
-claude mcp list
-
-# Validate a JSON spec
-node build/validate-spec.js output/<spec>.json
-
-# Check manifest vs registry drift
-node build/check-manifest-sync.js
-
-# Rebuild plugin bundle (only needed after registry edits)
-cd build && node build-registry-bundle.js
-# Then in Figma: re-import plugin from manifest.json
-```
-
----
-
-## Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| SAP Web UI Kit not found | Assets (Shift+I) → Libraries → enable SAP Web UI Kit. Must be in same org or duplicated and published. |
-| Components render with wrong font | Install the 72 typeface and restart Figma. |
-| Plugin not showing latest changes | Re-import from manifest: Plugins → Development → Import plugin from manifest → `plugin/figma-builder/manifest.json` |
-| MCP servers not connected | Restart Claude Code after running `./install.sh`. Check `claude mcp list`. |
-| Tokens not bound after Bind step | Ensure the SAP Web UI Kit library is connected to your file before binding. |
-| `use_figma` builds land off-canvas | Always build below existing content or use x ≥ 15000 isolated zone. Never arbitrary coordinates. |
-
----
-
-## License
-
-MIT — 2026
-
-*Claude Code + Figma Plugin API + SAP Web UI Kit + use_figma MCP*
+| `SAP_BUILD_MANIFEST.md` | Component keys, token hexes, canonical nodes, naming rules |
+| `docs/canonical-screens/CANONICAL-SCREENS.md` | All 11 screens — structure, components, patterns, code |
+| `skill/references/figma-build-patterns.md` | Progress Row, DPH clone, SegmentedButton, Form FILL fix, 13 API gotchas |
+| `docs/REPAIR-PATTERNS.md` | 28 repair patterns (P-001 to P-028) |
+| `docs/HYBRID-MCP-FIRST.md` | Technical architecture explanation |
+| `docs/HOOKS-REFERENCE.md` | Hook stdin format, restart requirement |
