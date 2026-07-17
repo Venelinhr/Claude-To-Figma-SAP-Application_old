@@ -87,6 +87,73 @@ Refinements happen on the ASCII wireframe — free and instant — not after the
 
 ---
 
+## Example — what Claude shows you at the PLAN stage
+
+After analysis, Claude presents an ASCII wireframe + component breakdown for your approval **before writing a single line of Figma code.**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  ShellBar                                                       │
+│  [≡]  Purchase Orders          [Search]  [?]  [👤 User ▾]      │
+├─────────────────────────────────────────────────────────────────┤
+│  DynamicPageTitle                                               │
+│  Purchase Orders (142)          [Approve]  [Reject]  [Export ▾] │
+├─────────────────────────────────────────────────────────────────┤
+│  FilterBar                                                       │
+│  [Supplier ▾]  [Status ▾]  [Date range ▾]  [Go]  [Adapt]       │
+├─────────────────────────────────────────────────────────────────┤
+│  Responsive Table                                               │
+│  ☐  │ PO Number  │ Supplier        │ Amount       │ Status      │
+│─────┼────────────┼─────────────────┼──────────────┼────────────│
+│  ☐  │ 4500012891 │ Acme Corp       │ € 24,500.00  │ ● Pending  │
+│  ☐  │ 4500012892 │ GlobalX GmbH    │ € 8,200.00   │ ● Pending  │
+│  ☐  │ 4500012893 │ FastLog Ltd     │ € 61,750.00  │ ✔ Approved │
+│  ☐  │ 4500012894 │ NordSupply AG   │ € 3,400.00   │ ✘ Rejected │
+├─────────────────────────────────────────────────────────────────┤
+│  Pagination   [◀]  1 of 12  [▶]                                 │
+└─────────────────────────────────────────────────────────────────┘
+  Width: 1440px · Floorplan: List Report · Density: Compact
+```
+
+**Components Claude will use to build this screen:**
+
+| Region | SAP Component | Why |
+|--------|--------------|-----|
+| App shell | `ShellBar` | Top-level navigation, branding, user menu |
+| Page title + actions | `DynamicPageTitle` | Title with item count + primary action buttons |
+| Filter row | `FilterBar` | Standard SAP filter pattern with Go + Adapt |
+| Data | `ResponsiveTable` with `MultiSelectMode` | Best for tabular list data with bulk actions |
+| Status column | `ObjectStatus` (`Semantic=Warning/Success/Error`) | Semantic color + icon, theme-switchable token |
+| Amount column | `ObjectNumber` | Right-aligned number with currency, SAP typography |
+| Row actions | `Button` (Accept / Reject) | Type=Accept / Type=Reject — correct SAP affordance |
+| Pagination | `PaginationBar` | Standard SAP paging pattern |
+
+**L1–L5 layer structure:**
+```
+L1  Purchase Orders                    ← screen
+L2    Shell                            ← region
+L3      ShellBar                       ← SAP instance
+L2    Page Header                      ← region
+L3      Dynamic Page Title             ← SAP instance
+L4        Primary Actions              ← group
+L5          Approve Button             ← content
+L5          Reject Button              ← content
+L2    Filter Bar                       ← region
+L3      Filter Bar                     ← SAP instance
+L2    Main Content                     ← region
+L3      Responsive Table               ← SAP instance
+L4        PO Number Column             ← group
+L4        Supplier Column              ← group
+L4        Amount Column                ← group
+L4        Status Column                ← group
+L2    Footer                           ← region
+L3      Pagination Bar                 ← SAP instance
+```
+
+You can iterate on any part — change the floorplan, add a column, switch to mobile — before Claude builds anything.
+
+---
+
 ## ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN
 
 The methodology behind every build. 14 consecutive failed iterations traced to one root cause: building without analysis first.
