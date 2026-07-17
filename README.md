@@ -130,32 +130,32 @@ After analysis, Claude presents an ASCII wireframe + component breakdown for you
 
 **L1–L5 layer structure:**
 ```
-Purchase Orders                          [L1 — screen]
-├── Shell Bar                            [L2 — SAP ShellBar]
-├── Page Header                          [L2 — region]
-│   └── Dynamic Page Title               [L3 — SAP DynamicPageTitle]
-│       └── Primary Actions              [L4 — group]
-│           ├── Approve Button           [L5 — SAP Button · Type=Accept]
-│           ├── Reject Button            [L5 — SAP Button · Type=Reject]
-│           └── Export Button            [L5 — SAP Button · Type=Secondary]
-├── Filters                              [L2 — region]
-│   └── Filter Bar                       [L3 — SAP FilterBar]
-│       ├── Supplier Filter              [L4 — SAP FilterGroupItem]
-│       ├── Status Filter                [L4 — SAP FilterGroupItem]
-│       └── Date Range Filter            [L4 — SAP FilterGroupItem]
-├── Main Content                         [L2 — region]
-│   └── Responsive Table                 [L3 — SAP ResponsiveTable]
-│       ├── PO Number Column             [L4 — column]
-│       ├── Supplier Column              [L4 — column]
-│       ├── Amount Column                [L4 — column · SAP ObjectNumber]
-│       ├── Status Column                [L4 — column · SAP ObjectStatus]
-│       └── Row 1                        [L4 — data row]
-│           ├── PO Number                [L5 — text cell]
-│           ├── Supplier Name            [L5 — text cell]
-│           ├── Amount                   [L5 — SAP ObjectNumber]
-│           └── Status                   [L5 — SAP ObjectStatus]
-└── Footer                               [L2 — region]
-    └── Pagination Bar                   [L3 — SAP PaginationBar]
+Purchase Orders
+├── Shell Bar                            L2  SAP ShellBar
+├── Page Header                          L2  region
+│   └── Dynamic Page Title               L3  SAP DynamicPageTitle
+│       └── Primary Actions              L4  group
+│           ├── Approve Button           L5  SAP Button · Type=Accept
+│           ├── Reject Button            L5  SAP Button · Type=Reject
+│           └── Export Button            L5  SAP Button · Type=Secondary
+├── Filters                              L2  region
+│   └── Filter Bar                       L3  SAP FilterBar
+│       ├── Supplier Filter              L4  SAP FilterGroupItem
+│       ├── Status Filter                L4  SAP FilterGroupItem
+│       └── Date Range Filter            L4  SAP FilterGroupItem
+├── Main Content                         L2  region
+│   └── Responsive Table                 L3  SAP ResponsiveTable
+│       ├── PO Number Column             L4  column
+│       ├── Supplier Column              L4  column
+│       ├── Amount Column                L4  column · SAP ObjectNumber
+│       ├── Status Column                L4  column · SAP ObjectStatus
+│       └── Row 1                        L4  data row
+│           ├── PO Number                L5  text cell
+│           ├── Supplier Name            L5  text cell
+│           ├── Amount                   L5  SAP ObjectNumber
+│           └── Status                   L5  SAP ObjectStatus
+└── Footer                               L2  region
+    └── Pagination Bar                   L3  SAP PaginationBar
 ```
 
 You can iterate on any part — change the floorplan, add a column, switch to mobile — before Claude builds anything.
