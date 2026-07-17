@@ -175,22 +175,9 @@ The methodology behind every build. 14 consecutive failed iterations traced to o
 | **LEARN** | Approval → save canonical · correction → capture lesson · next build recalls matching lesson | Every build |
 
 ### 3 Hard Build Rules
-1. **Real SAP instances only** — `importComponentSetByKeyAsync` → `.defaultVariant.createInstance()`. Never `createFrame()` for UI components.
+1. **Real SAP instances only** — every UI element is a real SAP Web UI Kit component. Never a plain frame.
 2. **L1–L5 semantic naming** — No `Frame 1`, no `(SAP)` suffix, no redundant nesting. Layers readable without opening any node.
-3. **No Spacer frames** — use `itemSpacing`, `SPACE_BETWEEN`, `layoutGrow` on real children.
-
-### SAP Composite Pattern (Clone-Clear-Repopulate)
-```js
-const ref = figma.getNodeById('699:37890'); // canonical SideNavigation
-const clone = ref.clone();
-const slot = clone.findOne(n => n.name === '⿻ Navigation Items');
-const proto = ref.findOne(n => n.name === 'Navigation Item'); // from ORIGINAL
-[...slot.children].forEach(n => n.remove());
-const inst = proto.clone();
-slot.appendChild(inst);
-inst.layoutSizingHorizontal = 'FILL';
-inst.setProperties({ '✏️ Text#283293:137': 'Overview', 'Icon#328810:0': iconKey });
-```
+3. **No Spacer frames** — spacing via Auto Layout only (`itemSpacing`, `SPACE_BETWEEN`, `layoutGrow`).
 
 ---
 
