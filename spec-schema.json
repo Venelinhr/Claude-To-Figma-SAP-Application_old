@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://claude-to-figma-sap/spec-schema.json",
+  "$id": "https://claude-to-figma-sap-application/spec-schema.json",
   "title": "SAP Fiori Screen Spec",
   "description": "Contract between Claude's reasoning output and the Figma plugin's construction input. Claude generates this; the plugin consumes it. Both sides validate against this schema.",
   "type": "object",
@@ -222,7 +222,7 @@
 
   "examples": [
     {
-      "$schema": "https://claude-to-figma-sap/spec-schema.json",
+      "$schema": "https://claude-to-figma-sap-application/spec-schema.json",
       "meta": {
         "requirement": "As a procurement manager, I need to review and approve pending purchase orders daily.",
         "floorplan": "worklist",

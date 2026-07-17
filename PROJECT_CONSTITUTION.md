@@ -1,6 +1,6 @@
 # SAP Fiori Application Builder — Project Constitution
 
-## Version 1.0 — 2026-07-16
+## Version 1.0 — 2026-07-17
 
 ---
 

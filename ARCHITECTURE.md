@@ -2,6 +2,9 @@
 
 A deep-dive into how the pipeline works, what Claude validates, and how the Figma plugin builds real SAP screens.
 
+> Last updated: 2026-07-17
+
+
 ---
 
 ## What Claude Checks & Validates Before Building

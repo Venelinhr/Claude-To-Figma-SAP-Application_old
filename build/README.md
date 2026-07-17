@@ -1,8 +1,8 @@
 # Build — Registry Bundle Pipeline
 
-Generates `plugin/figma-builder/code.bundled.js` from the source code + the local registry.
+Generates `plugin/figma-builder/code.bundled.js` from the 152-component registry + plugin source.
 
-This is the **single critical workflow** for keeping the Figma plugin in sync with the SAP Web UI Kit. After SAP republishes the library, you edit the registry JSONs and re-run this — no plugin code changes required.
+This is the **single critical workflow** for keeping the Figma plugin in sync with the SAP Web UI Kit. After SAP republishes the library, edit the registry JSONs in `knowledge/components/registry/` and re-run — no plugin code changes required.
 
 ---
 
