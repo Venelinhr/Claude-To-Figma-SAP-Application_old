@@ -40,7 +40,9 @@ The installer handles everything automatically: installs dependencies, registers
 
 ### Step 2 — Add your Figma API token
 
-The installer adds a placeholder. Replace it with your real token so Claude can read and write to Figma.
+**Why you need it:** Claude communicates with Figma through the Figma API — it reads your existing screens, inspects component structure, and writes new screens directly to your canvas. The API token is how Figma knows the request is coming from you and has permission to access your files. Without it, Claude cannot read from or build into Figma at all.
+
+The installer adds a placeholder automatically. Replace it with your real token:
 
 1. Go to **figma.com → Settings → Personal access tokens** → generate a new token
 2. Open `~/.claude/settings.json` and find this line:
@@ -48,6 +50,8 @@ The installer adds a placeholder. Replace it with your real token so Claude can 
    "FIGMA_API_TOKEN": "YOUR_FIGMA_TOKEN_HERE"
    ```
 3. Replace `YOUR_FIGMA_TOKEN_HERE` with your token
+
+> **Internal SAP users:** if your organisation uses SSO or a managed Figma account, generate the token the same way — personal access tokens work regardless of how your account is administered. Keep the token private; treat it like a password.
 
 ---
 
