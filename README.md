@@ -142,7 +142,7 @@ You: "Build a Purchase Orders approval screen"
   ┌─────────────────────────────────────────────────┐
   │  EXECUTE  (one use_figma call)                  │
   │  • Parallel import all SAP components           │
-  │  • Clone canonical → clear slot → repopulate   │
+  │  • Clone canonical → clear slot → repopulate    │
   │  • Real SAP instances only — never createFrame()│
   └────────────────────┬────────────────────────────┘
                        │
@@ -163,7 +163,7 @@ You: "Build a Purchase Orders approval screen"
   │  • Next similar build recalls the right lesson  │
   └─────────────────────────────────────────────────┘
                        │
-                       └──────────────────────────────┐
+                       └───────────────────────────────┐
                                                        │ loops back
                                                        ▼
                                              ANALYZE (next build)
@@ -190,21 +190,21 @@ After analysis, Claude presents an ASCII wireframe + component breakdown for you
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  ShellBar                                                       │
-│  [≡]  Purchase Orders          [Search]  [?]  [👤 User ▾]      │
+│  [≡]  Purchase Orders          [Search]  [?]  [👤 User ▾]       │
 ├─────────────────────────────────────────────────────────────────┤
 │  DynamicPageTitle                                               │
 │  Purchase Orders (142)          [Approve]  [Reject]  [Export ▾] │
 ├─────────────────────────────────────────────────────────────────┤
-│  FilterBar                                                       │
-│  [Supplier ▾]  [Status ▾]  [Date range ▾]  [Go]  [Adapt]       │
+│  FilterBar                                                      │
+│  [Supplier ▾]  [Status ▾]  [Date range ▾]  [Go]  [Adapt]        │
 ├─────────────────────────────────────────────────────────────────┤
 │  Responsive Table                                               │
 │  ☐  │ PO Number  │ Supplier        │ Amount       │ Status      │
-│─────┼────────────┼─────────────────┼──────────────┼────────────│
-│  ☐  │ 4500012891 │ Acme Corp       │ € 24,500.00  │ ● Pending  │
-│  ☐  │ 4500012892 │ GlobalX GmbH    │ € 8,200.00   │ ● Pending  │
-│  ☐  │ 4500012893 │ FastLog Ltd     │ € 61,750.00  │ ✔ Approved │
-│  ☐  │ 4500012894 │ NordSupply AG   │ € 3,400.00   │ ✘ Rejected │
+│─────┼────────────┼─────────────────┼──────────────┼─────────────│
+│  ☐  │ 4500012891 │ Acme Corp       │ € 24,500.00  │ ● Pending   │
+│  ☐  │ 4500012892 │ GlobalX GmbH    │ € 8,200.00   │ ● Pending   │
+│  ☐  │ 4500012893 │ FastLog Ltd     │ € 61,750.00  │ ✔ Approved  │
+│  ☐  │ 4500012894 │ NordSupply AG   │ € 3,400.00   │ ✘ Rejected  │
 ├─────────────────────────────────────────────────────────────────┤
 │  Pagination   [◀]  1 of 12  [▶]                                 │
 └─────────────────────────────────────────────────────────────────┘
