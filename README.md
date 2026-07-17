@@ -168,27 +168,20 @@ You: "Build a Purchase Orders approval screen"
   │  • "bravo / perfect" → canonical saved          │
   │  • "not right / fix this" → lesson captured     │
   │  • Next similar build recalls the right lesson  │
-  └────────────────────┬────────────────────────────┘
+  └─────────────────────────────────────────────────┘
                        │
-                       │  Yes, it loops. Next time you ask for
-                       │  a similar screen, LEARN feeds back
-                       │  into ANALYZE:
-                       │
-                       │  • The matching lesson surfaces before
-                       │    Claude starts — right pattern, right
-                       │    components, confirmed token values
-                       │  • Claude clones from the verified
-                       │    canonical screen, not from scratch
-                       │  • Each confirmed build raises the floor
-                       │    for the next one — you never debug
-                       │    the same problem twice
-                       │
-                       └──────────────────────────────────────►
-                                                         next build
-                                                         starts here ↑
-                                                     (ANALYZE with
-                                                      recalled lesson)
+                       └──────────────────────────────┐
+                                                       │ loops back
+                                                       ▼
+                                             ANALYZE (next build)
+                                        lesson already recalled,
+                                        canonical clone ready
 ```
+
+**Yes, it loops.** LEARN feeds directly into the next ANALYZE:
+- The matching lesson surfaces automatically before Claude starts — right pattern, right components, confirmed token values
+- Claude clones from the verified canonical screen, not from scratch
+- Each confirmed build raises the floor for the next — you never debug the same problem twice
 
 **Nothing gets generated until you say "approved".**
 Refinements happen on the ASCII wireframe — free and instant — not after the plugin already built the screen.
