@@ -83,7 +83,7 @@ Each item below lists what it is, why it's queued, the concrete files it touches
 
 **What.** Record a 5-minute demo covering the full flow: requirement → floorplan confirmation → ASCII mockup → JSON spec → plugin build → a11y report.
 
-**Why now.** Everything is in place; a demo is a durable artifact for onboarding new contributors and pitching the tool. `MANAGER-PITCH.html` already serves as the storyboard.
+**Why now.** Everything is in place; a demo is a durable artifact for onboarding new contributors and pitching the tool. A `MANAGER-PITCH.html` storyboard exists locally (kept out of the repo) and can seed the demo script.
 
 **Files.** New: `docs/DEMO-2026-Q3.mp4` (or link) + `docs/DEMO-SCRIPT.md`.
 

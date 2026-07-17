@@ -33,7 +33,10 @@ node_modules/
 # Local spec files generated during use
 *-spec.json
 *-rationale.md
-ARCHITECTURE.html
+# Root-level generated/marketing HTML — kept local, not shipped (scoped to root so plugin/ui.html is unaffected)
+/ARCHITECTURE.html
+/COMPLETE-REFERENCE.html
+/MANAGER-PITCH.html
 .claude/pending-learnings.jsonl
 .claude/.last-build-node
 knowledge/components/_archive/
