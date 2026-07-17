@@ -1,5 +1,8 @@
 # 08 - Validate System Log Panel — Schedule Operation State B (Recurring Monthly)
 
+> Screenshot is kept private (local only). This .md is the source of truth — node ID, components, tokens, and layer structure are all here.
+
+
 **Node ID:** 750:174814  
 **File Key:** p7zm5EMBk5DRRZdxNeJ4f5  
 **Screenshot:** 08-validate-system-log-panel.png  

@@ -1,5 +1,8 @@
 # 06 - Activities View (Validate System Log Panel)
 
+> Screenshot is kept private (local only). This .md is the source of truth — node ID, components, tokens, and layer structure are all here.
+
+
 **Node ID:** 750:174442  
 **File Key:** p7zm5EMBk5DRRZdxNeJ4f5  
 **Screenshot:** 06-activities-view.png  
