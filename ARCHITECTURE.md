@@ -1,6 +1,6 @@
 # Architecture — Claude to Figma SAP Application
 
-A deep-dive into how the pipeline works, what Claude validates, and how the Figma plugin builds real SAP screens.
+Three-layer pipeline: Claude reasons → Figma MCP builds structure → plugin binds SAP tokens. Full technical reference.
 
 > Last updated: 2026-07-17
 

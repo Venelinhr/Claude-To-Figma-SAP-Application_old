@@ -1,4 +1,4 @@
-# SAP Fiori Application Builder — Project Constitution
+# Contributing — Claude to Figma SAP Application
 
 ## Version 1.0 — 2026-07-17
 
