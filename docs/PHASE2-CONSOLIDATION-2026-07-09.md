@@ -1,4 +1,6 @@
-# Phase 2 Consolidation Report — 2026-07-09
+# Phase 2 Consolidation Report
+
+> **Context for contributors:** This is an internal architectural audit record documenting a consolidation pass on the project — what was cleaned up, why, and verification. It is historical context, not active instructions. The current state is fully reflected in `CLAUDE.md`, `docs/OPERATING-MANIFEST.md`, and `docs/KNOWLEDGE-INDEX.md`.
 
 Following the user's architectural audit note (feature accumulation without consolidation), Round 1 + Round 2 stabilization landed the same session. This doc records what changed, why, and the verification.
 
