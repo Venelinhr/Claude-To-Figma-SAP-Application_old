@@ -130,24 +130,32 @@ After analysis, Claude presents an ASCII wireframe + component breakdown for you
 
 **L1–L5 layer structure:**
 ```
-L1  Purchase Orders                    ← screen
-L2    Shell                            ← region
-L3      ShellBar                       ← SAP instance
-L2    Page Header                      ← region
-L3      Dynamic Page Title             ← SAP instance
-L4        Primary Actions              ← group
-L5          Approve Button             ← content
-L5          Reject Button              ← content
-L2    Filter Bar                       ← region
-L3      Filter Bar                     ← SAP instance
-L2    Main Content                     ← region
-L3      Responsive Table               ← SAP instance
-L4        PO Number Column             ← group
-L4        Supplier Column              ← group
-L4        Amount Column                ← group
-L4        Status Column                ← group
-L2    Footer                           ← region
-L3      Pagination Bar                 ← SAP instance
+L1  Purchase Orders
+L2    Shell Bar                         ← SAP ShellBar instance
+L2    Page Header                       ← region
+L3      Dynamic Page Title              ← SAP instance
+L4        Primary Actions               ← group
+L5          Approve Button              ← SAP Button (Type=Accept)
+L5          Reject Button               ← SAP Button (Type=Reject)
+L5          Export Button               ← SAP Button (Type=Secondary)
+L2    Filters                           ← region
+L3      Filter Bar                      ← SAP FilterBar instance
+L4        Supplier Filter               ← SAP FilterGroupItem
+L4        Status Filter                 ← SAP FilterGroupItem
+L4        Date Range Filter             ← SAP FilterGroupItem
+L2    Main Content                      ← region
+L3      Responsive Table                ← SAP instance
+L4        PO Number Column              ← column group
+L4        Supplier Column               ← column group
+L4        Amount Column                 ← column group (ObjectNumber)
+L4        Status Column                 ← column group (ObjectStatus)
+L4        Row 1                         ← data row
+L5          PO Number                   ← text cell
+L5          Supplier Name               ← text cell
+L5          Amount                      ← SAP ObjectNumber
+L5          Status                      ← SAP ObjectStatus
+L2    Footer                            ← region
+L3      Pagination Bar                  ← SAP PaginationBar instance
 ```
 
 You can iterate on any part — change the floorplan, add a column, switch to mobile — before Claude builds anything.
