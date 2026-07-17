@@ -473,9 +473,9 @@ If output is wrong or guessing is happening: STOP. Open `docs/canonical-screens/
 </details>
 
 <details>
-<summary><strong>RULE 30</strong> — Measure the reference width first; default 1440px; snap-suggest standard breakpoints</summary>
+<summary><strong>RULE 30</strong> — Measure reference width is a mandatory pipeline step (same as RULE 7, enforced at ANALYZE stage)</summary>
 
-At the start of every analysis, measure or confirm the reference pixel width. Default 1440px for desktop. When close to 375/768/1440, suggest the standard breakpoint. The user's explicit width instruction always overrides any suggestion.
+RULE 30 makes RULE 7 a hard gate at the ANALYZE stage — it is not optional or best-effort. Before planning layout: measure the reference width, default 1440px, snap-suggest 375/768/1440 when close. User's explicit width always wins. See RULE 7 for the full description.
 
 </details>
 

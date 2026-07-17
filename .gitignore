@@ -41,3 +41,5 @@ node_modules/
 .claude/pending-learnings.jsonl
 .claude/.last-build-node
 knowledge/components/_archive/
+plugin/figma-builder/registry-bundle-full.json
+build/refresh-log-*.json
