@@ -272,7 +272,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 1 · HARD GATE</strong> — Registry gate: every component must exist in the registry</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Before any build, every component in the plan must have a matching file in `knowledge/components/registry/`. If a component is missing, the build stops — no exceptions. This prevents invented or hallucinated components from reaching Figma.</p>
+<blockquote>Before any build, every component in the plan must have a matching file in `knowledge/components/registry/`. If a component is missing, the build stops — no exceptions. This prevents invented or hallucinated components from reaching Figma.</blockquote>
 
 
 </details>
@@ -280,7 +280,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 2 · HARD GATE</strong> — Token whitelist: every colour must be one of the 80 mandatory SAP tokens</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">No raw hex colours are allowed anywhere in a build. Every fill must be one of the 80 tokens in `MANDATORY_TOKENS`. Raw hex = rejected by the plugin. This enforces theme-switchability and audit compliance.</p>
+<blockquote>No raw hex colours are allowed anywhere in a build. Every fill must be one of the 80 tokens in `MANDATORY_TOKENS`. Raw hex = rejected by the plugin. This enforces theme-switchability and audit compliance.</blockquote>
 
 
 </details>
@@ -288,7 +288,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 3 · STOP</strong> — Floorplan confirmation is mandatory before proceeding</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Claude proposes a floorplan (List Report, Object Page, Worklist, etc.) and must wait for your confirmation before doing anything else. The wrong floorplan wastes all downstream work.</p>
+<blockquote>Claude proposes a floorplan (List Report, Object Page, Worklist, etc.) and must wait for your confirmation before doing anything else. The wrong floorplan wastes all downstream work.</blockquote>
 
 
 </details>
@@ -296,7 +296,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 4</strong> — Only set non-default properties</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Don't set component properties that are already at their default value. It makes builds noisy and harder to read. Only write what actually needs to change.</p>
+<blockquote>Don't set component properties that are already at their default value. It makes builds noisy and harder to read. Only write what actually needs to change.</blockquote>
 
 
 </details>
@@ -304,7 +304,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 5</strong> — No raw pixel values or hardcoded font sizes</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Every size, spacing, and typography value must come from SAP Horizon tokens or design system steps — never hardcoded numbers. Hardcoded values break when the theme changes.</p>
+<blockquote>Every size, spacing, and typography value must come from SAP Horizon tokens or design system steps — never hardcoded numbers. Hardcoded values break when the theme changes.</blockquote>
 
 
 </details>
@@ -312,7 +312,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 6</strong> — No invented component names or properties</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">All component names, variant names, and property keys must come from the live SAP Web UI Kit. Never guess or invent them. Use the registry or `search_design_system` to verify.</p>
+<blockquote>All component names, variant names, and property keys must come from the live SAP Web UI Kit. Never guess or invent them. Use the registry or `search_design_system` to verify.</blockquote>
 
 
 </details>
@@ -320,7 +320,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 7</strong> — Measure the reference width before building (default 1440px)</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Read the pixel width of any reference image before planning the layout. Default to 1440px if no reference. Snap-suggest standard breakpoints (375 mobile / 768 tablet / 1440 desktop) when close. A user-specified width always wins.</p>
+<blockquote>Read the pixel width of any reference image before planning the layout. Default to 1440px if no reference. Snap-suggest standard breakpoints (375 mobile / 768 tablet / 1440 desktop) when close. A user-specified width always wins.</blockquote>
 
 
 </details>
@@ -328,7 +328,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 8</strong> — Rendering conventions: Auto Layout, no absolute positioning</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">All layouts use Figma Auto Layout. No absolute-positioned frames except where the SAP kit explicitly requires it (e.g. overflow icon buttons beside DPH). No empty spacer frames.</p>
+<blockquote>All layouts use Figma Auto Layout. No absolute-positioned frames except where the SAP kit explicitly requires it (e.g. overflow icon buttons beside DPH). No empty spacer frames.</blockquote>
 
 
 </details>
@@ -336,7 +336,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 9</strong> — Density must match the use case (Cozy vs Compact)</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Choose the correct SAP density for the screen type. Compact for data-heavy desktop screens. Cozy for touch / mobile / action-oriented screens. Never mix densities within a screen.</p>
+<blockquote>Choose the correct SAP density for the screen type. Compact for data-heavy desktop screens. Cozy for touch / mobile / action-oriented screens. Never mix densities within a screen.</blockquote>
 
 
 </details>
@@ -344,7 +344,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 10</strong> — Responsive breakpoints must be planned</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Every screen plan must state its target breakpoint and note how it responds at other sizes. A desktop screen that has never considered mobile is incomplete.</p>
+<blockquote>Every screen plan must state its target breakpoint and note how it responds at other sizes. A desktop screen that has never considered mobile is incomplete.</blockquote>
 
 
 </details>
@@ -352,7 +352,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 11</strong> — Incremental edit: change the minimum needed</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">When updating an existing screen, change only what was asked. Don't reorganise, rename, or "improve" untouched areas. Scope changes tightly to avoid regressions.</p>
+<blockquote>When updating an existing screen, change only what was asked. Don't reorganise, rename, or "improve" untouched areas. Scope changes tightly to avoid regressions.</blockquote>
 
 
 </details>
@@ -360,7 +360,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 12</strong> — Reference-First: a reference is business intent, not a pixel template</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">A reference image or Figma URL tells you what the business needs. It does not dictate exact pixel layout. Adapt to SAP floorplan conventions — never copy reference visuals literally.</p>
+<blockquote>A reference image or Figma URL tells you what the business needs. It does not dictate exact pixel layout. Adapt to SAP floorplan conventions — never copy reference visuals literally.</blockquote>
 
 
 </details>
@@ -368,7 +368,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 13</strong> — Adopt-working-pattern: if a proven pattern exists, use it</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">If a confirmed working pattern exists in memory or the canonical screens (e.g. Progress Row, DPH clone method), use it exactly. Don't redesign what's already been solved and confirmed.</p>
+<blockquote>If a confirmed working pattern exists in memory or the canonical screens (e.g. Progress Row, DPH clone method), use it exactly. Don't redesign what's already been solved and confirmed.</blockquote>
 
 
 </details>
@@ -376,7 +376,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 14</strong> — Container-First: build the container before filling children</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Always create and configure the outer frame/container first, then append children. Building children before their parent causes sizing and Auto Layout failures.</p>
+<blockquote>Always create and configure the outer frame/container first, then append children. Building children before their parent causes sizing and Auto Layout failures.</blockquote>
 
 
 </details>
@@ -384,7 +384,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 15</strong> — Positive feedback = canonical: freeze it, don't improve it</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">When you confirm a result is correct ("perfect", "bravo", "exactly"), that result becomes the canonical reference for similar future builds. Never silently revert or "improve" a confirmed result.</p>
+<blockquote>When you confirm a result is correct ("perfect", "bravo", "exactly"), that result becomes the canonical reference for similar future builds. Never silently revert or "improve" a confirmed result.</blockquote>
 
 
 </details>
@@ -392,7 +392,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 16</strong> — Post-build learning: capture exact measurements after confirmation</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">After a confirmed quality build, record exact token values, padding, gap, and font roles into `knowledge/guidelines/token-assignment-rules.md`. This is how confirmed knowledge becomes permanent.</p>
+<blockquote>After a confirmed quality build, record exact token values, padding, gap, and font roles into `knowledge/guidelines/token-assignment-rules.md`. This is how confirmed knowledge becomes permanent.</blockquote>
 
 
 </details>
@@ -400,7 +400,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 17</strong> — Divide-and-conquer: never analyse a reference as one flat image</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Split every reference into labelled sectors (A, B, C…). Analyse each sector fully before moving to the next. Merge the sector analyses into the overall plan. This prevents missed elements and wrong component choices. See `skill/sap-visual-reading/sector-analysis.md`.</p>
+<blockquote>Split every reference into labelled sectors (A, B, C…). Analyse each sector fully before moving to the next. Merge the sector analyses into the overall plan. This prevents missed elements and wrong component choices. See `skill/sap-visual-reading/sector-analysis.md`.</blockquote>
 
 
 </details>
@@ -408,7 +408,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 18</strong> — Spatial reconstruction: measure first, never assume dimensions</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Before placing any element, measure or infer its size from the reference. Never use arbitrary numbers. Every dimension should be traceable to a reference measurement or an SAP spacing token.</p>
+<blockquote>Before placing any element, measure or infer its size from the reference. Never use arbitrary numbers. Every dimension should be traceable to a reference measurement or an SAP spacing token.</blockquote>
 
 
 </details>
@@ -416,7 +416,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 19 · HARD GATE</strong> — ASCII wireframe before build — you must approve it</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Before any `use_figma` call, Claude shows an ASCII wireframe of the full screen and stops. You must explicitly approve it before the build starts. This gate exists even when the analysis is cached. Violated twice on 2026-07-14 — never again.</p>
+<blockquote>Before any `use_figma` call, Claude shows an ASCII wireframe of the full screen and stops. You must explicitly approve it before the build starts. This gate exists even when the analysis is cached. Violated twice on 2026-07-14 — never again.</blockquote>
 
 
 </details>
@@ -424,7 +424,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 20 · MANDATORY</strong> — Reasoning Brain: produce structured artifacts before designing the component hierarchy</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Before selecting components, Claude must produce: business intent, persona, task, data, actions, states, constraints, context, interaction model, floorplan scoring. These 7 artifacts are the evidence base for every downstream decision.</p>
+<blockquote>Before selecting components, Claude must produce: business intent, persona, task, data, actions, states, constraints, context, interaction model, floorplan scoring. These 7 artifacts are the evidence base for every downstream decision.</blockquote>
 
 
 </details>
@@ -432,7 +432,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 21 · MANDATORY</strong> — QA Certification: Zero-Defect + self-repair before handoff</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Before reporting a build complete, Claude runs its own QA pass: 0 raw hex fills, 0 hardcoded fonts, 0 `Frame N` layer names, 0 Spacer frames, all SAP instances. If any fail, self-repair before handing off.</p>
+<blockquote>Before reporting a build complete, Claude runs its own QA pass: 0 raw hex fills, 0 hardcoded fonts, 0 `Frame N` layer names, 0 Spacer frames, all SAP instances. If any fail, self-repair before handing off.</blockquote>
 
 
 </details>
@@ -440,7 +440,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 22</strong> — Never use a component for a purpose it wasn't designed for</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Don't repurpose SAP components outside their intended role (e.g. using a MessageStrip as a status badge). If no exact match exists, use the closest correct component and document the deviation.</p>
+<blockquote>Don't repurpose SAP components outside their intended role (e.g. using a MessageStrip as a status badge). If no exact match exists, use the closest correct component and document the deviation.</blockquote>
 
 
 </details>
@@ -448,7 +448,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 23 · SOURCE OF TRUTH</strong> — SAP Web UI Kit is the only source for components, tokens, and icons</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Every component, every token, every icon must come from the SAP Web UI Kit (file `SILcWzK5uFghKun9jx6D7c`). No invented components. No non-SAP icon sets. No custom tokens. This is non-negotiable.</p>
+<blockquote>Every component, every token, every icon must come from the SAP Web UI Kit (file `SILcWzK5uFghKun9jx6D7c`). No invented components. No non-SAP icon sets. No custom tokens. This is non-negotiable.</blockquote>
 
 
 </details>
@@ -456,7 +456,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 24 · MANDATORY</strong> — Live kit resolution: read component properties from the live kit, not from memory</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Variant property names and options must be verified against the live kit — not assumed from UI5 vocabulary. Example: `ObjectStatus` uses `Semantic` not `State`. `Button` `Type` has no `Emphasized` or `Transparent` options.</p>
+<blockquote>Variant property names and options must be verified against the live kit — not assumed from UI5 vocabulary. Example: `ObjectStatus` uses `Semantic` not `State`. `Button` `Type` has no `Emphasized` or `Transparent` options.</blockquote>
 
 
 </details>
@@ -464,7 +464,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 25 · DEFAULT</strong> — MCP-First: build via use_figma with real SAP instances and name tags</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">The default build path is `use_figma` with real SAP kit instances imported via `importComponentSetByKeyAsync`. Every fill tagged `[sapToken]`, every text tagged `[typo:role]`, every icon placeholder `◆ICON/name`. Root frame named `◆SAP-UNBOUND/ScreenName`. The plugin binds tokens after.</p>
+<blockquote>The default build path is `use_figma` with real SAP kit instances imported via `importComponentSetByKeyAsync`. Every fill tagged `[sapToken]`, every text tagged `[typo:role]`, every icon placeholder `◆ICON/name`. Root frame named `◆SAP-UNBOUND/ScreenName`. The plugin binds tokens after.</blockquote>
 
 
 </details>
@@ -472,7 +472,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 26 · MANDATORY</strong> — Visual Design Intelligence: run the full sap-visual-reading analysis on every reference</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">Any reference image or Figma URL triggers the full 8-stage VDI analysis (or loads the SHA-1 semantic-model cache for a 96% token saving). This produces the 12-part structured output that grounds every build decision. Never skip it.</p>
+<blockquote>Any reference image or Figma URL triggers the full 8-stage VDI analysis (or loads the SHA-1 semantic-model cache for a 96% token saving). This produces the 12-part structured output that grounds every build decision. Never skip it.</blockquote>
 
 
 </details>
@@ -480,7 +480,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 27</strong> — Confirmation triggers ground-truth capture</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">When you confirm a result is correct, the `ground-truth-updater` agent writes exact measurements (padding, gap, font role, token) into `knowledge/guidelines/token-assignment-rules.md`. This closes the learning loop and seeds future builds.</p>
+<blockquote>When you confirm a result is correct, the `ground-truth-updater` agent writes exact measurements (padding, gap, font role, token) into `knowledge/guidelines/token-assignment-rules.md`. This closes the learning loop and seeds future builds.</blockquote>
 
 
 </details>
@@ -488,7 +488,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 28</strong> — Build reads SAP_BUILD_MANIFEST.md only — never code.js — one-shot build, ≤1 screenshot</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">The build agent reads exactly one file: `SAP_BUILD_MANIFEST.md` (~2k tokens). It never reads `code.js` (45k tokens — blocked by hook), never bulk-loads registry JSONs. One `use_figma` call. One verification screenshot. If wrong after one corrective re-run, stop and escalate.</p>
+<blockquote>The build agent reads exactly one file: `SAP_BUILD_MANIFEST.md` (~2k tokens). It never reads `code.js` (45k tokens — blocked by hook), never bulk-loads registry JSONs. One `use_figma` call. One verification screenshot. If wrong after one corrective re-run, stop and escalate.</blockquote>
 
 
 </details>
@@ -496,7 +496,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 29</strong> — Visual Recovery Protocol: when lost or wrong, stop and read the canonical reference</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">If output is wrong or guessing is happening: STOP. Open `docs/canonical-screens/Claude to Figma SAP Application.fig`. Call `get_design_context` on the closest canonical node. Extract ground truth. Build once from that. Never retry blindly.</p>
+<blockquote>If output is wrong or guessing is happening: STOP. Open `docs/canonical-screens/Claude to Figma SAP Application.fig`. Call `get_design_context` on the closest canonical node. Extract ground truth. Build once from that. Never retry blindly.</blockquote>
 
 
 </details>
@@ -504,7 +504,7 @@ Every build is governed by these rules. Violating any stops generation.
 <details>
 <summary><strong>RULE 30</strong> — Measure reference width is a mandatory pipeline step (same as RULE 7, enforced at ANALYZE stage)</summary>
 
-<p style="font-size:13px;color:#57606a;margin:8px 0 4px">RULE 30 makes RULE 7 a hard gate at the ANALYZE stage — it is not optional or best-effort. Before planning layout: measure the reference width, default 1440px, snap-suggest 375/768/1440 when close. User's explicit width always wins. See RULE 7 for the full description.</p>
+<blockquote>RULE 30 makes RULE 7 a hard gate at the ANALYZE stage — it is not optional or best-effort. Before planning layout: measure the reference width, default 1440px, snap-suggest 375/768/1440 when close. User's explicit width always wins. See RULE 7 for the full description.</blockquote>
 
 
 </details>
