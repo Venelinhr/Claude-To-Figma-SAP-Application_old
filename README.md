@@ -160,7 +160,6 @@ You: "Build a Purchase Orders approval screen"
   │  EXECUTE  (one use_figma call)                  │
   │  • Parallel import all SAP components           │
   │  • Clone canonical → clear slot → repopulate   │
-  │  • Name-tag fills [sapToken] · text [typo:role] │
   │  • Real SAP instances only — never createFrame()│
   └────────────────────┬────────────────────────────┘
                        │
@@ -170,7 +169,7 @@ You: "Build a Purchase Orders approval screen"
   │  • Compare vs reference                         │
   │  • You click "Bind SAP Tokens" in the plugin    │
   │    → live SAP Horizon variables bound           │
-  │    → 4 §7 a11y validators run automatically     │
+  │    → 4 accessibility validators run             │
   └────────────────────┬────────────────────────────┘
                        │
                        ▼
@@ -189,13 +188,24 @@ You: "Build a Purchase Orders approval screen"
                                         canonical clone ready
 ```
 
-**Yes, it loops.** LEARN feeds directly into the next ANALYZE:
-- The matching lesson surfaces automatically before Claude starts — right pattern, right components, confirmed token values
-- Claude clones from the verified canonical screen, not from scratch
-- Each confirmed build raises the floor for the next — you never debug the same problem twice
+**Yes, it loops.** LEARN feeds directly into the next ANALYZE — the matching lesson surfaces automatically, Claude clones from the verified canonical screen, and each confirmed build raises the floor for the next.
 
-**Nothing gets generated until you say "approved".**
-Refinements happen on the ASCII wireframe — free and instant — not after the plugin already built the screen.
+**Nothing gets generated until you say "approved".** Refinements happen on the ASCII wireframe — free and instant — not after the plugin already built the screen.
+
+### What happens at each stage
+
+| Stage | What Claude does | Key rule |
+|---|---|---|
+| **ANALYZE** | Reads the closest canonical node · sector-by-sector visual reading · measures reference width · scores floorplan | Never skip |
+| **PLAN** | Maps content to slot structure · lists property keys · proposes L1–L5 layer tree · selects clone source | Before any code |
+| **EXECUTE** | Single `use_figma` call · Clone-Clear-Repopulate · parallel component imports · real SAP instances only | One shot |
+| **VALIDATE** | One screenshot · compare vs reference · plugin binds tokens · 4 accessibility validators | One shot |
+| **LEARN** | Approval → canonical saved · correction → lesson captured · next build recalls the right lesson automatically | Every build |
+
+### 3 Hard Build Rules
+1. **Real SAP instances only** — every UI element is a real SAP Web UI Kit component. Never a plain frame.
+2. **L1–L5 semantic naming** — No `Frame 1`, no `(SAP)` suffix, no redundant nesting. Layers readable without opening any node.
+3. **No Spacer frames** — spacing via Auto Layout only (`itemSpacing`, `SPACE_BETWEEN`, `layoutGrow`).
 
 ---
 
@@ -270,25 +280,6 @@ Purchase Orders
 ```
 
 You can iterate on any part — change the floorplan, add a column, switch to mobile — before Claude builds anything.
-
----
-
-## ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN
-
-The methodology behind every build. 14 consecutive failed iterations traced to one root cause: building without analysis first.
-
-| Stage | What happens | Key rule |
-|---|---|---|
-| **ANALYZE** | `get_design_context` on nearest canonical node · sector-by-sector visual reading · measure reference width · floorplan scored | Never skip |
-| **PLAN** | Map content to slot structure · list property keys · identify clone source · propose L1–L5 layer tree | Before any code |
-| **EXECUTE** | Single `use_figma` call · Clone-Clear-Repopulate · parallel imports · real SAP instances only | One shot |
-| **VALIDATE** | One screenshot · compare vs reference · plugin binds tokens · 4 a11y validators | One shot |
-| **LEARN** | Approval → save canonical · correction → capture lesson · next build recalls matching lesson | Every build |
-
-### 3 Hard Build Rules
-1. **Real SAP instances only** — every UI element is a real SAP Web UI Kit component. Never a plain frame.
-2. **L1–L5 semantic naming** — No `Frame 1`, no `(SAP)` suffix, no redundant nesting. Layers readable without opening any node.
-3. **No Spacer frames** — spacing via Auto Layout only (`itemSpacing`, `SPACE_BETWEEN`, `layoutGrow`).
 
 ---
 
@@ -569,29 +560,7 @@ Image + text → both run, merged. Image only → Stage 2. Text only → Stage 3
 
 ## The Loop — Learning · Improving · Better Ecosystem
 
-The system gets smarter with every session.
-
-```
-User: "bravo" / "not perfect" / "close but…" / "great but you broke X"
-  │
-  ▼ feedback-learn.sh (UserPromptSubmit hook — fires automatically)
-  │   • negation guard  ("not perfect" → correction, not praise)
-  │   • hedged detection  ("close but", "not quite", "isn't what I meant")
-  │   • mixed handling  (praise + correction → one row, asked to disambiguate)
-  │   • word-boundaries  ("bad" ≠ "badge", "broke" ≠ "brokerage")
-  │
-  ▼ writes durable entry → .claude/pending-learnings.jsonl  (survives session)
-  │
-  ▼ verify-learnings.sh (Stop hook) — re-reminds at turn end if uncaptured
-  │
-  ▼ surface-learnings.sh (SessionStart) — resurfaces across sessions
-  │
-  ▼ recall-lessons.sh (UserPromptSubmit) — surfaces the MATCHING lesson
-      "build a SideNav" → pulls the SideNav lesson, not all 60 flat
-      "purchase order"  → pulls the PO canonical, not generic list-report
-```
-
-**Four self-improving loops run automatically:**
+The system gets smarter with every session. Four self-improving loops run automatically:
 
 **A · Quality on every edit**
 Every time a component definition is updated, the plugin bundle rebuilds automatically. No manual step — the change is live immediately.
