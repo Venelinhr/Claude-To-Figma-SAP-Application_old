@@ -645,16 +645,16 @@ No private Figma access needed — the file ships with the repo and works offlin
 
 **5 servers auto-installed by `install.sh`.** 3 optional add-ons.
 
-| MCP | What | Auto? |
+| MCP | What it does | When it runs |
 |---|---|---|
-| `figma` | Live Figma read/write — `get_design_context`, `use_figma`, `get_screenshot` | ✅ (needs token) |
-| `chrome-devtools` | Fetch live SAP Fiori guideline pages when local cache is stale | ✅ |
-| `sap-fiori-guidelines` | 154 cached Fiori guidelines — offline, fast, official | ✅ |
-| `sap-figma-community` | Registry drift detection — catches stale component keys before build failures | ✅ |
-| `sap-application-analysis` | Screenshot/wireframe → SAP region types + floorplan scoring | ✅ |
-| `sapui5` | Live UI5 API reference — properties, enums (`Semantic` not `State`) | ➖ optional |
-| `context7` | Live library docs for correct API signatures | ➖ optional |
-| `fundamental-styles` | 120+ CSS components, 1,522 design tokens (edge-case fallback) | ➖ optional |
+| `figma` | Live Figma read/write — reads screen structure, builds components, takes screenshots | Every build — reads the canonical reference, executes `use_figma`, verifies the result |
+| `sap-fiori-guidelines` | 154 cached SAP Fiori guidelines — when/how to use each component | ANALYZE stage — Claude checks component guidelines before proposing any component |
+| `sap-application-analysis` | Maps screenshots/wireframes to SAP region types and floorplan scores | When you attach a reference image — turns visual zones into SAP vocabulary |
+| `sap-figma-community` | Detects stale component keys in the registry vs the live SAP kit | On demand — when Claude suspects a component key may be outdated |
+| `chrome-devtools` | Fetches live SAP Fiori guideline pages from the web | Fallback only — when a component isn't in the local guideline cache |
+| `sapui5` *(optional)* | Live UI5 API — exact property names, enums, aggregations | When a component property is uncertain (e.g. `Semantic` not `State` for ObjectStatus) |
+| `context7` *(optional)* | Live library docs for correct API signatures | When writing UI5 code that calls specific methods |
+| `fundamental-styles` *(optional)* | 120+ CSS components, 1,522 design tokens | Edge-case fallback when SAP Web UI Kit registry doesn't cover a pattern |
 
 ---
 
