@@ -172,5 +172,16 @@ else
 fi
 
 echo ""
+echo "$(printf '─%.0s' {1..60})"
+echo "Reuse integrity (canonical-index ↔ reuse-outcomes-ledger — RULE 31)"
+echo "$(printf '─%.0s' {1..60})"
+if node build/check-reuse-integrity.js; then
+  echo "  ✓ reuse library consistent"
+else
+  echo -e "${RED}Reuse integrity drift — a confirmed build may be missing from canonical-index.json${NC}"
+  exit 1
+fi
+
+echo ""
 echo "All specs within baseline. Pipeline is clean."
 exit 0

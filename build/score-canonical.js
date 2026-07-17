@@ -103,9 +103,17 @@ function main() {
 
   const index = JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8'));
 
-  // Score Tier 2 (personal) first if present, else Tier 1 (shipped)
-  const tier2 = (index.tiers && index.tiers.tier2) || [];
+  // Tier 1 ships in the tracked index. Tier 2 (personal, confirmed) lives in a gitignored
+  // side file canonical-index-tier2.json — merge it when present.
   const tier1 = (index.tiers && index.tiers.tier1) || [];
+  let tier2 = (index.tiers && index.tiers.tier2) || [];
+  const TIER2_PATH = path.join(__dirname, '..', 'skill', 'references', 'canonical-index-tier2.json');
+  if (tier2.length === 0 && fs.existsSync(TIER2_PATH)) {
+    try {
+      const t2 = JSON.parse(fs.readFileSync(TIER2_PATH, 'utf8'));
+      tier2 = t2.tier2 || t2.tiers?.tier2 || [];
+    } catch (e) { /* personal file optional */ }
+  }
 
   // Tier 2 entries inherit fingerprint from their Tier 1 parent (inheritsFrom)
   const tier1ById = Object.fromEntries(tier1.map(c => [c.id, c]));

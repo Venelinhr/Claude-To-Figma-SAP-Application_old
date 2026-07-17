@@ -48,3 +48,4 @@ build/refresh-log-*.json
 skill/references/canonical-index-tier2.json
 semantic-models/project-knowledge-*.md
 .claude/.reuse-declared
+.claude/.delta-spec.json

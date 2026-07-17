@@ -50,12 +50,12 @@ function main() {
   const outcome = a.outcome || 'confirmed';
   const date = a.date || new Date().toISOString().slice(0, 10); // caller may pass --date to avoid nondeterminism
 
-  // ── 1. Update canonical-index.json Tier 2 ──
-  let idx;
-  try { idx = JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8')); }
-  catch (e) { console.error('✗ Cannot read canonical-index.json:', e.message); process.exit(1); }
-  idx.tiers = idx.tiers || {};
-  idx.tiers.tier2 = idx.tiers.tier2 || [];
+  // ── 1. Update the PERSONAL Tier 2 file (gitignored — never the tracked index) ──
+  const TIER2_PATH = path.join(PROJ, 'skill', 'references', 'canonical-index-tier2.json');
+  let t2doc;
+  try { t2doc = JSON.parse(fs.readFileSync(TIER2_PATH, 'utf8')); }
+  catch (e) { t2doc = { version: '1.0', description: 'Personal Tier 2 canonicals (confirmed builds in YOUR Figma file). Gitignored — never shipped.', tier2: [] }; }
+  t2doc.tier2 = t2doc.tier2 || [];
 
   const entry = {
     id: node,
@@ -67,15 +67,15 @@ function main() {
     inheritsFrom: base,
   };
 
-  const existingIdx = idx.tiers.tier2.findIndex(e => e.id === node || e.figmaNode === node);
+  const existingIdx = t2doc.tier2.findIndex(e => e.id === node || e.figmaNode === node);
   if (existingIdx >= 0) {
-    idx.tiers.tier2[existingIdx] = { ...idx.tiers.tier2[existingIdx], ...entry };
+    t2doc.tier2[existingIdx] = { ...t2doc.tier2[existingIdx], ...entry };
     console.log(`• Updated existing Tier 2 entry: ${node}`);
   } else {
-    idx.tiers.tier2.push(entry);
+    t2doc.tier2.push(entry);
     console.log(`✓ Added Tier 2 canonical: ${name} (${node})`);
   }
-  fs.writeFileSync(INDEX_PATH, JSON.stringify(idx, null, 2) + '\n');
+  fs.writeFileSync(TIER2_PATH, JSON.stringify(t2doc, null, 2) + '\n');
 
   // ── 2. Append to reuse-outcomes-ledger.md ──
   let ledger = '';

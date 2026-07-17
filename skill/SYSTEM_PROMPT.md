@@ -1183,7 +1183,9 @@ When a user connects their own Figma file for the first time, run the **Figma Pr
 
 **Every confirmed build updates the ledger MECHANICALLY:** when the user confirms a result ("perfect", "bravo", "exactly"), run `node build/record-canonical.js --node "<nodeId>" --name "<screen>" --base "<canonical>" --level <N> --score <S> --outcome "<word>" --date "<YYYY-MM-DD>"`. This appends the ledger row AND adds the Tier 2 canonical entry in one step — the library grows automatically, not by hand-editing.
 
-**The gate is enforced, not just narrated:** before a `use_figma` build, write the reuse decision to the marker: `echo "Level <N> — <canonical>" > .claude/.reuse-declared`. The `guard-reuse-gate.sh` PreToolUse hook checks this marker and reminds if it's missing. Score with `node build/score-canonical.js`, validate the delta-spec with `node build/validate-delta-spec.js`.
+**The gate is ENFORCED (blocking), not just narrated:** before a `use_figma` build, record the reuse decision as JSON: `echo '{"level":<N>,"score":<S>,"baseCanonical":"<id-or-none>","deltaSpec":"<path-or-null>"}' > .claude/.reuse-declared`. The `guard-reuse-gate.sh` PreToolUse hook **blocks the build (exit 2)** if the marker is missing or invalid — it detects builds via `createInstance`/`createFrame`/`.clone(`, re-validates the marker (level 1–5, score↔level consistency, base exists, delta-spec passes `validate-delta-spec.js`), and clears the marker each session + after each build so a stale decision can't satisfy the next build. Score with `node build/score-canonical.js`.
+
+**Native-frame fallback is FAIL-CLOSED:** if `importComponentSetByKeyAsync` fails, ABORT — never silently substitute `figma.createFrame()`. After a build, a low SAP-instance ratio is caught by `node build/lint-instance-ratio.js` (a screen that's mostly plain FRAME/TEXT is a wireframe, not an implementation).
 
 **Why:** building the same architecture twice wastes tokens, produces inconsistent results, and discards proven validated work. Every approved screen is a permanent asset. Clone, configure, extend — don't regenerate.
 

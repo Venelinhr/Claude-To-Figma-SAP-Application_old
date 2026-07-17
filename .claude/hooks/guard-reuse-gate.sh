@@ -1,51 +1,93 @@
 #!/bin/bash
-# guard-reuse-gate.sh — PreToolUse hook for the Canonical Pattern Library gate (RULE 31).
+# guard-reuse-gate.sh — PreToolUse hook · Canonical Pattern Library gate (RULE 31). BLOCKING.
 #
 # Fires before a use_figma build. RULE 31 requires that BEFORE building, Claude has:
-#   1. Scored the request against canonical-index.json (ideally via build/score-canonical.js)
-#   2. Declared a reuse level (1-5) + base canonical
-#   3. Produced a delta-spec for Level 1-4
+#   1. Scored the request against the canonical library (build/score-canonical.js)
+#   2. Recorded a VALID reuse decision (level 1-5 + base canonical) to .claude/.reuse-declared
+#   3. For Level 1-4: a delta-spec that passes build/validate-delta-spec.js
 #
-# A Stop hook cannot query Figma, so this PreToolUse reminder is the enforcement point:
-# it fires the moment a use_figma build is attempted and reminds Claude to confirm the
-# reuse decision was made and (if a delta-spec file was written) validated.
+# The marker .claude/.reuse-declared is a JSON artifact:
+#   {"level":1,"score":94,"baseCanonical":"750:174925","deltaSpec":".claude/.delta-spec.json"}
+# The hook re-validates it (level range, score consistency, base exists, delta-spec valid for L1-4).
+# If a BUILD is detected (createInstance / createFrame / .clone()) and the marker is missing or
+# invalid → BLOCK (exit 2, stderr message to Claude). Read-only use_figma calls pass silently.
 #
-# The marker file .claude/.reuse-declared holds the current build's declared reuse level.
-# If it's absent when use_figma is about to run, the gate reminds. Advisory (exit 0, never blocks).
-#
-# Tool input arrives as JSON on stdin (.tool_name, .tool_input). Stdout -> context.
+# Tool input arrives as JSON on stdin (.tool_name, .tool_input). exit 2 = block; exit 0 = allow.
 INPUT=$(cat)
 TOOL=$(echo "$INPUT" | jq -r '.tool_name // empty')
-
-# Only care about the Figma write tool (MCP tool name contains "use_figma")
 echo "$TOOL" | grep -qi "use_figma" || exit 0
 
 PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 MARKER="$PROJ/.claude/.reuse-declared"
 
-# Is this a build (creating a screen) vs a small fix? Heuristic: look for importComponentSetByKeyAsync
-# or createInstance in the code — those signal a real build, not a tweak.
 CODE=$(echo "$INPUT" | jq -r '.tool_input.code // ""')
-IS_BUILD=false
-echo "$CODE" | grep -qE "importComponentSetByKeyAsync|createInstance|createFrame" && IS_BUILD=true
 
+# ── Detect a BUILD (vs a read-only inspect / tweak) ──
+# Includes .clone( — RULE 28's preferred clone-canonical path (was previously blind to it).
+IS_BUILD=false
+echo "$CODE" | grep -qE "importComponentSetByKeyAsync|createInstance|createFrame|\.clone\(" && IS_BUILD=true
 [ "$IS_BUILD" = true ] || exit 0
 
-if [ -f "$MARKER" ]; then
-  LEVEL=$(cat "$MARKER" 2>/dev/null | head -1)
-  echo "<reuse-gate status=\"declared\">Reuse decision on record for this build: $LEVEL. Proceeding. (RULE 31 satisfied.)</reuse-gate>"
-else
-  echo "<reuse-gate status=\"missing\">RULE 31 — Canonical Pattern Library gate: this is a use_figma BUILD but no reuse decision is on record.
+blockmsg() {
+  # exit 2 with stderr feedback is the documented PreToolUse "block" behavior.
+  echo "$1" >&2
+  exit 2
+}
 
-Before building you must have:
-1. Scored the request against the canonical library — run: node build/score-canonical.js --floorplan \"<fp>\" --regions <r1,r2> --components <c1,c2>
-2. Chosen a reuse level (1-5) and base canonical from the top match
-3. For Level 1-4: produced a delta-spec (preserve/replace/add/remove) — validate it: node build/validate-delta-spec.js <spec.json>
-4. Recorded the decision: echo \"Level N — <canonical>\" > .claude/.reuse-declared
+# ── No marker → block ──
+if [ ! -f "$MARKER" ]; then
+  blockmsg "⛔ RULE 31 BLOCKED — use_figma BUILD attempted with no reuse decision on record.
 
-If you already scored and this is a genuine Level 5 (no match ≥60%), write: echo \"Level 5 — new build (no canonical ≥60%)\" > .claude/.reuse-declared
+Before building you MUST:
+1. Score the request:   node build/score-canonical.js --floorplan \"<fp>\" --regions <r1,r2> --components <c1,c2>
+2. Pick the top match + reuse level (1-5).
+3. For Level 1-4, write a delta-spec and validate it:  node build/validate-delta-spec.js <spec.json>
+4. Record the decision as JSON:
+   echo '{\"level\":<N>,\"score\":<S>,\"baseCanonical\":\"<id-or-none>\",\"deltaSpec\":\"<path-or-null>\"}' > .claude/.reuse-declared
 
-Do NOT rebuild from scratch a screen that a canonical could satisfy. Reuse > rebuild.</reuse-gate>"
+If this is a genuine Level 5 (no canonical scored >=60):
+   echo '{\"level\":5,\"score\":0,\"baseCanonical\":\"none\",\"deltaSpec\":null}' > .claude/.reuse-declared
+
+Reuse > rebuild. Do not rebuild a screen a canonical could satisfy."
 fi
 
+# ── Marker exists — validate it as JSON ──
+LEVEL=$(jq -r '.level // empty' "$MARKER" 2>/dev/null)
+SCORE=$(jq -r '.score // empty' "$MARKER" 2>/dev/null)
+BASE=$(jq -r '.baseCanonical // empty' "$MARKER" 2>/dev/null)
+DELTA=$(jq -r '.deltaSpec // empty' "$MARKER" 2>/dev/null)
+
+if [ -z "$LEVEL" ]; then
+  blockmsg "⛔ RULE 31 BLOCKED — .claude/.reuse-declared is not valid JSON (no .level).
+Rewrite it: echo '{\"level\":<N>,\"score\":<S>,\"baseCanonical\":\"<id>\",\"deltaSpec\":\"<path-or-null>\"}' > .claude/.reuse-declared"
+fi
+
+# level 1-5
+case "$LEVEL" in
+  1|2|3|4|5) ;;
+  *) blockmsg "⛔ RULE 31 BLOCKED — reuse level '$LEVEL' invalid (must be 1-5)." ;;
+esac
+
+# Level ↔ score consistency (matches score-canonical.js thresholds)
+if [ "$LEVEL" = "1" ] && [ -n "$SCORE" ]; then
+  awk "BEGIN{exit !($SCORE < 85)}" && blockmsg "⛔ RULE 31 BLOCKED — Level 1 needs score >=85, got $SCORE. Re-score or drop to Level 2/3."
+fi
+if [ "$LEVEL" = "5" ] && [ -n "$SCORE" ]; then
+  awk "BEGIN{exit !($SCORE >= 60)}" && blockmsg "⛔ RULE 31 BLOCKED — Level 5 (new build) but score $SCORE >=60. A canonical likely exists — reuse it."
+fi
+
+# Level 1-4 must name a base canonical and (if a delta-spec path is given) validate it
+if [ "$LEVEL" != "5" ]; then
+  if [ -z "$BASE" ] || [ "$BASE" = "none" ]; then
+    blockmsg "⛔ RULE 31 BLOCKED — Level $LEVEL requires a baseCanonical (got '$BASE'). Set it or use Level 5."
+  fi
+  if [ -n "$DELTA" ] && [ "$DELTA" != "null" ] && [ -f "$PROJ/$DELTA" ]; then
+    if ! node "$PROJ/build/validate-delta-spec.js" "$PROJ/$DELTA" >/dev/null 2>&1; then
+      blockmsg "⛔ RULE 31 BLOCKED — delta-spec $DELTA failed validation. Run: node build/validate-delta-spec.js $DELTA"
+    fi
+  fi
+fi
+
+# All checks pass — allow, with a confirming note
+echo "<reuse-gate status=\"passed\">RULE 31 satisfied: Level $LEVEL · base $BASE · score ${SCORE:-—}. Building.</reuse-gate>"
 exit 0
