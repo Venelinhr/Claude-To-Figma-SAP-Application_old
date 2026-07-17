@@ -1,5 +1,8 @@
 # SAP Design Pattern Library — Distilled Rules from Reference Study
 
+> Master index of confirmed SAP Fiori design patterns — distilled rules from reference analysis.
+
+
 > Generated 2026-06-27 from analysis of 14 reference Figma frames across multiple
 > SAP product surfaces (AI Gateway, MCP Server Config, AI Orchestration, Purchase
 > Order, AKS_PKG). These are the cross-cutting rules an experienced SAP designer

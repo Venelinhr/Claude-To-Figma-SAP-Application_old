@@ -1,5 +1,8 @@
 # Pattern: MCP Server Config — Configurable Tab Section with Form
 
+> Pattern for configurable tab sections with form fields — confirmed structure and component choices.
+
+
 **References**: Figma nodes `138:94508`, `138:104652` ("Multi-Source Selection")
 **Studied**: 2026-06-27
 **Floorplan**: Object Page detail with Tab-driven form sections

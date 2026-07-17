@@ -1,5 +1,8 @@
 # Pattern: MCP Server Overview — Read-Only Detail with Header Actions
 
+> Pattern for read-only Object Page with header action buttons — confirmed layout and components.
+
+
 **References**: Figma nodes `138:116169` ("MCP HTTP"), `138:132462` ("Proxification of MCP Server")
 **Studied**: 2026-06-27
 **Floorplan**: Object Page detail (read-only / non-edit mode)

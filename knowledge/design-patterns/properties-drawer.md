@@ -1,5 +1,8 @@
 # Pattern: AI Orchestration — Properties Drawer (Bottom Sheet)
 
+> Pattern for properties drawer / bottom sheet — confirmed layout, slot structure, interaction model.
+
+
 **Reference**: Figma node `138:54412` ("AI Gateway Grounding")
 **Studied**: 2026-06-27
 **Floorplan**: Inspector / Properties Drawer (anchored to bottom of canvas)

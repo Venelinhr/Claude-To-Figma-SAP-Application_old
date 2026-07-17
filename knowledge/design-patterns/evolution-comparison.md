@@ -1,5 +1,8 @@
 # SAP Figma Design Agent — Evolution Comparison
 
+> Before/after comparison showing the evolution from native frames to real SAP instances.
+
+
 ## How the approach evolved across three stages
 
 ---

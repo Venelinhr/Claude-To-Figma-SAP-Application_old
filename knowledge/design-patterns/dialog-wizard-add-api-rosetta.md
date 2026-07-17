@@ -1,5 +1,8 @@
 # ROSETTA: Add API Wizard Dialog — The Canonical Designer Pattern
 
+> Canonical pattern for Add API wizard dialogs — step structure, slot injection, confirmed components.
+
+
 **Reference**: Figma node `138:17478` ("Dialog") in SAP-application-builder file
 **Discovered**: 2026-06-27 — the most architecturally complete SAP Dialog
 reference we've found. This is the definitive pattern for any

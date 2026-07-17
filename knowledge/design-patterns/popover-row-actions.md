@@ -1,5 +1,8 @@
 # Pattern: AI Gateway — Popover Multi-Action Menu
 
+> Pattern for multi-action popover menus on table rows — confirmed trigger, component, and positioning.
+
+
 **Reference**: Figma node `138:56893` ("AI Gateway - Proxification")
 **Studied**: 2026-06-27
 **Floorplan**: Overlay / Popover triggered from a row Actions column
