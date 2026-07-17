@@ -1,6 +1,6 @@
 # Architecture — Claude to Figma SAP Application
 
-Three-layer pipeline: Claude reasons → Figma MCP builds structure → plugin binds SAP tokens. Full technical reference.
+Claude reasons · Figma MCP builds structure · plugin binds SAP tokens. Full technical deep-dive.
 
 > Last updated: 2026-07-17
 

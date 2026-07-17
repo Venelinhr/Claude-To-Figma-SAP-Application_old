@@ -13,3 +13,5 @@ These files ship with the repo so teammates benefit from analysis already done.
 
 Format: frontmatter (`sourceImage`, `imageSha1`, `vdiVersion`, `floorplan`) + terse sections
 Zones / Components / Tokens / States / Notes. Declarative, not a transcript.
+
+Cache files are committed so teammates benefit from analysis already done — no need to re-analyse the same reference image.

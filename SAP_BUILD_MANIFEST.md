@@ -1,6 +1,6 @@
 # SAP_BUILD_MANIFEST — the ONLY file a build reads
 
-<!-- manifestVersion: 1.0.2 · updated: 2026-07-17 -->
+<!-- manifestVersion: 1.0.3 · verified production-ready 2026-07-17 -->
 <!-- generatedFrom: knowledge/components/registry/*.json, knowledge/guidelines/horizon-variable-keys.json -->
 <!-- lastSynced: 2026-07-16 -->
 

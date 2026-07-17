@@ -179,3 +179,5 @@ File: `p7zm5EMBk5DRRZdxNeJ4f5` (SAP application builder)
 **FILL sizing rule:** `layoutSizingHorizontal = 'FILL'` must be set AFTER `parent.appendChild(child)`. Never before.
 
 **Icon rule:** Never `appendChild()` into a SAP instance. Use `◆ICON/<name>` placeholder frames named per §6. Plugin swaps them at Bind time.
+
+<!-- reviewed 2026-07-17 -->
