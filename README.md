@@ -10,6 +10,17 @@
 
 ---
 
+## Examples — screens built by the system
+
+| Schedule Operation Dialog | Flight Result Card | Design System Governance |
+|:---:|:---:|:---:|
+| ![Schedule Operation](docs/canonical-screens/07-schedule-operation-monthly-end-date.png) | ![Flight Result Card](docs/canonical-screens/12-flight-result-card.png) | ![Design System Governance](docs/canonical-screens/01-design-system-governance-console.png) |
+| Complex dialog · date/time fields · recurrence pattern · monthly config | Custom card layout · flight legs · price zone · action CTA | FCL layout · SideNav · nested table · review calendar |
+
+All screens built from a plain-language description or reference image — real SAP components, live Horizon tokens, verified layer structure.
+
+---
+
 ## Installation
 
 ### What you get
