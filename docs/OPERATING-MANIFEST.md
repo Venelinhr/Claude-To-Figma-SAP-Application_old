@@ -28,6 +28,8 @@ Plan → Validate plan → Build (real SAP instances) → QA → Self-repair →
 
 → Authoritative source: `SYSTEM_PROMPT.md` "Your pipeline" Step 0–7 · RULE 28 (ANALYZE→PLAN→EXECUTE) · RULE A (Inspect Before Build) · Blocked Behaviors table · `docs/V2-REASONING-PIPELINE.md`
 → Analysis method: `skill/sap-visual-reading/SKILL.md` (8 stages) · RULE 17 (divide-and-conquer) · RULE 18 (spatial reconstruction)
+→ Reference reading: **sector-based** — divide into labeled sectors A/B/C…, analyze one at a time (A→B→C), local recommendation per sector, then merge (`skill/sap-visual-reading/sector-analysis.md`). VDI skill step, not a rule.
+→ Measure width FIRST (RULE 30): read the reference's pixel width before building; default 1440; snap-suggest 375/768/1440 when close; an explicit user width always wins (`SAP_BUILD_MANIFEST.md` §1b).
 
 ---
 
@@ -91,14 +93,15 @@ Acceptable **only if all** are true:
 
 | Need | Go to |
 |---|---|
-| A rule | `SYSTEM_PROMPT.md` (RULE 1–29) |
+| A rule | `SYSTEM_PROMPT.md` (RULE 1–30) |
 | Build knowledge (keys/tokens) | `SAP_BUILD_MANIFEST.md` (the only per-build read) |
 | What/where index | `docs/KNOWLEDGE-INDEX.md` |
 | Reference examples | `docs/canonical-screens/` + the `.fig` |
 | Pick which ref to clone | `skill/references/canonical-similarity-rubric.md` |
 | Pipeline stages | `docs/V2-REASONING-PIPELINE.md` |
-| Analysis method | `skill/sap-visual-reading/SKILL.md` |
+| Analysis method | `skill/sap-visual-reading/SKILL.md` + `sector-analysis.md` (sector-based A→B→C) |
+| Measure reference width | RULE 30 → `SAP_BUILD_MANIFEST.md` §1b (default 1440; snap 375/768/1440) |
 | Repair / learning | `docs/REPAIR-PATTERNS.md` |
 | Lost / wrong output | RULE 29 → clone nearest canonical |
 
-**System state (verify before quoting):** 29 RULEs · 8 agents · 18 canonical screens · 152 components · 154 guidelines · MCP-first default (RULE 25).
+**System state (verify before quoting):** 30 RULEs · 8 agents · 18 canonical screens · 152 components · 154 guidelines · MCP-first default (RULE 25).

@@ -24,7 +24,7 @@ SNIPPET=$(echo "$INPUT" | jq -rc '(.prompt // "") | .[0:200]')
 SNIPPET_JSON=$(printf '%s' "$SNIPPET" | jq -Rsc .)
 
 # ── Signal vocabularies (word-boundaried where a stem is ambiguous) ──
-POS='bravo|perfect|excellent|great job|great result|well done|good job|exactly|nailed it|love it|this is good|looks good|\bcorrect\b|👏|🎉|💯'
+POS='bravo|perfect|excellent|great job|great result|well done|good job|exactly|nailed it|love it|this is good|looks good|(that.?s|it.?s|is now|is|looks|totally) correct|👏|🎉|💯'
 CANON='canonical|use this as (a )?(reference|canonical)|this is the one|best result|ship it|rock solid|exactly right|save (this )?as canonical'
 NEG='\bwrong\b|\bbad\b|no good|not good|\bmistake\b|do not|don'"'"'t|\bnever\b|stop doing|not acceptable|violated|fix this|that.?s not|incorrect|\bbroke\b|\bbroken\b|regression|disaster'
 HEDGE='close but|not quite|not there yet|almost|isn'"'"'t what|not what i (meant|wanted|asked)|needs work|not right|still off'

@@ -34,6 +34,25 @@ hard-won lessons — each corresponds to a real failure mode in the Figma Plugin
 
 ---
 
+## ⭐ AFTER YOU CLONE — Post-Clone Rename & Cleanup Checklist (RULE 2 + RULE 28)
+
+Cloning a canonical node inherits its **internal frame names verbatim**. When you repurpose those frames for a different screen, the names lie: on the Purchase Orders build (804:44859) cloned from Activities View, a frame still named `Progress Row` held an **Amount**, and `Activity Number Row` held a **Supplier**. A misleading layer name violates RULE 2 (semantic naming) and misleads the next person who opens the file.
+
+**Run this checklist immediately after the clone's content pass, before reporting the node ID:**
+
+1. **Rename the root** to the new screen's L1 name — never leave the source screen's name (`Activities View` → `Purchase Orders`).
+2. **Walk every repurposed frame** and rename to its NEW role:
+   - `Progress Row` holding an amount → `Amount Row`
+   - `Activity Number Row` holding a supplier → `Supplier Row`
+   - Any L4/L5 whose content changed → name for what it now shows.
+3. **Leave untouched** frames that kept their original role AND real SAP component instances (`Object Status`, `Dynamic Page Header`, `Filter Bar` — preserve official kit names, RULE 2).
+4. **Find by content, not by name.** Clone re-IDs internals, so target the frame via `findOne`/`findAll` on its text characters or child, not a stale name string.
+5. **Verify:** every layer name reads true without opening the node. No `Frame N`, `Group`, `Rectangle`, no source-screen leftovers, no `[sapToken]`/`[typo:]` tags in final names.
+
+> Skipping this = a technically-correct screen with lying layer names. It passes visually and fails the naming audit. Confirmed cost on 804:44859.
+
+---
+
 ## Critical Figma Plugin API rules
 
 These must be followed in the plugin's `code.js`. Violating them causes silent failures or

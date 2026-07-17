@@ -24,8 +24,8 @@ declare -a MATCHES=()
 add() { echo "$PROMPT" | grep -qE "$1" && MATCHES+=("$2"); }
 
 add 'side ?nav|navigation (rail|menu|panel)|sidenav'      'SideNav|sidenav|Navigation'
-add 'list report|worklist|activities|list of|table of'     'List Report|Activities|worklist'
-add 'object page|steps|yanatest|detail (page|column)'      'yanatest|Object Page|Steps'
+add 'list report|worklist|activities|list (of|overview|report)|table of'  'List Report|Activities|worklist'
+add 'object page|steps|yanatest|detail (page|column|pane)'  'yanatest|Object Page|Steps'
 add 'dialog|modal|schedule op|recurrence'                  'Dialog|Schedule|schedule'
 add 'wizard|multi.?step|step [0-9]'                        'Wizard|wizard|step'
 add 'flight|card|result card'                              'card|Flight|Card'
@@ -35,6 +35,8 @@ add 'token|color|hex|typography|font'                      'token|Token|typograp
 add 'naming|layer name|l1|l5'                              'naming|Naming|L1-L5'
 add 'validate system|log|message|severity'                'Validate System|log'
 add 'governance|dashboard|fcl|flexible column'             'Governance|FCL|DynamicSideContent'
+add 'purchase order|procurement|\bpo\b|approval|approve|package detail'  'Purchase|procurement|PO|approval|Package'
+add 'outage'                                               'Outage'
 
 [ ${#MATCHES[@]} -gt 0 ] || exit 0
 
