@@ -113,22 +113,24 @@ Now every file where you work has access to the full SAP component set. Claude i
 
 ### Step 5 — Open the canonical screen file
 
-The repo includes `docs/canonical-screens/Claude to Figma SAP Application.fig` — 8 confirmed SAP screens that Claude clones from as a starting point for every build.
+The repo includes `docs/canonical-screens/Claude to Figma SAP Application.fig` — 8 confirmed SAP Fiori screens used as the quality baseline and clone source for every build.
 
-1. Open it in Figma
-2. Connect SAP Web UI Kit as a library in that file too
-3. Note the file ID — Claude uses it as a clone source automatically
+1. Open the `.fig` file in Figma (File → Open → select the file from the repo)
+2. Enable the SAP Web UI Kit library in that file (same as Step 4)
+
+Claude uses these screens automatically as reference when building similar screens.
 
 ---
 
-### You're ready. Start a build:
+### You're ready
 
-```
-Use the skill at skill/SKILL.md.
-Requirement: [describe your screen, or attach a reference image]
-```
+Open Claude Code, navigate to this project folder, and describe what you want to build:
 
-Or just describe what you want to build in plain language — Claude handles the rest.
+> *"Build a Purchase Orders approval screen for desktop"*
+> *"Create a mobile list report for field service tasks"*
+> *"Design an Object Page for a supplier profile"*
+
+Attach a screenshot or wireframe as reference if you have one. Claude handles the rest — analysis, wireframe for approval, build, token binding.
 
 ---
 
@@ -213,7 +215,6 @@ After analysis, Claude presents an ASCII wireframe + component breakdown for you
 ├─────────────────────────────────────────────────────────────────┤
 │  Pagination   [◀]  1 of 12  [▶]                                 │
 └─────────────────────────────────────────────────────────────────┘
-  Width: 1440px · Floorplan: List Report · Density: Compact
 ```
 
 **Components Claude will use to build this screen:**
@@ -289,31 +290,29 @@ Each layer does only what it uniquely can:
 ```
 ┌────────────────────────────────────────────────────────────────┐
 │  Layer 1 — Claude (Reasoning)                                  │
-│  Reads references · runs 30 RULEs · VDI visual analysis        │
+│  Reads references · runs 30 rules · visual analysis            │
 │  Selects floorplan + components · builds via Figma MCP         │
 │  QA + self-repair · captures lessons                           │
 └───────────────────────────┬────────────────────────────────────┘
-                            │ use_figma (one-shot)
+                            │ builds screen (one call)
                             ▼
 ┌────────────────────────────────────────────────────────────────┐
 │  Layer 2 — Figma MCP (Execution)                               │
-│  Inserts real SAP kit instances via parallel Promise.all       │
-│  Sets variant properties · tags fills [sapToken]               │
-│  Tags text [typo:role] · drops ◆ICON/ placeholders            │
+│  Inserts real SAP kit instances                                │
+│  Sets variant properties · marks fills and text for binding    │
 └───────────────────────────┬────────────────────────────────────┘
-                            │ user clicks "Bind SAP Tokens"
+                            │ you click "Bind SAP Tokens"
                             ▼
 ┌────────────────────────────────────────────────────────────────┐
 │  Layer 3 — Plugin (Token Bridge)                               │
-│  ONLY actor with teamlibrary permission                        │
-│  Reads tags → binds SAP Horizon variables (theme-switchable)   │
-│  Swaps ◆ICON/ placeholders → kit icons                        │
-│  Binds [typo:role] → text styles                               │
-│  Runs 4 §7 a11y validators automatically                       │
+│  The only piece with access to SAP library variables           │
+│  Binds real SAP Horizon tokens (theme-switchable)              │
+│  Swaps icon placeholders · binds text styles                   │
+│  Runs 4 accessibility validators automatically                 │
 └────────────────────────────────────────────────────────────────┘
 ```
 
-> **Why the split?** `use_figma` runs in a sandbox without `teamlibrary` permission — it can't access SAP token variables. Only a real Figma plugin can bind Horizon variables (theme-switchable, audit-clean). Claude+MCP build the structure; the plugin does the one thing only it can do.
+> **Why three layers?** The Figma MCP runs in a sandbox — it can read and write structure, but it cannot access your SAP library's private token variables. Only a real Figma plugin can do that. So Claude builds the structure, the plugin binds the tokens. Each does the one thing only it can do.
 
 ---
 
@@ -381,7 +380,7 @@ User: "bravo" / "not perfect" / "close but…" / "great but you broke X"
 
 **Included in this repo:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
 
-Open in Figma, connect SAP Web UI Kit as a library → use as clone sources for every build. No private Figma access needed.
+Open in Figma, enable the SAP Web UI Kit library, and use these screens as clone sources for every build. No private Figma access needed — everything ships with the repo.
 
 | Screen | Confirmed |
 |---|---|
@@ -454,20 +453,22 @@ Open in Figma, connect SAP Web UI Kit as a library → use as clone sources for 
 
 ## Automation Hooks
 
-| Hook | Fires on | Purpose |
-|---|---|---|
-| `block-codejs-read.sh` | PreToolUse(Read) | Blocks reading `code.js` — saves 45k tokens, redirects to manifest |
-| `block-generated-files.sh` | PreToolUse(Edit) | Blocks edits to auto-generated files |
-| `guard-private-screens.sh` | PreToolUse(Bash) | Warns when `git add -f` would stage a private canonical PNG |
-| `registry-rebuild.sh` | PostToolUse(Edit) | Auto-rebuilds plugin bundle on registry change |
-| `manifest-sync-check.sh` | PostToolUse(Edit) | Drift check when manifest is edited |
-| `feedback-learn.sh` | UserPromptSubmit | Detects praise/correction → durable lesson entry |
-| `recall-lessons.sh` | UserPromptSubmit | Surfaces matching lesson when a build task is detected |
-| `lint-on-stop.sh` | Stop | Checks MCP-first build for unbound state (Loop B) |
-| `verify-learnings.sh` | Stop | Re-reminds if pending lessons weren't captured this turn |
-| `surface-learnings.sh` | SessionStart | Surfaces uncaptured lessons from previous sessions |
+Background scripts that keep quality high without manual effort.
 
-Hooks use stdin JSON (`.tool_input.file_path`). Activate on Claude Code restart.
+| Hook | When | What it does |
+|---|---|---|
+| `block-codejs-read.sh` | Before any file read | Prevents reading large internal files — keeps builds fast |
+| `block-generated-files.sh` | Before any file edit | Prevents accidental edits to auto-generated files |
+| `guard-private-screens.sh` | Before any git command | Warns if a private reference screenshot is about to be committed |
+| `registry-rebuild.sh` | After registry edit | Auto-rebuilds the component bundle — no manual step needed |
+| `manifest-sync-check.sh` | After manifest edit | Catches drift between manifest and registry |
+| `feedback-learn.sh` | On every message | Detects approval or correction → logs a durable lesson entry |
+| `recall-lessons.sh` | On every message | Surfaces the relevant past lesson when a build task is detected |
+| `lint-on-stop.sh` | End of turn | Checks the last build hasn't been left without token binding |
+| `verify-learnings.sh` | End of turn | Re-reminds if a captured lesson wasn't written this turn |
+| `surface-learnings.sh` | Session start | Resurfaces lessons from previous sessions |
+
+Hooks activate on Claude Code restart.
 
 ---
 
@@ -479,14 +480,6 @@ node build/validate-spec.js output/any.json  # validate a spec
 bash build/test-build.sh                     # regression suite (must exit 0)
 node build/check-manifest-sync.js           # manifest drift check
 ```
-
----
-
-## Prerequisites
-
-- Node.js ≥ 20 · Claude Code CLI · Figma desktop app
-- Figma personal access token ([get one](https://www.figma.com/settings))
-- SAP Web UI Kit connected as library ([free community file](https://www.figma.com/community/file/1494295794601744471))
 
 ---
 
