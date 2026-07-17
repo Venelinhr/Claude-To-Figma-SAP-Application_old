@@ -40,13 +40,16 @@
 | You need... | Authoritative source |
 |---|---|
 | The single operating manifest | `docs/OPERATING-MANIFEST.md` (cross-references everything below) |
-| All 30 mandatory RULEs | `skill/SYSTEM_PROMPT.md` (RULE 1–30) |
+| All 31 mandatory RULEs | `skill/SYSTEM_PROMPT.md` (RULE 1–31) |
 | The reasoning pipeline (stages) | `docs/V2-REASONING-PIPELINE.md` |
 | Visual analysis (8-stage) | `skill/sap-visual-reading/SKILL.md` |
 | Sector-based reference reading | `skill/sap-visual-reading/sector-analysis.md` (divide → analyze A→B→C → merge) |
 | Measure reference width (RULE 30) | `SAP_BUILD_MANIFEST.md` §1b + `skill/references/figma-build-patterns.md` |
-| Floorplan decision | `skill/references/floorplan-decision-matrix.md` |
+| Canonical Pattern Library (RULE 31) | `skill/references/canonical-index.json` + `skill/references/delta-spec-schema.json` |
 | Which canonical to clone (similarity score) | `skill/references/canonical-similarity-rubric.md` |
+| Learn from user's Figma file | `skill/agents/figma-project-learner.md` (/sap-learn) |
+| Per-build reuse history | `.claude/memory/reuse-outcomes-ledger.md` (gitignored, personal) |
+| Floorplan decision | `skill/references/floorplan-decision-matrix.md` |
 | Build patterns + API gotchas | `skill/references/figma-build-patterns.md` |
 | Feedback-lesson template (the ONE contract) | `docs/FEEDBACK-MEMORY-TEMPLATE.md` (pointer: `skill/references/lesson-template.md`) |
 | Validation checklist (legacy JSON path) | `skill/references/validation-checklist.md` |

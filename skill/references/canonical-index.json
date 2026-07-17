@@ -1,0 +1,271 @@
+{
+  "version": "1.0",
+  "description": "Two-tier canonical index. Tier 1 = shipped with repo (works for any user). Tier 2 = personal confirmed builds (gitignored, per-user). Use Tier 2 when available; fall back to Tier 1.",
+  "scoringFormula": "floorplan(50%) + regions(30%) + components(20%). Threshold: >=85 clone direct, 60-84 clone+delta, <60 new build.",
+  "tiers": {
+    "tier1": [
+      {
+        "id": "shipped-governance-console",
+        "name": "Design System Governance Console",
+        "floorplan": "FCL + SideNav",
+        "width": 1440,
+        "density": "Compact",
+        "regions": ["ShellBar", "SideNavigation", "DynamicPageHeader", "IconTabBar", "OverflowToolbar", "ResponsiveTable", "DynamicSideContent"],
+        "keyComponents": ["ShellBar", "SideNavigation", "DynamicPageHeader", "IconTabBar", "Button", "ResponsiveTable", "Calendar", "MessageStrip"],
+        "businessDomain": ["governance", "design-system", "approvals", "desktop", "fcl"],
+        "referenceImage": "docs/canonical-screens/01-design-system-governance-console.png",
+        "specFile": "docs/canonical-screens/01-design-system-governance-console.md",
+        "figNode": "750:177443"
+      },
+      {
+        "id": "shipped-schedule-op-daily",
+        "name": "Schedule Operation — Daily",
+        "floorplan": "Dialog",
+        "width": 375,
+        "density": "Cozy",
+        "regions": ["DialogHeader", "FormSection", "Footer"],
+        "keyComponents": ["Button", "Input", "DatePicker", "TimePicker", "CheckBox", "Label"],
+        "businessDomain": ["scheduling", "operations", "dialog", "form", "mobile"],
+        "referenceImage": "docs/canonical-screens/02-schedule-operation-form.png",
+        "specFile": "docs/canonical-screens/02-schedule-operation-form.md",
+        "figNode": "750:174190"
+      },
+      {
+        "id": "shipped-schedule-op-monthly-end",
+        "name": "Schedule Operation — Monthly with End Date",
+        "floorplan": "Dialog",
+        "width": 375,
+        "density": "Cozy",
+        "regions": ["DialogHeader", "TimingSection", "RecurrenceSection", "MonthlyPattern", "EndDateSection", "Footer"],
+        "keyComponents": ["Button", "Input", "DatePicker", "TimePicker", "CheckBox", "Label", "SegmentedButton", "Select"],
+        "businessDomain": ["scheduling", "operations", "dialog", "form", "recurrence", "mobile"],
+        "referenceImage": "docs/canonical-screens/07-schedule-operation-monthly-end-date.png",
+        "specFile": "docs/canonical-screens/07-schedule-operation-monthly-end-date.md",
+        "figNode": "750:174786"
+      },
+      {
+        "id": "shipped-schedule-op-full",
+        "name": "Schedule Operation — Full / Collapsed",
+        "floorplan": "Dialog",
+        "width": 375,
+        "density": "Cozy",
+        "regions": ["DialogHeader", "FormSection", "Footer"],
+        "keyComponents": ["Button", "Input", "DatePicker", "CheckBox", "Label"],
+        "businessDomain": ["scheduling", "operations", "dialog", "form", "mobile"],
+        "referenceImage": "docs/canonical-screens/09-schedule-operation-form-full.png",
+        "specFile": "docs/canonical-screens/09-schedule-operation-form-full.md",
+        "figNode": "750:174866"
+      },
+      {
+        "id": "shipped-outage-list",
+        "name": "Outage List Overview",
+        "floorplan": "List Report",
+        "width": 1440,
+        "density": "Compact",
+        "regions": ["ShellBar", "DynamicPageTitle", "OverflowToolbar", "ResponsiveTable", "PaginationBar"],
+        "keyComponents": ["ShellBar", "DynamicPageTitle", "Button", "Input", "ResponsiveTable", "ObjectStatus", "ObjectNumber"],
+        "businessDomain": ["operations", "list", "status", "monitoring", "desktop"],
+        "referenceImage": "docs/canonical-screens/10-outage-list-overview.png",
+        "specFile": "docs/canonical-screens/10-outage-list-overview.md",
+        "figNode": "750:174925"
+      },
+      {
+        "id": "shipped-governance-fcl",
+        "name": "Design System Governance — FCL Variant",
+        "floorplan": "FCL",
+        "width": 1440,
+        "density": "Compact",
+        "regions": ["ShellBar", "SideNavigation", "MasterList", "DetailContent"],
+        "keyComponents": ["ShellBar", "SideNavigation", "ResponsiveTable", "Button", "ObjectStatus"],
+        "businessDomain": ["governance", "fcl", "master-detail", "desktop"],
+        "referenceImage": "docs/canonical-screens/11-design-system-governance-fcl.png",
+        "specFile": "docs/canonical-screens/11-design-system-governance-fcl.md",
+        "figNode": "750:174960"
+      },
+      {
+        "id": "shipped-flight-result-card",
+        "name": "Flight Result Card",
+        "floorplan": "Card",
+        "width": 760,
+        "density": "Cozy",
+        "regions": ["FlightLegZone", "PriceZone"],
+        "keyComponents": ["ObjectNumber", "Button", "ObjectStatus"],
+        "businessDomain": ["travel", "card", "search-results", "booking"],
+        "referenceImage": "docs/canonical-screens/12-flight-result-card.png",
+        "specFile": "docs/canonical-screens/12-flight-result-card.md",
+        "figNode": "E083sNBH7JNEOBFrG7Bqge:2:5355"
+      },
+      {
+        "id": "shipped-sidenav",
+        "name": "Side Navigation — Full Tree",
+        "floorplan": "SideNavigation",
+        "width": 224,
+        "density": "Compact",
+        "regions": ["NavigationItems", "Footer"],
+        "keyComponents": ["SideNavigation"],
+        "businessDomain": ["navigation", "sidebar", "desktop"],
+        "referenceImage": null,
+        "specFile": "docs/canonical-screens/03-side-navigation.md",
+        "figNode": "750:174158"
+      },
+      {
+        "id": "shipped-yanatest-steps",
+        "name": "yanatest Steps — Object Page Narrow",
+        "floorplan": "Object Page",
+        "width": 320,
+        "density": "Compact",
+        "regions": ["DynamicPageHeader", "IconTabBar", "FilterBar", "SectionHeader", "ListItem"],
+        "keyComponents": ["DynamicPageHeader", "IconTabBar", "Input", "Select", "Button", "ObjectStatus"],
+        "businessDomain": ["object-page", "steps", "narrow", "detail"],
+        "referenceImage": null,
+        "specFile": "docs/canonical-screens/04-schedule-operation-daily.md",
+        "figNode": "750:174556"
+      },
+      {
+        "id": "shipped-activities-view",
+        "name": "Activities View — List Report with Progress",
+        "floorplan": "List Report",
+        "width": 320,
+        "density": "Compact",
+        "regions": ["DynamicPageHeader", "FilterBar", "ResponsiveTable"],
+        "keyComponents": ["DynamicPageHeader", "FilterBar", "ResponsiveTable", "ObjectStatus", "ObjectAttribute"],
+        "businessDomain": ["activities", "list-report", "narrow", "progress"],
+        "referenceImage": null,
+        "specFile": "docs/canonical-screens/06-activities-view.md",
+        "figNode": "750:174442"
+      },
+      {
+        "id": "shipped-validate-system",
+        "name": "Validate System Log Panel",
+        "floorplan": "Log Panel",
+        "width": 320,
+        "density": "Compact",
+        "regions": ["DialogHeader", "SegmentedButtonBar", "MessageList"],
+        "keyComponents": ["Button", "SegmentedButton", "ObjectStatus", "MessageStrip"],
+        "businessDomain": ["validation", "log", "messages", "severity", "narrow"],
+        "referenceImage": null,
+        "specFile": "docs/canonical-screens/08-validate-system-log-panel.md",
+        "figNode": "750:174814"
+      }
+    ],
+    "tier2": [
+      {
+        "id": "750:177443",
+        "name": "Design System Governance Console",
+        "figmaNode": "750:177443",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-governance-console"
+      },
+      {
+        "id": "750:174190",
+        "name": "Schedule Operation — Daily",
+        "figmaNode": "750:174190",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-14",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-schedule-op-daily"
+      },
+      {
+        "id": "750:174290",
+        "name": "Schedule Operation — Monthly",
+        "figmaNode": "750:174290",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-14",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-schedule-op-daily"
+      },
+      {
+        "id": "750:174786",
+        "name": "Schedule Operation — Monthly + End Date",
+        "figmaNode": "750:174786",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-14",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-schedule-op-monthly-end"
+      },
+      {
+        "id": "750:174866",
+        "name": "Schedule Operation — Full",
+        "figmaNode": "750:174866",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-14",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-schedule-op-full"
+      },
+      {
+        "id": "750:174158",
+        "name": "Side Navigation",
+        "figmaNode": "750:174158",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-sidenav"
+      },
+      {
+        "id": "750:174556",
+        "name": "yanatest Steps — Object Page Narrow",
+        "figmaNode": "750:174556",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-14",
+        "confirmedBy": "Great result!",
+        "inheritsFrom": "shipped-yanatest-steps"
+      },
+      {
+        "id": "750:174442",
+        "name": "Activities View",
+        "figmaNode": "750:174442",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "Perfect",
+        "inheritsFrom": "shipped-activities-view"
+      },
+      {
+        "id": "750:174814",
+        "name": "Validate System Log Panel",
+        "figmaNode": "750:174814",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-validate-system"
+      },
+      {
+        "id": "750:174925",
+        "name": "Outage List Overview",
+        "figmaNode": "750:174925",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-outage-list"
+      },
+      {
+        "id": "750:174960",
+        "name": "Design System Governance — FCL Variant",
+        "figmaNode": "750:174960",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "canonical",
+        "inheritsFrom": "shipped-governance-fcl"
+      },
+      {
+        "id": "804:44859",
+        "name": "Purchase Orders List Report",
+        "figmaNode": "804:44859",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-16",
+        "confirmedBy": "Bravo",
+        "inheritsFrom": "shipped-outage-list"
+      },
+      {
+        "id": "615:36810",
+        "name": "Activities View (narrow)",
+        "figmaNode": "615:36810",
+        "fileKey": "p7zm5EMBk5DRRZdxNeJ4f5",
+        "approvedDate": "2026-07-15",
+        "confirmedBy": "Perfect",
+        "inheritsFrom": "shipped-activities-view"
+      }
+    ]
+  }
+}

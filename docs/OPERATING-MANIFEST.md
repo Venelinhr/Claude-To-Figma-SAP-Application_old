@@ -101,7 +101,9 @@ Acceptable **only if all** are true:
 | Pipeline stages | `docs/V2-REASONING-PIPELINE.md` |
 | Analysis method | `skill/sap-visual-reading/SKILL.md` + `sector-analysis.md` (sector-based A→B→C) |
 | Measure reference width | RULE 30 → `SAP_BUILD_MANIFEST.md` §1b (default 1440; snap 375/768/1440) |
+| Canonical Pattern Library (reuse-first) | RULE 31 → `skill/references/canonical-index.json` + `skill/references/delta-spec-schema.json` |
+| Learn from user's Figma file | `skill/agents/figma-project-learner.md` (/sap-learn) |
 | Repair / learning | `docs/REPAIR-PATTERNS.md` |
 | Lost / wrong output | RULE 29 → clone nearest canonical |
 
-**System state (verify before quoting):** 30 RULEs · 8 agents · 18 canonical screens · 152 components · 154 guidelines · MCP-first default (RULE 25).
+**System state (verify before quoting):** 31 RULEs · 9 agents · 18+ canonical screens · 152 components · 154 guidelines · MCP-first default (RULE 25).

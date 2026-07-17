@@ -1151,6 +1151,43 @@ Cross-refs: analysis pipeline step 10, RULE 19 (wireframe gate), SAP_BUILD_MANIF
 
 ---
 
+RULE 31 — Canonical Pattern Library · Reuse before rebuild (mandatory · 2026-07-17)
+
+**Do not generate first — learn first. Never solve the same design problem twice.**
+
+**BEFORE any `use_figma` call:**
+
+1. **Load `skill/references/canonical-index.json`** (Tier 2 first, fall back to Tier 1).
+2. **Score the request** against each canonical entry:
+   - Floorplan match: **50%** (same floorplan = 50, similar = 25, different = 0)
+   - Regions overlap: **30%** (count matching regions / total regions × 30)
+   - Components overlap: **20%** (count matching key components / total × 20)
+3. **Report top 3 matches** with scores to the user.
+4. **Choose the reuse level:**
+   - **≥85% → Level 1** (Exact): clone directly, inject content only
+   - **60–84% → Level 2/3** (Similar/Floorplan): clone + delta — produce a delta-spec
+   - **<60% → Level 5** (New build): state explicitly "no suitable canonical — building new"
+5. **Produce a delta-spec** (using `skill/references/delta-spec-schema.json`) for Level 1–4:
+   - List what to **preserve** (unchanged regions/components)
+   - List what to **replace** (content, labels, columns, actions)
+   - List what to **add** and what to **remove**
+   - List any **component swaps** (e.g. ResponsiveTable → AnalyticalTable)
+6. **Present the delta-spec as the build plan** — this IS the wireframe gate (RULE 19). User approves the delta-spec, not a blank wireframe.
+7. **BLOCKED:** no build may proceed without stating: reuse level (1–5) + base canonical ID (or "none — Level 5").
+
+**For new users with no Tier 2 canonicals:** use Tier 1 entries (shipped PNGs + `.md` specs in `docs/canonical-screens/`). Call `get_design_context` on the `.fig` file canonical nodes to read the actual structure.
+
+**Learn First workflow (new user setup):**
+When a user connects their own Figma file for the first time, run the **Figma Project Learner** agent (`skill/agents/figma-project-learner.md`) before any builds. It analyzes the file, discovers approved screens, and populates `canonical-index.json` Tier 2 with personal canonicals.
+
+**Every confirmed build updates the ledger:** when the user confirms a result ("perfect", "bravo", "exactly"), write an entry to `.claude/memory/reuse-outcomes-ledger.md` recording: screen name, base canonical, reuse level, similarity score, and outcome.
+
+**Why:** building the same architecture twice wastes tokens, produces inconsistent results, and discards proven validated work. Every approved screen is a permanent asset. Clone, configure, extend — don't regenerate.
+
+Cross-refs: `skill/references/canonical-index.json`, `skill/references/delta-spec-schema.json`, `skill/references/canonical-similarity-rubric.md`, `skill/agents/figma-project-learner.md`, RULE 28 (clone-canonical), RULE 29 (visual recovery), rule_reuse_approved_screens.md
+
+---
+
 ## ⛔ Blocked Behaviors (never do these)
 
 | Behavior | Why blocked |

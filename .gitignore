@@ -43,3 +43,7 @@ node_modules/
 knowledge/components/_archive/
 plugin/figma-builder/registry-bundle-full.json
 build/refresh-log-*.json
+# Personal canonical library and reuse ledger — per-user, not shared
+.claude/memory/reuse-outcomes-ledger.md
+skill/references/canonical-index-tier2.json
+semantic-models/project-knowledge-*.md
