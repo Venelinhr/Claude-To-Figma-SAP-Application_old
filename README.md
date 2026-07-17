@@ -362,7 +362,24 @@ When you confirm a screen is exactly right, the system flags it for ground-truth
 
 **Included in this repo:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
 
-Open in Figma, enable the SAP Web UI Kit library, and use these screens as clone sources for every build. No private Figma access needed — everything ships with the repo.
+This is the quality baseline for every build. It contains 8 real, approved SAP Fiori screens — not mockups, not examples, but pixel-accurate screens with live SAP components, correct tokens, and verified layer structure.
+
+**Claude uses this file automatically.** Before building any screen, Claude checks this file for the closest matching reference, reads its exact structure, and clones from it. You never start from scratch.
+
+**You can open it too.** Open the `.fig` file in Figma any time to inspect how a screen was built — what components were used, how layers are named, which tokens are applied. It's the clearest answer to "what should this look like?" for any SAP Fiori pattern.
+
+| Screen in the file | Pattern |
+|--------------------|---------|
+| Design System Governance Console | FCL layout · SideNav · nested tables |
+| Side Navigation | Full 20-item tree · expandable groups · active state |
+| Schedule Operation | Dialog form · date/time fields · 4 variants |
+| Activities View | List Report · Progress Rows · Filter Bar |
+| Purchase Orders | List Report · approval actions · ObjectStatus |
+| Validate System | Log panel · severity pills · SegmentedButton filter |
+| Outage List Overview | Desktop List Report · 8 columns · status indicators |
+| yanatest Steps | Object Page narrow · DPH · IconTabBar |
+
+No private Figma access needed — the file ships with the repo and works offline.
 
 | Screen | Confirmed |
 |---|---|
