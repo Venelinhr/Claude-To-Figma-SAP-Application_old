@@ -188,10 +188,6 @@ You: "Build a Purchase Orders approval screen"
                                         canonical clone ready
 ```
 
-**Yes, it loops.** LEARN feeds directly into the next ANALYZE — the matching lesson surfaces automatically, Claude clones from the verified canonical screen, and each confirmed build raises the floor for the next.
-
-**Nothing gets generated until you say "approved".** Refinements happen on the ASCII wireframe — free and instant — not after the plugin already built the screen.
-
 ### What happens at each stage
 
 | Stage | What Claude does | Key rule |
