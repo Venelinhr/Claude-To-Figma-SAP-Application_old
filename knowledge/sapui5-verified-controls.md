@@ -1384,3 +1384,5 @@ Root container for Object Page floorplan. **Requires `sap.uxap` in bootstrap lib
 **Last Updated:** June 16, 2026
 **Total Components:** 32 verified controls
 **API Source:** https://ui5.sap.com/#/api
+
+<!-- part of the SAP Fiori knowledge base -->

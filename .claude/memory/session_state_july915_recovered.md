@@ -1,5 +1,5 @@
 ---
-name: july915-recovery-complete
+name: session-state-july915-recovered
 description: "⭐ 2026-07-16: July 9-15 lessons FULLY recovered into project + shipped to GitHub. 525 claims audited by 20-agent workflow, all gaps fixed + verified. Repo is production-ready. START HERE if resuming."
 metadata: 
   node_type: memory

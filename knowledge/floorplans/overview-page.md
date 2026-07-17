@@ -62,3 +62,5 @@ When the whole overview has no data (e.g., new user / cold start), show a full-p
 
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/overview-page/
+
+<!-- part of the SAP Fiori knowledge base -->

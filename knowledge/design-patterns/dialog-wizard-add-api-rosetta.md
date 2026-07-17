@@ -289,3 +289,5 @@ All text-bearing components (Text, Link, Title, Label) accept the text
 content via `props.text`. The legacy `nodeSpec.label` shorthand is also
 honored for backward compatibility. Specs should prefer `props.text`
 consistently.
+
+<!-- part of the SAP Fiori knowledge base -->

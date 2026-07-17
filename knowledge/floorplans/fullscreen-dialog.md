@@ -63,3 +63,5 @@ If the fullscreen dialog opens on an empty resource (rare — usually opened wit
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/dialog/
 - https://experience.sap.com/fiori-design-web/fullscreen-dialog/
+
+<!-- part of the SAP Fiori knowledge base -->

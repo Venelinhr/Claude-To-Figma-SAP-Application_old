@@ -105,3 +105,5 @@ Plugin renderer guidance:
 - **NEW component to register**: `PropertiesDrawer` — composed renderer with SAP `Header` + `IconTabBar` + scroll content FRAME
 - Renders at bottom of canvas, full width minus SideNav, height by content
 - Currently the plugin doesn't have this — captured as a future-add
+
+<!-- part of the SAP Fiori knowledge base -->

@@ -92,3 +92,5 @@
 | **Iteration** | Patch symptoms forever → Adopt working pattern, stop at confirmation |
 | **Reference** | Generate immediately → Analyze first (12 steps, 7 passes, Container-First) |
 | **Design intent** | Replicate visually → Optimize for SAP Fiori + suggest improvements |
+
+<!-- part of the SAP Fiori knowledge base -->

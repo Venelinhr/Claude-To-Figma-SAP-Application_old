@@ -71,3 +71,5 @@ When the worklist is empty, always show `IllustratedMessage` with a message appr
 
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/v1-145/ui-elements/worklist-floorplan/
+
+<!-- part of the SAP Fiori knowledge base -->

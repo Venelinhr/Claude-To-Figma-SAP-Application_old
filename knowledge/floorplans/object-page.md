@@ -88,3 +88,5 @@ For complex edit flows use the draft pattern:
 
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/v1-145/ui-elements/object-page/
+
+<!-- part of the SAP Fiori knowledge base -->

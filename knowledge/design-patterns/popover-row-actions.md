@@ -88,3 +88,5 @@ Spec emission for this pattern:
 Plugin renderer guidance:
 - Popover must be a top-level child of the screen frame (composition.topLevelOnly=true)
 - ActionListItem inside Popover renders as a flat row with Title (left) + optional Trailing Container (right) for items that open submenus
+
+<!-- part of the SAP Fiori knowledge base -->

@@ -56,3 +56,5 @@ DynamicPage
 
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/analytical-list-page/
+
+<!-- part of the SAP Fiori knowledge base -->

@@ -59,3 +59,5 @@ FlexibleColumnLayout
 
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/flexible-column-layout/
+
+<!-- part of the SAP Fiori knowledge base -->

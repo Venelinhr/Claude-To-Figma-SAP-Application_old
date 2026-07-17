@@ -58,3 +58,5 @@ Not typical for wizards — they're always populated by the current step's form.
 
 ## SAP Guidelines Reference
 - https://experience.sap.com/fiori-design-web/wizard-floorplan/
+
+<!-- part of the SAP Fiori knowledge base -->

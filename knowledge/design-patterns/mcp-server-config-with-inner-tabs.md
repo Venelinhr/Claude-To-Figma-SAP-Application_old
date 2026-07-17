@@ -96,3 +96,5 @@ Plugin guidance:
 ## Continuous-learning note
 
 The two references at `138:94508` and `138:104652` are **near-identical** — second one likely a copy with minor edits. This pattern is mature in the designer's library. Plugin should treat horizontal-inline form layout as a first-class variant of SimpleForm.
+
+<!-- part of the SAP Fiori knowledge base -->

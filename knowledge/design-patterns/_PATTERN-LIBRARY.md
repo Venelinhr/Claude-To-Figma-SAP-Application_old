@@ -317,3 +317,5 @@ the natural next session's work.
 - If confirming: append the new node ID to the existing rule's evidence list
 
 This file grows over time. The rules don't change without explicit instruction.
+
+<!-- part of the SAP Fiori knowledge base -->

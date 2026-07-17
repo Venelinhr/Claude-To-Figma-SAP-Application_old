@@ -120,3 +120,5 @@ Plugin guidance:
 ## Continuous-learning note
 
 This is one of the **most stable, oft-repeated patterns** across the references. Object Page detail with action header appears in nearly every "detail screen" reference. The plugin's `DynamicPage` + `DynamicPageTitle.slots.actions` handler already supports this — the lesson is to USE that abstraction consistently and not reinvent the manual composition.
+
+<!-- part of the SAP Fiori knowledge base -->

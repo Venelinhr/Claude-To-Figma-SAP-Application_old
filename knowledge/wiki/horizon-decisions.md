@@ -88,3 +88,5 @@ Decision: Any Object Page with a complex form (>5 fields) uses the draft save pa
 - **FilterBar height**: The Figma component has a fixed height that does not auto-resize with multiple rows of filters. Use the "Expanded Multi-Row" variant explicitly for >3 filters.
 - **ShellBar height**: 44px in both Cozy and Compact — ShellBar does not change height with density.
 - **Font "72"**: The Figma kit uses the "72" font family. This font requires a separate license for non-SAP use. In our Figma environment it is already available.
+
+<!-- part of the SAP Fiori knowledge base -->
