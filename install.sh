@@ -51,7 +51,8 @@ ok "Chrome DevTools MCP ready"
 # ── Step 4: Copy the skill ───────────────────────────────────────────────────
 log "Installing SAP Figma Design Agent skill..."
 mkdir -p "$CLAUDE_DIR/skills"
-cp -r "$SKILL_DIR/skill" "$CLAUDE_DIR/skills/sap-figma-design-agent"
+rm -rf "$CLAUDE_DIR/skills/sap-figma-design-agent"
+cp -r "$SKILL_DIR/skill/" "$CLAUDE_DIR/skills/sap-figma-design-agent"
 ok "Skill installed → ~/.claude/skills/sap-figma-design-agent/"
 
 # ── Step 5: Register all MCP servers ─────────────────────────────────────────
