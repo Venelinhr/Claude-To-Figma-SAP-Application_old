@@ -88,13 +88,26 @@ The plugin will appear under **Plugins → Development → SAP Figma Builder**.
 
 ### Step 4 — Connect the SAP Web UI Kit library
 
-The plugin and Claude both need the SAP Web UI Kit to be an **enabled library** in your Figma file.
+**What is a Figma library and why does it matter?**
 
-1. Get the free community file: [SAP Web UI Kit on Figma Community](https://www.figma.com/community/file/1494295794601744471)
-2. Duplicate it to your drafts
-3. In your working Figma file → **Assets panel** → **Libraries** → enable the SAP Web UI Kit
+The SAP Web UI Kit is a Figma file published by SAP containing every official UI component — buttons, tables, headers, status indicators, icons, and the full Horizon token system (colours, spacing, typography). When you enable it as a library in your file, Claude and the plugin can pull real, live components directly from it onto your canvas. Without it, there are no real SAP components to build with — just empty frames.
 
-> Without this library enabled, component imports will fail. This is the most common setup issue.
+**How to set it up (one time only):**
+
+1. Open this link and click **"Duplicate to your drafts"**:
+   [SAP Web UI Kit — Figma Community](https://www.figma.com/community/file/1494295794601744471)
+   *(It's free. Duplicating gives you your own copy in your Figma account.)*
+
+2. Open your copy of the SAP Web UI Kit file in Figma desktop
+
+3. Click the file name at the top → **"Publish styles and components"** → Publish
+   *(This makes it available as a library across your files)*
+
+4. In your working Figma file → open the **Assets panel** (grid icon, left sidebar) → click the **book icon** (Libraries) → find SAP Web UI Kit → toggle it **ON**
+
+Now every file where you work has access to the full SAP component set. Claude imports components from it automatically on every build.
+
+> **Most common setup issue:** if Claude reports a component import failure, the SAP Web UI Kit library is either not enabled in the current file or not published. Go back to step 3–4.
 
 ---
 
