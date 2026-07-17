@@ -101,16 +101,7 @@ If you work at SAP and use the company Figma organisation, the SAP Web UI Kit is
 
 ---
 
-### Step 5 — Open the canonical screen file
-
-The repo includes `docs/canonical-screens/Claude to Figma SAP Application.fig` — 8 approved SAP screens that serve as the quality baseline. Claude clones from these instead of building from scratch.
-
-1. In Figma: **File → Open from computer** → select the `.fig` file from the repo
-2. Enable the SAP Web UI Kit library in this file too (same as Step 4)
-
----
-
-### Step 6 — Restart Claude Code and verify
+### Step 5 — Restart Claude Code and verify
 
 ```bash
 claude mcp list   # should show 5+ servers including "figma"
@@ -588,7 +579,7 @@ This is the quality baseline for every build. It contains 8 real, approved SAP F
 | Outage List Overview | Desktop List Report · 8 columns · status indicators |
 | yanatest Steps | Object Page narrow · DPH · IconTabBar |
 
-No private Figma access needed — the file ships with the repo and works offline.
+No private Figma access needed — the file ships with the repo and works offline. **Claude uses it automatically** — you don't need to open it. If you want to inspect a screen manually: Figma → File → Open from computer → select the `.fig` from `docs/canonical-screens/`.
 
 | Screen | Confirmed |
 |---|---|
