@@ -82,22 +82,14 @@ The plugin appears under **Plugins → Development → SAP Figma Builder** and r
 
 This is the official SAP component library. Claude pulls components from it for every build — buttons, tables, headers, status indicators, icons, and the full SAP token system.
 
-**External users (one-time setup):**
-
 1. Open [SAP Web UI Kit on Figma Community](https://www.figma.com/community/file/1494295794601744471) and click **Duplicate to your drafts** (free)
 2. Open your duplicated copy in Figma desktop
 3. In the file: click the file name at the top → **Publish styles and components** → Publish
 4. In your working Figma file: open the **Assets panel** (left sidebar) → click the **Libraries** icon → find **SAP Web UI Kit** → toggle **ON**
 
-**Internal SAP users:**
+> **Internal SAP users:** the SAP Web UI Kit is likely already available as a shared library in your organisation — you do not need to duplicate it. Open the **Assets panel** → **Libraries** → find SAP Web UI Kit under your organisation's shared libraries → toggle **ON**. Do not duplicate the community copy on top of the organisation version — this creates two competing libraries.
 
-If you work at SAP and use the company Figma organisation, the SAP Web UI Kit is likely already available as a shared library — you do not need to duplicate it.
-
-1. In your Figma file: open the **Assets panel** → click the **Libraries** icon
-2. Look for **SAP Web UI Kit** under your organisation's shared libraries → toggle **ON**
-3. If it is not listed, ask your Figma admin or check the SAP Design internal resources — do not duplicate the community copy on top of the organisation version, as this creates two competing libraries
-
-> **If component imports fail** — the SAP Web UI Kit library is not enabled in the current file, or the wrong version is active (organisation vs. community duplicate). Check the Libraries panel and make sure only one version is toggled on.
+> **If component imports fail** — the SAP Web UI Kit library is not enabled in the current file, or the wrong version is active. Check the Libraries panel and make sure only one version is toggled on.
 
 ---
 
