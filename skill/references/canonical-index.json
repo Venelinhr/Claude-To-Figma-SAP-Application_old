@@ -10,9 +10,32 @@
         "floorplan": "FCL + SideNav",
         "width": 1440,
         "density": "Compact",
-        "regions": ["ShellBar", "SideNavigation", "DynamicPageHeader", "IconTabBar", "OverflowToolbar", "ResponsiveTable", "DynamicSideContent"],
-        "keyComponents": ["ShellBar", "SideNavigation", "DynamicPageHeader", "IconTabBar", "Button", "ResponsiveTable", "Calendar", "MessageStrip"],
-        "businessDomain": ["governance", "design-system", "approvals", "desktop", "fcl"],
+        "regions": [
+          "ShellBar",
+          "SideNavigation",
+          "DynamicPageHeader",
+          "IconTabBar",
+          "OverflowToolbar",
+          "ResponsiveTable",
+          "DynamicSideContent"
+        ],
+        "keyComponents": [
+          "ShellBar",
+          "SideNavigation",
+          "DynamicPageHeader",
+          "IconTabBar",
+          "Button",
+          "ResponsiveTable",
+          "Calendar",
+          "MessageStrip"
+        ],
+        "businessDomain": [
+          "governance",
+          "design-system",
+          "approvals",
+          "desktop",
+          "fcl"
+        ],
         "referenceImage": "docs/canonical-screens/01-design-system-governance-console.png",
         "specFile": "docs/canonical-screens/01-design-system-governance-console.md",
         "figNode": "750:177443"
@@ -23,9 +46,26 @@
         "floorplan": "Dialog",
         "width": 375,
         "density": "Cozy",
-        "regions": ["DialogHeader", "FormSection", "Footer"],
-        "keyComponents": ["Button", "Input", "DatePicker", "TimePicker", "CheckBox", "Label"],
-        "businessDomain": ["scheduling", "operations", "dialog", "form", "mobile"],
+        "regions": [
+          "DialogHeader",
+          "FormSection",
+          "Footer"
+        ],
+        "keyComponents": [
+          "Button",
+          "Input",
+          "DatePicker",
+          "TimePicker",
+          "CheckBox",
+          "Label"
+        ],
+        "businessDomain": [
+          "scheduling",
+          "operations",
+          "dialog",
+          "form",
+          "mobile"
+        ],
         "referenceImage": "docs/canonical-screens/02-schedule-operation-form.png",
         "specFile": "docs/canonical-screens/02-schedule-operation-form.md",
         "figNode": "750:174190"
@@ -36,9 +76,32 @@
         "floorplan": "Dialog",
         "width": 375,
         "density": "Cozy",
-        "regions": ["DialogHeader", "TimingSection", "RecurrenceSection", "MonthlyPattern", "EndDateSection", "Footer"],
-        "keyComponents": ["Button", "Input", "DatePicker", "TimePicker", "CheckBox", "Label", "SegmentedButton", "Select"],
-        "businessDomain": ["scheduling", "operations", "dialog", "form", "recurrence", "mobile"],
+        "regions": [
+          "DialogHeader",
+          "TimingSection",
+          "RecurrenceSection",
+          "MonthlyPattern",
+          "EndDateSection",
+          "Footer"
+        ],
+        "keyComponents": [
+          "Button",
+          "Input",
+          "DatePicker",
+          "TimePicker",
+          "CheckBox",
+          "Label",
+          "SegmentedButton",
+          "Select"
+        ],
+        "businessDomain": [
+          "scheduling",
+          "operations",
+          "dialog",
+          "form",
+          "recurrence",
+          "mobile"
+        ],
         "referenceImage": "docs/canonical-screens/07-schedule-operation-monthly-end-date.png",
         "specFile": "docs/canonical-screens/07-schedule-operation-monthly-end-date.md",
         "figNode": "750:174786"
@@ -49,9 +112,25 @@
         "floorplan": "Dialog",
         "width": 375,
         "density": "Cozy",
-        "regions": ["DialogHeader", "FormSection", "Footer"],
-        "keyComponents": ["Button", "Input", "DatePicker", "CheckBox", "Label"],
-        "businessDomain": ["scheduling", "operations", "dialog", "form", "mobile"],
+        "regions": [
+          "DialogHeader",
+          "FormSection",
+          "Footer"
+        ],
+        "keyComponents": [
+          "Button",
+          "Input",
+          "DatePicker",
+          "CheckBox",
+          "Label"
+        ],
+        "businessDomain": [
+          "scheduling",
+          "operations",
+          "dialog",
+          "form",
+          "mobile"
+        ],
         "referenceImage": "docs/canonical-screens/09-schedule-operation-form-full.png",
         "specFile": "docs/canonical-screens/09-schedule-operation-form-full.md",
         "figNode": "750:174866"
@@ -62,9 +141,29 @@
         "floorplan": "List Report",
         "width": 1440,
         "density": "Compact",
-        "regions": ["ShellBar", "DynamicPageTitle", "OverflowToolbar", "ResponsiveTable", "PaginationBar"],
-        "keyComponents": ["ShellBar", "DynamicPageTitle", "Button", "Input", "ResponsiveTable", "ObjectStatus", "ObjectNumber"],
-        "businessDomain": ["operations", "list", "status", "monitoring", "desktop"],
+        "regions": [
+          "ShellBar",
+          "DynamicPageTitle",
+          "OverflowToolbar",
+          "ResponsiveTable",
+          "PaginationBar"
+        ],
+        "keyComponents": [
+          "ShellBar",
+          "DynamicPageTitle",
+          "Button",
+          "Input",
+          "ResponsiveTable",
+          "ObjectStatus",
+          "ObjectNumber"
+        ],
+        "businessDomain": [
+          "operations",
+          "list",
+          "status",
+          "monitoring",
+          "desktop"
+        ],
         "referenceImage": "docs/canonical-screens/10-outage-list-overview.png",
         "specFile": "docs/canonical-screens/10-outage-list-overview.md",
         "figNode": "750:174925"
@@ -75,9 +174,25 @@
         "floorplan": "FCL",
         "width": 1440,
         "density": "Compact",
-        "regions": ["ShellBar", "SideNavigation", "MasterList", "DetailContent"],
-        "keyComponents": ["ShellBar", "SideNavigation", "ResponsiveTable", "Button", "ObjectStatus"],
-        "businessDomain": ["governance", "fcl", "master-detail", "desktop"],
+        "regions": [
+          "ShellBar",
+          "SideNavigation",
+          "MasterList",
+          "DetailContent"
+        ],
+        "keyComponents": [
+          "ShellBar",
+          "SideNavigation",
+          "ResponsiveTable",
+          "Button",
+          "ObjectStatus"
+        ],
+        "businessDomain": [
+          "governance",
+          "fcl",
+          "master-detail",
+          "desktop"
+        ],
         "referenceImage": "docs/canonical-screens/11-design-system-governance-fcl.png",
         "specFile": "docs/canonical-screens/11-design-system-governance-fcl.md",
         "figNode": "750:174960"
@@ -88,9 +203,21 @@
         "floorplan": "Card",
         "width": 760,
         "density": "Cozy",
-        "regions": ["FlightLegZone", "PriceZone"],
-        "keyComponents": ["ObjectNumber", "Button", "ObjectStatus"],
-        "businessDomain": ["travel", "card", "search-results", "booking"],
+        "regions": [
+          "FlightLegZone",
+          "PriceZone"
+        ],
+        "keyComponents": [
+          "ObjectNumber",
+          "Button",
+          "ObjectStatus"
+        ],
+        "businessDomain": [
+          "travel",
+          "card",
+          "search-results",
+          "booking"
+        ],
         "referenceImage": "docs/canonical-screens/12-flight-result-card.png",
         "specFile": "docs/canonical-screens/12-flight-result-card.md",
         "figNode": "E083sNBH7JNEOBFrG7Bqge:2:5355"
@@ -101,9 +228,18 @@
         "floorplan": "SideNavigation",
         "width": 224,
         "density": "Compact",
-        "regions": ["NavigationItems", "Footer"],
-        "keyComponents": ["SideNavigation"],
-        "businessDomain": ["navigation", "sidebar", "desktop"],
+        "regions": [
+          "NavigationItems",
+          "Footer"
+        ],
+        "keyComponents": [
+          "SideNavigation"
+        ],
+        "businessDomain": [
+          "navigation",
+          "sidebar",
+          "desktop"
+        ],
         "referenceImage": null,
         "specFile": "docs/canonical-screens/03-side-navigation.md",
         "figNode": "750:174158"
@@ -114,9 +250,27 @@
         "floorplan": "Object Page",
         "width": 320,
         "density": "Compact",
-        "regions": ["DynamicPageHeader", "IconTabBar", "FilterBar", "SectionHeader", "ListItem"],
-        "keyComponents": ["DynamicPageHeader", "IconTabBar", "Input", "Select", "Button", "ObjectStatus"],
-        "businessDomain": ["object-page", "steps", "narrow", "detail"],
+        "regions": [
+          "DynamicPageHeader",
+          "IconTabBar",
+          "FilterBar",
+          "SectionHeader",
+          "ListItem"
+        ],
+        "keyComponents": [
+          "DynamicPageHeader",
+          "IconTabBar",
+          "Input",
+          "Select",
+          "Button",
+          "ObjectStatus"
+        ],
+        "businessDomain": [
+          "object-page",
+          "steps",
+          "narrow",
+          "detail"
+        ],
         "referenceImage": null,
         "specFile": "docs/canonical-screens/04-schedule-operation-daily.md",
         "figNode": "750:174556"
@@ -127,9 +281,24 @@
         "floorplan": "List Report",
         "width": 320,
         "density": "Compact",
-        "regions": ["DynamicPageHeader", "FilterBar", "ResponsiveTable"],
-        "keyComponents": ["DynamicPageHeader", "FilterBar", "ResponsiveTable", "ObjectStatus", "ObjectAttribute"],
-        "businessDomain": ["activities", "list-report", "narrow", "progress"],
+        "regions": [
+          "DynamicPageHeader",
+          "FilterBar",
+          "ResponsiveTable"
+        ],
+        "keyComponents": [
+          "DynamicPageHeader",
+          "FilterBar",
+          "ResponsiveTable",
+          "ObjectStatus",
+          "ObjectAttribute"
+        ],
+        "businessDomain": [
+          "activities",
+          "list-report",
+          "narrow",
+          "progress"
+        ],
         "referenceImage": null,
         "specFile": "docs/canonical-screens/06-activities-view.md",
         "figNode": "750:174442"
@@ -140,9 +309,24 @@
         "floorplan": "Log Panel",
         "width": 320,
         "density": "Compact",
-        "regions": ["DialogHeader", "SegmentedButtonBar", "MessageList"],
-        "keyComponents": ["Button", "SegmentedButton", "ObjectStatus", "MessageStrip"],
-        "businessDomain": ["validation", "log", "messages", "severity", "narrow"],
+        "regions": [
+          "DialogHeader",
+          "SegmentedButtonBar",
+          "MessageList"
+        ],
+        "keyComponents": [
+          "Button",
+          "SegmentedButton",
+          "ObjectStatus",
+          "MessageStrip"
+        ],
+        "businessDomain": [
+          "validation",
+          "log",
+          "messages",
+          "severity",
+          "narrow"
+        ],
         "referenceImage": null,
         "specFile": "docs/canonical-screens/08-validate-system-log-panel.md",
         "figNode": "750:174814"

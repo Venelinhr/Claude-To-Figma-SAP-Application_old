@@ -47,3 +47,4 @@ build/refresh-log-*.json
 .claude/memory/reuse-outcomes-ledger.md
 skill/references/canonical-index-tier2.json
 semantic-models/project-knowledge-*.md
+.claude/.reuse-declared

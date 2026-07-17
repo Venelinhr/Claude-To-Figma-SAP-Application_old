@@ -101,3 +101,14 @@ Even then: find the closest approved implementation and reuse as much architectu
 
 ## Related
 [[feedback_sap_build_methodology]] [[feedback_procurement_list_report_canonical]] [[feedback_sap_sidenav_canonical_method]]
+
+## Mechanical enforcement (added 2026-07-17 — the 4 gaps closed)
+
+Reuse-first is no longer prose-only. The following make it enforced:
+- **Score deterministically:** `node build/score-canonical.js --floorplan "<fp>" --regions <r1,r2> --components <c1,c2>` — reads canonical-index.json, returns exact ranked scores + reuse level. Don't hand-estimate.
+- **Validate the plan:** `node build/validate-delta-spec.js <spec.json>` — checks level↔score consistency + base canonical exists.
+- **Gate before build:** `guard-reuse-gate.sh` (PreToolUse on mcp__figma__use_figma) reminds if no reuse decision recorded. Write it: `echo "Level N — <canonical>" > .claude/.reuse-declared`.
+- **Grow the library mechanically:** on confirmation, `node build/record-canonical.js --node <id> --name "<n>" --base <c> --level <N> --score <S> --outcome "<word>" --date <YYYY-MM-DD>` — appends ledger + adds Tier 2 entry.
+- **Scoring conflict fixed:** floorplan adjacent = 30 in BOTH canonical-similarity-rubric.md and SYSTEM_PROMPT RULE 31 (was 30 vs 25).
+
+**Honest scope:** these enforce STRUCTURAL consistency + selection reproducibility. They do NOT verify VISUAL fitness — a clone can be structurally perfect and still the wrong screen. Always take one verification screenshot and compare vs reference.

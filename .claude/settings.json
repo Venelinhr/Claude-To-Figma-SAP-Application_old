@@ -84,6 +84,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-private-screens.sh"
           }
         ]
+      },
+      {
+        "matcher": "mcp__figma__use_figma",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-reuse-gate.sh"
+          }
+        ]
       }
     ]
   }

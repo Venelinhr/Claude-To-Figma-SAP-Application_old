@@ -1158,10 +1158,11 @@ RULE 31 — Canonical Pattern Library · Reuse before rebuild (mandatory · 2026
 **BEFORE any `use_figma` call:**
 
 1. **Load `skill/references/canonical-index.json`** (Tier 2 first, fall back to Tier 1).
-2. **Score the request** against each canonical entry:
-   - Floorplan match: **50%** (same floorplan = 50, similar = 25, different = 0)
-   - Regions overlap: **30%** (count matching regions / total regions × 30)
-   - Components overlap: **20%** (count matching key components / total × 20)
+2. **Score the request** against each canonical entry (authoritative weights — MUST match `canonical-similarity-rubric.md`):
+   - Floorplan match: **50%** (exact floorplan = **50**, adjacent variant = **30**, different = **0**)
+   - Regions overlap: **30%** (`matched_regions / total_request_regions × 30`)
+   - Components overlap: **20%** (`shared_components / total_request_components × 20`)
+   - **Prefer the deterministic scorer** `node build/score-canonical.js` over a hand-computed estimate — it reads `canonical-index.json` and returns exact ranked scores. Hand-scoring is a fallback only when the script is unavailable.
 3. **Report top 3 matches** with scores to the user.
 4. **Choose the reuse level:**
    - **≥85% → Level 1** (Exact): clone directly, inject content only
@@ -1180,7 +1181,9 @@ RULE 31 — Canonical Pattern Library · Reuse before rebuild (mandatory · 2026
 **Learn First workflow (new user setup):**
 When a user connects their own Figma file for the first time, run the **Figma Project Learner** agent (`skill/agents/figma-project-learner.md`) before any builds. It analyzes the file, discovers approved screens, and populates `canonical-index.json` Tier 2 with personal canonicals.
 
-**Every confirmed build updates the ledger:** when the user confirms a result ("perfect", "bravo", "exactly"), write an entry to `.claude/memory/reuse-outcomes-ledger.md` recording: screen name, base canonical, reuse level, similarity score, and outcome.
+**Every confirmed build updates the ledger MECHANICALLY:** when the user confirms a result ("perfect", "bravo", "exactly"), run `node build/record-canonical.js --node "<nodeId>" --name "<screen>" --base "<canonical>" --level <N> --score <S> --outcome "<word>" --date "<YYYY-MM-DD>"`. This appends the ledger row AND adds the Tier 2 canonical entry in one step — the library grows automatically, not by hand-editing.
+
+**The gate is enforced, not just narrated:** before a `use_figma` build, write the reuse decision to the marker: `echo "Level <N> — <canonical>" > .claude/.reuse-declared`. The `guard-reuse-gate.sh` PreToolUse hook checks this marker and reminds if it's missing. Score with `node build/score-canonical.js`, validate the delta-spec with `node build/validate-delta-spec.js`.
 
 **Why:** building the same architecture twice wastes tokens, produces inconsistent results, and discards proven validated work. Every approved screen is a permanent asset. Clone, configure, extend — don't regenerate.
 
