@@ -10,27 +10,115 @@
 
 ---
 
-## Quick Setup
+## Installation
+
+### What you get after setup
+
+| What | Count | Purpose |
+|------|-------|---------|
+| MCP servers (auto-wired) | 5 | Claude's eyes and hands — reads SAP guidelines, writes to Figma, analyses references |
+| Component registry | 152 JSON files | Every SAP Web UI Kit component: keys, variants, tokens, do/don't rules |
+| Fiori guideline cache | 154 files | Offline SAP design guidelines — no internet needed per build |
+| Figma plugin | 1 file | The only piece that binds real SAP Horizon token variables — Claude can't do this without it |
+| Canonical screen library | `.fig` file | 8 confirmed SAP screens to clone from — the quality baseline |
+| Reasoning skill | 30 mandatory rules | The brain: ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN |
+
+---
+
+### Step 1 — Clone and install
 
 ```bash
-git clone https://github.tools.sap/C5408360/sap-fiori-ai-designer.git
-cd sap-fiori-ai-designer
+git clone https://github.com/Venelinhr/Claude-To-Figma-SAP-Application.git
+cd Claude-To-Figma-SAP-Application
 ./install.sh
 ```
 
-**Three things to do after install:**
+`install.sh` does three things automatically:
+- Installs Node.js dependencies
+- Registers all 5 MCP servers in `~/.claude/settings.json`
+- Verifies the registry bundle is up to date
 
-| # | What | Where |
-|---|---|---|
-| 1 | Add your Figma API token | `~/.claude/settings.json` → `mcpServers.figma.env.FIGMA_API_TOKEN` |
-| 2 | Load the plugin in Figma | Plugins → Development → Import from manifest → `plugin/figma-builder/manifest.json` |
-| 3 | Enable SAP Web UI Kit as library | [Free community copy](https://www.figma.com/community/file/1494295794601744471) |
-
-Then restart Claude Code and run `claude mcp list` — you should see 5+ servers.
-
-> **Your own Figma file:** Canonical screens live in file `p7zm5EMBk5DRRZdxNeJ4f5`. Create your own file, connect the SAP Web UI Kit library, and work there.
+**Prerequisites:** Node.js ≥ 20 · Claude Code CLI · Figma desktop app
 
 ---
+
+### Step 2 — Add your Figma API token
+
+Claude needs permission to read and write to your Figma files.
+
+1. Get a token at **figma.com → Settings → Personal access tokens** → Create new token (scopes: Files read + write)
+2. Open `~/.claude/settings.json` and set:
+
+```json
+"mcpServers": {
+  "figma": {
+    "env": {
+      "FIGMA_API_TOKEN": "your-token-here"
+    }
+  }
+}
+```
+
+Then restart Claude Code and verify:
+```bash
+claude mcp list   # should show 5+ servers including "figma"
+```
+
+---
+
+### Step 3 — Load the Figma plugin
+
+**Why the plugin is required:** Claude builds screen structure via the Figma MCP, but MCP runs in a sandbox — it has no access to your SAP library's private token variables. The plugin is the only piece that can bind live SAP Horizon tokens (theme-switchable colours, spacing, typography) to every element. Without it, you get structure but no real SAP tokens.
+
+**How to load it:**
+
+1. Open Figma desktop
+2. Menu → **Plugins** → **Development** → **Import plugin from manifest...**
+3. Navigate to `plugin/figma-builder/manifest.json` in this repo and select it
+
+The plugin will appear under **Plugins → Development → SAP Figma Builder**.
+
+**What the plugin does on each build:**
+- Reads `[sapToken]` name tags Claude placed → binds real SAP Horizon variables
+- Reads `[typo:role]` tags → binds SAP text styles
+- Swaps `◆ICON/name` placeholders → real SAP kit icons
+- Runs 4 accessibility validators (WCAG AA contrast · heading hierarchy · tap targets · not-colour-only status)
+
+---
+
+### Step 4 — Connect the SAP Web UI Kit library
+
+The plugin and Claude both need the SAP Web UI Kit to be an **enabled library** in your Figma file.
+
+1. Get the free community file: [SAP Web UI Kit on Figma Community](https://www.figma.com/community/file/1494295794601744471)
+2. Duplicate it to your drafts
+3. In your working Figma file → **Assets panel** → **Libraries** → enable the SAP Web UI Kit
+
+> Without this library enabled, component imports will fail. This is the most common setup issue.
+
+---
+
+### Step 5 — Open the canonical screen file
+
+The repo includes `docs/canonical-screens/Claude to Figma SAP Application.fig` — 8 confirmed SAP screens that Claude clones from as a starting point for every build.
+
+1. Open it in Figma
+2. Connect SAP Web UI Kit as a library in that file too
+3. Note the file ID — Claude uses it as a clone source automatically
+
+---
+
+### You're ready. Start a build:
+
+```
+Use the skill at skill/SKILL.md.
+Requirement: [describe your screen, or attach a reference image]
+```
+
+Or just describe what you want to build in plain language — Claude handles the rest.
+
+---
+
 
 ## How It Works — the full pipeline
 
