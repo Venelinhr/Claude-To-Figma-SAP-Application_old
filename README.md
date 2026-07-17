@@ -287,18 +287,16 @@ User: "bravo" / "not perfect" / "close but…" / "great but you broke X"
 
 Open in Figma, connect SAP Web UI Kit as a library → use as clone sources for every build. No private Figma access needed.
 
-| Screen | Node | Confirmed |
-|---|---|---|
-| Design System Governance Console (FCL + SideNav + Table) | `750:177443` | ✅ |
-| Side Navigation (full tree, 20 items) | `750:174158` | ✅ |
-| Schedule Operation — Daily / Monthly / Monthly+End / Base | `750:174190/290/786/866` | ✅ |
-| Activities View (List Report + Progress Rows) | `750:174442` / `615:36810` | ✅ "Perfect" |
-| Purchase Orders List Report | `804:44859` | ✅ "Bravo" |
-| Validate System Log Panel (severity pills) | `750:174814` | ✅ |
-| Outage List Overview (desktop List Report) | `750:174925` | ✅ |
-| yanatest Steps (Object Page narrow) | `560:36552` | ✅ "Great result!" |
-
-> **Clone by floorplan:** SideNav → `750:174158` · List Report 320px → `615:36810` · Object Page → `560:36552` · Dialog/Form → `750:174190` · Desktop List Report → `750:174925` · FCL+SideNav → `750:177443`
+| Screen | Confirmed |
+|---|---|
+| Design System Governance Console (FCL + SideNav + Table) | ✅ |
+| Side Navigation (full tree, 20 items) | ✅ |
+| Schedule Operation — Daily / Monthly / Monthly+End / Base | ✅ |
+| Activities View (List Report + Progress Rows) | ✅ "Perfect" |
+| Purchase Orders List Report | ✅ "Bravo" |
+| Validate System Log Panel (severity pills) | ✅ |
+| Outage List Overview (desktop List Report) | ✅ |
+| yanatest Steps (Object Page narrow) | ✅ "Great result!" |
 
 ---
 
