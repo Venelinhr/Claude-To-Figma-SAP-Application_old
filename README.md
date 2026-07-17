@@ -198,11 +198,6 @@ You: "Build a Purchase Orders approval screen"
 | **VALIDATE** | One screenshot · compare vs reference · plugin binds tokens · 4 accessibility validators | One shot |
 | **LEARN** | Approval → canonical saved · correction → lesson captured · next build recalls the right lesson automatically | Every build |
 
-### 3 Hard Build Rules
-1. **Real SAP instances only** — every UI element is a real SAP Web UI Kit component. Never a plain frame.
-2. **L1–L5 semantic naming** — No `Frame 1`, no `(SAP)` suffix, no redundant nesting. Layers readable without opening any node.
-3. **No Spacer frames** — spacing via Auto Layout only (`itemSpacing`, `SPACE_BETWEEN`, `layoutGrow`).
-
 ---
 
 ## Example — what Claude shows you at the PLAN stage
