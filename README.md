@@ -168,7 +168,26 @@ You: "Build a Purchase Orders approval screen"
   │  • "bravo / perfect" → canonical saved          │
   │  • "not right / fix this" → lesson captured     │
   │  • Next similar build recalls the right lesson  │
-  └─────────────────────────────────────────────────┘
+  └────────────────────┬────────────────────────────┘
+                       │
+                       │  Yes, it loops. Next time you ask for
+                       │  a similar screen, LEARN feeds back
+                       │  into ANALYZE:
+                       │
+                       │  • The matching lesson surfaces before
+                       │    Claude starts — right pattern, right
+                       │    components, confirmed token values
+                       │  • Claude clones from the verified
+                       │    canonical screen, not from scratch
+                       │  • Each confirmed build raises the floor
+                       │    for the next one — you never debug
+                       │    the same problem twice
+                       │
+                       └──────────────────────────────────────►
+                                                         next build
+                                                         starts here ↑
+                                                     (ANALYZE with
+                                                      recalled lesson)
 ```
 
 **Nothing gets generated until you say "approved".**
