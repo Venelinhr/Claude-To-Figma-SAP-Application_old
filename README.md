@@ -366,13 +366,19 @@ User: "bravo" / "not perfect" / "close but…" / "great but you broke X"
       "purchase order"  → pulls the PO canonical, not generic list-report
 ```
 
-**Four loops:**
-- **A — Per-Edit** `[enforced]` Registry JSON edited → `registry-rebuild.sh` auto-rebuilds the bundle.
-- **B — Per-Build** `[enforced]` Turn ends → `lint-on-stop.sh` checks the MCP-first build for unbound state; `manifest-sync-check.sh` guards drift.
-- **C — Feedback** `[enforced trigger + durable ledger + guided capture]` Detection, durable write, and cross-session re-reminders are mechanical. Writing the memory file is guided by a persistent, self-surfacing reminder.
-- **D — Ground-Truth** `[enforced trigger + guided capture]` Canonical confirmation → `ground-truth-updater` writes exact measurements into `knowledge/guidelines/token-assignment-rules.md`.
+**Four self-improving loops run automatically:**
 
-> **Honest status:** Loops A & B fully mechanical. C & D have mechanical detection + durable ledger + task-matched recall. The final memory-write is guided — not silent, not fully autonomous.
+**A · Quality on every edit**
+Every time a component definition is updated, the plugin bundle rebuilds automatically. No manual step — the change is live immediately.
+
+**B · Quality on every build**
+When a session ends, the system checks whether the last screen was left unbound (structure built but tokens not yet applied). If so, it reminds you before the session closes. Manifest drift is also caught automatically.
+
+**C · Learning from feedback**
+Every time you react to a result — approval, correction, or "close but not quite" — the signal is detected, classified, and saved to a persistent log that survives session restarts. The next time you build something similar, the relevant lesson surfaces automatically at the start of the conversation. You don't need to remember what worked last time.
+
+**D · Locking in quality results**
+When you confirm a screen is exactly right, the system flags it for ground-truth capture — exact measurements, tokens, and patterns are written into the knowledge base so future builds can clone from a verified baseline rather than re-discovering the same answers.
 
 ---
 
