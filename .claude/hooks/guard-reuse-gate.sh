@@ -86,6 +86,30 @@ if [ "$LEVEL" != "5" ]; then
       blockmsg "⛔ RULE 31 BLOCKED — delta-spec $DELTA failed validation. Run: node build/validate-delta-spec.js $DELTA"
     fi
   fi
+  # ── CLONE-FIRST (RULE 28) — a canonical match MUST be built by cloning it ──
+  # Previously the gate treated .clone()/createInstance/createFrame identically, so a
+  # Level 1-4 decision could still be built from native frames. Now: if a canonical matched,
+  # the code must contain .clone( — otherwise it is not clone-first, it is a rebuild.
+  if ! echo "$CODE" | grep -qE "\.clone\("; then
+    blockmsg "⛔ RULE 28 BLOCKED — Level $LEVEL means canonical $BASE matched, but the build code contains no .clone().
+A matched canonical MUST be cloned, then injected/swapped — not rebuilt from scratch.
+  const src = figma.currentPage.findOne(n => n.id === '$BASE'); const clone = src.clone(); /* inject content */
+If you truly cannot clone (base unavailable), re-score honestly — do not rebuild what a canonical satisfies."
+  fi
+fi
+
+# ── ASK-BEFORE-SCRATCH — a from-scratch build needs INDEPENDENT user consent ──
+# Level 5 = no canonical matched = building from zero (pure SAP instances, no clone base).
+# Claude must have ASKED the user, and the user must have consented. The consent marker is
+# written ONLY by capture-approvals.sh on a user prompt — Claude cannot self-echo it.
+if [ "$LEVEL" = "5" ]; then
+  if [ ! -f "$PROJ/.claude/.scratch-approved" ]; then
+    blockmsg "⛔ ASK-BEFORE-SCRATCH BLOCKED — Level 5 means no approved screen matched, so this would build from zero.
+You must ASK the user before building a screen from scratch. Present the analysis + component suggestion +
+ASCII wireframe + L1–L5 layer structure, then ask the user to confirm building new (no clone base exists).
+Only the user's own confirmation writes .claude/.scratch-approved — it cannot be self-set.
+(If an approved screen actually exists, re-score and clone it instead — that is always preferred.)"
+  fi
 fi
 
 # All checks pass — allow, with a confirming note

@@ -1,0 +1,41 @@
+{
+  "_comment": "Legit primitive nodes (INVARIANT 1, verdict PASS_PRIMITIVE_EXCEPTION). These are visual primitives that intentionally are NOT SAP kit instances — no kit component exists for them, or they are pure decoration. A node PASSES as a primitive only if its NAME matches one of namePatterns AND its type is in the allowed types for that pattern. This list is deliberately small; adding to it requires a documented reason.",
+  "primitives": [
+    {
+      "id": "divider",
+      "namePattern": "Divider",
+      "allowedTypes": ["FRAME", "RECTANGLE", "LINE"],
+      "reason": "1px separator line — no SAP kit component; must still carry a [sapToken] bound fill (sapList_BorderColor)"
+    },
+    {
+      "id": "icon-placeholder",
+      "namePattern": "^◆ICON/",
+      "allowedTypes": ["FRAME", "RECTANGLE"],
+      "reason": "Icon placeholder — swapped to a real SAP icon by the plugin Bind step"
+    },
+    {
+      "id": "progress-bar-fill",
+      "namePattern": "Progress Bar",
+      "allowedTypes": ["FRAME", "RECTANGLE"],
+      "reason": "Canonical Progress Row uses a native green frame (40x12, radius 6) — confirmed better than the SAP ProgressIndicator composite (see figma-build-patterns.md)"
+    },
+    {
+      "id": "success-circle",
+      "namePattern": "Success Icon Circle",
+      "allowedTypes": ["FRAME"],
+      "reason": "Confirmation success circle — decorative shape holding an icon placeholder; carries a [sapPositiveElementColor] bound fill"
+    },
+    {
+      "id": "demo-pill",
+      "namePattern": "^DEMO",
+      "allowedTypes": ["FRAME", "TEXT"],
+      "reason": "Prototype DEMO pill — a build-time marker, not part of the SAP screen; stripped before delivery"
+    },
+    {
+      "id": "image-fill",
+      "namePattern": "Image",
+      "allowedTypes": ["RECTANGLE", "FRAME"],
+      "reason": "Raster image fill — no SAP component"
+    }
+  ]
+}

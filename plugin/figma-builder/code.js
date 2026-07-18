@@ -914,7 +914,10 @@ async function applyFill(node, tokenName) {
   } else {
     logException('fill-api-unavailable', tokenName, 'figma.variables.setBoundVariableForPaint not available in this Figma host.');
   }
-  // Last-resort: raw fallback RGB so the screen still renders
+  // Last-resort raw fallback so the canvas still renders — BUT this is no longer silent:
+  // noteTokenFallback() increments _tokenMetrics.fallback, and bindMcpFrames now posts
+  // type:'error' (not 'success') whenever fallback > 0 (INVARIANT 5, fail-closed 2026-07-18).
+  // A fallback fill = an unresolved SAP variable = a build that must NOT ship as success.
   noteTokenFallback(tokenName);
   node.fills = [{ type: 'SOLID', color: fallbackRgb }];
 }
@@ -1446,6 +1449,25 @@ async function bindMcpFrames(targetFrameId, options) {
 
   if (exceptions.length > 0) {
     figma.ui.postMessage({ type: 'build-exceptions', exceptions: exceptions });
+  }
+
+  // ── INVARIANT 5 — fail-closed (2026-07-18) ────────────────────────────────
+  // The build's truth is the produced frame, not a self-declared success. If any
+  // color reference could not bind to a SAP variable (raw-fill/raw-stroke leak) or
+  // any text style failed, the screen is NOT genuinely SAP-token-bound — report
+  // type:'error' so the result cannot masquerade as success. Previously this handler
+  // unconditionally posted type:'success' with violations folded in as counts, which
+  // is exactly how "looks like SAP but isn't" output shipped.
+  var hardViolations = (agg.rawFills || 0) + (agg.rawStrokes || 0) +
+                       (agg.typoFails || 0) + (_tokenMetrics.fallback || 0);
+  if (hardViolations > 0) {
+    figma.ui.postMessage({ type: 'error', text:
+      '✗ BIND FAILED — ' + hardViolations + ' unresolved SAP violation(s). This screen is NOT genuinely SAP-bound:\n' +
+      line +
+      '\n\nEvery fill/stroke must bind to a SAP variable and every text must use a SAP style. ' +
+      'Unresolved fills mean the SAP Web UI Kit variable was not found (disconnected library or wrong token name). ' +
+      'Fix the tags/tokens and re-bind — do NOT hand this off as done.' });
+    return;
   }
   figma.ui.postMessage({ type: 'success', text: line });
 }

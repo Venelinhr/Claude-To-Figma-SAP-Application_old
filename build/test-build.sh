@@ -183,5 +183,30 @@ else
 fi
 
 echo ""
+echo "$(printf '─%.0s' {1..60})"
+echo "Invariant gate (verify-invariants.js — Gates 6/7/8, the reality gate)"
+echo "$(printf '─%.0s' {1..60})"
+# A known-good SAP frame dump MUST pass; a known-bad native-frame dump MUST fail (exit 2).
+# This proves the post-build reality gate is wired and discriminating.
+if node build/verify-invariants.js test-fixtures/invariants/good-sap-frame.json --pre-bind >/dev/null 2>&1; then
+  echo "  ✓ good SAP frame passes invariants"
+else
+  echo -e "${RED}verify-invariants.js rejected a known-good SAP frame — the gate is mis-calibrated${NC}"
+  exit 1
+fi
+if node build/verify-invariants.js test-fixtures/invariants/bad-native-frame.json --pre-bind >/dev/null 2>&1; then
+  echo -e "${RED}verify-invariants.js PASSED a known-bad native-frame wireframe — the gate is not enforcing${NC}"
+  exit 1
+else
+  echo "  ✓ bad native-frame wireframe correctly FAILS the invariant gate"
+fi
+if node build/verify-invariants.js test-fixtures/invariants/instance-rawhex-override.json --pre-bind >/dev/null 2>&1; then
+  echo -e "${RED}verify-invariants.js PASSED an instance with an unbound raw-hex override — INV 2 instance hole is open${NC}"
+  exit 1
+else
+  echo "  ✓ raw-hex override on a SAP instance correctly FAILS (INV 2 instance-override hole closed)"
+fi
+
+echo ""
 echo "All specs within baseline. Pipeline is clean."
 exit 0

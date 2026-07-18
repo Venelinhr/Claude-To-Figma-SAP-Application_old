@@ -1,0 +1,47 @@
+{
+  "_comment": "Legit native FRAME uses (INVARIANT 1, verdict PASS_CONTAINER). A FRAME passes ONLY if it is a pure layout container: has layoutMode != NONE, has >=1 child, carries a semantic L2/L3 name, and does NOT carry a SAP component name. Everything else that is a FRAME/RECTANGLE standing in for a component is FAIL_FAKE_COMPONENT.",
+  "kitFileKey": "SILcWzK5uFghKun9jx6D7c",
+  "containerNamePatterns": [
+    "Wrapper$",
+    "^Hero",
+    "Actions$",
+    " Actions ",
+    "Card$",
+    " Card ",
+    "Row$",
+    " Row ",
+    "Column$",
+    "Col$",
+    "^Section",
+    "Section$",
+    "Header$",
+    "^Main Content",
+    "^Content",
+    "Box$",
+    "Bar$",
+    "^Filter Bar",
+    "^Timing",
+    "Details$",
+    "^Exec",
+    "^Summary",
+    "Block$",
+    "Group$",
+    "Body$",
+    "Footer$",
+    "^Demo Wrapper",
+    "Left$",
+    "Right$",
+    "Meta Block$"
+  ],
+  "containerRequires": {
+    "layoutModeNot": "NONE",
+    "minChildren": 1
+  },
+  "forbiddenContainerNames": [
+    "ShellBar", "Button", "Table", "Input", "Select", "ObjectStatus",
+    "ObjectNumber", "ObjectAttribute", "IconTabBar", "DynamicPageHeader",
+    "DynamicPage", "FilterBar", "MessageStrip", "CheckBox", "RadioButton",
+    "DatePicker", "SegmentedButton", "MenuButton", "IconButton", "Avatar",
+    "Link", "List", "StandardListItem", "Panel", "Toolbar", "Dialog", "Calendar"
+  ]
+}

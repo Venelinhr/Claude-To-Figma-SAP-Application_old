@@ -49,3 +49,8 @@ skill/references/canonical-index-tier2.json
 semantic-models/project-knowledge-*.md
 .claude/.reuse-declared
 .claude/.delta-spec.json
+# Per-build ephemeral gate markers (INVARIANT architecture) — set by the events they attest, cleared at SessionStart
+.claude/.inspect-done
+.claude/.wireframe-approved
+.claude/.canonical-selected
+.claude/.scratch-approved
