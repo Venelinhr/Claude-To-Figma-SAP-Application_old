@@ -200,6 +200,12 @@ if node build/verify-invariants.js test-fixtures/invariants/bad-native-frame.jso
 else
   echo "  ✓ bad native-frame wireframe correctly FAILS the invariant gate"
 fi
+if node build/verify-invariants.js test-fixtures/invariants/instance-rawhex-override.json --pre-bind >/dev/null 2>&1; then
+  echo -e "${RED}verify-invariants.js PASSED an instance with an unbound raw-hex override — INV 2 instance hole is open${NC}"
+  exit 1
+else
+  echo "  ✓ raw-hex override on a SAP instance correctly FAILS (INV 2 instance-override hole closed)"
+fi
 
 echo ""
 echo "All specs within baseline. Pipeline is clean."

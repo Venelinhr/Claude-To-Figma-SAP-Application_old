@@ -21,8 +21,13 @@
  *
  * Input node shape (each element of root.findAll(()=>true) mapped to):
  *   { "id","name","type","visible","layoutMode","childCount","mainComponentKey",
- *     "fontFamily","fontSize","fills":[{"type","hex","boundVariable"}],
- *     "strokes":[{"type","hex","boundVariable"}] }
+ *     "fontFamily","fontSize",
+ *     "overriddenFills":<bool>,"overriddenStrokes":<bool>,   // node-level: are paints locally overridden?
+ *     "fills":[{"type","hex","boundVariable","overridden":<bool>}],   // per-paint: is THIS paint a local override?
+ *     "strokes":[{"type","hex","boundVariable","overridden":<bool>}] }
+ * The serializer MUST set overridden/overriddenFills for INSTANCE nodes (Figma: compare paint to the
+ * main component, or use node.overriddenFields). Without it, an unbound raw-hex OVERRIDE on an instance
+ * is treated as inherited and passes — the exact hole this closes. For non-instance nodes the flags are ignored.
  * Accepts either a flat array of nodes OR a nested tree with children[] (it flattens).
  *
  * Usage:
@@ -137,16 +142,34 @@ function classifyNode(n, isRoot) {
 }
 
 function checkFills(n) {
-  // INV 2: every visible SOLID fill/stroke on a NON-INSTANCE node must have a bound SAP variable.
-  if ((n.type || '') === 'INSTANCE') return []; // library owns instance paints
+  // INV 2: every visible SOLID fill/stroke must bind a SAP variable — no raw hex.
+  //
+  // Instance paints are USUALLY owned by the library (inherited from the main component) and are
+  // exempt. BUT Figma allows a LOCAL paint override on an instance, and an unbound raw-hex override
+  // is exactly a "non-SAP color on top of a real SAP instance" leak. So we exempt instance paints
+  // ONLY when they are inherited (not a local override). The serializer marks a local override with
+  // p.overridden === true (or n.overriddenFills === true for the node). An unbound OVERRIDE fails;
+  // an inherited paint (or a bound override) passes.
+  const isInstance = (n.type || '') === 'INSTANCE';
+  const nodeOverridesFills = n.overriddenFills === true || n.overriddenStrokes === true;
   const fails = [];
-  const paints = [...(n.fills || []), ...(n.strokes || [])];
-  for (const p of paints) {
+  const paints = [...(n.fills || []).map(p => ({ p, kind: 'fill' })),
+                  ...(n.strokes || []).map(p => ({ p, kind: 'stroke' }))];
+  for (const { p, kind } of paints) {
     if ((p.type || 'SOLID') !== 'SOLID') continue;
     if (p.visible === false) continue;
     const bound = p.boundVariable || (p.boundVariables && p.boundVariables.color);
-    if (!bound) {
-      fails.push({ verdict: 'FAIL_RAW_HEX', invariant: 2, why: `unbound fill/stroke ${p.hex || ''} on '${n.name}' — every color must bind a SAP variable` });
+    if (bound) continue; // bound to a SAP variable → always OK
+
+    if (isInstance) {
+      // Exempt only if this paint is inherited (not a local override).
+      const isOverride = p.overridden === true || nodeOverridesFills;
+      if (!isOverride) continue; // inherited library paint — OK
+      fails.push({ verdict: 'FAIL_RAW_HEX', invariant: 2,
+        why: `unbound raw-hex ${kind} OVERRIDE ${p.hex || ''} on SAP instance '${n.name}' — a local color override on an instance must still bind a SAP variable (never override with raw hex)` });
+    } else {
+      fails.push({ verdict: 'FAIL_RAW_HEX', invariant: 2,
+        why: `unbound ${kind} ${p.hex || ''} on '${n.name}' — every color must bind a SAP variable` });
     }
   }
   return fails;
