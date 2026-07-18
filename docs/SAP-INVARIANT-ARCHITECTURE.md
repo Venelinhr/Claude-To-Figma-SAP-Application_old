@@ -257,8 +257,16 @@ Each historical failure mode maps to an invariant that now *mechanically* kills 
 
 ## Appendix — Implementation order (highest leverage first)
 
-1. **`build/verify-invariants.js` + wire into `lint-on-stop.sh` and `test-build.sh`.** (F8-meta-gap / INV-7 — the single root fix.) Turns "always success" into "success only if the frame proves it."
-2. **`.claude/hooks/guard-figma-code.sh`** (Gate 5) — blocks native-frame wireframes before they build.
-3. **De-orphan + rewrite `guard-reuse-gate.sh`** to recompute the score and require `.clone(`/`.inspect-done`/`.wireframe-approved`.
-4. **`code.js` fail-closed** (`applyFill` throws; 0-variable abort; remove unconditional `type:'success'`).
-5. **Backfill registries** (`native-frame-allowlist.json`, `primitive-exceptions.json`, `layer-naming.json`, 21 keys, generated `MANDATORY_TOKENS` + typography map).
+> **Status 2026-07-18: all 5 items DONE.** Items 1-4 landed in the invariant-enforcement merge;
+> item 5 (registries + drift gates) completed in the hardening pass:
+> - `build/keyless-components-allowlist.json` — the 22 keyless-by-design components; build-registry-bundle.js
+>   now exits 2 on any UNEXPECTED empty figmaComponentId (F2 closed).
+> - `.claude/hooks/guard-manifest-drift.sh` — PreToolUse Gate 4; blocks a key-importing build on manifest drift.
+> - `check-manifest-sync.js` — token-hex drift promoted from warn → HARD FAIL (F6 closed); the sapList_TextColor
+>   class of contradiction now fails the build instead of shipping.
+
+1. **`build/verify-invariants.js` + wire into `lint-on-stop.sh` and `test-build.sh`.** ✅ DONE. (F8-meta-gap / INV-7 — the single root fix.) Turns "always success" into "success only if the frame proves it."
+2. **`.claude/hooks/guard-figma-code.sh`** (Gate 5) ✅ DONE — blocks native-frame wireframes before they build.
+3. **De-orphan + rewrite `guard-reuse-gate.sh`** ✅ DONE — clone-first (.clone required for L1-4) + ask-before-scratch (.scratch-approved) + wireframe gate (guard-wireframe-gate.sh) + independent approval markers (capture-approvals.sh).
+4. **`code.js` fail-closed** ✅ DONE — bind handler posts type:'error' on any unbound fill/typo (removed unconditional type:'success').
+5. **Backfill registries** ✅ DONE — `native-frame-allowlist.json`, `primitive-exceptions.json`, `layer-naming.json`, `keyless-components-allowlist.json` (22 keys allowlisted, unexpected empties fail), token-hex drift now hard-fails in check-manifest-sync.js.

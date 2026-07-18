@@ -100,7 +100,11 @@ if (fs.existsSync(CODE_JS)) {
     }
   }
 
-  // Parse MANDATORY_TOKENS hex — warn-only (plugin binds by variable name)
+  // Parse MANDATORY_TOKENS hex — HARD FAIL on drift (F6 fix 2026-07-18).
+  // Previously warn-only ("plugin binds by name"), but the hex is what the plugin's RGB→token
+  // reverse-lookup matches against, and a drifted hex is exactly how the sapList_TextColor
+  // contradiction (#1D2D3E vs #131E29) slipped in. The source (horizon-variable-keys.json) is
+  // authoritative; code.js MANDATORY_TOKENS must match it. Divergence now fails the build.
   const mtBlock = code.match(/const MANDATORY_TOKENS\s*=\s*\{([\s\S]*?)\n\};/);
   if (mtBlock) {
     const tRe = /'(sap[A-Za-z0-9_]+)':\s*\{[^}]*hex:\s*'(#[0-9A-Fa-f]{6})'/g;
@@ -110,8 +114,8 @@ if (fs.existsSync(CODE_JS)) {
       const src = tok[name];
       if (!src || typeof src !== 'object' || !src.hex) continue;
       if (src.hex.toUpperCase() !== codeHex.toUpperCase()) {
-        warn(`code.js MANDATORY_TOKENS ${name}: ${codeHex} ≠ source ${src.hex} (cosmetic — plugin binds by name)`);
-        warnCount++;
+        fail(`code.js MANDATORY_TOKENS ${name}: ${codeHex} ≠ source ${src.hex} — token hex drift (regenerate from horizon-variable-keys.json)`);
+        hardFail++;
       }
       checked++;
     }
@@ -119,6 +123,6 @@ if (fs.existsSync(CODE_JS)) {
 }
 
 console.log(`\n── manifest sync: ${checked} entries checked, ${hardFail} hard fail(s), ${warnCount} warning(s) ──`);
-if (hardFail > 0) { fail('DRIFT: component key mismatch — regenerate SAP_BUILD_MANIFEST.md §3 from registry.'); process.exit(1); }
+if (hardFail > 0) { fail('DRIFT: component-key or token-hex mismatch — regenerate SAP_BUILD_MANIFEST.md §3/§4 + code.js MANDATORY_TOKENS from source.'); process.exit(1); }
 ok('manifest in sync with registry + token sources');
 process.exit(0);

@@ -49,6 +49,21 @@ const registry = {};
 let missingKeys = 0;
 let validatedTokens = new Set();
 
+// F2 fix — load the keyless-by-design allowlist. A component with no figmaComponentId
+// is OK only if it is on this list (layout wrapper / child sub-item / primitive). Any
+// OTHER empty key is a real missing key and fails the build (no silent slip-through).
+let KEYLESS_OK = new Set();
+try {
+  const kl = JSON.parse(readFileSync(resolve(__dirname, 'keyless-components-allowlist.json'), 'utf8'));
+  for (const group of Object.values(kl.keylessByDesign || {})) {
+    if (Array.isArray(group)) group.forEach(n => KEYLESS_OK.add(n));
+  }
+} catch (e) {
+  console.error('  ✗ could not load build/keyless-components-allowlist.json — cannot validate empty keys:', e.message);
+  process.exit(2);
+}
+const unexpectedKeyless = [];
+
 for (const file of files) {
   const path = join(REGISTRY_DIR, file);
   let entry;
@@ -66,6 +81,7 @@ for (const file of files) {
   }
   if (!entry.figmaComponentId) {
     missingKeys++;
+    if (!KEYLESS_OK.has(name)) unexpectedKeyless.push(name);
   }
 
   if (Array.isArray(entry.colorTokenRules)) {
@@ -99,6 +115,15 @@ for (const file of files) {
 console.log(`  Loaded ${files.length} components.`);
 if (missingKeys > 0) {
   console.log(`  ⚠ ${missingKeys} components missing figmaComponentId (nested/layout-wrapper).`);
+}
+// F2 fix — a component NOT on the keyless allowlist with an empty key is a real missing key.
+if (unexpectedKeyless.length > 0) {
+  console.error(`\n  ✗ ${unexpectedKeyless.length} component(s) have an EMPTY figmaComponentId and are NOT on the keyless allowlist:`);
+  unexpectedKeyless.forEach(n => console.error(`      - ${n}`));
+  console.error(`  Fix: harvest the real key (plugin → Harvest Icon/Component Keys) and set figmaComponentId in`);
+  console.error(`  knowledge/components/registry/${unexpectedKeyless[0]}.json, OR — if it is legitimately keyless`);
+  console.error(`  (a layout wrapper / child sub-item / primitive) — add it to build/keyless-components-allowlist.json.`);
+  process.exit(2);
 }
 
 // ────────────────────────────────────────────────────────────────────────────

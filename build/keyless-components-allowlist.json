@@ -1,0 +1,9 @@
+{
+  "_comment": "Components that legitimately have NO figmaComponentId (F2 fix). These are built natively — layout wrappers (auto-layout frames), child sub-items of a parent composite, or runtime-only constructs with no standalone kit component. build-registry-bundle.js fails (exit 2) if a component NOT on this list has an empty figmaComponentId, so a real missing key can never slip through silently.",
+  "keylessByDesign": {
+    "layoutWrappers": ["App", "Page", "FlexBox", "HBox", "VBox", "DynamicPage", "DynamicPageTitle", "DynamicSideContent", "FlexibleColumnLayout", "ObjectPageLayout", "OverflowToolbar", "FilterBar", "Column", "ToolbarSpacer"],
+    "childSubItems": ["ColumnListItem", "IconTabFilter", "Item", "MessagePopoverItem", "NavigationItem", "SegmentedButtonItem"],
+    "primitives": ["Image"]
+  },
+  "_notKeyless": "_schema is a JSON-schema file, not a component — the build script skips it."
+}
