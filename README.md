@@ -292,7 +292,9 @@ Each layer does only what it uniquely can:
 
 ---
 
-## Token Optimization — ~25k → ~3k per build (~88% reduction)
+## Token Optimization
+
+**~25k → ~3k per build (~88% reduction)**
 
 The system reads one small manifest file instead of the 45k-token plugin, caches repeated image analysis (96% saving on repeats), and builds in one shot instead of iterating live — together these cut token usage by ~88%.
 
