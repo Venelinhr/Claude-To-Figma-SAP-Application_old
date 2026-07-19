@@ -364,8 +364,7 @@
     <a href="#plugin">Plugin</a>
     <a href="#hooks">Hooks</a>
     <a href="#loop">Learning</a>
-    <a href="#rules">Rules</a>
-    <a href="#hard-rules" class="hi">Hard Rules</a>
+    <a href="#rules" class="hi">Rules + Hard Rules</a>
   </div>
 </nav>
 
@@ -1035,27 +1034,84 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
 <div class="section">
   <div class="section-header">
     <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M25.7,9.3l-7-7A1,1,0,0,0,18,2H8A2,2,0,0,0,6,4V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V10A1,1,0,0,0,25.7,9.3ZM18,4.4,23.6,10H18ZM24,28H8V4h8v6a2,2,0,0,0,2,2h6Z"/><rect x="10" y="22" width="12" height="2"/><rect x="10" y="16" width="12" height="2"/></svg></div>
-    <div><div class="section-title">30 Mandatory Rules</div><div class="section-sub">The quality contract — any violation stops generation</div></div>
+    <div><div class="section-title">Hard Rules + 30 Mandatory Rules</div><div class="section-sub">Build behavior rules — any violation stops generation · you can add your own</div></div>
   </div>
 
+  <!-- HARD RULES — on top -->
+  <div style="background:#fff8f0;border:2px solid var(--red);border-radius:12px;padding:24px;margin-bottom:28px">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:16px">⛔ Hard Rules — enforced on every build</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-1 · Side padding = 32px always</div>
+        <div style="font-size:12px;color:var(--ink2)"><code>paddingLeft = paddingRight = 32</code> on all containers. Never 48.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-2 · IconButtons = Type:Tertiary</div>
+        <div style="font-size:12px;color:var(--ink2)">All action icons (view/edit/delete/toolbar) → <code>Type:'Tertiary'</code>. Never Primary/Secondary for icon-only buttons.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-3 · Two-line stacked text = CENTER aligned</div>
+        <div style="font-size:12px;color:var(--ink2)">Label+value or title+subtitle stacked vertically → <code>counterAxisAlignItems='CENTER'</code>. Never top/bottom.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-4 · Dividers = stroke on parent, never native frames</div>
+        <div style="font-size:12px;color:var(--ink2)"><code>node.strokeBottomWeight=1</code> + stroke color. Never <code>createFrame()</code> for 1px lines.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-5 · Form Factor = Compact by default</div>
+        <div style="font-size:12px;color:var(--ink2)">All SAP instances default to Compact. Only use Cozy if you explicitly say so.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-6 · Always Horizon Light — even if reference is dark</div>
+        <div style="font-size:12px;color:var(--ink2)">Dark hex has no SAP variable → Bind failure. Build light always. Only override if you say "dark theme".</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-7 · Always end with direct Figma node URL</div>
+        <div style="font-size:12px;color:var(--ink2)">Every build ends with a validated <code>?node-id=850-45411</code> URL. Never the bare file URL.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #fcd5c8;border-radius:8px;padding:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px">HR-8 · Text nodes always use [typo:role] tags</div>
+        <div style="font-size:12px;color:var(--ink2)">Never raw <code>fontName:{family:'72'}</code> alone. Add <code>[typo:label]</code>, <code>[typo:heading]</code> etc. to every text node name.</div>
+      </div>
+
+    </div>
+
+    <!-- Add your own -->
+    <div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px">
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:8px">⚙ Add your own rules — they take effect immediately</div>
+      <p style="font-size:13px;color:var(--ink2);margin-bottom:14px">Add any rule to <code>CLAUDE.md</code> using the format below. Claude reads it at session start and enforces it on every build. You can override built-in rules or add entirely new ones.</p>
+      <pre style="margin:0">## ⛔ MY RULE — Always use Cozy form factor
+- Our product is touch-first — override HR-5, use Cozy everywhere
+
+## ⛔ MY RULE — Side padding = 48px for this project
+- Our design system uses 48px — override HR-1
+
+## ⛔ MY RULE — English labels only
+- Never use placeholder text in other languages</pre>
+      <p style="font-size:12px;color:var(--ink3);margin-top:10px">You can also say it in a prompt: <em>"hard rule for this build: Cozy, 1440px, German labels"</em> — Claude applies it immediately and saves corrections to memory automatically.</p>
+    </div>
+  </div>
+
+  <!-- 30 MANDATORY RULES — compact -->
+  <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">30 Mandatory System Rules — quality contract</div>
   <div class="rules">
-    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 1 · HARD GATE</div><div class="rule-name">Registry gate — every component must exist in the registry</div></div>
-    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 2 · HARD GATE</div><div class="rule-name">Token whitelist — every color in MANDATORY_TOKENS (80 tokens)</div></div>
-    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 3 · STOP</div><div class="rule-name">Floorplan confirmation mandatory before proceeding</div></div>
-    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 12</div><div class="rule-name">Reference-First: references are business intent, not pixel templates</div></div>
-    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 14</div><div class="rule-name">Container-First: start with the container, then fill children</div></div>
-    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 17</div><div class="rule-name">Divide-and-conquer: never analyze a reference as one flat image</div></div>
-    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 18</div><div class="rule-name">Spatial reconstruction: measure first, never arbitrary dimensions</div></div>
-    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 19 · HARD GATE</div><div class="rule-name">ASCII wireframe before build — user must approve</div></div>
-    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 20 · MANDATORY</div><div class="rule-name">Reasoning Brain: structured artifacts before hierarchy design</div></div>
-    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 21 · MANDATORY</div><div class="rule-name">QA Certification: Zero-Defect + self-repair before handoff</div></div>
-    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 23 · SOURCE</div><div class="rule-name">SAP Web UI Kit is the ONLY source for components/tokens/icons</div></div>
-    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 24 · MANDATORY</div><div class="rule-name">Live kit resolution — read component props from the live kit</div></div>
-    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 25 · DEFAULT</div><div class="rule-name">MCP-First: build via use_figma with real components + tags</div></div>
-    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 26 · MANDATORY</div><div class="rule-name">Visual Design Intelligence: full sap-visual-reading analysis</div></div>
-    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 28 · NEW</div><div class="rule-name">Build reads SAP_BUILD_MANIFEST.md ONLY — never code.js. One-shot build, ≤1 screenshot.</div></div>
-    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">3 HARD BUILD RULES</div><div class="rule-name">Real SAP instances · L1–L5 semantic naming · no Spacer frames (Auto Layout only)</div></div>
-    <div class="rule" style="border-color:var(--text3)"><div class="rule-num" style="color:var(--text3)">RULES 4–11, 13, 15–16, 22, 27</div><div class="rule-name">Props non-default only · no raw px/font · rendering conventions · adopt-working-pattern · positive feedback = canonical · incremental-edit · post-build learning…</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 1 · HARD GATE</div><div class="rule-name">Registry gate — every component must exist in the registry before build starts</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 2 · HARD GATE</div><div class="rule-name">Token whitelist — every color must be one of the 80 MANDATORY_TOKENS. Raw hex = rejected.</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 3 · STOP</div><div class="rule-name">Floorplan confirmation — Claude proposes, you approve. Wrong floorplan = rebuild from scratch.</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 19 · HARD GATE</div><div class="rule-name">ASCII wireframe before build — shows structure + layer tree. You must approve before anything is built.</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 23 · SOURCE</div><div class="rule-name">SAP Web UI Kit is the ONLY source — components, tokens, icons, variants. Never invented or guessed.</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 25 · DEFAULT</div><div class="rule-name">MCP-First build — real SAP instances via <code>use_figma</code> + name tags. Plugin binds tokens after.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 28 · MANIFEST</div><div class="rule-name">Build reads SAP_BUILD_MANIFEST.md only — never code.js (~45k tokens). One-shot build, ≤1 screenshot.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 31 · CLONE-FIRST</div><div class="rule-name">Search canonical screens before building. Match found → clone it. Never rebuild what already exists perfectly.</div></div>
+    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULES 12–18, 20–22, 24, 26–27, 29–30</div><div class="rule-name">Reference-First · Container-First · Sector analysis · Spatial measurement · Reasoning Brain · QA cert · Live kit resolution · Visual intelligence · Recovery protocol · Width measurement · Post-build learning</div></div>
   </div>
 </div>
 
@@ -1303,121 +1359,7 @@ inst.<span class="fn">setProperties</span>({
  <code>701:119633</code> — Completed SideNavigation with all 22 items, icons, dividers — the 100% quality benchmark</span></div>
 </div>
 
-<hr id="hard-rules">
-
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><rect x="15" y="10" width="2" height="9"/><rect x="15" y="21" width="2" height="2"/></svg></div>
-    <div><div class="section-title">Hard Rules — Enforce Build Behavior</div><div class="section-sub">Confirmed 2026-07-19 · active on every build · you can add your own</div></div>
-  </div>
-
-  <p style="color:var(--ink2);margin-bottom:24px;font-size:14px">These rules are enforced on every build from session start. They were learned from real production failures — each one prevents a specific class of mistake. You can add your own rules to <code>CLAUDE.md</code> or <code>skill/SYSTEM_PROMPT.md</code> using the same format.</p>
-
-  <!-- Built-in Hard Rules table -->
-  <table style="width:100%;border-collapse:collapse;margin-bottom:32px">
-    <thead>
-      <tr style="background:var(--bg2)">
-        <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line)">#</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line)">Rule</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line)">Why it exists</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid var(--line)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-1</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Side padding = 32px always</strong><br><span style="font-size:12px;color:var(--ink3)">paddingLeft = paddingRight = 32 on all containers — never 48</span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">48px wastes canvas space and doesn't match SAP's recommended content margin</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--line);background:var(--bg2)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-2</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>IconButtons = Type:Tertiary always</strong><br><span style="font-size:12px;color:var(--ink3)">All action icons (view/edit/delete/toolbar) → <code>setProperties({'Type':'Tertiary'})</code></span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Primary/Secondary add a background box that clutters dense table rows</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--line)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-3</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Two-line stacked text = CENTER aligned vertically</strong><br><span style="font-size:12px;color:var(--ink3)">Label+value or title+subtitle stacked → <code>counterAxisAlignItems='CENTER'</code></span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Top/bottom alignment creates visual imbalance in table cells and cards</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--line);background:var(--bg2)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-4</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Dividers = stroke on parent — never native frames</strong><br><span style="font-size:12px;color:var(--ink3)">Use <code>node.strokeBottomWeight=1</code> + <code>node.strokes=[...]</code> instead of <code>createFrame()</code></span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Native 1px frames add extra nodes, break auto-layout, and can't be token-bound</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--line)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-5</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Form Factor = Compact by default</strong><br><span style="font-size:12px;color:var(--ink3)">All SAP instances: Button, IconButton, Input, Select, Label → <code>'Form Factor':'Compact'</code></span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">SAP back-office screens are Compact; Cozy is for consumer/touch only</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--line);background:var(--bg2)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-6</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Always Horizon Light theme — even if reference is dark</strong><br><span style="font-size:12px;color:var(--ink3)">Dark hex (#1d2d3e, #1b3346…) has no SAP variable → guaranteed Bind failure</span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">SAP Web UI Kit only has Horizon Light variables. Dark theme requires a separate mode switch</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--line)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-7</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Always end with direct Figma node URL</strong><br><span style="font-size:12px;color:var(--ink3)">Format: <code>https://www.figma.com/design/&lt;fileKey&gt;/...?node-id=850-45411</code> (hyphen, not colon)</span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">User should never hunt for the built frame. Node must be confirmed to exist before sharing</td>
-      </tr>
-      <tr style="background:var(--bg2)">
-        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-8</td>
-        <td style="padding:12px 16px;font-size:13px"><strong>Text nodes always use <code>[typo:role]</code> name tags</strong><br><span style="font-size:12px;color:var(--ink3)">Never raw <code>fontName:{family:'72'}</code> — add <code>[typo:label]</code>, <code>[typo:heading]</code>, etc. to every text node name</span></td>
-        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Raw "72" shows in Figma's Typography panel unbound — Bind can't apply SAP text styles without the tag</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- Add your own rules -->
-  <div style="border:2px solid var(--accent);border-radius:12px;padding:28px;margin-bottom:32px">
-    <div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">⚙ Add Your Own Rules</div>
-    <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">The system learns and adapts. Add team-specific rules to <code>CLAUDE.md</code> using the <code>⛔ HARD RULE</code> format — Claude enforces them from the next session onward.</p>
-
-    <pre>## ⛔ MY TEAM HARD RULE — Always use Cozy form factor
-- Our product is touch-first — all screens use Cozy, never Compact
-- Override HR-5 for this project
-
-## ⛔ MY TEAM HARD RULE — English labels only
-- Never use placeholder text in German, Bulgarian, or other languages
-- All labels, buttons, and status text must be in English
-
-## ⛔ MY TEAM HARD RULE — Always add DEMO pill to prototype frames
-- Every prototype screen gets a green DEMO pill top-left
-- sapBackgroundColor fill + sapPositiveElementColor stroke + bold green label</pre>
-
-    <p style="font-size:13px;color:var(--ink3);margin-top:16px">Or tell Claude directly in any prompt — <em>"Hard rule for this build: use 1440px, Cozy form factor, German labels"</em> — and it applies immediately. Corrections are saved to memory automatically.</p>
-  </div>
-
-  <!-- Lessons from Orders build -->
-  <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px">
-    <div style="background:var(--bg2);padding:14px 20px;border-bottom:1px solid var(--line);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3)">Lessons learned · Orders List Report build (2026-07-19) · confirmed "Bravo! Great result!"</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-      <div style="padding:16px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Custom nav bar instead of SAP IconTabBar</div>
-        <div style="font-size:12px;color:var(--ink2)">Built a native HORIZONTAL frame as nav. Fix: always use <code>IconTabBar Type=Shell Navigation</code> — never build nav from scratch</div>
-      </div>
-      <div style="padding:16px 20px;border-bottom:1px solid var(--line)">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ setProperties icon swap silently fails</div>
-        <div style="font-size:12px;color:var(--ink2)">Using <code>setProperties({'Icon#...': comp.id})</code> leaves globe icon unchanged. Fix: use <code>iconInst.swapComponent(comp)</code> — the only reliable API</div>
-      </div>
-      <div style="padding:16px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Raw "72" font family instead of SAP text style</div>
-        <div style="font-size:12px;color:var(--ink2)">Text shows "72" in panel — not bound to SAP library style. Fix: add <code>[typo:role]</code> tag to every text node name → Bind applies the correct SAP text style</div>
-      </div>
-      <div style="padding:16px 20px;border-bottom:1px solid var(--line)">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ 48px side padding instead of 32px</div>
-        <div style="font-size:12px;color:var(--ink2)">Wastes canvas space. Fix: always <code>paddingLeft = paddingRight = 32</code> on all containers</div>
-      </div>
-      <div style="padding:16px 20px;border-right:1px solid var(--line)">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Native Divider frames for row separators</div>
-        <div style="font-size:12px;color:var(--ink2)">Extra nodes, breaks auto-layout, can't be token-bound. Fix: <code>node.strokeBottomWeight = 1</code> + stroke color on parent row frame</div>
-      </div>
-      <div style="padding:16px 20px">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Bind fails when frame is inside a GROUP</div>
-        <div style="font-size:12px;color:var(--ink2)">Plugin page-scan finds 0 fills. Fix: move <code>◆SAP-UNBOUND/</code> frame to direct page child before running Bind, then move back</div>
-      </div>
-    </div>
-  </div>
-
-</div>
+<hr id="hard-rules-legacy">
 
 <div style="text-align:center;padding:40px 0 20px;color:var(--text3);font-size:12px">
   SAP Figma Design Agent · 30 Rules · 8 MCPs · 10 Agents · 152 Components · 2,391 Plugin LOC · ~3k tokens/build · Updated 2026-07-19
