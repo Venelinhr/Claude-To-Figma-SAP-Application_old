@@ -10,6 +10,15 @@
 
 > **Interactive workflow reference:** [SAP-Figma-Design-Agent-Workflow.html](SAP-Figma-Design-Agent-Workflow.html) — full pipeline, 31 rules, hard rules, learning loop, all MCP servers documented.
 
+
+| What | What's inside |
+|------|--------------|
+| **Instructions** | The 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
+| **31 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
+| **Skills** | 8 invokable skills — each packages a full pipeline stage into a single command |
+| **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
+| **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
+
 ---
 
 ## Examples — screens built by the system
@@ -25,16 +34,6 @@ All screens built from a plain-language description or reference image — real 
 
 ## Installation
 
-
-| What | What's inside |
-|------|--------------|
-| **Instructions** | The 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
-| **31 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
-| **Skills** | 8 invokable skills — each packages a full pipeline stage into a single command |
-| **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
-| **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
-
----
 
 ### Step 1 — Clone and run the installer
 
