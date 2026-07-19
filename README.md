@@ -383,29 +383,6 @@ No private Figma access needed — the file ships with the repo and works offlin
 | `/sap-spec-validate` | Registry gate + token whitelist + no raw hex — pre-flight before any build |
 | `/sap-registry-update` | Edit registry JSON → rebuild bundle → run regression tests (the ONLY correct way) |
 
----
-
-## Automation Hooks
-
-Background scripts that keep quality high without manual effort.
-
-| Hook | When | What it does |
-|---|---|---|
-| `block-codejs-read.sh` | Before any file read | Prevents reading large internal files — keeps builds fast |
-| `block-generated-files.sh` | Before any file edit | Prevents accidental edits to auto-generated files |
-| `guard-private-screens.sh` | Before any git command | Warns if a private reference screenshot is about to be committed |
-| `registry-rebuild.sh` | After registry edit | Auto-rebuilds the component bundle — no manual step needed |
-| `manifest-sync-check.sh` | After manifest edit | Catches drift between manifest and registry |
-| `feedback-learn.sh` | On every message | Detects approval or correction → logs a durable lesson entry |
-| `recall-lessons.sh` | On every message | Surfaces the relevant past lesson when a build task is detected |
-| `lint-on-stop.sh` | End of turn | Checks the last build hasn't been left without token binding |
-| `verify-learnings.sh` | End of turn | Re-reminds if a captured lesson wasn't written this turn |
-| `surface-learnings.sh` | Session start | Resurfaces lessons from previous sessions |
-
-Hooks activate on Claude Code restart.
-
----
-
 ## Health Check
 
 ```bash
