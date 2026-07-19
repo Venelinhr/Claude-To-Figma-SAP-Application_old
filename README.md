@@ -259,11 +259,6 @@ You can iterate on any part — change the floorplan, add a column, switch to mo
 
 ---
 
-
----
-
----
-
 ## Three-Layer Architecture
 
 Each layer does only what it uniquely can:
