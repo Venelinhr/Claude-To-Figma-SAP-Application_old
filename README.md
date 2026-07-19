@@ -298,7 +298,7 @@ The build pipeline is token-optimised — each session uses a fraction of what a
 
 ---
 
-## The Loop — Learning · Improving · Better Ecosystem
+## The Loop — Learning & Improving
 
 The system gets smarter with every session. When you confirm something is right, it's saved as a canonical reference for future builds. When something is wrong, the correction is captured automatically and applied from the next build onward. You never need to say "remember this" — every piece of feedback, positive or negative, is stored and recalled when relevant.
 
