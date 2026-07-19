@@ -54,7 +54,18 @@ official SAP Web UI Kit library.
 
 ---
 
-## ⛔ ABSOLUTE HARD RULE #2 — NEVER USE RAW FONT '72' — ALWAYS [typo:role] TAGS
+## ⛔ ABSOLUTE HARD RULE #3 — ALWAYS FULL HORIZONTAL WIDTH (FILL)
+
+Every element, container, group, and row must fill its full horizontal space. Checklist:
+- Root frame + sections → `primaryAxisSizingMode='FIXED'`, full width
+- SAP instances → `layoutSizingHorizontal='FILL'` AFTER appendChild (never before — throws error)
+- Table rows/header → `resize(tableWidth, h)` — all cells must sum to full width
+- Text + child frames that should stretch → `layoutSizingHorizontal='FILL'` after append
+- Groups → wrap in auto-layout FILL frame if they need to stretch horizontally
+
+---
+
+## ⛔ ABSOLUTE HARD RULE #4 — NEVER USE RAW FONT '72' — ALWAYS [typo:role] TAGS
 
 Every native text node MUST have a `[typo:role]` name tag. NEVER set `fontName:{family:'72'}` alone.
 Roles: `[typo:heading]` · `[typo:body]` · `[typo:label]` · `[typo:labelBold]` · `[typo:caption]`
