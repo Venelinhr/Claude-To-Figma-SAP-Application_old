@@ -1110,18 +1110,47 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
     </div>
   </div>
 
-  <!-- 30 MANDATORY RULES — compact -->
-  <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">31 Mandatory System Rules — quality contract</div>
+  <!-- 31 MANDATORY RULES — all rules, plain-English descriptions -->
+  <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">31 Mandatory Rules — quality contract</div>
   <div class="rules">
-    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 1 · HARD GATE</div><div class="rule-name">Registry gate — every component must exist in the registry before build starts</div></div>
-    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 2 · HARD GATE</div><div class="rule-name">Token whitelist — every color must be one of the 80 MANDATORY_TOKENS. Raw hex = rejected.</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 1 · HARD GATE</div><div class="rule-name">Every component must exist in the registry before the build starts. If it's missing, the build stops.</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 2 · HARD GATE</div><div class="rule-name">Every colour must be one of the 80 SAP tokens. No raw hex allowed — the plugin rejects it.</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 3 · STOP</div><div class="rule-name">Claude proposes the screen layout type and waits for your approval before doing anything else.</div></div>
+    <div class="rule"><div class="rule-num">RULE 4</div><div class="rule-name">Only set properties that differ from the SAP default. Don't repeat what's already standard.</div></div>
+    <div class="rule"><div class="rule-num">RULE 5</div><div class="rule-name">No hardcoded pixel sizes or font sizes. Every value comes from SAP tokens.</div></div>
+    <div class="rule"><div class="rule-num">RULE 6</div><div class="rule-name">No invented component names or properties. Everything comes from the live SAP kit — verified, not guessed.</div></div>
+    <div class="rule"><div class="rule-num">RULE 7</div><div class="rule-name">Measure the reference width before building. Default is 1440px only when no reference exists.</div></div>
+    <div class="rule"><div class="rule-num">RULE 8</div><div class="rule-name">All layouts use Auto Layout. No absolute positioning, no empty spacer frames.</div></div>
+    <div class="rule"><div class="rule-num">RULE 9</div><div class="rule-name">Use Compact for data-heavy desktop screens, Cozy for touch and mobile. Never mix.</div></div>
+    <div class="rule"><div class="rule-num">RULE 10</div><div class="rule-name">Footer buttons follow the SAP intent map: Primary for confirm, Tertiary for cancel/back, Reject for destructive.</div></div>
+    <div class="rule"><div class="rule-num">RULE 11</div><div class="rule-name">When updating a screen, change only what was asked. Don't touch anything else.</div></div>
+    <div class="rule"><div class="rule-num">RULE 12</div><div class="rule-name">A reference image shows what the business needs, not what pixels to copy.</div></div>
+    <div class="rule"><div class="rule-num">RULE 13</div><div class="rule-name">If a confirmed working pattern exists, use it exactly. Don't redesign what's already solved.</div></div>
+    <div class="rule"><div class="rule-num">RULE 14</div><div class="rule-name">Always build the outer container first, then fill children inside it.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 15</div><div class="rule-name">When you say "perfect" or "bravo", that result becomes the canonical reference for similar future builds.</div></div>
+    <div class="rule"><div class="rule-num">RULE 16</div><div class="rule-name">Don't detach SAP kit instances. The build gate hard-fails any detached component.</div></div>
+    <div class="rule"><div class="rule-num">RULE 17</div><div class="rule-name">Split every reference into labelled zones (A, B, C…). Analyse each zone before planning the build.</div></div>
+    <div class="rule"><div class="rule-num">RULE 18</div><div class="rule-name">Measure every dimension from the reference. Never use arbitrary numbers.</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 19 · HARD GATE</div><div class="rule-name">Claude shows an ASCII wireframe and stops. You must approve it before any building starts.</div></div>
+    <div class="rule"><div class="rule-num">RULE 20</div><div class="rule-name">Before choosing components, Claude must map out the business intent, persona, task, data, and actions.</div></div>
+    <div class="rule"><div class="rule-num">RULE 21</div><div class="rule-name">Before calling a build complete, Claude runs its own QA check and fixes any issues first.</div></div>
+    <div class="rule"><div class="rule-num">RULE 22</div><div class="rule-name">When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 23 · SOURCE OF TRUTH</div><div class="rule-name">The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</div></div>
+    <div class="rule"><div class="rule-num">RULE 24</div><div class="rule-name">Before adding any component, look up its exact properties in the live SAP kit. No guessing variants.</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 25 · DEFAULT</div><div class="rule-name">Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</div></div>
+    <div class="rule"><div class="rule-num">RULE 26</div><div class="rule-name">Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 27</div><div class="rule-name">After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 28</div><div class="rule-name">Never build SAP composites from scratch. Always clone an existing confirmed screen and adapt it.</div></div>
+    <div class="rule"><div class="rule-num">RULE 29</div><div class="rule-name">When something looks wrong, stop immediately. Read the canonical reference file and rebuild from ground truth.</div></div>
+    <div class="rule"><div class="rule-num">RULE 30</div><div class="rule-name">Always measure the reference width before building. Never assume 1440px when a reference is provided.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 31 · CANONICAL FIRST</div><div class="rule-name">Search approved screens before building — clone if a match exists, never rebuild from scratch.</div></div>
     <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 3 · STOP</div><div class="rule-name">Floorplan confirmation — Claude proposes, you approve. Wrong floorplan = rebuild from scratch.</div></div>
     <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 19 · HARD GATE</div><div class="rule-name">ASCII wireframe before build — shows structure + layer tree. You must approve before anything is built.</div></div>
     <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 23 · SOURCE</div><div class="rule-name">SAP Web UI Kit is the ONLY source — components, tokens, icons, variants. Never invented or guessed.</div></div>
     <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 25 · DEFAULT</div><div class="rule-name">MCP-First build — real SAP instances via <code>use_figma</code> + name tags. Plugin binds tokens after.</div></div>
     <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 28 · MANIFEST</div><div class="rule-name">Build reads SAP_BUILD_MANIFEST.md only — never code.js (~45k tokens). One-shot build, ≤1 screenshot.</div></div>
-    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 31 · CLONE-FIRST</div><div class="rule-name">Search canonical screens before building. Match found → clone it. Never rebuild what already exists perfectly.</div></div>
-    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULES 12–18, 20–22, 24, 26–27, 29–30</div><div class="rule-name">Reference-First · Container-First · Sector analysis · Spatial measurement · Reasoning Brain · QA cert · Live kit resolution · Visual intelligence · Recovery protocol · Width measurement · Post-build learning</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 31 · CANONICAL FIRST</div><div class="rule-name">Search approved screens before building — clone if a match exists, never rebuild from scratch.</div></div>
+  </div>
   </div>
 </div>
 
