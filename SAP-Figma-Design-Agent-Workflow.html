@@ -781,7 +781,6 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
 
 <hr id="tokens">
 
-<!-- TOKEN OPTIMIZATION -->
 <div class="section">
   <div class="section-header">
     <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,23H4V19H24ZM16,11H4V7H16Z"/></svg></div>
@@ -790,38 +789,32 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
       <div class="section-sub">~25k → ~3k tokens per build — ~88% reduction</div>
     </div>
   </div>
-  <div class="grid c2" style="margin-top:8px">
-    <div class="card">
-      <h3>Never read the plugin file</h3>
-      <p>The plugin file is 45k tokens and not needed for building. A hook blocks it automatically. Everything required fits in one 2k-token manifest file instead.</p>
-    </div>
-    <div class="card">
-      <h3>Cache repeated images</h3>
-      <p>When the same reference image is used again, the system loads a cached analysis (~700 tokens) instead of re-running the full pipeline (~13.5k tokens) — 96% saving on repeats.</p>
-    </div>
-    <div class="card">
-      <h3>One manifest, not six files</h3>
-      <p>Build knowledge used to be spread across 6 files. Now it lives in one manifest. Same information, 76% fewer tokens to read it.</p>
-    </div>
-    <div class="card">
-      <h3>Plan first, build once</h3>
-      <p>Analyse and plan before touching Figma. One build call, one screenshot. No live iterative fixing — that was the biggest source of waste.</p>
-    </div>
+  <p style="font-size:15px;color:var(--ink2);line-height:1.8;max-width:760px">The system reads one small manifest file instead of the 45k-token plugin, caches repeated image analysis (96% saving on repeats), and builds in one shot instead of iterating live — together these cut token usage by ~88% per build.</p>
+  <div class="grid c4" style="margin-top:20px">
+    <div class="card"><h3>Never read the plugin</h3><p>A hook blocks it. The 2k-token manifest has everything needed.</p></div>
+    <div class="card"><h3>Cache image analysis</h3><p>Same reference image → load 700-token cache instead of re-running the 13.5k-token pipeline.</p></div>
+    <div class="card"><h3>One manifest file</h3><p>All build knowledge in one place. Was 6 files. 76% fewer tokens to read.</p></div>
+    <div class="card"><h3>Build once, not ten times</h3><p>Plan before building. One use_figma call, one screenshot. No live iteration.</p></div>
   </div>
 </div>
 
 <hr id="loop">
 
-<!-- LEARNING LOOP -->
 <div class="section">
   <div class="section-header">
     <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
     <div>
-      <div class="section-title">The Learning Loop</div>
+      <div class="section-title">The Loop — Learning · Improving · Better Ecosystem</div>
       <div class="section-sub">The system gets smarter every session</div>
     </div>
   </div>
-  <p style="font-size:15px;color:var(--ink2);line-height:1.8;max-width:720px">Every time you give feedback — positive (<em>bravo, perfect, great result</em>) or negative (<em>wrong, not SAP, never do this</em>) — the system captures it automatically, saves it to memory as a rule or canonical reference, and applies it from the next build onward. You never have to say "remember this" — it already did.</p>
+  <p style="font-size:15px;color:var(--ink2);line-height:1.8;max-width:760px;margin-bottom:20px">The system gets smarter with every session. When you confirm something is right, it's saved as a canonical reference for future builds. When something is wrong, the correction is captured automatically and applied from the next build onward. You never need to say "remember this" — every piece of feedback, positive or negative, is stored and recalled when relevant.</p>
+  <div class="grid c4">
+    <div class="card"><h3 style="color:var(--success)">A · Every edit</h3><p>When a component definition changes, the plugin bundle rebuilds automatically. No manual step.</p></div>
+    <div class="card"><h3 style="color:var(--accent)">B · Every build</h3><p>At session end the system checks if the last screen was left unbound and reminds you before closing.</p></div>
+    <div class="card"><h3 style="color:var(--accent)">C · Every feedback</h3><p>Approval, correction, or "close but not quite" — detected, saved, surfaced automatically next time you build something similar.</p></div>
+    <div class="card"><h3 style="color:var(--warn)">D · Every confirmation</h3><p>When you confirm a screen is exactly right, exact measurements and patterns are written into the knowledge base so future builds clone from a verified baseline.</p></div>
+  </div>
 </div>
 
 <hr id="rules">

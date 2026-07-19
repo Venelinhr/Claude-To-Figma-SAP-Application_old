@@ -297,47 +297,15 @@ Each layer does only what it uniquely can:
 
 ---
 
-## Inputs Claude Accepts
-
-| Input | What happens |
-|---|---|
-| **Text** — user story, Jira ticket, description | Stage 3: extracts persona · task · data · actions · states |
-| **Reference image** — screenshot, wireframe, sketch | VDI 7-artifact analysis + sector-by-sector reading (A→B→C). Quality tier assessed first. |
-| **Figma URL** — `?node-id=355-39080` | `get_design_context` → exact measurements, the ● confirmed source |
-| **Document** — PDF spec, markdown, requirements list | Parsed at Stage 3, merged with Stage 4 |
-
-Image + text → both run, merged. Image only → Stage 2. Text only → Stage 3.
-
----
-
 ## Token Optimization — ~25k → ~3k per build (~88% reduction)
 
-| Cost source | Before | After | How |
-|---|---|---|---|
-| Reading `code.js` | ~45k tokens | **0** | Hook blocks read · manifest has all keys |
-| VDI reference bundle | ~8k/build | ~2k | Consolidated `VDI_REFERENCE.md` (−76%) |
-| VDI analysis (repeat image) | ~13.5k | ~0.7k | SHA-1 cache in `semantic-models/` (−96%) |
-| Build knowledge | ~15–20k | ~2k | Single `SAP_BUILD_MANIFEST.md` |
-| Live iteration loop | 8 calls + 6 shots | 1 call + 1 shot | Analyze before executing |
-| Sequential imports | ~2.1s | ~0.5s | `Promise.all` — 3–4× faster |
+The system reads one small manifest file instead of the 45k-token plugin, caches repeated image analysis (96% saving on repeats), and builds in one shot instead of iterating live — together these cut token usage by ~88%.
 
 ---
 
 ## The Loop — Learning · Improving · Better Ecosystem
 
-The system gets smarter with every session. Four self-improving loops run automatically:
-
-**A · Quality on every edit**
-Every time a component definition is updated, the plugin bundle rebuilds automatically. No manual step — the change is live immediately.
-
-**B · Quality on every build**
-When a session ends, the system checks whether the last screen was left unbound (structure built but tokens not yet applied). If so, it reminds you before the session closes. Manifest drift is also caught automatically.
-
-**C · Learning from feedback**
-Every time you react to a result — approval, correction, or "close but not quite" — the signal is detected, classified, and saved to a persistent log that survives session restarts. The next time you build something similar, the relevant lesson surfaces automatically at the start of the conversation. You don't need to remember what worked last time.
-
-**D · Locking in quality results**
-When you confirm a screen is exactly right, the system flags it for ground-truth capture — exact measurements, tokens, and patterns are written into the knowledge base so future builds can clone from a verified baseline rather than re-discovering the same answers.
+The system gets smarter with every session. When you confirm something is right, it's saved as a canonical reference for future builds. When something is wrong, the correction is captured automatically and applied from the next build onward. You never need to say "remember this" — every piece of feedback, positive or negative, is stored and recalled when relevant.
 
 ---
 
