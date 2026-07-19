@@ -42,6 +42,18 @@ official SAP Web UI Kit library.
 
 ---
 
+## ⛔⛔⛔ ABSOLUTE HARD RULE — AUTO-SAVE ALL FEEDBACK WITHOUT BEING ASKED
+
+**NEVER ask "should I save this?" — save it automatically, every time.**
+
+- Positive (bravo / great / nice / I like it / good work / 👍 ❤️ 🔥) → save to memory as lesson
+- Negative (bad / wrong / wtf / not SAP / only SAP / terrible / never do this) → save to memory as hard rule
+- Hard rule phrases (hard rule / never / always / save this / add to memory) → save immediately
+- The `feedback-learn.sh` hook auto-fires and writes memory files without user action
+- After saving, apply the lesson immediately — no confirmation needed
+
+---
+
 ## ⛔ ABSOLUTE HARD RULE #2 — NEVER USE RAW FONT '72' — ALWAYS [typo:role] TAGS
 
 Every native text node MUST have a `[typo:role]` name tag. NEVER set `fontName:{family:'72'}` alone.
