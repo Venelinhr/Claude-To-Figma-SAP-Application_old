@@ -265,432 +265,407 @@ Every build is governed by these rules. Violating any stops generation.
 
 <details>
 <summary><strong>RULE 1 · HARD GATE</strong> — Every component must exist in the registry before the build starts.</summary>
-
 <blockquote>Every component must exist in the registry before the build starts. If it's missing, the build stops — no exceptions.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 2 · HARD GATE</strong> — Every colour must be one of the 80 SAP tokens. No raw hex allowed.</summary>
-
 <blockquote>Every colour must be one of the 80 SAP tokens. No raw hex allowed — the plugin rejects it.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 3 · STOP</strong> — Claude proposes the screen layout type and waits for your approval before doing anything else.</summary>
-
 <blockquote>Claude proposes the screen layout type (List Report, Object Page, Dialog…) and waits for your approval before doing anything else. Wrong layout = wasted work.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 4</strong> — Only set properties that differ from the SAP default. Don't repeat what's already standard.</summary>
-
 <blockquote>Only set properties that differ from the SAP default. Don't repeat what's already standard — it makes builds noisy and hard to read.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 5</strong> — No hardcoded pixel sizes or font sizes. Every value comes from SAP tokens.</summary>
-
 <blockquote>No hardcoded pixel sizes or font sizes. Every value comes from SAP tokens — hardcoded numbers break when the theme changes.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 6</strong> — No invented component names or properties. Everything comes from the live SAP kit.</summary>
-
 <blockquote>No invented component names or properties. Everything comes from the live SAP kit — verified, not guessed.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 7</strong> — Measure the reference width before building. Default is 1440px only when no reference exists.</summary>
-
 <blockquote>Measure the reference width before building. Default is 1440px only when no reference exists. Your specified width always wins.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 8</strong> — All layouts use Auto Layout. No absolute positioning, no empty spacer frames.</summary>
-
 <blockquote>All layouts use Auto Layout. No absolute positioning, no empty spacer frames — unless the SAP kit explicitly requires it.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 9</strong> — Use Compact for data-heavy desktop screens, Cozy for touch and mobile. Never mix.</summary>
-
 <blockquote>Use Compact for data-heavy desktop screens, Cozy for touch and mobile. Never mix densities within one screen.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 10</strong> — Footer buttons follow the SAP intent map: Primary for confirm, Tertiary for cancel/back.</summary>
-
 <blockquote>Footer buttons follow the SAP intent map: Primary for confirm, Tertiary for cancel/back, Reject for destructive actions. Set directly via setProperties() on the MCP path.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 11</strong> — When updating a screen, change only what was asked. Don't touch anything else.</summary>
-
 <blockquote>When updating a screen, change only what was asked. Don't reorganise, rename, or improve untouched areas — scope changes tightly.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 12</strong> — A reference image shows what the business needs, not what pixels to copy.</summary>
-
 <blockquote>A reference image shows what the business needs, not what pixels to copy. Adapt to SAP floorplan conventions — never replicate reference visuals literally.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 13</strong> — If a confirmed working pattern exists, use it exactly. Don't redesign what's already solved.</summary>
-
 <blockquote>If a confirmed working pattern exists in memory or canonical screens, use it exactly. Don't redesign what's already been solved and confirmed.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 14</strong> — Always build the outer container first, then fill children inside it.</summary>
-
 <blockquote>Always build the outer container first, then fill children inside it. Building children before their parent causes sizing and layout failures.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 15</strong> — When you say "perfect" or "bravo", that result becomes the canonical reference for similar future builds.</summary>
-
 <blockquote>When you say "perfect" or "bravo", that result becomes the canonical reference for similar future builds. It's saved to memory and never silently changed.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 16</strong> — Don't detach SAP kit instances. The build gate hard-fails any detached component.</summary>
-
 <blockquote>Don't detach SAP kit instances. The build gate hard-fails any detached component. Adjust variant props or wrap in a frame instead.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 17</strong> — Split every reference into labelled zones (A, B, C…). Analyse each zone before planning the build.</summary>
-
 <blockquote>Split every reference into labelled zones (A, B, C…). Analyse each zone fully before planning the build. Never analyse a screen as one flat image.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 18</strong> — Measure every dimension from the reference. Never use arbitrary numbers.</summary>
-
 <blockquote>Measure every dimension from the reference. Never use arbitrary numbers — every size must trace back to a reference measurement or an SAP spacing token.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 19 · HARD GATE</strong> — Claude shows an ASCII wireframe and stops. You must approve it before any building starts.</summary>
-
 <blockquote>Claude shows an ASCII wireframe of the full screen and stops. You must explicitly approve it before any building starts — even when analysis is cached.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 20</strong> — Before choosing components, Claude must map out the business intent, persona, task, data, and actions.</summary>
-
 <blockquote>Before choosing components, Claude must map out the business intent, persona, task, data, actions, and states. These are the evidence base for every decision.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 21</strong> — Before calling a build complete, Claude runs its own QA check and fixes any issues first.</summary>
-
 <blockquote>Before calling a build complete, Claude runs its own QA check: 0 raw hex, 0 hardcoded fonts, 0 generic layer names, all SAP instances. Fix anything that fails before handing off.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 22</strong> — When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</summary>
-
 <blockquote>When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 23 · SOURCE OF TRUTH</strong> — The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</summary>
-
 <blockquote>The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 24</strong> — Before adding any component, look up its exact properties in the live SAP kit. No guessing variants.</summary>
-
 <blockquote>Before adding any component, look up its exact properties in the live SAP kit. No guessing variants.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 25 · DEFAULT</strong> — Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</summary>
-
 <blockquote>Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 26</strong> — Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</summary>
-
 <blockquote>Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 27</strong> — After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</summary>
-
 <blockquote>After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 28</strong> — Never build SAP composites from scratch. Always clone an existing confirmed screen and adapt it.</summary>
-
 <blockquote>Never build SAP composites from scratch. Always clone an existing confirmed screen and adapt it. Building from scratch loses the correct slot structure and SAP tokens.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 29</strong> — When something looks wrong, stop immediately. Read the canonical reference file and rebuild from ground truth.</summary>
-
 <blockquote>When something looks wrong, stop immediately. Read the canonical reference file and rebuild from ground truth — never iterate blindly on a broken result.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 30</strong> — Always measure the reference width before building. Never assume 1440px when a reference is provided.</summary>
-
 <blockquote>Always measure the reference width before building. Never assume 1440px when a reference is provided.</blockquote>
 </details>
 
 <details>
 <summary><strong>RULE 31 · CANONICAL FIRST</strong> — Search approved screens before building — clone if a match exists, never rebuild from scratch.</summary>
-
 <blockquote>Search approved screens before building — clone if a match exists, never rebuild from scratch. This is enforced by a gate that blocks builds when a canonical match is found but ignored.</blockquote>
 </details>
 
+---
 
-</details>
+## Examples — screens built by the system
 
-<details>
-<summary><strong>RULE 2 · HARD GATE</strong> — Token whitelist: every colour must be one of the 80 mandatory SAP tokens</summary>
+| Schedule Operation Dialog | Flight Result Card | Design System Governance |
+|:---:|:---:|:---:|
+| ![Schedule Operation](docs/canonical-screens/07-schedule-operation-monthly-end-date.png) | ![Flight Result Card](docs/canonical-screens/12-flight-result-card.png) | ![Design System Governance](docs/canonical-screens/01-design-system-governance-console.png) |
+| Complex dialog · timing · recurrence · monthly pattern · end date | Custom card layout · flight legs · price zone · action CTA | FCL layout · SideNav · nested table · review calendar |
 
-<blockquote>No raw hex colours are allowed anywhere in a build. Every fill must be one of the 80 tokens in `MANDATORY_TOKENS`. Raw hex = rejected by the plugin. This enforces theme-switchability and audit compliance.</blockquote>
+All screens built from a plain-language description or reference image — real SAP components, live Horizon tokens, verified layer structure.
 
+---
 
-</details>
+## Installation
 
-<details>
-<summary><strong>RULE 3 · STOP</strong> — Floorplan confirmation is mandatory before proceeding</summary>
+### What you get
 
-<blockquote>Claude proposes a floorplan (List Report, Object Page, Worklist, etc.) and must wait for your confirmation before doing anything else. The wrong floorplan wastes all downstream work.</blockquote>
+| What | What's inside |
+|------|--------------|
+| **Instructions** | The 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
+| **31 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
+| **Skills** | 8 invokable skills — each packages a full pipeline stage into a single command |
+| **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
+| **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
 
+---
 
-</details>
+### Step 1 — Clone and run the installer
 
-<details>
-<summary><strong>RULE 4</strong> — Only set non-default properties</summary>
+```bash
+git clone https://github.com/Venelinhr/Claude-To-Figma-SAP-Application.git
+cd Claude-To-Figma-SAP-Application
+./install.sh
+```
 
-<blockquote>Don't set component properties that are already at their default value. It makes builds noisy and harder to read. Only write what actually needs to change.</blockquote>
+The installer handles everything automatically: installs dependencies, registers all 5 MCP servers in Claude Code, and copies the skill files.
 
+**You need:** Node.js ≥ 20 · [Claude Code CLI](https://claude.ai/code) · Figma desktop app
 
-</details>
+---
 
-<details>
-<summary><strong>RULE 5</strong> — No raw pixel values or hardcoded font sizes</summary>
+### Step 2 — Add your Figma API token
 
-<blockquote>Every size, spacing, and typography value must come from SAP Horizon tokens or design system steps — never hardcoded numbers. Hardcoded values break when the theme changes.</blockquote>
+**Why you need it:** Claude communicates with Figma through the Figma API — it reads your existing screens, inspects component structure, and writes new screens directly to your canvas. The API token is how Figma knows the request is coming from you and has permission to access your files. Without it, Claude cannot read from or build into Figma at all.
 
+The installer adds a placeholder automatically. Replace it with your real token:
 
-</details>
+1. Go to **figma.com → Settings → Personal access tokens** → generate a new token
+2. Open `~/.claude/settings.json` and find this line:
+   ```
+   "FIGMA_API_TOKEN": "YOUR_FIGMA_TOKEN_HERE"
+   ```
+3. Replace `YOUR_FIGMA_TOKEN_HERE` with your token
 
-<details>
-<summary><strong>RULE 6</strong> — No invented component names or properties</summary>
+> **Internal SAP users:** if your organisation uses SSO or a managed Figma account, generate the token the same way — personal access tokens work regardless of how your account is administered. Keep the token private; treat it like a password.
 
-<blockquote>All component names, variant names, and property keys must come from the live SAP Web UI Kit. Never guess or invent them. Use the registry or `search_design_system` to verify.</blockquote>
+---
 
+### Step 3 — Load the Figma plugin
 
-</details>
+The plugin is what connects Claude's output to real SAP design tokens. Claude builds the screen structure — the plugin then binds the official SAP colours, spacing, and typography from your SAP library.
 
-<details>
-<summary><strong>RULE 7</strong> — Measure the reference width before building (default 1440px)</summary>
+1. Open **Figma desktop**
+2. Go to **Plugins → Development → Import plugin from manifest...**
+3. Select `plugin/figma-builder/manifest.json` from this repo
 
-<blockquote>Read the pixel width of any reference image before planning the layout. Default to 1440px if no reference. Snap-suggest standard breakpoints (375 mobile / 768 tablet / 1440 desktop) when close. A user-specified width always wins.</blockquote>
+The plugin appears under **Plugins → Development → SAP Figma Builder** and runs inside any Figma file.
 
+---
 
-</details>
+### Step 4 — Connect the SAP Web UI Kit in Figma
 
-<details>
-<summary><strong>RULE 8</strong> — Rendering conventions: Auto Layout, no absolute positioning</summary>
+This is the official SAP component library. Claude pulls components from it for every build — buttons, tables, headers, status indicators, icons, and the full SAP token system.
 
-<blockquote>All layouts use Figma Auto Layout. No absolute-positioned frames except where the SAP kit explicitly requires it (e.g. overflow icon buttons beside DPH). No empty spacer frames.</blockquote>
+1. Open [SAP Web UI Kit on Figma Community](https://www.figma.com/community/file/1494295794601744471) and click **Duplicate to your drafts** (free)
+2. Open your duplicated copy in Figma desktop
+3. In the file: click the file name at the top → **Publish styles and components** → Publish
+4. In your working Figma file: open the **Assets panel** (left sidebar) → click the **Libraries** icon → find **SAP Web UI Kit** → toggle **ON**
 
+> **Internal SAP users:** the SAP Web UI Kit is likely already available as a shared library in your organisation — you do not need to duplicate it. Open the **Assets panel** → **Libraries** → find SAP Web UI Kit under your organisation's shared libraries → toggle **ON**. Do not duplicate the community copy on top of the organisation version — this creates two competing libraries.
 
-</details>
+> **If component imports fail** — the SAP Web UI Kit library is not enabled in the current file, or the wrong version is active. Check the Libraries panel and make sure only one version is toggled on.
 
-<details>
-<summary><strong>RULE 9</strong> — Density must match the use case (Cozy vs Compact)</summary>
+---
 
-<blockquote>Choose the correct SAP density for the screen type. Compact for data-heavy desktop screens. Cozy for touch / mobile / action-oriented screens. Never mix densities within a screen.</blockquote>
+### Step 5 — Restart Claude Code and verify
 
+```bash
+claude mcp list   # should show 5+ servers including "figma"
+```
 
-</details>
+---
 
-<details>
-<summary><strong>RULE 10</strong> — Responsive breakpoints must be planned</summary>
-
-<blockquote>Every screen plan must state its target breakpoint and note how it responds at other sizes. A desktop screen that has never considered mobile is incomplete.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 11</strong> — Incremental edit: change the minimum needed</summary>
-
-<blockquote>When updating an existing screen, change only what was asked. Don't reorganise, rename, or "improve" untouched areas. Scope changes tightly to avoid regressions.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 12</strong> — Reference-First: a reference is business intent, not a pixel template</summary>
-
-<blockquote>A reference image or Figma URL tells you what the business needs. It does not dictate exact pixel layout. Adapt to SAP floorplan conventions — never copy reference visuals literally.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 13</strong> — Adopt-working-pattern: if a proven pattern exists, use it</summary>
-
-<blockquote>If a confirmed working pattern exists in memory or the canonical screens (e.g. Progress Row, DPH clone method), use it exactly. Don't redesign what's already been solved and confirmed.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 14</strong> — Container-First: build the container before filling children</summary>
-
-<blockquote>Always create and configure the outer frame/container first, then append children. Building children before their parent causes sizing and Auto Layout failures.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 15</strong> — Positive feedback = canonical: freeze it, don't improve it</summary>
-
-<blockquote>When you confirm a result is correct ("perfect", "bravo", "exactly"), that result becomes the canonical reference for similar future builds. Never silently revert or "improve" a confirmed result.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 16</strong> — Post-build learning: capture exact measurements after confirmation</summary>
-
-<blockquote>After a confirmed quality build, record exact token values, padding, gap, and font roles into `knowledge/guidelines/token-assignment-rules.md`. This is how confirmed knowledge becomes permanent.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 17</strong> — Divide-and-conquer: never analyse a reference as one flat image</summary>
-
-<blockquote>Split every reference into labelled sectors (A, B, C…). Analyse each sector fully before moving to the next. Merge the sector analyses into the overall plan. This prevents missed elements and wrong component choices. See `skill/sap-visual-reading/sector-analysis.md`.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 18</strong> — Spatial reconstruction: measure first, never assume dimensions</summary>
-
-<blockquote>Before placing any element, measure or infer its size from the reference. Never use arbitrary numbers. Every dimension should be traceable to a reference measurement or an SAP spacing token.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 19 · HARD GATE</strong> — ASCII wireframe before build — you must approve it</summary>
-
-<blockquote>Before any `use_figma` call, Claude shows an ASCII wireframe of the full screen and stops. You must explicitly approve it before the build starts. This gate exists even when the analysis is cached. Violated twice on 2026-07-14 — never again.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 20 · MANDATORY</strong> — Reasoning Brain: produce structured artifacts before designing the component hierarchy</summary>
-
-<blockquote>Before selecting components, Claude must produce: business intent, persona, task, data, actions, states, constraints, context, interaction model, floorplan scoring. These 7 artifacts are the evidence base for every downstream decision.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 21 · MANDATORY</strong> — QA Certification: Zero-Defect + self-repair before handoff</summary>
-
-<blockquote>Before reporting a build complete, Claude runs its own QA pass: 0 raw hex fills, 0 hardcoded fonts, 0 `Frame N` layer names, 0 Spacer frames, all SAP instances. If any fail, self-repair before handing off.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 22</strong> — When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</summary>
-
-<blockquote>When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 23 · SOURCE OF TRUTH</strong> — The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</summary>
-
-<blockquote>The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 24 · MANDATORY</strong> — Before adding any component to a spec, look up its exact properties in the live SAP kit. No guessing variants.</summary>
-
-<blockquote>Before adding any component to a spec, look up its exact properties in the live SAP kit. No guessing variants.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 25 · DEFAULT</strong> — Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</summary>
-
-<blockquote>Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 26 · MANDATORY</strong> — Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</summary>
-
-<blockquote>Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 27</strong> — After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</summary>
-
-<blockquote>After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 28</strong> — Build reads SAP_BUILD_MANIFEST.md only — never code.js — one-shot build, ≤1 screenshot</summary>
-
-<blockquote>The build agent reads exactly one file: `SAP_BUILD_MANIFEST.md` (~2k tokens). It never reads `code.js` (45k tokens — blocked by hook), never bulk-loads registry JSONs. One `use_figma` call. One verification screenshot. If wrong after one corrective re-run, stop and escalate.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 29</strong> — Visual Recovery Protocol: when lost or wrong, stop and read the canonical reference</summary>
-
-<blockquote>If output is wrong or guessing is happening: STOP. Open `docs/canonical-screens/Claude to Figma SAP Application.fig`. Call `get_design_context` on the closest canonical node. Extract ground truth. Build once from that. Never retry blindly.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 30</strong> — Measure reference width is a mandatory pipeline step (same as RULE 7, enforced at ANALYZE stage)</summary>
-
-<blockquote>RULE 30 makes RULE 7 a hard gate at the ANALYZE stage — it is not optional or best-effort. Before planning layout: measure the reference width, default 1440px, snap-suggest 375/768/1440 when close. User's explicit width always wins. See RULE 7 for the full description.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 31 · CANONICAL FIRST</strong> — Search approved screens before building — clone if a match exists, never rebuild from scratch</summary>
-
-<blockquote>Before any build, search the canonical pattern library for an existing approved screen of this type. If a match is found (score ≥ threshold), clone it — never rebuild from scratch. This is enforced by guard-reuse-gate.sh (clone-first block) and score-canonical.js. Building from scratch when a canonical exists is forbidden.</blockquote>
-
-
-</details>
+### You're ready
+
+Open Claude Code in this project folder and describe what you want to build:
+
+> *"Build a Purchase Orders approval screen"*
+> *"Create a mobile list view for field service tasks"*
+> *"Design an Object Page for a supplier profile"*
+
+Attach a screenshot or wireframe as reference if you have one. Claude analyses it, shows you an ASCII wireframe for approval, then builds the screen directly in Figma. Select the frame, run **Bind SAP Tokens** in the plugin — done.
+
+---
+
+
+
+## How It Works — the full pipeline
+
+```
+You: "Build a Purchase Orders approval screen"
+           │
+           ▼
+  ┌─────────────────────────────────────────────────┐
+  │  ANALYZE                                        │
+  │  • Measure reference width (default 1440px)     │
+  │  • Sector-by-sector visual reading (A→B→C)      │
+  │  • Floorplan scored + confirmed with you        │
+  │  • VDI: 7 artifacts, confidence tiers ●○?       │
+  └────────────────────┬────────────────────────────┘
+                       │
+                       ▼
+  ┌─────────────────────────────────────────────────┐
+  │  PLAN                                           │
+  │  • ASCII wireframe — every region, every        │
+  │    component. You approve before any build.     │
+  │  • L1–L5 layer structure proposed               │
+  │  • Clone source selected from canonical .fig    │
+  └────────────────────┬────────────────────────────┘
+                       │ "approved" ◄─── iterate here (free, instant)
+                       ▼
+  ┌─────────────────────────────────────────────────┐
+  │  EXECUTE  (one use_figma call)                  │
+  │  • Parallel import all SAP components           │
+  │  • Clone canonical → clear slot → repopulate    │
+  │  • Real SAP instances only — never createFrame()│
+  └────────────────────┬────────────────────────────┘
+                       │
+                       ▼
+  ┌─────────────────────────────────────────────────┐
+  │  VALIDATE  (one screenshot)                     │
+  │  • Compare vs reference                         │
+  │  • You click "Bind SAP Tokens" in the plugin    │
+  │    → live SAP Horizon variables bound           │
+  │    → 4 accessibility validators run             │
+  └────────────────────┬────────────────────────────┘
+                       │
+                       ▼
+  ┌─────────────────────────────────────────────────┐
+  │  LEARN                                          │
+  │  • "bravo / perfect" → canonical saved          │
+  │  • "not right / fix this" → lesson captured     │
+  │  • Next similar build recalls the right lesson  │
+  └─────────────────────────────────────────────────┘
+                       │
+                       └───────────────────────────────┐
+                                                       │ loops back
+                                                       ▼
+                                             ANALYZE (next build)
+                                        lesson already recalled,
+                                        canonical clone ready
+```
+
+### What happens at each stage
+
+| Stage | What Claude does | Key rule |
+|---|---|---|
+| **ANALYZE** | Reads the closest canonical node · sector-by-sector visual reading · measures reference width · scores floorplan | Never skip |
+| **PLAN** | Maps content to slot structure · lists property keys · proposes L1–L5 layer tree · selects clone source | Before any code |
+| **EXECUTE** | Single `use_figma` call · Clone-Clear-Repopulate · parallel component imports · real SAP instances only | One shot |
+| **VALIDATE** | One screenshot · compare vs reference · plugin binds tokens · 4 accessibility validators | One shot |
+| **LEARN** | Approval → canonical saved · correction → lesson captured · next build recalls the right lesson automatically | Every build |
+
+---
+
+## Example — what Claude shows you at the PLAN stage
+
+After analysis, Claude presents an ASCII wireframe + component breakdown for your approval **before writing a single line of Figma code.**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  ShellBar                                                       │
+│  [≡]  Purchase Orders          [Search]  [?]  [👤 User ▾]       │
+├─────────────────────────────────────────────────────────────────┤
+│  DynamicPageTitle                                               │
+│  Purchase Orders (142)          [Approve]  [Reject]  [Export ▾] │
+├─────────────────────────────────────────────────────────────────┤
+│  FilterBar                                                      │
+│  [Supplier ▾]  [Status ▾]  [Date range ▾]  [Go]  [Adapt]        │
+├─────────────────────────────────────────────────────────────────┤
+│  Responsive Table                                               │
+│  ☐  │ PO Number  │ Supplier        │ Amount       │ Status      │
+│─────┼────────────┼─────────────────┼──────────────┼─────────────│
+│  ☐  │ 4500012891 │ Acme Corp       │ € 24,500.00  │ ● Pending   │
+│  ☐  │ 4500012892 │ GlobalX GmbH    │ € 8,200.00   │ ● Pending   │
+│  ☐  │ 4500012893 │ FastLog Ltd     │ € 61,750.00  │ ✔ Approved  │
+│  ☐  │ 4500012894 │ NordSupply AG   │ € 3,400.00   │ ✘ Rejected  │
+├─────────────────────────────────────────────────────────────────┤
+│  Pagination   [◀]  1 of 12  [▶]                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Components Claude will use to build this screen:**
+
+| Region | SAP Component | Why |
+|--------|--------------|-----|
+| App shell | `ShellBar` | Top-level navigation, branding, user menu |
+| Page title + actions | `DynamicPageTitle` | Title with item count + primary action buttons |
+| Filter row | `FilterBar` | Standard SAP filter pattern with Go + Adapt |
+| Data | `ResponsiveTable` with `MultiSelectMode` | Best for tabular list data with bulk actions |
+| Status column | `ObjectStatus` (`Semantic=Warning/Success/Error`) | Semantic color + icon, theme-switchable token |
+| Amount column | `ObjectNumber` | Right-aligned number with currency, SAP typography |
+| Row actions | `Button` (Accept / Reject) | Type=Accept / Type=Reject — correct SAP affordance |
+| Pagination | `PaginationBar` | Standard SAP paging pattern |
+
+**L1–L5 layer structure:**
+```
+Purchase Orders
+├── Shell Bar                            L2  SAP ShellBar
+├── Page Header                          L2  region
+│   └── Dynamic Page Title               L3  SAP DynamicPageTitle
+│       └── Primary Actions              L4  group
+│           ├── Approve Button           L5  SAP Button · Type=Accept
+│           ├── Reject Button            L5  SAP Button · Type=Reject
+│           └── Export Button            L5  SAP Button · Type=Secondary
+├── Filters                              L2  region
+│   └── Filter Bar                       L3  SAP FilterBar
+│       ├── Supplier Filter              L4  SAP FilterGroupItem
+│       ├── Status Filter                L4  SAP FilterGroupItem
+│       └── Date Range Filter            L4  SAP FilterGroupItem
+├── Main Content                         L2  region
+│   └── Responsive Table                 L3  SAP ResponsiveTable
+│       ├── PO Number Column             L4  column
+│       ├── Supplier Column              L4  column
+│       ├── Amount Column                L4  column · SAP ObjectNumber
+│       ├── Status Column                L4  column · SAP ObjectStatus
+│       └── Row 1                        L4  data row
+│           ├── PO Number                L5  text cell
+│           ├── Supplier Name            L5  text cell
+│           ├── Amount                   L5  SAP ObjectNumber
+│           └── Status                   L5  SAP ObjectStatus
+└── Footer                               L2  region
+    └── Pagination Bar                   L3  SAP PaginationBar
+```
+
+You can iterate on any part — change the floorplan, add a column, switch to mobile — before Claude builds anything.
+
+---
 
 ---
 
