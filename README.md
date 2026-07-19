@@ -23,42 +23,6 @@ All screens built from a plain-language description or reference image — real 
 
 ---
 
-## Hard Rules — Build Behavior You Can Customize
-
-The system ships with these rules enforced on every build. They reflect real lessons from production use. **You can add your own rules** to `CLAUDE.md` or `skill/SYSTEM_PROMPT.md` to adjust the system to your team's conventions — just follow the same `⛔ HARD RULE` format.
-
-### Built-in Hard Rules (active out of the box)
-
-| # | Rule | Why |
-|---|---|---|
-| HR-1 | **Side padding = 32px always** — never 48px | 48px wastes space; 32px matches SAP's recommended content margin |
-| HR-2 | **IconButtons = Type:Tertiary** — view/edit/delete/toolbar icons | Primary/Secondary add a background box that clutters dense table rows |
-| HR-3 | **Two-line stacked text = center-aligned vertically** | Top/bottom alignment creates visual imbalance in table cells and cards |
-| HR-4 | **Dividers = stroke on parent frame** — never a 1px native frame | Native divider frames add extra nodes, break auto-layout, and can't be token-bound |
-| HR-5 | **Form Factor = Compact by default** — unless you say Cozy | SAP back-office screens are Compact; Cozy is for consumer-facing / touch |
-| HR-6 | **Always Horizon Light theme** — even if reference is dark | Dark hex has no SAP variable → guaranteed Bind failure |
-| HR-7 | **Always end with direct Figma node URL** | User should never hunt for the built frame |
-| HR-8 | **Text nodes always use `[typo:role]` tags** — never raw `72` font family | Raw `72` shows in panel and doesn't bind to SAP text styles |
-
-### Adding your own rules
-
-Open `CLAUDE.md` and add a section like this — Claude will follow it on every build:
-
-```markdown
-## ⛔ MY TEAM HARD RULE — Always use Cozy form factor
-- Our product is touch-first — all screens use Cozy, never Compact
-- Override HR-5 for this project
-```
-
-Or in plain English at the start of any prompt:
-```
-Hard rule for this build: use Cozy form factor, 1440px width, English labels only.
-```
-
-The system learns from corrections too — if you say "never do X again", it saves it to memory and applies it from the next build onward.
-
----
-
 ## Installation
 
 ### What you get
