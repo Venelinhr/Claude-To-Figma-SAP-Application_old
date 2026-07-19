@@ -409,12 +409,127 @@ Similar to Screen 01 but worklist variant. Use Screen 01 for FCL reference, this
 
 ---
 
+## Screen 12 — Schedule Activated (Confirmation)
+**Node:** `850:45411`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=850-45411
+**Floorplan:** Confirmation / Success State (Dialog step 4)
+**Screenshot:** `12-schedule-activated.png`
+**Confirmed:** 2026-07-18 — user: "Bravo. Great result!"
+
+### Layout structure
+```
+Schedule Activated (460px)
+├── Demo Wrapper                          [sapBackgroundColor]
+│   └── DEMO pill (green stroke, green text)
+├── Hero                                  [sapBackgroundColor]
+│   ├── Success Icon Circle 56px          [sapPositiveElementColor] green filled + ✓
+│   ├── Title "Schedule activated"        [typo:heading] [sapTitleColor]
+│   └── Subtitle (inline bold "Validate System") [typo:body] [sapContent_LabelColor]
+├── Summary Card Wrapper                  [sapBackgroundColor]
+│   └── Activation Summary Card          [sapShellColor] [stroke:sapList_BorderColor]
+│       ├── Card Header                  [sapBackgroundColor]
+│       │   ├── Icon/document (SAP icon instance, 16×16)
+│       │   └── "ACTIVATION SUMMARY"     [typo:caption]
+│       ├── Row Schedule ID              SCH-2026-0047
+│       ├── Row Status                   ObjectStatus(Information) ⓘ Active
+│       ├── Row Created by               Alex (sysadmin)
+│       ├── Row Created at               16 Jul 2026 · 14:32
+│       ├── Row Pattern                  Day 1 · every month
+│       ├── Row Runs until               ObjectStatus(Success) ∞ Indefinitely
+│       └── Next Execution Box           [sapBackgroundColor] rounded-8
+│           ├── Icon/date-time (SAP icon, 20×20)
+│           ├── "Next execution" + "1 Aug 2026 at 08:00"
+│           └── ObjectStatus(Warning) ⚠ In 16 days
+├── Primary Actions                      [sapShellColor]
+│   ├── Button(Secondary,Compact) 📅 View schedule
+│   ├── Button(Secondary,Compact) 🗓 Back to steps
+│   └── Button(Secondary,Compact) 📄 Add another
+└── Secondary Actions                    [sapShellColor]
+    └── Button(Secondary,Compact) 📋 Deactivate this schedule
+```
+
+### Key patterns confirmed
+- **Horizon Light always** — reference was dark, built light. Dark hex = Bind failure.
+- **ObjectStatus semantics:** Information=blue(Active), Success=green(Indefinitely), Warning=orange(In 16 days)
+- **Icon visibility fix:** ObjectStatus icon vector is hidden by default — force `iconVector.visible = true` after setProperties
+- **Plugin bind requires direct page child:** frame nested in GROUP → bind finds 0 fills. Move frame to page root before binding, move back after.
+- **Icon keys:** `document` = `47593f4f8e7f752e8bb05c6489c2ce610eb012c6`, `date-time` = `f8211de35a7e07c14fa178fa3769db7b16306f11`, `add-calendar` = `035388107a60472d49a67c55e79c775c24239330`, `add-document` = `39276ef38b2e219a387c35a485135210520e9820`
+- **Button icon swap:** `setProperties({ 'Icon#112533:487': comp.id, 'Icon Left#112533:293': true, 'Form Factor': 'Compact' })`
+- **DEMO pill:** `[sapBackgroundColor]` fill + `sapPositiveElementColor` stroke + green text — NOT a dark custom color
+
+---
+
+## Screen 13 — Orders List Report (Desktop)
+**Node:** `889:45857`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=889-45857
+**Floorplan:** List Report (desktop 1440px) with Shell Navigation
+**Confirmed:** 2026-07-19 — user: "Great result, bravo! Really happy with results!"
+
+### Layout structure
+```
+Orders List Report (1440px)
+├── Shell Bar (SAP ShellBar, EMA title, Search, Notification, Avatar)
+├── Icon Tab Bar (Shell Navigation, XL) — 6 tabs, Orders active (blue underline)
+│   Dashboard | Inventory | Store | Customers | [Orders] | Analytics
+├── Page Header [sapShellColor]                    pad 32px
+│   ├── Title "Orders" [typo:heading]
+│   ├── Subtitle "Track and manage customer orders" [typo:body]
+│   └── Button "Create Order" (Type=Emphasized, Compact)
+├── Filter Area [sapShellColor]                    pad 32px
+│   ├── Input "Search orders..." (Compact)
+│   └── Filter Row: Status Select | Payment Select | Fulfillment Select
+└── Table Area [sapBackgroundColor]                pad 32px
+    └── Responsive Table [sapList_Background] [stroke:sapList_BorderColor] rounded-8
+        ├── Column Header Row: ☐ Order | Date | Customer | Status | Payment | Fulfillment | Tracking | Total | Actions
+        └── Row ×6 (60px each, bottom-stroke divider)
+            ├── Order ID (bold, sapLinkColor)
+            ├── Date (Regular, sapContent_LabelColor)
+            ├── Customer (Regular, sapTextColor)
+            ├── Status ObjectStatus (Success/Error/Warning/Information/None)
+            ├── Payment ObjectStatus (Success/None)
+            ├── Fulfillment ObjectStatus (Success/Warning)
+            ├── Tracking (link or —)
+            ├── Total (Bold amount + Regular sub-currency, CENTER aligned)
+            └── Actions: IconButton(show) + IconButton(edit) + IconButton(delete) — ALL Tertiary, Compact
+```
+
+### Key patterns confirmed
+- **SAP Shell Navigation IconTabBar** (not custom nav) — `Type=Shell Navigation, Size=XL` — 6 tabs, hide unused
+- **`[typo:role]` tags on ALL text nodes** — never raw `fontName:{family:'72'}`
+- **32px side padding** on all containers (not 48)
+- **IconButtons Type=Tertiary** for all action icons
+- **No native Divider frames** — row separation via `strokeBottomWeight=1` on row frame
+- **Form Factor=Compact** on all SAP instances
+- **Two-line cells (amount+sub)** — `counterAxisAlignItems='CENTER'`
+- **ObjectStatus semantics:** delivered/paid/fulfilled=Success, cancelled=Error, pending/unfulfilled=Warning, processing=Information
+
+### Icon keys used
+| Icon | Key |
+|---|---|
+| show (eye/view) | `f4d889dde94203c7d563db1cde8ec8ae695395bd` |
+| edit (pencil) | `b346b05bc52f9d648ead280cfbd17baacea391f2` |
+| delete (trash) | `6da9bfb78bb57cc96d015531ac16e201423d8558` |
+| home (Dashboard) | `ddf4537c2f792179f11f64cae869cd1241e5ec7e` |
+| supplier (Inventory) | `3f607cafdbd3a4f0019abc742dd76ddf1e40cbba` |
+| cart-5 (Store) | `68f93c28e21146dc19ecce257fbd6a927cb72cf9` |
+| customer (Customers) | `573efa86c1c73396dbbefdc93702b3c8818bbf53` |
+| customer-order-entry (Orders) | `8bdc87fe8b82ffa2dac8deefcc9cc9528c044afd` |
+| vertical-bar-chart (Analytics) | `0a0bfb8c9892cc902d6733d771eaee8dcaaffecd` |
+
+---
+
 ## Summary — Clone sources by floorplan
 
 | You're building... | Clone from screen | Node |
 |---|---|---|
 | SideNavigation (any) | Screen 06 | `750:174158` or `699:37890` |
 | Dialog / Form | Screen 02-05 | `750:174190` |
+| List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
+| Object Page (narrow) | Screen 07 (yanatest) | `560:36552` |
+| Log/Message panel | Screen 09 | `750:174814` |
+| Full desktop List Report | Screen 10 or Screen 13 | `750:174925` or `889:45857` |
+| FCL + SideNav + Table | Screen 01 | `750:177443` |
+| Confirmation / Success state | Screen 12 | `850:45411` |
 | List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
 | Object Page (narrow) | Screen 07 (yanatest) | `560:36552` |
 | Log/Message panel | Screen 09 | `750:174814` |

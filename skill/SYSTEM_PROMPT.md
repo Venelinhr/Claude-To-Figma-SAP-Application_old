@@ -14,6 +14,78 @@ official SAP Web UI Kit library.
 
 ---
 
+## ⛔ ABSOLUTE HARD RULE #0 — ALWAYS BUILD IN SAP HORIZON LIGHT THEME
+
+**ALWAYS build in SAP Horizon Light (white background, light tokens). NEVER build in dark theme.**
+
+- If the reference image is dark → IGNORE the dark colors. Build in SAP Horizon Light.
+- If the reference image is light → Build in SAP Horizon Light.
+- The ONLY exception: user explicitly types "build in dark theme" or "use dark mode".
+- Dark theme is NOT a valid interpretation of a dark reference screenshot.
+- Dark hex values (#1d2d3e, #1b3346, #162433, etc.) have NO SAP variable and will ALWAYS fail Bind.
+- Correct token hex for backgrounds: sapBackgroundColor=#f5f6f7, sapShellColor=#ffffff, sapList_BorderColor=#e5e5e5.
+
+**Violating this rule = guaranteed Bind failure. There are no exceptions without explicit user instruction.**
+
+---
+
+## ⛔ ABSOLUTE HARD RULE #1 — ALWAYS END WITH A VALIDATED FIGMA URL TO THE EXACT NODE
+
+**At the end of EVERY build, you MUST provide a Figma URL pointing to the EXACT built node.**
+
+- Format: `https://www.figma.com/design/<fileKey>/<FileName>?node-id=<id-with-HYPHEN>`
+- Node ID uses HYPHEN not colon: `850:45411` → `850-45411`
+- ALWAYS confirm the node exists via `get_metadata` before giving the URL
+- NEVER give the file URL without a node-id
+- NEVER give a URL to a parent group/section — link to the FRAME that was built
+- This is MANDATORY. No exceptions. Every build ends with a direct node URL.
+
+---
+
+## ⛔ ABSOLUTE HARD RULE #2 — NEVER USE RAW FONT '72' — ALWAYS [typo:role] TAGS
+
+Every native text node MUST have a `[typo:role]` name tag. NEVER set `fontName:{family:'72'}` alone.
+Roles: `[typo:heading]` · `[typo:body]` · `[typo:label]` · `[typo:labelBold]` · `[typo:caption]`
+Example: `t.name = 'Order ID [typo:labelBold] [sapLinkColor]'`
+
+---
+
+## ⛔⛔⛔ 5 MANDATORY BUILD RULES (confirmed 2026-07-19 — NEVER SKIP)
+
+```
+RULE 1  Side padding = 32px always  (paddingLeft = paddingRight = 32 — NEVER 48)
+RULE 2  IconButtons  = Type:Tertiary always  (view/edit/delete/toolbar/nav icons)
+RULE 3  Two-line stacked text = counterAxisAlignItems:'CENTER' always  (never MIN/MAX)
+RULE 4  Dividers = stroke settings on parent frame  (NEVER createFrame() for 1px lines)
+         → node.strokeBottomWeight=1 / strokeTopWeight=1 + node.strokes=[{type:'SOLID',...}]
+RULE 5  Form Factor = Compact always  (every SAP instance, unless user says Cozy)
+```
+
+---
+
+## ⭐⭐⭐ THE MANDATORY 10-STEP BUILD FLOW — NEVER SKIP ANY STEP
+
+User confirmed 2026-07-19: "great workflow and rules! DO not skip any of these!"
+
+```
+STEP 1  Receive requirement (screenshot / ticket / description)
+STEP 2  Gate 0 — Analyze reference via VDI sector-by-sector. Map every element to real SAP component.
+STEP 3  Gate 1 — Search canonical screens first. If match exists → CLONE. Never rebuild from scratch.
+STEP 4  Gate 2 — Measure width. Never default without checking. User override always wins.
+STEP 5  Gate 3 — ASCII wireframe + L1-L5 layer tree → HARD STOP. Wait for explicit user approval.
+STEP 6  Gate 4 — Verify SAP library connected + all component keys resolve. FAIL-CLOSED on any 404.
+STEP 7  Gate 5 — Build. Real SAP instances only. Horizon Light tokens only. L1-L5 naming. Zero native UI frames.
+STEP 8  Gate 6 — Verify result. Check instances, fills, fonts, no raw hex leaks. Fix before handoff.
+STEP 9  User runs Bind SAP Tokens. If FAIL → diagnose, fix, re-bind. NEVER hand off on FAIL.
+STEP 10 Share validated Figma URL to exact node. ⛔ MANDATORY LAST ACTION OF EVERY BUILD.
+```
+
+Skipping any step causes failure:
+Skip Step 2 → wrong components · Skip Step 3 → wasted rebuild · Skip Step 5 → wrong floorplan built
+Skip Step 6 → silent native-frame disaster · Skip Step 8 → broken screen shipped · Skip Step 10 → user can't find screen
+
+---
+
 ## ⛔ THE CANONICAL GATE SEQUENCE — READ THIS FIRST, FOLLOW IN THIS EXACT ORDER
 
 **Governing doctrine: `docs/MANDATORY-SAP-IMPLEMENTATION-POLICY.md` — reuse before rebuilding,
