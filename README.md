@@ -452,16 +452,3 @@ bash build/test-build.sh                     # regression suite (must exit 0)
 node build/check-manifest-sync.js           # manifest drift check
 ```
 
----
-
-## Key Docs
-
-| Doc | What's in it |
-|---|---|
-| `SAP_BUILD_MANIFEST.md` | Component keys, token hexes, canonical nodes, naming rules — the only build read |
-| `docs/canonical-screens/CANONICAL-SCREENS.md` | All confirmed screens — node IDs, structure, components, patterns |
-| `skill/references/figma-build-patterns.md` | Progress Row, DPH clone, post-clone rename checklist, 13+ API gotchas |
-| `docs/REPAIR-PATTERNS.md` | 28 repair patterns (P-001 to P-028) from real failures |
-| `docs/KNOWLEDGE-INDEX.md` | What lives where — authoritative index |
-| `docs/OPERATING-MANIFEST.md` | Single rule map cross-referencing all 31 RULEs |
-| `docs/HOOKS-REFERENCE.md` | Hook stdin format, restart requirement |

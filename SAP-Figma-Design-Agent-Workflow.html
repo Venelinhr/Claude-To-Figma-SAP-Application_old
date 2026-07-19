@@ -441,62 +441,38 @@
 
 <hr id="token-opt">
 
-<!-- TOKEN OPTIMIZATION SECTION -->
+<!-- TOKEN OPTIMIZATION -->
 <div class="section">
   <div class="section-header">
     <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,23H4V19H24ZM16,11H4V7H16Z"/></svg></div>
-    <div><div class="section-title">Token Optimization — ~25k → ~3k per build</div><div class="section-sub">4 strategies · ~88% reduction · measured and verified</div></div>
+    <div><div class="section-title">Token Optimization</div><div class="section-sub">~25k → ~3k tokens per build (~88% reduction)</div></div>
   </div>
 
   <div class="ba">
-    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">~25k</div><div class="ba-lbl">Tokens / build — before</div></div>
+    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">~25k</div><div class="ba-lbl">tokens / build before</div></div>
     <div class="ba-arrow">→</div>
-    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">~3k</div><div class="ba-lbl">Tokens / build — after (~2k cached)</div></div>
+    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">~3k</div><div class="ba-lbl">tokens / build after</div></div>
   </div>
 
   <div class="grid c2" style="margin-top:24px">
-    <div class="card" style="border-color:var(--danger);border-top:3px solid var(--danger)">
-      <h3 style="color:var(--danger)">Strategy 1 — Never read code.js</h3>
-      <p><strong>Before:</strong> Reading <code>plugin/figma-builder/code.js</code> cost ~45k tokens per read (×2 = 90k). It is the plugin runtime — irrelevant to a <code>use_figma</code> build.</p>
-      <p style="margin-top:8px"><strong>After:</strong> A PreToolUse hook blocks the read entirely. All needed data is in <code>SAP_BUILD_MANIFEST.md</code> (~2k tokens).</p>
-      <div class="mcp-tools" style="margin-top:10px"><span class="tag red">block-codejs-read.sh hook</span><span class="tag green">−45k tokens per read</span></div>
+    <div class="card">
+      <h3>Never read the plugin file</h3>
+      <p>The plugin file is 45k tokens and irrelevant to building. A hook blocks it. Everything needed is in one small manifest file (~2k tokens) instead.</p>
     </div>
-    <div class="card" style="border-color:var(--accent);border-top:3px solid var(--accent)">
-      <h3 style="color:var(--accent)">Strategy 2 — VDI semantic-model cache</h3>
-      <p><strong>Before:</strong> Every build re-ran the full 8-stage VDI analysis on the same reference image — ~13.5k tokens each time.</p>
-      <p style="margin-top:8px"><strong>After:</strong> SHA-1 of image → look for <code>semantic-models/*-&lt;sha8&gt;.md</code>. Cache hit loads ~700 tokens. <strong>96% saving on repeat images.</strong></p>
-      <div class="mcp-tools" style="margin-top:10px"><span class="tag blue">semantic-models/ cache</span><span class="tag green">−96% on repeat</span></div>
+    <div class="card">
+      <h3>Cache repeated analysis</h3>
+      <p>When the same reference image appears again, the system loads its cached analysis (~700 tokens) instead of re-running the full 8-stage pipeline (~13.5k tokens). 96% saving on repeat images.</p>
     </div>
-    <div class="card" style="border-color:var(--accent);border-top:3px solid var(--accent)">
-      <h3 style="color:var(--accent)">Strategy 3 — Single manifest file</h3>
-      <p><strong>Before:</strong> Build knowledge was scattered across 6+ files (VDI references, registry JSONs, token files) totalling 15–20k tokens per build.</p>
-      <p style="margin-top:8px"><strong>After:</strong> <code>SAP_BUILD_MANIFEST.md</code> — one file, ~2k tokens, contains all 25 component keys, 25 token hexes, naming rules, and 3 hard rules.</p>
-      <div class="mcp-tools" style="margin-top:10px"><span class="tag purple">SAP_BUILD_MANIFEST.md</span><span class="tag green">−76% vs 6-file bundle</span></div>
+    <div class="card">
+      <h3>One file, not six</h3>
+      <p>Build knowledge used to be scattered across 6+ files. Now it lives in one manifest file. Same information, 76% fewer tokens to read it.</p>
     </div>
-    <div class="card" style="border-color:var(--warn);border-top:3px solid var(--warn)">
-      <h3 style="color:var(--warn)">Strategy 4 — One-shot build discipline</h3>
-      <p><strong>Before:</strong> Live iterative fixing in Figma — 8+ <code>use_figma</code> calls and 6+ screenshots per build. Each screenshot ~2k tokens.</p>
-      <p style="margin-top:8px"><strong>After:</strong> ANALYZE → PLAN before executing. Single <code>use_figma</code> call + 1 screenshot. Parallel <code>Promise.all</code> imports (3–4× faster wall-time).</p>
-      <div class="mcp-tools" style="margin-top:10px"><span class="tag orange">one-shot discipline</span><span class="tag green">−80% call overhead</span></div>
+    <div class="card">
+      <h3>Build right once</h3>
+      <p>Analyze and plan before touching Figma. One build call, one screenshot to verify. No live iterative fixing — that was the biggest source of wasted tokens.</p>
     </div>
   </div>
-
-  <table style="margin-top:24px">
-    <thead><tr><th>Cost source</th><th style="color:var(--danger)">Before</th><th style="color:var(--success)">After</th><th>How</th></tr></thead>
-    <tbody>
-      <tr><td>Reading code.js</td><td>~45k (×2 reads)</td><td>0</td><td>Hook blocks read · manifest has all needed keys</td></tr>
-      <tr><td>VDI reference bundle</td><td>~8k / build</td><td>~2k</td><td>6 files → VDI_REFERENCE.md (−76%)</td></tr>
-      <tr><td>VDI analysis (repeat image)</td><td>~13.5k</td><td>~0.7k</td><td>SHA-1 cache in semantic-models/ (−96%)</td></tr>
-      <tr><td>Build knowledge (scattered)</td><td>~15–20k</td><td>~2k</td><td>Single SAP_BUILD_MANIFEST.md</td></tr>
-      <tr><td>Iterative live-fixing</td><td>8 calls + 6 shots</td><td>1 call + 1 shot</td><td>Analyze before executing (new methodology)</td></tr>
-      <tr><td>Sequential imports</td><td>~2.1s+ serial</td><td>~0.5s parallel</td><td>Promise.all — 3–4× faster</td></tr>
-    </tbody>
-  </table>
-
-  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">The insight:</strong> The waste was never in stable rules (those cache warm). It was <strong>reading huge files that weren't needed</strong>, <strong>re-analyzing the same images</strong>, and <strong>iterating live in Figma</strong>. The fix: read one small manifest, cache the analysis, analyze before building, build right once.</span></div>
 </div>
-<div class="kf amber"><p><strong>The root cause of wasted tokens:</strong> Reading huge files that weren't needed, re-analyzing the same images, iterating live in Figma. The fix: one small manifest + SHA-1 cache + build right once = <strong>~88% fewer tokens per build</strong>.</p></div>
-
 
 <hr id="overview">
 
@@ -602,40 +578,6 @@
       <div class="flow-box end">Plugin Bind (TOKENS)</div>
     </div>
   
-
-<hr id="triggers">
-
-<!-- SECTION 3: TRIGGERS -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M17.75,13l2-9H11.8L9.26,15h5.91L13.58,25.28,23,13Z"/><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30Z"/></svg></div>
-    <div><div class="section-title">Triggers — How It Starts</div><div class="section-sub">Four entry points, all handled by the sap-visual-reading skill</div></div>
-  </div>
-
-  <div class="grid c4">
-    <div class="card">
-      <h3>Text Requirement</h3>
-      <p>User story, Jira ticket, plain description. Skill Stage 3 extracts persona, task, data, actions, states, constraints, context, interaction.</p>
-      <div class="mcp-tools" style="margin-top:8px"><span class="tag blue">Stage 3</span> <span class="tag green">requirement parse</span></div>
-    </div>
-    <div class="card">
-      <h3>Reference Image</h3>
-      <p>Screenshot, Figma frame, photo, wireframe, sketch. Triggers VDI (RULE 26) + skill Stage 2 visual reading. Image-quality tier 1–4 assessed first.</p>
-      <div class="mcp-tools" style="margin-top:8px"><span class="tag orange">RULE 26</span> <span class="tag purple">Stage 2</span></div>
-    </div>
-    <div class="card">
-      <h3>Figma URL</h3>
-      <p>Node URL like <code>?node-id=355-39080</code>. Calls <code>get_design_context</code> to extract exact CSS measurements — the ● confirmed source.</p>
-      <div class="mcp-tools" style="margin-top:8px"><span class="tag blue">figma MCP</span> <span class="tag green">RULE 23</span></div>
-    </div>
-    <div class="card">
-      <h3>Document</h3>
-      <p>PDF spec, markdown, design doc. Parsed as requirement text via skill Stage 3. Extracts same structured data; falls back gracefully.</p>
-      <div class="mcp-tools" style="margin-top:8px"><span class="tag yellow">Stage 3</span> <span class="tag green">merge Stage 4</span></div>
-    </div>
-  </div>
-
-  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span>The skill adapts: <strong>image only</strong> → Stage 2 · <strong>text only</strong> → Stage 3 · <strong>image + text</strong> → run both, merge at Stage 4. Never skips understanding before mapping.</span></div>
 
 <hr id="vdi">
 
@@ -942,69 +884,16 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
 
 <hr id="loop">
 
-<!-- SECTION 11: LEARNING LOOP -->
+<!-- SECTION: LEARNING LOOP -->
 <div class="section">
   <div class="section-header">
     <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
     <div><div class="section-title">The Loop — Learning · Improving · Better Ecosystem</div><div class="section-sub">The system gets smarter every session</div></div>
+ 
+    <div><div class="section-title">The Learning Loop</div><div class="section-sub">Gets smarter every session</div></div>
   </div>
-
-  <div class="loop-wrap">
-    <div class="loop-label">SELF-OPTIMIZING ECOSYSTEM</div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-      <div>
-        <div style="font-size:13px;font-weight:700;color:var(--success);margin-bottom:12px">A. Per-Edit Loop (synchronous hook)</div>
-        <div class="flow" style="flex-direction:column;align-items:stretch;gap:8px">
-          <div class="flow-box">Edit registry JSON</div>
-          <div class="flow-arrow" style="text-align:center">↓ PostToolUse hook</div>
-          <div class="flow-box">build-registry-bundle.js auto-runs</div>
-          <div class="flow-arrow" style="text-align:center">↓</div>
-          <div class="flow-box" style="background:var(--success-bg);border-color:var(--success-dim);color:var(--success)">bundle rebuilt, tests green</div>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px">B. Per-Build Loop (quality gate)</div>
-        <div class="flow" style="flex-direction:column;align-items:stretch;gap:8px">
-          <div class="flow-box">New MCP frame</div>
-          <div class="flow-arrow" style="text-align:center">↓ spec-validator + lint-mcp-frame</div>
-          <div class="flow-box">RULE 25 tag contract checked</div>
-          <div class="flow-arrow" style="text-align:center">↓ PASS only</div>
-          <div class="flow-box" style="background:var(--accent-bg);border-color:var(--accent-dim);color:var(--accent)">→ Build → Bind → a11y report</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="border-top:1px solid var(--border);margin:24px 0"></div>
-
-    <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px">C. Feedback Learning Loop — "learn from good/bad/bravo" (NEW)</div>
-    <div class="flow">
-      <div class="flow-box">User feedback<br><span style="font-size:10px">"bravo" / "wrong" / "not acceptable"</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box">feedback-learn.sh detects signal<br><span style="font-size:10px">UserPromptSubmit hook</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box">Capture lesson to memory<br><span style="font-size:10px">Why + How to apply</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box">Promote hard rules<br><span style="font-size:10px">→ skill / three-hard-rules</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box" style="background:var(--accent-bg);border-color:var(--accent-dim);color:var(--accent)">Never repeats the mistake</div>
-    </div>
-
-    <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">How this improves the ecosystem:</strong> Every correction becomes a durable memory. The 3 hard rules (real instances · L1–L5 naming · no Spacer frames) exist <em>because</em> they were corrected repeatedly, then captured. Positive feedback promotes a result to <strong>canonical reference</strong> that seeds future builds. Prompting improves too — confirmed patterns feed <code>token-assignment-rules.md</code> and the manifest, so each session starts with more baked-in knowledge and fewer tokens spent re-deriving it.</span></div>
-
-    <div style="border-top:1px solid var(--border);margin:24px 0"></div>
-
-    <div style="font-size:13px;font-weight:700;color:var(--warn);margin-bottom:12px">D. Post-Build Ground-Truth Loop (ground-truth-updater)</div>
-    <div class="flow">
-      <div class="flow-box">User confirms quality<br><span style="font-size:10px">"this is the best" / 0 leaks</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box">get_design_context(nodeId)<br><span style="font-size:10px">exact measurements</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box">Compare vs proposals<br><span style="font-size:10px">what matched?</span></div>
-      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
-      <div class="flow-box" style="background:var(--warn-bg);border-color:var(--warn-dim);color:var(--warn)">Write token-assignment-rules.md</div>
-    </div>
-  </div>
+  <p style="font-size:15px;color:var(--ink2);line-height:1.7;max-width:700px">Every time you say something is wrong or great, the system saves it to memory automatically — corrections become hard rules, confirmed results become canonical references that seed every future build.</p>
+</div>
 
 <hr id="rules">
 
