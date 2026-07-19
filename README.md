@@ -503,6 +503,14 @@ Every build is governed by these rules. Violating any stops generation.
 
 </details>
 
+<details>
+<summary><strong>RULE 31 · CANONICAL FIRST</strong> — Search approved screens before building — clone if a match exists, never rebuild from scratch</summary>
+
+<blockquote>Before any build, search the canonical pattern library for an existing approved screen of this type. If a match is found (score ≥ threshold), clone it — never rebuild from scratch. This is enforced by guard-reuse-gate.sh (clone-first block) and score-canonical.js. Building from scratch when a canonical exists is forbidden.</blockquote>
+
+
+</details>
+
 ---
 
 ## Three-Layer Architecture
