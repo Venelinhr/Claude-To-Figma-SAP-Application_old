@@ -264,9 +264,190 @@ You can iterate on any part — change the floorplan, add a column, switch to mo
 Every build is governed by these rules. Violating any stops generation.
 
 <details>
-<summary><strong>RULE 1 · HARD GATE</strong> — Registry gate: every component must exist in the registry</summary>
+<summary><strong>RULE 1 · HARD GATE</strong> — Every component must exist in the registry before the build starts.</summary>
 
-<blockquote>Before any build, every component in the plan must have a matching file in `knowledge/components/registry/`. If a component is missing, the build stops — no exceptions. This prevents invented or hallucinated components from reaching Figma.</blockquote>
+<blockquote>Every component must exist in the registry before the build starts. If it's missing, the build stops — no exceptions.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 2 · HARD GATE</strong> — Every colour must be one of the 80 SAP tokens. No raw hex allowed.</summary>
+
+<blockquote>Every colour must be one of the 80 SAP tokens. No raw hex allowed — the plugin rejects it.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 3 · STOP</strong> — Claude proposes the screen layout type and waits for your approval before doing anything else.</summary>
+
+<blockquote>Claude proposes the screen layout type (List Report, Object Page, Dialog…) and waits for your approval before doing anything else. Wrong layout = wasted work.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 4</strong> — Only set properties that differ from the SAP default. Don't repeat what's already standard.</summary>
+
+<blockquote>Only set properties that differ from the SAP default. Don't repeat what's already standard — it makes builds noisy and hard to read.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 5</strong> — No hardcoded pixel sizes or font sizes. Every value comes from SAP tokens.</summary>
+
+<blockquote>No hardcoded pixel sizes or font sizes. Every value comes from SAP tokens — hardcoded numbers break when the theme changes.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 6</strong> — No invented component names or properties. Everything comes from the live SAP kit.</summary>
+
+<blockquote>No invented component names or properties. Everything comes from the live SAP kit — verified, not guessed.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 7</strong> — Measure the reference width before building. Default is 1440px only when no reference exists.</summary>
+
+<blockquote>Measure the reference width before building. Default is 1440px only when no reference exists. Your specified width always wins.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 8</strong> — All layouts use Auto Layout. No absolute positioning, no empty spacer frames.</summary>
+
+<blockquote>All layouts use Auto Layout. No absolute positioning, no empty spacer frames — unless the SAP kit explicitly requires it.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 9</strong> — Use Compact for data-heavy desktop screens, Cozy for touch and mobile. Never mix.</summary>
+
+<blockquote>Use Compact for data-heavy desktop screens, Cozy for touch and mobile. Never mix densities within one screen.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 10</strong> — Footer buttons follow the SAP intent map: Primary for confirm, Tertiary for cancel/back.</summary>
+
+<blockquote>Footer buttons follow the SAP intent map: Primary for confirm, Tertiary for cancel/back, Reject for destructive actions. Set directly via setProperties() on the MCP path.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 11</strong> — When updating a screen, change only what was asked. Don't touch anything else.</summary>
+
+<blockquote>When updating a screen, change only what was asked. Don't reorganise, rename, or improve untouched areas — scope changes tightly.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 12</strong> — A reference image shows what the business needs, not what pixels to copy.</summary>
+
+<blockquote>A reference image shows what the business needs, not what pixels to copy. Adapt to SAP floorplan conventions — never replicate reference visuals literally.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 13</strong> — If a confirmed working pattern exists, use it exactly. Don't redesign what's already solved.</summary>
+
+<blockquote>If a confirmed working pattern exists in memory or canonical screens, use it exactly. Don't redesign what's already been solved and confirmed.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 14</strong> — Always build the outer container first, then fill children inside it.</summary>
+
+<blockquote>Always build the outer container first, then fill children inside it. Building children before their parent causes sizing and layout failures.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 15</strong> — When you say "perfect" or "bravo", that result becomes the canonical reference for similar future builds.</summary>
+
+<blockquote>When you say "perfect" or "bravo", that result becomes the canonical reference for similar future builds. It's saved to memory and never silently changed.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 16</strong> — Don't detach SAP kit instances. The build gate hard-fails any detached component.</summary>
+
+<blockquote>Don't detach SAP kit instances. The build gate hard-fails any detached component. Adjust variant props or wrap in a frame instead.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 17</strong> — Split every reference into labelled zones (A, B, C…). Analyse each zone before planning the build.</summary>
+
+<blockquote>Split every reference into labelled zones (A, B, C…). Analyse each zone fully before planning the build. Never analyse a screen as one flat image.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 18</strong> — Measure every dimension from the reference. Never use arbitrary numbers.</summary>
+
+<blockquote>Measure every dimension from the reference. Never use arbitrary numbers — every size must trace back to a reference measurement or an SAP spacing token.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 19 · HARD GATE</strong> — Claude shows an ASCII wireframe and stops. You must approve it before any building starts.</summary>
+
+<blockquote>Claude shows an ASCII wireframe of the full screen and stops. You must explicitly approve it before any building starts — even when analysis is cached.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 20</strong> — Before choosing components, Claude must map out the business intent, persona, task, data, and actions.</summary>
+
+<blockquote>Before choosing components, Claude must map out the business intent, persona, task, data, actions, and states. These are the evidence base for every decision.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 21</strong> — Before calling a build complete, Claude runs its own QA check and fixes any issues first.</summary>
+
+<blockquote>Before calling a build complete, Claude runs its own QA check: 0 raw hex, 0 hardcoded fonts, 0 generic layer names, all SAP instances. Fix anything that fails before handing off.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 22</strong> — When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</summary>
+
+<blockquote>When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 23 · SOURCE OF TRUTH</strong> — The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</summary>
+
+<blockquote>The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 24</strong> — Before adding any component, look up its exact properties in the live SAP kit. No guessing variants.</summary>
+
+<blockquote>Before adding any component, look up its exact properties in the live SAP kit. No guessing variants.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 25 · DEFAULT</strong> — Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</summary>
+
+<blockquote>Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 26</strong> — Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</summary>
+
+<blockquote>Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 27</strong> — After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</summary>
+
+<blockquote>After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 28</strong> — Never build SAP composites from scratch. Always clone an existing confirmed screen and adapt it.</summary>
+
+<blockquote>Never build SAP composites from scratch. Always clone an existing confirmed screen and adapt it. Building from scratch loses the correct slot structure and SAP tokens.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 29</strong> — When something looks wrong, stop immediately. Read the canonical reference file and rebuild from ground truth.</summary>
+
+<blockquote>When something looks wrong, stop immediately. Read the canonical reference file and rebuild from ground truth — never iterate blindly on a broken result.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 30</strong> — Always measure the reference width before building. Never assume 1440px when a reference is provided.</summary>
+
+<blockquote>Always measure the reference width before building. Never assume 1440px when a reference is provided.</blockquote>
+</details>
+
+<details>
+<summary><strong>RULE 31 · CANONICAL FIRST</strong> — Search approved screens before building — clone if a match exists, never rebuild from scratch.</summary>
+
+<blockquote>Search approved screens before building — clone if a match exists, never rebuild from scratch. This is enforced by a gate that blocks builds when a canonical match is found but ignored.</blockquote>
+</details>
 
 
 </details>
@@ -432,49 +613,49 @@ Every build is governed by these rules. Violating any stops generation.
 </details>
 
 <details>
-<summary><strong>RULE 22</strong> — Never use a component for a purpose it wasn't designed for</summary>
+<summary><strong>RULE 22</strong> — When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</summary>
 
-<blockquote>Don't repurpose SAP components outside their intended role (e.g. using a MessageStrip as a status badge). If no exact match exists, use the closest correct component and document the deviation.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 23 · SOURCE OF TRUTH</strong> — SAP Web UI Kit is the only source for components, tokens, and icons</summary>
-
-<blockquote>Every component, every token, every icon must come from the SAP Web UI Kit (file `SILcWzK5uFghKun9jx6D7c`). No invented components. No non-SAP icon sets. No custom tokens. This is non-negotiable.</blockquote>
+<blockquote>When editing an existing screen, only the affected parts re-run. No full rebuild for small changes.</blockquote>
 
 
 </details>
 
 <details>
-<summary><strong>RULE 24 · MANDATORY</strong> — Live kit resolution: read component properties from the live kit, not from memory</summary>
+<summary><strong>RULE 23 · SOURCE OF TRUTH</strong> — The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</summary>
 
-<blockquote>Variant property names and options must be verified against the live kit — not assumed from UI5 vocabulary. Example: `ObjectStatus` uses `Semantic` not `State`. `Button` `Type` has no `Emphasized` or `Transparent` options.</blockquote>
-
-
-</details>
-
-<details>
-<summary><strong>RULE 25 · DEFAULT</strong> — MCP-First: build via use_figma with real SAP instances and name tags</summary>
-
-<blockquote>The default build path is `use_figma` with real SAP kit instances imported via `importComponentSetByKeyAsync`. Every fill tagged `[sapToken]`, every text tagged `[typo:role]`, every icon placeholder `◆ICON/name`. Root frame named `◆SAP-UNBOUND/ScreenName`. The plugin binds tokens after.</blockquote>
+<blockquote>The SAP Web UI Kit Figma file is the only truth source. Component names, properties, tokens, icons — all come from there, never invented.</blockquote>
 
 
 </details>
 
 <details>
-<summary><strong>RULE 26 · MANDATORY</strong> — Visual Design Intelligence: run the full sap-visual-reading analysis on every reference</summary>
+<summary><strong>RULE 24 · MANDATORY</strong> — Before adding any component to a spec, look up its exact properties in the live SAP kit. No guessing variants.</summary>
 
-<blockquote>Any reference image or Figma URL triggers the full 8-stage VDI analysis (or loads the SHA-1 semantic-model cache for a 96% token saving). This produces the 12-part structured output that grounds every build decision. Never skip it.</blockquote>
+<blockquote>Before adding any component to a spec, look up its exact properties in the live SAP kit. No guessing variants.</blockquote>
 
 
 </details>
 
 <details>
-<summary><strong>RULE 27</strong> — Confirmation triggers ground-truth capture</summary>
+<summary><strong>RULE 25 · DEFAULT</strong> — Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</summary>
 
-<blockquote>When you confirm a result is correct, the `ground-truth-updater` agent writes exact measurements (padding, gap, font role, token) into `knowledge/guidelines/token-assignment-rules.md`. This closes the learning loop and seeds future builds.</blockquote>
+<blockquote>Build directly in Figma via Claude (not JSON → paste → plugin). The plugin only runs at the end to bind tokens.</blockquote>
+
+
+</details>
+
+<details>
+<summary><strong>RULE 26 · MANDATORY</strong> — Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</summary>
+
+<blockquote>Every reference image goes through the full 8-stage visual reading pipeline before any component decisions are made.</blockquote>
+
+
+</details>
+
+<details>
+<summary><strong>RULE 27</strong> — After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</summary>
+
+<blockquote>After a confirmed great result, measurements are automatically read from Figma and saved as ground truth for future builds.</blockquote>
 
 
 </details>
