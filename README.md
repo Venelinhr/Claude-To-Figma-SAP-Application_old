@@ -45,7 +45,6 @@ The installer handles everything automatically: installs dependencies, registers
 
 **You need:** Node.js ≥ 20 · [Claude Code CLI](https://claude.ai/code) · Figma desktop app
 
----
 
 ### Step 2 — Add your Figma API token
 
@@ -62,7 +61,6 @@ The installer adds a placeholder automatically. Replace it with your real token:
 
 > **Internal SAP users:** if your organisation uses SSO or a managed Figma account, generate the token the same way — personal access tokens work regardless of how your account is administered. Keep the token private; treat it like a password.
 
----
 
 ### Step 3 — Load the Figma plugin
 
@@ -74,7 +72,6 @@ The plugin is what connects Claude's output to real SAP design tokens. Claude bu
 
 The plugin appears under **Plugins → Development → SAP Figma Builder** and runs inside any Figma file.
 
----
 
 ### Step 4 — Connect the SAP Web UI Kit in Figma
 
@@ -89,15 +86,12 @@ This is the official SAP component library. Claude pulls components from it for 
 
 > **If component imports fail** — the SAP Web UI Kit library is not enabled in the current file, or the wrong version is active. Check the Libraries panel and make sure only one version is toggled on.
 
----
 
 ### Step 5 — Restart Claude Code and verify
 
 ```bash
 claude mcp list   # should show 5+ servers including "figma"
 ```
-
----
 
 ### You're ready
 
@@ -110,7 +104,6 @@ Open Claude Code in this project folder and describe what you want to build:
 Attach a screenshot or wireframe as reference if you have one. Claude analyses it, shows you an ASCII wireframe for approval, then builds the screen directly in Figma. Select the frame, run **Bind SAP Tokens** in the plugin — done.
 
 ---
-
 
 
 ## How It Works — the full pipeline
