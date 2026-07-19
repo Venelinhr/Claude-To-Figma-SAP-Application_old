@@ -81,7 +81,7 @@ RULE 2  IconButtons  = Type:Tertiary always  (view/edit/delete/toolbar/nav icons
 RULE 3  Two-line stacked text = counterAxisAlignItems:'CENTER' always  (never MIN/MAX)
 RULE 4  Dividers = stroke settings on parent frame  (NEVER createFrame() for 1px lines)
          → node.strokeBottomWeight=1 / strokeTopWeight=1 + node.strokes=[{type:'SOLID',...}]
-RULE 5  Form Factor = Compact always  (every SAP instance, unless user says Cozy)
+RULE 5  Form Factor = Compact always  (every SAP instance — NEVER switch to Cozy to fix a11y tap-target warnings)
 ```
 
 ---

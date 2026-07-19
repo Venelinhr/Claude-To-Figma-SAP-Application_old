@@ -518,6 +518,46 @@ Orders List Report (1440px)
 
 ---
 
+## Screen 14 — Products Inventory (EMA)
+**Node:** `907:46070`
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=907-46070
+**Floorplan:** List Report (desktop 1440px) — Inventory tab active
+**Confirmed:** 2026-07-19 — user: "Great result! Save all and learn!"
+
+### Layout structure
+```
+Products Inventory (1440px)
+├── Shell Bar (SAP, EMA title)
+├── Icon Tab Bar (Shell Navigation XL) — Inventory active
+├── Page Header [sapShellColor] pad 32px
+│   ├── Title "Products Inventory" + Subtitle
+│   └── Export CSV + Import CSV (Secondary) + Add Product (Emphasized) — ALL Compact
+├── URL Scraper Bar [sapShellColor]
+│   ├── SAP Input FILL "Paste Amazon URL..." — Compact
+│   └── SAP Button "Scrape" Secondary Compact
+├── Filter Area [sapBackgroundColor] pad 32px
+│   ├── Search Input (320px) + Filter Button + Group by Brand Button — Compact
+│   └── 5 Filter dropdowns: Collection/Product Type/Availability/Status/Price — Compact
+└── Main Content (HORIZONTAL)
+    ├── Category Nav (200px) [sapShellColor]
+    │   ├── All Products 1 (active, blue bg)
+    │   ├── > Матрак
+    │   └── Uncategorized 1
+    └── Product Table [sapList_Background] rounded-8
+        ├── Column Header: Name/ASIN/Brand/Supplier/Price/Change/Stock/Status
+        └── Row: Test Pillow Set · 1 var · €35.00/BGN 68.45 · +16.7% · 0 · ObjectStatus(Success)"in stock" · Edit IconButton(Tertiary)
+```
+
+### Key patterns confirmed
+- **ALL instances Compact** — never switch to Cozy for a11y warnings on desktop back-office
+- **ObjectStatus(Success)** for "in stock" — never a custom native pill frame
+- **Two-line cells CENTER** — price €35.00/BGN 68.45 → `counterAxisAlignItems='CENTER'`
+- **32px side padding** everywhere
+- **FILL on URL input** after appendChild (not before)
+- **Left nav panel** as FIXED 200px, table wrapper as FIXED W-200px
+
+---
+
 ## Summary — Clone sources by floorplan
 
 | You're building... | Clone from screen | Node |
@@ -527,7 +567,8 @@ Orders List Report (1440px)
 | List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
 | Object Page (narrow) | Screen 07 (yanatest) | `560:36552` |
 | Log/Message panel | Screen 09 | `750:174814` |
-| Full desktop List Report | Screen 10 or Screen 13 | `750:174925` or `889:45857` |
+| Full desktop List Report | Screen 10 or 13 | `750:174925` or `889:45857` |
+| Inventory List Report | Screen 14 (EMA Products) | `907:46070` |
 | FCL + SideNav + Table | Screen 01 | `750:177443` |
 | Confirmation / Success state | Screen 12 | `850:45411` |
 | List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
