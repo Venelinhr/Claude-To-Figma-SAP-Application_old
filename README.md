@@ -17,7 +17,6 @@
 | **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
 | **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
 
----
 
 ## Examples — screens built by the system
 
@@ -28,7 +27,6 @@
 
 All screens built from a plain-language description or reference image — real SAP components, live Horizon tokens, verified layer structure.
 
----
 
 ## Installation
 
@@ -103,15 +101,13 @@ Open Claude Code in this project folder and describe what you want to build:
 
 Attach a screenshot or wireframe as reference if you have one. Claude analyses it, shows you an ASCII wireframe for approval, then builds the screen directly in Figma. Select the frame, run **Bind SAP Tokens** in the plugin — done.
 
----
-
 
 ## How It Works — the full pipeline
 
 ```
 You: "Build a Purchase Orders approval screen"
-           │
-           ▼
+                       │
+                       ▼
   ┌─────────────────────────────────────────────────┐
   │  ANALYZE                                        │
   │  • Measure reference width (default 1440px)     │
@@ -172,7 +168,6 @@ You: "Build a Purchase Orders approval screen"
 | **VALIDATE** | One screenshot · compare vs reference · plugin binds tokens · 4 accessibility validators | One shot |
 | **LEARN** | Approval → canonical saved · correction → lesson captured · next build recalls the right lesson automatically | Every build |
 
----
 
 ## Example — what Claude shows you at the PLAN stage
 
@@ -246,8 +241,6 @@ Purchase Orders
 
 You can iterate on any part — change the floorplan, add a column, switch to mobile — before Claude builds anything.
 
----
-
 ## Three-Layer Architecture
 
 Each layer does only what it uniquely can:
@@ -279,13 +272,11 @@ Each layer does only what it uniquely can:
 
 > **Why three layers?** The Figma MCP runs in a sandbox — it can read and write structure, but it cannot access your SAP library's private token variables. Only a real Figma plugin can do that. So Claude builds the structure, the plugin binds the tokens. Each does the one thing only it can do.
 
----
 
 ## Token Optimization
 
 The build pipeline is token-optimised — each session uses a fraction of what a naive implementation would consume.
 
----
 
 ## The Loop — Learning & Improving
 
@@ -293,7 +284,6 @@ The system gets smarter with every session. When you confirm something is right,
 
 You can also add your own rules at any time — just tell Claude "hard rule: always do X" and it will save it to memory and follow it in every future build.
 
----
 
 ## Canonical Reference Screens
 
@@ -318,7 +308,6 @@ This is the quality baseline for every build. It contains 8 real, approved SAP F
 
 No private Figma access needed — the file ships with the repo and works offline. **Claude uses it automatically** — you don't need to open it. If you want to inspect a screen manually: Figma → File → Open from computer → select the `.fig` from `docs/canonical-screens/`.
 
----
 
 ## Project Structure
 
@@ -346,7 +335,6 @@ No private Figma access needed — the file ships with the repo and works offlin
 └── semantic-models/                ← VDI SHA-1 cache (−96% on repeat images)
 ```
 
----
 
 ## MCP Servers
 
@@ -363,7 +351,6 @@ No private Figma access needed — the file ships with the repo and works offlin
 | `context7` *(optional)* | Live library docs for correct API signatures | When writing UI5 code that calls specific methods |
 | `fundamental-styles` *(optional)* | 120+ CSS components, 1,522 design tokens | Edge-case fallback when SAP Web UI Kit registry doesn't cover a pattern |
 
----
 
 ## Skills
 
@@ -382,4 +369,3 @@ node build/validate-spec.js output/any.json  # validate a spec
 bash build/test-build.sh                     # regression suite (must exit 0)
 node build/check-manifest-sync.js           # manifest drift check
 ```
-
