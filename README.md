@@ -150,14 +150,14 @@ You: "Build a Purchase Orders approval screen"
   │  • "bravo / perfect" → canonical saved          │
   │  • "not right / fix this" → lesson captured     │
   │  • Next similar build recalls the right lesson  │
-  └─────────────────────────────────────────────────┘
+  └────────────────────┬────────────────────────────┘
                        │
-                       └───────────────────────────────┐
-                                                       │ loops back
-                                                       ▼
-                                             ANALYZE (next build)
-                                        lesson already recalled,
-                                        canonical clone ready
+                       ▼   
+                   loops back
+              ANALYZE (next build)
+            lesson already recalled,
+             canonical clone ready
+                                                       
 ```
 
 ### What happens at each stage
