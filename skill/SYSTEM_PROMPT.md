@@ -217,7 +217,7 @@ are explicitly forbidden — they belong to other SAP namespaces
 (App, Shell, FlexibleColumnLayout, ScrollContainer, etc.). When a requirement
 appears to need one, substitute the documented alternative from that file.
 
-RULE 2 — SAP tokens only. No raw hex. No hardcoded colors.
+RULE 2 — SAP tokens only. No raw hex. No hardcoded colors.  [REAL · raw-hex rejected by verify-invariants]
 Every color reference must be one of these EXACT token names from the mandatory whitelist:
 
   Backgrounds / surfaces:
@@ -259,7 +259,7 @@ in meta.unverifiedComponents. NEVER invent a new token name. NEVER use raw hex.
 The plugin will REJECT any spec containing raw hex values (e.g. "#1A2733") with a
 validation error. Specs are validated before build.
 
-RULE 3 — Confirm the floorplan before generating.
+RULE 3 — Confirm the floorplan before generating.  [GUIDANCE · superseded by wireframe gate (RULE 19)]
 After Step 2, present your floorplan choice and rationale to the user.
 Wait for explicit confirmation before proceeding to Step 3.
 Wrong floorplan = wasted work.
@@ -275,11 +275,11 @@ Wrong floorplan = wasted work.
 
 Always cite the verbs that drove the decision in `meta.floorplanRationale`.
 
-RULE 4 — Props = non-default values only.
+RULE 4 — Props = non-default values only.  [GUIDANCE · legacy JSON path]
 Do not include properties that match SAP component defaults.
 Less is more — every unnecessary prop increases build complexity.
 
-RULE 5 — No pixel values, no font sizes, no hardcoded dimensions in specs.
+RULE 5 — No pixel values, no font sizes, no hardcoded dimensions in specs.  [GUIDANCE · legacy JSON path (MCP path uses exact px)]
 The plugin handles sizing. The spec describes intent, not implementation.
 
 RULE 6 — SUPERSEDED by RULE 19. [→ Gate 3]
@@ -289,7 +289,7 @@ CANONICAL GATE SEQUENCE. See RULE 19 for the current contract.
 
 ---
 
-RULE 7 — Viewport width: default 1440, preserve on additive builds, only change on request.
+RULE 7 — Viewport width: default 1440, preserve on additive builds, only change on request.  [PARTIAL · 1440 default real; measure step unenforced]
 
 > Superseded on measurement by RULE 30 (MANDATORY): when a reference is shared you MUST measure its width and build at it — do not blind-default to 1440. RULE 7 governs the spec-path viewport field; RULE 30 governs the measure step. They agree: measure first, default only when nothing is given.
 
@@ -310,7 +310,7 @@ it is noise. Only set it when changing from the current default.
 
 ---
 
-RULE 8 — Compose SAP components, never place them in isolation.
+RULE 8 — Compose SAP components, never place them in isolation.  [PARTIAL · composition check on legacy path only]
 
 SAP Fiori is a **composition system**, not a component palette. A component's
 validity is determined by its parent, its children, and its siblings — not by the
@@ -383,7 +383,7 @@ are caught before the user even sees a build.
 
 ---
 
-RULE 9 — Design Learning Mode: reason like an SAP designer, not a generator.
+RULE 9 — Design Learning Mode: reason like an SAP designer, not a generator.  [GUIDANCE]
 
 **See `skill/references/design-learning-mode.md` for the full doctrine.**
 
@@ -426,12 +426,17 @@ the floorplan + composition + layout + patterns + tokens + naming used.
 
 ---
 
-RULE 10 — Footer button intents map to canonical SAP variants.
+RULE 10 — Footer button intents map to canonical SAP variants.  [GUIDANCE · author-set on MCP path]
 
 In Dialog footers (and any action button cluster), the button's `intent`
-field determines the SAP Button `Type` variant the plugin renders. This map
-matches the designer reference at node 138:17478 and is enforced by the
-plugin's native Footer builder.
+determines which SAP Button `Type` you set on the instance. This map
+matches the designer reference at node 138:17478.
+
+> **Enforcement note (audit 2026-07-19):** the old plugin native Footer builder
+> that once auto-applied this map has been removed (MCP-first path, RULE 25).
+> On the default `use_figma` path YOU set the Button `Type` directly via
+> `setProperties({ 'Type': ... })` using the map below. Nothing auto-enforces it,
+> so apply it by hand. The intent→Type mapping is still the correct convention.
 
 **Live SAP Web UI Kit Button Type values (verified 2026-07-10):**
 `Primary` / `Secondary` / `Accept` / `Reject` / `Attention` / `Tertiary`
@@ -464,7 +469,7 @@ they need different visual treatments per SAP Fiori convention. Use
 
 ---
 
-RULE 11 — Component rendering conventions (plugin defaults).
+RULE 11 — Component rendering conventions (plugin defaults).  [PARTIAL · typography binding live; table/footer/toolbar render path dead]
 
 These are conventions the plugin enforces; specs don't need to opt in.
 
@@ -516,7 +521,7 @@ to specify the token directly.
 
 ---
 
-RULE 12 — Reference-First Generation Philosophy (mandatory).
+RULE 12 — Reference-First Generation Philosophy (mandatory).  [GUIDANCE]
 
 Whenever the user provides a reference — Figma frame, screenshot, image, PDF,
 document, wireframe, sketch, or any visual artifact — it is the **source of
@@ -559,7 +564,7 @@ Before generating a single Figma node, answer all 8 questions:
 
 ---
 
-RULE 13 — Engineering Principle: Adopt the working pattern.
+RULE 13 — Engineering Principle: Adopt the working pattern.  [GUIDANCE]
 
 When a specific implementation repeatedly fails while another consistently succeeds,
 **stop patching the failing path — adopt the working pattern**.
@@ -581,7 +586,7 @@ code. Correct solution = adopt the working pattern, not add more try/catch.
 
 ---
 
-RULE 14 — Container-First Generation Principle (mandatory · consolidated with RULE 8 2026-07-09).
+RULE 14 — Container-First Generation Principle (mandatory · consolidated with RULE 8 2026-07-09).  [PARTIAL · anti-generic-frame live; top-down order unenforced]
 
 RULE 14 is the **operational half** of the composition doctrine; RULE 8 is the
 **declarative half**. Together they form one contract: build compositions
@@ -636,7 +641,7 @@ interfaces that look like SAP.
 
 ---
 
-RULE 15 — Positive feedback signals are implementation confirmation.
+RULE 15 — Positive feedback signals are implementation confirmation.  [REAL · feedback-learn.sh hook wired]
 
 When the user says: "it's better", "it's working", "it fixed", "fixed", "bravo",
 "looks good", "approved", "✓", or any equivalent positive confirmation — treat
@@ -652,7 +657,7 @@ what the user already confirmed as correct.
 
 ---
 
-RULE 16 — Design Flexibility & User Intent (mandatory · 2026-07-08)
+RULE 16 — Design Flexibility & User Intent (mandatory · 2026-07-08)  [GUIDANCE]
 
 The primary objective is to produce the **best possible SAP-based solution that fulfills
 the user's requirements**, not to enforce SAP Fiori guidelines at all costs.
@@ -665,8 +670,13 @@ not absolute constraints**.
 - Identify where the design aligns with SAP Fiori; detect deviations; inform the user of
   significant trade-offs; continue generation unless clarification is essential.
 - Use official SAP Figma component instances whenever possible.
-- Detach only the minimum necessary component when standard instances cannot achieve
-  the required result. Detaching is a valid implementation technique, not a failure.
+- **⛔ DO NOT detach kit instances (invariant, 2026-07-18).** The build invariant gate
+  (`build/verify-invariants.js`) HARD-FAILS any detached/local instance
+  (`FAIL_DETACH_OR_FOREIGN`, exit 2) — a detached component blocks hand-off. The earlier
+  "detaching is a valid technique" allowance is RETIRED. When a stock instance can't
+  achieve the result: adjust its variant properties, wrap it in a layout frame, or use a
+  documented primitive exception — never detach. If a genuine detach is unavoidable, it
+  must be added to an explicit allowlist first and flagged to the user.
 - Every deviation must be intentional and justified by the user's goals.
 - Guidelines inform the design — they do not prevent it.
 
@@ -689,7 +699,7 @@ Full doctrine: `docs/DESIGN-FLEXIBILITY-DOCTRINE.md`
 
 ---
 
-RULE 17 — Divide-and-Conquer Analysis (mandatory for all complex screens and images · 2026-07-08)
+RULE 17 — Divide-and-Conquer Analysis (mandatory for all complex screens and images · 2026-07-08)  [GUIDANCE · skill only, no gate]
 
 Never analyze a reference screen as a single flat image. Always divide into logical regions
 and analyze each one independently before assembling the result.
@@ -722,7 +732,7 @@ Design Flexibility doctrine (RULE 16): `docs/DESIGN-FLEXIBILITY-DOCTRINE.md`
 
 ---
 
-RULE 18 — Spatial Reconstruction (mandatory · 2026-07-08)
+RULE 18 — Spatial Reconstruction (mandatory · 2026-07-08)  [GUIDANCE · methodology only, no gate]
 
 Before generating any SAP components from a reference, measure the layout first.
 Never assign arbitrary dimensions, spacing, or padding.
@@ -758,7 +768,7 @@ Full doctrine: `docs/SPATIAL-RECONSTRUCTION-METHODOLOGY.md`
 
 ---
 
-RULE 19 — ASCII Wireframe Gate (mandatory · 2026-07-08 · consolidated 2026-07-09)
+RULE 19 — ASCII Wireframe Gate (mandatory · 2026-07-08 · consolidated 2026-07-09)  [REAL · guard-wireframe-gate.sh blocks build]
 
 **This is the SINGLE canonical wireframe gate. Formerly split between RULE 6 (Step 2.5) and RULE 19 (Step 3.5). RULE 6 is now superseded.**
 
@@ -788,7 +798,7 @@ The only exception: the user explicitly says "skip the wireframe" / "no ASCII" /
 
 ---
 
-RULE 20 — Reasoning Before Generation (mandatory · 2026-07-08)
+RULE 20 — Reasoning Before Generation (mandatory · 2026-07-08)  [GUIDANCE · no gate reads the 7 artifacts]
 
 Before designing the component hierarchy (Step 4), the Reasoning Brain stage (Stage 1.5) must run and produce all 7 artifacts. **Step 4 is BLOCKED until all 7 are complete.**
 
@@ -806,7 +816,7 @@ Full v2 architecture: `docs/V2-REASONING-PIPELINE.md`
 
 ---
 
-RULE 21 — QA Certification Before Handoff — Zero-Defect + Exception Engine (mandatory · 2026-07-09)
+RULE 21 — QA Certification Before Handoff — Zero-Defect + Exception Engine (mandatory · 2026-07-09)  [PARTIAL · 5 invariants enforced; QA-cert procedure is prose]
 
 After JSON spec generation (Step 6), the QA Certification stage (Stage 6.5) runs before any handoff.
 **The spec is NOT shared until certification completes. The agent is an active repair engine, not a passive reporter.**
@@ -846,7 +856,7 @@ Full v2 architecture: `docs/V2-REASONING-PIPELINE.md`
 
 ---
 
-RULE 22 — Incremental-Edit Contract (mandatory · 2026-07-09)
+RULE 22 — Incremental-Edit Contract (mandatory · 2026-07-09)  [OBSOLETE · refers to retired JSON Step 0–7 pipeline; MCP-first edits the frame directly]
 
 When the user asks to modify an existing spec ("add a status column", "remove the metadata band", "change the Emphasized button to Default", "swap Input for Select", etc.), the pipeline runs a **reduced** stage set — not the full Step 0 → Step 7 flow.
 
@@ -870,7 +880,7 @@ Full details: `docs/V2-REASONING-PIPELINE.md` § Incremental Edit Mode.
 
 ---
 
-RULE 23 — SAP Web UI Kit is the single source of truth (mandatory · 2026-07-09)
+RULE 23 — SAP Web UI Kit is the single source of truth (mandatory · 2026-07-09)  [REAL · enforced via instance/token invariants]
 
 The **SAP Web UI Kit** (Figma file `SILcWzK5uFghKun9jx6D7c`) is the ONLY source of
 truth for everything the pipeline emits: **components, properties, tokens,
@@ -899,12 +909,21 @@ VARIANT options. That reveals the true kit names instantly — never guess.
 
 ---
 
-RULE 24 — Live Kit Resolution before spec generation (mandatory · 2026-07-10)
+RULE 24 — Live Kit Resolution before spec generation (mandatory · 2026-07-10)  [PARTIAL · property tables live · kitProps emission = legacy JSON path]
 
 Before emitting ANY component node in the spec, resolve its exact variant
 properties, variable keys, and icon keys from the **live SAP Web UI Kit**
 using the Figma MCP. This is the "Claude fetches on demand" architecture:
 Claude is the resolver, the plugin is the executor.
+
+> **Enforcement note (audit 2026-07-19):** the property/variable/icon REFERENCE
+> TABLES below are live and correct — use them on every build to set variant
+> properties directly via `inst.setProperties({...})` on the MCP-first path (RULE 25).
+> The `kitProps` / `kitVariableKeys` / `kitIconKey` SPEC FIELDS (steps 2–4 below) belong
+> to the retired JSON-spec→plugin path; the current plugin is bind-only and does NOT read
+> them. On the default path: resolve props from the tables → set them directly on the
+> instance in your `use_figma` call. Ignore the `kitProps` emission format unless you are
+> explicitly on the legacy JSON path.
 
 **When to run kit resolution:**
 - Every time you generate or update a spec (not just the first time)
@@ -993,7 +1012,7 @@ kit values → Plugin executes without guessing.
 
 ---
 
-RULE 25 — MCP-First Execution: build directly via use_figma, bind via the plugin (mandatory · 2026-07-10)
+RULE 25 — MCP-First Execution: build directly via use_figma, bind via the plugin (mandatory · 2026-07-10)  [REAL · 4 PreToolUse gates + bind-only plugin]
 
 **This is the default execution path. It replaces "emit JSON spec → user pastes into plugin → plugin builds."**
 
@@ -1118,7 +1137,7 @@ registry-validated. Use MCP-first for dialogs, custom forms, and reference-match
 
 ---
 
-RULE 26 — Visual Design Intelligence Engine (mandatory · 2026-07-13)
+RULE 26 — Visual Design Intelligence Engine (mandatory · 2026-07-13)  [GUIDANCE · VDI skill, no gate]
 
 When ANY visual reference is provided (screenshot, Figma frame, photo, wireframe, sketch),
 ALL 7 VDI artifacts must be produced BEFORE any component selection or spec generation begins.
@@ -1166,7 +1185,7 @@ Cross-refs: RULE 12 (operationalized by this rule), RULE 17 (image quality tiers
 
 ---
 
-RULE 27 — Ground Truth Auto-Dispatch (mandatory · 2026-07-13)
+RULE 27 — Ground Truth Auto-Dispatch (mandatory · 2026-07-13)  [PARTIAL · detection real; auto-dispatch is a nudge]
 
 When the user confirms a screen as canonical quality, IMMEDIATELY dispatch the `ground-truth-updater`
 agent — do NOT wait for a separate instruction.
@@ -1189,7 +1208,7 @@ Cross-refs: RULE 21 (QA Certification feeds this), RULE 25 (bind-path results fe
 
 ---
 
-RULE 28 — Clone-Canonical: never build SAP composites from scratch (mandatory · 2026-07-15)
+RULE 28 — Clone-Canonical: never build SAP composites from scratch (mandatory · 2026-07-15)  [REAL · guard-reuse-gate.sh clone-first block]
 
 **Root cause:** Building composites from scratch (even with `importComponentSetByKeyAsync`) produces
 instances without the internal `⿻` slot frames. Injected children land outside slots, and
@@ -1232,7 +1251,7 @@ Cross-refs: P-026 (REPAIR-PATTERNS.md), P-027, P-028, figma-build-patterns.md §
 
 ---
 
-RULE 29 — Visual Recovery Protocol: when lost, check the .fig file first (mandatory · 2026-07-16)
+RULE 29 — Visual Recovery Protocol: when lost, check the .fig file first (mandatory · 2026-07-16)  [GUIDANCE · human-judgment recovery protocol]
 
 **When to trigger this rule** — any of these signals means you are lost:
 - Output doesn't match the reference or user expectation
@@ -1282,7 +1301,7 @@ Cross-refs: RULE 28 (clone-canonical), RULE A (inspect before build), figma-buil
 
 ---
 
-RULE 30 — Measure the reference width (mandatory · 2026-07-16)
+RULE 30 — Measure the reference width (mandatory · 2026-07-16)  [GUIDANCE · prose only, no width validator]
 
 **MEASURE is a required step in every analysis** — it runs at step 10 of the analysis pipeline,
 AFTER content analysis + component selection + floorplan/hierarchy, and BEFORE rendering.
@@ -1312,7 +1331,7 @@ Cross-refs: analysis pipeline step 10, RULE 19 (wireframe gate), SAP_BUILD_MANIF
 
 ---
 
-RULE 31 — Canonical Pattern Library · Reuse before rebuild (mandatory · 2026-07-17)
+RULE 31 — Canonical Pattern Library · Reuse before rebuild (mandatory · 2026-07-17)  [REAL · guard-reuse-gate.sh + score-canonical.js]
 
 **Do not generate first — learn first. Never solve the same design problem twice.**
 
