@@ -27,13 +27,13 @@ All screens built from a plain-language description or reference image — real 
 
 ### What you get
 
-| What | Purpose |
-|------|---------|
-| 5 MCP servers (auto-configured) | Claude's connection to Figma, SAP guidelines, and reference analysis |
-| 152-component registry | Every SAP UI component with properties, tokens, and usage rules |
-| 154 Fiori guideline files | SAP design guidelines cached locally — no internet needed per build |
-| Figma plugin | Binds real SAP design tokens after Claude builds the screen structure |
-| 8 canonical SAP screens | Confirmed reference screens Claude clones from as a quality baseline |
+| What | What's inside |
+|------|--------------|
+| **Instructions** | `CLAUDE.md` + `skill/SYSTEM_PROMPT.md` — the 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
+| **30 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
+| **Skills** | `/sap-bind`, `/sap-vdi`, and 6 other invokable skills — each packages a full pipeline stage into a single command |
+| **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
+| **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
 
 ---
 
