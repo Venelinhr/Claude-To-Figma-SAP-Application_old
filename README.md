@@ -8,8 +8,6 @@
 ![Plugin](https://img.shields.io/badge/Plugin-2%2C391_LOC-purple?style=flat-square)
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
 
-> **Interactive workflow reference:** [SAP-Figma-Design-Agent-Workflow.html](SAP-Figma-Design-Agent-Workflow.html) — full pipeline, 31 rules, hard rules, learning loop, all MCP servers documented.
-
 
 | What | What's inside |
 |------|--------------|
