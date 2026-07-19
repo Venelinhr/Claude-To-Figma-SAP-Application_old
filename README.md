@@ -25,7 +25,6 @@ All screens built from a plain-language description or reference image — real 
 
 ## Installation
 
-### What you get
 
 | What | What's inside |
 |------|--------------|
