@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Figma Design Agent — Workflow</title>
+<style>
+  /* ─────────────────────────────────────────
+     RESET & BASE
+  ───────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: #fff;
+    color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─────────────────────────────────────────
+     TOKENS — only 3 colours used anywhere
+  ───────────────────────────────────────── */
+  :root {
+    --ink:     #111;
+    --ink2:    #555;
+    --ink3:    #999;
+    --line:    #e5e5e5;
+    --bg:      #fff;
+    --bg2:     #f9f9f9;
+    --accent:  #2563eb;       /* one blue, used sparingly */
+    --green:   #16a34a;
+    --amber:   #d97706;
+    --red:     #dc2626;
+    --mono:    ui-monospace, 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* ─────────────────────────────────────────
+     NAV
+  ───────────────────────────────────────── */
+  nav {
+    position: fixed; inset: 0 0 auto;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid var(--line);
+    height: 56px; padding: 0 48px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 9px; }
+  .nav-logo-icon {
+    width: 30px; height: 30px; background: var(--ink);
+    border-radius: 7px; display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-icon svg { width: 16px; height: 16px; color: #fff; }
+  .nav-title { font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+  .nav-links { display: flex; gap: 2px; margin-left: auto; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    text-decoration: none; padding: 5px 10px; border-radius: 6px;
+    transition: background .1s, color .1s;
+  }
+  .nav-links a:hover { background: var(--bg2); color: var(--ink); }
+  .nav-links a.hi { color: var(--accent); font-weight: 700; }
+  .nav-links a.hi:hover { background: #eff4ff; }
+
+  /* ─────────────────────────────────────────
+     PAGE SHELL
+  ───────────────────────────────────────── */
+  .page { max-width: 960px; margin: 0 auto; padding: 80px 48px 120px; }
+
+  /* ─────────────────────────────────────────
+     HERO
+  ───────────────────────────────────────── */
+  .hero { padding: 56px 0 48px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+  .hero-label {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 48px; font-weight: 800; letter-spacing: -.04em;
+    line-height: 1.05; color: var(--ink); margin-bottom: 20px;
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--ink2); max-width: 580px; line-height: 1.65;
+    margin-bottom: 40px;
+  }
+
+  /* ─────────────────────────────────────────
+     METHODOLOGY STRIP (hero block)
+  ───────────────────────────────────────── */
+  .method-strip {
+    border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; margin-bottom: 0;
+  }
+  .method-strip-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink3);
+    padding: 16px 24px 0;
+  }
+  .method-steps {
+    display: grid; grid-template-columns: repeat(5,1fr);
+    border-top: 1px solid var(--line); margin-top: 12px;
+  }
+  .ms {
+    padding: 20px 16px; text-align: center;
+    border-right: 1px solid var(--line);
+  }
+  .ms:last-child { border-right: none; }
+  .ms.active { background: #f0f7ff; }
+  .ms-icon { width: 36px; height: 36px; margin: 0 auto 10px; color: var(--ink3); }
+  .ms.active .ms-icon { color: var(--accent); }
+  .ms-icon svg { width: 22px; height: 22px; }
+  .ms-name { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+  .ms-desc { font-size: 12px; color: var(--ink3); margin-top: 4px; line-height: 1.4; }
+  .method-rules {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    border-top: 1px solid var(--line);
+  }
+  .mr {
+    padding: 18px 20px;
+    border-right: 1px solid var(--line);
+  }
+  .mr:last-child { border-right: none; }
+  .mr-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .mr-title svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .mr-title.danger { color: var(--red); }
+  .mr-title.warn   { color: var(--amber); }
+  .mr-title.ok     { color: var(--green); }
+  .mr-text { font-size: 13px; color: var(--ink2); line-height: 1.5; }
+  .method-footer {
+    border-top: 1px solid var(--line);
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+  .method-footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .method-footer a:hover { text-decoration: underline; }
+
+  /* ─────────────────────────────────────────
+     STATS BAR
+  ───────────────────────────────────────── */
+  .stats {
+    display: grid; grid-template-columns: repeat(6,1fr);
+    border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; margin: 40px 0;
+  }
+  .stat {
+    padding: 20px 16px; text-align: center;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 26px; font-weight: 900; color: var(--ink); letter-spacing: -.03em; }
+  .stat-label { font-size: 10px; font-weight: 700; color: var(--ink3); text-transform: uppercase; letter-spacing: .07em; margin-top: 3px; }
+
+  /* ─────────────────────────────────────────
+     NOTICE BAR
+  ───────────────────────────────────────── */
+  .notice {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 14px 18px; border-radius: 8px; margin: 20px 0;
+    background: var(--bg2); border: 1px solid var(--line);
+    font-size: 14px; color: var(--ink2); line-height: 1.55;
+  }
+  .notice > svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; }
+  .notice > span, .notice > p { flex: 1; min-width: 0; }
+  .notice strong { color: var(--ink); font-weight: 700; }
+  .notice.ok    { background: #f0fdf4; border-color: #bbf7d0; }
+  .notice.ok svg { color: var(--green); }
+  .notice.warn  { background: #fffbeb; border-color: #fcd34d; }
+  .notice.warn svg { color: var(--amber); }
+  .notice.info  { background: #eff4ff; border-color: #bfdbfe; }
+  .notice.info svg { color: var(--accent); }
+  .notice.stop  { background: #fef2f2; border-color: #fca5a5; }
+  .notice.stop svg { color: var(--red); }
+
+  /* ─────────────────────────────────────────
+     KEY FACT (bold left-bar emphasis)
+  ───────────────────────────────────────── */
+  .kf {
+    border-left: 3px solid var(--ink);
+    padding: 16px 20px; margin: 24px 0;
+    background: var(--bg2);
+  }
+  .kf p { font-size: 16px; line-height: 1.65; color: var(--ink); }
+  .kf strong { font-weight: 800; }
+  .kf.blue  { border-color: var(--accent); background: #eff4ff; }
+  .kf.blue  p { color: var(--ink); }
+  .kf.green { border-color: var(--green);  background: #f0fdf4; }
+  .kf.amber { border-color: var(--amber);  background: #fffbeb; }
+  .kf.red   { border-color: var(--red);    background: #fef2f2; }
+
+  /* ─────────────────────────────────────────
+     SECTIONS
+  ───────────────────────────────────────── */
+  .section { margin: 48px 0; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 14px;
+    padding-bottom: 16px; border-bottom: 2px solid var(--ink);
+    margin-bottom: 28px;
+  }
+  .section-num { font-size: 12px; font-weight: 700; color: var(--ink3); letter-spacing: .06em; }
+  .section-title { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+  .section-sub { font-size: 14px; color: var(--ink2); margin-left: auto; }
+
+  /* ─────────────────────────────────────────
+     CARDS
+  ───────────────────────────────────────── */
+  .card {
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 10px; padding: 22px;
+  }
+  .grid { display: grid; gap: 14px; }
+  .grid.c2 { grid-template-columns: 1fr 1fr; }
+  .grid.c3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grid.c4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .card h3 { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
+  .card p, .card li { font-size: 14px; color: var(--ink2); line-height: 1.65; }
+  .card ul { padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+  .card-tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .07em;
+    padding: 2px 7px; border-radius: 4px; margin-bottom: 8px;
+    background: var(--bg2); border: 1px solid var(--line); color: var(--ink3);
+  }
+
+  /* ─────────────────────────────────────────
+     MCP CARDS
+  ───────────────────────────────────────── */
+  .mcp-card { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  .mcp-card-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+  .mcp-icon-box {
+    width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+    background: var(--bg2); border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mcp-icon-box svg { width: 16px; height: 16px; color: var(--ink2); }
+  .mcp-name { font-size: 14px; font-weight: 700; font-family: var(--mono); color: var(--ink); }
+  .mcp-kind { font-size: 11px; color: var(--ink3); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .mcp-desc { font-size: 13px; color: var(--ink2); line-height: 1.55; }
+  .mcp-why { font-size: 13px; color: var(--ink); line-height: 1.5; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  .mcp-tools { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+  .mcp-tool { font-size: 11px; background: var(--bg2); border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; color: var(--ink2); font-family: var(--mono); }
+
+  /* ─────────────────────────────────────────
+     TAGS
+  ───────────────────────────────────────── */
+  .tag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid; text-transform: uppercase; letter-spacing: .04em; }
+  .tag.blue  { background: #eff4ff; color: var(--accent); border-color: #bfdbfe; }
+  .tag.green { background: #f0fdf4; color: var(--green);  border-color: #bbf7d0; }
+  .tag.warn  { background: #fffbeb; color: var(--amber);  border-color: #fcd34d; }
+  .tag.red   { background: #fef2f2; color: var(--red);    border-color: #fca5a5; }
+  .tag.mono  { background: var(--bg2); color: var(--ink2); border-color: var(--line); font-family: var(--mono); text-transform: none; letter-spacing: 0; }
+
+  /* ─────────────────────────────────────────
+     CODE
+  ───────────────────────────────────────── */
+  code { font-family: var(--mono); font-size: 13px; background: var(--bg2); padding: 1px 6px; border-radius: 4px; color: var(--accent); border: 1px solid var(--line); }
+  pre { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 20px 22px; overflow-x: auto; font-size: 13px; font-family: var(--mono); line-height: 1.7; margin: 14px 0; }
+  .kw { color: #c084fc; } .str { color: #86efac; } .cm { color: #475569; } .fn { color: #93c5fd; } .nm { color: #fdba74; }
+
+  /* ─────────────────────────────────────────
+     PIPELINE
+  ───────────────────────────────────────── */
+  .pipeline { display: flex; flex-direction: column; }
+  .pipe-step { display: grid; grid-template-columns: 44px 1fr; }
+  .pipe-left { display: flex; flex-direction: column; align-items: center; }
+  .pipe-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1.5px solid var(--line); background: var(--bg);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 1;
+  }
+  .pipe-dot svg { width: 14px; height: 14px; color: var(--ink2); }
+  .pipe-line { width: 1px; flex: 1; min-height: 16px; background: var(--line); }
+  .pipe-body { padding: 2px 0 32px 16px; }
+  .pipe-tag { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 4px; }
+  .pipe-name { font-size: 18px; font-weight: 800; letter-spacing: -.01em; margin-bottom: 6px; }
+  .pipe-desc { font-size: 14px; color: var(--ink2); margin-bottom: 10px; line-height: 1.65; }
+
+  /* ─────────────────────────────────────────
+     FLOW
+  ───────────────────────────────────────── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0 0; }
+  .flow-box { display: inline-flex; align-items: center; background: var(--bg2); border: 1px solid var(--line); border-radius: 7px; padding: 7px 13px; font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .flow-box.end { border-color: #bbf7d0; background: #f0fdf4; color: var(--green); }
+  .flow-arrow { color: var(--ink3); display: inline-flex; align-items: center; flex-shrink: 0; }
+  .flow-arrow svg { width: 14px; height: 14px; }
+  .flow-gate { display: inline-flex; align-items: center; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 7px; padding: 7px 13px; font-size: 12px; font-weight: 700; color: var(--amber); white-space: nowrap; }
+
+  /* ─────────────────────────────────────────
+     LOOP CONTAINER
+  ───────────────────────────────────────── */
+  .loop-wrap { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 28px; background: var(--bg); margin: 16px 0; }
+  .loop-label { position: absolute; top: -10px; left: 18px; background: var(--bg); padding: 0 8px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--ink3); }
+
+  /* ─────────────────────────────────────────
+     RULES LIST
+  ───────────────────────────────────────── */
+  .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rule { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+  .rule-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); flex-shrink: 0; margin-top: 6px; }
+  .rule-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink3); margin-bottom: 2px; }
+  .rule-name { font-size: 14px; color: var(--ink2); line-height: 1.5; }
+
+  /* ─────────────────────────────────────────
+     TABLE
+  ───────────────────────────────────────── */
+  hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--ink3); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--ink2); vertical-align: top; line-height: 1.55; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--ink); font-weight: 700; }
+  .bad  { color: var(--red)   !important; font-family: var(--mono); font-size: 13px; }
+  .good { color: var(--green) !important; font-family: var(--mono); font-size: 13px; font-weight: 800; }
+
+  /* ─────────────────────────────────────────
+     BEFORE / AFTER
+  ───────────────────────────────────────── */
+  .ba { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 16px; align-items: center; margin: 24px 0; }
+  .ba-box { border: 1px solid var(--line); border-radius: 10px; padding: 24px; text-align: center; }
+  .ba-box.before { border-color: #fca5a5; }
+  .ba-box.after  { border-color: #bbf7d0; }
+  .ba-num { font-size: 40px; font-weight: 900; letter-spacing: -.04em; color: var(--ink); }
+  .ba-box.before .ba-num { color: var(--red); }
+  .ba-box.after  .ba-num { color: var(--green); }
+  .ba-lbl { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ink3); margin-top: 5px; }
+  .ba-arrow { text-align: center; color: var(--ink3); }
+  .ba-arrow svg { width: 20px; height: 20px; }
+
+  /* ─────────────────────────────────────────
+     RESPONSIVE
+  ───────────────────────────────────────── */
+  @media (max-width: 860px) {
+    nav { padding: 0 24px; }
+    .page { padding: 72px 24px 80px; }
+    .hero h1 { font-size: 36px; }
+    .method-steps, .method-rules { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(3,1fr); }
+    .grid.c2, .grid.c3, .grid.c4 { grid-template-columns: 1fr; }
+    .rules { grid-template-columns: 1fr; }
+    .ba { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <span class="nav-title">SAP Figma Agent</span>
+  </div>
+  <div class="nav-links">
+    <a href="#methodology" class="hi">Methodology</a>
+    <a href="#token-opt" class="hi">Token Opt</a>
+    <a href="#overview">Overview</a>
+    <a href="#comm">Claude↔Figma</a>
+    <a href="#vdi">VDI Skill</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#mcps">MCPs</a>
+    <a href="#plugin">Plugin</a>
+    <a href="#hooks">Hooks</a>
+    <a href="#loop">Learning</a>
+    <a href="#rules">Rules</a>
+    <a href="#hard-rules" class="hi">Hard Rules</a>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Live System · Self-Optimizing · 2026-07-15</div>
+  <h1>SAP Figma<br>Design Agent</h1>
+  <p class="hero-sub">From any reference to a verified, token-bound SAP Fiori screen — powered by the <strong>ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN</strong> methodology.</p>
+
+  <!-- METHODOLOGY HERO BLOCK -->
+  <div class="method-strip">
+  <div class="method-strip-label">Default Methodology · 2026-07-15</div>
+  <div class="method-steps">
+    <div class="ms active">
+      <div class="ms-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="currentColor"><path d="M29,27.59l-7.55-7.55a11,11,0,1,0-1.41,1.41L27.59,29ZM4,13a9,9,0,1,1,9,9A9,9,0,0,1,4,13Z"/></svg></div>
+      <div class="ms-name">Analyze</div>
+      <div class="ms-desc">Call <code>get_design_context</code> on the closest working node</div>
+    </div>
+    <div class="ms">
+      <div class="ms-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="currentColor"><path d="M25.7,9.3l-7-7A1,1,0,0,0,18,2H8A2,2,0,0,0,6,4V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V10A1,1,0,0,0,25.7,9.3ZM18,4.4,23.6,10H18ZM24,28H8V4h8v6a2,2,0,0,0,2,2h6Z"/><rect x="10" y="22" width="12" height="2"/><rect x="10" y="16" width="12" height="2"/></svg></div>
+      <div class="ms-name">Plan</div>
+      <div class="ms-desc">Map content to slot structure, list property keys</div>
+    </div>
+    <div class="ms">
+      <div class="ms-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="currentColor"><path d="M17.75,13l2-9H11.8L9.26,15h5.91L13.58,25.28,23,13Z"/><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30Z"/></svg></div>
+      <div class="ms-name">Execute</div>
+      <div class="ms-desc">Single <code>use_figma</code> call, clone-clear-repopulate</div>
+    </div>
+    <div class="ms">
+      <div class="ms-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg></div>
+      <div class="ms-name">Validate</div>
+      <div class="ms-desc">One screenshot, compare vs reference, fix width</div>
+    </div>
+    <div class="ms">
+      <div class="ms-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
+      <div class="ms-name">Learn</div>
+      <div class="ms-desc">Capture to memory when user confirms success</div>
+    </div>
+  </div>
+  <div class="method-rules">
+    <div class="mr">
+      <div class="mr-title danger"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm5.41,21L9,10.59,10.59,9,23,21.41Z"/></svg> Never skip Analyze</div>
+      <div class="mr-text">All 14 failed iterations started without <code>get_design_context</code>. It reveals slot structure, nesting depth, and writable property keys.</div>
+    </div>
+    <div class="mr">
+      <div class="mr-title warn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/><rect x="15" y="8" width="2" height="11"/><path d="M16,22a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,22Z"/></svg> Clone-Clear-Repopulate</div>
+      <div class="mr-text">Clone original → clear slot → fresh prototypes from ORIGINAL (never a prior clone) → <code>setProperties</code>.</div>
+    </div>
+    <div class="mr">
+      <div class="mr-title ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg> Freeze positive feedback</div>
+      <div class="mr-text">"Bingo / 100% / perfect" → save to memory as canonical, use as default for the next similar build.</div>
+    </div>
+  </div>
+  <div class="method-footer">
+    <a href="#methodology">Full methodology with RCA table → Section 13</a>
+  </div>
+</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">30</div><div class="stat-label">Rules</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">MCPs</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Agents</div></div>
+  <div class="stat"><div class="stat-num">152</div><div class="stat-label">Components</div></div>
+  <div class="stat"><div class="stat-num">2,391</div><div class="stat-label">Plugin LOC</div></div>
+  <div class="stat"><div class="stat-num">~3k</div><div class="stat-label">Tokens/Build</div></div>
+</div>
+
+<div class="notice ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg><span><strong>Latest (2026-07-15):</strong> Default methodology · SideNavigation canonical pattern · Token optimization (~25k → ~3k) · plugin audit (−33% LOC) · 5 automation hooks · feedback learning loop.</span></div>
+
+
+<hr id="token-opt">
+
+<!-- TOKEN OPTIMIZATION SECTION -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,23H4V19H24ZM16,11H4V7H16Z"/></svg></div>
+    <div><div class="section-title">Token Optimization — ~25k → ~3k per build</div><div class="section-sub">4 strategies · ~88% reduction · measured and verified</div></div>
+  </div>
+
+  <div class="ba">
+    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">~25k</div><div class="ba-lbl">Tokens / build — before</div></div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">~3k</div><div class="ba-lbl">Tokens / build — after (~2k cached)</div></div>
+  </div>
+
+  <div class="grid c2" style="margin-top:24px">
+    <div class="card" style="border-color:var(--danger);border-top:3px solid var(--danger)">
+      <h3 style="color:var(--danger)">Strategy 1 — Never read code.js</h3>
+      <p><strong>Before:</strong> Reading <code>plugin/figma-builder/code.js</code> cost ~45k tokens per read (×2 = 90k). It is the plugin runtime — irrelevant to a <code>use_figma</code> build.</p>
+      <p style="margin-top:8px"><strong>After:</strong> A PreToolUse hook blocks the read entirely. All needed data is in <code>SAP_BUILD_MANIFEST.md</code> (~2k tokens).</p>
+      <div class="mcp-tools" style="margin-top:10px"><span class="tag red">block-codejs-read.sh hook</span><span class="tag green">−45k tokens per read</span></div>
+    </div>
+    <div class="card" style="border-color:var(--accent);border-top:3px solid var(--accent)">
+      <h3 style="color:var(--accent)">Strategy 2 — VDI semantic-model cache</h3>
+      <p><strong>Before:</strong> Every build re-ran the full 8-stage VDI analysis on the same reference image — ~13.5k tokens each time.</p>
+      <p style="margin-top:8px"><strong>After:</strong> SHA-1 of image → look for <code>semantic-models/*-&lt;sha8&gt;.md</code>. Cache hit loads ~700 tokens. <strong>96% saving on repeat images.</strong></p>
+      <div class="mcp-tools" style="margin-top:10px"><span class="tag blue">semantic-models/ cache</span><span class="tag green">−96% on repeat</span></div>
+    </div>
+    <div class="card" style="border-color:var(--accent);border-top:3px solid var(--accent)">
+      <h3 style="color:var(--accent)">Strategy 3 — Single manifest file</h3>
+      <p><strong>Before:</strong> Build knowledge was scattered across 6+ files (VDI references, registry JSONs, token files) totalling 15–20k tokens per build.</p>
+      <p style="margin-top:8px"><strong>After:</strong> <code>SAP_BUILD_MANIFEST.md</code> — one file, ~2k tokens, contains all 25 component keys, 25 token hexes, naming rules, and 3 hard rules.</p>
+      <div class="mcp-tools" style="margin-top:10px"><span class="tag purple">SAP_BUILD_MANIFEST.md</span><span class="tag green">−76% vs 6-file bundle</span></div>
+    </div>
+    <div class="card" style="border-color:var(--warn);border-top:3px solid var(--warn)">
+      <h3 style="color:var(--warn)">Strategy 4 — One-shot build discipline</h3>
+      <p><strong>Before:</strong> Live iterative fixing in Figma — 8+ <code>use_figma</code> calls and 6+ screenshots per build. Each screenshot ~2k tokens.</p>
+      <p style="margin-top:8px"><strong>After:</strong> ANALYZE → PLAN before executing. Single <code>use_figma</code> call + 1 screenshot. Parallel <code>Promise.all</code> imports (3–4× faster wall-time).</p>
+      <div class="mcp-tools" style="margin-top:10px"><span class="tag orange">one-shot discipline</span><span class="tag green">−80% call overhead</span></div>
+    </div>
+  </div>
+
+  <table style="margin-top:24px">
+    <thead><tr><th>Cost source</th><th style="color:var(--danger)">Before</th><th style="color:var(--success)">After</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>Reading code.js</td><td>~45k (×2 reads)</td><td>0</td><td>Hook blocks read · manifest has all needed keys</td></tr>
+      <tr><td>VDI reference bundle</td><td>~8k / build</td><td>~2k</td><td>6 files → VDI_REFERENCE.md (−76%)</td></tr>
+      <tr><td>VDI analysis (repeat image)</td><td>~13.5k</td><td>~0.7k</td><td>SHA-1 cache in semantic-models/ (−96%)</td></tr>
+      <tr><td>Build knowledge (scattered)</td><td>~15–20k</td><td>~2k</td><td>Single SAP_BUILD_MANIFEST.md</td></tr>
+      <tr><td>Iterative live-fixing</td><td>8 calls + 6 shots</td><td>1 call + 1 shot</td><td>Analyze before executing (new methodology)</td></tr>
+      <tr><td>Sequential imports</td><td>~2.1s+ serial</td><td>~0.5s parallel</td><td>Promise.all — 3–4× faster</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">The insight:</strong> The waste was never in stable rules (those cache warm). It was <strong>reading huge files that weren't needed</strong>, <strong>re-analyzing the same images</strong>, and <strong>iterating live in Figma</strong>. The fix: read one small manifest, cache the analysis, analyze before building, build right once.</span></div>
+</div>
+<div class="kf amber"><p><strong>The root cause of wasted tokens:</strong> Reading huge files that weren't needed, re-analyzing the same images, iterating live in Figma. The fix: one small manifest + SHA-1 cache + build right once = <strong>~88% fewer tokens per build</strong>.</p></div>
+
+
+<hr id="overview">
+
+<!-- SECTION 1: OVERVIEW -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M27,16.76q0-.38,0-.76t0-.77l1.92-1.68A2,2,0,0,0,29.3,11L27,7a2,2,0,0,0-2.36-.9l-2.43.82a9.91,9.91,0,0,0-1.31-.76l-.51-2.52A2,2,0,0,0,18.36,2H13.64a2,2,0,0,0-2,1.61l-.51,2.52a10.06,10.06,0,0,0-1.32.76l-2.42-.82A2,2,0,0,0,5.06,7L2.7,11a2,2,0,0,0,.41,2.51L5,15.24q0,.38,0,.76t0,.77L3.11,18.45A2,2,0,0,0,2.7,21L5.06,25a2,2,0,0,0,2.36.9l2.43-.82a10.06,10.06,0,0,0,1.31.76l.51,2.52a2,2,0,0,0,2,1.61h4.72a2,2,0,0,0,2-1.61l.51-2.52a9.91,9.91,0,0,0,1.32-.76l2.42.82A2,2,0,0,0,27,25l2.36-4a2,2,0,0,0-.41-2.51ZM16,22a6,6,0,1,1,6-6A6,6,0,0,1,16,22Z"/></svg></div>
+    <div><div class="section-title">System Overview</div><div class="section-sub">Three layers, one workflow — each does only what it uniquely can</div></div>
+  </div>
+
+  <div class="grid c3">
+    <div class="card" style="border-color:var(--accent-dim)">
+      <h3 style="color:var(--accent)">Layer 1 — Claude (Reasoning)</h3>
+      <ul>
+        <li>Parses business requirements</li>
+        <li>Reads visual references (images, Figma, PDFs)</li>
+        <li>Runs 30 mandatory rules</li>
+        <li>Runs the <code>sap-visual-reading</code> 8-stage skill</li>
+        <li>Selects SAP floorplan + components</li>
+        <li>Builds directly via Figma MCP</li>
+        <li>QA + self-repair passes</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:var(--accent-dim)">
+      <h3 style="color:var(--accent)">Layer 2 — Figma MCP (Execution)</h3>
+      <ul>
+        <li>Inserts real SAP kit component instances</li>
+        <li><code>importComponentSetByKeyAsync</code> (parallel via <code>Promise.all</code>)</li>
+        <li>Sets variant properties + injects text</li>
+        <li>Builds Auto Layout frames (no Spacer frames)</li>
+        <li>Tags fills <code>[sapToken]</code> · text <code>[typo:role]</code></li>
+        <li>Drops <code>◆ICON/</code> placeholders</li>
+        <li>One-shot build + one verification screenshot</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:var(--success-dim)">
+      <h3 style="color:var(--success)">Layer 3 — Plugin (Token Bridge)</h3>
+      <ul>
+        <li>The ONLY actor with <code>teamlibrary</code> permission</li>
+        <li>Reads <code>[sapToken]</code> tags → binds SAP variables</li>
+        <li>Swaps <code>◆ICON/</code> placeholders → real kit icons</li>
+        <li>Binds <code>[typo:role]</code> → SAP text styles</li>
+        <li>Runs all 4 §7 a11y validators</li>
+        <li>Reports: bound fills, icons, text styles, leaks</li>
+        <li>2,391 LOC, MCP-bind-only</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">Why this split?</strong> — <code>use_figma</code> (Figma MCP) runs in a sandbox <strong>without</strong> <code>teamlibrary</code> permission. It returns 0 collections when querying the SAP Web UI Kit variables. Only a real Figma plugin can bind SAP token variables (theme-switchable, audit-clean). So Claude+MCP build the structure; the plugin does the one thing only it can do.</span></div>
+</div>
+
+<hr id="comm">
+
+<!-- SECTION 2: HOW CLAUDE COMMUNICATES WITH FIGMA -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M29.25,6.76a6,6,0,0,0-8.5,0l1.42,1.42a4,4,0,1,1,5.67,5.67l-8,8a4,4,0,1,1-5.67-5.66l1.41-1.42-1.41-1.41-1.42,1.41a6,6,0,0,0,8.5,8.49l8-8A6,6,0,0,0,29.25,6.76Z"/><path d="M4.19,24.31a4,4,0,0,1,0-5.66l8-8a4,4,0,0,1,5.67,5.66L16.45,17.73l1.42,1.41,1.41-1.41a6,6,0,1,0-8.49-8.49l-8,8a6,6,0,0,0,8.49,8.49L12.7,24.3l-1.42-1.42Z"/></svg></div>
+    <div><div class="section-title">How Claude Communicates With Figma</div><div class="section-sub">Reading references · making decisions · executing the build</div></div>
+  </div>
+
+  <div class="grid c3">
+    <div class="card" style="border-color:var(--accent-dim)">
+      <h3 style="color:var(--accent)">READ — How Claude sees Figma</h3>
+      <p>Claude never "opens" Figma like a human. It calls MCP tools that return structured data:</p>
+      <ul style="margin-top:8px">
+        <li><code>get_design_context(nodeId)</code> — exact CSS: padding, gap, font-size, bound token names, layer tree</li>
+        <li><code>get_screenshot(nodeId)</code> — a rendered PNG to verify visual result</li>
+        <li><code>get_metadata(nodeId)</code> — lightweight structure (ids, types, x/y/w/h) to navigate before deep reads</li>
+        <li><code>search_design_system(query)</code> — find kit components + their 40-char keys</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:var(--accent-dim)">
+      <h3 style="color:var(--accent)">DECIDE — How Claude reasons</h3>
+      <p>Between reading and building, Claude runs a disciplined decision chain:</p>
+      <ul style="margin-top:8px">
+        <li>Z-pattern region read → SAP region-type mapping (analysis MCP)</li>
+        <li>Confidence tiers ● confirmed / ○ inferred / ? ambiguous on every element</li>
+        <li>Floorplan scoring table (business fit + interaction fit + SAP compliance / 30)</li>
+        <li>Component scoring when 2 are valid — never picks silently</li>
+        <li>Reads <code>SAP_BUILD_MANIFEST.md</code> ONLY for keys/tokens (not the 45k-token plugin)</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:var(--success-dim)">
+      <h3 style="color:var(--success)">EXECUTE — How Claude writes to Figma</h3>
+      <p>One <code>use_figma</code> call runs JavaScript inside Figma's plugin API:</p>
+      <ul style="margin-top:8px">
+        <li>Imports real component sets in parallel (<code>Promise.all</code>)</li>
+        <li><code>.defaultVariant.createInstance()</code> → <code>setProperties()</code></li>
+        <li>Builds Auto Layout containers, injects text</li>
+        <li>Names layers with <code>[sapToken]</code>/<code>[typo:role]</code>/<code>◆ICON/</code> tags</li>
+        <li>Roots the frame <code>◆SAP-UNBOUND/ScreenName</code></li>
+        <li>ONE verification screenshot — no live iterating</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="font-size:14px;font-weight:700;color:var(--ink2);margin:14px 0 8px;"><strong style="color:var(--ink)">The round-trip in one line:</strong></p><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">get_design_context / screenshot (READ)</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">VDI analysis + scoring (DECIDE)</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">use_figma one-shot (EXECUTE)</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">get_screenshot (VERIFY)</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box end">Plugin Bind (TOKENS)</div>
+    </div>
+  
+
+<hr id="triggers">
+
+<!-- SECTION 3: TRIGGERS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M17.75,13l2-9H11.8L9.26,15h5.91L13.58,25.28,23,13Z"/><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30Z"/></svg></div>
+    <div><div class="section-title">Triggers — How It Starts</div><div class="section-sub">Four entry points, all handled by the sap-visual-reading skill</div></div>
+  </div>
+
+  <div class="grid c4">
+    <div class="card">
+      <h3>Text Requirement</h3>
+      <p>User story, Jira ticket, plain description. Skill Stage 3 extracts persona, task, data, actions, states, constraints, context, interaction.</p>
+      <div class="mcp-tools" style="margin-top:8px"><span class="tag blue">Stage 3</span> <span class="tag green">requirement parse</span></div>
+    </div>
+    <div class="card">
+      <h3>Reference Image</h3>
+      <p>Screenshot, Figma frame, photo, wireframe, sketch. Triggers VDI (RULE 26) + skill Stage 2 visual reading. Image-quality tier 1–4 assessed first.</p>
+      <div class="mcp-tools" style="margin-top:8px"><span class="tag orange">RULE 26</span> <span class="tag purple">Stage 2</span></div>
+    </div>
+    <div class="card">
+      <h3>Figma URL</h3>
+      <p>Node URL like <code>?node-id=355-39080</code>. Calls <code>get_design_context</code> to extract exact CSS measurements — the ● confirmed source.</p>
+      <div class="mcp-tools" style="margin-top:8px"><span class="tag blue">figma MCP</span> <span class="tag green">RULE 23</span></div>
+    </div>
+    <div class="card">
+      <h3>Document</h3>
+      <p>PDF spec, markdown, design doc. Parsed as requirement text via skill Stage 3. Extracts same structured data; falls back gracefully.</p>
+      <div class="mcp-tools" style="margin-top:8px"><span class="tag yellow">Stage 3</span> <span class="tag green">merge Stage 4</span></div>
+    </div>
+  </div>
+
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span>The skill adapts: <strong>image only</strong> → Stage 2 · <strong>text only</strong> → Stage 3 · <strong>image + text</strong> → run both, merge at Stage 4. Never skips understanding before mapping.</span></div>
+
+<hr id="vdi">
+
+<!-- SECTION 4: VDI SKILL -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">—</div>
+    <div><div class="section-title">sap-visual-reading — The Analysis Skill (RULE 26)</div><div class="section-sub">MANDATORY · 8 loop-aware stages · grounds every decision in real SAP sources</div></div>
+  </div>
+
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">What it does & why it's mandatory:</strong> Reads any combination of image, requirement text, or spec document and produces a structured SAP Fiori design plan — grounded ONLY in real SAP sources (Fiori Guidelines, SAPUI5 API, Web Components, Horizon tokens, SAP Web UI Kit). No invented components. No hallucinated tokens. It is the disciplined "senior designer read" that prevents generic output and wrong floorplans. <strong>Pinned in-project (2026-07-14) at <code>skill/sap-visual-reading/</code> — 11 files, the single source of truth; the global <code>/sap-vdi</code> skill points here.</strong></span></div>  <div class="pipeline" style="margin-top:24px">
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">1</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Understand the input</div><div class="pipe-name">Stage 1 — Coverage check (L1 loop)</div>
+        <div class="pipe-desc">Confirm screen type identifiable · all major regions named · business intent clear. If unclear after first pass → re-read with fresh eyes → mark <code>?</code> and proceed. Never skip to component mapping.</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">2</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Visual reading (images)</div><div class="pipe-name">Stage 2 — Designer Reasoning Pass (6 questions per zone)</div>
+        <div class="pipe-desc">Before naming any element: purpose? why designed this way? visual principles? SAP floorplan match? best components? image evidence? Then divide into named zones A/B/C. Record confidence ● ○ ? per element.</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">3</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Requirement parsing (text)</div><div class="pipe-name">Stage 3 — Extract 8 dimensions</div>
+        <div class="pipe-desc">Persona · Task · Data · Actions · States · Constraints · Context · Interaction. Map to floorplan candidates before selecting.</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">4</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Screen classification</div><div class="pipe-name">Stage 4 — Floorplan scoring (L2 loop)</div>
+        <div class="pipe-desc">Score all candidates: business fit + interaction fit + SAP compliance / 30. State chosen + why runner-up rejected + any overriding constraint (mobile viewport, modal).</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">5</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Component mapping</div><div class="pipe-name">Stage 5 — Full entries + scoring (L3 loop)</div>
+        <div class="pipe-desc">Per element: observation · confidence · SAP component · variant · framework · parent · states · token · data source. When 2 valid → scored table, never silent.</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">6</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Interaction model (MANDATORY)</div><div class="pipe-name">Stage 6 — Trigger / Target / Binding</div>
+        <div class="pipe-desc">Every interactive element: trigger (press/select/change) · target (what changes) · binding (<code>visible=</code>/<code>enabled=</code>/<code>selectedKey=</code>) · state before/after. Behavior is what developers implement.</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">7</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Layout + token loop (L5)</div><div class="pipe-name">Stage 7 — Zero hard-coded values</div>
+        <div class="pipe-desc">Grid system · columns/breakpoints · density (Cozy/Compact) · responsive behavior. Every visual property → SAP Horizon token. Token found → use · uncertain → flag <code>?</code> · none → propose closest + note deviation.</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--success-bg);color:var(--success);border-color:var(--success)">8</div><div class="pipe-line" style="background:transparent"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--success)">Produce output + RCA</div><div class="pipe-name">Stage 8 — 12-part structured output</div>
+        <div class="pipe-desc">Image tier · reasoning pass · classification · zone table · component map · architecture tree · token table · interaction model · validation states · open questions · RCA block per <code>?</code> · confidence table. Clarifying-question gate: if ≥3 <code>?</code> share a root cause, ask ONE.</div></div></div>
+  </div>
+
+  <div class="grid c3" style="margin-top:16px">
+    <div class="card" style="padding:14px"><h3 style="color:var(--accent)">Confidence tiers</h3><p><b style="color:var(--success)">●</b> confirmed — directly visible · <b style="color:var(--warn)">○</b> inferred — strongly implied · <b style="color:var(--danger)">?</b> ambiguous — 2+ valid options, present scored table</p></div>
+    <div class="card" style="padding:14px"><h3 style="color:var(--accent)">3 worked examples</h3><p>Schedule Dialog (conditional sections) · Flight Card (5 HBox zones) · Object Page Steps (yanatest — mobile IconTabBar + highlighted list item)</p></div>
+    <div class="card" style="padding:14px"><h3 style="color:var(--warn)">Failure log baked in</h3><p>Colored pills → ObjectStatus · raw hex → named token · static-only → add interaction model. Known pitfalls never re-solved.</p></div>
+  </div>
+
+<hr id="pipeline">
+
+<!-- SECTION 5: BUILD PIPELINE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M17.75,13l2-9H11.8L9.26,15h5.91L13.58,25.28,23,13Z"/><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30Z"/></svg></div>
+    <div><div class="section-title">The Build Pipeline (/sap-bind)</div><div class="section-sub">After analysis → wireframe gate → one-shot build → bind</div></div>
+  </div>
+
+  <div class="pipeline">
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--warn-bg);color:var(--warn);border-color:var(--warn)">1</div><div class="pipe-line" style="background:linear-gradient(var(--warn),var(--accent))"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--warn)">VDI (if reference present)</div><div class="pipe-name">Step 1 — Visual analysis + semantic-model cache</div>
+        <div class="pipe-desc"><strong>Cache check FIRST:</strong> compute image SHA-1 → look for <code>semantic-models/*-&lt;sha1&gt;.md</code>. Cache hit → load ~700 tokens, skip VDI entirely (saves ~13.5k). Miss → run full VDI, then write the compact model to cache.</div>
+        <div class="mcp-tools"><span class="tag orange">RULE 26</span> <span class="tag purple">sap-visual-reading</span> <span class="tag green">semantic-models/ cache</span></div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--warn-bg);color:var(--warn);border-color:var(--warn)">2</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--warn)">ASCII Wireframe Gate (HARD)</div><div class="pipe-name">Step 2 — Present wireframe · STOP for approval</div>
+        <div class="pipe-desc">Screen name · floorplan · all regions · component names. User MUST approve before any build. Non-negotiable (RULE 19).</div>
+        <div class="flow"><div class="flow-box">ASCII wireframe</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div><div class="flow-gate">GATE: User approves</div></div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">3</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Component selection</div><div class="pipe-name">Step 3 — Resolve keys from manifest (RULE 28)</div>
+        <div class="pipe-desc">Read component keys from <code>SAP_BUILD_MANIFEST.md</code> §3 ONLY. For a component not listed → read that ONE <code>registry/&lt;Component&gt;.json</code>. <strong>Never</strong> read the 3,534-line plugin or bulk registry.</div>
+        <div class="mcp-tools"><span class="tag green">RULE 28 (manifest-only)</span> <span class="tag red">NEVER read code.js</span></div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">4</div><div class="pipe-line" style="background:var(--accent)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Build via use_figma — ONE-SHOT (RULE 25)</div><div class="pipe-name">Step 4 — Real SAP instances, parallel imports</div>
+        <div class="pipe-desc">Full screen in a SINGLE call. Import all components via <code>Promise.all</code> (3–4× faster). Real instances only (RULE 1). L1–L5 names (RULE 2). No Spacer frames — Auto Layout only (RULE 3). Tag fills/text/icons.</div>
+        <pre><span class="cm">// RULE 25 · parallel imports (RULE 28 discipline)</span>
+<span class="kw">const</span> [btn, inp, sel] = <span class="kw">await</span> Promise.<span class="fn">all</span>([
+  figma.<span class="fn">importComponentSetByKeyAsync</span>(K.Button),
+  figma.<span class="fn">importComponentSetByKeyAsync</span>(K.Input),
+  figma.<span class="fn">importComponentSetByKeyAsync</span>(K.Select),
+]);
+<span class="kw">const</span> inst = btn.defaultVariant.<span class="fn">createInstance</span>();
+inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labelBold]'</span>;</pre>
+        <div class="mcp-tools"><span class="tag orange">RULE 25</span> <span class="tag green">RULE 1/2/3</span> <span class="tag blue">figma MCP</span></div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">4b</div><div class="pipe-line" style="background:var(--success)"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--accent)">Single verification</div><div class="pipe-name">Step 4b — ONE screenshot</div>
+        <div class="pipe-desc">Exactly one <code>get_screenshot</code>. If wrong → fix the plan, re-run the single call at most ONCE. If still wrong → STOP and escalate. No live incremental fixing (this was the #1 token sink).</div></div></div>
+
+    <div class="pipe-step"><div class="pipe-left"><div class="pipe-dot" style="background:var(--success-bg);color:var(--success);border-color:var(--success)">5</div><div class="pipe-line" style="background:transparent"></div></div>
+      <div class="pipe-body"><div class="pipe-tag" style="color:var(--success)">User action — Plugin</div><div class="pipe-name">Step 5 — "Bind SAP Tokens"</div>
+        <div class="pipe-desc">User clicks the button. Plugin reads <code>◆SAP-UNBOUND/</code> frames, binds every <code>[sapToken]</code> to a real SAP variable, swaps <code>◆ICON/</code> placeholders for kit icons, binds <code>[typo:role]</code> text styles, runs all 4 §7 a11y validators, reports leaks.</div>
+        <div class="grid c2" style="margin-top:12px">
+          <div class="card" style="padding:12px;border-color:var(--success-dim)"><div style="font-size:11px;color:var(--success);font-weight:700;margin-bottom:6px">Plugin reads</div><div style="font-size:12px;color:var(--text2)"><code>◆SAP-UNBOUND/Screen</code> → target<br><code>[sapButton_Emphasized_Background]</code> → bind token<br><code>◆ICON/search</code> → swap icon<br><code>[typo:sectionHeading]</code> → text style</div></div>
+          <div class="card" style="padding:12px;border-color:var(--success-dim)"><div style="font-size:11px;color:var(--success);font-weight:700;margin-bottom:6px">Plugin outputs</div><div style="font-size:12px;color:var(--text2)">N fills bound (0 raw leaks)<br>N icons swapped<br>N text styles bound<br>A11y: X/Y contrast, N interactive</div></div>
+        </div></div></div>
+  </div>
+
+<hr id="mcps">
+
+<!-- SECTION 6: MCPs -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M29.25,6.76a6,6,0,0,0-8.5,0l1.42,1.42a4,4,0,1,1,5.67,5.67l-8,8a4,4,0,1,1-5.67-5.66l1.41-1.42-1.41-1.41-1.42,1.41a6,6,0,0,0,8.5,8.49l8-8A6,6,0,0,0,29.25,6.76Z"/><path d="M4.19,24.31a4,4,0,0,1,0-5.66l8-8a4,4,0,0,1,5.67,5.66L16.45,17.73l1.42,1.41,1.41-1.41a6,6,0,1,0-8.49-8.49l-8,8a6,6,0,0,0,8.49,8.49L12.7,24.3l-1.42-1.42Z"/></svg></div>
+    <div><div class="section-title">8 MCP Servers — What Each Does & Why</div><div class="section-sub">Single responsibility each</div></div>
+  </div>
+
+  <div class="grid c4">
+    <div class="mcp-card" style="border-top:3px solid var(--accent)">
+      <div class="mcp-name">figma</div><div class="mcp-kind" style="color:var(--accent)">Official</div>
+      <div class="mcp-desc">Live Figma file/node access. Reads component variants, writes instances, builds frames.</div>
+      <div class="mcp-why"><b>Why:</b> The execution engine. It is HOW Claude both reads (get_design_context) and writes (use_figma) to a real Figma file. Without it there is no build.</div>
+      <div class="mcp-tools"><span class="mcp-tool">use_figma</span><span class="mcp-tool">get_design_context</span><span class="mcp-tool">get_screenshot</span><span class="mcp-tool">search_design_system</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--accent)">
+      <div class="mcp-name">sapui5</div><div class="mcp-kind" style="color:var(--accent)">Custom (local)</div>
+      <div class="mcp-desc">Live UI5 API reference — component properties, aggregations, events, enums.</div>
+      <div class="mcp-why"><b>Why:</b> Prevents hallucinated properties. When Claude needs the exact property name (e.g. ObjectStatus uses <code>Semantic</code> not <code>State</code>), it verifies here instead of guessing.</div>
+      <div class="mcp-tools"><span class="mcp-tool">get_api_reference</span><span class="mcp-tool">get_guidelines</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--success)">
+      <div class="mcp-name">sap-fiori-guidelines</div><div class="mcp-kind" style="color:var(--success)">Custom (local)</div>
+      <div class="mcp-desc">154 cached Fiori design-guideline files: when + how to use each component, do/don't rules.</div>
+      <div class="mcp-why"><b>Why:</b> Powers the SAP Compliance check. Answers "is this the right component for this pattern?" from official guidance, offline and fast.</div>
+      <div class="mcp-tools"><span class="mcp-tool">getFioriGuideline</span><span class="mcp-tool">searchGuidelines</span><span class="mcp-tool">getPattern</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--warn)">
+      <div class="mcp-name">sap-figma-community</div><div class="mcp-kind" style="color:var(--warn)">Custom (local)</div>
+      <div class="mcp-desc">Registry drift detection. Verifies SAP Web UI Kit version, detects stale component entries.</div>
+      <div class="mcp-why"><b>Why:</b> The SAP kit gets republished. This catches when a stored component key goes stale before it breaks <code>importComponentSetByKeyAsync</code> at build time.</div>
+      <div class="mcp-tools"><span class="mcp-tool">checkRegistryFreshness</span><span class="mcp-tool">getRegistryEntry</span><span class="mcp-tool">recordLiveData</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--warn)">
+      <div class="mcp-name">sap-application-analysis</div><div class="mcp-kind" style="color:var(--warn)">Custom (local)</div>
+      <div class="mcp-desc">Screenshot/wireframe → SAP pattern mapping. 30+ region types, 6 floorplans.</div>
+      <div class="mcp-why"><b>Why:</b> Turns a raw image into SAP vocabulary. It's the bridge between "what I see" and "which SAP floorplan" — powers the wireframe gate.</div>
+      <div class="mcp-tools"><span class="mcp-tool">listRegionTypes</span><span class="mcp-tool">suggestFloorplan</span><span class="mcp-tool">mapRegionToSAP</span><span class="mcp-tool">buildSpecDraft</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--accent)">
+      <div class="mcp-name">chrome-devtools</div><div class="mcp-kind" style="color:var(--accent)">Official</div>
+      <div class="mcp-desc">Web scraping fallback. Fetches live SAP Fiori guideline pages, runs SAP DemoKit.</div>
+      <div class="mcp-why"><b>Why:</b> When the local guideline cache is stale or a component isn't cached, this fetches the authoritative live source rather than guessing.</div>
+      <div class="mcp-tools"><span class="mcp-tool">navigate_page</span><span class="mcp-tool">evaluate_script</span><span class="mcp-tool">take_snapshot</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--text2)">
+      <div class="mcp-name">context7</div><div class="mcp-kind" style="color:var(--text2)">Official</div>
+      <div class="mcp-desc">Live library documentation for correct API signatures.</div>
+      <div class="mcp-why"><b>Why:</b> When writing code that calls SAP UI5 APIs, ensures correct method signatures/options — no outdated or invented calls.</div>
+      <div class="mcp-tools"><span class="mcp-tool">resolve-library-id</span><span class="mcp-tool">get-library-docs</span></div>
+    </div>
+    <div class="mcp-card" style="border-top:3px solid var(--text2)">
+      <div class="mcp-name">fundamental-styles</div><div class="mcp-kind" style="color:var(--text2)">Official</div>
+      <div class="mcp-desc">120+ CSS components, 1,522 design tokens.</div>
+      <div class="mcp-why"><b>Why:</b> Fallback for edge cases the SAP Web UI Kit registry doesn't cover — a secondary token/component source of truth.</div>
+      <div class="mcp-tools"><span class="mcp-tool">components</span><span class="mcp-tool">tokens</span></div>
+    </div>
+  </div>
+
+<hr id="skills">
+
+<!-- SECTION 7: SKILLS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M25.7,9.3l-7-7A1,1,0,0,0,18,2H8A2,2,0,0,0,6,4V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V10A1,1,0,0,0,25.7,9.3ZM18,4.4,23.6,10H18ZM24,28H8V4h8v6a2,2,0,0,0,2,2h6Z"/><rect x="10" y="22" width="12" height="2"/><rect x="10" y="16" width="12" height="2"/></svg></div>
+    <div><div class="section-title">Skills — What Each Does & Why</div><div class="section-sub">Invokable workflows that package the pipeline</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Skill</th><th>What it does</th><th>Why it exists</th></tr></thead>
+    <tbody>
+      <tr><td>/sap-vdi<br><span class="tag purple" style="font-size:10px">sap-visual-reading</span></td><td>Runs the full 8-stage Visual Design Intelligence analysis on any reference. Produces the 12-part structured output with confidence tiers, floorplan scoring, interaction model, RCA.</td><td>Grounds every build in observable design evidence + real SAP sources. Prevents generic output and wrong-floorplan rebuilds. The mandatory pre-build analysis (RULE 26).</td></tr>
+      <tr><td>/sap-bind</td><td>End-to-end MCP-first build: VDI (+cache) → wireframe gate → manifest-only component resolution → one-shot <code>use_figma</code> with parallel imports → single screenshot → bind reminder.</td><td>Orchestrates the whole RULE 25 pipeline in one command with token discipline baked in (manifest-only reads, one-shot, never <code>code.js</code>).</td></tr>
+      <tr><td>/sap-spec-validate</td><td>Runs <code>validate-spec.js</code> headless: registry gate, composition rules, slot names, token whitelist, no raw hex.</td><td>Catches spec errors before a build wastes tokens. Pre-flight quality gate.</td></tr>
+      <tr><td>/sap-registry-update</td><td>Edits a component registry JSON, rebuilds the bundle, runs regression tests, reports.</td><td>Safe registry maintenance — the ONLY correct way to change a component key (never edit generated files).</td></tr>
+      <tr><td>/sap-snapshot</td><td>Creates a lean ~1MB snapshot (code only, no node_modules). Warns if &gt;15 snapshots exist.</td><td>Cheap rollback safety net before risky work. 19 snapshots preserved to date.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notice ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg><span><strong style="color:var(--success)">Skill pinned to the project (2026-07-14):</strong> The full <code>sap-visual-reading</code> skill (11 files) now lives at <code>skill/sap-visual-reading/</code> inside the project as the single source of truth — versioned, travels in snapshots, and the global <code>/sap-vdi</code> skill points to it. All build knowledge (component keys, token hexes, naming rules) lives in one <code>SAP_BUILD_MANIFEST.md</code> (~2k tokens) — the ONLY file a build reads.</span></div>
+
+<hr id="plugin">
+
+<!-- SECTION 8: PLUGIN -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M27,16.76q0-.38,0-.76t0-.77l1.92-1.68A2,2,0,0,0,29.3,11L27,7a2,2,0,0,0-2.36-.9l-2.43.82a9.91,9.91,0,0,0-1.31-.76l-.51-2.52A2,2,0,0,0,18.36,2H13.64a2,2,0,0,0-2,1.61l-.51,2.52a10.06,10.06,0,0,0-1.32.76l-2.42-.82A2,2,0,0,0,5.06,7L2.7,11a2,2,0,0,0,.41,2.51L5,15.24q0,.38,0,.76t0,.77L3.11,18.45A2,2,0,0,0,2.7,21L5.06,25a2,2,0,0,0,2.36.9l2.43-.82a10.06,10.06,0,0,0,1.31.76l.51,2.52a2,2,0,0,0,2,1.61h4.72a2,2,0,0,0,2-1.61l.51-2.52a9.91,9.91,0,0,0,1.32-.76l2.42.82A2,2,0,0,0,27,25l2.36-4a2,2,0,0,0-.41-2.51ZM16,22a6,6,0,1,1,6-6A6,6,0,0,1,16,22Z"/></svg></div>
+    <div><div class="section-title">The Plugin — Token Bind Bridge</div><div class="section-sub">2,391 lines · the only teamlibrary actor · its exact role</div></div>
+  </div>
+
+  <div class="notice ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg><span><strong style="color:var(--success)">The plugin's role — the one thing only it can do:</strong> The Figma MCP (<code>use_figma</code>) runs in a sandbox with <strong>no <code>teamlibrary</code> permission</strong> — it returns 0 variable collections from the SAP Web UI Kit. Only a real Figma plugin can call <code>figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()</code> and bind real SAP token variables (theme-switchable, audit-clean). So the plugin is NOT a builder — it is a <strong>binder</strong>. Claude+MCP build the structure and tag it; the plugin reads those tags and does the teamlibrary binding, icon swapping, text-style binding, and a11y validation that nothing else can.</span></div>
+</div><div class="kf green">
+  <p><strong>Think of it this way:</strong> Claude is the architect who draws the plans. The Plugin is the only contractor with the SAP token vault keys. <strong>Neither can do the other's job.</strong></p>
+</div>
+
+  <div class="grid c3" style="margin-top:20px">
+    <div class="card" style="border-color:var(--success-dim)">
+      <h3 style="color:var(--success)">Token Binding Core</h3>
+      <ul>
+        <li><code>bindMcpFrames()</code> — main entry (button click)</li>
+        <li><code>resolveNameAnnotations()</code> — reads <code>[sapToken]</code> tags</li>
+        <li><code>enforceTokensAndLayout()</code> — RGB reverse-lookup + parallel bind (~50× faster)</li>
+        <li><code>swapIconPlaceholders()</code> — <code>◆ICON/</code> → kit icon</li>
+        <li><code>bindTypographyMarkers()</code> — <code>[typo:role]</code> → text style</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:var(--accent-dim)">
+      <h3 style="color:var(--accent)">A11y Validators (§7)</h3>
+      <ul>
+        <li><code>validateContrast()</code> — WCAG AA (post-bind)</li>
+        <li><code>validateTypographyHierarchy()</code> — heading structure (now <code>figma.mixed</code>-safe)</li>
+        <li><code>validateFocusAndTapTarget()</code> — 44px Cozy / 32px Compact</li>
+        <li><code>validateStatusCommunication()</code> — not color-only (now epsilon + bound-var-name match)</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:var(--warn-dim)">
+      <h3 style="color:var(--warn)">Library Indexing</h3>
+      <ul>
+        <li><code>indexLibraryVariablesOnce()</code> — scans SAP Horizon vars</li>
+        <li><code>getVariable()</code> — 3-path fallback: local → team library → HORIZON_VARIABLE_KEYS</li>
+        <li><code>MANDATORY_TOKENS</code> — 80-token whitelist (hexes now synced to source, 0 drift)</li>
+        <li>Cache: clientStorage, 7-day TTL</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">The token binding flow:</strong> [sapToken] tag</span></div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">resolveNameAnnotations()</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">getVariable(tokenName)</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">importVariableByKeyAsync(key)</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">setBoundVariableForPaint()</div><div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box end">node.fills = [paint] BOUND</div>
+    </div>
+  </div>
+
+<hr id="tokens">
+
+<!-- SECTION 9: TOKEN OPTIMIZATION -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">—</div>
+    <div><div class="section-title">Token Optimization — ~25k → ~3k per build</div><div class="section-sub">Measured, verified, ~80% reduction</div></div>
+  </div>
+
+  <table class="table">
+    <thead><tr><th>Cost source</th><th>Before</th><th>After</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>Reading plugin code.js</td><td>~45k (×2 reads)</td><td>0</td><td>Manifest-only rule + Read-guard hook blocks it</td></tr>
+      <tr><td>VDI reference bundle</td><td>~8k / build</td><td>~2k</td><td>6 files merged → VDI_REFERENCE.md (−76%)</td></tr>
+      <tr><td>VDI analysis (repeat image)</td><td>~13.5k</td><td>~0.7k</td><td>semantic-models/ SHA-1 cache (−96%)</td></tr>
+      <tr><td>Build knowledge (scattered)</td><td>~15–20k</td><td>~2k</td><td>Single SAP_BUILD_MANIFEST.md</td></tr>
+      <tr><td>Iterative live-fixing</td><td>8 calls + 6 shots</td><td>1 call + 1 shot</td><td>One-shot build discipline</td></tr>
+      <tr><td>Sequential imports (wall-time)</td><td>~2.1s+ serial</td><td>~1.9s parallel</td><td>Promise.all — 3–4× faster</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ba">
+    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">~25k</div><div class="ba-lbl">Tokens / build — before</div></div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">~3–5k</div><div class="ba-lbl">Tokens / build — after (~2–3k cached)</div></div>
+  </div>
+
+  <div class="notice warn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/><rect x="15" y="8" width="2" height="11"/><path d="M16,22a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,22Z"/></svg><span><strong style="color:var(--warn)">The insight:</strong> The waste was never "repeating stable rules" (those cache warm). It was <strong>reading huge files that weren't needed</strong> (the 45k-token plugin), <strong>re-analyzing the same image</strong>, and <strong>iterating live in Figma</strong>. The fix: read one small manifest, cache the analysis, build right once.</span></div>
+</div>
+
+<hr>
+
+<!-- SECTION 9b: CODE LINES BEFORE/AFTER -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><polygon points="31 16 24 23 22.59 21.59 28.17 16 22.59 10.41 24 9 31 16"/><polygon points="1 16 8 9 9.41 10.41 3.83 16 9.41 21.59 8 23 1 16"/><rect x="5.91" y="15" width="20.17" height="2" transform="rotate(-75 16 16)"/></svg></div>
+    <div><div class="section-title">Plugin Code — Before / After</div><div class="section-sub">Full history through the dead-code audit</div></div>
+  </div>
+
+  <div class="ba">
+    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">3,580</div><div class="ba-lbl">code.js LOC — pre-audit</div></div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">2,391</div><div class="ba-lbl">code.js LOC — after (−1,189, −33%)</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Milestone</th><th>LOC</th><th>What changed</th></tr></thead>
+    <tbody>
+      <tr><td>Legacy (JSON→plugin renderers)</td><td>10,767</td><td>Native renderers for every component</td></tr>
+      <tr><td>MCP-first migration (Phase 3)</td><td>9,136</td><td>Removed ~1,550 lines of fragile native renderers</td></tr>
+      <tr><td>MCP-bind-only reduction</td><td>3,534</td><td>Deleted the whole JSON buildScreen path — plugin is bind-only</td></tr>
+      <tr><td>Correctness fixes added</td><td>3,580</td><td>figma.mixed guards + matchSemanticColor epsilon</td></tr>
+      <tr><td style="color:var(--success)">Dead-code audit (latest)</td><td style="color:var(--success);font-weight:700">2,391</td><td>Removed 14 confirmed-dead function clusters + orphaned consts</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid c2" style="margin-top:16px">
+    <div class="card" style="border-color:var(--success-dim)">
+      <h3 style="color:var(--success)">Removed (verified dead)</h3>
+      <p>swapKitIcon · importKey · buttonVariants/statusVariants/msgStripVariants · getNavItemComponent/makeNavItemInstance · autoFillMustInclude/computeCompositionSuggestions/validateComposition · applyKitVariableKeys/applyFillByKey · applyStrokeWeight/applyCornerRadius/applyHeight · bindFillByC cluster · text-injection cluster · layout helpers · nested-key discovery machinery · SAP_TOKENS · SAP_ICON_KIT_FILE</p>
+    </div>
+    <div class="card" style="border-color:var(--accent-dim)">
+      <h3 style="color:var(--accent)">Kept (live or referenced)</h3>
+      <p>bindMcpFrames · resolveKitIcon · swapIconPlaceholders · setTextSafe · applyFill/applyStroke · getVariable · all 4 a11y validators · SAP_KEYS · MANDATORY_TOKENS · <b>KEY_MAP / SKIP_SELF / HORIZ_CONTAINERS</b> (read by check-component-consistency.py) · MANDATORY_SPACING_TOKENS (documents the scale)</p>
+    </div>
+  </div>
+
+<hr id="hooks">
+
+<!-- SECTION 10: HOOKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
+    <div><div class="section-title">5 Automation Hooks</div><div class="section-sub">Mechanical enforcement — what fires automatically (stdin JSON + jq method)</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Hook</th><th>Event</th><th>What it does & why</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--danger)">block-codejs-read.sh</td><td>PreToolUse(Read)</td><td>Blocks any read of <code>code.js</code> (exit 2) and redirects to the manifest. <b>Why:</b> the ONLY mechanical enforcement of "never read the 45k-token plugin" — a rule can be ignored, a hook cannot.</td></tr>
+      <tr><td style="color:var(--warn)">block-generated-files.sh</td><td>PreToolUse(Edit/Write)</td><td>Blocks edits to <code>code.bundled.js</code> / <code>registry-bundle.js</code>. <b>Why:</b> those are auto-generated — edits get wiped on next rebuild. Redirects to the source.</td></tr>
+      <tr><td style="color:var(--accent)">registry-rebuild.sh</td><td>PostToolUse(Edit/Write)</td><td>Auto-runs <code>build-registry-bundle.js</code> when a registry JSON changes. <b>Why:</b> eliminates the "forgot to rebuild" class of bugs.</td></tr>
+      <tr><td style="color:var(--success)">manifest-sync-check.sh</td><td>PostToolUse(Edit/Write)</td><td>Runs the drift checker the instant <code>SAP_BUILD_MANIFEST.md</code> is edited. <b>Why:</b> catches a stale component key before it reaches a build.</td></tr>
+      <tr><td style="color:var(--accent)">feedback-learn.sh</td><td>UserPromptSubmit</td><td>Detects praise/correction words → injects a reminder to capture the lesson to memory. <b>Why:</b> powers the learning loop (next section).</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">Correct hook mechanism (2026-07-14 fix):</strong> Tool input arrives as <strong>JSON on stdin</strong> (<code>jq -r '.tool_input.file_path'</code>) — NOT via env vars. Two legacy hooks used a non-existent <code>CLAUDE_TOOL_INPUT_FILE_PATH</code> variable and silently never fired; both were rewritten to the documented method. <em>Note: hooks activate on next Claude Code restart — settings.json doesn't hot-reload mid-session.</em></span></div>
+
+<hr id="loop">
+
+<!-- SECTION 11: LEARNING LOOP -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
+    <div><div class="section-title">The Loop — Learning · Improving · Better Ecosystem</div><div class="section-sub">The system gets smarter every session</div></div>
+  </div>
+
+  <div class="loop-wrap">
+    <div class="loop-label">SELF-OPTIMIZING ECOSYSTEM</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--success);margin-bottom:12px">A. Per-Edit Loop (synchronous hook)</div>
+        <div class="flow" style="flex-direction:column;align-items:stretch;gap:8px">
+          <div class="flow-box">Edit registry JSON</div>
+          <div class="flow-arrow" style="text-align:center">↓ PostToolUse hook</div>
+          <div class="flow-box">build-registry-bundle.js auto-runs</div>
+          <div class="flow-arrow" style="text-align:center">↓</div>
+          <div class="flow-box" style="background:var(--success-bg);border-color:var(--success-dim);color:var(--success)">bundle rebuilt, tests green</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px">B. Per-Build Loop (quality gate)</div>
+        <div class="flow" style="flex-direction:column;align-items:stretch;gap:8px">
+          <div class="flow-box">New MCP frame</div>
+          <div class="flow-arrow" style="text-align:center">↓ spec-validator + lint-mcp-frame</div>
+          <div class="flow-box">RULE 25 tag contract checked</div>
+          <div class="flow-arrow" style="text-align:center">↓ PASS only</div>
+          <div class="flow-box" style="background:var(--accent-bg);border-color:var(--accent-dim);color:var(--accent)">→ Build → Bind → a11y report</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border);margin:24px 0"></div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:12px">C. Feedback Learning Loop — "learn from good/bad/bravo" (NEW)</div>
+    <div class="flow">
+      <div class="flow-box">User feedback<br><span style="font-size:10px">"bravo" / "wrong" / "not acceptable"</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">feedback-learn.sh detects signal<br><span style="font-size:10px">UserPromptSubmit hook</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">Capture lesson to memory<br><span style="font-size:10px">Why + How to apply</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">Promote hard rules<br><span style="font-size:10px">→ skill / three-hard-rules</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box" style="background:var(--accent-bg);border-color:var(--accent-dim);color:var(--accent)">Never repeats the mistake</div>
+    </div>
+
+    <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">How this improves the ecosystem:</strong> Every correction becomes a durable memory. The 3 hard rules (real instances · L1–L5 naming · no Spacer frames) exist <em>because</em> they were corrected repeatedly, then captured. Positive feedback promotes a result to <strong>canonical reference</strong> that seeds future builds. Prompting improves too — confirmed patterns feed <code>token-assignment-rules.md</code> and the manifest, so each session starts with more baked-in knowledge and fewer tokens spent re-deriving it.</span></div>
+
+    <div style="border-top:1px solid var(--border);margin:24px 0"></div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--warn);margin-bottom:12px">D. Post-Build Ground-Truth Loop (ground-truth-updater)</div>
+    <div class="flow">
+      <div class="flow-box">User confirms quality<br><span style="font-size:10px">"this is the best" / 0 leaks</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">get_design_context(nodeId)<br><span style="font-size:10px">exact measurements</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box">Compare vs proposals<br><span style="font-size:10px">what matched?</span></div>
+      <div class="flow-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="14" height="14" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+      <div class="flow-box" style="background:var(--warn-bg);border-color:var(--warn-dim);color:var(--warn)">Write token-assignment-rules.md</div>
+    </div>
+  </div>
+
+<hr id="rules">
+
+<!-- SECTION 12: RULES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M25.7,9.3l-7-7A1,1,0,0,0,18,2H8A2,2,0,0,0,6,4V28a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V10A1,1,0,0,0,25.7,9.3ZM18,4.4,23.6,10H18ZM24,28H8V4h8v6a2,2,0,0,0,2,2h6Z"/><rect x="10" y="22" width="12" height="2"/><rect x="10" y="16" width="12" height="2"/></svg></div>
+    <div><div class="section-title">30 Mandatory Rules</div><div class="section-sub">The quality contract — any violation stops generation</div></div>
+  </div>
+
+  <div class="rules">
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 1 · HARD GATE</div><div class="rule-name">Registry gate — every component must exist in the registry</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 2 · HARD GATE</div><div class="rule-name">Token whitelist — every color in MANDATORY_TOKENS (80 tokens)</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 3 · STOP</div><div class="rule-name">Floorplan confirmation mandatory before proceeding</div></div>
+    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 12</div><div class="rule-name">Reference-First: references are business intent, not pixel templates</div></div>
+    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 14</div><div class="rule-name">Container-First: start with the container, then fill children</div></div>
+    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 17</div><div class="rule-name">Divide-and-conquer: never analyze a reference as one flat image</div></div>
+    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 18</div><div class="rule-name">Spatial reconstruction: measure first, never arbitrary dimensions</div></div>
+    <div class="rule" style="border-color:var(--danger)"><div class="rule-num" style="color:var(--danger)">RULE 19 · HARD GATE</div><div class="rule-name">ASCII wireframe before build — user must approve</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 20 · MANDATORY</div><div class="rule-name">Reasoning Brain: structured artifacts before hierarchy design</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 21 · MANDATORY</div><div class="rule-name">QA Certification: Zero-Defect + self-repair before handoff</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 23 · SOURCE</div><div class="rule-name">SAP Web UI Kit is the ONLY source for components/tokens/icons</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 24 · MANDATORY</div><div class="rule-name">Live kit resolution — read component props from the live kit</div></div>
+    <div class="rule" style="border-color:var(--warn)"><div class="rule-num" style="color:var(--warn)">RULE 25 · DEFAULT</div><div class="rule-name">MCP-First: build via use_figma with real components + tags</div></div>
+    <div class="rule" style="border-color:var(--accent)"><div class="rule-num" style="color:var(--accent)">RULE 26 · MANDATORY</div><div class="rule-name">Visual Design Intelligence: full sap-visual-reading analysis</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">RULE 28 · NEW</div><div class="rule-name">Build reads SAP_BUILD_MANIFEST.md ONLY — never code.js. One-shot build, ≤1 screenshot.</div></div>
+    <div class="rule" style="border-color:var(--success)"><div class="rule-num" style="color:var(--success)">3 HARD BUILD RULES</div><div class="rule-name">Real SAP instances · L1–L5 semantic naming · no Spacer frames (Auto Layout only)</div></div>
+    <div class="rule" style="border-color:var(--text3)"><div class="rule-num" style="color:var(--text3)">RULES 4–11, 13, 15–16, 22, 27</div><div class="rule-name">Props non-default only · no raw px/font · rendering conventions · adopt-working-pattern · positive feedback = canonical · incremental-edit · post-build learning…</div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- COMPLETE FLOW SUMMARY -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><polygon points="18 6 16.57 7.39 24.15 15 4 15 4 17 24.15 17 16.57 24.57 18 26 28 16 18 6"/></svg></div>
+    <div><div class="section-title">The Complete Flow — At a Glance</div></div>
+  </div>
+
+  <div class="flow" style="flex-direction:column;align-items:stretch;gap:0">
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px 10px 0 0;padding:16px;display:flex;justify-content:space-between;align-items:center">
+      <div><strong>INPUT</strong> — text · image · Figma URL · document</div><div class="tag orange">Any combination</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--accent-dim);border-top:none;padding:12px 16px;display:flex;justify-content:space-between">
+      <div>sap-visual-reading skill — 8 stages, 12-part output (RULE 26)</div><div class="tag purple">VDI + cache</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--warn-dim);border-top:none;padding:12px 16px;display:flex;justify-content:space-between">
+      <div><strong>GATE</strong> → ASCII Wireframe · User approves (RULE 19)</div><div class="tag orange">/sap-bind</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--success-dim);border-top:none;padding:12px 16px;display:flex;justify-content:space-between">
+      <div>Manifest-only component resolution (RULE 28) · never code.js</div><div class="tag green">SAP_BUILD_MANIFEST.md</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--accent-dim);border-top:none;padding:12px 16px;display:flex;justify-content:space-between">
+      <div>ONE-SHOT build · real instances · parallel imports · L1–L5 · no Spacer (RULE 25)</div><div class="tag blue">figma MCP</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-top:none;padding:12px 16px;display:flex;justify-content:space-between">
+      <div>ONE verification screenshot · fix→re-run once→escalate</div><div class="tag blue">get_screenshot</div>
+    </div>
+    <div style="background:var(--success-bg);border:1px solid var(--success-dim);border-top:none;border-radius:0 0 10px 10px;padding:16px;display:flex;justify-content:space-between;align-items:center">
+      <div><strong style="color:var(--success)">User clicks "Bind SAP Tokens"</strong><br><span style="font-size:12px;color:var(--text2)">Plugin binds tokens · swaps icons · binds text styles · runs a11y · learning loop fires</span></div>
+      <div class="tag green">COMPLETE</div>
+    </div>
+  </div>
+
+  <div class="grid c3" style="margin-top:24px">
+    <div class="card" style="border-color:var(--success-dim);text-align:center"><div style="font-size:32px;margin-bottom:8px"></div><h3 style="color:var(--success)">Real SAP Components</h3><p>Every UI element from the official SAP Web UI Kit via <code>importComponentSetByKeyAsync</code> — never native frames.</p></div>
+    <div class="card" style="border-color:var(--accent-dim);text-align:center"><div style="font-size:32px;margin-bottom:8px"></div><h3 style="color:var(--accent)">Bound SAP Variables</h3><p>Every fill = a real <code>sapXxx</code> token variable. Theme-switchable. Inspector shows the token name, not hex.</p></div>
+    <div class="card" style="border-color:var(--accent-dim);text-align:center"><div style="font-size:32px;margin-bottom:8px"></div><h3 style="color:var(--accent)">A11y Validated</h3><p>WCAG AA contrast · heading hierarchy · tap targets · not-color-only status — all checked automatically.</p></div>
+  </div>
+
+<hr id="methodology">
+
+<!-- SECTION 13: DEFAULT METHODOLOGY -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">—</div>
+    <div><div class="section-title">Default Methodology — ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN</div><div class="section-sub">Derived from SideNavigation RCA audit 2026-07-15 · applies to every SAP composite build</div></div>
+  </div>
+
+  <div class="notice ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg><span><strong style="color:var(--success)">The rule:</strong> Every SAP composite build starts with <code>get_design_context</code> on the closest working reference node. Never skip the analysis stage. Analysis is not optional — it is the step that makes all subsequent steps correct. Without it, every execution is a guess.</span></div>  <!-- 5-stage pipeline -->
+  <div class="pipeline" style="margin-top:28px">
+    <div class="pipe-step">
+      <div class="pipe-left">
+        <div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">1</div>
+        <div class="pipe-line" style="background:linear-gradient(var(--accent),var(--accent))"></div>
+      </div>
+      <div class="pipe-body">
+        <div class="pipe-tag" style="color:var(--accent)">Stage 1 · MANDATORY FIRST</div>
+        <div class="pipe-name">ANALYZE — Inspect before building</div>
+        <div class="pipe-desc">Call <code>get_design_context</code> on the closest existing working node. Identify: slot frame names (<code>⿻ Navigation Items</code>, <code>⿻ Content</code>, etc.), nesting depth of target instances, exact <code>componentProperties</code> key names, prototype variant types available.</div>
+        <pre><span class="cm">// Inspect the reference FIRST — one call, reveals everything</span>
+<span class="kw">await</span> figma_mcp.<span class="fn">get_design_context</span>({ nodeId: <span class="str">'699:37890'</span> });
+<span class="cm">// → reveals slot frames, writable props, nesting depth</span></pre>
+        <div class="mcp-tools"><span class="tag blue">get_design_context</span><span class="tag green">get_metadata</span><span class="tag purple">NEVER skip</span></div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-left">
+        <div class="pipe-dot" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">2</div>
+        <div class="pipe-line" style="background:linear-gradient(var(--accent),var(--warn))"></div>
+      </div>
+      <div class="pipe-body">
+        <div class="pipe-tag" style="color:var(--accent)">Stage 2</div>
+        <div class="pipe-name">PLAN — Map content to slot structure</div>
+        <div class="pipe-desc">Before writing a single line of <code>use_figma</code>: map every content item to a slot index and variant type. Identify the prototype source (unmodified original node only — never a previously modified clone). List exact <code>componentProperty</code> keys needed per item type.</div>
+        <div class="card" style="margin-top:10px;padding:14px">
+          <h3 style="color:var(--accent);margin-bottom:8px">Slot mapping example (SideNavigation)</h3>
+          <table style="font-size:12px">
+            <thead><tr><th>#</th><th>Label</th><th>Type</th><th>Icon</th><th>Arrow</th><th>Key props</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>Overview</td><td>Navigation Item</td><td>home</td><td>→</td><td><code>External Link#…: true</code></td></tr>
+              <tr><td>1</td><td>Operations</td><td>Navigation Item</td><td>ops-icon</td><td>∨</td><td><code>Two Click-Area#…: true</code></td></tr>
+              <tr><td>2</td><td>Operations</td><td>Child Item</td><td>—</td><td>—</td><td><code>Selected: False</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-left">
+        <div class="pipe-dot" style="background:var(--warn-bg);color:var(--warn);border-color:var(--warn)">3</div>
+        <div class="pipe-line" style="background:linear-gradient(var(--warn),var(--success))"></div>
+      </div>
+      <div class="pipe-body">
+        <div class="pipe-tag" style="color:var(--warn)">Stage 3</div>
+        <div class="pipe-name">EXECUTE — Single <code>use_figma</code> call with clone-clear-repopulate</div>
+        <div class="pipe-desc">For SAP composites with slots: clone the original ref → find the slot frame → save prototypes from the ORIGINAL (not the clone) → clear all slot children → repopulate with fresh clones → <code>setProperties</code>. Apply ALL boolean props explicitly.</div>
+        <pre><span class="cm">// Clone-Clear-Repopulate pattern</span>
+<span class="kw">const</span> ref = figma.currentPage.<span class="fn">findOne</span>(n => n.id === <span class="str">'699:37890'</span>);
+<span class="kw">const</span> clone = ref.<span class="fn">clone</span>();
+<span class="kw">const</span> slot = clone.<span class="fn">findOne</span>(n => n.name === <span class="str">'⿻ Navigation Items'</span>);
+
+<span class="cm">// Save prototypes from ORIGINAL (not clone) — no inherited overrides</span>
+<span class="kw">const</span> protoNavItem = ref.findAll(n => n.type === <span class="str">'INSTANCE'</span>
+  && n.mainComponent?.name?.includes(<span class="str">'Navigation Item'</span>))[<span class="nm">0</span>]?.mainComponent;
+
+<span class="cm">// Clear slot, then repopulate fresh</span>
+[...slot.children].<span class="fn">forEach</span>(n => n.<span class="fn">remove</span>());
+<span class="kw">const</span> inst = protoNavItem.<span class="fn">createInstance</span>();
+slot.<span class="fn">appendChild</span>(inst);
+inst.layoutSizingHorizontal = <span class="str">'FILL'</span>;
+inst.<span class="fn">setProperties</span>({
+  <span class="str">'️ Text#283293:137'</span>: <span class="str">'Overview'</span>,
+  <span class="str">'Navigation Indicator / External Link#283218:12'</span>: <span class="kw">true</span>,  <span class="cm">// shows | divider</span>
+  <span class="str">'Icon#328810:0'</span>: homeIconComp.id,
+});</pre>
+        <div class="mcp-tools"><span class="tag orange">one use_figma call</span><span class="tag red">clear slot first</span><span class="tag green">fresh prototypes from original</span></div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-left">
+        <div class="pipe-dot" style="background:var(--success-bg);color:var(--success);border-color:var(--success)">4</div>
+        <div class="pipe-line" style="background:linear-gradient(var(--success),var(--success))"></div>
+      </div>
+      <div class="pipe-body">
+        <div class="pipe-tag" style="color:var(--success)">Stage 4</div>
+        <div class="pipe-name">VALIDATE — One screenshot, compare, fix width</div>
+        <div class="pipe-desc">Take exactly one <code>get_screenshot</code>. Compare against reference image. If text truncates → resize frame width (260px for SideNavigation). One corrective fix allowed — if still wrong, STOP and diagnose root cause before retrying.</div>
+        <div class="mcp-tools"><span class="tag green">get_screenshot</span><span class="tag blue">one shot only</span><span class="tag orange">resize if truncated</span></div>
+      </div>
+    </div>
+
+    <div class="pipe-step">
+      <div class="pipe-left">
+        <div class="pipe-dot" style="background:var(--success-bg);color:var(--success);border-color:var(--success)">5</div>
+        <div class="pipe-line" style="background:transparent"></div>
+      </div>
+      <div class="pipe-body">
+        <div class="pipe-tag" style="color:var(--success)">Stage 5</div>
+        <div class="pipe-name">LEARN — Capture pattern if confirmed</div>
+        <div class="pipe-desc">When user confirms success ("Bingo", "100%", "exactly") → immediately save to memory: canonical node reference, property keys, failure RCA, and the winning approach. This becomes the default for the next similar build. Never skip this step.</div>
+        <div class="mcp-tools"><span class="tag purple">memory file</span><span class="tag green">freeze canonical pattern</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 rules -->
+  <div style="margin-top:32px">
+    <div style="font-size:16px;font-weight:700;margin-bottom:16px;color:var(--text)">8 Consolidated Build Rules</div>
+    <div class="rules">
+      <div class="rule" style="border-color:var(--danger)">
+        <div class="rule-num" style="color:var(--danger)">RULE A · HIGHEST PRIORITY</div>
+        <div class="rule-name">Inspect Before Build — <code>get_design_context</code> on any working node BEFORE any <code>use_figma</code> code</div>
+      </div>
+      <div class="rule" style="border-color:var(--warn)">
+        <div class="rule-num" style="color:var(--warn)">RULE B · SAP COMPOSITES</div>
+        <div class="rule-name">Clone-Clear-Repopulate — clone existing → clear slot → fresh prototypes from ORIGINAL → <code>setProperties</code></div>
+      </div>
+      <div class="rule" style="border-color:var(--accent)">
+        <div class="rule-num" style="color:var(--accent)">RULE C · FIGMA API</div>
+        <div class="rule-name"><code>setProperties</code> only on DIRECT slot children — fails silently on double-nested instances</div>
+      </div>
+      <div class="rule" style="border-color:var(--danger)">
+        <div class="rule-num" style="color:var(--danger)">RULE D · PROTOTYPE SOURCE</div>
+        <div class="rule-name">Never clone from a modified node — inherited overrides block writes silently. Always source from unmodified original.</div>
+      </div>
+      <div class="rule" style="border-color:var(--accent)">
+        <div class="rule-num" style="color:var(--accent)">RULE E · CONTENT vs STRUCTURE</div>
+        <div class="rule-name">Reference supplies content · SAP floorplan supplies structure — never copy reference layout visually</div>
+      </div>
+      <div class="rule" style="border-color:var(--success)">
+        <div class="rule-num" style="color:var(--success)">RULE F · POSITIVE FEEDBACK</div>
+        <div class="rule-name">"Bingo / 100% / perfect" = canonical — freeze it, document it, never revert or improve it</div>
+      </div>
+      <div class="rule" style="border-color:var(--warn)">
+        <div class="rule-num" style="color:var(--warn)">RULE G · FAILURES</div>
+        <div class="rule-name">Root cause before retry — identify WHY before attempting another fix. Silent failure = override inheritance or nesting depth issue.</div>
+      </div>
+      <div class="rule" style="border-color:var(--accent)">
+        <div class="rule-num" style="color:var(--accent)">RULE H · WIDTH</div>
+        <div class="rule-name">After content injection, resize if text truncates — SideNavigation minimum = 260px</div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="kf red"><p><strong>Why 14 iterations failed:</strong> Every single one started without <code>get_design_context</code>. Analysis took 5 minutes. Rebuilding took hours. <strong>ANALYZE first. Always.</strong></p></div>
+  <!-- Failure RCA table -->
+  
+<div class="kf red">
+  <p><strong>Why 14 iterations failed:</strong> Every single one started without <code>get_design_context</code>. Analysis took 5 minutes. Rebuilding took hours. <strong>ANALYZE first. Always.</strong></p>
+</div>
+<div style="margin-top:32px">
+    <div style="font-size:16px;font-weight:700;margin-bottom:16px;color:var(--text)">Failure RCA Table — Root causes of common silent failures</div>
+    <table>
+      <thead><tr><th>Symptom</th><th>Root Cause</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>setProperties</code> runs, nothing changes</td>
+          <td>Instance is double-nested inside composite — not a direct slot child</td>
+          <td>Find the <code>⿻</code> slot frame, work on its direct children</td>
+        </tr>
+        <tr>
+          <td><code>setProperties</code> runs, wrong content rendered</td>
+          <td>Clone inherited prior overrides from a previously-modified source</td>
+          <td>Clear slot; clone fresh prototypes from the ORIGINAL unmodified node</td>
+        </tr>
+        <tr>
+          <td><code>t.characters = label</code> fails silently</td>
+          <td>Text node inside a nested instance is read-only at the API level</td>
+          <td>Use <code>setProperties({ '️ Text#…': label })</code> on the instance, not the text node</td>
+        </tr>
+        <tr>
+          <td>Labels shift / offset after Y-sort</td>
+          <td><code>findAll(TEXT)</code> hits invisible or hidden footer nodes before visible content</td>
+          <td>Use <code>setProperties</code> by instance reference — never rely on Y-sort for label injection</td>
+        </tr>
+        <tr>
+          <td>Missing <code>|</code> divider and arrow on nav items</td>
+          <td><code>Navigation Indicator / External Link#283218:12</code> defaults to <code>false</code></td>
+          <td>Explicitly set to <code>true</code> for every top-level nav item</td>
+        </tr>
+        <tr>
+          <td>Labels truncated ("Automation St...")</td>
+          <td>Frame width too narrow for content after injection</td>
+          <td>Resize to 260px minimum after content injection</td>
+        </tr>
+        <tr>
+          <td>Child items all show selected blue</td>
+          <td>Prototype was a Selected child — clones inherit <code>Selected=True</code></td>
+          <td>Explicitly set <code>Selected: 'False'</code> on every non-selected child after appending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Canonical references -->
+  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">Canonical reference nodes (verified 2026-07-15):</strong> <code>699:37890</code> — SideNavigation Compact+Expanded with correct <code>⿻ Navigation Items</code> slot · use as prototype source for all future SideNavigation builds
+ <code>701:119633</code> — Completed SideNavigation with all 22 items, icons, dividers — the 100% quality benchmark</span></div>
+</div>
+
+<hr id="hard-rules">
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><rect x="15" y="10" width="2" height="9"/><rect x="15" y="21" width="2" height="2"/></svg></div>
+    <div><div class="section-title">Hard Rules — Enforce Build Behavior</div><div class="section-sub">Confirmed 2026-07-19 · active on every build · you can add your own</div></div>
+  </div>
+
+  <p style="color:var(--ink2);margin-bottom:24px;font-size:14px">These rules are enforced on every build from session start. They were learned from real production failures — each one prevents a specific class of mistake. You can add your own rules to <code>CLAUDE.md</code> or <code>skill/SYSTEM_PROMPT.md</code> using the same format.</p>
+
+  <!-- Built-in Hard Rules table -->
+  <table style="width:100%;border-collapse:collapse;margin-bottom:32px">
+    <thead>
+      <tr style="background:var(--bg2)">
+        <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line)">#</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line)">Rule</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line)">Why it exists</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--line)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-1</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Side padding = 32px always</strong><br><span style="font-size:12px;color:var(--ink3)">paddingLeft = paddingRight = 32 on all containers — never 48</span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">48px wastes canvas space and doesn't match SAP's recommended content margin</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line);background:var(--bg2)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-2</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>IconButtons = Type:Tertiary always</strong><br><span style="font-size:12px;color:var(--ink3)">All action icons (view/edit/delete/toolbar) → <code>setProperties({'Type':'Tertiary'})</code></span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Primary/Secondary add a background box that clutters dense table rows</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-3</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Two-line stacked text = CENTER aligned vertically</strong><br><span style="font-size:12px;color:var(--ink3)">Label+value or title+subtitle stacked → <code>counterAxisAlignItems='CENTER'</code></span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Top/bottom alignment creates visual imbalance in table cells and cards</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line);background:var(--bg2)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-4</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Dividers = stroke on parent — never native frames</strong><br><span style="font-size:12px;color:var(--ink3)">Use <code>node.strokeBottomWeight=1</code> + <code>node.strokes=[...]</code> instead of <code>createFrame()</code></span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Native 1px frames add extra nodes, break auto-layout, and can't be token-bound</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-5</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Form Factor = Compact by default</strong><br><span style="font-size:12px;color:var(--ink3)">All SAP instances: Button, IconButton, Input, Select, Label → <code>'Form Factor':'Compact'</code></span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">SAP back-office screens are Compact; Cozy is for consumer/touch only</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line);background:var(--bg2)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-6</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Always Horizon Light theme — even if reference is dark</strong><br><span style="font-size:12px;color:var(--ink3)">Dark hex (#1d2d3e, #1b3346…) has no SAP variable → guaranteed Bind failure</span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">SAP Web UI Kit only has Horizon Light variables. Dark theme requires a separate mode switch</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--line)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-7</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Always end with direct Figma node URL</strong><br><span style="font-size:12px;color:var(--ink3)">Format: <code>https://www.figma.com/design/&lt;fileKey&gt;/...?node-id=850-45411</code> (hyphen, not colon)</span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">User should never hunt for the built frame. Node must be confirmed to exist before sharing</td>
+      </tr>
+      <tr style="background:var(--bg2)">
+        <td style="padding:12px 16px;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap">HR-8</td>
+        <td style="padding:12px 16px;font-size:13px"><strong>Text nodes always use <code>[typo:role]</code> name tags</strong><br><span style="font-size:12px;color:var(--ink3)">Never raw <code>fontName:{family:'72'}</code> — add <code>[typo:label]</code>, <code>[typo:heading]</code>, etc. to every text node name</span></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--ink2)">Raw "72" shows in Figma's Typography panel unbound — Bind can't apply SAP text styles without the tag</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Add your own rules -->
+  <div style="border:2px solid var(--accent);border-radius:12px;padding:28px;margin-bottom:32px">
+    <div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">⚙ Add Your Own Rules</div>
+    <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">The system learns and adapts. Add team-specific rules to <code>CLAUDE.md</code> using the <code>⛔ HARD RULE</code> format — Claude enforces them from the next session onward.</p>
+
+    <pre>## ⛔ MY TEAM HARD RULE — Always use Cozy form factor
+- Our product is touch-first — all screens use Cozy, never Compact
+- Override HR-5 for this project
+
+## ⛔ MY TEAM HARD RULE — English labels only
+- Never use placeholder text in German, Bulgarian, or other languages
+- All labels, buttons, and status text must be in English
+
+## ⛔ MY TEAM HARD RULE — Always add DEMO pill to prototype frames
+- Every prototype screen gets a green DEMO pill top-left
+- sapBackgroundColor fill + sapPositiveElementColor stroke + bold green label</pre>
+
+    <p style="font-size:13px;color:var(--ink3);margin-top:16px">Or tell Claude directly in any prompt — <em>"Hard rule for this build: use 1440px, Cozy form factor, German labels"</em> — and it applies immediately. Corrections are saved to memory automatically.</p>
+  </div>
+
+  <!-- Lessons from Orders build -->
+  <div style="border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px">
+    <div style="background:var(--bg2);padding:14px 20px;border-bottom:1px solid var(--line);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3)">Lessons learned · Orders List Report build (2026-07-19) · confirmed "Bravo! Great result!"</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+      <div style="padding:16px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Custom nav bar instead of SAP IconTabBar</div>
+        <div style="font-size:12px;color:var(--ink2)">Built a native HORIZONTAL frame as nav. Fix: always use <code>IconTabBar Type=Shell Navigation</code> — never build nav from scratch</div>
+      </div>
+      <div style="padding:16px 20px;border-bottom:1px solid var(--line)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ setProperties icon swap silently fails</div>
+        <div style="font-size:12px;color:var(--ink2)">Using <code>setProperties({'Icon#...': comp.id})</code> leaves globe icon unchanged. Fix: use <code>iconInst.swapComponent(comp)</code> — the only reliable API</div>
+      </div>
+      <div style="padding:16px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Raw "72" font family instead of SAP text style</div>
+        <div style="font-size:12px;color:var(--ink2)">Text shows "72" in panel — not bound to SAP library style. Fix: add <code>[typo:role]</code> tag to every text node name → Bind applies the correct SAP text style</div>
+      </div>
+      <div style="padding:16px 20px;border-bottom:1px solid var(--line)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ 48px side padding instead of 32px</div>
+        <div style="font-size:12px;color:var(--ink2)">Wastes canvas space. Fix: always <code>paddingLeft = paddingRight = 32</code> on all containers</div>
+      </div>
+      <div style="padding:16px 20px;border-right:1px solid var(--line)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Native Divider frames for row separators</div>
+        <div style="font-size:12px;color:var(--ink2)">Extra nodes, breaks auto-layout, can't be token-bound. Fix: <code>node.strokeBottomWeight = 1</code> + stroke color on parent row frame</div>
+      </div>
+      <div style="padding:16px 20px">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:4px">✗ Bind fails when frame is inside a GROUP</div>
+        <div style="font-size:12px;color:var(--ink2)">Plugin page-scan finds 0 fills. Fix: move <code>◆SAP-UNBOUND/</code> frame to direct page child before running Bind, then move back</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center;padding:40px 0 20px;color:var(--text3);font-size:12px">
+  SAP Figma Design Agent · 30 Rules · 8 MCPs · 10 Agents · 152 Components · 2,391 Plugin LOC · ~3k tokens/build · Updated 2026-07-19
+</div>
+
+</div><!-- .page -->
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
