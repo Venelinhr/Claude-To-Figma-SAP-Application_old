@@ -362,7 +362,7 @@
     <a href="#pipeline">Pipeline</a>
     <a href="#mcps">MCPs</a>
     <a href="#plugin">Plugin</a>
-    <a href="#hooks">Hooks</a>
+
     <a href="#loop">Learning</a>
     <a href="#rules" class="hi">31 Rules</a>
   </div>
@@ -939,28 +939,6 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
       <p>bindMcpFrames · resolveKitIcon · swapIconPlaceholders · setTextSafe · applyFill/applyStroke · getVariable · all 4 a11y validators · SAP_KEYS · MANDATORY_TOKENS · <b>KEY_MAP / SKIP_SELF / HORIZ_CONTAINERS</b> (read by check-component-consistency.py) · MANDATORY_SPACING_TOKENS (documents the scale)</p>
     </div>
   </div>
-
-<hr id="hooks">
-
-<!-- SECTION 10: HOOKS -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
-    <div><div class="section-title">5 Automation Hooks</div><div class="section-sub">Mechanical enforcement — what fires automatically (stdin JSON + jq method)</div></div>
-  </div>
-
-  <table>
-    <thead><tr><th>Hook</th><th>Event</th><th>What it does & why</th></tr></thead>
-    <tbody>
-      <tr><td style="color:var(--danger)">block-codejs-read.sh</td><td>PreToolUse(Read)</td><td>Blocks any read of <code>code.js</code> (exit 2) and redirects to the manifest. <b>Why:</b> the ONLY mechanical enforcement of "never read the 45k-token plugin" — a rule can be ignored, a hook cannot.</td></tr>
-      <tr><td style="color:var(--warn)">block-generated-files.sh</td><td>PreToolUse(Edit/Write)</td><td>Blocks edits to <code>code.bundled.js</code> / <code>registry-bundle.js</code>. <b>Why:</b> those are auto-generated — edits get wiped on next rebuild. Redirects to the source.</td></tr>
-      <tr><td style="color:var(--accent)">registry-rebuild.sh</td><td>PostToolUse(Edit/Write)</td><td>Auto-runs <code>build-registry-bundle.js</code> when a registry JSON changes. <b>Why:</b> eliminates the "forgot to rebuild" class of bugs.</td></tr>
-      <tr><td style="color:var(--success)">manifest-sync-check.sh</td><td>PostToolUse(Edit/Write)</td><td>Runs the drift checker the instant <code>SAP_BUILD_MANIFEST.md</code> is edited. <b>Why:</b> catches a stale component key before it reaches a build.</td></tr>
-      <tr><td style="color:var(--accent)">feedback-learn.sh</td><td>UserPromptSubmit</td><td>Detects praise/correction words → injects a reminder to capture the lesson to memory. <b>Why:</b> powers the learning loop (next section).</td></tr>
-    </tbody>
-  </table>
-
-  <div class="notice info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><polygon points="17 22 17 14 13 14 13 16 15 16 15 22 12 22 12 24 20 24 20 22 17 22"/><path d="M16,8a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,8Z"/><path d="M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z"/></svg><span><strong style="color:var(--accent)">Correct hook mechanism (2026-07-14 fix):</strong> Tool input arrives as <strong>JSON on stdin</strong> (<code>jq -r '.tool_input.file_path'</code>) — NOT via env vars. Two legacy hooks used a non-existent <code>CLAUDE_TOOL_INPUT_FILE_PATH</code> variable and silently never fired; both were rewritten to the documented method. <em>Note: hooks activate on next Claude Code restart — settings.json doesn't hot-reload mid-session.</em></span></div>
 
 <hr id="loop">
 
