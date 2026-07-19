@@ -4,7 +4,7 @@
 
 ![Claude to Figma](https://img.shields.io/badge/Claude_to_Figma-SAP_Application-0070F2?style=flat-square)
 ![Components](https://img.shields.io/badge/SAP_Components-152-brightgreen?style=flat-square)
-![Rules](https://img.shields.io/badge/Rules-30_mandatory-orange?style=flat-square)
+![Rules](https://img.shields.io/badge/Rules-31_mandatory-orange?style=flat-square)
 ![Plugin](https://img.shields.io/badge/Plugin-2%2C391_LOC-purple?style=flat-square)
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
 
@@ -29,9 +29,9 @@ All screens built from a plain-language description or reference image — real 
 
 | What | What's inside |
 |------|--------------|
-| **Instructions** | `CLAUDE.md` + `skill/SYSTEM_PROMPT.md` — the 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
-| **30 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
-| **Skills** | `/sap-bind`, `/sap-vdi`, and 6 other invokable skills — each packages a full pipeline stage into a single command |
+| **Instructions** | The 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
+| **31 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
+| **Skills** | 8 invokable skills — each packages a full pipeline stage into a single command |
 | **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
 | **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
 
