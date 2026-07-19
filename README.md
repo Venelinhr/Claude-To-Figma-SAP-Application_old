@@ -8,7 +8,7 @@
 ![Plugin](https://img.shields.io/badge/Plugin-2%2C391_LOC-purple?style=flat-square)
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
 
-> **Interactive workflow reference:** [SAP-Figma-Design-Agent-Workflow.html](SAP-Figma-Design-Agent-Workflow.html) — full pipeline, 30 rules, hard rules, learning loop, all MCP servers documented.
+> **Interactive workflow reference:** [SAP-Figma-Design-Agent-Workflow.html](SAP-Figma-Design-Agent-Workflow.html) — full pipeline, 31 rules, hard rules, learning loop, all MCP servers documented.
 
 ---
 
@@ -259,7 +259,7 @@ You can iterate on any part — change the floorplan, add a column, switch to mo
 
 ---
 
-## 30 Mandatory Rules
+## 31 Mandatory Rules
 
 Every build is governed by these rules. Violating any stops generation.
 
@@ -512,7 +512,7 @@ Each layer does only what it uniquely can:
 ```
 ┌────────────────────────────────────────────────────────────────┐
 │  Layer 1 — Claude (Reasoning)                                  │
-│  Reads references · runs 30 rules · visual analysis            │
+│  Reads references · runs 31 rules · visual analysis            │
 │  Selects floorplan + components · builds via Figma MCP         │
 │  QA + self-repair · captures lessons                           │
 └───────────────────────────┬────────────────────────────────────┘
@@ -614,7 +614,7 @@ No private Figma access needed — the file ships with the repo and works offlin
 ├── install.sh                      ← one-command setup
 ├── SAP_BUILD_MANIFEST.md           ← the ONLY file a build reads (~2k tokens)
 ├── skill/
-│   ├── SKILL.md + SYSTEM_PROMPT.md ← 30 RULEs + 80-token whitelist
+│   ├── SKILL.md + SYSTEM_PROMPT.md ← 31 RULEs + 80-token whitelist
 │   ├── agents/                     ← 8 specialized agents
 │   ├── sap-visual-reading/         ← VDI skill: 8 stages + sector-analysis
 │   └── references/                 ← figma-build-patterns, canonical-similarity-rubric
@@ -704,5 +704,5 @@ node build/check-manifest-sync.js           # manifest drift check
 | `skill/references/figma-build-patterns.md` | Progress Row, DPH clone, post-clone rename checklist, 13+ API gotchas |
 | `docs/REPAIR-PATTERNS.md` | 28 repair patterns (P-001 to P-028) from real failures |
 | `docs/KNOWLEDGE-INDEX.md` | What lives where — authoritative index |
-| `docs/OPERATING-MANIFEST.md` | Single rule map cross-referencing all 30 RULEs |
+| `docs/OPERATING-MANIFEST.md` | Single rule map cross-referencing all 31 RULEs |
 | `docs/HOOKS-REFERENCE.md` | Hook stdin format, restart requirement |
