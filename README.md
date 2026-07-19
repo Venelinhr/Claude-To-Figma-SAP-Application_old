@@ -375,7 +375,4 @@ node build/check-manifest-sync.js           # manifest drift check
 ## License
 
 MIT License — free to use, modify, and distribute.
-
----
-
-*Built July 2026*
+July 2026
