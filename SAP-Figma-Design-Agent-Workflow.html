@@ -355,7 +355,6 @@
   </div>
   <div class="nav-links">
     <a href="#methodology" class="hi">Methodology</a>
-    <a href="#token-opt" class="hi">Token Opt</a>
     <a href="#overview">Overview</a>
     <a href="#comm">Claude↔Figma</a>
     <a href="#vdi">VDI Skill</a>
@@ -438,41 +437,6 @@
 
 <div class="notice ok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.59l-5-5L10.59,15,14,18.41,21.41,11,23,12.59Z"/></svg><span><strong>Latest (2026-07-15):</strong> Default methodology · SideNavigation canonical pattern · Token optimization (~25k → ~3k) · plugin audit (−33% LOC) · 5 automation hooks · feedback learning loop.</span></div>
 
-
-<hr id="token-opt">
-
-<!-- TOKEN OPTIMIZATION -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,23H4V19H24ZM16,11H4V7H16Z"/></svg></div>
-    <div><div class="section-title">Token Optimization</div><div class="section-sub">~25k → ~3k tokens per build (~88% reduction)</div></div>
-  </div>
-
-  <div class="ba">
-    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">~25k</div><div class="ba-lbl">tokens / build before</div></div>
-    <div class="ba-arrow">→</div>
-    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">~3k</div><div class="ba-lbl">tokens / build after</div></div>
-  </div>
-
-  <div class="grid c2" style="margin-top:24px">
-    <div class="card">
-      <h3>Never read the plugin file</h3>
-      <p>The plugin file is 45k tokens and irrelevant to building. A hook blocks it. Everything needed is in one small manifest file (~2k tokens) instead.</p>
-    </div>
-    <div class="card">
-      <h3>Cache repeated analysis</h3>
-      <p>When the same reference image appears again, the system loads its cached analysis (~700 tokens) instead of re-running the full 8-stage pipeline (~13.5k tokens). 96% saving on repeat images.</p>
-    </div>
-    <div class="card">
-      <h3>One file, not six</h3>
-      <p>Build knowledge used to be scattered across 6+ files. Now it lives in one manifest file. Same information, 76% fewer tokens to read it.</p>
-    </div>
-    <div class="card">
-      <h3>Build right once</h3>
-      <p>Analyze and plan before touching Figma. One build call, one screenshot to verify. No live iterative fixing — that was the biggest source of wasted tokens.</p>
-    </div>
-  </div>
-</div>
 
 <hr id="overview">
 
@@ -817,82 +781,47 @@ inst.name = <span class="str">'Save [sapButton_Emphasized_Background] [typo:labe
 
 <hr id="tokens">
 
-<!-- SECTION 9: TOKEN OPTIMIZATION -->
+<!-- TOKEN OPTIMIZATION -->
 <div class="section">
   <div class="section-header">
-    <div class="section-num">—</div>
-    <div><div class="section-title">Token Optimization — ~25k → ~3k per build</div><div class="section-sub">Measured, verified, ~80% reduction</div></div>
+    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,23H4V19H24ZM16,11H4V7H16Z"/></svg></div>
+    <div>
+      <div class="section-title">Token Optimization</div>
+      <div class="section-sub">~25k → ~3k tokens per build — ~88% reduction</div>
+    </div>
   </div>
-
-  <table class="table">
-    <thead><tr><th>Cost source</th><th>Before</th><th>After</th><th>How</th></tr></thead>
-    <tbody>
-      <tr><td>Reading plugin code.js</td><td>~45k (×2 reads)</td><td>0</td><td>Manifest-only rule + Read-guard hook blocks it</td></tr>
-      <tr><td>VDI reference bundle</td><td>~8k / build</td><td>~2k</td><td>6 files merged → VDI_REFERENCE.md (−76%)</td></tr>
-      <tr><td>VDI analysis (repeat image)</td><td>~13.5k</td><td>~0.7k</td><td>semantic-models/ SHA-1 cache (−96%)</td></tr>
-      <tr><td>Build knowledge (scattered)</td><td>~15–20k</td><td>~2k</td><td>Single SAP_BUILD_MANIFEST.md</td></tr>
-      <tr><td>Iterative live-fixing</td><td>8 calls + 6 shots</td><td>1 call + 1 shot</td><td>One-shot build discipline</td></tr>
-      <tr><td>Sequential imports (wall-time)</td><td>~2.1s+ serial</td><td>~1.9s parallel</td><td>Promise.all — 3–4× faster</td></tr>
-    </tbody>
-  </table>
-
-  <div class="ba">
-    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">~25k</div><div class="ba-lbl">Tokens / build — before</div></div>
-    <div class="ba-arrow">→</div>
-    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">~3–5k</div><div class="ba-lbl">Tokens / build — after (~2–3k cached)</div></div>
+  <div class="grid c2" style="margin-top:8px">
+    <div class="card">
+      <h3>Never read the plugin file</h3>
+      <p>The plugin file is 45k tokens and not needed for building. A hook blocks it automatically. Everything required fits in one 2k-token manifest file instead.</p>
+    </div>
+    <div class="card">
+      <h3>Cache repeated images</h3>
+      <p>When the same reference image is used again, the system loads a cached analysis (~700 tokens) instead of re-running the full pipeline (~13.5k tokens) — 96% saving on repeats.</p>
+    </div>
+    <div class="card">
+      <h3>One manifest, not six files</h3>
+      <p>Build knowledge used to be spread across 6 files. Now it lives in one manifest. Same information, 76% fewer tokens to read it.</p>
+    </div>
+    <div class="card">
+      <h3>Plan first, build once</h3>
+      <p>Analyse and plan before touching Figma. One build call, one screenshot. No live iterative fixing — that was the biggest source of waste.</p>
+    </div>
   </div>
-
-  <div class="notice warn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="15" height="15" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/><rect x="15" y="8" width="2" height="11"/><path d="M16,22a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,16,22Z"/></svg><span><strong style="color:var(--warn)">The insight:</strong> The waste was never "repeating stable rules" (those cache warm). It was <strong>reading huge files that weren't needed</strong> (the 45k-token plugin), <strong>re-analyzing the same image</strong>, and <strong>iterating live in Figma</strong>. The fix: read one small manifest, cache the analysis, build right once.</span></div>
 </div>
-
-<hr>
-
-<!-- SECTION 9b: CODE LINES BEFORE/AFTER -->
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><polygon points="31 16 24 23 22.59 21.59 28.17 16 22.59 10.41 24 9 31 16"/><polygon points="1 16 8 9 9.41 10.41 3.83 16 9.41 21.59 8 23 1 16"/><rect x="5.91" y="15" width="20.17" height="2" transform="rotate(-75 16 16)"/></svg></div>
-    <div><div class="section-title">Plugin Code — Before / After</div><div class="section-sub">Full history through the dead-code audit</div></div>
-  </div>
-
-  <div class="ba">
-    <div class="ba-box before"><div class="ba-num" style="color:var(--danger)">3,580</div><div class="ba-lbl">code.js LOC — pre-audit</div></div>
-    <div class="ba-arrow">→</div>
-    <div class="ba-box after"><div class="ba-num" style="color:var(--success)">2,391</div><div class="ba-lbl">code.js LOC — after (−1,189, −33%)</div></div>
-  </div>
-
-  <table>
-    <thead><tr><th>Milestone</th><th>LOC</th><th>What changed</th></tr></thead>
-    <tbody>
-      <tr><td>Legacy (JSON→plugin renderers)</td><td>10,767</td><td>Native renderers for every component</td></tr>
-      <tr><td>MCP-first migration (Phase 3)</td><td>9,136</td><td>Removed ~1,550 lines of fragile native renderers</td></tr>
-      <tr><td>MCP-bind-only reduction</td><td>3,534</td><td>Deleted the whole JSON buildScreen path — plugin is bind-only</td></tr>
-      <tr><td>Correctness fixes added</td><td>3,580</td><td>figma.mixed guards + matchSemanticColor epsilon</td></tr>
-      <tr><td style="color:var(--success)">Dead-code audit (latest)</td><td style="color:var(--success);font-weight:700">2,391</td><td>Removed 14 confirmed-dead function clusters + orphaned consts</td></tr>
-    </tbody>
-  </table>
-
-  <div class="grid c2" style="margin-top:16px">
-    <div class="card" style="border-color:var(--success-dim)">
-      <h3 style="color:var(--success)">Removed (verified dead)</h3>
-      <p>swapKitIcon · importKey · buttonVariants/statusVariants/msgStripVariants · getNavItemComponent/makeNavItemInstance · autoFillMustInclude/computeCompositionSuggestions/validateComposition · applyKitVariableKeys/applyFillByKey · applyStrokeWeight/applyCornerRadius/applyHeight · bindFillByC cluster · text-injection cluster · layout helpers · nested-key discovery machinery · SAP_TOKENS · SAP_ICON_KIT_FILE</p>
-    </div>
-    <div class="card" style="border-color:var(--accent-dim)">
-      <h3 style="color:var(--accent)">Kept (live or referenced)</h3>
-      <p>bindMcpFrames · resolveKitIcon · swapIconPlaceholders · setTextSafe · applyFill/applyStroke · getVariable · all 4 a11y validators · SAP_KEYS · MANDATORY_TOKENS · <b>KEY_MAP / SKIP_SELF / HORIZ_CONTAINERS</b> (read by check-component-consistency.py) · MANDATORY_SPACING_TOKENS (documents the scale)</p>
-    </div>
-  </div>
 
 <hr id="loop">
 
-<!-- SECTION: LEARNING LOOP -->
+<!-- LEARNING LOOP -->
 <div class="section">
   <div class="section-header">
     <div class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M12,10H6.78A11,11,0,0,1,27,16h2A13,13,0,0,0,6,7.68V4H4v8h8Z"/><path d="M20,22h5.22A11,11,0,0,1,5,16H3a13,13,0,0,0,23,8.32V28h2V20H20Z"/></svg></div>
-    <div><div class="section-title">The Loop — Learning · Improving · Better Ecosystem</div><div class="section-sub">The system gets smarter every session</div></div>
- 
-    <div><div class="section-title">The Learning Loop</div><div class="section-sub">Gets smarter every session</div></div>
+    <div>
+      <div class="section-title">The Learning Loop</div>
+      <div class="section-sub">The system gets smarter every session</div>
+    </div>
   </div>
-  <p style="font-size:15px;color:var(--ink2);line-height:1.7;max-width:700px">Every time you say something is wrong or great, the system saves it to memory automatically — corrections become hard rules, confirmed results become canonical references that seed every future build.</p>
+  <p style="font-size:15px;color:var(--ink2);line-height:1.8;max-width:720px">Every time you give feedback — positive (<em>bravo, perfect, great result</em>) or negative (<em>wrong, not SAP, never do this</em>) — the system captures it automatically, saves it to memory as a rule or canonical reference, and applies it from the next build onward. You never have to say "remember this" — it already did.</p>
 </div>
 
 <hr id="rules">
