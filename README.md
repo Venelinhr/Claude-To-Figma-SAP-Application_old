@@ -302,6 +302,8 @@ The build pipeline is token-optimised — each session uses a fraction of what a
 
 The system gets smarter with every session. When you confirm something is right, it's saved as a canonical reference for future builds. When something is wrong, the correction is captured automatically and applied from the next build onward. You never need to say "remember this" — every piece of feedback, positive or negative, is stored and recalled when relevant.
 
+You can also add your own rules at any time — just tell Claude "hard rule: always do X" and it will save it to memory and follow it in every future build.
+
 ---
 
 ## Canonical Reference Screens
