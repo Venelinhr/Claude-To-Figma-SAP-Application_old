@@ -367,7 +367,7 @@ No private Figma access needed — the file ships with the repo and works offlin
 claude mcp list                              # expect 5+ servers
 node build/validate-spec.js output/any.json  # validate a spec
 bash build/test-build.sh                     # regression suite (must exit 0)
-node build/check-manifest-sync.js           # manifest drift check
+node build/check-manifest-sync.js            # manifest drift check
 ```
 
 ## License
