@@ -279,7 +279,7 @@ Each layer does only what it uniquely can:
 
 ## Figma Agent
 
-Design directly inside Figma with the built-in AI Agent. Select an existing screen and ask the Figma Agent to refine it, apply changes, suggest the next step in the user flow, generate a variant, or extend the design. Load the Figma Agent SAP skill once, and every subsequent request follows the same SAP methodology, design system, and workflow — ensuring consistency, quality, and production-ready SAP Fiori screens throughout your project.
+Design directly inside Figma with the built-in AI Agent. Select an existing screen and ask the Figma Agent to refine it, apply changes, suggest the next step in the user flow, generate a variant, or extend the design. 
 
 **What you can ask:**
 
