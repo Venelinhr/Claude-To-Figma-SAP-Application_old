@@ -29,6 +29,7 @@ builds. An "improve this screen" request goes through the same discipline as a n
 
 ## Compliance checklist — EVERY output must satisfy all of these
 
+- [ ] **ASCII wireframe + L1–L5 shown BEFORE any build** — even for clones, even for "same screen", even when recognizing a canonical. The wireframe IS the visual confirmation when user shares an image. `enforce-wireframe-first.sh` injects this as a hard directive.
 - [ ] **Analyzed the source screen first** (tokens, instances, states) before proposing anything
 - [ ] **Real SAP instances only** — `importComponentSetByKeyAsync` → `createInstance()`. Never `createFrame()` for a component (Button, Input, Select, Table, ObjectStatus, IconTabBar, ShellBar, etc.)
 - [ ] **SAP text styles** — every text node has a `[typo:role]` name tag. NEVER raw `fontName:{family:'72'}` alone. (Raw 72 = Bind fails.)

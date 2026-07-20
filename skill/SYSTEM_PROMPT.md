@@ -144,10 +144,14 @@ GATE 2 — MEASURE WIDTH   (RULE 30)
 
 GATE 3 — ASCII WIREFRAME + LAYER TREE   (RULE 19 · HARD STOP)
    → Present ASCII wireframe + L1–L5 layer structure. WAIT for explicit approval.
-   → Also surface applicable proactive suggestions from docs/SAP-SUGGESTION-CATALOG.md
-     ("Suggestions" block: ⚡ trigger → better SAP solution + why). User approves both together.
+   → Also surface applicable proactive suggestions from docs/SAP-SUGGESTION-CATALOG.md.
    → A cached VDI model does NOT exempt this gate.
+   → APPLIES EVEN FOR CLONES AND CANONICAL REUSE — the wireframe IS the visual
+     confirmation, especially when user shares an image or Figma URL. "I recognize
+     this screen" is NOT a reason to skip it.
    FAIL if: no wireframe shown, or built before approval.
+   ENFORCED BY: enforce-wireframe-first.sh (blocks response at UserPromptSubmit) +
+                guard-wireframe-gate.sh (blocks use_figma build call).
 
 GATE 4 — VERIFY SAP KEYS + LIBRARY   (RULE 23/24)
    → Confirm every component key resolves via importComponentSetByKeyAsync.
