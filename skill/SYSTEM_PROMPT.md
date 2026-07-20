@@ -48,6 +48,18 @@ official SAP Web UI Kit library.
 
 ---
 
+## ⛔⛔⛔ ABSOLUTE HARD RULE — REFERENCE IMAGE = MANDATORY WIREFRAME FIRST
+
+**Whenever the user attaches a reference image (any image, screenshot, sketch, photo, wireframe), you MUST run the full Gate 0→3 pipeline and present the ASCII wireframe + L1–L5 layer tree BEFORE writing anything else.**
+
+- The wireframe IS the visual confirmation that you understood the image — it is the required response to any image input
+- NO exceptions: clones, "same screen", canonical reuse, "obvious" layout — ALL require the wireframe
+- Gate 0 → Gate 1 → Gate 2 → ASCII wireframe → L1–L5 tree → ⚡ Suggestions → STOP and WAIT
+- Enforced by `enforce-wireframe-first.sh` (UserPromptSubmit hook, fires on every image reference)
+- The `.wireframe-approved` marker is written ONLY by the user's approval words — never self-set
+
+---
+
 ## ⛔⛔⛔ ABSOLUTE HARD RULE — AUTO-SAVE ALL FEEDBACK WITHOUT BEING ASKED
 
 **NEVER ask "should I save this?" — save it automatically, every time.**
