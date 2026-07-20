@@ -1,8 +1,6 @@
 # Claude to Figma SAP Application
 
-> Describe a business screen in plain language — or attach a sketch, screenshot, or Figma reference. Claude reads official SAP guidelines, measures the reference, selects components, previews the layout as an ASCII wireframe for your approval, then builds a real SAP Fiori screen directly in Figma — real library components, live tokens, zero manual drag-and-drop.
-> 
->  **ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN.**
+> Turn a business use case or screenshot into a real SAP Fiori screen in Figma.
 
 ![Claude to Figma](https://img.shields.io/badge/Claude_to_Figma-SAP_Application-0070F2?style=flat-square)
 ![Components](https://img.shields.io/badge/SAP_Components-152-brightgreen?style=flat-square)
@@ -64,13 +62,17 @@ The installer adds a placeholder automatically. Replace it with your real token:
 
 ### Step 3 — Load the Figma plugin
 
-The plugin is what connects Claude's output to real SAP design tokens. Claude builds the screen structure — the plugin then binds the official SAP colours, spacing, and typography from your SAP library.
+The plugin connects Claude's output to real SAP design tokens. After Claude builds the screen, you run the plugin once to bind live SAP variables, swap icons, and apply text styles.
 
-1. Open **Figma desktop**
-2. Go to **Plugins → Development → Import plugin from manifest...**
-3. Select `plugin/figma-builder/manifest.json` from this repo
+**Download and run the plugin locally:**
 
-The plugin appears under **Plugins → Development → SAP Figma Builder** and runs inside any Figma file.
+1. Clone this repo to your machine (if you haven't already)
+2. Open **Figma desktop**
+3. Go to **Plugins → Development → Import plugin from manifest...**
+4. Select `plugin/figma-builder/manifest.json` from the cloned repo folder
+5. The plugin now appears under **Plugins → Development → SAP Figma Builder** and runs inside any Figma file
+
+> The plugin runs locally from your machine — no publishing or Figma Community install needed. Keep the repo folder on disk so Figma can load it.
 
 
 ### Step 4 — Connect the SAP Web UI Kit in Figma
