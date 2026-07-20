@@ -277,6 +277,37 @@ Each layer does only what it uniquely can:
 > **Why three layers?** The Figma MCP runs in a sandbox — it can read and write structure, but it cannot access your SAP library's private token variables. Only a real Figma plugin can do that. So Claude builds the structure, the plugin binds the tokens. Each does the one thing only it can do.
 
 
+## Figma Agent
+
+Design directly inside Figma with the built-in AI Agent. Select an existing screen and ask the Figma Agent to refine it, apply changes, suggest the next step in the user flow, generate a variant, or extend the design. Load the Figma Agent SAP skill once, and every subsequent request follows the same SAP methodology, design system, and workflow — ensuring consistency, quality, and production-ready SAP Fiori screens throughout your project.
+
+**One-time setup:** Add the SAP skill (`Figma → Agent → Skills → Add Skill`) and link the **SAP Web UI Kit** as a library (`Assets → Libraries`). The design system gives the real components; the skill gives the SAP behavior and rules.
+
+**How it works — every request:**
+
+```
+Analyze selected screen → Pick the right floorplan → Clone closest canonical
+→ Build with real SAP components → Suggest improvements → Self-verify vs checklist
+```
+
+**What you can ask:**
+
+| Refine & change | Suggest the next step | Variant & extend |
+|---|---|---|
+| "Improve this layout" | "Suggest the next screen after this list" | "Build a variant of this screen" |
+| "Fix the status column" | "What's the next step in this wizard?" | "Add a filter bar and mass actions" |
+| "Make the actions SAP-compliant" | "Add the detail page for this row" | "Extend this into a full Object Page" |
+
+**How to use — setup & run:**
+
+1. **Link the SAP Web UI Kit** — in Figma, `Assets → Libraries` → enable **SAP Web UI Kit**. This gives the Agent the real components, variants, and tokens.
+2. **Add the SAP Agent skill** — click the Figma Agent button → `Skills → Add Skill` → add the **sap-figma-agent** skill. The Agent now knows all SAP rules, canonical screens, component keys, and suggestion patterns.
+3. **Select a screen & describe the change** — select any built or existing SAP screen, open the Agent, and type what you want.
+4. **The Agent executes — SAP-compliant** — it analyzes, clones the closest canonical, builds with real SAP components, applies the design rules, and self-verifies against the compliance checklist, right on the canvas.
+
+> **Figma Agent vs Claude Code:** Use **Claude Code** for new builds from a reference — it runs the full gated pipeline (wireframe approval, token bind, invariant checks). Use the **Figma Agent** for fast on-canvas iterations — refine, extend, suggest next steps — following the same SAP rules and design system, without leaving Figma.
+
+
 ## Token Optimization
 
 The build pipeline is token-optimised — each session uses a fraction of what a naive implementation would consume.
