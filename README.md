@@ -1,6 +1,6 @@
 # Claude to Figma SAP Application
 
-> Turn a business use case or screenshot into a real SAP Fiori screen in Figma.
+> Describe a business screen in plain language — or attach a sketch, screenshot, or Figma reference. Claude reads official SAP guidelines, measures the reference, selects components, previews the layout as an ASCII wireframe for your approval, then builds a real SAP Fiori screen directly in Figma — real library components, live tokens, zero manual drag-and-drop. **ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN.**
 
 ![Claude to Figma](https://img.shields.io/badge/Claude_to_Figma-SAP_Application-0070F2?style=flat-square)
 ![Components](https://img.shields.io/badge/SAP_Components-152-brightgreen?style=flat-square)
