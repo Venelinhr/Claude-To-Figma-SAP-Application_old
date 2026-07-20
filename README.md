@@ -292,7 +292,7 @@ Design directly inside Figma with the built-in AI Agent. Select an existing scre
 **How to use — setup & run:**
 
 1. **Link the SAP Web UI Kit** — in Figma, `Assets → Libraries` → enable **SAP Web UI Kit**. This gives the Agent the real components, variants, and tokens.
-2. **Add the SAP Agent skill** — click the Figma Agent button → `Skills → Add Skill` → add the **sap-figma-agent** skill. The Agent now knows all SAP rules, canonical screens, component keys, and suggestion patterns.
+2. **Add the SAP Agent skill** — download the skill file from this repo: [`.claude/skills/sap-figma-agent/SKILL.md`](.claude/skills/sap-figma-agent/SKILL.md). Then click the Figma Agent button → `Skills → Add Skill` → paste or upload the **sap-figma-agent** skill. The Agent now knows all SAP rules, canonical screens, component keys, and suggestion patterns.
 3. **Select a screen & describe the change** — select any built or existing SAP screen, open the Agent, and type what you want.
 4. **The Agent executes — SAP-compliant** — it analyzes, clones the closest canonical, builds with real SAP components, applies the design rules, and self-verifies against the compliance checklist, right on the canvas.
 
