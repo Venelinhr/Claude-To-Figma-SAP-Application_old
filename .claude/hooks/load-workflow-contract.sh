@@ -1,0 +1,32 @@
+#!/bin/bash
+# load-workflow-contract.sh — SessionStart hook.
+#
+# Injects the mandatory directive to read and OBEY WORKFLOW-CONTRACT.md before any
+# Figma SAP task. This is the single-source-of-truth loader: it ensures every session
+# starts knowing the contract governs all builds, improvement suggestions, edits, and
+# variants — not just fresh screens.
+#
+# Stdout → context, exit 0, never blocks.
+
+PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
+CONTRACT="$PROJ/WORKFLOW-CONTRACT.md"
+
+[ -f "$CONTRACT" ] || exit 0
+
+cat <<'EOF'
+<workflow-contract-directive>
+⛔ BEFORE ANY Figma SAP task — new screen, improvement suggestion, next step, edit, or
+variant — you MUST read and OBEY WORKFLOW-CONTRACT.md (project root). It is the single
+mandatory source of truth: 31 rules + 10-step flow + hard rules + skills + lessons.
+
+On EVERY such request: (1) load the contract, (2) analyze the source screen's SAP
+tokens/instances/states first, (3) follow the 10-step flow + 31 rules, (4) use only real
+SAP components/tokens/text-styles (never native look-alikes, raw hex, or raw 72 font),
+(5) preserve menu/component states, (6) hand off with a validated node URL + Bind reminder.
+
+This applies to follow-up edits and "improve this screen" requests too. To repair an
+existing non-compliant screen, run /sap-fix <nodeId>.
+</workflow-contract-directive>
+EOF
+
+exit 0
