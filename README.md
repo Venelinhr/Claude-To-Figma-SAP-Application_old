@@ -281,15 +281,6 @@ Each layer does only what it uniquely can:
 
 Design directly inside Figma with the built-in AI Agent. Select an existing screen and ask the Figma Agent to refine it, apply changes, suggest the next step in the user flow, generate a variant, or extend the design. Load the Figma Agent SAP skill once, and every subsequent request follows the same SAP methodology, design system, and workflow — ensuring consistency, quality, and production-ready SAP Fiori screens throughout your project.
 
-**One-time setup:** Add the SAP skill (`Figma → Agent → Skills → Add Skill`) and link the **SAP Web UI Kit** as a library (`Assets → Libraries`). The design system gives the real components; the skill gives the SAP behavior and rules.
-
-**How it works — every request:**
-
-```
-Analyze selected screen → Pick the right floorplan → Clone closest canonical
-→ Build with real SAP components → Suggest improvements → Self-verify vs checklist
-```
-
 **What you can ask:**
 
 | Refine & change | Suggest the next step | Variant & extend |
