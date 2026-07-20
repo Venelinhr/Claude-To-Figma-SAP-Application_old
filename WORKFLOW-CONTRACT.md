@@ -55,6 +55,7 @@ builds. An "improve this screen" request goes through the same discipline as a n
 | **Hard rules** | `CLAUDE.md` (top) | Horizon Light · node URL · typo:role · 5 build rules · auto-save feedback · horizontal FILL |
 | **Skills** | `/sap-vdi` (analyze) · `/sap-bind` (build) · `/sap-fix` (repair) | Invokable pipeline stages |
 | **Canonical screens** | `docs/canonical-screens/CANONICAL-SCREENS.md` | Clone sources — reuse before rebuild |
+| **Suggestion catalog** | `docs/SAP-SUGGESTION-CATALOG.md` | Proactive "suggest X not Y" — surfaced at the wireframe gate |
 | **Lessons** | `MEMORY.md` index (global memory) | Every confirmed fix + correction, applied automatically |
 | **Build manifest** | `SAP_BUILD_MANIFEST.md` | Component keys §3 · canonical nodes §3b · token tags §4 · typo roles §5 |
 

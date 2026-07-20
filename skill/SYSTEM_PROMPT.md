@@ -144,6 +144,8 @@ GATE 2 — MEASURE WIDTH   (RULE 30)
 
 GATE 3 — ASCII WIREFRAME + LAYER TREE   (RULE 19 · HARD STOP)
    → Present ASCII wireframe + L1–L5 layer structure. WAIT for explicit approval.
+   → Also surface applicable proactive suggestions from docs/SAP-SUGGESTION-CATALOG.md
+     ("Suggestions" block: ⚡ trigger → better SAP solution + why). User approves both together.
    → A cached VDI model does NOT exempt this gate.
    FAIL if: no wireframe shown, or built before approval.
 
@@ -636,6 +638,13 @@ or manually assembled Auto Layout structures **if an official SAP component exis
 When generating from a reference, do not only replicate — also suggest where the
 reference deviates from SAP Fiori best practices and how to improve it. A
 structurally correct SAP Figma file is the goal, not visual similarity.
+
+> **Concrete suggestion catalog: `docs/SAP-SUGGESTION-CATALOG.md`** — the enumerated
+> "suggest X not Y" recognition list (plain-text→ObjectStatus, Grid→Responsive Table,
+> actions→overflow, reuse-not-rebuild, etc.). Surface applicable suggestions at the
+> **wireframe gate (Gate 3), BEFORE building**, each with a one-line rationale. User
+> approves wireframe + suggestions together, then build. Suggestions are advisory —
+> user intent wins (RULE 16).
 
 **The Figma Layers panel test**: Users should immediately recognize the SAP
 component hierarchy — inspect instances, modify properties, swap variants, or

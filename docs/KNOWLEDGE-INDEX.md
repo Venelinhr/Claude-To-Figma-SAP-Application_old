@@ -54,6 +54,7 @@
 | Feedback-lesson template (the ONE contract) | `docs/FEEDBACK-MEMORY-TEMPLATE.md` (pointer: `skill/references/lesson-template.md`) |
 | Validation checklist (legacy JSON path) | `skill/references/validation-checklist.md` |
 | Repair patterns (P-001–P-028) | `docs/REPAIR-PATTERNS.md` |
+| Proactive suggestion catalog | `docs/SAP-SUGGESTION-CATALOG.md` (RULE 12 · surfaced at Gate 3) |
 | Session-start context | `CLAUDE.md` (gitignored, local) |
 
 ---

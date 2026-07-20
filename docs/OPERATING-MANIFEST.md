@@ -104,6 +104,7 @@ Acceptable **only if all** are true:
 | Canonical Pattern Library (reuse-first) | RULE 31 → `skill/references/canonical-index.json` + `skill/references/delta-spec-schema.json` |
 | Learn from user's Figma file | `skill/agents/figma-project-learner.md` (/sap-learn) |
 | Repair / learning | `docs/REPAIR-PATTERNS.md` |
+| Proactive suggestions ("suggest X not Y") | RULE 12 → `docs/SAP-SUGGESTION-CATALOG.md` (surfaced at Gate 3) |
 | Lost / wrong output | RULE 29 → clone nearest canonical |
 
 **System state (verify before quoting):** 31 RULEs · 9 agents · 18+ canonical screens · 152 components · 154 guidelines · MCP-first default (RULE 25).
