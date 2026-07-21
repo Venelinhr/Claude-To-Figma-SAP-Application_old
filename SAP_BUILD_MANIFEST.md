@@ -1,4 +1,5 @@
-# SAP_BUILD_MANIFEST — the ONLY file a build reads
+# SAP_BUILD_MANIFEST — the build DATA source (component keys · token hexes · canonical clone nodes)
+<!-- AUTHORITY: authoritative for build DATA only — the component keys (§3), canonical clone nodes (§3b), token hexes (§4), typography roles (§5), name-tag contract (§6). It is "the only file a BUILD reads" for that data. For workflow/order → WORKFLOW-CONTRACT.md; for gate PASS/FAIL → SYSTEM_PROMPT.md gate sequence. Hierarchy declared in CLAUDE.md. -->
 
 <!-- manifestVersion: 1.0.3 · verified production-ready 2026-07-17 -->
 <!-- generatedFrom: knowledge/components/registry/*.json, knowledge/guidelines/horizon-variable-keys.json -->
@@ -97,6 +98,9 @@ Yanatest Steps                 ← L1
 
 ## §3 — Common component keys (`importComponentSetByKeyAsync`)
 
+> ⭐ **Full registry with verified hashed property keys for all 139 SAP components:**
+> **`knowledge/SAP-COMPONENT-REGISTRY.md`** — includes every TEXT key, BOOLEAN key, VARIANT options, SLOT key, and icon key. Read it before building any component not in the quick table below. Never look up property keys live for components listed there.
+
 Real instances only. Layout containers (DynamicPage, Column, ObjectPageLayout, FilterBar, OverflowToolbar) are auto-layout frames, not kit sets — build them natively but name them semantically (L2/L3). Aliases resolve to the listed base component.
 
 | Component | figmaComponentId | Note |
@@ -121,7 +125,7 @@ Real instances only. Layout containers (DynamicPage, Column, ObjectPageLayout, F
 | ObjectAttribute | `080ead216322befe153704bf8f11373158fea34a` | |
 | MessageStrip | `f0e77f8888796e35c0e791ddc0b38535eda6ec31` | |
 | Toolbar | `58a258bf5813e59cec4dfc684c8cdb2a6ca6721f` | OverflowToolbar = alias |
-| Dialog | `5b965b1eda133ac521b42fa20b201e9491f4bf83` | |
+| Dialog | `5b965b1eda133ac521b42fa20b201e9491f4bf83` | ⛔ NATIVE FRAME ONLY — slot injection fails in MCP. Use native VBOX + border + cornerRadius:8 + shadow. Clone from `727:42563` (p7zm5EMBk5DRRZdxNeJ4f5). NEVER call importComponentSetByKeyAsync for screen-level dialogs. |
 | Panel | `4d19c2a24896033fe5b04bcc5dfdf43e9626283d` | |
 | IconTabBar | `4aafcbf55528c439876b314d155438884b614722` | |
 | Avatar | `71a3389ecbd47822b3184700766e30963fc2f220` | |
@@ -151,7 +155,28 @@ Text = native `figma.createText()` with family `72`, tagged `[typo:role]` (see �
 
 ## §3b — Canonical Screen Nodes
 
-> **Reference file:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
+> ⭐⭐⭐ **PRIMARY GOLD-STANDARD SET — file `E083sNBH7JNEOBFrG7Bqge` ("From Claude to SAP Figma screen").**
+> User-confirmed 2026-07-21: "these are gold-standard references, expected result every time." **Clone from these first.**
+> URL: `https://www.figma.com/design/E083sNBH7JNEOBFrG7Bqge/From-Claude-to-SAP-Figma-screen?node-id=<HYPHEN-ID>`
+>
+> | Screen | Node | Width | Clone for |
+> |---|---|---|---|
+> | Menu / Side Navigation | `68:3262` | 260 | left nav rail — real `Side Navigation` instance + N `Navigation Item` in `⿻ Navigation Items` slot |
+> | Yanatest Steps | `68:2578` | 320 | Object Page narrow — DPH + IconTabBar + Filter Bar + ObjectStatus/ObjectAttribute list item |
+> | Activities View | `68:2928` | 320 | List Report narrow — DPH + Filter Bar + Progress-Row Meta Block list items |
+> | Validate System | `42:2348` | 678 | Log/message panel — Message Toolbar, Filter Bar in `⿻ Header Area`, SegmentedButton toggle, Log Entry (Severity/Code/Time/Body) |
+> | Outage List Overview | `30:2741` | 1440 | Desktop List Report — AppLayout(SideNav 224 + Content) + DPH + Filter Bar + native Table (8 cols, Link + ObjectStatus cells) |
+> | Flight Result Card | `2:5355` | 751 | Card — Zone A Legs + vert-sep + Zone B Price |
+> | Schedule Op — State A Collapsed | `9:1470` | 560 | schedule dialog, both toggles off |
+> | Schedule Op — State B2 Daily | `9:1696` | 560 | recurrence on + Daily, Monthly panel hidden |
+> | Schedule Op — State C End Date (FULL) | `9:1550` | 560 | full expanded: Monthly + end date |
+> | Schedule Op — State D EndOnly | `9:1609` | 560 | recurrence off + end date on |
+>
+> Cross-cutting rules: Dividers = native frames named `Divider` (sapList_BorderColor) on the Schedule dialog; list-report rows use a 3px vertical `Success Border` accent instead. Progress Row = native 40×12 green bar + ObjectStatus Success; SegmentedButton always HUG; Selects in schedule dialog = 80px; conditional sub-sections toggled via `visible` (`hidden=true` until active); recurrence wrapper = `RecurrenceExpanded` when on / `RecWrap` h48 when off.
+>
+> **Also mirrored in file `3UN4OKl1PVlloiKccyYPOe`** ("Claude to Figma SAP Application") — same set, valid clone source. **Design System Governance Console** (most complex): file `p7zm5EMBk5DRRZdxNeJ4f5` nodes `197:107995` / `197:123144` — ShellBar + AppLayout(SideNav 224 w/ Quick Create footer) + DynamicPageHeader(breadcrumb) + Bar(SegmentedButton + SplitButton) + IconTabBar + DynamicSideContent(Main 848 Panel w/ nested Table + Side 320 Panel w/ Calendar + MessageStrip + List).
+
+> **Legacy reference file:** `docs/canonical-screens/Claude to Figma SAP Application.fig` (file `p7zm5EMBk5DRRZdxNeJ4f5`)
 > Open this file in Figma, connect SAP Web UI Kit as library, then use node IDs below as clone sources.
 > The `.fig` file ships with the repo — no private Figma access needed.
 
@@ -167,6 +192,7 @@ Clone these — don't build from scratch. These nodes carry correct SAP tokens a
 | SideNavigation (proto source) | `699:37890` | Use as prototype source for slot injection |
 | Dialog Header (canonical) | `560:36171` | Clone for any Dialog Header — confirmed Jul 13 |
 | Schedule Activated Confirmation | `850:45411` | Confirmation/success state, ObjectStatus, Horizon Light — confirmed Jul 18 "Bravo" |
+| Schedule Operation Dialog (PERFECT) | `727:42563` | ⭐ Define/Schedule/recurrence dialog — confirmed Jul 21 "perfect result, expected every time". CLONE for any schedule/recurrence dialog. Select fields 80px, SegmentedButton HUG, disabled row via opacity 0.45, "Recurrence type" label, Monthly Pattern panel sapBackgroundColor |
 | Schedule Activated (clone source) | `853:135938` | Clone source for Schedule Activated variants |
 | Purchase Orders List Report | `804:44859` | 1440px List Report, approval actions, ObjectStatus — confirmed Jul 16 "Bravo" |
 | Orders List Report | `889:45857` | 1440px List Report, full desktop pattern — confirmed Jul 19 |
@@ -193,6 +219,11 @@ Clone these — don't build from scratch. These nodes carry correct SAP tokens a
 ## §4 — Common token tags (`[sapToken]` name tag; plugin resolves key at Bind)
 
 Tag any fill/stroke layer `<desc> [sapTokenName]`; set the hex below so the plugin's RGB→token match confirms it. Use the token NAME — never a raw untagged hex.
+
+> ⛔ **EXACT-MATCH RULE (the #1 cause of "BIND FAILED — raw-fill leak").** The Bind step matches a native frame's fill/stroke RGB to a token by an **exact key** (`Math.round(channel*1000)`). "Close enough" fails: a hex one digit off (e.g. `#A8B3BE` vs `#A8B3BD`, or `#F9FBFC` vs `#F5F6F7`) produces a different key and leaks. When you set `.fills`/`.strokes` on a **native frame** you MUST use one of the exact hex values in this table — nothing else binds.
+> - Compute floats as `n/255` (e.g. `#F5F6F7` → `{r:245/255, g:246/255, b:247/255}`), never eyeballed decimals like `0.98`.
+> - **Safe light fills for containers:** `#FFFFFF` (sapShellColor) · `#F5F6F7` (sapBackgroundColor) · `#E5E5E5` / `#D9D9D9` (borders) · `#A8B3BD` (sapGroup_TitleBorderColor). Use ONLY these for panels/headers/dividers.
+> - This applies to native frames only — real SAP kit instances carry their own bound variables and must never have `.fills` set (see §1 rule 1).
 
 | Token | Hex | Use |
 |---|---|---|

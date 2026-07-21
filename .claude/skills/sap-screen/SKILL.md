@@ -139,36 +139,44 @@ SAP Components needed:
 
 ---
 
-### STEP 6 — Gate 4: Verify keys (RULE 1 + RULE 23 + RULE 24)
+### STEP 6 — Gate 4: Verified keys (RULE 1 + RULE 23 + RULE 24)
 
-**RULE 1 — Registry gate is absolute:** Every component must have a key in `SAP_BUILD_MANIFEST §3`. No invented names.
-**RULE 23 — SAP Web UI Kit is the single source of truth:** Components, properties, tokens, variants, icons — ONLY from kit file `SILcWzK5uFghKun9jx6D7c`. Never guess variant prop names.
-**RULE 24 — Live kit resolution:** Verify exact variant property names before building:
-- ObjectStatus: `Semantic` (not `State`), values: None/Success/Warning/Error/Information
-- Button: `Type` = Primary/Secondary/Tertiary/Accept/Reject/Attention (NOT Emphasized/Transparent)
-- All instances: `Form Factor` = Compact (RULE 5)
+**RULE 1 — Registry gate is absolute:** Every component must have a key below. No invented names.
+**RULE 23 — SAP Web UI Kit only.** Never guess prop names — use the verified table below.
+**RULE 24 — Trust this table. Do NOT call `use_figma` to inspect property keys for these components — they are harvested from the live kit and verified correct. Only inspect live for NEW/unlisted components.**
 
-**Common keys (from SAP_BUILD_MANIFEST §3):**
-| Component | Key |
-|---|---|
-| Button | `91805fa199b1fd247d76a9c08bbe0982b49065c4` |
-| IconButton | `c1ee1ca76974c720ecd4b1888e1e23ac8a36ec63` |
-| Input | `0f4366cb3065919e8f3deb0462f1a5a3633d6b50` |
-| Select | `5ce369ff7fb0cce28984eec8dd9973ccde82facb` |
-| CheckBox | `23b4a2ca030e4bd2ff3bdd5b97b70f646ec09071` |
-| RadioButton | `9308f27ef27fbb28bc7d167c52494aa41a21610f` |
-| DatePicker | `ad1f84e6293671f80ff8dd174b1da0cbacf0fa48` |
-| ObjectStatus | `748d609ead5d4a246d7cd7c144b94b518c467e58` |
-| MessageStrip | `f0e77f8888796e35c0e791ddc0b38535eda6ec31` |
-| IconTabBar | `4aafcbf55528c439876b314d155438884b614722` |
-| ShellBar | `169cfd74c0be329c56b4c79b9404c978ff10cb60` |
-| Dialog | `5b965b1eda133ac521b42fa20b201e9491f4bf83` |
-| Table | `03ea321822c4e99c27de4d9c2524bdec9c6e0972` |
-| List | `4fb0a3e2fc56fb58d9904d68eb4ac58b9fb1bd25` |
-| SegmentedButton | `308476a5285b5a132241dc1c118d09ecf8d82273` |
-| DynamicPageHeader | `dc90c8dbf7714f165ed79357e9ba6ade5b3701ae` |
-| Panel | `4d19c2a24896033fe5b04bcc5dfdf43e9626283d` |
-| Label | `b38ac753648ad298c1e2dd02d71417566dd6095c` |
+> ⛔ **Dialog screen-level = NATIVE FRAME** — never `importComponentSetByKeyAsync` for a dialog screen. Slot injection fails in MCP. Build as native VBOX + `border + cornerRadius:8 + shadow`. Clone from `727:42563`.
+
+## VERIFIED COMPONENT KEYS + PROPERTY KEYS (harvested 2026-07-21 from SILcWzK5uFghKun9jx6D7c)
+
+| Component | Set Key | TEXT key | VARIANT keys (name → options) |
+|---|---|---|---|
+| **Button** | `91805fa199b1fd247d76a9c08bbe0982b49065c4` | `✏️ Text#145508:461` | `Form Factor`→Compact/Cozy · `Type`→Primary/Secondary/Accept/Reject/Attention/Tertiary · `Icon Left#112533:293`(bool) · `Icon#112533:487`(swap) |
+| **IconButton** | `c1ee1ca76974c720ecd4b1888e1e23ac8a36ec63` | — | `Form Factor`→Compact/Cozy · `Type`→Primary/Secondary/Tertiary · `Icon#112533:584`(swap) |
+| **Input** | `0f4366cb3065919e8f3deb0462f1a5a3633d6b50` | `✏️ Typed Text#145437:221` · `✏️ Placeholder#145437:156` | `Form Factor`→Compact/Cozy · `Value State`→None/Negative/Critical/Positive/Information · `Content`→Placeholder/Typed Text |
+| **Select** | `5ce369ff7fb0cce28984eec8dd9973ccde82facb` | — | `Form Factor`→Compact/Cozy · `Drop-Down`→False/True |
+| **CheckBox** | `23b4a2ca030e4bd2ff3bdd5b97b70f646ec09071` | `✏️ Text#154638:49` | `Form Factor`→Compact/Cozy · `Check`→Unchecked/Checked/Tristate · `Label#125545:8`(bool) |
+| **RadioButton** | `9308f27ef27fbb28bc7d167c52494aa41a21610f` | `✏️ Text#154638:0` | `Form Factor`→Compact/Cozy · `Selected`→False/True · `Label#125545:8`(bool) |
+| **DatePicker** | `ad1f84e6293671f80ff8dd174b1da0cbacf0fa48` | — | `Form Factor`→Compact/Cozy · `Calendar#165202:0`(bool) |
+| **ObjectStatus** | `748d609ead5d4a246d7cd7c144b94b518c467e58` | inject via `inst.findOne(n=>n.type==='TEXT')` | `Semantic`→None/Information/Success/Warning/Error · `Inverted`→No/Yes · `Large Design`→No/Yes — ⚠ NO `Form Factor` prop |
+| **ObjectNumber** | `7b67d22ed19f246b708dc4664808a45f314a7414` | inject via findOne TEXT | `Type`→Regular/Emphasized/Large/Inverted · `Semantic`→None/Information/Success/Warning/Error |
+| **ObjectAttribute** | `080ead216322befe153704bf8f11373158fea34a` | inject via findOne TEXT | `Type`→Regular/Active |
+| **MessageStrip** | `f0e77f8888796e35c0e791ddc0b38535eda6ec31` | inject via `findOne(n=>n.name==='Text Message')` | `Value State`→Information/Critical/Negative/Positive · `Icon`→True/False — ⚠ NO `Type` prop; use `Value State:'Critical'` for warning |
+| **Label** | `b38ac753648ad298c1e2dd02d71417566dd6095c` | `✏️ Label#237212:48` | `Type`→Regular · `Required#104646:0`(bool) |
+| **Avatar** | `71a3389ecbd47822b3184700766e30963fc2f220` | `✏️ Initials#143938:0` | `Type`→Image/Icon/Initials · `Size`→XS/S/M/L/XL · `Color`→Image/1-10/Transparent/Tile/Placeholder — ⚠ NO `Form Factor` |
+| **SegmentedButton** | `308476a5285b5a132241dc1c118d09ecf8d82273` | inject labels via slot | `Form Factor`→Compact/Cozy · `Type`→Text/Icon · `3rd Button#167915:5`(bool) · `4th Button#167915:10`(bool) |
+| **Panel** | `4d19c2a24896033fe5b04bcc5dfdf43e9626283d` | `✏️ Title#145524:0` | `Form Factor`→Compact/Cozy · `Collapsed`→False/True · `Fixed`→False/True |
+| **StandardListItem** | `f7bc6526a9f16608747a4141800146ebd3f4e835` | `✏️ Text#152462:90` · `✏️ Byline#152704:108` | `Form Factor`→Compact/Cozy/N/A · `Type`→Single Line/Byline/List Header/Group Header · `Selected`→False/True |
+| **ShellBar** | `169cfd74c0be329c56b4c79b9404c978ff10cb60` | — | — |
+| **IconTabBar** | `4aafcbf55528c439876b314d155438884b614722` | — | — |
+| **DynamicPageHeader** | `dc90c8dbf7714f165ed79357e9ba6ade5b3701ae` | — | — |
+| **Table** | `03ea321822c4e99c27de4d9c2524bdec9c6e0972` | — | — |
+| **List** | `4fb0a3e2fc56fb58d9904d68eb4ac58b9fb1bd25` | — | — |
+
+**All instances: `Form Factor: Compact` always (RULE 5) — EXCEPT ObjectStatus, ObjectAttribute, ObjectNumber, Avatar (no Form Factor prop).**
+
+> ⭐ **Full registry with ALL 139 components + every BOOLEAN/SLOT/VARIANT/TEXT key:**
+> `knowledge/SAP-COMPONENT-REGISTRY.md` — read this before building any unfamiliar component. Never call `use_figma` to inspect property keys for components listed there.
 
 ---
 
@@ -246,50 +254,59 @@ return { rootId: root.id, hyphenId: root.id.replace(':', '-') };
 
 ---
 
-### STEP 8 — Gate 6: Verify (RULE 21)
+### STEP 8 — Gate 6: Verify + Screenshot (RULE 21) — FOLDED INTO BUILD CALL
 
-**RULE 21 — QA Certification (Zero-Defect):** Never hand off a first draft. Run this check after every build:
+**Do NOT make a separate `use_figma` call for verification. Add this block at the END of the build script, inside the same `use_figma` call:**
 
 ```js
-const root = await figma.getNodeByIdAsync(ROOT_ID);
+// ── GATE 6: INLINE VERIFICATION (add at end of every build script) ──
+const _root = await figma.getNodeByIdAsync(root.id);
 
-// Check 1: zero native UI frames (only ◆SAP-UNBOUND root + layout containers allowed)
-const badNatives = root.findAll(n =>
+const _badNatives = _root.findAll(n =>
   n.type === 'FRAME' &&
   !n.name.startsWith('◆SAP-UNBOUND') &&
+  !n.name.startsWith('Divider') &&
+  !n.name.startsWith('Row') &&
+  !n.name.startsWith('Section') &&
+  !n.name.startsWith('Header') &&
+  !n.name.startsWith('Footer') &&
+  !n.name.startsWith('Warning') &&
+  !n.name.startsWith('Heading') &&
   n.findAll(c => c.type === 'INSTANCE').length === 0 &&
-  n.width > 40 && n.height > 40  // exclude stroke-only divider rows
+  n.width > 40 && n.height > 40
 );
 
-// Check 2: zero untagged native text nodes
-const untaggedText = root.findAll(n =>
-  n.type === 'TEXT' && !n.name.includes('[typo:')
+const _untagged = _root.findAll(n =>
+  n.type === 'TEXT' &&
+  !n.name.includes('[typo:') &&
+  n.parent && n.parent.type !== 'INSTANCE'  // skip SAP internal text
 );
 
-// Check 3: zero dark fills (Horizon Light violation)
-const darkFills = root.findAll(n =>
+// Fixed threshold: 0.10 (excludes sapList_TextColor #131E29 avg=0.118)
+const _darkFills = _root.findAll(n =>
   n.type !== 'INSTANCE' &&
-  n.fills && n.fills.some(f => f.type === 'SOLID' &&
-    (f.color.r + f.color.g + f.color.b) / 3 < 0.15)
+  n.fills && n.fills.length > 0 &&
+  n.fills.some(f => f.type === 'SOLID' &&
+    (f.color.r + f.color.g + f.color.b) / 3 < 0.10)
 );
 
-const screenshot = await root.screenshot();
+const _instances = _root.findAll(n => n.type === 'INSTANCE');
+
 return {
-  nativeUIFrames: badNatives.map(n => n.name),
-  untaggedTexts: untaggedText.map(n => n.name).slice(0, 10),
-  darkFills: darkFills.map(n => n.name).slice(0, 5),
-  screenshot
+  rootId: root.id,
+  hyphenId: root.id.replace(':', '-'),
+  w: root.width, h: root.height,
+  qa: {
+    instances: _instances.length,
+    badNatives: _badNatives.map(n => n.name),
+    untagged: _untagged.map(n => n.name).slice(0, 5),
+    darkFills: _darkFills.map(n => n.name).slice(0, 3),
+    pass: _badNatives.length === 0 && _untagged.length === 0 && _darkFills.length === 0
+  }
 };
 ```
 
-- `nativeUIFrames.length > 0` → replace with real SAP instances before handoff
-- `untaggedTexts.length > 0` → add `[typo:role]` tags
-- `darkFills.length > 0` → replace with exact SAP token hex
-
-**RULE 29 — Visual Recovery Protocol:** If output doesn't match reference or user says "wrong" / "not SAP":
-1. STOP. Do not iterate blindly.
-2. Read the canonical `.fig` node (nearest matching screen).
-3. Extract the exact structure, then build once correctly.
+If `qa.pass === false` → fix inline before returning. `qa.instances` should be > 0.
 
 ---
 

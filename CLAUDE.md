@@ -2,6 +2,18 @@
 
 **READ THIS FILE AT THE START OF EVERY SESSION.**
 
+> ## 📚 DOC AUTHORITY HIERARCHY (resolves the "5 single-source-of-truth" conflict — 2026-07-21)
+> Each doc is authoritative for ONE scope. No doc is "the" single source of everything. On any conflict, resolve by scope:
+> | Scope | Authoritative source |
+> |---|---|
+> | The WORKFLOW (what to do, in what order, which rules/skills apply) | `WORKFLOW-CONTRACT.md` |
+> | Gate ORDER + PASS/FAIL semantics | `skill/SYSTEM_PROMPT.md` gate sequence |
+> | Build DATA (component keys, token hexes, canonical clone nodes, name-tags) | `SAP_BUILD_MANIFEST.md` |
+> | WHERE any rule lives (a map, never restates rules) | `docs/OPERATING-MANIFEST.md` |
+> | Component / token / variant / icon truth | the live SAP Web UI Kit (RULE 23) |
+> | Canonical screen structure/patterns to clone | the gold-standard `.fig` nodes (SAP_BUILD_MANIFEST §3b) |
+> This file (CLAUDE.md) declares the hierarchy and is always loaded. When two docs seem to conflict, pick by scope above — they are not competing, they are scoped.
+
 > ⛔⛔⛔ **HARD RULE — REFERENCE IMAGE = MANDATORY WIREFRAME FIRST**
 > Whenever the user attaches a reference image (any image, screenshot, sketch, wireframe),
 > you MUST run the full Gate 0→3 pipeline and show the ASCII wireframe + L1–L5 layer tree
@@ -320,7 +332,7 @@ STEP 10 URL     — Share validated Figma URL to exact node. ⛔ MANDATORY LAST 
 10. **Build knowledge = ONE file (RULE 28)** — MCP-first build agent reads `SAP_BUILD_MANIFEST.md` ONLY + reference image or cached semantic model. NEVER read `code.js`. One-shot build: one `use_figma` call, ≤1 screenshot.
 11. **Visual analysis skill is pinned in-project (RULE 26)** — `skill/sap-visual-reading/` is the single source of truth. Global `/sap-vdi` points here.
 12. **Clone canonical, never build from scratch (RULE 28)** — For ANY SAP composite with slots: find existing correctly-built node → clone → clear slot → repopulate with fresh prototypes from ORIGINAL. Never `createFrame()` for composites. See `SAP_BUILD_MANIFEST.md §3b` for canonical nodes.
-13. **Inspect before build (RULE 28 sub-rule A)** — Call `get_design_context` on nearest working reference node BEFORE any `use_figma` call. Never skip.
+13. **Inspect before build (RULE 28 sub-rule A)** — Call `get_design_context` on nearest working reference node ONLY when: (a) the component is unknown/new, OR (b) the previous build failed. Do NOT call it before every build — for known components trust SKILL.md §6 verified keys and SAP_BUILD_MANIFEST §3 instead. Pre-call on every build wastes image+code tokens unnecessarily.
 14. **Root cause before retry (RULE 28 sub-rule G)** — Silent fail + wrong output = override inheritance or nesting depth. Identify WHY before retrying. See P-027, P-028.
 
 ---
