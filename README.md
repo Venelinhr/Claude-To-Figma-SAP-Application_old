@@ -9,7 +9,7 @@
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
 
 
-**What's inside:** Instructions, 31 Rules, Skills, a Figma plugin, and 5 MCP servers — all working together to ensure consistency and quality on every build.
+**What's inside:** Instructions, 31 Rules, 6 Skills, a Figma plugin (binds SAP tokens, runs WCAG AA a11y checks), and 5 MCP servers — all working together to ensure consistency and quality on every build.
 
 
 ## Examples — screens built by the system
