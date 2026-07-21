@@ -315,24 +315,9 @@ You can also add your own rules at any time — just tell Claude "hard rule: alw
 
 **Included in this repo:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
 
-This is the quality baseline for every build. It contains 8 real, approved SAP Fiori screens — not mockups, not examples, but pixel-accurate screens with live SAP components, correct tokens, and verified layer structure.
+The quality baseline for every build — 8 real, approved SAP Fiori screens with live components, correct tokens, and verified layer structure (not mockups). Covers the core patterns: List Report, Object Page, Dialog form, Side Navigation, FCL governance console, and log panel.
 
-**Claude uses this file automatically.** Before building any screen, Claude checks this file for the closest matching reference, reads its exact structure, and clones from it. You never start from scratch.
-
-**You can open it too.** Open the `.fig` file in Figma any time to inspect how a screen was built — what components were used, how layers are named, which tokens are applied. It's the clearest answer to "what should this look like?" for any SAP Fiori pattern.
-
-| Screen | Pattern | Confirmed |
-|--------|---------|-----------|
-| Design System Governance Console | FCL layout · SideNav · nested tables | ✅ |
-| Side Navigation | Full 20-item tree · expandable groups · active state | ✅ |
-| Schedule Operation | Dialog form · date/time fields · 4 variants | ✅ |
-| Activities View | List Report · Progress Rows · Filter Bar | ✅ "Perfect" |
-| Purchase Orders | List Report · approval actions · ObjectStatus | ✅ "Bravo" |
-| Validate System | Log panel · severity pills · SegmentedButton filter | ✅ |
-| Outage List Overview | Desktop List Report · 8 columns · status indicators | ✅ |
-| yanatest Steps | Object Page narrow · DPH · IconTabBar | ✅ "Great result!" |
-
-No private Figma access needed — the file ships with the repo and works offline. **Claude uses it automatically** — you don't need to open it. If you want to inspect a screen manually: Figma → File → Open from computer → select the `.fig` from `docs/canonical-screens/`.
+Claude uses this file automatically — before building, it finds the closest match, reads its structure, and clones from it, so you never start from scratch. It ships with the repo and works offline (no private Figma access needed). You can also download the `.fig`, open it in Figma, and point any node to the workflow as a reference — useful if a canonical is lost, needs re-linking, or you want to inspect exactly how a screen was built.
 
 
 ## Project Structure
