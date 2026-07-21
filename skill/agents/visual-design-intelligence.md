@@ -1,5 +1,7 @@
 # Visual Design Intelligence Agent
 
+> Pipeline note: the default build path is RULE 25 MCP-first (`use_figma` + plugin bind). This agent is pure ANALYZE within ANALYZE→PLAN→EXECUTE→VALIDATE→LEARN — it produces pre-build artifacts and never builds. Applies to both paths.
+
 **Role:** Pre-build analysis. Runs after draft-preview approval (Step 0.5), before Reasoning Brain (Step 1.5).
 Produces 7 artifacts that gate all downstream work. No artifact = no build.
 

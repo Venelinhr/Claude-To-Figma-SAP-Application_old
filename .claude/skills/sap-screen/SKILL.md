@@ -342,11 +342,26 @@ return {
 `qa.instances` must be > 0 — a screen with zero SAP instances is always wrong.
 
 **⛔ Gate 9 requires a `verify.json` on disk — the inline QA above is necessary but NOT sufficient.** `lint-on-stop.sh` blocks hand-off unless `output/<node>-verify.json` exists with `overallPass:true`. So after the build call, in the SAME turn:
-1. Dump the built frame tree: in a `use_figma` call, `const t = root.findAll(()=>true).map(n=>({id:n.id,type:n.type,name:n.name,fills:n.fills,fontName:n.fontName})); return JSON.stringify(t);` → write it to `output/<node>-tree.json`.
+1. Dump the built frame tree in the EXACT shape `verify-invariants.js` parses (not raw Figma paint objects). In a `use_figma` call:
+   ```js
+   function hex(p){ if(!p||p.type!=='SOLID')return null; const c=p.color, h=n=>('0'+Math.round(n*255).toString(16)).slice(-2); return '#'+h(c.r)+h(c.g)+h(c.b); }
+   function paint(p){ return { type:p.type, hex:hex(p), boundVariable: !!(p.boundVariables&&p.boundVariables.color), overridden:false }; }
+   const t = root.findAll(()=>true).concat(root).map(nd => ({
+     id:nd.id, name:nd.name, type:nd.type, visible:nd.visible!==false,
+     layoutMode:nd.layoutMode||null, childCount:(nd.children||[]).length,
+     mainComponentKey: nd.type==='INSTANCE' ? (nd.mainComponent&&nd.mainComponent.key)||'' : undefined,
+     fontFamily: nd.type==='TEXT'&&nd.fontName&&nd.fontName.family || undefined,
+     fontSize: nd.type==='TEXT'&&typeof nd.fontSize==='number' ? nd.fontSize : undefined,
+     fills: Array.isArray(nd.fills)? nd.fills.map(paint):[],
+     strokes: Array.isArray(nd.strokes)? nd.strokes.map(paint):[]
+   }));
+   return JSON.stringify(t);
+   ```
+   Write that to `output/<node>-tree.json`.
 2. Run the reality gate: `node build/verify-invariants.js output/<node>-tree.json --pre-bind --out output/<node>-verify.json`.
 3. Hand off only when `overallPass:true`. If it fails → fix the frame, re-dump, re-run (max 2 tries, per the recovery loop).
 
-This is what makes the reality gate actually run — without the `verify.json`, `lint-on-stop.sh` reports "invariant reality gate SKIPPED" and blocks the turn.
+This is what makes the reality gate actually run — without a correctly-shaped `verify.json`, `lint-on-stop.sh` reports "invariant reality gate SKIPPED" and blocks the turn.
 
 ---
 

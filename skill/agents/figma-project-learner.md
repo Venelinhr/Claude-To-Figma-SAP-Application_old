@@ -1,5 +1,7 @@
 # Figma Project Learner — Agent Spec
 
+> Pipeline note: the default build path is RULE 25 MCP-first (`use_figma` + plugin bind). This agent's role fits within ANALYZE→PLAN→EXECUTE→VALIDATE→LEARN — it is the LEARN phase (canonical-library discovery), not a build path.
+
 ## Purpose
 
 Runs when a user connects their own Figma file for the first time (or when they want to refresh their canonical library). Analyzes the project, discovers approved screens, and builds a personal canonical library in `canonical-index.json` Tier 2.

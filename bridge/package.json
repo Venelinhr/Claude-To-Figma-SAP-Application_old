@@ -1,0 +1,9 @@
+{
+  "name": "figma-builder-v2-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "bin": { "sap-bridge": "server.js" },
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
