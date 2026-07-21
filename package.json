@@ -7,7 +7,9 @@
     "validate": "node build/validate-spec.js",
     "check": "node build/check-manifest-sync.js",
     "lint": "node build/lint-mcp-frame.js",
-    "reuse-check": "node build/check-reuse-integrity.js"
+    "reuse-check": "node build/check-reuse-integrity.js",
+    "generate": "node build/generate-derived.js",
+    "drift-gate": "bash build/ci-drift-gate.sh"
   },
   "engines": {
     "node": ">=20"

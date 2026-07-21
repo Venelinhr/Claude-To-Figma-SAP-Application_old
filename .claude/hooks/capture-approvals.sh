@@ -19,6 +19,16 @@ PROMPT=$(echo "$INPUT" | jq -r '.prompt // empty' | tr '[:upper:]' '[:lower:]')
 PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 [ -n "$PROMPT" ] || exit 0
 
+# ── Architecture brief approval (Gate 0.5 — architect-first reasoning) ────────
+# DISTINCT from the wireframe approval below: requires an architecture-specific keyword so a
+# bare "approve" (which satisfies the wireframe gate) does NOT silently satisfy the architect
+# gate. The user must consciously approve the business→IA→floorplan brief.
+if echo "$PROMPT" | grep -qE "(architecture|information architecture|\bia\b|floorplan|architect brief|business statement).*(approve|approved|ok|good|yes|correct|right|proceed)" \
+   || echo "$PROMPT" | grep -qE "(approve|approved|ok|yes|looks?).*(architecture|information architecture|\bia\b|floorplan|architect brief|business statement)"; then
+  echo "{\"architectApprovedBy\":\"user-prompt\",\"at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo session)\"}" > "$PROJ/.claude/.architect-approved"
+  echo "<approval-captured marker=\".architect-approved\">User approved the architecture brief — Gate 0.5 (architect-first reasoning) is satisfied. Next present the ASCII wireframe for wireframe approval, then build. Marker clears at session end.</approval-captured>"
+fi
+
 # ── Wireframe / plan approval ────────────────────────────────────────────────
 # Short, deliberate approval phrases. Kept tight to avoid capturing incidental "ok".
 if echo "$PROMPT" | grep -qE "(^|[^a-z])(approve|approved|go ahead|build it|looks good|lgtm|ship it|proceed|yes,? build|do it|make it)([^a-z]|$)" \

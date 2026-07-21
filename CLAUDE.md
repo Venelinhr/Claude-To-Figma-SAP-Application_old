@@ -449,8 +449,23 @@ node build/validate-spec.js output/<spec>.json
 # Run regression suite
 bash build/test-build.sh
 
-# Check manifest drift
+# Check manifest drift (lint side — curated tables vs source)
 node build/check-manifest-sync.js
+
+# SSOT: regenerate derived tables from source (generate, don't duplicate)
+npm run generate          # heals manifest §4 hex / §5 typo from source
+npm run drift-gate        # FAILS if any build-data drifted (generate-side + lint-side)
+```
+
+### Single-Source-of-Truth (SSOT) — no-drift architecture (2026-07-21)
+The recurring build-data drift (same hex/key/variant in 5+ files, drifting apart) is closed structurally:
+- **Authoritative sources** (hand-edited): `knowledge/components/registry/*.json`, `knowledge/guidelines/horizon-variable-keys.json`, `build/verify-invariants.js` TYPO_ROLES.
+- **`build/generate-derived.js`** SYNCS the derived values into the hand-curated tables inside `<!-- GENERATED:… -->` fences (manifest §4 hex, §5 typo size), preserving all curation. Idempotent — `generate → generate` is a no-op.
+- **`build/ci-drift-gate.sh`** = `generate --check` (prevent) + `check-manifest-sync.js` (detect). Fails on ANY drift. Wire it as a pre-commit / CI check. Tables whose data lives in no source (TEXT-key hashes, canonical widths) are LINT-only, never generated.
+- **Rule: never hand-edit a value inside a `GENERATED` fence** — edit the source and run `npm run generate`.
+
+### Gate 0.5 — Architect-First Reasoning (2026-07-21)
+For a NEW screen from a TEXT request (no reference image, no canonical clone), the pipeline now enforces architect-first reasoning BEFORE the wireframe: **Business Statement → Information Architecture → Floorplan + rationale**, approved by the user, before any component is selected. Enforced by `guard-architect-gate.sh` (PreToolUse, runs before the wireframe gate) + `.architect-approved` marker (written only by the user's architecture-approval words via `capture-approvals.sh`, cleared per turn). Skips for canonical clones (L1–4) and repairs. Reuse `skill/agents/reasoning-brain.md` templates.
 ```
 
 ---

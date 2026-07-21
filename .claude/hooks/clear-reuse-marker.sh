@@ -16,7 +16,8 @@ fi
 # turns to pre-satisfy a later, unrelated build. capture-approvals.sh re-writes it when the user
 # approves the NEXT wireframe.
 rm -f "$PROJ/.claude/.reuse-declared" "$PROJ/.claude/.delta-spec.json" \
-      "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" 2>/dev/null
+      "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" \
+      "$PROJ/.claude/.architect-approved" 2>/dev/null
 
 # Per-session: other gate markers cleared only at an EXPLICIT SessionStart.
 # NOTE: .workflow-loaded is intentionally NOT cleared here — it is owned by load-workflow-contract.sh

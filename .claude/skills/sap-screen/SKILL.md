@@ -360,7 +360,7 @@ return {
    Write that to `output/<node>-tree.json`. **Clone-first provenance (INV 4):** if you cloned a canonical (reuse level L1–L4), set `basedOnCanonical` on the dumped root object to the cloned node id — `t.basedOnCanonical = '<canonicalId>'` — OR include a `[clone:<canonicalId>]` tag in the root frame name. A from-scratch build (L5, `.scratch-approved`) omits it.
 2. Run the reality gate. If `.reuse-declared` names a `baseCanonical`, pass it so INV 4 verifies clone provenance (otherwise INV 4 is skipped for genuine from-scratch builds):
    ```bash
-   CANON=$(node -e "try{console.log(JSON.parse(require('fs').readFileSync('.claude/.reuse-declared','utf8')).baseCanonical||'')}catch(e){}")
+   CANON=$(NO_COLOR=1 node -e "try{process.stdout.write(String(JSON.parse(require('fs').readFileSync('.claude/.reuse-declared','utf8')).baseCanonical||''))}catch(e){}" | tr -cd '0-9:-')
    node build/verify-invariants.js output/<node>-tree.json --pre-bind ${CANON:+--canonical "$CANON"} --out output/<node>-verify.json
    ```
 3. Hand off only when `overallPass:true`. If it fails → fix the frame, re-dump, re-run (max 2 tries, per the recovery loop).

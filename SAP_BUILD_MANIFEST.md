@@ -226,6 +226,7 @@ Tag any fill/stroke layer `<desc> [sapTokenName]`; set the hex below so the plug
 > - **Safe light fills for containers:** `#FFFFFF` (sapShellColor) · `#F5F6F7` (sapBackgroundColor) · `#E5E5E5` / `#D9D9D9` (borders) · `#A8B3BD` (sapGroup_TitleBorderColor). Use ONLY these for panels/headers/dividers.
 > - This applies to native frames only — real SAP kit instances carry their own bound variables and must never have `.fills` set (see §1 rule 1).
 
+<!-- GENERATED:hex4:start — hex column synced from knowledge/guidelines/horizon-variable-keys.json by build/generate-derived.js. Token selection + Use column are hand-curated; only the hex is authoritative-from-source. Do not hand-edit hexes; run: node build/generate-derived.js -->
 | Token | Hex | Use |
 |---|---|---|
 | sapBackgroundColor | `#F5F6F7` | App/page content bg |
@@ -259,6 +260,7 @@ Tag any fill/stroke layer `<desc> [sapTokenName]`; set the hex below so the plug
 | sapNegativeElementColor | `#BD2920` | Error icon |
 | sapInformativeElementColor | `#0070F2` | Information text / icon (kit has no sapInformativeTextColor — use Element) |
 | sapNeutralColor | `#788FA6` | Inactive / neutral |
+<!-- GENERATED:hex4:end -->
 
 Explicit stroke tag: `[stroke:sapTokenName]` when a border needs a different token than the fill.
 
@@ -266,6 +268,7 @@ Explicit stroke tag: `[stroke:sapTokenName]` when a border needs a different tok
 
 ## §5 — Typography role tags (`[typo:role]` on native text, family `72`)
 
+<!-- GENERATED:typo5:start — Size column synced from build/verify-invariants.js TYPO_ROLES (the enforced authority) by build/generate-derived.js. Role names + Weight + annotations are hand-curated. Do not hand-edit sizes; run: node build/generate-derived.js -->
 | Role | Size | Weight |
 |---|---|---|
 | heading | 20 | Bold |
@@ -277,6 +280,7 @@ Explicit stroke tag: `[stroke:sapTokenName]` when a border needs a different tok
 | caption | 12 | Regular |
 | tableHeader | 13 | Bold |
 | toolbarTitle | 16 | Regular |
+<!-- GENERATED:typo5:end -->
 
 ---
 
