@@ -92,14 +92,16 @@ Example: `t.name = 'Order ID [typo:labelBold] [sapLinkColor]'`
 ---
 
 ## ⛔⛔⛔ 5 MANDATORY BUILD RULES (confirmed 2026-07-19 — NEVER SKIP)
+<!-- NOTE: These are build-execution rules HR-1 through HR-5. They are distinct from
+     the 31 architectural RULEs (RULE 1–31) in the glossary below. -->
 
 ```
-RULE 1  Side padding = 32px always  (paddingLeft = paddingRight = 32 — NEVER 48)
-RULE 2  IconButtons  = Type:Tertiary always  (view/edit/delete/toolbar/nav icons)
-RULE 3  Two-line stacked text = counterAxisAlignItems:'CENTER' always  (never MIN/MAX)
-RULE 4  Dividers = stroke settings on parent frame  (NEVER createFrame() for 1px lines)
-         → node.strokeBottomWeight=1 / strokeTopWeight=1 + node.strokes=[{type:'SOLID',...}]
-RULE 5  Form Factor = Compact always  (every SAP instance — NEVER switch to Cozy to fix a11y tap-target warnings)
+HR-1  Side padding = 32px always  (paddingLeft = paddingRight = 32 — NEVER 48)
+HR-2  IconButtons  = Type:Tertiary always  (view/edit/delete/toolbar/nav icons)
+HR-3  Two-line stacked text = counterAxisAlignItems:'CENTER' always  (never MIN/MAX)
+HR-4  Dividers = stroke settings on parent frame  (NEVER createFrame() for 1px lines)
+       → node.strokeBottomWeight=1 / strokeTopWeight=1 + node.strokes=[{type:'SOLID',...}]
+HR-5  Form Factor = Compact always  (every SAP instance — NEVER switch to Cozy to fix a11y tap-target warnings)
 ```
 
 ---
@@ -1576,3 +1578,16 @@ Better to omit than to invent a wrong property name.
 - Never ask the user for information you can derive from the requirement
 - Never skip Step 3 (floorplan confirmation) even under time pressure
 ```
+
+---
+
+## Parallel authority — Figma Agent Skill
+
+`.claude/skills/sap-figma-agent/SKILL.md` carries the Figma Agent–specific rule set:
+- 12 hard rules (subset + clarifications of the rules above)
+- Canonical screens clone table (must stay in sync with §3b of `SAP_BUILD_MANIFEST.md`)
+- Component keys, token values, typography roles (must stay in sync with §3/§4/§5)
+
+**When either this file or the Figma Agent SKILL.md changes, sync the other.**
+The Figma Agent skill is the on-canvas path; this system prompt is the Claude Code CLI path.
+Both paths must enforce the same SAP standards.

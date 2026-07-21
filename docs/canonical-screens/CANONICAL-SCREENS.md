@@ -571,11 +571,7 @@ Products Inventory (1440px)
 | Inventory List Report | Screen 14 (EMA Products) | `907:46070` |
 | FCL + SideNav + Table | Screen 01 | `750:177443` |
 | Confirmation / Success state | Screen 12 | `850:45411` |
-| List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
-| Object Page (narrow) | Screen 07 (yanatest) | `560:36552` |
-| Log/Message panel | Screen 09 | `750:174814` |
-| Full desktop List Report | Screen 10 | `750:174925` |
-| FCL + SideNav + Table | Screen 01 | `750:177443` |
+| Purchase Orders List Report | Screen confirmed Jul 16 | `804:44859` |
 
 ---
 

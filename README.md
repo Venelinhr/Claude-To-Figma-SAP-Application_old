@@ -3,9 +3,9 @@
 > Describe a business screen in plain language — or attach a sketch, screenshot, or Figma reference. Claude reads official SAP guidelines, measures the reference, selects components, previews the layout as an ASCII wireframe for your approval, then builds a real SAP Fiori screen directly in Figma — real library components, live tokens, zero manual drag-and-drop. **ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN.**
 
 ![Claude to Figma](https://img.shields.io/badge/Claude_to_Figma-SAP_Application-0070F2?style=flat-square)
-![Components](https://img.shields.io/badge/SAP_Components-152-brightgreen?style=flat-square)
+![Components](https://img.shields.io/badge/SAP_Components-153-brightgreen?style=flat-square)
 ![Rules](https://img.shields.io/badge/Rules-31_mandatory-orange?style=flat-square)
-![Plugin](https://img.shields.io/badge/Plugin-2%2C391_LOC-purple?style=flat-square)
+![Plugin](https://img.shields.io/badge/Plugin-2%2C420_LOC-purple?style=flat-square)
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
 
 
@@ -13,7 +13,7 @@
 |------|--------------|
 | **Instructions** | The 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
 | **31 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
-| **Skills** | 6 invokable skills — each packages a full pipeline stage or repair task into a single command |
+| **Skills** | 4 invokable skills (`/sap-figma-agent`, `/sap-fix`, `/sap-spec-validate`, `/sap-registry-update`) + 2 internal pipeline skills (`/sap-vdi`, `/sap-bind`) |
 | **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
 | **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
 
@@ -314,7 +314,7 @@ You can also add your own rules at any time — just tell Claude "hard rule: alw
 
 **Included in this repo:** `docs/canonical-screens/Claude to Figma SAP Application.fig`
 
-The quality baseline for every build — 8 real, approved SAP Fiori screens with live components, correct tokens, and verified layer structure (not mockups). Covers the core patterns: List Report, Object Page, Dialog form, Side Navigation, FCL governance console, and log panel.
+The quality baseline for every build — 14 real, approved SAP Fiori screens with live components, correct tokens, and verified layer structure (not mockups). Covers the core patterns: List Report, Object Page, Dialog form, Side Navigation, FCL governance console, and log panel.
 
 Claude uses this file automatically — before building, it finds the closest match, reads its structure, and clones from it, so you never start from scratch. It ships with the repo and works offline (no private Figma access needed). You can also download the `.fig`, open it in Figma, and point any node to the workflow as a reference — useful if a canonical is lost, needs re-linking, or you want to inspect exactly how a screen was built.
 
@@ -327,7 +327,7 @@ Claude uses this file automatically — before building, it finds the closest ma
 ├── SAP_BUILD_MANIFEST.md           ← the ONLY file a build reads (~2k tokens)
 ├── skill/
 │   ├── SKILL.md + SYSTEM_PROMPT.md ← 31 RULEs + 80-token whitelist
-│   ├── agents/                     ← 8 specialized agents
+│   ├── agents/                     ← 9 specialized agents
 │   ├── sap-visual-reading/         ← VDI skill: 8 stages + sector-analysis
 │   └── references/                 ← figma-build-patterns, canonical-similarity-rubric
 ├── plugin/figma-builder/

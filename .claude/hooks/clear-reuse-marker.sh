@@ -16,6 +16,6 @@ rm -f "$PROJ/.claude/.reuse-declared" "$PROJ/.claude/.delta-spec.json" 2>/dev/nu
 
 # Per-session: gate markers cleared only at an EXPLICIT SessionStart.
 if [ "$EVENT" = "SessionStart" ]; then
-  rm -f "$PROJ/.claude/.inspect-done" "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.canonical-selected" "$PROJ/.claude/.workflow-loaded" 2>/dev/null
+  rm -f "$PROJ/.claude/.inspect-done" "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.canonical-selected" "$PROJ/.claude/.workflow-loaded" "$PROJ/.claude/.scratch-approved" "$PROJ/.claude/.agent-turn1" 2>/dev/null
 fi
 exit 0

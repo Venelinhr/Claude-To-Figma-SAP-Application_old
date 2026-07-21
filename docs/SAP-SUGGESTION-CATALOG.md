@@ -6,6 +6,10 @@
 > suggestion below with a one-line rationale. The user approves wireframe + suggestions
 > together, then the build proceeds.
 >
+> **Note:** Gate 3 (wireframe approval) applies to **Claude Code CLI builds only**. The
+> Figma AI Agent (blue button in Figma) uses this catalog proactively without a gate —
+> it surfaces suggestions before executing, but does not require explicit wireframe approval.
+>
 > This doc is a CATALOG, not a rulebook. Each entry points to the RULE that already enforces
 > it — nothing here is restated. Execution recipes are NOT here; see RULE 28 (clone-canonical)
 > and `docs/REPAIR-PATTERNS.md`. User intent always wins — these are recommendations, not blocks.

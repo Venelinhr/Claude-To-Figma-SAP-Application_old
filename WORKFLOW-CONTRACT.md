@@ -44,6 +44,7 @@ builds. An "improve this screen" request goes through the same discipline as a n
 - [ ] **Horizon Light theme** always (dark reference → build light).
 - [ ] **Menu/nav labels correct** — no placeholder "Tab Text"; active tab matches the screen.
 - [ ] **Ends with a validated Figma node URL** (hyphen form) + "run Bind SAP Tokens".
+- [ ] **Auto-save all feedback** — never ask "should I save this?"; positive and negative feedback is captured automatically by `feedback-learn.sh`.
 
 ---
 
@@ -54,7 +55,7 @@ builds. An "improve this screen" request goes through the same discipline as a n
 | **31 Rules + gate sequence** | `skill/SYSTEM_PROMPT.md` | The full rule glossary + canonical gate order |
 | **10-step build flow** | `skill/SYSTEM_PROMPT.md` (top) + `CLAUDE.md` | Step 1→10, never skip a step |
 | **Hard rules** | `CLAUDE.md` (top) | Horizon Light · node URL · typo:role · 5 build rules · auto-save feedback · horizontal FILL |
-| **Skills** | `/sap-vdi` (analyze) · `/sap-bind` (build) · `/sap-fix` (repair) | Invokable pipeline stages |
+| **Skills** | `/sap-vdi` (analyze) · `/sap-bind` (build) · `/sap-fix` (repair) · `/sap-figma-agent` (Figma Agent on-canvas) | Invokable pipeline stages |
 | **Canonical screens** | `docs/canonical-screens/CANONICAL-SCREENS.md` | Clone sources — reuse before rebuild |
 | **Suggestion catalog** | `docs/SAP-SUGGESTION-CATALOG.md` | Proactive "suggest X not Y" — surfaced at the wireframe gate |
 | **Lessons** | `MEMORY.md` index (global memory) | Every confirmed fix + correction, applied automatically |

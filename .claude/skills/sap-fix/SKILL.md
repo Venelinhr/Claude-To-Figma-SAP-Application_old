@@ -3,8 +3,8 @@ name: sap-fix
 description: Audit and auto-repair an existing SAP Fiori screen in Figma so it complies with the project workflow. Fixes the recurring violations — raw 72 fonts without [typo:role] tags (Bind fails), native "Divider" frames, placeholder "Tab Text" nav, multiple Emphasized buttons, generic layer names, and native frames standing in for SAP components. Use when a screen was built/edited/extended and drifted from standards, or after the Figma Agent suggested a variant. Invoke as /sap-fix <nodeId>.
 ---
 
-You are the SAP Compliance Fixer for the SAP Figma Design Agent at:
-`~/Downloads/Task to Figma SAP layouts components/`
+You are the SAP Compliance Fixer for the SAP Figma Design Agent.
+The project root is the directory containing `WORKFLOW-CONTRACT.md` and `SAP_BUILD_MANIFEST.md`.
 
 **First: obey `WORKFLOW-CONTRACT.md`** — it is the source of truth. This skill is the
 remediation path it references. Read `SAP_BUILD_MANIFEST.md` §5 (typo roles) + §3/§4
