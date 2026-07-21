@@ -157,7 +157,7 @@ export const REGION_PATTERNS = {
     description: 'Main call-to-action button (Save, Submit, Create)',
     visualCues: ['filled background', 'high-contrast text', 'prominent placement'],
     confidence: 'high',
-    notes: 'Use type="Emphasized". One per screen — never multiple Emphasized buttons.',
+    notes: 'Use kit Type="Primary". One per screen — never multiple Primary buttons.',
     intent: 'primary-action',
   },
   'secondary-action': {
@@ -166,7 +166,7 @@ export const REGION_PATTERNS = {
     description: 'Supporting action (Cancel, Export, Back)',
     visualCues: ['outlined or transparent', 'left of primary action'],
     confidence: 'high',
-    notes: 'Use type="Default" or "Transparent".',
+    notes: 'Use kit Type="Secondary" (or "Tertiary" for toolbar/inline actions).',
     intent: 'secondary-action',
   },
   'destructive-action': {
@@ -175,7 +175,7 @@ export const REGION_PATTERNS = {
     description: 'Action that deletes or destroys data',
     visualCues: ['red color', 'often paired with confirmation dialog'],
     confidence: 'high',
-    notes: 'Use type="Negative". Always confirm via Dialog before executing.',
+    notes: 'Use kit Type="Reject" (destructive/negative). Always confirm via Dialog before executing.',
     intent: 'destructive',
   },
   'icon-action': {

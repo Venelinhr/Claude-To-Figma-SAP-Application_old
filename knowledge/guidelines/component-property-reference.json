@@ -2,7 +2,7 @@
   "_meta": {
     "description": "Single lookup table: component → variant properties + allowed values + defaults. Generated from knowledge/components/registry/*.json. Do NOT edit manually — re-run generate-property-reference.js.",
     "source": "knowledge/components/registry/*.json",
-    "generated": "2026-07-13",
+    "generated": "2026-07-21",
     "components": 152
   },
   "AIButton": {
@@ -666,22 +666,14 @@
     "variantProperties": {
       "Type": {
         "values": [
-          "Default",
-          "Emphasized",
+          "Primary",
+          "Secondary",
           "Accept",
           "Reject",
-          "Negative",
-          "Critical",
-          "Success",
           "Attention",
-          "Transparent",
-          "Ghost",
-          "Unstyled",
-          "Back",
-          "Up",
-          "Neutral"
+          "Tertiary"
         ],
-        "default": "Default",
+        "default": "Secondary",
         "ui5Property": "type"
       },
       "Form Factor": {
@@ -2047,12 +2039,14 @@
       },
       "Type": {
         "values": [
-          "Default",
-          "Emphasized",
-          "Transparent",
-          "Ghost"
+          "Primary",
+          "Secondary",
+          "Accept",
+          "Reject",
+          "Attention",
+          "Tertiary"
         ],
-        "default": "Transparent",
+        "default": "Tertiary",
         "ui5Property": "type"
       },
       "Interaction State": {
@@ -2975,11 +2969,14 @@
       },
       "Type": {
         "values": [
-          "Default",
-          "Emphasized",
-          "Transparent"
+          "Primary",
+          "Secondary",
+          "Accept",
+          "Reject",
+          "Attention",
+          "Tertiary"
         ],
-        "default": "Default",
+        "default": "Secondary",
         "ui5Property": "type"
       },
       "Button Mode": {
@@ -4962,15 +4959,14 @@
       },
       "Type": {
         "values": [
-          "Default",
-          "Emphasized",
-          "Attention",
+          "Primary",
+          "Secondary",
           "Accept",
           "Reject",
-          "Transparent",
-          "Ghost"
+          "Attention",
+          "Tertiary"
         ],
-        "default": "Default",
+        "default": "Secondary",
         "ui5Property": "type"
       },
       "Interaction State": {

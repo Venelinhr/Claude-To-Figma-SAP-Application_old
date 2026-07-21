@@ -183,6 +183,34 @@ try {
   ok(`variant guard: ${variantChecked} variant group(s) scanned across registry`);
 } catch (e) { warn(`variant guard skipped: ${e.message}`); }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// MCP-MAPPING VOCAB GUARD (added 2026-07-21 — audit fix C3). The registry variant
+// guard above scans only registry/*.json, but the application-analysis MCP's
+// region→component mapping (region-patterns.js) also tells the agent which Button
+// Type to use. It was emitting UI5 vocab (type="Emphasized"/"Transparent"/
+// "Negative") that the registry now forbids — regenerating the exact drift from an
+// unguarded upstream source. Scan any `type="..."` / `Type="..."` string in the MCP
+// mapping files for the forbidden UI5 Button vocabulary.
+const MCP_VOCAB_FILES = [
+  path.join(ROOT, 'mcp-servers', 'application-analysis', 'region-patterns.js'),
+];
+const FORBIDDEN_BUTTON_VOCAB = ['Emphasized', 'Transparent', 'Ghost', 'Negative', 'Default'];
+let mcpScanned = 0;
+for (const file of MCP_VOCAB_FILES) {
+  if (!fs.existsSync(file)) continue;
+  const txt = fs.readFileSync(file, 'utf8');
+  mcpScanned++;
+  const typeRe = /\b[Tt]ype\s*=\s*["']([A-Za-z]+)["']/g;
+  let tm;
+  while ((tm = typeRe.exec(txt)) !== null) {
+    if (FORBIDDEN_BUTTON_VOCAB.includes(tm[1])) {
+      fail(`MCP vocab ${path.basename(file)}: type="${tm[1]}" is UI5 Button vocabulary, not a live-kit Type value — the mapping would feed the agent a value that setProperties rejects. Use kit Type (Primary/Secondary/Accept/Reject/Attention/Tertiary).`);
+      hardFail++;
+    }
+  }
+}
+if (mcpScanned) ok(`MCP-mapping vocab guard: ${mcpScanned} mapping file(s) scanned`);
+
 if (hardFail > 0) { fail('DRIFT: component-key / token-hex / variant-value mismatch — regenerate SAP_BUILD_MANIFEST.md §3/§4 + code.js MANDATORY_TOKENS from source, and fix forbidden variant values in the registry.'); process.exit(1); }
 ok('manifest in sync with registry + token sources');
 process.exit(0);

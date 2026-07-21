@@ -234,10 +234,17 @@ function main() {
     const nm = checkName(n, args.preBind); if (nm) fails.push({ id: n.id, name: n.name, ...nm });
   }
 
-  // INV 4 provenance (only when a canonical was declared applicable)
+  // INV 4 provenance (only when a canonical was declared applicable via --canonical,
+  // sourced from .reuse-declared baseCanonical). The MCP-first builder cannot call
+  // setPluginData on the live node (plugin-sandbox-only), but it DOES control the
+  // JSON tree dump — so provenance is proven by a `basedOnCanonical` field on the
+  // dumped root (set by the builder to the cloned node id) OR a matching name tag
+  // `[clone:<id>]`. This makes INV4 actually enforceable on the default path
+  // instead of silently passing every rebuilt-from-scratch frame.
   if (args.canonical) {
-    const prov = rootNode && (rootNode.basedOnCanonical || rootNode.pluginData?.basedOnCanonical);
-    if (!prov) fails.push({ id: rootNode?.id, name: rootNode?.name, verdict: 'FAIL_NO_PROVENANCE', invariant: 4, why: `canonical ${args.canonical} was applicable but frame carries no basedOnCanonical provenance (clone-first, RULE 28/31)` });
+    const nameTag = rootNode && typeof rootNode.name === 'string' && /\[clone:[^\]]+\]/.test(rootNode.name);
+    const prov = rootNode && (rootNode.basedOnCanonical || rootNode.pluginData?.basedOnCanonical || nameTag);
+    if (!prov) fails.push({ id: rootNode?.id, name: rootNode?.name, verdict: 'FAIL_NO_PROVENANCE', invariant: 4, why: `canonical ${args.canonical} was declared applicable (.reuse-declared) but the frame carries no clone provenance — add "basedOnCanonical":"${args.canonical}" to the dumped root or a [clone:${args.canonical}] name tag (clone-first, RULE 28/31)` });
   }
 
   summary.fails = fails.length;

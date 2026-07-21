@@ -1721,8 +1721,12 @@ const SKIP_SELF = new Set([
   // components with their own handlers; skipping them lost content).
   // Column and ColumnListItem stay in SKIP_SELF — they are consumed by their
   // parent Table handler (line ~7440), not rendered standalone.
+  // 2026-07-21 · added 'FilterBar' — keyless layout wrapper (per
+  // keyless-components-allowlist.json layoutWrappers); its filter-field children
+  // render, the wrapper frame is native. Fixes "VALIDATOR ACCEPTS BUT NO RUNTIME
+  // PATH" consistency failure (validator already allows it via VALIDATOR_EXPLICIT).
   'DynamicPage','Page','ObjectPageLayout','FlexibleColumnLayout',
-  'FlexBox','HBox','VBox','Column','ColumnListItem',
+  'FlexBox','HBox','VBox','Column','ColumnListItem','FilterBar','IconTabFilter',
 ]);
 
 

@@ -37,10 +37,11 @@
     "layoutModeNot": "NONE",
     "minChildren": 1
   },
+  "_forbiddenComment": "A FRAME carrying one of these names is a fake stand-in for a REAL keyed SAP component → FAIL_FAKE_COMPONENT. DynamicPage/FilterPage etc. are intentionally NOT here: they are keyless layout wrappers (see keyless-components-allowlist.json layoutWrappers) and are built as native frames by design. Only names of components that HAVE a figmaComponentId belong here.",
   "forbiddenContainerNames": [
     "ShellBar", "Button", "Table", "Input", "Select", "ObjectStatus",
     "ObjectNumber", "ObjectAttribute", "IconTabBar", "DynamicPageHeader",
-    "DynamicPage", "FilterBar", "MessageStrip", "CheckBox", "RadioButton",
+    "MessageStrip", "CheckBox", "RadioButton",
     "DatePicker", "SegmentedButton", "MenuButton", "IconButton", "Avatar",
     "Link", "List", "StandardListItem", "Panel", "Toolbar", "Dialog", "Calendar"
   ]

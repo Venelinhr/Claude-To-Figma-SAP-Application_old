@@ -68,7 +68,7 @@
         ],
         "referenceImage": "docs/canonical-screens/02-schedule-operation-form.png",
         "specFile": "docs/canonical-screens/02-schedule-operation-form.md",
-        "figNode": "750:174190"
+        "figNode": "727:42563"
       },
       {
         "id": "shipped-schedule-op-monthly-end",
