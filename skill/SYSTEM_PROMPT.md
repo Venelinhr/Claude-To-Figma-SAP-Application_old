@@ -114,6 +114,11 @@ User confirmed 2026-07-19: "great workflow and rules! DO not skip any of these!"
 
 ```
 STEP 1  Receive requirement (screenshot / ticket / description)
+STEP 1.5 Gate 0.5 — TEXT requests only (no reference image, no canonical clone): architect-first
+        reasoning BEFORE components — Intent Card + Business Entity Model → Layout Blueprint (IA) →
+        Screen Classification (floorplan chosen FROM the IA + rationale) → USER APPROVES the
+        architecture brief. Enforced by guard-architect-gate.sh (.architect-approved). Artifacts
+        live in skill/agents/reasoning-brain.md. Image requests skip this (Gate 0/VDI covers it).
 STEP 2  Gate 0 — Analyze reference via VDI sector-by-sector. Map every element to real SAP component.
 STEP 3  Gate 1 — Search canonical screens first. If match exists → CLONE. Never rebuild from scratch.
 STEP 4  Gate 2 — Measure width. Never default without checking. User override always wins.

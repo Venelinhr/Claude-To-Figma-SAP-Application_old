@@ -31,8 +31,19 @@ Project root: `/Users/C5408360/Downloads/Task to Figma SAP layouts components/`
 
 ## STEP 1 — Parse input
 Extract: reference (image / description / ticket), target Figma fileKey (from URL), any width or content hints.
-- **If a reference IMAGE is provided** → STEP 2 runs visual VDI.
-- **If only a description/ticket (no image)** → STEP 2 runs entity-based analysis (derive regions from described entities + workflow; skip pixel measurement, go straight to floorplan selection).
+- **If a reference IMAGE is provided** → STEP 2 runs visual VDI (the image carries the architecture).
+- **If only a description/ticket (no image)** → run **STEP 1.5 (Gate 0.5 — architect-first) FIRST**, then STEP 2.
+
+## STEP 1.5 — Gate 0.5: Architect-first reasoning (TEXT requests only · architect-first, 2026-07-22)
+For a text/ticket request (no image, no canonical clone), act as a Senior SAP Product Designer and
+present an **architecture brief** BEFORE any component is chosen — then WAIT for the user to approve it
+(`guard-architect-gate.sh` blocks the build until `.architect-approved`; approve with words like
+"architecture approved" / "floorplan approved"). Produce, in order (templates in
+`skill/agents/reasoning-brain.md` — do not reinvent):
+1. **Business Statement** — Intent Card + Business Entity Model: the problem, primary user + task, key decision, required data/objects, outcome. Flag any missing critical info; don't assume.
+2. **Information Architecture** — Layout Blueprint region tree (header / nav / filter / primary / supporting / actions / footer / dialogs), reading order, progressive disclosure — BEFORE naming SAP components.
+3. **Floorplan + rationale** — Screen Classification: the ONE SAP Fiori floorplan the IA implies, and WHY (not a default). This is an OUTPUT of the IA, not an up-front pick.
+→ On architecture approval, continue to STEP 2. Then STEP 3 (canonical search) may still redirect to a clone — architect reasoning does not override clone-first. Skips automatically for image requests, canonical clones (`.reuse-declared` L1–4), and repairs.
 
 ---
 

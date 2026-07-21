@@ -464,8 +464,10 @@ The recurring build-data drift (same hex/key/variant in 5+ files, drifting apart
 - **`build/ci-drift-gate.sh`** = `generate --check` (prevent) + `check-manifest-sync.js` (detect). Fails on ANY drift. Wire it as a pre-commit / CI check. Tables whose data lives in no source (TEXT-key hashes, canonical widths) are LINT-only, never generated.
 - **Rule: never hand-edit a value inside a `GENERATED` fence** — edit the source and run `npm run generate`.
 
-### Gate 0.5 — Architect-First Reasoning (2026-07-21)
-For a NEW screen from a TEXT request (no reference image, no canonical clone), the pipeline now enforces architect-first reasoning BEFORE the wireframe: **Business Statement → Information Architecture → Floorplan + rationale**, approved by the user, before any component is selected. Enforced by `guard-architect-gate.sh` (PreToolUse, runs before the wireframe gate) + `.architect-approved` marker (written only by the user's architecture-approval words via `capture-approvals.sh`, cleared per turn). Skips for canonical clones (L1–4) and repairs. Reuse `skill/agents/reasoning-brain.md` templates.
+### Gate 0.5 — Architect-First Reasoning (2026-07-21; artifacts reordered 2026-07-22)
+For a NEW screen from a TEXT request (no reference image, no canonical clone), the pipeline now enforces architect-first reasoning BEFORE the wireframe: **Business Statement → Information Architecture → Floorplan + rationale**, approved by the user, before any component is selected. Enforced by `guard-architect-gate.sh` (PreToolUse, runs before the wireframe gate) + `.architect-approved` marker (written only by the user's architecture-approval words via `capture-approvals.sh`, cleared per turn). Skips for canonical clones (L1–4) and repairs.
+
+The brief REUSES the 7 reasoning-brain artifacts in architect-first order (single source: `skill/agents/reasoning-brain.md` — do not restate): Intent Card + Business Entity Model (Ph1–2) → Layout Blueprint = IA (Ph3) → Screen Classification = floorplan chosen FROM the IA (Ph4) → **approve** → Component Planning Table (Ph5) + Relationship Graph (Ph6) at the wireframe → Composition Pre-check (Ph7) pre-build. The floorplan is an OUTPUT of the IA, never defaulted up front. Image requests keep the Gate 0 (VDI) flow unchanged.
 ```
 
 ---

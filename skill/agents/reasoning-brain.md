@@ -18,20 +18,34 @@ This agent produces 7 mandatory artifacts. None are optional. The pipeline does 
 
 ## When to Run
 
-After:
-- ✓ Step 0.5 has produced a region map (RULE 17)
-- ✓ Step 2 floorplan has been confirmed by the user (RULE 3)
-- ✓ ASCII wireframe has been approved (RULE 19)
+**Two entry points, by request type:**
 
-Before:
-- Step 4 (component hierarchy design)
-- Any spec JSON generation
+**A. TEXT request (business request / user story / feature text — NO reference image, NO canonical clone) — ARCHITECT-FIRST (2026-07-22):**
+This agent runs **FIRST**, before the floorplan is chosen and before the wireframe. The
+floorplan is an **OUTPUT** of this reasoning (Artifact 3 — Screen Classification), never a
+precondition. Order:
+- Artifacts 1→2 (Intent Card + Business Entity Model) — understand the business + requirements
+- Artifact 4 (Layout Blueprint / region tree) — the information architecture, BEFORE components
+- Artifact 3 (Screen Classification) — the SAP floorplan, chosen from the IA + a rationale
+- → present this **architecture brief** and get USER APPROVAL (Gate 0.5, `guard-architect-gate.sh`
+  writes `.architect-approved` only from the user's approval words)
+- Artifacts 5→7 (Component Planning, Relationship Graph, Composition Pre-check) then accompany
+  the ASCII wireframe (Gate 3) and pre-build check.
+
+**B. IMAGE / reference request — VDI-first (unchanged):**
+The reference image carries the architecture; VDI (Gate 0) reads it. This agent runs at
+Stage 1.5 as before:
+- After: Step 0.5 region map (RULE 17) · Step 2 floorplan confirmed (RULE 3) · wireframe approved (RULE 19)
+- Before: Step 4 (component hierarchy) · any spec JSON generation
+
+**Both paths produce all 7 artifacts. None optional.** The pipeline does not build until they
+are complete and the relevant gate (0.5 for text, 3 for image) is approved.
 
 ---
 
 ## Artifact 1 — Intent Card
 
-Before looking at any component, answer these 8 questions:
+Before looking at any component, answer these 8 questions: (Ph1 — understand the business)
 
 1. **Application:** What is this system called? What does it do?
 2. **Problem:** What pain does it solve for the user?
@@ -89,6 +103,8 @@ ENTITY MODEL
 
 ## Artifact 3 — Screen Classification
 
+> **Architect-first (text):** this is where the **SAP floorplan is chosen — from the IA (Artifact 4), with a rationale.** It is not confirmed up front; it falls out of the information architecture. (Ph4 — select the floorplan)
+
 Classify the screen type before choosing a floorplan. Screen type and floorplan are distinct: type is conceptual, floorplan is the SAP implementation pattern.
 
 **The 14 screen types:**
@@ -123,6 +139,8 @@ Rationale: [why this type and not the alternatives]
 
 ## Artifact 4 — Layout Blueprint
 
+> **Architect-first (text):** this is the **information architecture — the region tree, reading order, progressive disclosure — produced BEFORE any SAP component is named** and before the floorplan (Artifact 3). (Ph3 — information architecture)
+
 Create the structural skeleton BEFORE assigning SAP components. This is a pure geometry exercise: named containers with proportions, nesting, and directional layout.
 
 **Rules:**
@@ -151,6 +169,8 @@ Spatial confidence: [HIGH/MEDIUM/LOW for key dimensions]
 ---
 
 ## Artifact 5 — Component Planning Table
+
+> Accompanies the ASCII wireframe (Gate 3), AFTER the architecture brief is approved. (Ph5 — map requirements to SAP components; justify each by the user's task, never by resemblance)
 
 Map every region in the Layout Blueprint to its SAP component with an explicit confidence score. Confidence thresholds determine whether to instantiate immediately or evaluate alternatives.
 
@@ -200,6 +220,8 @@ RELATIONSHIP GRAPH
 ---
 
 ## Artifact 7 — Composition Pre-check
+
+> Runs pre-build (Gate 4/5). (Ph7 — validate: every requirement represented, every task has a workflow, SAP best practices + a11y hold, layout scalable — revise before building if a better composition exists)
 
 For every parent-child pair in the Relationship Graph, verify the pair is allowed per the registry's `composition.validParents` / `composition.validChildren` rules.
 
