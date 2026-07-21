@@ -31,7 +31,7 @@ Plan → Validate plan → Build (real SAP instances) → QA → Self-repair →
 → Authoritative source: `SYSTEM_PROMPT.md` "Your pipeline" Step 0–7 · RULE 28 (ANALYZE→PLAN→EXECUTE) · RULE A (Inspect Before Build) · Blocked Behaviors table · `docs/V2-REASONING-PIPELINE.md`
 → Analysis method: `skill/sap-visual-reading/SKILL.md` (8 stages) · RULE 17 (divide-and-conquer) · RULE 18 (spatial reconstruction)
 → Reference reading: **sector-based** — divide into labeled sectors A/B/C…, analyze one at a time (A→B→C), local recommendation per sector, then merge (`skill/sap-visual-reading/sector-analysis.md`). VDI skill step, not a rule.
-→ Measure width FIRST (RULE 30): read the reference's pixel width before building; default 1440; snap-suggest 375/768/1440 when close; an explicit user width always wins (`SAP_BUILD_MANIFEST.md` §1b).
+→ Measure width FIRST (RULE 30): read the reference's pixel width before building; an explicit user width always wins. Values (default + snap targets) live in `SAP_BUILD_MANIFEST.md` §1b — do not restate them here.
 
 ---
 
@@ -102,7 +102,7 @@ Acceptable **only if all** are true:
 | Pick which ref to clone | `skill/references/canonical-similarity-rubric.md` |
 | Pipeline stages | `docs/V2-REASONING-PIPELINE.md` |
 | Analysis method | `skill/sap-visual-reading/SKILL.md` + `sector-analysis.md` (sector-based A→B→C) |
-| Measure reference width | RULE 30 → `SAP_BUILD_MANIFEST.md` §1b (default 1440; snap 375/768/1440) |
+| Measure reference width | RULE 30 → `SAP_BUILD_MANIFEST.md` §1b |
 | Canonical Pattern Library (reuse-first) | RULE 31 → `skill/references/canonical-index.json` + `skill/references/delta-spec-schema.json` |
 | Learn from user's Figma file | `skill/agents/figma-project-learner.md` (/sap-learn) |
 | Repair / learning | `docs/REPAIR-PATTERNS.md` |
@@ -113,4 +113,4 @@ Acceptable **only if all** are true:
 | Workflow compliance contract | `WORKFLOW-CONTRACT.md` (root) — loaded at SessionStart by `load-workflow-contract.sh` |
 | Gate enforcement hooks | `guard-wireframe-gate.sh` (Gate 3) · `guard-reuse-gate.sh` (Gate 1) · `guard-figma-code.sh` (Gate 5) · `guard-manifest-drift.sh` (Gate 4) · `enforce-wireframe-first.sh` (UserPromptSubmit) |
 
-**System state (verify before quoting):** 31 RULEs · 9 agents · 14+ canonical screens · 153 components · 154 guidelines · MCP-first default (RULE 25).
+**System state (verify before quoting):** 31 RULEs · 9 agents · 14+ canonical screens · 152 components · 155 guidelines · MCP-first default (RULE 25).

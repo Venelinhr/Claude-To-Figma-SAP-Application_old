@@ -6,7 +6,7 @@
   "componentCategory": "Button",
   "supportedVariants": [
     { "property": "Form Factor",       "values": ["Compact","Cozy"], "default": "Compact" },
-    { "property": "Type",              "ui5Property": "type",   "values": ["Default","Emphasized","Attention","Accept","Reject","Transparent","Ghost"], "default": "Default" },
+    { "property": "Type",              "ui5Property": "type",   "figmaNote": "Live Figma Web UI Kit variant values (NOT UI5 API vocabulary). UI5 'Emphasized'→kit 'Primary'; 'Transparent'/'Ghost'/'Default' are not kit values.", "values": ["Primary","Secondary","Accept","Reject","Attention","Tertiary"], "default": "Secondary" },
     { "property": "Interaction State", "values": ["Regular","Hover","Focused","Active","Disabled"], "default": "Regular" }
   ],
   "supportedProperties": [

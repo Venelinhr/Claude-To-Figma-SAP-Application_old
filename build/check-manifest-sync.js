@@ -71,6 +71,33 @@ while ((m = tokRe.exec(md)) !== null) {
   }
 }
 
+// ── SYSTEM_PROMPT RULE 25 hex table cross-check ─────────────────────
+// (added 2026-07-21 — audit fix #2). RULE 25 carries a SECOND hex table that
+// agents are told to copy verbatim ("use ONLY the exact hex"). It was never
+// diffed against source, so sapPositiveTextColor/sapCriticalTextColor forked to
+// wrong greens/oranges invisibly. Diff every RULE 25 row token against the same
+// horizon source. Rows are 3-col: | label | `sapToken` | `#HEX` |. A token not
+// in source is skipped (curated alt); a present token with a different hex is a
+// HARD FAIL (it produces a wrong-but-close fill on fallback / a bind mismatch).
+const SYS_PROMPT = path.join(ROOT, 'skill', 'SYSTEM_PROMPT.md');
+if (fs.existsSync(SYS_PROMPT)) {
+  const sp = fs.readFileSync(SYS_PROMPT, 'utf8');
+  const spRe = /^\|[^|]*\|\s*`(sap[A-Za-z0-9_]+)`\s*\|\s*`(#[0-9A-Fa-f]{6})`\s*\|/gm;
+  let sm; const seen = new Set();
+  while ((sm = spRe.exec(sp)) !== null) {
+    const [, name, spHex] = sm;
+    if (seen.has(name + spHex)) continue; seen.add(name + spHex);
+    const src = tok[name];
+    if (!src || typeof src !== 'object') continue; // curated alt / not in source
+    const srcHex = (src.hex || '').toUpperCase();
+    if (srcHex && srcHex !== spHex.toUpperCase()) {
+      fail(`RULE25 ${name}: SYSTEM_PROMPT ${spHex} ≠ source ${srcHex} — RULE 25 mandates the exact source hex; fix skill/SYSTEM_PROMPT.md.`);
+      hardFail++;
+    }
+    checked++;
+  }
+}
+
 // ── code.js leg ──────────────────────────────────────────────────────
 // The plugin runtime reads SAP_KEYS + MANDATORY_TOKENS from code.js. A stale
 // SAP_KEYS entry there hard-breaks importComponentSetByKeyAsync at build time,
@@ -123,6 +150,39 @@ if (fs.existsSync(CODE_JS)) {
 }
 
 console.log(`\n── manifest sync: ${checked} entries checked, ${hardFail} hard fail(s), ${warnCount} warning(s) ──`);
-if (hardFail > 0) { fail('DRIFT: component-key or token-hex mismatch — regenerate SAP_BUILD_MANIFEST.md §3/§4 + code.js MANDATORY_TOKENS from source.'); process.exit(1); }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VARIANT-VALUE GUARD (added 2026-07-21 — audit fix #1). The registry stores
+// live Figma Web UI Kit variant values, NOT UI5 API vocabulary. UI5 tokens like
+// "Emphasized"/"Transparent"/"Ghost"/"Default"/"Negative" are NOT valid kit
+// variant values — setProperties() throws on them, silently producing non-SAP
+// output. This scans EVERY registry component's supportedVariants and hard-fails
+// on any forbidden UI5 token, so the Button.json-style drift cannot recur across
+// the ~42 files that carry ui5Property variant lists. A component that genuinely
+// needs one of these words can whitelist it via "figmaNote" containing
+// "kit-verified:<Value>".
+const FORBIDDEN_KIT_VARIANTS = ['Emphasized', 'Transparent', 'Ghost', 'Unstyled'];
+let variantChecked = 0;
+try {
+  for (const f of fs.readdirSync(REGISTRY)) {
+    if (!f.endsWith('.json')) continue;
+    let reg; try { reg = JSON.parse(fs.readFileSync(path.join(REGISTRY, f), 'utf8')); } catch { continue; }
+    const variants = Array.isArray(reg.supportedVariants) ? reg.supportedVariants : [];
+    for (const v of variants) {
+      const note = (v.figmaNote || '') + '';
+      const vals = Array.isArray(v.values) ? v.values : [];
+      for (const bad of FORBIDDEN_KIT_VARIANTS) {
+        if (vals.includes(bad) && !note.includes('kit-verified:' + bad)) {
+          fail(`variant ${f} · ${v.property}: "${bad}" is UI5 vocabulary, not a live-kit variant value — setProperties will throw. Replace with the kit value (see Button.json figmaNote) or add "kit-verified:${bad}" to figmaNote if genuinely present in the kit.`);
+          hardFail++;
+        }
+      }
+      variantChecked++;
+    }
+  }
+  ok(`variant guard: ${variantChecked} variant group(s) scanned across registry`);
+} catch (e) { warn(`variant guard skipped: ${e.message}`); }
+
+if (hardFail > 0) { fail('DRIFT: component-key / token-hex / variant-value mismatch — regenerate SAP_BUILD_MANIFEST.md §3/§4 + code.js MANDATORY_TOKENS from source, and fix forbidden variant values in the registry.'); process.exit(1); }
 ok('manifest in sync with registry + token sources');
 process.exit(0);

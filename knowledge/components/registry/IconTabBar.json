@@ -26,6 +26,7 @@
     {
       "property": "Background Design",
       "ui5Property": "backgroundDesign",
+      "figmaNote": "kit-verified:Transparent — background-design enum (Solid/Translucent/Transparent) maps 1:1 UI5→kit; unlike button Type, 'Transparent' here is a genuine kit value. Reconfirm against live kit if a setProperties call ever throws.",
       "values": [
         "Solid",
         "Translucent",

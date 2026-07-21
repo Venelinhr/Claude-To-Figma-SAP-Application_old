@@ -8,23 +8,16 @@
     {
       "property": "Type",
       "ui5Property": "type",
+      "figmaNote": "Live Figma Web UI Kit variant values (NOT UI5 API vocabulary). Verified against the whitelist in skill/SYSTEM_PROMPT.md + SAP_BUILD_MANIFEST.md §3. UI5 'Emphasized' maps to kit 'Primary'; UI5 'Transparent'/'Ghost'/'Default'/'Negative' are NOT kit variant values and must never be set via setProperties.",
       "values": [
-        "Default",
-        "Emphasized",
+        "Primary",
+        "Secondary",
         "Accept",
         "Reject",
-        "Negative",
-        "Critical",
-        "Success",
         "Attention",
-        "Transparent",
-        "Ghost",
-        "Unstyled",
-        "Back",
-        "Up",
-        "Neutral"
+        "Tertiary"
       ],
-      "default": "Default"
+      "default": "Secondary"
     },
     {
       "property": "Form Factor",

@@ -28,13 +28,15 @@
 > edits and "improve this" requests too — repair existing screens with `/sap-fix <nodeId>`.
 
 
-This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **154 guideline JSONs** (100% coverage), a Figma plugin enforcing an **80-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
+This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **155 guideline JSONs** (100% coverage), a Figma plugin enforcing an **81-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
 
 > **Last updated: 2026-07-21** — S807–S816 audit arc committed + pushed. Both remotes v2-free at `b9d717e`. Landed: enforcement hardening (fail-closed Stop, unforgeable workflow-contract markers, single-use wireframe approval), MCP server security (stderr-only stacks, path-traversal guard, unhandledRejection), DOC AUTHORITY HIERARCHY (resolves the "5 single-source-of-truth" conflict), P-029 repair pattern, `validateBuildRules` bind-time reality gate (Fix #4a), and a `.gitignore` fix for root-level runtime-artifact leaks. ⛔ **Figma Plugin v2 kept OUT of GitHub** — parked on local branch `agent-v2-wip`. Previous (2026-07-20): Workflow enforcement system shipped, wireframe-first root cause fixed, SAP Suggestion Catalog added, Order Detail `936:48470` fixed.
 
 ## ⛔ THE CANONICAL GATE SEQUENCE (authoritative build order — top of skill/SYSTEM_PROMPT.md)
 
 Every SAP build follows this order; each gate is PASS/FAIL and BLOCKS on fail (exit 2). Gates load at session launch.
+
+> **Authoritative numbering = `skill/SYSTEM_PROMPT.md` gate sequence (Gate 0→7).** The list below mirrors it 1:1 and adds only the enforcing hook per gate — it never renumbers. If this ever disagrees with SYSTEM_PROMPT, SYSTEM_PROMPT wins (per the DOC AUTHORITY HIERARCHY above).
 
 ```
 Gate 0 Analyze reference (VDI)
@@ -43,10 +45,8 @@ Gate 2 Measure width
 Gate 3 ASCII wireframe + L1–L5 layer tree → USER APPROVAL  [guard-wireframe-gate.sh]  ⛔ HARD STOP
 Gate 4 Verify SAP keys + library + manifest not drifted    [guard-manifest-drift.sh]  ⛔ fail-closed, never createFrame
 Gate 5 Build (real SAP instances / clone canonical)        [guard-figma-code.sh]  ⛔ blocks native-frame wireframe pre-build
-Gate 6 Verify tokens (every fill binds a SAP variable)     [verify-invariants.js]
-Gate 7 Verify zero native frames (real-frame tree walk)    [verify-invariants.js]
-Gate 8 Verify layer naming
-Gate 9 Hand off ONLY if verify.json overallPass:true       [lint-on-stop.sh]
+Gate 6 Verify invariants — tokens bound + zero native frames + layer naming (post-build tree walk)  [verify-invariants.js]  ⛔ fix or STOP
+Gate 7 Hand off ONLY if verify.json overallPass:true — validated URL + Bind SAP Tokens  [lint-on-stop.sh]  RULE 27
 ```
 
 The 5 invariants: (1) zero native frames, (2) zero raw hex, (3) zero non-SAP typography, (4) clone-first when a canonical exists, (5) fail-closed on any SAP resource error. Approval markers (`.wireframe-approved`, `.scratch-approved`) are written ONLY by the user's own words (capture-approvals.sh) — Claude cannot self-echo them to skip a gate. If a gate blocks you, READ its stderr for the exact missing step.
@@ -156,7 +156,7 @@ It ships with the repo. Every build clones from it. No exceptions.
 - `guard-manifest-drift.sh` — **BLOCKS** key-import build on manifest drift (Gate 4)
 
 **UserPromptSubmit:** `capture-approvals.sh` — writes `.wireframe-approved`/`.scratch-approved` from the USER's own words (anti-self-echo); `feedback-learn.sh`; `recall-lessons.sh`
-**Stop:** `lint-on-stop.sh` — Gate 9, blocks hand-off on failing/missing `verify.json`; `clear-reuse-marker.sh` clears gate markers at SessionStart
+**Stop:** `lint-on-stop.sh` — Gate 7, blocks hand-off on failing/missing `verify.json`; `clear-reuse-marker.sh` clears gate markers at SessionStart
 **Other:** `block-codejs-read.sh`, `block-generated-files.sh`, `guard-private-screens.sh`, `registry-rebuild.sh`, `manifest-sync-check.sh`, `verify-learnings.sh`, `surface-canonical-record.sh`, `surface-learnings.sh`, `validate-lesson.sh`
 
 ### The 5 build invariants (docs/SAP-INVARIANT-ARCHITECTURE.md) — enforced by build/verify-invariants.js
@@ -322,7 +322,7 @@ STEP 10 URL     — Share validated Figma URL to exact node. ⛔ MANDATORY LAST 
 ## Critical Rules (DO NOT VIOLATE)
 
 1. **Registry gate is HARD** — every component in `hierarchy[]` must have a file in `knowledge/components/registry/`
-2. **Token whitelist is HARD** — every color reference MUST be one of the 80 tokens in `MANDATORY_TOKENS`. Raw hex = rejected.
+2. **Token whitelist is HARD** — every color reference MUST be one of the 81 tokens in `MANDATORY_TOKENS`. Raw hex = rejected.
 3. **Plugin makes zero design decisions** — all reasoning in skill/SYSTEM_PROMPT.md
 4. **Library must be connected** — pre-flight check blocks build if SAP Web UI Kit missing
 5. **Floorplan confirmation is mandatory** — wrong floorplan wastes all downstream work
@@ -404,10 +404,10 @@ STEP 10 URL     — Share validated Figma URL to exact node. ⛔ MANDATORY LAST 
 | Layer | Status |
 |---|---|
 | **Registry** | **152 components** — 100% enriched |
-| **Guidelines cache** | **154 files** — 100% coverage |
+| **Guidelines cache** | **155 files** — 100% coverage |
 | **Doctrine docs** | **8 files** in `docs/` — incl. REPAIR-PATTERNS.md (28 patterns P-001–P-028), HOOKS-REFERENCE.md |
 | **Specialized agents** | **8 files** in `skill/agents/` |
-| **System prompt** | `skill/SYSTEM_PROMPT.md` — **31 mandatory RULEs** + 80-token whitelist + Blocked Behaviors table |
+| **System prompt** | `skill/SYSTEM_PROMPT.md` — **31 mandatory RULEs** + 81-token whitelist + Blocked Behaviors table |
 | **Build patterns** | `skill/references/figma-build-patterns.md` — Clone-Canonical method, Progress Row, DPH strip, all API gotchas |
 | **Build manifest** | `SAP_BUILD_MANIFEST.md` — component keys §3, canonical nodes §3b, token tags §4 |
 

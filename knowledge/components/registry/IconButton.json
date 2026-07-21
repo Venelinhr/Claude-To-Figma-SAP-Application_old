@@ -16,13 +16,16 @@
     {
       "property": "Type",
       "ui5Property": "type",
+      "figmaNote": "Live Figma Web UI Kit variant values (NOT UI5 API vocabulary). UI5 'Emphasized'→kit 'Primary'; 'Transparent'/'Ghost' are not kit values. Icon-only buttons must be 'Tertiary' (project hard rule).",
       "values": [
-        "Default",
-        "Emphasized",
-        "Transparent",
-        "Ghost"
+        "Primary",
+        "Secondary",
+        "Accept",
+        "Reject",
+        "Attention",
+        "Tertiary"
       ],
-      "default": "Transparent"
+      "default": "Tertiary"
     },
     {
       "property": "Interaction State",

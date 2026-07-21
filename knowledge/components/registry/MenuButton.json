@@ -16,12 +16,16 @@
     {
       "property": "Type",
       "ui5Property": "type",
+      "figmaNote": "Live Figma Web UI Kit variant values (NOT UI5 API vocabulary). UI5 'Emphasized'→kit 'Primary'; 'Transparent' is not a kit value.",
       "values": [
-        "Default",
-        "Emphasized",
-        "Transparent"
+        "Primary",
+        "Secondary",
+        "Accept",
+        "Reject",
+        "Attention",
+        "Tertiary"
       ],
-      "default": "Default"
+      "default": "Secondary"
     },
     {
       "property": "Button Mode",

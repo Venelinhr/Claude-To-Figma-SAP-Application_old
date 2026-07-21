@@ -1121,23 +1121,23 @@ The plugin reads those tags and inks the draft. Two actions per screen: Claude b
 | Page title / H1 | `sapTitleColor` | `#1D2D3E` |
 | Form label / subtitle / section caption | `sapContent_LabelColor` | `#556B82` |
 | Placeholder text | `sapField_PlaceholderTextColor` | `#556B82` |
-| Input value text | `sapField_TextColor` | `#131E29` |
+| Input value text | `sapField_TextColor` | `#1D2D3E` |
 | Link / interactive text | `sapLinkColor` | `#0064D9` |
 | Page / panel grey background | `sapBackgroundColor` | `#F5F6F7` |
 | White surface (container/field/list/button) | `sapContent_Container_Background` | `#FFFFFF` |
 | Divider / separator / list border | `sapList_BorderColor` | `#E5E5E5` |
-| Container border | `sapContent_Container_BorderColor` | `#D5DADE` |
+| Container border | `sapContent_Container_BorderColor` | `#E5E5E5` |
 | Field border | `sapField_BorderColor` | `#556B81` |
 | Button border | `sapButton_BorderColor` | `#BCC3CA` |
 | Primary/emphasized button bg | `sapButton_Emphasized_Background` | `#0070F2` |
 | Emphasized button text (on blue) | `sapButton_Emphasized_TextColor` | `#FFFFFF` |
 | Tertiary/lite button text (link-blue) | `sapButton_TextColor` | `#0064D9` |
 | Standard button bg | `sapButton_Background` | `#FFFFFF` |
-| Required marker `*` / error text | `sapNegativeColor` | `#BB0000` |
-| Positive / success text | `sapPositiveTextColor` | `#188919` |
-| Critical / warning text | `sapCriticalTextColor` | `#A8650B` |
-| Selected / highlight | `sapSelectedColor` | `#0070F2` |
-| Focus ring | `sapContent_FocusColor` | `#0064D9` |
+| Required marker `*` / error text | `sapNegativeColor` | `#BD2920` |
+| Positive / success text | `sapPositiveTextColor` | `#1E8F56` |
+| Critical / warning text | `sapCriticalTextColor` | `#DF7B01` |
+| Selected / highlight | `sapSelectedColor` | `#0064D9` |
+| Focus ring | `sapContent_FocusColor` | `#0070F2` |
 
 (For any token not listed, read it live from the kit via `mcp__figma__get_variable_defs` — never guess.)
 

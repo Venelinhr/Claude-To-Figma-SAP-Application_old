@@ -18,6 +18,7 @@
     {
       "property": "Design",
       "ui5Property": "design",
+      "figmaNote": "kit-verified:Transparent — Toolbar design enum (Solid/Transparent/Auto) maps 1:1 UI5→kit; 'Transparent' here is a genuine background-design value, not the button-Type mistranslation. Reconfirm against live kit if a setProperties call ever throws.",
       "values": [
         "Solid",
         "Transparent",
