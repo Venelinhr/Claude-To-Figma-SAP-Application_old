@@ -18,7 +18,7 @@
 
 This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **154 guideline JSONs** (100% coverage), a Figma plugin enforcing an **80-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
 
-> **Last updated: 2026-07-20** — Workflow enforcement system shipped: `WORKFLOW-CONTRACT.md` + auto-load hook + pre-edit gate + `/sap-fix` skill. Wireframe-first root cause fixed: `enforce-wireframe-first.sh` forces ASCII wireframe PRESENTATION before any response when image attached. NEW HARD RULE: reference image = mandatory wireframe first, always. SAP Suggestion Catalog (`docs/SAP-SUGGESTION-CATALOG.md`) added. Order Detail `936:48470` fixed (tabs, typo tags, dividers, buttons). Both remotes at `79f702c`. Previous (2026-07-19): 31-rule audit, 3 contradictions fixed, 10 Hard Rules locked.
+> **Last updated: 2026-07-21** — Production-readiness fixes: `CLAUDE.md` now tracked in git (was gitignored — critical blocker fixed), `jq` prerequisite check added to `install.sh` (lines 35–41, prevents silent gate bypass). Full batch audit: 23 findings resolved (dead code, stale counts, duplicate rows, missing canonicals). README restructured: capability badges + blockquote hero + `ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN` tagline. Both remotes synced at `b173727`. Validation: manifest sync 0 hard failures, reuse integrity consistent, all invariant tests pass. Previous (2026-07-20): Workflow enforcement system shipped, wireframe-first root cause fixed, SAP Suggestion Catalog added, Order Detail `936:48470` fixed.
 
 ## ⛔ THE CANONICAL GATE SEQUENCE (authoritative build order — top of skill/SYSTEM_PROMPT.md)
 
@@ -111,7 +111,21 @@ It ships with the repo. Every build clones from it. No exceptions.
 
 ## Current State (2026-07-21)
 
-> **COMPLETED 2026-07-20:** Workflow enforcement system fully shipped — `WORKFLOW-CONTRACT.md`, SessionStart auto-load hook (`load-workflow-contract.sh`), pre-edit gate (`guard-workflow-contract.sh`), `/sap-fix` skill, wireframe-first enforcement (`enforce-wireframe-first.sh`), SAP Suggestion Catalog, Order Detail `936:48470` fixed. See "Last updated" banner above.
+> **COMPLETED 2026-07-21:** Production-readiness fixes shipped — `CLAUDE.md` tracked in git (was gitignored, critical blocker), `jq` check added to `install.sh` (lines 35–41). Full batch audit resolved 23 findings. README restructured with capability badges + blockquote hero. Both remotes synced at `b173727`. Validation clean: manifest sync 0 hard failures, reuse integrity 11+13 canonicals consistent, all invariant gate tests pass.
+>
+> **COMPLETED 2026-07-20:** Workflow enforcement system fully shipped — `WORKFLOW-CONTRACT.md`, SessionStart auto-load hook (`load-workflow-contract.sh`), pre-edit gate (`guard-workflow-contract.sh`), `/sap-fix` skill, wireframe-first enforcement (`enforce-wireframe-first.sh`), SAP Suggestion Catalog, Order Detail `936:48470` fixed.
+
+### Remotes (both at `b173727`)
+- `github` = `github.com/Venelinhr/Claude-To-Figma-SAP-Application`
+- `origin` = `github.tools.sap/C5408360/sap-fiori-ai-designer`
+
+### Open gaps (from 2026-07-21 audits — not yet fixed)
+- Hardcoded absolute MCP paths in settings.json (break on repo move)
+- Figma token placeholder not validated in install.sh
+- `bridge/` not committed or covered by install.sh
+- Node ID `750:174190` label conflict (CONTRIBUTING.md vs SAP_BUILD_MANIFEST.md)
+- `reuse-outcomes-ledger.md` gitignored but required by `check-reuse-integrity.js` on fresh clones
+- `build-registry-bundle.js` referenced in docs but missing from `build/`
 
 ### Plugin state
 - `plugin/figma-builder/code.js`: MCP-bind-only. **Fail-closed (2026-07-18):** bind handler posts `type:'error'` (not unconditional success) when any fill/stroke/text fails to bind a SAP variable. `code.bundled.js` rebuilt.
