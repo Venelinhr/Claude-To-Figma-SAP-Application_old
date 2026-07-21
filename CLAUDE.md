@@ -30,7 +30,7 @@
 
 This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **154 guideline JSONs** (100% coverage), a Figma plugin enforcing an **80-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
 
-> **Last updated: 2026-07-21** — Production-readiness fixes: `CLAUDE.md` now tracked in git (was gitignored — critical blocker fixed), `jq` prerequisite check added to `install.sh` (lines 35–41, prevents silent gate bypass). Full batch audit: 23 findings resolved (dead code, stale counts, duplicate rows, missing canonicals). README restructured: capability badges + blockquote hero + `ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN` tagline. Both remotes synced at `b173727`. Validation: manifest sync 0 hard failures, reuse integrity consistent, all invariant tests pass. Previous (2026-07-20): Workflow enforcement system shipped, wireframe-first root cause fixed, SAP Suggestion Catalog added, Order Detail `936:48470` fixed.
+> **Last updated: 2026-07-21** — S807–S816 audit arc committed + pushed. Both remotes v2-free at `b9d717e`. Landed: enforcement hardening (fail-closed Stop, unforgeable workflow-contract markers, single-use wireframe approval), MCP server security (stderr-only stacks, path-traversal guard, unhandledRejection), DOC AUTHORITY HIERARCHY (resolves the "5 single-source-of-truth" conflict), P-029 repair pattern, `validateBuildRules` bind-time reality gate (Fix #4a), and a `.gitignore` fix for root-level runtime-artifact leaks. ⛔ **Figma Plugin v2 kept OUT of GitHub** — parked on local branch `agent-v2-wip`. Previous (2026-07-20): Workflow enforcement system shipped, wireframe-first root cause fixed, SAP Suggestion Catalog added, Order Detail `936:48470` fixed.
 
 ## ⛔ THE CANONICAL GATE SEQUENCE (authoritative build order — top of skill/SYSTEM_PROMPT.md)
 
@@ -123,13 +123,14 @@ It ships with the repo. Every build clones from it. No exceptions.
 
 ## Current State (2026-07-21)
 
-> **COMPLETED 2026-07-21:** Production-readiness fixes shipped — `CLAUDE.md` tracked in git (was gitignored, critical blocker), `jq` check added to `install.sh` (lines 35–41). Full batch audit resolved 23 findings. README restructured with capability badges + blockquote hero. Both remotes synced at `b173727`. Validation clean: manifest sync 0 hard failures, reuse integrity 11+13 canonicals consistent, all invariant gate tests pass.
+> **COMPLETED 2026-07-21 (audit arc committed + pushed):** S807–S816 audit work landed on both remotes at `b9d717e`. Enforcement hardened (fail-closed Stop gate exits 2; workflow-contract `.workflow-loaded` marker is unforgeable — agent cannot self-echo; wireframe/scratch approval single-use per turn). MCP servers secured (stderr-only stack traces, `safeRegistryPath` path-traversal guard, `unhandledRejection` handlers). DOC AUTHORITY HIERARCHY declared (per-scope authority; OPERATING-MANIFEST is a MAP, never restates rules). `validateBuildRules` bind-time reality gate added to plugin (Horizon-Light / 32px padding / Tertiary icon buttons, folded into hardViolations). P-029 repair pattern added. `.gitignore` catches root-level runtime-artifact leaks. ⛔ **Figma Plugin v2 kept OUT of GitHub** — force-removed after accidental push; preserved on local branch `agent-v2-wip`.
 >
 > **COMPLETED 2026-07-20:** Workflow enforcement system fully shipped — `WORKFLOW-CONTRACT.md`, SessionStart auto-load hook (`load-workflow-contract.sh`), pre-edit gate (`guard-workflow-contract.sh`), `/sap-fix` skill, wireframe-first enforcement (`enforce-wireframe-first.sh`), SAP Suggestion Catalog, Order Detail `936:48470` fixed.
 
-### Remotes (both at `b173727`)
+### Remotes (both at `b9d717e` — v2-free, 2026-07-21)
 - `github` = `github.com/Venelinhr/Claude-To-Figma-SAP-Application`
 - `origin` = `github.tools.sap/C5408360/sap-fiori-ai-designer`
+- ⛔ **Figma Plugin v2 (`plugin/figma-builder-v2/`) is OUT of GitHub** (user: "I want plugin v2 out of GitHub"). It was pushed as `aa5e32c`, then force-removed; both remotes reset to `b9d717e`. v2 source preserved on **local branch `agent-v2-wip`** (`git checkout agent-v2-wip` to restore). Do NOT commit v2 to `main` or push it. The rest of the S807–S816 audit work (enforcement, MCP security, doc hierarchy, `validateBuildRules` gate) IS on both remotes.
 
 ### Open gaps (verified 2026-07-21 — most prior entries were stale)
 - **Node ID `750:174190` label conflict — ✅ FIXED 2026-07-21.** Verified live: `750:174190` = "Yanatest Steps" (Object Page 320px). The Schedule Operation dialog is `727:42563`. All docs corrected to point dialog/form clones to `727:42563`.
