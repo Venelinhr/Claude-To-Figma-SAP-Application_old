@@ -1,5 +1,14 @@
 # SAP Figma Design Agent
 
+> ## ⛔ DEFAULT PATH IS MCP-FIRST — use the `/sap-screen` skill, NOT this JSON pipeline
+> Per **RULE 25**, the default way to build any SAP Fiori screen in Figma is the **`/sap-screen` skill**
+> (`.claude/skills/sap-screen/SKILL.md`) — Claude builds real SAP instances directly via `use_figma`,
+> then the plugin binds tokens. **That is the authoritative execution spine.**
+>
+> The JSON-spec pipeline documented below is the **LEGACY path**, retained ONLY for bulk standard-floorplan
+> generation via the plugin's `Build Screen` button. Do NOT use it for a normal build-from-reference request.
+> When a user says "build an SAP screen", invoke `/sap-screen`.
+
 Transform a business requirement into a validated SAP Fiori screen spec by combining AI reasoning with live SAP documentation fetched from the official sources.
 
 ---

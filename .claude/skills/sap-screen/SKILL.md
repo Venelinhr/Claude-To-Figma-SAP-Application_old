@@ -59,10 +59,13 @@ Extract: reference (image / description / ticket), target Figma fileKey (from UR
 
 Building composites from scratch loses internal `⿻` slot frames → `setProperties` fails silently. **Always prefer cloning an existing correctly-built node.**
 
-**Score the request against canonicals** (floorplan 50% · regions 30% · components 20%):
-- **Score ≥ 70 → CLONE.** State: "Cloning `nodeId` — `screenName`".
-- **Score 40–69 → clone nearest + adapt.** State: "Cloning `nodeId` as base, adapting N regions".
-- **Score < 40 → build from scratch.** First STOP and ask the user: *"No canonical match (score N). Approve building from scratch?"* Wait for the user's own approval words — the `.scratch-approved` marker is written only by their message, never self-set. Then proceed.
+**Score the request against canonicals** with `node build/score-canonical.js` (it is the single authoritative emitter of both score AND level — do not invent your own numbers). Its scale:
+- **Score ≥ 85 → Level 1: CLONE directly**, inject content only. State: "Cloning `nodeId` — `screenName` (L1)".
+- **Score 70–84 → Level 2: clone + delta** (similar screen). State: "Cloning `nodeId` as base, adapting N regions (L2)".
+- **Score 60–69 → Level 3: clone + delta** (floorplan reuse). State: "Cloning `nodeId` for floorplan, adapting content (L3)".
+- **Score < 60 → Level 5: build new.** First STOP and ask the user: *"No canonical match (score N). Approve building from scratch?"* Wait for the user's own approval words — the `.scratch-approved` marker is written only by their message, never self-set. Then proceed.
+
+**Record the decision** so the reuse gate passes: `echo '{"level":N,"score":S,"baseCanonical":"<id-or-none>","deltaSpec":null}' > .claude/.reuse-declared` (levels must match the scale above — the gate re-validates: L1 needs ≥85, L5 needs <60).
 
 **Canonical clone sources** (file `p7zm5EMBk5DRRZdxNeJ4f5` unless noted):
 | Screen | Node | Use for | Native width |
@@ -179,9 +182,23 @@ Every component must have a key below. **Trust these keys — they are harvested
 
 ## STEP 7 — Gate 5: Build (RULE 8 · 13 · 14 · 25)
 
-**Container-First (RULE 14):** build top-down from the highest container. **Compose, never isolate (RULE 8):** build the full tree in context.
+**Two build patterns — pick by the STEP 3 level (the reuse gate enforces this):**
 
-**Build contract — real Figma Plugin API, copy this pattern exactly:**
+### Pattern A — CLONE (Level 1–3, score ≥ 60) — the gate REQUIRES `.clone(` in your code
+```js
+// Clone the canonical, then swap content. The reuse gate blocks L1-3 builds with no .clone().
+const src = await figma.getNodeByIdAsync('727:42563');   // baseCanonical from .reuse-declared
+const root = src.clone();
+root.name = "◆SAP-UNBOUND/Screen Name";
+root.x = 15200; root.y = 200;                            // place beside originals
+// L1: adjust width to STEP 4 target if it differs from the clone's native width
+// L2: walk root.findOne(...) to each slot/text, inject new content (setProperties / characters)
+// L3: hide/show regions via node.visible for delta adaptation
+figma.currentPage.appendChild(root);
+```
+
+### Pattern B — SCRATCH (Level 5 only, score < 60, `.scratch-approved` present)
+Build from real SAP instances. **Container-First (RULE 14):** top-down from the highest container. **Compose, never isolate (RULE 8).**
 
 ```js
 await figma.loadFontAsync({ family: '72', style: 'Regular' });
@@ -324,6 +341,13 @@ return {
 
 `qa.instances` must be > 0 — a screen with zero SAP instances is always wrong.
 
+**⛔ Gate 9 requires a `verify.json` on disk — the inline QA above is necessary but NOT sufficient.** `lint-on-stop.sh` blocks hand-off unless `output/<node>-verify.json` exists with `overallPass:true`. So after the build call, in the SAME turn:
+1. Dump the built frame tree: in a `use_figma` call, `const t = root.findAll(()=>true).map(n=>({id:n.id,type:n.type,name:n.name,fills:n.fills,fontName:n.fontName})); return JSON.stringify(t);` → write it to `output/<node>-tree.json`.
+2. Run the reality gate: `node build/verify-invariants.js output/<node>-tree.json --pre-bind --out output/<node>-verify.json`.
+3. Hand off only when `overallPass:true`. If it fails → fix the frame, re-dump, re-run (max 2 tries, per the recovery loop).
+
+This is what makes the reality gate actually run — without the `verify.json`, `lint-on-stop.sh` reports "invariant reality gate SKIPPED" and blocks the turn.
+
 ---
 
 ## STEP 9 — Bind reminder (RULE 25 · 27)
@@ -422,6 +446,6 @@ This is the last action of EVERY build. Always. No exceptions.
 | RULE 28 | STEP 3 | Clone-Canonical: clone a correct node, never build composites from scratch. |
 | RULE 29 | recovery | When lost → STOP → read the `.fig` canonical → build once. |
 | RULE 30 | STEP 4 | Measure reference width. Never blind-default to 1440 when a reference exists. |
-| RULE 31 | STEP 3 | Reuse before rebuild — score canonicals, ≥70 clone. |
+| RULE 31 | STEP 3 | Reuse before rebuild — `score-canonical.js` emits score+level: ≥85 L1 clone · 70-84 L2 · 60-69 L3 · <60 L5 new. |
 
 **Retired (do NOT apply — legacy JSON path only):** RULE 4 (non-default props in specs), RULE 5 (no px in JSON specs — N/A on MCP path; on MCP use exact measured px), RULE 6 (→ RULE 19), RULE 22 (incremental-edit contract).

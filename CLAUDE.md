@@ -414,6 +414,13 @@ STEP 10 URL     — Share validated Figma URL to exact node. ⛔ MANDATORY LAST 
 
 ## How to Run the Skill
 
+**Default (MCP-first, RULE 25) — build any screen from a reference/description:**
+```
+/sap-screen <reference image or description> <Figma URL>
+```
+This is the authoritative path — real SAP instances via `use_figma`, then plugin binds tokens.
+
+**Legacy (JSON spec → plugin Build Screen, bulk standard floorplans only):**
 ```
 Use the skill at skill/SKILL.md.
 Requirement: [paste ticket text here]
