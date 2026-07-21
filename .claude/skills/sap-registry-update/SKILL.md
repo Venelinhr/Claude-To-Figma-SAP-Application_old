@@ -15,7 +15,7 @@ The user will provide: a component name and what to change (e.g. "fix ObjectStat
 1. **Read** `knowledge/components/registry/{ComponentName}.json`
 2. **Apply the change** — follow these rules:
    - Variant property names must match live SAP Web UI Kit (check `knowledge/guidelines/component-property-reference.json`)
-   - Token names must be in MANDATORY_TOKENS (check `plugin/figma-builder/code.js` lines 616–716)
+   - Token names must be in MANDATORY_TOKENS (check `SAP_BUILD_MANIFEST.md` §4 — the token source. NEVER read `code.js`.)
    - Update `lastValidated` to today's date
 3. **Rebuild**: run `node build/build-registry-bundle.js`
    - Confirm output shows `0 inconsistencies` and `SAP_KEYS duplicates: 0`

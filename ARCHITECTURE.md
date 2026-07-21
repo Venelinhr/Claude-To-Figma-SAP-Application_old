@@ -2,6 +2,13 @@
 
 Claude reasons · Figma MCP builds structure · plugin binds SAP tokens. Full technical deep-dive.
 
+> ## ⚠ Technical Pipeline section below describes the LEGACY JSON path
+> The current default is **MCP-first (RULE 25)**: Claude builds real SAP instances via `use_figma`
+> (the `/sap-screen` skill), then the plugin binds tokens. The one-liner above is correct; the
+> `flatWalk()` / JSON-spec / plugin `Build Screen` machinery documented in "Technical Pipeline" is
+> the retired path, kept for reference. Any step that reads/edits `code.js` is legacy plugin
+> internals — do NOT read `code.js`; keys are in `SAP_BUILD_MANIFEST.md` §3, tokens in §4.
+
 > Last updated: 2026-07-17
 
 

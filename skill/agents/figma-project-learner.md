@@ -44,7 +44,7 @@ Extract:
 - Auto Layout structure
 
 ### Step 4 — Score against Tier 1 canonicals
-Using the formula from `canonical-similarity-rubric.md`, score each frame against Tier 1 entries.
+Using the formula from `canonical-similarity-rubric.md`, score each frame against Tier 1 entries. *(This is the cataloging decision — variant vs. new index entry — distinct from the build-time reuse level emitted by `build/score-canonical.js`: ≥85 L1 · 70-84 L2 · 60-69 L3 · <60 L5.)*
 - ≥70% match → identify as a variant of that Tier 1 canonical
 - <70% → new pattern (add as standalone Tier 2 entry)
 
@@ -110,9 +110,9 @@ Top canonicals discovered:
 • ...
 
 Your canonical library is ready. Future builds will:
-1. Score your request against these N canonicals
-2. Clone the closest match (Level 1–4)
-3. Only build from scratch when no match ≥60% exists
+1. Score your request against these N canonicals via `build/score-canonical.js`
+2. Clone the closest match (Level 1–3: ≥85 direct · 70-84 delta · 60-69 floorplan)
+3. Only build from scratch (Level 5) when no match ≥60 exists
 
 Next: describe a screen to build, or share a reference image.
 ```

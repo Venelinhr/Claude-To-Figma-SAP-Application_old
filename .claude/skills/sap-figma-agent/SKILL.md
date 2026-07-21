@@ -20,10 +20,10 @@ For every request (new screen, improvement, variant, next step, edit):
 
 1. **Analyze the currently selected screen** — identify: floorplan type, SAP components used, nav state (which tab is active), component states (ObjectStatus Semantic, Button Type), tokens bound, layout width.
 2. **Pick the right floorplan** (for new screens) — use the Floorplan Selection table below.
-3. **Check the canonical screens table** — if a similar screen already exists, propose CLONING it with changes rather than building from scratch.
-4. **Present your plan** — say what you'll build, which canonical you'll clone, what you'll change. For a new or significantly different screen, wait for the user to confirm before executing.
+3. **Score against the canonical screens table** (Reuse First bands: ≥85 clone L1 · 70-84 L2 · 60-69 L3 · <60 new). If a match exists, CLONE it with changes rather than building from scratch.
+4. **⛔ HARD STOP — present an ASCII wireframe + L1–L5 layer tree, then WAIT for explicit user approval.** This is mandatory for EVERY request — new screen, clone, variant, or small edit. The wireframe confirms you understood the intent. Do not build before the user approves.
 5. **Surface ⚡ suggestions** from the catalog below — improvements the user may not have considered.
-6. **Execute** — use real SAP Web UI Kit instances, follow all hard rules.
+6. **Execute** — use real SAP Web UI Kit instances, follow all hard rules. (Dialog = clone `727:42563`, never import by key.)
 7. **End with a summary** of what was built or changed.
 
 ---
@@ -83,7 +83,7 @@ When the current screen has issues (raw 72 fonts, native dividers, placeholder t
 | Open dataset to browse/search/filter | **List Report** | Outage List `750:174925` |
 | Pre-scoped task queue ("my approvals", "items to action") | **Worklist** | Activities View `615:36810` |
 | Single entity, all its details | **Object Page** | yanatest `560:36552` |
-| Create/edit a record in steps | **Wizard** | Schedule Op `727:42563` |
+| Create/edit a record in steps | **Wizard** | Schedule Form Step `709:40690` |
 | Side-by-side master + detail | **Flexible Column Layout** | Governance `750:177443` |
 | Focused create/edit task, modal | **Dialog** | Schedule Op dialog `727:42563` |
 | Success / result confirmation | **Confirmation** | Schedule Activated `850:45411` |
@@ -189,6 +189,14 @@ Before executing, check the current screen and request against these. If any tri
 | Generic section names | **Business-oriented terminology** | Domain fit |
 
 ### Reuse First
+Score the request against canonicals (floorplan 50% · regions 30% · components 20%) — this is the deterministic clone-vs-build decision, not a judgment call:
+| Score | Level | Action |
+|---|---|---|
+| ≥ 85 | L1 | Clone canonical directly, inject content only |
+| 70–84 | L2 | Clone nearest + delta (similar screen) |
+| 60–69 | L3 | Clone for floorplan + adapt content |
+| < 60 | L5 | Build new (state explicitly; ask before scratch) |
+
 | Trigger | Suggest | Why |
 |---|---|---|
 | Similar approved screen exists | **Clone canonical + inject content** | Consistency + speed |
@@ -260,12 +268,13 @@ Use `importComponentSetByKeyAsync(key)` with these keys. Kit file: `SILcWzK5uFgh
 | ObjectNumber | `7b67d22ed19f246b708dc4664808a45f314a7414` | |
 | ObjectAttribute | `080ead216322befe153704bf8f11373158fea34a` | Clips at 74px — use native text for long labels |
 | IconTabBar | `4aafcbf55528c439876b314d155438884b614722` | Type: Shell Navigation (XL) for top nav |
-| Dialog | `5b965b1eda133ac521b42fa20b201e9491f4bf83` | |
 | Panel | `4d19c2a24896033fe5b04bcc5dfdf43e9626283d` | |
 | SegmentedButton | `308476a5285b5a132241dc1c118d09ecf8d82273` | Enable 3rd/4th Button booleans before injecting labels |
 | Avatar | `71a3389ecbd47822b3184700766e30963fc2f220` | |
 | MessageStrip | `f0e77f8888796e35c0e791ddc0b38535eda6ec31` | |
 | Toolbar | `58a258bf5813e59cec4dfc684c8cdb2a6ca6721f` | OverflowToolbar = alias |
+
+> ⛔ **Dialog is NOT in this table on purpose.** A screen-level dialog is built by **cloning canonical `727:42563`** (native-frame surface). NEVER `importComponentSetByKeyAsync` a Dialog — slot injection into a Dialog instance fails.
 
 **Layout containers** (DynamicPage, Column, ObjectPageLayout, FilterBar, OverflowToolbar) are auto-layout frames, not kit sets — build natively but name semantically (L2/L3).
 

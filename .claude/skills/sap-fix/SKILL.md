@@ -15,6 +15,19 @@ A Figma node ID (e.g. `936:48470`) in file `p7zm5EMBk5DRRZdxNeJ4f5`. If not give
 
 ## The 4-phase repair
 
+### Phase 0 — Bind-Error Dispatch (do this FIRST when a Bind error was pasted)
+
+If the user pasted a **Bind SAP Tokens** error (e.g. "✗ BIND FAILED — N unresolved SAP violation(s) … raw-fill leak(s) … a11y issue(s)"), **do NOT run the full Phase-1 audit.** Parse the error and go straight to the targeted fix. `hardViolations = rawFills + rawStrokes + typoFails + fallback` — only those block the bind; a11y contrast/tap-target do NOT.
+
+| Bind error line | One `use_figma` fix (find → fix in the same call) |
+|---|---|
+| `N raw-fill leak(s)` | `root.findAll` FRAME/RECTANGLE (skip `type==='INSTANCE'` and their subtrees) with a visible SOLID fill/stroke whose RGB is **not** an exact §4 safe hex AND has no `boundVariables.color`. Reset those to the nearest §4 exact hex (`n/255`). Instance-internal fills that already carry `boundVariables.color` are NOT leaks — ignore them. |
+| `N unresolved / typo violation` | `root.findAll(TEXT)` with `fontSize` not on the SAP scale `{10,11,12,13,14,16,18,20,24}` (±1 fuzz) → set to nearest scale size. Also append `[typo:role]` where missing. |
+| `⚠ a11y: X contrast` | Report only — a contrast fix is a design decision, not an auto-fix. Does NOT block bind. |
+| `⚠ a11y: X too-small` (tap target) | Expected on Compact desktop — RULE 5 exception, NOT a defect. Never switch to Cozy to silence it. Does NOT block bind. |
+
+Fix, then tell the user to re-run Bind. If it still fails, read the specific frame names the plugin logged and fix those exact nodes. **Target ≤2 `use_figma` calls total — never an open-ended diagnostic loop.** Do not read `code.js`; the safe hex set is §4 of `SAP_BUILD_MANIFEST.md`.
+
 ### Phase 1 — Audit (read-only)
 Call `get_metadata` then `get_design_context` (excludeScreenshot=true) on the node.
 For large screens, fan out up to 3 parallel Explore/general-purpose subagents (one per

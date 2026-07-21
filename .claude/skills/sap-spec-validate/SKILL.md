@@ -20,7 +20,7 @@ The user will paste a JSON spec or provide a file path to one.
    - Does `kitProps.Type` for Button use only: `Primary / Secondary / Accept / Reject / Attention / Tertiary`? Never `Emphasized`, `Transparent`, `Negative`, `Default`.
    - Does ObjectStatus use `Semantic` (not `State`)?
    - Does CheckBox use `Check` with `Unchecked/Checked/Tristate` (not `Selected`)?
-   - Are all color tokens in the MANDATORY_TOKENS whitelist? (`grep` in `plugin/figma-builder/code.js` lines 616–716)
+   - Are all color tokens in the MANDATORY_TOKENS whitelist? Check against `SAP_BUILD_MANIFEST.md` §4 (the token source — NEVER read `code.js`).
 4. **Check meta**:
    - `validationStatus` must be `"pass"` — if `"fail"`, list `unverifiedComponents`
    - `floorplan` must be one of the 9 supported types
