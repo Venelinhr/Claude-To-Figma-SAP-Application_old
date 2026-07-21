@@ -205,7 +205,7 @@ Clone these — don't build from scratch. These nodes carry correct SAP tokens a
 | Design System Governance Console | `750:177443` | FCL + SideNav + nested Table + DynamicSideContent |
 | Side Navigation (full 20-item tree) | `750:174158` | Any SideNavigation |
 | Schedule Operation — dialog (PERFECT) | `727:42563` | Dialog / Form, full recurrence + SegmentedButton — CLONE for any dialog |
-| Yanatest Steps | `750:174190` | Object Page narrow 320px: DPH + IconTabBar + Filter Bar + List |
+| Yanatest Steps | `750:174556` | Object Page narrow 320px: DPH + IconTabBar + Filter Bar + List |
 | Schedule Operation — Monthly pattern | `750:174290` | Dialog with Panel + RadioButton pattern |
 | Activities View (List Report) | `750:174442` | List Report + Progress Rows |
 | Schedule Operation — Monthly + End date | `750:174786` | Fully-expanded dialog state |

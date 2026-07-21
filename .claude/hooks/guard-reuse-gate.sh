@@ -75,6 +75,17 @@ fi
 if [ "$LEVEL" = "5" ] && [ -n "$SCORE" ]; then
   awk "BEGIN{exit !($SCORE >= 60)}" && blockmsg "⛔ RULE 31 BLOCKED — Level 5 (new build) but score $SCORE >=60. A canonical likely exists — reuse it."
 fi
+# L5 anti-gaming (drift-audit 2026-07-22, GAP #4): the score above is SELF-REPORTED in the marker.
+# A genuine high-scoring request could be written as {"level":5,"score":0} to dodge reuse. Two
+# independent backstops make that fail: (a) L5 REQUIRES .scratch-approved (checked below) — the
+# USER must consent to build-from-scratch, and capture-approvals.sh writes that only from the
+# user's own words; (b) the score MUST come from an actual `node build/score-canonical.js` run
+# (deterministic) — a fabricated 0 with no scorer invocation is a RULE 31 violation. Enforce (a):
+if [ "$LEVEL" = "5" ]; then
+  if [ ! -f "$PROJ/.claude/.scratch-approved" ]; then
+    blockmsg "⛔ RULE 31 BLOCKED — Level 5 (build from scratch) requires user consent (.scratch-approved) AND a real score-canonical.js run proving top score <60. Run the scorer; if a canonical scores >=60, reuse it. Do NOT self-report score:0 to skip reuse."
+  fi
+fi
 
 # Level 1-4 must name a base canonical and (if a delta-spec path is given) validate it
 if [ "$LEVEL" != "5" ]; then

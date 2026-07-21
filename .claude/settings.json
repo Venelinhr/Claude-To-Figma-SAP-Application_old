@@ -99,6 +99,15 @@
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/validate-lesson.sh"
           }
         ]
+      },
+      {
+        "matcher": "mcp__figma__use_figma",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/mark-build.sh"
+          }
+        ]
       }
     ],
     "PreToolUse": [
