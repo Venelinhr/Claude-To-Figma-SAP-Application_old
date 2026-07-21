@@ -10,6 +10,8 @@ A complete build system: 31 rules, 6 skills, a Figma plugin with SAP token bindi
 ![Figma Agent](https://img.shields.io/badge/Figma-Agent-blue?style=flat-square)
 ![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple?style=flat-square)
 ![MCP Servers](https://img.shields.io/badge/MCP_Servers-5-green?style=flat-square)
+![Token Optimization](https://img.shields.io/badge/Token-Optimization-blueviolet?style=flat-square)
+![Learning](https://img.shields.io/badge/Learning_%26-Improving-yellow?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
 
 
