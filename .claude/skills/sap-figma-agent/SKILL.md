@@ -58,7 +58,7 @@ All containers use `paddingLeft = paddingRight = 32`. Never 48.
 View / Edit / Delete / toolbar icon buttons = `Type: Tertiary`. They appear as icons without a background box.
 
 **10. Only one Primary button per action group.**
-SAP allows one primary action. Set it to `Type: Primary` (the blue CTA). All other actions in the same group must be `Type: Secondary` or `Type: Tertiary`.
+SAP allows one primary action. Set it to `Type: Primary` (the blue CTA). Map the rest by intent (per SYSTEM_PROMPT.md RULE 10, the authority for intent→variant): generic **secondary-action** and **safe-escape** (Cancel/Close) → `Type: Tertiary` (transparent, blue text, no border); use `Type: Secondary` (bordered) only for a genuine bordered secondary that the reference shows with a border. When unsure, Tertiary.
 *Note: the Figma kit property value is `Type: Primary` — NOT "Emphasized". "Emphasized" does not exist in the kit and will silently fail.*
 
 **11. Correct nav tab labels — never "Tab Text".**

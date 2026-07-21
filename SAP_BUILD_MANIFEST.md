@@ -257,7 +257,7 @@ Tag any fill/stroke layer `<desc> [sapTokenName]`; set the hex below so the plug
 | sapCriticalElementColor | `#DF7B01` | Warning icon |
 | sapNegativeTextColor | `#BB0000` | Error text |
 | sapNegativeElementColor | `#BD2920` | Error icon |
-| sapInformativeTextColor | `#0064D9` | Information text |
+| sapInformativeElementColor | `#0070F2` | Information text / icon (kit has no sapInformativeTextColor — use Element) |
 | sapNeutralColor | `#788FA6` | Inactive / neutral |
 
 Explicit stroke tag: `[stroke:sapTokenName]` when a border needs a different token than the fill.
