@@ -5,10 +5,12 @@
 A complete build system: 31 rules, 6 skills, a Figma plugin with SAP token binding and WCAG AA checks, and 5 MCP servers — everything needed to produce consistent, production-ready SAP Fiori screens.
 
 ![Claude to Figma](https://img.shields.io/badge/Claude_to_Figma-SAP_Application-0070F2?style=flat-square)
-![Components](https://img.shields.io/badge/SAP_Components-153-brightgreen?style=flat-square)
-![Rules](https://img.shields.io/badge/Rules-31_mandatory-orange?style=flat-square)
-![Plugin](https://img.shields.io/badge/Plugin-2%2C420_LOC-purple?style=flat-square)
-![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
+![Rules](https://img.shields.io/badge/Rules-31-orange?style=flat-square)
+![Skills](https://img.shields.io/badge/Skills-6-brightgreen?style=flat-square)
+![Figma Agent](https://img.shields.io/badge/Figma-Agent-blue?style=flat-square)
+![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple?style=flat-square)
+![MCP Servers](https://img.shields.io/badge/MCP_Servers-5-green?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
 
 
 ## Examples — screens built by the system
