@@ -124,6 +124,17 @@ NODEJS
 
 ok "All MCP servers registered (5 total)"
 
+# ── Validate Figma token was set (not left as placeholder) ───────────────────
+SETTINGS_PATH="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/settings.json"
+if [ -f "$SETTINGS_PATH" ] && grep -q "YOUR_FIGMA_TOKEN_HERE" "$SETTINGS_PATH" 2>/dev/null; then
+  warn "Figma API token is still the placeholder 'YOUR_FIGMA_TOKEN_HERE'."
+  warn "MCP-first builds (RULE 25 default path) will FAIL until you set a real token."
+  warn "→ Get one at https://www.figma.com/settings, then edit $SETTINGS_PATH"
+  warn "  (mcpServers.figma.env.FIGMA_API_TOKEN). See STEP 1 below."
+else
+  ok "Figma API token configured"
+fi
+
 # ── Done ─────────────────────────────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}═══════════════════════════════════════════════════${NC}"

@@ -68,7 +68,7 @@ Always start at Level 1 and move down only when necessary.
 | Design System Governance Console | `750:177443` | FCL + SideNav + nested tables |
 | Activities View (List Report) | `750:174556` | List Report with progress rows |
 | Side Navigation | `750:174158` | Full SideNav tree |
-| Schedule Op — Daily | `750:174190` | Dialog/form, date+time |
+| Schedule Op — dialog | `727:42563` | Dialog/form, date+time, full recurrence |
 | Schedule Op — Monthly | `750:174290` | Dialog with recurrence pattern |
 | Schedule Op — Activities | `750:174442` | List Report variant |
 | Schedule Op — State B2 | `750:174786` | Dialog variant |

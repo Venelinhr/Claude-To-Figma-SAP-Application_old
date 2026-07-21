@@ -131,13 +131,13 @@ It ships with the repo. Every build clones from it. No exceptions.
 - `github` = `github.com/Venelinhr/Claude-To-Figma-SAP-Application`
 - `origin` = `github.tools.sap/C5408360/sap-fiori-ai-designer`
 
-### Open gaps (from 2026-07-21 audits — not yet fixed)
-- Hardcoded absolute MCP paths in settings.json (break on repo move)
-- Figma token placeholder not validated in install.sh
-- `bridge/` not committed or covered by install.sh
-- Node ID `750:174190` label conflict (CONTRIBUTING.md vs SAP_BUILD_MANIFEST.md)
-- `reuse-outcomes-ledger.md` gitignored but required by `check-reuse-integrity.js` on fresh clones
-- `build-registry-bundle.js` referenced in docs but missing from `build/`
+### Open gaps (verified 2026-07-21 — most prior entries were stale)
+- **Node ID `750:174190` label conflict — ✅ FIXED 2026-07-21.** Verified live: `750:174190` = "Yanatest Steps" (Object Page 320px). The Schedule Operation dialog is `727:42563`. All docs corrected to point dialog/form clones to `727:42563`.
+- **install.sh Figma token validation — ✅ FIXED 2026-07-21.** Installer now warns if `YOUR_FIGMA_TOKEN_HERE` placeholder is unreplaced.
+- **`bridge/` not committed** — still uncommitted (v2 agent bridge, intentionally local until stable). Not covered by install.sh.
+- Hardcoded absolute MCP paths — only in the machine-local **global** `~/.claude/settings.json` (correct to be absolute there); project `.claude/settings.json` is clean.
+- ~~`reuse-outcomes-ledger.md` gitignored but required~~ — FALSE: `check-reuse-integrity.js` treats it as optional (`.claude/memory/reuse-outcomes-ledger.md`); passes clean on fresh clone.
+- ~~`build-registry-bundle.js` missing~~ — FALSE: exists at `build/build-registry-bundle.js` (18KB).
 
 ### Plugin state
 - `plugin/figma-builder/code.js`: MCP-bind-only. **Fail-closed (2026-07-18):** bind handler posts `type:'error'` (not unconditional success) when any fill/stroke/text fails to bind a SAP variable. `code.bundled.js` rebuilt.

@@ -2,6 +2,8 @@
 
 > Screenshot is kept private (local only). This .md is the source of truth — node ID, components, tokens, and layer structure are all here.
 
+> ⚠ **NODE IDENTITY CORRECTED 2026-07-21:** Node `750:174190` resolves live to **"Yanatest Steps"** (Object Page narrow, 320px — DPH + IconTabBar + Filter Bar + List). It is NOT the Schedule Operation dialog. For a **Schedule/recurrence dialog**, clone `727:42563` instead. This file documents the yanatest Steps structure under a legacy filename.
+
 
 **Node ID:** 750:174190  
 **File Key:** p7zm5EMBk5DRRZdxNeJ4f5  

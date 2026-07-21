@@ -83,9 +83,9 @@ When the current screen has issues (raw 72 fonts, native dividers, placeholder t
 | Open dataset to browse/search/filter | **List Report** | Outage List `750:174925` |
 | Pre-scoped task queue ("my approvals", "items to action") | **Worklist** | Activities View `615:36810` |
 | Single entity, all its details | **Object Page** | yanatest `560:36552` |
-| Create/edit a record in steps | **Wizard** | Schedule Op `750:174190` |
+| Create/edit a record in steps | **Wizard** | Schedule Op `727:42563` |
 | Side-by-side master + detail | **Flexible Column Layout** | Governance `750:177443` |
-| Focused create/edit task, modal | **Dialog** | Schedule Op Daily `750:174190` |
+| Focused create/edit task, modal | **Dialog** | Schedule Op dialog `727:42563` |
 | Success / result confirmation | **Confirmation** | Schedule Activated `850:45411` |
 
 **Critical trap:** a pre-scoped task queue = **Worklist**, NOT List Report. If the data is already filtered to "things the user must act on", it's a Worklist.
@@ -221,7 +221,7 @@ All in Figma file `p7zm5EMBk5DRRZdxNeJ4f5`. Confirmed screens are user-approved 
 | SideNavigation (proto source) | SideNav proto | `699:37890` |
 | Desktop List Report (1440px, 8 cols) | Outage List Overview | `750:174925` |
 | FCL + SideNav + nested Table | Governance Console | `750:177443` |
-| Dialog / Form | Schedule Operation Daily | `750:174190` |
+| Dialog / Form | Schedule Operation dialog | `727:42563` |
 | Dialog + Panel + RadioButton | Schedule Op Monthly | `750:174290` |
 | Log / Message panel | Validate System Log | `750:174814` |
 | Dialog Header (canonical) | Dialog Header | `560:36171` |

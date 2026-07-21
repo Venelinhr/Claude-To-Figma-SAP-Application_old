@@ -25,7 +25,7 @@ hard-won lessons — each corresponds to a real failure mode in the Figma Plugin
 | List Report / list items / progress | `615:36810` Activities View |
 | Object Page narrow / DPH / IconTabBar | `560:36552` yanatest Steps |
 | SideNavigation | `699:37890` |
-| Dialog / Form / date+time fields | `750:174190` Schedule Op Daily |
+| Dialog / Form / date+time fields | `727:42563` Schedule Op dialog |
 | Log panel / severity pills | `750:174814` Validate System |
 | Desktop List Report / status pills | `750:174925` Outage List |
 | Full app / FCL + SideNav + Table | `750:177443` Governance Console |
@@ -554,6 +554,30 @@ inst.setProperties({
 | 11 | `importComponentByKeyAsync` throws "not found" | Called on a COMPONENT SET key, not a single component | Use `importComponentSetByKeyAsync` then `.defaultVariant` |
 | 12 | ObjectAttribute text clips short | Component has hardcoded ~74px max width | Use native text rows for long labels instead |
 | 13 | Fill-override on SAP instance has no effect | Library instances own their fills | Never set `.fills` on a SAP kit instance — use `setProperties` for variants |
+| 14 | `use_figma` runs, NO frame created, no error | Code wrapped in `async function build(){…} build()` — the runner executes the script as a top-level module and does not await your named IIFE | Write **top-level `await`** statements only. Never wrap the build in an `async function` and call it. The last statement should `return root.id;` at the top level |
+| 15 | `counterAxisSizingMode='FILL'` throws "Invalid enum" | Only `'FIXED'` and `'AUTO'` are valid for `counterAxisSizingMode` | To stretch a child across its parent, set `layoutSizingHorizontal='FILL'` **on the child AFTER appendChild** — never `counterAxisSizingMode='FILL'` on the parent |
+| 16 | SAP field (Input/Select/DatePicker) shows "cut top border" / cropped | Parent frame `clipsContent=true` (the `createFrame()` default) crops the field's underline + focus/hover inner-shadow that overflows the 26px box | Set `clipsContent=false` on ALL native container frames — bake it into your vbox/hbox helper so it's never missed |
+| 17 | DatePicker calendar leaks out after you unclip containers | The expanded `Calendar`/`Popover` sub-instances were only hidden *by the clip*, not truly hidden | Explicitly `visible=false` them: `dp.findAll(n=>/calendar\|popover/i.test(n.name)).forEach(n=>n.visible=false)` |
+| 18 | `setProperties({'✏️Text': v})` / `node.characters=v` silently no-ops on kit text | Wrong key. Kit text is a component property named `✏️ Text#154638:49` (emoji + SPACE + suffix); inner instance text is read-only | Read `inst.componentProperties`, find the key whose `.type==='TEXT'`, `setProperties({[key]:v})`. Select/DatePicker value lives on the nested `Input` (set `Content:'Typed Text'` + `✏️ Typed Text#…`). Enable `Label#…`=true for checkbox/radio text |
+| 19 | Sibling sub-instances vanish ("node not found") mid-loop | `setProperties` on one instance shifts/invalidates sibling sublayer IDs (P-022) | Re-`findAll` or re-`getNodeByIdAsync` fresh before each set; never reuse references collected before a `setProperties` call. SegmentedButton: re-collect its 4 segment buttons each iteration |
+
+---
+
+## Canonical structural patterns (from the gold-standard set, file E083sNBH7JNEOBFrG7Bqge)
+
+These are confirmed structures the user calls "expected every time." Clone the referenced node; if building fresh, replicate exactly.
+
+| Pattern | Rule | Gold-standard node |
+|---|---|---|
+| **Divider** | Schedule dialog & wide panels: native FRAME named exactly `Divider`, height 1, fill `sapList_BorderColor`. **List-report list items do NOT use `Divider`** — they use a 3px-wide vertical `Success Border` accent frame (width 3, full item height) as the row status marker. Match the reference for the screen type. | Schedule `9:1550` (Divider); Activities View `68:2928` (Success Border) |
+| **Progress Row** | Native `Progress Bar` frame **40×12, cornerRadius 6, green (sapPositiveTextColor)** + a trailing `ObjectStatus` Success icon — NOT the SAP ProgressIndicator composite. | Activities View `68:2928` |
+| **Meta Block** | Left-indented (26px) vertical stack of `label:value` text rows (`Activity Number:` / `Progress:` / `Note:` / `Start Time:`). Entry Header above = `ObjectStatus` + bold title + `›` chevron. | `68:2928`, `68:2578` |
+| **Filter Bar placement** | Desktop: inside DPH `⿻ Header Area` slot. Narrow (≤320): standalone frame directly under DPH. | desktop `30:2741`/`42:2348`; narrow `68:2928` |
+| **SegmentedButton** | Always HUG width (~224px), left-aligned. Enable `3rd Button`/`4th Button` booleans before labelling; label each sub-button via its own TEXT property (re-collect per set, P-022). | recurrence `9:1550`; view toggle `42:2348` |
+| **Desktop Table** | Native `SapColHeader` with N × 144px `ColHeader-n` + `ColumnListItem` rows (height 44). `Cell-0` = `Link`, status cell = `ObjectStatus`, rest = `Text`. Cells 144px. | Outage List `30:2741` |
+| **AppLayout (desktop)** | `AppLayout` = `Sidebar` (224px, real `SideNavigation` instance) + `Content` (DPH → Filter Bar → Content Area/Table). | `30:2741` |
+| **Conditional disclosure** | Sub-sections live in the structure and toggle via `visible`. When a toggle is OFF, its wrapper collapses to a lone checkbox at **h48** (e.g. `EndWrap`, and `RecWrap` in states A/D). When ON, the recurrence wrapper is named `RecurrenceExpanded` (h114 daily, taller with Monthly). Keep the Monthly Pattern panel `hidden=true` until type=Monthly (State B2 shows it present-but-hidden). | Schedule states `9:1470`/`9:1696`/`9:1550`/`9:1609` |
+| **Schedule dialog metrics** | 560w · Header 72 · Start Date/Time cols 248w each · Selects **80px** (Weekday 110) · Footer 60 (Cancel 59 + Save schedule 112, right-aligned). | `9:1550` |
 
 ---
 

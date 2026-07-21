@@ -77,8 +77,8 @@ ShellBar (SAP Integration Suite branding, search, notifications, avatar)
 ---
 
 ## Screen 02 — Schedule Operation Form (Daily)
-**Node:** `750:174190`
-**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=750-174190
+**Node:** `727:42563`  <!-- corrected 2026-07-21: 750:174190 now resolves to "Yanatest Steps"; the live Schedule Operation dialog is 727:42563 -->
+**Figma:** https://www.figma.com/design/p7zm5EMBk5DRRZdxNeJ4f5/SAP-application-builder?node-id=727-42563
 **Floorplan:** Dialog / Form
 **Screenshot:** `02-schedule-operation-daily.png`
 
@@ -563,7 +563,7 @@ Products Inventory (1440px)
 | You're building... | Clone from screen | Node |
 |---|---|---|
 | SideNavigation (any) | Screen 06 | `750:174158` or `699:37890` |
-| Dialog / Form | Screen 02-05 | `750:174190` |
+| Dialog / Form | Screen 02-05 | `727:42563` |
 | List Report (narrow) | Screen 08 (Activities View) | `615:36810` |
 | Object Page (narrow) | Screen 07 (yanatest) | `560:36552` |
 | Log/Message panel | Screen 09 | `750:174814` |
