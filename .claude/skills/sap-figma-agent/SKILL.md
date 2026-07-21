@@ -282,6 +282,20 @@ Use `importComponentSetByKeyAsync(key)` with these keys. Kit file: `SILcWzK5uFgh
 
 **Layout containers** (DynamicPage, Column, ObjectPageLayout, FilterBar, OverflowToolbar) are auto-layout frames, not kit sets — build natively but name semantically (L2/L3).
 
+---
+
+## THE FULL SAP DESIGN SYSTEM — USE ALL OF IT, NOT JUST THE TABLE ABOVE
+
+The 23 keys above are the most-used components. The **complete SAP Web UI Kit has 139 published component sets** — you have access to ALL of them. To use any component beyond the table:
+
+1. **Linked Library is the full catalog (preferred in Figma).** With the SAP Web UI Kit enabled (Assets → Libraries → SAP Web UI Kit), every one of the 139 components is in the **Assets panel** — drag/insert the real instance directly. This is how you reach Breadcrumb, Wizard, Carousel, Slider, Switch, Step Input, Rating Indicator, Tokenizer, Multi Combobox, Multi Input, Notification List Item, Tree, Time Picker, Progress Indicator, Product Switch, Tool Header, Toast, User Menu, Calendar, and every other kit component NOT in the 23-key table.
+2. **Never substitute a native frame** because a component isn't in the key table — it IS in the Library. Find it in Assets, insert the real instance.
+3. **States, types, and variants** — every SAP component exposes its full variant set (Interaction State: Regular/Hover/Down/Disabled · Value State: None/Information/Success/Warning/Error/Critical/Positive/Negative · Type variants · Size variants · Form Factor: Compact/Cozy). Set them via the instance's variant properties. Read the exact variant names off the selected instance's properties panel — never guess. Full per-component variant/property reference (all 139 with every VARIANT/BOOLEAN/SLOT/TEXT key): `knowledge/SAP-COMPONENT-REGISTRY.md` (for Claude Code builds).
+4. **The token + typography tables below are the COMPLETE Horizon Light system** — 30+ semantic color tokens (backgrounds, borders, text, semantic states, buttons, selection) and 9 typography roles. Every color you apply must be one of these tokens; every text style must be one of these roles. Nothing outside this set is SAP.
+
+---
+
+
 **Icon placeholder keys (common):**
 | Icon | Key |
 |---|---|
