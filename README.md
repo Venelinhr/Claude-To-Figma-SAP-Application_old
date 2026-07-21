@@ -13,7 +13,7 @@
 |------|--------------|
 | **Instructions** | The 10-step build flow, 10+ Hard Rules, and the complete quality contract Claude follows on every build |
 | **31 Rules** | Mandatory rules covering registry gates, token whitelist, wireframe approval, clone-first, one-shot build, and post-build learning |
-| **Skills** | 8 invokable skills — each packages a full pipeline stage into a single command |
+| **Skills** | 6 invokable skills — each packages a full pipeline stage or repair task into a single command |
 | **Figma Plugin** | Binds real SAP design tokens to every fill, swaps icon placeholders, applies SAP text styles, and runs WCAG AA a11y checks |
 | **5 MCP Servers** | Figma, SAP guidelines, reference analysis, component registry, and token validation — auto-configured by the installer |
 
@@ -366,10 +366,12 @@ Claude uses this file automatically — before building, it finds the closest ma
 
 | Skill | What |
 |---|---|
+| `/sap-figma-agent` | Figma Agent SAP skill — add once to the Figma AI Agent; it then builds, extends, and improves SAP screens on-canvas following all project rules |
+| `/sap-fix` | Auto-repair any screen: adds `[typo:role]` tags, removes native Divider frames, injects real nav labels, fixes button types, renames generic layers |
 | `/sap-vdi` | 8-stage Visual Design Intelligence: sector reading, confidence tiers, floorplan scoring, 12-part output |
 | `/sap-bind` | End-to-end MCP-first pipeline: VDI cache → wireframe gate → one-shot `use_figma` → bind reminder |
 | `/sap-spec-validate` | Registry gate + token whitelist + no raw hex — pre-flight before any build |
-| `/sap-registry-update` | Edit registry JSON → rebuild bundle → run regression tests (the ONLY correct way) |
+| `/sap-registry-update` | Edit registry JSON → rebuild bundle → run regression tests (the only correct way) |
 
 ## Health Check
 
