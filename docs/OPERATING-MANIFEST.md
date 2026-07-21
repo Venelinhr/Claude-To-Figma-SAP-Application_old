@@ -1,9 +1,11 @@
 # SAP Fiori Application Builder — Operating Manifest
 
-> **The single authoritative rule summary.** This doc is a MAP, not a rulebook — every section
-> cross-references the authoritative source. It never restates a rule (that would create a 6th
-> contradictory instruction source, this project's #1 documented failure). Read this to know WHERE
-> each rule lives; read the linked source for the rule itself.
+> **AUTHORITY: this doc is a MAP, not a rulebook.** It is authoritative only for WHERE each rule lives —
+> every section cross-references the real source and never restates a rule (restating would create a
+> contradictory 6th source, this project's #1 documented failure). Scope hierarchy (declared in CLAUDE.md):
+> workflow → WORKFLOW-CONTRACT.md · gate order/PASS-FAIL → SYSTEM_PROMPT.md gate sequence · build data →
+> SAP_BUILD_MANIFEST.md · component/token truth → the live SAP Web UI Kit. Read this to know WHERE a rule
+> lives; read the linked source for the rule itself.
 >
 > Cross-references: `skill/SYSTEM_PROMPT.md` (31 RULEs) · `SAP_BUILD_MANIFEST.md` · `docs/V2-REASONING-PIPELINE.md` · `docs/KNOWLEDGE-INDEX.md` · `docs/canonical-screens/`
 

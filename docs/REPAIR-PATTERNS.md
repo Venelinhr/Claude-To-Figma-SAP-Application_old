@@ -792,3 +792,35 @@ Exception?: NO — always source from the unmodified original. This is a hard ru
 Notes:      Save all prototype references before the slot-clear step. Once you call
             n.remove() on slot children, those nodes are gone — harvest prototypes first.
 ```
+
+### P-029 · "BIND FAILED — raw-fill leak(s)" after a use_figma build
+
+```
+Trigger:    Bind SAP Tokens reports "✗ BIND FAILED — N unresolved SAP violation(s) …
+            ⚠ N raw-fill leak(s)". The screen looks correct but will not bind.
+Root cause: A NATIVE frame (panel, header, container, divider) has a SOLID fill/stroke
+            whose RGB is not an EXACT entry in the plugin's _rgbToTokenIndex. Matching is
+            an exact key (Math.round(channel*1000)) — a hex one digit off (e.g. #F9FBFC
+            vs #F5F6F7, or #A8B3BE vs #A8B3BD) produces a different key and leaks.
+            Common source: eyeballed decimal fills like {r:0.98,g:0.984,b:0.988} instead
+            of exact n/255 arithmetic.
+Category:   Token binding — RGB exact-match miss on native frame
+Repair type: Reset native-frame fills to exact §4 safe hex
+Fix:        Do NOT diagnose SAP instance internals (their fills are already variable-bound
+            — ignore any leak reported inside an INSTANCE subtree). In ONE use_figma call:
+              root.findAll(n => (n.type==='FRAME'||n.type==='RECTANGLE'))
+              — skip nodes inside any INSTANCE ancestor
+              — for each visible SOLID fill/stroke with no boundVariables.color whose RGB
+                is not an exact §4 safe hex → reset to nearest safe hex using n/255:
+                  #FFFFFF, #F5F6F7, #E5E5E5, #D9D9D9, #A8B3BD
+            Then re-bind. Target ≤2 calls total.
+Confidence: 100% (confirmed 2026-07-21, Define Schedule RCA — a 10-call diagnostic
+            spiral that should have been 2 calls)
+Exception?: a11y "too-small" / "contrast" lines in the same error do NOT block bind
+            (hardViolations = rawFills+rawStrokes+typoFails+fallback only). Do not chase them.
+Notes:      Deepest cause: build agent is forbidden from reading code.js where the
+            matchable hex table lives, so the exact-match rule must live in the build-facing
+            docs (SAP_BUILD_MANIFEST.md §4) and the fix protocol in sap-fix Phase 0.
+            Prevention: compute all native fills as n/255 from the §4 safe hex list.
+```
+

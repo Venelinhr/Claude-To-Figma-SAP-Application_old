@@ -60,3 +60,13 @@ semantic-models/project-knowledge-*.md
 # Bridge runtime artifacts (source is committed; these are local/secret)
 bridge/*.bak.*
 .claude/.bridge-token
+
+# Root-level runtime artifacts that leaked outside .claude/ (gate markers, session state, banners)
+/.wireframe-approved
+/.scratch-approved
+/.canonical-selected
+.claude/projects/
+.claude/hooks/.sap-session-banner.txt
+
+# v2 plugin generated bundle (source is committed; the full registry JSON is generated, 630KB)
+plugin/figma-builder-v2/registry-bundle-full.json

@@ -13,6 +13,14 @@ CONTRACT="$PROJ/WORKFLOW-CONTRACT.md"
 
 [ -f "$CONTRACT" ] || exit 0
 
+# Write the .workflow-loaded marker HERE (SessionStart), proving the contract directive was injected
+# into context this session. The AGENT cannot write this marker (the marker-write PreToolUse guard
+# blocks it) — so guard-workflow-contract.sh can only be satisfied by this loader actually running.
+# If hooks are dormant, the marker is absent and the use_figma gate blocks + tells the agent to
+# self-load the contract. This removes the old self-echo bypass.
+mkdir -p "$PROJ/.claude" 2>/dev/null
+printf 'loaded %s\n' "$(date -u 2>/dev/null || echo session)" > "$PROJ/.claude/.workflow-loaded" 2>/dev/null
+
 cat <<'EOF'
 <workflow-contract-directive>
 ⛔ BEFORE ANY Figma SAP task — new screen, improvement suggestion, next step, edit, or

@@ -37,7 +37,7 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import { readFileSync, readdirSync, writeFileSync, existsSync, statSync } from 'node:fs';
-import { join, dirname, resolve } from 'node:path';
+import { join, dirname, resolve, basename, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -284,9 +284,26 @@ function toolRecordLiveData({ componentName, liveData }) {
   };
 }
 
+// SECURITY FIX 2026-07-21: only these fields may be merged into a registry entry via applySync.
+// Previously ...updates was spread wholesale, letting a caller inject/clobber ANY key
+// (componentName, _file, huge blobs) and corrupt the registry that downstream gates trust.
+const APPLYSYNC_ALLOWED_FIELDS = ['figmaComponentId', 'libraryVersion', 'supportedVariants', 'supportedProperties'];
+const MAX_UPDATE_BYTES = 64 * 1024;
+
+// Confirm join(REGISTRY_DIR, file) stays inside REGISTRY_DIR and file has no path components.
+function safeRegistryPath(file) {
+  if (typeof file !== 'string' || basename(file) !== file) return null;
+  const p = resolve(REGISTRY_DIR, file);
+  const base = resolve(REGISTRY_DIR) + sep;
+  return p.startsWith(base) ? p : null;
+}
+
 function toolApplySync({ componentName, updates, dryRun }) {
-  if (!componentName || !updates) {
-    return { isError: true, content: [{ type: 'text', text: 'componentName and updates required' }] };
+  if (!componentName || !updates || typeof updates !== 'object' || Array.isArray(updates)) {
+    return { isError: true, content: [{ type: 'text', text: 'componentName (string) and updates (object) required' }] };
+  }
+  if (JSON.stringify(updates).length > MAX_UPDATE_BYTES) {
+    return { isError: true, content: [{ type: 'text', text: 'updates payload too large' }] };
   }
   const reg = getRegistry();
   const existing = reg[componentName];
@@ -294,7 +311,16 @@ function toolApplySync({ componentName, updates, dryRun }) {
     return { isError: true, content: [{ type: 'text', text: `No registry entry for ${componentName}` }] };
   }
 
-  const merged = { ...existing, ...updates, lastValidated: new Date().toISOString().slice(0, 10) };
+  // Whitelist: keep only known mergeable fields from caller input.
+  const safeUpdates = {};
+  for (const k of APPLYSYNC_ALLOWED_FIELDS) {
+    if (Object.prototype.hasOwnProperty.call(updates, k)) safeUpdates[k] = updates[k];
+  }
+  if (Object.keys(safeUpdates).length === 0) {
+    return { isError: true, content: [{ type: 'text', text: `No updatable fields. Allowed: ${APPLYSYNC_ALLOWED_FIELDS.join(', ')}` }] };
+  }
+
+  const merged = { ...existing, ...safeUpdates, lastValidated: new Date().toISOString().slice(0, 10) };
   delete merged._file;
 
   if (dryRun) {
@@ -306,7 +332,10 @@ function toolApplySync({ componentName, updates, dryRun }) {
     };
   }
 
-  const path = join(REGISTRY_DIR, existing._file);
+  const path = safeRegistryPath(existing._file);
+  if (!path) {
+    return { isError: true, content: [{ type: 'text', text: `Refusing write: registry file path escapes the registry dir.` }] };
+  }
   writeFileSync(path, JSON.stringify(merged, null, 2));
   reloadRegistry();
 
@@ -323,27 +352,34 @@ function toolMarkSynced({ componentName }) {
   if (componentName) {
     const e = reg[componentName];
     if (!e) return { isError: true, content: [{ type: 'text', text: `No entry for ${componentName}` }] };
+    const p = safeRegistryPath(e._file);
+    if (!p) return { isError: true, content: [{ type: 'text', text: 'Refusing write: path escapes registry dir.' }] };
     const merged = { ...e, lastValidated: new Date().toISOString().slice(0, 10) };
     delete merged._file;
-    writeFileSync(join(REGISTRY_DIR, e._file), JSON.stringify(merged, null, 2));
+    writeFileSync(p, JSON.stringify(merged, null, 2));
     reloadRegistry();
     return { content: [{ type: 'text', text: `✓ Marked ${componentName} as synced.` }] };
   }
   // mark all
   const today = new Date().toISOString().slice(0, 10);
-  let count = 0;
+  let count = 0; const failed = [];
   for (const name in reg) {
     const e = reg[name];
-    const merged = { ...e, lastValidated: today };
-    delete merged._file;
-    writeFileSync(join(REGISTRY_DIR, e._file), JSON.stringify(merged, null, 2));
-    count++;
+    const p = safeRegistryPath(e._file);
+    if (!p) { failed.push(name); continue; }
+    try {
+      const merged = { ...e, lastValidated: today };
+      delete merged._file;
+      writeFileSync(p, JSON.stringify(merged, null, 2));
+      count++;
+    } catch (_) { failed.push(name); }
   }
   const state = loadSyncState();
   state.lastFullSync = today;
   saveSyncState(state);
   reloadRegistry();
-  return { content: [{ type: 'text', text: `✓ Marked all ${count} entries as synced. State saved.` }] };
+  const note = failed.length ? ` (${failed.length} failed: ${failed.slice(0, 5).join(', ')})` : '';
+  return { content: [{ type: 'text', text: `✓ Marked ${count} entries as synced. State saved.${note}` }] };
 }
 
 function toolGetSAPFigmaFileId() {
@@ -471,7 +507,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { isError: true, content: [{ type: 'text', text: `Unknown tool: ${name}` }] };
     }
   } catch (e) {
-    return { isError: true, content: [{ type: 'text', text: `Tool error: ${e.message}\n${e.stack}` }] };
+    // SECURITY FIX 2026-07-21: never return e.stack to the caller (leaks absolute paths + username).
+    console.error(e.stack);
+    return { isError: true, content: [{ type: 'text', text: `Tool error: ${e.message}` }] };
   }
 });
 
@@ -479,8 +517,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 // START
 // ────────────────────────────────────────────────────────────────────────────
 
+// ROBUSTNESS FIX 2026-07-21: surface fatal errors instead of a silent transport drop.
+process.on('unhandledRejection', (err) => { console.error('[sap-figma-community-mcp] unhandledRejection:', err); });
 const transport = new StdioServerTransport();
-await server.connect(transport);
+try {
+  await server.connect(transport);
+} catch (e) {
+  console.error('[sap-figma-community-mcp] fatal:', e);
+  process.exit(1);
+}
 
 console.error(`[sap-figma-community-mcp] Started.`);
 console.error(`[sap-figma-community-mcp] Registry: ${REGISTRY_DIR}`);

@@ -101,6 +101,9 @@ function toolGetFioriGuideline({ componentName }) {
  * scrape instructions for the caller (Claude) to execute via WebFetch.
  */
 function toolRefreshGuideline({ componentName }) {
+  if (!componentName || typeof componentName !== 'string') {
+    return { isError: true, content: [{ type: 'text', text: 'componentName (string) is required' }] };
+  }
   const cache = getCache();
   const entry = cache[componentName];
   const slug = entry ? entry.slug : componentName.toLowerCase();
@@ -108,7 +111,7 @@ function toolRefreshGuideline({ componentName }) {
   return {
     content: [{
       type: 'text',
-      text: `To refresh ${componentName}, the caller should:\n1. Fetch ${url}\n2. Extract: purpose, whenToUse, whenNotToUse, do/don't, responsiveBehavior, accessibilityGuidance\n3. Update ${join(CACHE_DIR, `${componentName}.json`)} matching the _schema.json structure\n4. Set lastChecked to today's ISO date\n\nThis MCP server reads from disk — it does not fetch URLs directly.`,
+      text: `To refresh ${componentName}, the caller should:\n1. Fetch ${url}\n2. Extract: purpose, whenToUse, whenNotToUse, do/don't, responsiveBehavior, accessibilityGuidance\n3. Update knowledge/guidelines/${componentName}.json matching the _schema.json structure\n4. Set lastChecked to today's ISO date\n\nThis MCP server reads from disk — it does not fetch URLs directly.`,
     }],
   };
 }
@@ -185,8 +188,8 @@ function toolSearchGuidelines({ query }) {
  * Return components that participate in a given UX pattern.
  */
 function toolGetPattern({ patternName }) {
-  if (!patternName) {
-    return { isError: true, content: [{ type: 'text', text: 'patternName is required' }] };
+  if (!patternName || typeof patternName !== 'string') {
+    return { isError: true, content: [{ type: 'text', text: 'patternName (string) is required' }] };
   }
   const cache = getCache();
   const q = patternName.toLowerCase();
@@ -344,9 +347,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
     }
   } catch (e) {
+    // SECURITY FIX 2026-07-21: log stack to stderr, never return it (leaks abs paths + username).
+    console.error(e.stack);
     return {
       isError: true,
-      content: [{ type: 'text', text: `Tool error: ${e.message}\n${e.stack}` }],
+      content: [{ type: 'text', text: `Tool error: ${e.message}` }],
     };
   }
 });
@@ -355,9 +360,16 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 // START
 // ────────────────────────────────────────────────────────────────────────────
 
+// ROBUSTNESS FIX 2026-07-21: surface fatal errors instead of a silent transport drop.
+process.on('unhandledRejection', (err) => { console.error('[sap-fiori-guidelines-mcp] unhandledRejection:', err); });
 const transport = new StdioServerTransport();
-await server.connect(transport);
+try {
+  await server.connect(transport);
+} catch (e) {
+  console.error('[sap-fiori-guidelines-mcp] fatal:', e);
+  process.exit(1);
+}
 
 // Log to stderr (stdout is reserved for MCP protocol)
-console.error(`[sap-fiori-guidelines-mcp] Started. Cache: ${CACHE_DIR}`);
+console.error(`[sap-fiori-guidelines-mcp] Started.`);
 console.error(`[sap-fiori-guidelines-mcp] Loaded ${Object.keys(getCache()).length} component guidelines.`);

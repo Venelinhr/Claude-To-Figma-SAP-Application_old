@@ -84,8 +84,8 @@ function toolListFloorplanHeuristics() {
 }
 
 function toolMapRegionToSAP({ regionType, label, position }) {
-  if (!regionType) {
-    return { isError: true, content: [{ type: 'text', text: 'regionType required. Call listRegionTypes for the vocabulary.' }] };
+  if (!regionType || typeof regionType !== 'string') {
+    return { isError: true, content: [{ type: 'text', text: 'regionType (string) required. Call listRegionTypes for the vocabulary.' }] };
   }
 
   const pattern = REGION_PATTERNS[regionType];
@@ -417,12 +417,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return { isError: true, content: [{ type: 'text', text: `Unknown tool: ${name}` }] };
     }
   } catch (e) {
-    return { isError: true, content: [{ type: 'text', text: `Tool error: ${e.message}\n${e.stack}` }] };
+    // SECURITY FIX 2026-07-21: log stack to stderr, never return it (leaks abs paths + username).
+    console.error(e.stack);
+    return { isError: true, content: [{ type: 'text', text: `Tool error: ${e.message}` }] };
   }
 });
 
+// ROBUSTNESS FIX 2026-07-21: surface fatal errors instead of a silent transport drop.
+process.on('unhandledRejection', (err) => { console.error('[sap-application-analysis-mcp] unhandledRejection:', err); });
 const transport = new StdioServerTransport();
-await server.connect(transport);
+try {
+  await server.connect(transport);
+} catch (e) {
+  console.error('[sap-application-analysis-mcp] fatal:', e);
+  process.exit(1);
+}
 
 console.error('[sap-application-analysis-mcp] Started.');
 console.error(`[sap-application-analysis-mcp] ${Object.keys(REGION_PATTERNS).length} region patterns loaded.`);

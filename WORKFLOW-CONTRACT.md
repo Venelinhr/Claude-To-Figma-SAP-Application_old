@@ -1,6 +1,9 @@
 # ⛔ WORKFLOW CONTRACT — Read and OBEY before ANY Figma SAP task
 
-> **This is the single mandatory source of truth for the SAP Figma Design Agent.**
+> **AUTHORITY — this doc governs the WORKFLOW (what to do, in what order, which rules/skills apply).**
+> Scope hierarchy (declared in CLAUDE.md): gate ORDER + PASS/FAIL → `skill/SYSTEM_PROMPT.md` gate sequence ·
+> build DATA (component keys, token hexes, canonical clone nodes) → `SAP_BUILD_MANIFEST.md` ·
+> where any rule lives → `docs/OPERATING-MANIFEST.md` (a map, not a rulebook).
 > Before building a new screen, suggesting improvements, planning a next step, editing,
 > or proposing a variant — you MUST load, read, understand, and strictly follow this
 > workflow. It governs every task, every time. Nothing ships that violates it.
