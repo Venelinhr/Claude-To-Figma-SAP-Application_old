@@ -2,14 +2,13 @@
 
 > Describe a business screen in plain language — or attach a sketch, screenshot, or Figma reference. Claude reads official SAP guidelines, measures the reference, selects components, previews the layout as an ASCII wireframe for your approval, then builds a real SAP Fiori screen directly in Figma — real library components, live tokens, zero manual drag-and-drop. **ANALYZE → PLAN → EXECUTE → VALIDATE → LEARN.**
 
+A complete build system: 31 rules, 6 skills, a Figma plugin with SAP token binding and WCAG AA checks, and 5 MCP servers — everything needed to produce consistent, production-ready SAP Fiori screens.
+
 ![Claude to Figma](https://img.shields.io/badge/Claude_to_Figma-SAP_Application-0070F2?style=flat-square)
 ![Components](https://img.shields.io/badge/SAP_Components-153-brightgreen?style=flat-square)
 ![Rules](https://img.shields.io/badge/Rules-31_mandatory-orange?style=flat-square)
 ![Plugin](https://img.shields.io/badge/Plugin-2%2C420_LOC-purple?style=flat-square)
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
-
-
-**What's inside:** Instructions, 31 Rules, 6 Skills, a Figma plugin (binds SAP tokens, runs WCAG AA a11y checks), and 5 MCP servers — all working together to ensure consistency and quality on every build.
 
 
 ## Examples — screens built by the system
