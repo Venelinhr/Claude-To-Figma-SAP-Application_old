@@ -20,13 +20,29 @@ PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 LEDGER="$PROJ/.claude/pending-learnings.jsonl"
 TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
+# ── Skip machine-generated / non-feedback prompts (BUG 1 fix) ──
+# The v2 agent bridge injects its own turn markers ("[SAP AGENT v2 — TURN 1 of 2]",
+# "READ-ONLY WIREFRAME", "TURN 2 of 2 · BUILD") that contain both approve/build and
+# do-not-build language → they used to flood the ledger as false "mixed" feedback.
+# Slash-commands (/deep-research, /sap-fix …) and empty prompts are also not feedback.
+case "$PROMPT" in
+  '[sap agent v2'*|*'turn 1 of 2'*|*'turn 2 of 2'*|*'read-only wireframe'*|'/'*)
+    exit 0 ;;
+esac
+[ -z "$PROMPT" ] && exit 0
+
 SNIPPET=$(echo "$INPUT" | jq -rc '(.prompt // "") | .[0:200]')
 SNIPPET_JSON=$(printf '%s' "$SNIPPET" | jq -Rsc .)
 
 # ── Signal vocabularies (word-boundaried where a stem is ambiguous) ──
 POS='bravo|perfect|excellent|great job|great result|well done|good job|good work|really good|nice work|nice one|i like it|love it|love this|looks great|looks good|looks perfect|nailed it|exactly right|exactly what|this is good|this is it|this is perfect|this is great|that.?s good|that.?s great|that.?s perfect|that.?s it|that.?s exactly|that.?s what i wanted|(it.?s|is now|is|looks|totally) correct|👏|🎉|💯|❤️|✅|🔥|👍'
 CANON='canonical|use this as (a )?(reference|canonical)|this is the one|best result|ship it|rock solid|exactly right|save (this )?as canonical'
-NEG='\bwrong\b|\bbad\b|no good|not good|terrible|terrable|horrible|awful|wtf|what the|not acceptable|this is wrong|this is bad|this is not|not what i|not right|\bmistake\b|do not|don'"'"'t|\bnever\b|stop doing|violated|fix this|that.?s not|incorrect|\bbroke\b|\bbroken\b|regression|disaster|not ok\b|not okay|poor result|disappointing|garbage|rubbish|please fix|not working|it.?s not sap|this is not sap|not a sap|not real sap|only sap|use only sap|must be sap|has to be sap|not sap component|not sap (token|style|instance|icon)|fake sap|custom (frame|component|nav|bar) instead|native frame|native component|👎|😤|😡|🤦'
+NEG='\bwrong\b|\bbad\b|no good|not good|terrible|terrable|horrible|awful|wtf|what the|not acceptable|this is wrong|this is bad|this is not|not what i|not right|\bmistake\b|violated|fix this|that.?s not|incorrect|\bbroke\b|\bbroken\b|regression|disaster|not ok\b|not okay|poor result|disappointing|garbage|rubbish|please fix|not working|it.?s not sap|this is not sap|not a sap|not real sap|only sap|use only sap|must be sap|has to be sap|not sap component|not sap (token|style|instance|icon)|fake sap|custom (frame|component|nav|bar) instead|native frame|native component|👎|😤|😡|🤦'
+# Imperative negators ("never do this again", "don't use native frames", "stop
+# adding X") only count as a CORRECTION when tied to a build/design object —
+# otherwise plain instructions like "Do not use any tools" were logged as feedback
+# (BUG 2 fix). The object must be a design/build noun, not "tools"/"any".
+NEG_IMPERATIVE='(never|do not|don'"'"'t|stop) (do|use|build|make|repeat|add|place|create|put|set|apply|leave|call)[a-z ]* (this|it|that|again|native|raw|cozy|frame|hex|component|token|divider|spacer|instance|icon|style|color|font|width)'
 HEDGE='close but|not quite|not there yet|almost|isn'"'"'t what|not what i (meant|wanted|asked)|needs work|not right|still off'
 # Negation window: a negator within ~3 words before a positive word flips it
 NEGATION='(not|isn.?t|wasn.?t|aren.?t|don.?t|no longer|far from|hardly|barely) (it |really |even |quite |very )?(perfect|great|good|correct|right|excellent|canonical|the one)'
@@ -38,6 +54,7 @@ POS_HIT=false; NEG_HIT=false; CANON_HIT=false; HEDGE_HIT=false; NEGATED=false
 has "$POS"    && POS_HIT=true
 has "$CANON"  && CANON_HIT=true
 has "$NEG"    && NEG_HIT=true
+has "$NEG_IMPERATIVE" && NEG_HIT=true
 has "$HEDGE"  && HEDGE_HIT=true
 has "$NEGATION" && NEGATED=true
 
@@ -104,11 +121,15 @@ MEMEOF
 elif [ "$NEG_HIT" = true ]; then
   log "correction"
 
-  # ── AUTO-SAVE hard rules to memory immediately ───────────────────────
-  # If user uses "hard rule", "never", "always", "save" imperatives → write
-  # a feedback memory file directly without waiting for Claude to do it.
+  # ── AUTO-SAVE corrections to memory immediately ──────────────────────
+  # Save when EITHER (a) an explicit imperative ("hard rule"/"never"/"save this"),
+  # OR (b) the correction references the build/design in substance (BUG 3 fix) —
+  # natural dissatisfaction like "it's not SAP" / "not good" / "too many tokens"
+  # IS a reusable lesson even without a save command.
   HARDRULE=$(echo "$PROMPT" | grep -cE 'hard rule|never (do|use|repeat|build|make)|always (use|make|do|add|end|build)|save (this|it|all|and learn|to memory)|remember (this|it|from now)|don.?t (do|use|repeat|make) this again|learn from (this|it|feedback)|add (this )?to (memory|rules)|put this in (memory|rules)|fix and (save|learn)|and (never|always) (do|use|repeat)')
-  if [ "$HARDRULE" -gt 0 ]; then
+  BUILDCTX=$(echo "$PROMPT" | grep -cE 'not (real )?sap|only sap|native (frame|component)|not good|too many token|too expensive|costs? (are|too)|wrong (component|token|width|color|font)|not the (component|token|style)|wireframe|floorplan|clone|canonical|not matching|doesn.?t match|not (a )?dialog|not production')
+  if [ "$HARDRULE" -gt 0 -o "$BUILDCTX" -gt 0 ]; then
+    SEV="high"; [ "$HARDRULE" -gt 0 ] && SEV="critical"
     MEM_DIR="$HOME/.claude/projects/-Users-C5408360/memory"
     MEM_INDEX="$MEM_DIR/MEMORY.md"
     SLUG="feedback_auto_$(date -u +%Y%m%d_%H%M%S)"
@@ -118,10 +139,10 @@ elif [ "$NEG_HIT" = true ]; then
     cat > "$MEM_FILE" << MEMEOF
 ---
 name: $SLUG
-description: "[auto-saved hard rule] $(echo "$FULL_PROMPT" | head -c 120 | tr '\n' ' ')"
+description: "[auto-saved correction] $(echo "$FULL_PROMPT" | head -c 120 | tr '\n' ' ')"
 metadata:
   type: feedback
-  severity: critical
+  severity: $SEV
   auto_saved: true
 ---
 
@@ -129,13 +150,14 @@ metadata:
 
 $FULL_PROMPT
 
-**How to apply:** Read this rule before every build and apply it immediately. This was saved automatically because the user gave critical/hard-rule feedback.
+**How to apply:** Read this correction before every build and apply it immediately. Saved automatically because the user flagged a build/design problem or gave a hard rule.
 MEMEOF
     # Add to MEMORY.md index at the top
     if [ -f "$MEM_INDEX" ]; then
       TMPFILE=$(mktemp)
       head -1 "$MEM_INDEX" > "$TMPFILE"
-      echo "- [${SLUG}.md](${SLUG}.md) — ⛔ [auto-saved] $(echo "$FULL_PROMPT" | head -c 100 | tr '\n' ' ')" >> "$TMPFILE"
+      ICON="🔧"; [ "$HARDRULE" -gt 0 ] && ICON="⛔"
+      echo "- [${SLUG}.md](${SLUG}.md) — ${ICON} [auto-saved] $(echo "$FULL_PROMPT" | head -c 100 | tr '\n' ' ')" >> "$TMPFILE"
       tail -n +2 "$MEM_INDEX" >> "$TMPFILE"
       mv "$TMPFILE" "$MEM_INDEX"
     fi
