@@ -68,6 +68,10 @@ All IconTabBar Shell Navigation tabs must have real labels. The active tab must 
 When the current screen has issues (raw 72 fonts, native dividers, placeholder tabs, multiple Primary buttons, native frames as components), report them and offer to fix.
 
 ### API gotchas (avoid silent failures)
+- **Text into a Button/Input/etc:** use the EXACT hashed TEXT property key with `setProperties`, never a guessed short name (short names silently fail). Verified keys: Button `✏️ Text#145508:461` · Input `✏️ Typed Text#145437:221` / `✏️ Placeholder#145437:156` · CheckBox `✏️ Text#154638:49` · RadioButton `✏️ Text#154638:0` · Label `✏️ Label#237212:48` · Avatar `✏️ Initials#143938:0` · Panel `✏️ Title#145524:0` · StandardListItem `✏️ Text#152462:90`. Full list: `knowledge/SAP-COMPONENT-REGISTRY.md`.
+- **ObjectStatus / ObjectNumber / ObjectAttribute / MessageStrip have NO TEXT property** — inject text into the sub-layer node instead: `const t = inst.findOne(n => n.type==='TEXT'); t.fontName={family:'72',style:'Regular'}; t.characters='Ready';` (MessageStrip: `findOne(n => n.name==='Text Message')`).
+- **No `Form Factor` prop on** ObjectStatus / ObjectNumber / ObjectAttribute / Avatar — do NOT call `setProperties({'Form Factor':...})` on them (throws "property not found"). All OTHER instances get `Form Factor: Compact`.
+- **MessageStrip warning** = `setProperties({'Value State':'Critical'})` — there is NO `Type` prop.
 - **Form fields FILL:** Input, Select, DatePicker → set `layoutSizingHorizontal='FILL'` AFTER `appendChild`. Strip `minWidth`/`maxWidth` first. Parent column must be FIXED-width before setting FILL. Otherwise fields render at their ~272px default and crop.
 - **Full horizontal FILL:** set `layoutSizingHorizontal='FILL'` on all SAP instances and text nodes AFTER appending to an auto-layout parent — never before (errors).
 - **Icons:** icons are 16×16 placeholder frames named `◆ICON/<icon-name>`. Never import an icon by key directly with `importComponentByKeyAsync` (throws on set keys).
@@ -264,14 +268,14 @@ Use `importComponentSetByKeyAsync(key)` with these keys. Kit file: `SILcWzK5uFgh
 | Table (Responsive) | `03ea321822c4e99c27de4d9c2524bdec9c6e0972` | |
 | List | `4fb0a3e2fc56fb58d9904d68eb4ac58b9fb1bd25` | |
 | StandardListItem | `f7bc6526a9f16608747a4141800146ebd3f4e835` | |
-| ObjectStatus | `748d609ead5d4a246d7cd7c144b94b518c467e58` | Semantic: None/Success/Warning/Error/Information |
-| ObjectNumber | `7b67d22ed19f246b708dc4664808a45f314a7414` | |
-| ObjectAttribute | `080ead216322befe153704bf8f11373158fea34a` | Clips at 74px — use native text for long labels |
+| ObjectStatus | `748d609ead5d4a246d7cd7c144b94b518c467e58` | `Semantic`: None/Success/Warning/Error/Information · NO Form Factor · NO TEXT prop (inject via findOne TEXT) |
+| ObjectNumber | `7b67d22ed19f246b708dc4664808a45f314a7414` | NO Form Factor · inject text via findOne TEXT |
+| ObjectAttribute | `080ead216322befe153704bf8f11373158fea34a` | Clips at 74px — use native text for long labels · NO Form Factor · inject via findOne TEXT |
 | IconTabBar | `4aafcbf55528c439876b314d155438884b614722` | Type: Shell Navigation (XL) for top nav |
 | Panel | `4d19c2a24896033fe5b04bcc5dfdf43e9626283d` | |
 | SegmentedButton | `308476a5285b5a132241dc1c118d09ecf8d82273` | Enable 3rd/4th Button booleans before injecting labels |
 | Avatar | `71a3389ecbd47822b3184700766e30963fc2f220` | |
-| MessageStrip | `f0e77f8888796e35c0e791ddc0b38535eda6ec31` | |
+| MessageStrip | `f0e77f8888796e35c0e791ddc0b38535eda6ec31` | `Value State`: Information/Critical(=Warning)/Negative/Positive · NO `Type` prop · inject via findOne name==='Text Message' |
 | Toolbar | `58a258bf5813e59cec4dfc684c8cdb2a6ca6721f` | OverflowToolbar = alias |
 
 > ⛔ **Dialog is NOT in this table on purpose.** A screen-level dialog is built by **cloning canonical `727:42563`** (native-frame surface). NEVER `importComponentSetByKeyAsync` a Dialog — slot injection into a Dialog instance fails.
@@ -322,7 +326,7 @@ Tag strokes: `Row Border [stroke:sapList_BorderColor]`.
 | sapField_PlaceholderTextColor | `#556B82` | Input placeholder text |
 | sapLinkColor | `#0064D9` | Links, IDs, interactive text |
 | sapButton_TextColor | `#0064D9` | Default button label |
-| sapButton_Emphasized_Background | `#0070F2` | Primary CTA button background |
+| sapButton_Emphasized_Background | `#0070F2` | Primary CTA button background *(this is a TOKEN name — unrelated to the banned Button `Type` variant value; the Button variant is `Primary`)* |
 | sapButton_Emphasized_TextColor | `#FFFFFF` | Primary CTA button label |
 | sapList_HeaderTextColor | `#1D2D3E` | Table column headers |
 | sapList_SelectionBackgroundColor | `#EBF8FF` | Selected row tint |
@@ -396,9 +400,12 @@ When you see these in the current screen, report them and offer to fix:
 - [ ] Analyzed the selected screen first (floorplan, components, states)
 - [ ] Picked the right floorplan (List Report vs Worklist vs Object Page vs Dialog)
 - [ ] Checked canonical screens — CLONE if a match exists
-- [ ] Presented the plan and (for new screens) confirmed before executing
+- [ ] Presented an ASCII wireframe + L1–L5 tree and got explicit approval — for EVERY request (HARD STOP, RULE 19)
 - [ ] Surfaced applicable ⚡ suggestions
 - [ ] Real SAP instances only — no native look-alike frames
+- [ ] Text set via the exact hashed TEXT key (Button `✏️ Text#145508:461` etc) — never a guessed short name
+- [ ] ObjectStatus / ObjectNumber / ObjectAttribute / MessageStrip text injected via `findOne(TEXT)` — they have no TEXT prop
+- [ ] No `Form Factor` set on ObjectStatus / ObjectNumber / ObjectAttribute / Avatar (they lack it)
 - [ ] Every native text node has a `[typo:role]` tag (exact string) — no raw 72 font
 - [ ] Every fill/stroke uses a `[sapToken]` tag — no raw hex
 - [ ] No native "Divider" frames — strokes on parent
