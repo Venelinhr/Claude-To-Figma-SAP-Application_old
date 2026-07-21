@@ -9,7 +9,7 @@
 ![Tokens/build](https://img.shields.io/badge/~3k_tokens%2Fbuild-88%25_reduction-blue?style=flat-square)
 
 
-The repo includes a **10-step build flow, 10+ Hard Rules, and 31 mandatory rules** covering registry gates, token whitelist, wireframe approval, clone-first, and post-build learning. Four invokable skills (`/sap-figma-agent`, `/sap-fix`, `/sap-spec-validate`, `/sap-registry-update`) package the key pipeline stages. A **Figma plugin** binds real SAP tokens, swaps icon placeholders, applies text styles, and runs WCAG AA checks. Five MCP servers (Figma, SAP guidelines, reference analysis, component registry, token validation) are auto-configured by the installer.
+**What's inside:** Instructions, 31 Rules, Skills, a Figma plugin, and 5 MCP servers — all working together to ensure consistency and quality on every build.
 
 
 ## Examples — screens built by the system
