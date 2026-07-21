@@ -14,8 +14,8 @@
 | `dialogTitle` | 72 | Black | 24px | Auto | `Main Header/sapObjectHeader_Title_FontSize` | Dialog header, DynamicPageTitle H1 |
 | `objectPageTitle` | 72 | Bold | 28px | Auto | `Main Header/LHAuto/Bold` | ObjectPageLayout main title |
 | `sectionHeading` | 72 | Bold | 16px | Auto | `MediumText/LHAuto/Bold` | Panel title, ObjectPageSection H2 |
-| `toolbarTitle` | 72 | Bold | 15px | Auto | `MediumText/LHAuto/Bold` | OverflowToolbar / Toolbar title |
-| `tableHeader` | 72 | Bold | 14px | Auto | `MediumText/LHAuto/Bold` | Table column headers, form label bold |
+| `toolbarTitle` | 72 | Regular | 16px | Auto | `MediumText/LHAuto/Regular` | OverflowToolbar / Toolbar title |
+| `tableHeader` | 72 | Bold | 13px | Auto | `MediumText/LHAuto/Bold` | Table column headers, form label bold |
 | `labelBold` | 72 | Bold | 14px | Auto | `MediumText/LHAuto/Bold` | Required field labels, key data points |
 | `labelRegular` | 72 | Regular | 14px | Auto | `MediumText/LHAuto/Regular` | Optional field labels, body text, cell text |
 | `formLabel` | 72 | Regular | 14px | Auto | `MediumText/LHAuto/Regular` | Form field labels (non-required) |
@@ -48,7 +48,7 @@ Keys are from the SAP Web UI Kit file `SILcWzK5uFghKun9jx6D7c`.
 // Current style keys in plugin (skill/SYSTEM_PROMPT.md RULE 11 + SAP_TYPOGRAPHY in code.js)
 const SAP_TYPOGRAPHY = {
   sectionHeading:    { key: '<harvest>', fontFamily: '72', fontStyle: 'Bold',    fontSize: 16 },
-  toolbarTitle:      { key: '<harvest>', fontFamily: '72', fontStyle: 'Bold',    fontSize: 15 },
+  toolbarTitle:      { key: '<harvest>', fontFamily: '72', fontStyle: 'Regular', fontSize: 16 },
   labelBold:         { key: '<harvest>', fontFamily: '72', fontStyle: 'Bold',    fontSize: 14 },
   labelRegular:      { key: '<harvest>', fontFamily: '72', fontStyle: 'Regular', fontSize: 14 },
   stepLabel:         { key: '<harvest>', fontFamily: '72', fontStyle: 'Bold',    fontSize: 12 },

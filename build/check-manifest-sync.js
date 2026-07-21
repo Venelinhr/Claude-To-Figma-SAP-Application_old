@@ -211,6 +211,39 @@ for (const file of MCP_VOCAB_FILES) {
 }
 if (mcpScanned) ok(`MCP-mapping vocab guard: ${mcpScanned} mapping file(s) scanned`);
 
-if (hardFail > 0) { fail('DRIFT: component-key / token-hex / variant-value mismatch — regenerate SAP_BUILD_MANIFEST.md §3/§4 + code.js MANDATORY_TOKENS from source, and fix forbidden variant values in the registry.'); process.exit(1); }
+// ─────────────────────────────────────────────────────────────────────────────
+// TYPOGRAPHY CROSS-CHECK (added 2026-07-21 — audit fix H4). SAP_BUILD_MANIFEST §5
+// is the typo-size authority (verify-invariants.js enforces it ±1px). But
+// knowledge/guidelines/typography-hierarchy.md carried its own sizes that drifted
+// (toolbarTitle 15 vs 16, tableHeader 14 vs 13), misleading any human reader.
+// Diff every role that BOTH files define; hard-fail on a size mismatch.
+const TYPO_DOC = path.join(ROOT, 'knowledge', 'guidelines', 'typography-hierarchy.md');
+if (fs.existsSync(TYPO_DOC)) {
+  // Parse manifest §5 rows:  | role | size | weight |
+  const manifestTypo = {};
+  const mtRe = /^\|\s*([a-zA-Z]+)\s*\|\s*(\d{1,2})\s*\|/gm;
+  let mt; while ((mt = mtRe.exec(md)) !== null) {
+    const role = mt[1].toLowerCase(); const sz = parseInt(mt[2], 10);
+    // only capture plausible typo roles (size 8–40) to avoid matching other tables
+    if (sz >= 8 && sz <= 40 && !(role in manifestTypo)) manifestTypo[role] = sz;
+  }
+  const doc = fs.readFileSync(TYPO_DOC, 'utf8');
+  // Parse doc rows:  | `role` | 72 | weight | 16px | ...
+  const dtRe = /^\|\s*`([a-zA-Z]+)`\s*\|[^|]*\|[^|]*\|\s*(\d{1,2})px\s*\|/gm;
+  let dt, typoChecked = 0;
+  while ((dt = dtRe.exec(doc)) !== null) {
+    const role = dt[1].toLowerCase(); const docSz = parseInt(dt[2], 10);
+    if (role in manifestTypo) {
+      typoChecked++;
+      if (manifestTypo[role] !== docSz) {
+        fail(`typography ${role}: typography-hierarchy.md says ${docSz}px but SAP_BUILD_MANIFEST §5 (the enforced authority) says ${manifestTypo[role]}px — conform the doc to the manifest.`);
+        hardFail++;
+      }
+    }
+  }
+  ok(`typography cross-check: ${typoChecked} shared role(s) diffed against manifest §5`);
+}
+
+if (hardFail > 0) { fail('DRIFT: component-key / token-hex / variant-value / typography mismatch — regenerate SAP_BUILD_MANIFEST.md §3/§4/§5 + code.js MANDATORY_TOKENS from source.'); process.exit(1); }
 ok('manifest in sync with registry + token sources');
 process.exit(0);

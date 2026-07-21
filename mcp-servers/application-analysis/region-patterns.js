@@ -317,6 +317,34 @@ export const FLOORPLAN_HEURISTICS = [
     description: 'Single-section form for create/edit. Save + Cancel.',
     requires: ['form-section'],
   },
+  // 2026-07-21 · drift-audit H3: the decision matrix (skill/references/
+  // floorplan-decision-matrix.md) defines 9 floorplans; the MCP previously knew
+  // only 6, so suggestFloorplan could never return these 4. Added to close the
+  // gap — the MCP and the matrix now cover the same set.
+  {
+    floorplan: 'analytical-list-page',
+    indicators: ['chart', 'data-table', 'filter-bar', 'kpi-tile'],
+    description: 'Charts + filtered table for analytical exploration. Filter drives both viz and list.',
+    requires: ['data-table'],
+  },
+  {
+    floorplan: 'master-detail',
+    indicators: ['data-table', 'page-header-with-title', 'side-content'],
+    description: 'List + detail side by side (Flexible Column Layout). Select a row → detail column.',
+    requires: ['data-table', 'page-header-with-title'],
+  },
+  {
+    floorplan: 'initial-page',
+    indicators: ['kpi-tile', 'launch-tile', 'search-field'],
+    description: 'App launchpad / home with entry tiles. No single primary entity.',
+    requires: [],
+  },
+  {
+    floorplan: 'fullscreen-dialog',
+    indicators: ['dialog-header', 'form-section', 'footer'],
+    description: 'Quick create or confirmation surface, modal. Clone canonical 727:42563 for Schedule/Define dialogs.',
+    requires: ['form-section'],
+  },
 ];
 
 /**
