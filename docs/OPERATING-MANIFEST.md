@@ -5,7 +5,7 @@
 > contradictory instruction source, this project's #1 documented failure). Read this to know WHERE
 > each rule lives; read the linked source for the rule itself.
 >
-> Cross-references: `skill/SYSTEM_PROMPT.md` (29 RULEs) · `SAP_BUILD_MANIFEST.md` · `docs/V2-REASONING-PIPELINE.md` · `docs/KNOWLEDGE-INDEX.md` · `docs/canonical-screens/`
+> Cross-references: `skill/SYSTEM_PROMPT.md` (31 RULEs) · `SAP_BUILD_MANIFEST.md` · `docs/V2-REASONING-PIPELINE.md` · `docs/KNOWLEDGE-INDEX.md` · `docs/canonical-screens/`
 
 ---
 
@@ -93,7 +93,7 @@ Acceptable **only if all** are true:
 
 | Need | Go to |
 |---|---|
-| A rule | `SYSTEM_PROMPT.md` (RULE 1–30) |
+| A rule | `SYSTEM_PROMPT.md` (RULE 1–31) |
 | Build knowledge (keys/tokens) | `SAP_BUILD_MANIFEST.md` (the only per-build read) |
 | What/where index | `docs/KNOWLEDGE-INDEX.md` |
 | Reference examples | `docs/canonical-screens/` + the `.fig` |
@@ -106,5 +106,9 @@ Acceptable **only if all** are true:
 | Repair / learning | `docs/REPAIR-PATTERNS.md` |
 | Proactive suggestions ("suggest X not Y") | RULE 12 → `docs/SAP-SUGGESTION-CATALOG.md` (surfaced at Gate 3) |
 | Lost / wrong output | RULE 29 → clone nearest canonical |
+| Repair a non-compliant screen | `/sap-fix <nodeId>` (`.claude/skills/sap-fix/SKILL.md`) |
+| Figma Agent on-canvas (no Claude Code) | `.claude/skills/sap-figma-agent/SKILL.md` — add via Figma Agent → Skills |
+| Workflow compliance contract | `WORKFLOW-CONTRACT.md` (root) — loaded at SessionStart by `load-workflow-contract.sh` |
+| Gate enforcement hooks | `guard-wireframe-gate.sh` (Gate 3) · `guard-reuse-gate.sh` (Gate 1) · `guard-figma-code.sh` (Gate 5) · `guard-manifest-drift.sh` (Gate 4) · `enforce-wireframe-first.sh` (UserPromptSubmit) |
 
-**System state (verify before quoting):** 31 RULEs · 9 agents · 18+ canonical screens · 152 components · 154 guidelines · MCP-first default (RULE 25).
+**System state (verify before quoting):** 31 RULEs · 9 agents · 14+ canonical screens · 153 components · 154 guidelines · MCP-first default (RULE 25).

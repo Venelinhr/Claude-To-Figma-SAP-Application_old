@@ -139,6 +139,11 @@ Real instances only. Layout containers (DynamicPage, Column, ObjectPageLayout, F
 | slim-arrow-right | `3b6dbb6e00c7999da17b69d269c3ace5f9ccee6d` |
 | slim-arrow-down | `d206a924630cb08c1b62f4c2ddef383b8142e519` |
 | overflow / more (DPH overflow btn) | `6a0c2f0be4be541cc17870a7a633b19e3cb2d1df` |
+| show (eye/view) | `f4d889dde94203c7d563db1cde8ec8ae695395bd` |
+| edit (pencil) | `b346b05bc52f9d648ead280cfbd17baacea391f2` |
+| delete (trash) | `6da9bfb78bb57cc96d015531ac16e201423d8558` |
+| date-time | `f8211de35a7e07c14fa178fa3769db7b16306f11` |
+| add-calendar | `035388107a60472d49a67c55e79c775c24239330` |
 
 Text = native `figma.createText()` with family `72`, tagged `[typo:role]` (see §5).
 
@@ -161,6 +166,11 @@ Clone these — don't build from scratch. These nodes carry correct SAP tokens a
 | SideNavigation (full) | `701:119633` | Complete slot-injection build — confirmed Jul 15 |
 | SideNavigation (proto source) | `699:37890` | Use as prototype source for slot injection |
 | Dialog Header (canonical) | `560:36171` | Clone for any Dialog Header — confirmed Jul 13 |
+| Schedule Activated Confirmation | `850:45411` | Confirmation/success state, ObjectStatus, Horizon Light — confirmed Jul 18 "Bravo" |
+| Schedule Activated (clone source) | `853:135938` | Clone source for Schedule Activated variants |
+| Purchase Orders List Report | `804:44859` | 1440px List Report, approval actions, ObjectStatus — confirmed Jul 16 "Bravo" |
+| Orders List Report | `889:45857` | 1440px List Report, full desktop pattern — confirmed Jul 19 |
+| Products Inventory | `907:46070` | 1440px Inventory List Report, EMA product data — confirmed Jul 19 |
 
 **750:174xxx benchmark screens (in the .fig file — the mandated quality bar):**
 
@@ -200,16 +210,22 @@ Tag any fill/stroke layer `<desc> [sapTokenName]`; set the hex below so the plug
 | sapButton_Emphasized_Background | `#0070F2` | Primary CTA bg |
 | sapButton_Emphasized_TextColor | `#FFFFFF` | Primary CTA text |
 | sapList_Background | `#FFFFFF` | Row bg |
+| sapList_BorderColor | `#E5E5E5` | Row/cell border |
 | sapList_TextColor | `#131E29` | List / table / body text |
 | sapList_HeaderTextColor | `#1D2D3E` | Column header text |
 | sapList_SelectionBackgroundColor | `#EBF8FF` | Selected row bg (blue tint) |
 | sapList_SelectionBorderColor | `#0064D9` | Selected/active outline |
 | sapTitleColor | `#1D2D3E` | Page title / H1 |
+| sapTextColor | `#1D2D3E` | Body text (general) |
 | sapContent_LabelColor | `#556B82` | Metadata labels |
 | sapLinkColor | `#0064D9` | Links / breadcrumb |
+| sapPositiveTextColor | `#256F3A` | Success text (∞ Indefinitely) |
 | sapPositiveElementColor | `#1E8F56` | Success icon / green border |
+| sapCriticalTextColor | `#A8650B` | Warning text |
 | sapCriticalElementColor | `#DF7B01` | Warning icon |
+| sapNegativeTextColor | `#BD2920` | Error text |
 | sapNegativeElementColor | `#BD2920` | Error icon |
+| sapInformativeTextColor | `#0064D9` | Information text |
 | sapNeutralColor | `#788FA6` | Inactive / neutral |
 
 Explicit stroke tag: `[stroke:sapTokenName]` when a border needs a different token than the fill.
@@ -224,7 +240,7 @@ Explicit stroke tag: `[stroke:sapTokenName]` when a border needs a different tok
 | title | 16 | Bold |
 | subtitle | 14 | Regular |
 | label | 14 | Regular |
-| label-emphasized / labelBold | 14 | Bold |
+| labelBold | 14 | Bold | ← use this tag string; `label-emphasized` is an internal alias (verify-invariants.js) but Bind resolves `[typo:labelBold]` only |
 | body / bodyText | 14 | Regular |
 | caption | 12 | Regular |
 | tableHeader | 13 | Bold |

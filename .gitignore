@@ -54,3 +54,6 @@ semantic-models/project-knowledge-*.md
 .claude/.wireframe-approved
 .claude/.canonical-selected
 .claude/.scratch-approved
+.claude/.workflow-loaded
+.claude/.agent-turn1
+.claude/.bridge-token

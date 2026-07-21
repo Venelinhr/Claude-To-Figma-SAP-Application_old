@@ -1,0 +1,16 @@
+{
+  "name": "claude-to-figma-sap-application",
+  "version": "1.0.0",
+  "description": "SAP Figma Design Agent — build production-ready SAP Fiori screens from plain language or reference images",
+  "scripts": {
+    "test": "bash build/test-build.sh",
+    "validate": "node build/validate-spec.js",
+    "check": "node build/check-manifest-sync.js",
+    "lint": "node build/lint-mcp-frame.js",
+    "reuse-check": "node build/check-reuse-integrity.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
