@@ -109,7 +109,7 @@ Attach a screenshot or wireframe as reference if you have one. Claude analyses i
 ## How It Works — the full pipeline
 
 ```
-You: "Build a Purchase Orders approval screen"
+You: "Build a Purchase Orders screen"
                        │
                        ▼
   ┌─────────────────────────────────────────────────┐
