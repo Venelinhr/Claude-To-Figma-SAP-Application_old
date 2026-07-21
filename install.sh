@@ -32,6 +32,15 @@ fi
 ok "Node.js $(node --version)"
 ok "Claude Code CLI installed"
 
+# Check jq — required by gate hooks at runtime
+if ! command -v jq >/dev/null 2>&1; then
+  warn "jq not found — gate hooks require it. Install with: brew install jq (Mac) or apt install jq (Linux)"
+  warn "Without jq, the wireframe gate and reuse gate will be silently disabled."
+  warn "Install jq now, then re-run this installer."
+else
+  ok "jq $(jq --version)"
+fi
+
 # ── Step 2: Install custom MCP server dependencies ───────────────────────────
 log "Installing custom MCP server dependencies..."
 for dir in mcp-servers/application-analysis mcp-servers/fiori-guidelines mcp-servers/sap-figma-community; do
@@ -128,6 +137,13 @@ echo "  │  Replace: YOUR_FIGMA_TOKEN_HERE                            │"
 echo "  │  Under: mcpServers.figma.env.FIGMA_API_TOKEN               │"
 echo "  └────────────────────────────────────────────────────────────┘"
 echo ""
+
+# Warn immediately if token is still placeholder
+if grep -q 'YOUR_FIGMA_TOKEN_HERE' "$HOME/.claude/settings.json" 2>/dev/null; then
+  echo -e "${YELLOW}  ⚠ FIGMA TOKEN NOT SET — Claude cannot access Figma until you replace${NC}"
+  echo -e "${YELLOW}    YOUR_FIGMA_TOKEN_HERE in ~/.claude/settings.json${NC}"
+  echo ""
+fi
 echo "  ┌─ STEP 2 — Load the Figma plugin ──────────────────────────┐"
 echo "  │  Plugins → Development → Import plugin from manifest       │"
 echo "  │  Select: $SKILL_DIR/plugin/figma-builder/manifest.json     │"

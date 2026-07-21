@@ -1,0 +1,435 @@
+# SAP Figma Design Agent — Session Start Instructions
+
+**READ THIS FILE AT THE START OF EVERY SESSION.**
+
+> ⛔⛔⛔ **HARD RULE — REFERENCE IMAGE = MANDATORY WIREFRAME FIRST**
+> Whenever the user attaches a reference image (any image, screenshot, sketch, wireframe),
+> you MUST run the full Gate 0→3 pipeline and show the ASCII wireframe + L1–L5 layer tree
+> BEFORE writing anything else. This is the visual confirmation that you understood the image.
+> No exceptions — not for clones, not for "same screen", not for "obvious" layouts.
+> Enforced by `enforce-wireframe-first.sh` (UserPromptSubmit hook, fires on every image reference).
+
+> ⛔ **BEFORE ANY Figma SAP task — new screen, improvement, next step, edit, or variant —
+> READ AND OBEY `WORKFLOW-CONTRACT.md` (project root).** It is the single mandatory source
+> of truth linking all 31 rules + 10-step flow + hard rules + skills + lessons. Analyze the
+> source screen first; use only real SAP components/tokens/text-styles. Applies to follow-up
+> edits and "improve this" requests too — repair existing screens with `/sap-fix <nodeId>`.
+
+
+This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **154 guideline JSONs** (100% coverage), a Figma plugin enforcing an **80-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
+
+> **Last updated: 2026-07-20** — Workflow enforcement system shipped: `WORKFLOW-CONTRACT.md` + auto-load hook + pre-edit gate + `/sap-fix` skill. Wireframe-first root cause fixed: `enforce-wireframe-first.sh` forces ASCII wireframe PRESENTATION before any response when image attached. NEW HARD RULE: reference image = mandatory wireframe first, always. SAP Suggestion Catalog (`docs/SAP-SUGGESTION-CATALOG.md`) added. Order Detail `936:48470` fixed (tabs, typo tags, dividers, buttons). Both remotes at `79f702c`. Previous (2026-07-19): 31-rule audit, 3 contradictions fixed, 10 Hard Rules locked.
+
+## ⛔ THE CANONICAL GATE SEQUENCE (authoritative build order — top of skill/SYSTEM_PROMPT.md)
+
+Every SAP build follows this order; each gate is PASS/FAIL and BLOCKS on fail (exit 2). Gates load at session launch.
+
+```
+Gate 0 Analyze reference (VDI)
+Gate 1 SEARCH CANONICAL FIRST → clone if a match exists   [guard-reuse-gate.sh]  ⛔ build-from-scratch forbidden if canonical exists
+Gate 2 Measure width
+Gate 3 ASCII wireframe + L1–L5 layer tree → USER APPROVAL  [guard-wireframe-gate.sh]  ⛔ HARD STOP
+Gate 4 Verify SAP keys + library + manifest not drifted    [guard-manifest-drift.sh]  ⛔ fail-closed, never createFrame
+Gate 5 Build (real SAP instances / clone canonical)        [guard-figma-code.sh]  ⛔ blocks native-frame wireframe pre-build
+Gate 6 Verify tokens (every fill binds a SAP variable)     [verify-invariants.js]
+Gate 7 Verify zero native frames (real-frame tree walk)    [verify-invariants.js]
+Gate 8 Verify layer naming
+Gate 9 Hand off ONLY if verify.json overallPass:true       [lint-on-stop.sh]
+```
+
+The 5 invariants: (1) zero native frames, (2) zero raw hex, (3) zero non-SAP typography, (4) clone-first when a canonical exists, (5) fail-closed on any SAP resource error. Approval markers (`.wireframe-approved`, `.scratch-approved`) are written ONLY by the user's own words (capture-approvals.sh) — Claude cannot self-echo them to skip a gate. If a gate blocks you, READ its stderr for the exact missing step.
+
+## SAP Web UI Kit is the single source of truth (RULE 23)
+
+The **SAP Web UI Kit** (Figma file `SILcWzK5uFghKun9jx6D7c`) is the ONLY source of truth for components, properties, tokens, variables, variants, AND icons. Never invent or guess any of them — verify against the kit. Variant property names/options must be read from the live kit, NOT assumed from UI5 vocabulary:
+- ObjectStatus uses `Semantic` not `State`
+- Button `Type` = Primary/Secondary/Accept/Reject/Attention/Tertiary — NO Emphasized/Transparent
+- ObjectStatus `Form Factor` = Compact/Cozy only — `State` prop does not exist
+
+---
+
+## What This Project Is
+
+> **The execution order is THE CANONICAL GATE SEQUENCE** defined at the top of
+> `skill/SYSTEM_PROMPT.md` (Gate 0 → Gate 7). That is the single authoritative
+> order. The diagram below shows the overall flow; the gate sequence governs
+> *when* each step runs and *what stops the build*.
+
+```
+Requirement (Jira ticket / user story / screenshot)
+    ↓
+GATE 0  Analyze reference (VDI)                    — RULE 12/17/18/26
+GATE 1  Search canonical FIRST → clone if match    — RULE 28 + RULE 31  ⛔ build-from-scratch forbidden if canonical exists
+GATE 2  Measure width                              — RULE 30
+GATE 3  ASCII wireframe + layer tree → APPROVAL     — RULE 19  ⛔ HARD STOP
+GATE 4  Verify SAP keys + library connected         — RULE 23/24  ⛔ FAIL-CLOSED, never createFrame() fallback
+GATE 5  Build (SAP instances ONLY / clone canonical) — RULE 25 + 8/14/28  ⛔ 0 native frames, 0 raw hex
+GATE 6  Verify invariants (post-build tree walk)    — RULE 21  ⛔ fix or STOP
+GATE 7  Hand off + validated URL + Bind SAP Tokens  — RULE 27
+    ↓
+Real SAP Figma screen — every element a real SAP Web UI Kit instance
+```
+
+**Legacy JSON path** (bulk standard floorplans only): requirement-analyst →
+component-architect → registry validation → figma-builder emits spec-schema.json →
+plugin builds. Retained but NOT the default. The gate sequence above is the default.
+```
+
+---
+
+## ⭐ CANONICAL REFERENCE FILE — READ THIS FIRST
+
+**`docs/canonical-screens/Claude to Figma SAP Application.fig`**
+
+This is the ONLY approved ground truth for structure, layout, components, tokens, and patterns.
+It ships with the repo. Every build clones from it. No exceptions.
+
+**Before ANY build:**
+1. Identify the closest screen in this file
+2. Read `docs/canonical-screens/CANONICAL-SCREENS.md` for exact node IDs, components, patterns
+3. Clone that node — never build from scratch (RULE 28)
+4. Match structure exactly — this file IS the quality bar
+
+**What's in it:**
+- List Report with Progress Rows (Activities View)
+- Object Page narrow with DPH + IconTabBar (yanatest Steps)
+- Side Navigation (full 20-item tree, expandable, active state)
+- Schedule Operation Dialog (4 states)
+- Validate System Log Panel (severity pills)
+- Outage List Overview (desktop, 8 columns)
+- Design System Governance Console (FCL + SideNav + nested tables)
+
+> This file overrides any other pattern. If `figma-build-patterns.md` says one thing and this file shows another — **this file wins.**
+
+---
+
+## Project Location
+
+**Canonical path:** `/Users/C5408360/Downloads/Task to Figma SAP layouts components/`
+
+---
+
+## Current State (2026-07-21)
+
+> **COMPLETED 2026-07-20:** Workflow enforcement system fully shipped — `WORKFLOW-CONTRACT.md`, SessionStart auto-load hook (`load-workflow-contract.sh`), pre-edit gate (`guard-workflow-contract.sh`), `/sap-fix` skill, wireframe-first enforcement (`enforce-wireframe-first.sh`), SAP Suggestion Catalog, Order Detail `936:48470` fixed. See "Last updated" banner above.
+
+### Plugin state
+- `plugin/figma-builder/code.js`: MCP-bind-only. **Fail-closed (2026-07-18):** bind handler posts `type:'error'` (not unconditional success) when any fill/stroke/text fails to bind a SAP variable. `code.bundled.js` rebuilt.
+- Three tools only: bind-mcp-frame, harvest-icon-keys, export-variable-keys
+
+### Execution paths
+- **RULE 25 (DEFAULT):** Claude builds via `use_figma` with real SAP instances + name-tags → plugin binds tokens
+- **Legacy path:** JSON spec → plugin `Build Screen` (retained for bulk standard floorplans)
+
+### Automation hooks (need Claude Code restart to activate)
+**use_figma PreToolUse gate chain (order matters — wireframe→reuse→code→drift):**
+- `guard-wireframe-gate.sh` — **BLOCKS** build unless `.wireframe-approved` exists (Gate 3, RULE 19)
+- `guard-reuse-gate.sh` — **BLOCKS** with no reuse decision; L1-4 require `.clone(` (clone-first); L5 requires `.scratch-approved` (ask-before-scratch)
+- `guard-figma-code.sh` — **BLOCKS** createFrame-with-zero-instances (native-frame wireframe)
+- `guard-manifest-drift.sh` — **BLOCKS** key-import build on manifest drift (Gate 4)
+
+**UserPromptSubmit:** `capture-approvals.sh` — writes `.wireframe-approved`/`.scratch-approved` from the USER's own words (anti-self-echo); `feedback-learn.sh`; `recall-lessons.sh`
+**Stop:** `lint-on-stop.sh` — Gate 9, blocks hand-off on failing/missing `verify.json`; `clear-reuse-marker.sh` clears gate markers at SessionStart
+**Other:** `block-codejs-read.sh`, `block-generated-files.sh`, `guard-private-screens.sh`, `registry-rebuild.sh`, `manifest-sync-check.sh`, `verify-learnings.sh`, `surface-canonical-record.sh`, `surface-learnings.sh`, `validate-lesson.sh`
+
+### The 5 build invariants (docs/SAP-INVARIANT-ARCHITECTURE.md) — enforced by build/verify-invariants.js
+1. Zero native frames outside allowlist · 2. Zero raw hex (incl. instance paint overrides) · 3. Zero non-SAP typography · 4. Clone-first when a canonical exists · 5. Fail-closed on any SAP resource error. **verify-invariants.js reads the real frame tree and returns exit 2 on any violation** — success only if the frame proves it. Registries: `native-frame-allowlist.json`, `primitive-exceptions.json`, `layer-naming.json`, `keyless-components-allowlist.json`.
+
+### Reuse-First enforcement (RULE 31 — mechanical since 2026-07-17)
+- **Score:** `node build/score-canonical.js --floorplan "<fp>" --regions <r> --components <c>` — deterministic, use it
+- **Record decision:** `echo '{"level":N,"score":S,"baseCanonical":"<id>","deltaSpec":null}' > .claude/.reuse-declared`
+- **Gate blocks** if missing/invalid, if L1-4 code lacks `.clone(`, or if L5 lacks `.scratch-approved`
+- **Integrity:** `node build/check-reuse-integrity.js` · token/key drift now **hard-fails** in `check-manifest-sync.js`
+
+### Canonical confirmed screens (file `p7zm5EMBk5DRRZdxNeJ4f5`)
+| Screen | Node | Confirmed |
+|---|---|---|
+| Schedule Activated Confirmation | `850:45411` | 2026-07-18 — "Bravo. Great result!" |
+| Schedule Activated (clone source) | `853:135938` | 2026-07-18 |
+| Activities View | `615:36810` | 2026-07-15 — "Perfect" |
+| Purchase Orders List Report | `804:44859` | 2026-07-16 — "Bravo" |
+| yanatest Steps | `560:36552` | 2026-07-14 — "Great result!" |
+| Schedule Form Step 2 | `709:40690` | 2026-07-14 |
+| Live Preview Panel | `709:41339` | 2026-07-14 |
+| SideNavigation (full) | `701:119633` | 2026-07-15 |
+| SideNavigation (proto source) | `699:37890` | 2026-07-15 |
+
+### Privacy: canonical PNGs
+- **Private by default** — `.gitignore` uses allowlist model (not blacklist)
+- **6 public:** 01, 02, 07, 09, 10, 11 (user-confirmed 2026-07-16)
+- **All others private** — `_private-refs/` + any new PNG is gitignored automatically
+- `guard-private-screens.sh` warns on any `git add -f` attempt
+
+### GitHub
+- `origin` = `github.tools.sap/C5408360/sap-fiori-ai-designer`
+- `github` = `github.com/Venelinhr/Claude-To-Figma-SAP-Application`
+- Both remotes stay in sync — run `git rev-parse --short HEAD` for the current commit (don't quote a hardcoded hash; it drifts)
+- README: gallery, 6-step install, 31 rules dropdowns, clean pipeline · Canonical Pattern Library (RULE 31) enforced
+
+### Snapshots
+20 on disk. Latest: `snapshot-20260717-092316-july17-readme-github-cleanup`
+
+### Session memory
+- `session_state_current.md` — full today's session summary (global + project mirror)
+- `feedback_audit_fixes_workflow_quality.md` — all audit fixes detail
+- `session_state_july915_recovered.md` — recovered lessons and canonical screens from a previous session gap
+
+---
+
+## ⛔⛔⛔ ABSOLUTE HARD RULE — AUTO-SAVE ALL FEEDBACK, ALWAYS, WITHOUT BEING ASKED
+
+**The system saves ALL feedback automatically. Claude must NEVER ask "should I save this?" — just save it.**
+
+- **Positive feedback** (bravo / great / nice / I like it / good work / 👍 / ❤️) → auto-saved to memory
+- **Negative feedback** (bad / wrong / wtf / not good / it's not SAP / only SAP / never do this) → auto-saved to memory as a hard rule
+- **Hard rules** (hard rule / never / always / save this / remember this / add to memory) → auto-saved immediately
+- The `feedback-learn.sh` hook fires on EVERY user message and detects these signals automatically
+- After saving, Claude applies the lesson immediately without being asked
+- User must NEVER be told "I'll save that" — it must already be saved
+
+---
+
+## ⛔ ABSOLUTE HARD RULE — ALWAYS FULL HORIZONTAL WIDTH (FILL)
+
+**EVERY element, container, group, and row must fill its full horizontal space. No orphaned fixed widths.**
+- Root frame + all section containers → `primaryAxisSizingMode='FIXED'`, full width
+- SAP instances (ShellBar, Input, Button, Select) → `layoutSizingHorizontal='FILL'` **AFTER** appendChild
+- Table rows + header → `resize(tableWidth, rowHeight)` — all cells must sum to full table width
+- Text nodes in FILL containers → `layoutSizingHorizontal='FILL'` after append
+- NEVER set FILL before appendChild → error; always append first, then set FILL
+- Groups inside containers → wrap in FILL frame if they need to stretch
+
+---
+
+## ⛔ ABSOLUTE HARD RULE — NEVER USE RAW FONT FAMILY '72' ON TEXT NODES
+
+**ALWAYS add `[typo:role]` name tag to every text node. NEVER leave text as bare "72" font family.**
+- Raw `fontName: {family:'72'}` = NOT a SAP token = fails typography binding = user sees "72" in panel
+- Every text node name MUST include `[typo:role]` tag so Bind plugin applies the SAP library text style
+- Roles: `[typo:heading]` · `[typo:body]` · `[typo:label]` · `[typo:labelBold]` · `[typo:caption]`
+- Example: `t.name = 'Date [typo:label] [sapContent_LabelColor]'`
+- This applies to EVERY text node in EVERY build. No exceptions.
+
+---
+
+## ⛔⛔⛔ 5 MANDATORY BUILD HARD RULES (confirmed 2026-07-19)
+
+**Rule 1 — Side padding ALWAYS 32px (NEVER 48px)**
+- `paddingLeft = paddingRight = 32` on ALL containers (page header, filter area, table wrapper)
+- 48px = WRONG. Always use 32.
+
+**Rule 2 — IconButtons ALWAYS Type:Tertiary**
+- ANY action icon button (view/edit/delete, toolbar, nav) → `setProperties({ 'Type': 'Tertiary' })`
+- Never leave as Primary/Secondary for icon-only buttons
+
+**Rule 3 — Two-line stacked text ALWAYS center-aligned (vertically)**
+- Frame with label+value or title+subtitle stacked → `counterAxisAlignItems = 'CENTER'`
+- Never MIN (top) or MAX (bottom) — ALWAYS CENTER for visual balance
+- **This includes table cells with price+sub-currency, amount+currency, name+variant** — any 2-line vertical stack
+- Apply this DURING BUILD, not as a fix after. Verified wrong = top-aligned price cell 2026-07-19.
+
+**Rule 4 — NEVER create native Divider frames**
+- NEVER `figma.createFrame()` for a 1px divider line
+- ALWAYS use stroke settings on the parent frame instead:
+  `node.strokes = [{type:'SOLID', color:...}]` + `node.strokeBottomWeight = 1` (or top/left/right)
+
+**Rule 5 — Default Form Factor is ALWAYS Compact**
+- ALL SAP instances → `'Form Factor': 'Compact'` — no exceptions without explicit user instruction
+- **NEVER switch to Cozy to fix a11y tap target warnings** — Compact is correct for back-office desktop. The plugin's 4 too-small warning is acceptable and expected on desktop screens.
+- Button, IconButton, Input, Select, Label, CheckBox, ShellBar — ALL Compact by default
+- Violated 2026-07-19: switched to Cozy to suppress a11y warning — WRONG. Revert to Compact.
+
+---
+
+## ⛔ ABSOLUTE HARD RULE — ALWAYS BUILD IN SAP HORIZON LIGHT THEME
+
+**ALWAYS build in SAP Horizon Light (white background). NEVER build in dark theme.**
+- Reference is dark → ignore the dark colors, build in Horizon Light anyway.
+- Reference is light → build in Horizon Light.
+- Only exception: user explicitly writes "dark theme" or "dark mode" in their message.
+- Dark hex (#1d2d3e, #1b3346, #162433…) has NO SAP variable → guaranteed Bind failure.
+- Correct token hex: `sapBackgroundColor=#f5f6f7`, `sapShellColor=#ffffff`, `sapList_BorderColor=#e5e5e5`.
+
+---
+
+## ⛔ ABSOLUTE HARD RULE — ALWAYS END WITH VALIDATED FIGMA URL TO THE EXACT NODE
+
+**At the end of EVERY build, provide a Figma URL to the EXACT built frame node. No exceptions.**
+- Format: `https://www.figma.com/design/<fileKey>/SAP-application-builder?node-id=<id-HYPHEN>`
+- Node ID HYPHEN not colon: `850:45411` → `850-45411`
+- Confirm node exists via `get_metadata` BEFORE giving URL
+- Link to the FRAME — never to a parent group, section, or the file root
+- This applies after every build, every fix, every iteration
+
+---
+
+## ⛔ ABSOLUTE HARD RULE — SHARE FIGMA URL WITH DIRECT NODE AT END OF EVERY BUILD
+
+**This is the same rule stated differently for emphasis — it is MANDATORY, not optional.**
+- User must NEVER have to hunt for the built frame
+- The URL must open Figma and zoom directly to the built screen
+- Validate node exists → format with hyphen → share immediately after build completes
+- Applies even when Bind is still pending or the build is partial
+
+---
+
+## ⭐⭐⭐ MANDATORY 10-STEP BUILD FLOW — NEVER SKIP ANY STEP
+
+User confirmed 2026-07-19: "great workflow and rules! DO not skip any of these!"
+
+```
+STEP 1  Receive requirement (screenshot / ticket / description)
+STEP 2  Gate 0  — Analyze reference (VDI sector-by-sector). Map every element to real SAP component.
+STEP 3  Gate 1  — Search canonical screens first. Match → CLONE. Never rebuild from scratch.
+STEP 4  Gate 2  — Measure width. User override always wins.
+STEP 5  Gate 3  — ASCII wireframe + L1-L5 layer tree → HARD STOP. Wait for user approval.
+STEP 6  Gate 4  — Verify SAP library + component keys. FAIL-CLOSED: never createFrame() fallback.
+STEP 7  Gate 5  — Build. Real SAP instances. Horizon Light tokens. L1-L5 naming. Zero native UI frames.
+STEP 8  Gate 6  — Verify: instances, fills, fonts, no raw hex. Fix before handoff.
+STEP 9  Bind    — User runs Bind SAP Tokens. FAIL → diagnose + fix + re-bind. Never hand off on FAIL.
+STEP 10 URL     — Share validated Figma URL to exact node. ⛔ MANDATORY LAST ACTION EVERY TIME.
+```
+
+---
+
+## Critical Rules (DO NOT VIOLATE)
+
+1. **Registry gate is HARD** — every component in `hierarchy[]` must have a file in `knowledge/components/registry/`
+2. **Token whitelist is HARD** — every color reference MUST be one of the 80 tokens in `MANDATORY_TOKENS`. Raw hex = rejected.
+3. **Plugin makes zero design decisions** — all reasoning in skill/SYSTEM_PROMPT.md
+4. **Library must be connected** — pre-flight check blocks build if SAP Web UI Kit missing
+5. **Floorplan confirmation is mandatory** — wrong floorplan wastes all downstream work
+6. **No code.js edits for SAP republishes** — edit registry JSON, run build script, re-import
+7. **ASCII wireframe gate (RULE 19)** — HARD STOP before JSON generation. User MUST approve wireframe first. **VDI cache does NOT exempt you — it skips analysis work only, not the gate.** Violated twice on yanatest.
+8. **Reasoning Brain (RULE 20)** — 7 mandatory artifacts before component hierarchy design
+9. **QA Certification (RULE 21)** — Zero-Defect + Exception Engine before user handoff
+10. **Build knowledge = ONE file (RULE 28)** — MCP-first build agent reads `SAP_BUILD_MANIFEST.md` ONLY + reference image or cached semantic model. NEVER read `code.js`. One-shot build: one `use_figma` call, ≤1 screenshot.
+11. **Visual analysis skill is pinned in-project (RULE 26)** — `skill/sap-visual-reading/` is the single source of truth. Global `/sap-vdi` points here.
+12. **Clone canonical, never build from scratch (RULE 28)** — For ANY SAP composite with slots: find existing correctly-built node → clone → clear slot → repopulate with fresh prototypes from ORIGINAL. Never `createFrame()` for composites. See `SAP_BUILD_MANIFEST.md §3b` for canonical nodes.
+13. **Inspect before build (RULE 28 sub-rule A)** — Call `get_design_context` on nearest working reference node BEFORE any `use_figma` call. Never skip.
+14. **Root cause before retry (RULE 28 sub-rule G)** — Silent fail + wrong output = override inheritance or nesting depth. Identify WHY before retrying. See P-027, P-028.
+
+---
+
+## 26 Lessons from July 14-15 (quick reference)
+
+**Build rules:**
+1. Real SAP instances only — never `createFrame()` for UI components
+2. L1–L5 semantic naming always — no generic names, no ` (SAP)` suffix, no redundant nesting
+3. No Spacer frames — SPACE_BETWEEN / layoutGrow on real child. Even a named `Toolbar Fill` frame = banned.
+4. ASCII wireframe FIRST — stop, wait approval — even with cached VDI model
+
+**DPH composite:**
+5. 52+ nodes to hide to strip chrome at 320px
+6. H1 = biggest `fontSize` text node (not by name)
+7. Cannot appendChild into DPH — use absolute sibling IconButton instead (x=width-btnW-8, y=10)
+8. Clone clean existing DPH — don't strip fresh every time
+
+**ObjectAttribute:**
+9. Clips at 74px — use native text rows for long labels
+
+**Progress Row (canonical):**
+10. Native green frame (cornerRadius=6, 40×12px) > SAP ProgressIndicator composite
+11. ObjectStatus(Semantic=Success) icon-only = confirmed checkmark pattern
+
+**Figma API:**
+12. `setProperties()` BEFORE reading sublayer nodes (P-023)
+13. `layoutSizingHorizontal='FILL'` silently fails when parent is HUG — set parent FIXED first
+14. `individualStrokeWeights` not supported in `use_figma`
+15. `counterAxisAlignItems='STRETCH'` is invalid — use MIN/MAX/CENTER
+16. Screenshot API caches — screenshot child node for fresh result
+17. Cannot `appendChild` inside INSTANCE — insert into parent frame
+18. `importComponentByKeyAsync` throws on component SET keys — use `importComponentSetByKeyAsync`
+
+**Token / build:**
+18. Never read code.js (45k tokens) — manifest only
+19. VDI cache = 96% saving on repeat image analysis
+20. One-shot build + one screenshot — no live iteration loop
+21. Parallel `Promise.all` imports — 3–4× faster; reuse compSet for multiple instances
+
+**Hooks:**
+22. Hook stdin = `.tool_input.file_path` from stdin JSON — NOT `CLAUDE_TOOL_INPUT_FILE_PATH`
+23. `settings.json` requires Claude Code restart to activate
+
+**Plugin UI:**
+24. `getBoundingClientRect().height` for resize — not `scrollHeight`
+25. `body` background = card background eliminates phantom gap
+
+**SAP ObjectStatus:**
+26. `setProperties` after insert; `findAll(TEXT)` then `visible=false` for icon-only
+
+---
+
+## SAP_BUILD_MANIFEST.md — what the build agent reads
+
+`SAP_BUILD_MANIFEST.md` is the ONLY file a build reads (plus reference image / cached semantic model).
+
+**DO NOT read:**
+- `code.js` (~45k tokens) — use §3 for keys, §4 for tokens
+- `component-property-reference.json` (136 KB) — use §3 for 25 common keys
+- `horizon-variable-keys.json` (26 KB) — use §4 for 25 common tokens
+- Multiple `registry/*.json` files — one file at most, only if component absent from §3
+
+---
+
+## Knowledge layers
+
+| Layer | Status |
+|---|---|
+| **Registry** | **152 components** — 100% enriched |
+| **Guidelines cache** | **154 files** — 100% coverage |
+| **Doctrine docs** | **8 files** in `docs/` — incl. REPAIR-PATTERNS.md (28 patterns P-001–P-028), HOOKS-REFERENCE.md |
+| **Specialized agents** | **8 files** in `skill/agents/` |
+| **System prompt** | `skill/SYSTEM_PROMPT.md` — **31 mandatory RULEs** + 80-token whitelist + Blocked Behaviors table |
+| **Build patterns** | `skill/references/figma-build-patterns.md` — Clone-Canonical method, Progress Row, DPH strip, all API gotchas |
+| **Build manifest** | `SAP_BUILD_MANIFEST.md` — component keys §3, canonical nodes §3b, token tags §4 |
+
+---
+
+## How to Run the Skill
+
+```
+Use the skill at skill/SKILL.md.
+Requirement: [paste ticket text here]
+```
+
+## How to Load the Figma Plugin
+
+```bash
+# 1. Build bundled plugin code (only after registry edits)
+cd build && node build-registry-bundle.js
+
+# 2. In Figma: Plugins → Development → Import plugin from manifest...
+#    → select plugin/figma-builder/manifest.json
+```
+
+## How to Check Project Health
+
+```bash
+# Verify all MCP servers connected
+claude mcp list
+
+# Validate a spec
+node build/validate-spec.js output/<spec>.json
+
+# Run regression suite
+bash build/test-build.sh
+
+# Check manifest drift
+node build/check-manifest-sync.js
+```
+
+---
+
+## Architecture Decisions (already made — do not re-litigate)
+
+| Decision | Rationale |
+|---|---|
+| **MCP-first execution (RULE 25)** | `use_figma` is pixel-accurate; plugin shrank to token-bind bridge. Legacy JSON path retained for bulk builds. |
+| **Clone-canonical method (RULE 28)** | Building composites from scratch loses slot frames → setProperties silently fails. 14 failed iterations confirmed. |
+| **Parallel Promise.all imports** | 3–4× faster; all imports fire simultaneously. |
+| **Skeleton+content 2-call split** | Smaller blocks → fewer errors → less iteration on 8+ component screens. |
+| **SAP_BUILD_MANIFEST.md single source** | Prevents ~45k token code.js read; drift guarded by check-manifest-sync.js. |
+| **Hard token whitelist** | Eliminates raw hex drift; system prompt + plugin validator enforce together. |
+| **§7 validators at build time** | Catches a11y issues before user reviews. |
+
