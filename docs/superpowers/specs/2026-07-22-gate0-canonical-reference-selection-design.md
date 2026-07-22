@@ -14,10 +14,30 @@ The ten process optimisations already shipped (F-1…F-10, `docs/PERFORMANCE-REC
 ## Decisions (locked with user)
 
 1. **Enforcement = hard block.** A PreToolUse hook rejects every `use_figma` build (exit 2) until a scored reference decision is committed. Same fail-closed model as the wireframe gate.
-2. **Decision rigor = scored + node verified.** The `.reference-selected` marker must contain: chosen node ID (verified to exist in `canonical-index.json`) + score (from `score-canonical.js`) + one-line rationale + adaptation-effort estimate.
+2. **Decision rigor = scored + node verified.** The `.reference-selected` marker must contain: chosen node ID + score (from `score-canonical.js`) + one-line rationale + adaptation-effort estimate.
 3. **No-match path = scratch needs user OK.** If top score < 60, Gate 0 requires the recorded low score **and** the existing `.scratch-approved` marker (user sign-off). Scratch stays the rare exception.
 4. **Order = Gate 0 before the wireframe.** business analysis → **Gate 0 reference selection (commit)** → wireframe (reflects the chosen reference) → approval → build.
-5. **Writer = agent records via validating script.** The agent writes the marker through `record-reference.js` (validates the node against `canonical-index.json` first). A reference choice is a machine-checkable fact, not an approval — same pattern as the existing `record-reuse-decision.js`.
+5. **Writer = agent records via validating script.** The agent writes the marker through `record-reference.js`. Same pattern as the existing `record-reuse-decision.js`.
+6. **Index = UNCHANGED (user decision 2026-07-22).** `canonical-index.json` is left as-is (keeps the existing `750:xxxxx` tier-1 entries). We do NOT rebuild it from the 13 gold E083 nodes. **Consequence:** the scorer validates/recommends the indexed nodes; the 13 gold references remain reachable the way they are today — via the human-curated memory files (`reference_gold_standard_screen_set.md`) and skill canonical tables, which the agent reads and clones from. Gate 0 therefore enforces *that a scored decision is recorded*, not *which* node the scorer prefers. Node-ID validation in `record-reference.js` accepts any real node (verified via `get_metadata` / index membership is not required), so a gold E083 node is a valid selection even though it is not in the index.
+
+### The 13 gold-standard reference nodes (authoritative, curated — NOT in the scorer index)
+Kept in memory + skill tables as the fallback set "when the system is lost". File `E083sNBH7JNEOBFrG7Bqge` unless noted.
+
+| Node | Screen | Floorplan | Width |
+|---|---|---|---|
+| `68-3262` | Side Navigation | SideNav | 260 |
+| `68-2578` | Yanatest Steps | Object Page narrow | 320 |
+| `68-2928` | Activities View | List Report narrow | 320 |
+| `42-2348` | Validate System | Log/message panel | 678 |
+| `9-1498` | Schedule Op — State B Recurring | Dialog | 560 |
+| `9-1470` | Schedule Op — State A Collapsed | Dialog | 560 |
+| `9-1550` | Schedule Op — State C End Date (universal default anchor) | Dialog | 560 |
+| `9-1609` | Schedule Op — State D End Only | Dialog | 560 |
+| `9-1696` | Schedule Op — State B2 Daily | Dialog | 560 |
+| `30-2741` | Outage List Overview | Desktop List Report | 1440 |
+| `2-5355` | Flight Result Card | Card | 751 |
+| `219-120887` (p7zm5) | Multi-Source Selection (MCP config, MultiComboBox) | Desktop config section | 1711 |
+| `1114-136067` (p7zm5) | Select API Dialog (Single) — ShellBar+SideNav+IconTabBar+Table | Object Page / detail | 1711 |
 
 ## Architecture
 
@@ -38,7 +58,7 @@ GATE 6/7  Verify + hand off
 
 | Unit | Type | Responsibility | Depends on |
 |---|---|---|---|
-| `build/record-reference.js` | new node script (~25 lines) | Validate `nodeId` against `canonical-index.json`; write `.claude/.reference-selected` JSON `{nodeId, score, rationale, adaptationEffort}`. Reject unknown node. | `canonical-index.json` |
+| `build/record-reference.js` | new node script (~25 lines) | Validate `nodeId` is a plausible real node (format `N:N` or `N-N`); write `.claude/.reference-selected` JSON `{nodeId, score, rationale, adaptationEffort}`. Index membership is NOT required — a curated gold node (e.g. E083 `9-1550`) is valid even though it is not in `canonical-index.json`. | — |
 | `.claude/hooks/guard-reference-gate.sh` | new PreToolUse(use_figma) hook | Block build (exit 2) unless `.reference-selected` is present+valid, OR (top score <60 recorded AND `.scratch-approved`). Runs BEFORE `guard-wireframe-gate.sh`. | `.reference-selected`, `.scratch-approved` |
 | `clear-reuse-marker.sh` | edit | Add `.reference-selected` to the build-scoped clear set (F-2 semantics: survives mid-build turns, clears at SessionStart / on verify-complete). | — |
 | `enforce-wireframe-first.sh` | edit | The full-gate directive names Gate 0 as step 0 (present + record the scored reference before the wireframe). | — |
@@ -61,7 +81,7 @@ GATE 6/7  Verify + hand off
 ## Verification (end-to-end)
 1. **Block test:** `use_figma` build with no `.reference-selected` → blocked (exit 2) with instructions.
 2. **Happy path:** `record-reference.js --node 219:114694 --score 88 --rationale "..."` → marker written → build proceeds.
-3. **Bad node:** `record-reference.js --node 999:999` → rejected (not in canonical-index), no marker.
+3. **Bad node:** `record-reference.js --node "not-a-node"` → rejected (implausible format), no marker written.
 4. **Low-score scratch:** score <60 recorded, no `.scratch-approved` → blocked; with `.scratch-approved` → proceeds.
 5. **Order test:** confirm `guard-reference-gate.sh` fires before `guard-wireframe-gate.sh` in the chain.
 6. **Build-scoped marker:** approve+record, 3 mid-build turns → marker survives; after verify.json → cleared (F-2).
@@ -70,6 +90,7 @@ GATE 6/7  Verify + hand off
 
 ## Non-goals
 - No new scoring algorithm — reuse `score-canonical.js`.
+- **No change to `canonical-index.json`** (user decision) — the scorer index stays as-is; the 13 gold nodes live in curated memory/skill, not the index.
 - Do not weaken any SAP quality invariant.
 - Do not touch global `~/.claude/settings.json` (classifier blocks self-modification; register in the project file).
 - Do not remove the wireframe or reuse gates — Gate 0 sits in front of them.
