@@ -37,7 +37,7 @@
 
 This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **155 guideline JSONs** (100% coverage), a Figma plugin enforcing an **81-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
 
-> **Last updated: 2026-07-21** — S807–S816 audit arc committed + pushed. Both remotes v2-free at `b9d717e`. Landed: enforcement hardening (fail-closed Stop, unforgeable workflow-contract markers, single-use wireframe approval), MCP server security (stderr-only stacks, path-traversal guard, unhandledRejection), DOC AUTHORITY HIERARCHY (resolves the "5 single-source-of-truth" conflict), P-029 repair pattern, `validateBuildRules` bind-time reality gate (Fix #4a), and a `.gitignore` fix for root-level runtime-artifact leaks. ⛔ **Figma Plugin v2 kept OUT of GitHub** — parked on local branch `agent-v2-wip`. Previous (2026-07-20): Workflow enforcement system shipped, wireframe-first root cause fixed, SAP Suggestion Catalog added, Order Detail `936:48470` fixed.
+> **Last updated: 2026-07-22** — COMPREHENSIVE BUILD SESSION: deep pipeline audit (10 critical fixes, 5 new guards), SSOT "generate-don't-duplicate" system, architect-first reasoning gate (Gate 0.5), mandatory Gate 0→3 format (VDI table + floorplan tree + confidence table + ASCII), placement hard rule (beside not below), and gold-standard design-reasoning study. Local commits ahead: `66f363f` and back to `3118bb9` (8 commits, not pushed). All gaps confirmed closed. Previous (2026-07-21): S807–S816 audit arc on both remotes at `b9d717e`. ⛔ Figma Plugin v2 OUT of GitHub — local branch `agent-v2-wip`.
 
 ## ⛔ THE CANONICAL GATE SEQUENCE (authoritative build order — top of skill/SYSTEM_PROMPT.md)
 
@@ -130,6 +130,8 @@ It ships with the repo. Every build clones from it. No exceptions.
 
 ## Current State (2026-07-21)
 
+> **COMPLETED 2026-07-22 (LOCAL — 8 commits ahead, not pushed):** Deep pipeline audit + production-readiness audit (all gaps confirmed re-verified closed). New systems: SSOT generator (`build/generate-derived.js`) + CI drift gate (`build/ci-drift-gate.sh`) — "generate don't duplicate", hex/typo sync from source, 247-entry checker 0 fails. Architect-first reasoning gate (Gate 0.5): `guard-architect-gate.sh` blocks new-from-text builds until business→IA→floorplan brief approved; step reordered in `reasoning-brain.md` + `SYSTEM_PROMPT.md` + `sap-screen/SKILL.md`. `mark-build.sh` PostToolUse hook: verifier no longer optional (fail-closed). New hard rules: NEVER place frame below (maxY) — always beside rightmost at y=200; NEVER add token tags to transparent layout frames (Bind paints them grey); mandatory Gate 0→3 format (VDI table + floorplan tree SAP-notation + confidence table + ASCII, every time). Gold-standard study of 6 PM-approved AI Gateway sections → `docs/SAP-FIORI-DEFAULT-METHODOLOGY.md` (floorplan rules, component X-not-Y, 11 reusable compositions, 10-step procedure). Schedule dialog gold standard saved to memory (Divider=native 1px FRAME correct; labels ABOVE fields; inactive row opacity:0.45). Live build smoke test: Schedule Operation Monthly + Live Preview at `1026-51156` — 29 fills + 28 text styles bound, "After Bind — great".
+>
 > **COMPLETED 2026-07-21 (audit arc committed + pushed):** S807–S816 audit work landed on both remotes at `b9d717e`. Enforcement hardened (fail-closed Stop gate exits 2; workflow-contract `.workflow-loaded` marker is unforgeable — agent cannot self-echo; wireframe/scratch approval single-use per turn). MCP servers secured (stderr-only stack traces, `safeRegistryPath` path-traversal guard, `unhandledRejection` handlers). DOC AUTHORITY HIERARCHY declared (per-scope authority; OPERATING-MANIFEST is a MAP, never restates rules). `validateBuildRules` bind-time reality gate added to plugin (Horizon-Light / 32px padding / Tertiary icon buttons, folded into hardViolations). P-029 repair pattern added. `.gitignore` catches root-level runtime-artifact leaks. ⛔ **Figma Plugin v2 kept OUT of GitHub** — force-removed after accidental push; preserved on local branch `agent-v2-wip`.
 >
 > **COMPLETED 2026-07-20:** Workflow enforcement system fully shipped — `WORKFLOW-CONTRACT.md`, SessionStart auto-load hook (`load-workflow-contract.sh`), pre-edit gate (`guard-workflow-contract.sh`), `/sap-fix` skill, wireframe-first enforcement (`enforce-wireframe-first.sh`), SAP Suggestion Catalog, Order Detail `936:48470` fixed.
@@ -207,6 +209,63 @@ It ships with the repo. Every build clones from it. No exceptions.
 - `session_state_current.md` — full today's session summary (global + project mirror)
 - `feedback_audit_fixes_workflow_quality.md` — all audit fixes detail
 - `session_state_july915_recovered.md` — recovered lessons and canonical screens from a previous session gap
+
+---
+
+## ⛔⛔⛔ HARD RULE — NEVER PLACE A FRAME BELOW EXISTING CONTENT (2026-07-22)
+
+**NEVER** use `maxY + 200` for frame placement — pushes frames to y=130,000+ making them invisible.
+**ALWAYS** place beside the rightmost frame at y=200 (near top of canvas, always findable):
+```js
+const allFrames = figma.currentPage.children.filter(c => c.id !== frame.id && (c.type==='FRAME'||c.type==='SECTION'));
+const maxRight = allFrames.length > 0 ? Math.max(...allFrames.map(f => f.x + f.width)) : 200;
+frame.x = maxRight + 200;
+frame.y = 200; // fixed near top — never stack downward
+```
+Exception: cloning → place beside the clone source (`frame.x = source.x + source.width + 120; frame.y = source.y`).
+
+---
+
+## ⛔⛔⛔ HARD RULE — NEVER ADD TOKEN TAGS TO TRANSPARENT LAYOUT FRAMES (2026-07-22)
+
+`[sapTokenName]` tags on frame names = **FILL** tokens when Bind runs. A transparent row/stack/wrapper with a `[sapList_BorderColor]` tag gets painted grey by Bind.
+- ✅ Token tags on: root frames with a background, panel surfaces, status elements, text nodes
+- ⛔ Token tags on: transparent layout containers, row/stack/wrapper frames, spacing frames
+
+---
+
+## ⛔⛔⛔ HARD RULE — MANDATORY GATE 0→3 FORMAT (2026-07-22, confirmed EVERYTIME)
+
+EVERY wireframe presentation (image attached, build request, clone, edit, improvement) MUST show ALL 4 sections in this exact order:
+1. **Gate 0 — VDI Sector Analysis TABLE** `| Zone | Content | SAP Component | Key properties |`
+2. **Floorplan recommendation TREE** (sap.x.ComponentName with └─ ├─ │ — NOT L1–L5 prefix format)
+3. **Confidence table** `| Area | Conf.% | Notes |`
+4. **ASCII wireframe**
+
+Then Gate 1 (clone/build) → Gate 2 (width) → ⚡ Suggestions → HARD STOP.
+
+---
+
+## ⭐⭐⭐ SAP FIORI DEFAULT METHODOLOGY (2026-07-22 — from 6 PM-approved references)
+
+Full doc: `docs/SAP-FIORI-DEFAULT-METHODOLOGY.md`
+**Prime directive:** Match the floorplan to the task shape, keep context visible, disclose progressively, reuse the shell verbatim.
+- **Floorplan quick-pick:** manage-object→Object Page · browse-many→List Report · create-short-linear→Wizard-in-Dialog · commit-once→Dialog · tune-in-context→Drawer · scan-numbers→Overview · order-is-meaning→Flow editor
+- **Component rules:** MultiComboBox not Select (aggregate N with tokens) · Select not radios (closed list) · RadioButton-list not Select (mutually exclusive with bylines) · Wizard not long form · Drawer not Dialog (keep context)
+- **Shell:** ShellBar + 256px SideNav verbatim on EVERY screen
+- **Layout:** 32px inset · 16px rhythm · cards-on-grey · 195px label column · red required asterisks · 63px KPI numeral · blue selection border
+
+---
+
+## ⭐⭐⭐ SCHEDULE DIALOG GOLD STANDARD (2026-07-22 — SAP PM approved)
+
+- **Divider frames:** 1px native FRAME named "Divider" with `sapList_BorderColor #e5e5e5` — this IS correct. Do NOT replace with strokeBottomWeight.
+- **Form labels:** ABOVE fields (not left) in Schedule dialogs. Left-label (Layout Grid 33%/67%) is only for Wizard forms.
+- **Inactive row:** `opacity: 0.45` on the entire unselected RadioButton row
+- **Footer:** Tertiary "Cancel" + Primary "Save schedule" — no third button
+- **States:** A=collapsed, B=recurring, C=end-date, D=end-only, B1=hourly, B2=daily
+- **Pattern card** (grey bg `sapBackgroundColor`, radius 8): only for Monthly/Yearly — NOT for Hourly/Daily
+- **CLONE source:** `448:162293` (State C, PM-approved gold standard, file p7zm5EMBk5DRRZdxNeJ4f5)
 
 ---
 
