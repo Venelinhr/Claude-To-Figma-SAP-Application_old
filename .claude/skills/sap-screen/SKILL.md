@@ -193,6 +193,12 @@ Every component must have a key below. **Trust these keys — they are harvested
 
 ## STEP 7 — Gate 5: Build (RULE 8 · 13 · 14 · 25)
 
+> **⚡ ADAPTIVE EXECUTION (F-6/7/8, 2026-07-22) — time-box: 3–5 min / ≤12k tokens, same quality.**
+> - **Decision point:** after STEP 3 you have a level. If clone is viable (L1–3), clone + inject only what changes; **do not rebuild unchanged sections**. If clone is blocked (missing keys · invalid overrides · instance-parent errors · no canonical) → **stop cloning, switch to Pattern B controlled rebuild** in the deterministic order below. Do not keep retrying a blocked clone.
+> - **Controlled-rebuild order (Pattern B):** Shell → Header → Nav → Toolbar → Filters → containers → content sections → tables/cards/forms → dialogs → footer → final spacing/tokens. One section fully before the next.
+> - **⛔ FAIL-TWICE-THEN-SWITCH:** if the SAME `use_figma` operation fails twice, STOP, record why, switch strategy. Never a 3rd identical retry. (This is what turned one wizard step into 5 screenshots + 2 gate blocks.)
+> - **Verify by TEXT, not screenshots:** the STEP 8 QA block returns counts/ratios/unbound-hex as text — read that. Take ONE screenshot only at final hand-off.
+
 **Two build patterns — pick by the STEP 3 level (the reuse gate enforces this):**
 
 ### Pattern A — CLONE (Level 1–3, score ≥ 60) — the gate REQUIRES `.clone(` in your code

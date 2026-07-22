@@ -36,6 +36,21 @@
 
 ---
 
+## ⛔⛔⛔ HARD RULE — ADAPTIVE EXECUTION + FAIL-TWICE-THEN-SWITCH (2026-07-22, Performance Recovery)
+
+**Target every build: 3–5 min / ≤10–12k tokens at the SAME quality. Prioritize reuse, but never get blocked by it.**
+
+- **Stage 1 (bounded reuse search, single pass):** score canonical/gold-standard once; if the reference image was analyzed before, LOAD `semantic-models/<hash>.md` instead of re-running the ~14k VDI pass.
+- **Stage 2 (decision point):** clone viable → clone + inject only what changes (don't rebuild unchanged sections). Clone blocked (missing keys · invalid overrides · instance-parent errors · no canonical) → **stop cloning, switch to controlled rebuild**.
+- **Stage 3 (controlled rebuild, deterministic top-down):** Shell → Header → Nav → Toolbar → Filters → containers → content → tables/cards/forms → dialogs → footer → spacing. One section fully before the next.
+- **⛔ FAIL-TWICE-THEN-SWITCH:** if the SAME `use_figma` op fails twice, STOP, record why, switch strategy. NEVER a 3rd identical retry.
+- **Verify by TEXT, not screenshots:** fold QA into the build call's return (counts, instance/native ratio, unbound-hex). ONE screenshot only at final hand-off. Screenshots are the biggest per-call token cost.
+- **Small edit on an existing screen = short-form gate** (one-line change summary + confirm), NOT the full VDI table + tree + confidence + ASCII. Full Gate 0→3 is for genuinely NEW screens / new reference images only.
+
+Root causes this rule fixes (from the 2026-07-22 performance audit): re-approval treadmill, full-artifact regeneration on edits, VDI re-derivation, clone→screenshot→fix loops, double-registered hooks. See `docs/PERFORMANCE-RECOVERY.md`.
+
+---
+
 ## ⭐ SKILLS — INVOKE THESE, NOT RAW INSTRUCTIONS
 
 **Launch Claude from the project folder first** (so all hooks are active):
@@ -455,10 +470,10 @@ STEP 10 URL     — Share validated Figma URL to exact node. ⛔ MANDATORY LAST 
 7. **ASCII wireframe gate (RULE 19)** — HARD STOP before JSON generation. User MUST approve wireframe first. **VDI cache does NOT exempt you — it skips analysis work only, not the gate.** Violated twice on yanatest.
 8. **Reasoning Brain (RULE 20)** — 7 mandatory artifacts before component hierarchy design
 9. **QA Certification (RULE 21)** — Zero-Defect + Exception Engine before user handoff
-10. **Build knowledge = ONE file (RULE 28)** — MCP-first build agent reads `SAP_BUILD_MANIFEST.md` ONLY + reference image or cached semantic model. NEVER read `code.js`. One-shot build: one `use_figma` call, ≤1 screenshot.
+10. **Build knowledge = ONE file (RULE 28)** — MCP-first build agent reads `SAP_BUILD_MANIFEST.md` ONLY + reference image or cached semantic model. NEVER read `code.js`. **Call budget (clarified 2026-07-22, F-9):** simple screens = **one** `use_figma` build call + the folded QA + ≤1 screenshot. Screens with **8+ components** MAY use the documented 2-call skeleton+content split (`figma-build-patterns.md`) — that is the ONE sanctioned exception, not a contradiction. Verify by the QA return text, not extra screenshots.
 11. **Visual analysis skill is pinned in-project (RULE 26)** — `skill/sap-visual-reading/` is the single source of truth. Global `/sap-vdi` points here.
 12. **Clone canonical, never build from scratch (RULE 28)** — For ANY SAP composite with slots: find existing correctly-built node → clone → clear slot → repopulate with fresh prototypes from ORIGINAL. Never `createFrame()` for composites. See `SAP_BUILD_MANIFEST.md §3b` for canonical nodes.
-13. **Inspect before build (RULE 28 sub-rule A)** — Call `get_design_context` on nearest working reference node ONLY when: (a) the component is unknown/new, OR (b) the previous build failed. Do NOT call it before every build — for known components trust SKILL.md §6 verified keys and SAP_BUILD_MANIFEST §3 instead. Pre-call on every build wastes image+code tokens unnecessarily.
+13. **Inspect before build (RULE 28 sub-rule A — scoped 2026-07-22, F-9)** — Call `get_design_context` on the nearest reference node **once per NEW clone source or unknown component**: (a) component unknown/new, (b) previous build failed, or (c) cloning a canonical not yet inspected this session. Do NOT pre-call it before *every* build — for known canonicals/components trust SKILL.md §6 verified keys + SAP_BUILD_MANIFEST §3. This now matches SYSTEM_PROMPT RULE 28-A verbatim (the old "never skip" wording is retired — it caused defensive over-fetching).
 14. **Root cause before retry (RULE 28 sub-rule G)** — Silent fail + wrong output = override inheritance or nesting depth. Identify WHY before retrying. See P-027, P-028.
 
 ---

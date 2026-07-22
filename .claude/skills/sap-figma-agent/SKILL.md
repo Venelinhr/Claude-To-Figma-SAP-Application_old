@@ -35,6 +35,31 @@ Every action must answer: *what business problem am I solving, and which SAP pat
 
 ---
 
+## ⚡ ADAPTIVE EXECUTION — TIME-BOXED, FAIL-FAST (2026-07-22)
+
+**Goal: a standard screen in 3–5 min / ≤12k tokens at the same quality. Prioritize reuse, but never get blocked by it.**
+
+### Stage 1 — Reuse search (bounded, single pass)
+Search the canonical/gold-standard set ONCE for: approved screen → similar floorplan → reusable layout → reusable composition → reusable dialog/table/form/section. Score with `score-canonical.js`. If a reference image was analyzed before, LOAD the cached `semantic-models/<hash>.md` — do NOT re-run the ~14k VDI pass. Do this once; do not loop.
+
+### Stage 2 — Decision point (after the search, not after minutes of trying)
+- **Clone viable** (score ≥60, keys available, instances accessible) → clone, inject only what changes, swap components, preserve SAP instances/tokens/Auto-Layout/naming. **Do not rebuild unchanged sections.**
+- **Clone blocked** (missing keys · MCP limitation · invalid overrides · instance-parent errors · no suitable canonical) → **STOP cloning immediately. Switch to controlled rebuild.** Do not keep retrying the clone.
+
+### Stage 3 — Controlled rebuild (deterministic top-down order)
+Never build randomly. Build in this order, completing each before the next:
+1. App Shell → 2. Header/Title → 3. Navigation → 4. Toolbar → 5. Filters → 6. Layout containers → 7. Content sections → 8. Tables/Cards/Forms → 9. Dialogs → 10. Footer → 11. Final spacing/tokens/alignment.
+
+### ⛔ FAIL-TWICE-THEN-SWITCH (hard rule)
+If the **same** `use_figma` operation fails **twice**, STOP. Record the reason, pick the next-best strategy, and continue. **Never attempt the same failing operation a third time.** (This is what turned one wizard step into 5 screenshots + 2 gate blocks — do not repeat it.)
+
+### Verification without screenshot spam
+- Fold QA into the build call's RETURN value: return node counts, instance-vs-native ratio, any unbound-hex list, and layer-name check as text. Read the TEXT — do not screenshot to verify.
+- Take **ONE** screenshot, only at final hand-off (or when the user asks to see it). Screenshots are the biggest per-call token cost.
+- Responsiveness: when width changes, resize ALL children proportionally in the SAME call (see hard rule 10) — never a screenshot→resize→screenshot loop.
+
+---
+
 ## ⛔⛔⛔ KIT-NATIVE EXECUTION PROTOCOL — THE ONLY WAY TO BUILD
 
 **The SAP Web UI Kit Library is attached. Every UI element comes from it. Drawing rectangles, frames, or shapes as UI components is a hard violation.**

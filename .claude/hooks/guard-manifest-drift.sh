@@ -19,12 +19,41 @@ PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 echo "$CODE" | grep -qE "importComponentSetByKeyAsync" || exit 0
 
 cd "$PROJ" 2>/dev/null || exit 0
+
+# F-5 (Performance Recovery, RC-5): check-manifest-sync.js parses 152 registry JSONs + reads the
+# 132KB code.js + 4 doc files on EVERY key-importing build. That is wasted work when none of those
+# inputs changed since the last successful check. Cache the "OK" result keyed by a signature of the
+# input mtimes; skip the full node scan on a cache hit. Any edit to a source file changes the
+# signature → the full scan runs again (and manifest-sync-check.sh already re-checks on edits).
+SIG_INPUTS="SAP_BUILD_MANIFEST.md knowledge/guidelines/horizon-variable-keys.json skill/SYSTEM_PROMPT.md plugin/figma-builder/code.js knowledge/components/registry"
+sig() {
+  # mtime of each input (dir mtime changes when files are added/removed; also fold in file count).
+  local s=""
+  for p in $SIG_INPUTS; do
+    if [ -e "$p" ]; then
+      s="$s$(stat -f '%m' "$p" 2>/dev/null || stat -c '%Y' "$p" 2>/dev/null):"
+    fi
+  done
+  # include registry file count so add/remove of a JSON invalidates even if dir mtime is coarse
+  s="$s$(ls knowledge/components/registry/*.json 2>/dev/null | wc -l | tr -d ' ')"
+  echo "$s"
+}
+CACHE="$PROJ/.claude/.manifest-sync-ok"
+CUR="$(sig)"
+if [ -f "$CACHE" ] && [ "$(cat "$CACHE" 2>/dev/null)" = "$CUR" ]; then
+  exit 0   # inputs unchanged since last OK → skip the full scan
+fi
+
 if ! node build/check-manifest-sync.js >/dev/null 2>&1; then
+  rm -f "$CACHE" 2>/dev/null
   echo "⛔ GATE 4 BLOCKED — SAP_BUILD_MANIFEST.md has drifted from the registry/token source." >&2
   echo "A build that imports component keys from a stale manifest will 404 at importComponentSetByKeyAsync." >&2
   echo "Fix: regenerate the manifest §3/§4 from source, then re-run:  node build/check-manifest-sync.js" >&2
   echo "(Details:  node build/check-manifest-sync.js )" >&2
   exit 2
 fi
+
+# Passed — cache the current input signature so the next build skips the scan.
+echo "$CUR" > "$CACHE" 2>/dev/null
 
 exit 0

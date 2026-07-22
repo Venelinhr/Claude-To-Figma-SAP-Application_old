@@ -1,5 +1,16 @@
 #!/bin/bash
 # clear-reuse-marker.sh — SessionStart + Stop hook.
+#
+# F-2 (2026-07-22, Performance Recovery): approvals are now BUILD-scoped, not TURN-scoped.
+# Previously this wiped .wireframe-approved / .architect-approved / .scratch-approved on EVERY
+# Stop, so a multi-turn build on the SAME screen had to re-present the wireframe + re-earn
+# approval every turn (the re-approval treadmill, RC-3 — the exact cause of the wizard-fix stall).
+# Now: on Stop we clear only the per-build PLAN artifacts (.reuse-declared, .delta-spec.json);
+# the user's wireframe/architect/scratch APPROVAL survives across turns of the same build and is
+# cleared only at SessionStart, or when hand-off completes (a *-verify.json was produced → the
+# build is done, the next screen must be re-approved). This preserves the anti-self-echo property
+# (only capture-approvals.sh, fired by a real user prompt, ever WRITES an approval) while removing
+# the redundant re-approval work.
 PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 
 INPUT=$(cat 2>/dev/null)
@@ -11,18 +22,30 @@ if [ "${SAP_BRIDGE_TURN2}" = "1" ]; then
   exit 0
 fi
 
-# Per-turn: reuse decision AND wireframe/scratch approval are cleared every Stop + SessionStart.
-# Wireframe/scratch approval is single-use per turn (Fix #3c) — an approval cannot carry across
-# turns to pre-satisfy a later, unrelated build. capture-approvals.sh re-writes it when the user
-# approves the NEXT wireframe.
-rm -f "$PROJ/.claude/.reuse-declared" "$PROJ/.claude/.delta-spec.json" \
-      "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" \
-      "$PROJ/.claude/.architect-approved" 2>/dev/null
+# Per-turn (Stop): clear only the per-build PLAN artifacts. These are regenerated per build
+# and must not carry over. Approvals are NOT cleared here (see F-2 above).
+rm -f "$PROJ/.claude/.reuse-declared" "$PROJ/.claude/.delta-spec.json" 2>/dev/null
 
-# Per-session: other gate markers cleared only at an EXPLICIT SessionStart.
+# Build-complete invalidation: if the reality gate produced a verify artifact, the build is
+# finished and handed off. Clear the approvals so the NEXT screen must be freshly approved.
+# (A mid-build turn has NOT produced a verify.json yet, so approvals survive.)
+if [ "$EVENT" = "Stop" ] && ls "$PROJ"/output/*-verify.json >/dev/null 2>&1; then
+  # Only invalidate if a verify.json is newer than the last-build marker (i.e. this build verified).
+  NEWEST_VERIFY=$(ls -t "$PROJ"/output/*-verify.json 2>/dev/null | head -1)
+  if [ -n "$NEWEST_VERIFY" ] && [ "$NEWEST_VERIFY" -nt "$PROJ/.claude/.wireframe-approved" ] 2>/dev/null; then
+    rm -f "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" \
+          "$PROJ/.claude/.architect-approved" "$PROJ/.claude/.last-build-node" 2>/dev/null
+  fi
+fi
+
+# Per-session (SessionStart): full reset — every gate marker cleared for a clean slate.
 # NOTE: .workflow-loaded is intentionally NOT cleared here — it is owned by load-workflow-contract.sh
 # (written at SessionStart). Clearing it after the loader writes it would deadlock the workflow gate.
 if [ "$EVENT" = "SessionStart" ]; then
-  rm -f "$PROJ/.claude/.inspect-done" "$PROJ/.claude/.canonical-selected" "$PROJ/.claude/.agent-turn1" 2>/dev/null
+  rm -f "$PROJ/.claude/.reuse-declared" "$PROJ/.claude/.delta-spec.json" \
+        "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" \
+        "$PROJ/.claude/.architect-approved" \
+        "$PROJ/.claude/.inspect-done" "$PROJ/.claude/.canonical-selected" \
+        "$PROJ/.claude/.agent-turn1" "$PROJ/.claude/.last-build-node" 2>/dev/null
 fi
 exit 0

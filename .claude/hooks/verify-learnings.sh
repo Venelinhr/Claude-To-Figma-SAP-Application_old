@@ -18,8 +18,13 @@ COUNT=$(printf '%s\n' "$PENDING" | grep -c .)
 
 [ "$COUNT" -gt 0 ] || exit 0
 
-LIST=$(printf '%s\n' "$PENDING" | jq -r '"  · [\(.type)] \(.ts): \(.prompt)"' 2>/dev/null | head -10)
-echo "<uncaptured-learnings count=\"$COUNT\">⚠ $COUNT feedback signal(s) are still PENDING and were NOT captured this turn. Before finishing: for each, either (a) capture it as a feedback memory (skill/references/lesson-template.md) and set its ledger status to \"captured\", or (b) if it has no reusable lesson, set status to \"dismissed\". To mark one, edit its line in .claude/pending-learnings.jsonl changing \"status\":\"pending\" → \"captured\"/\"dismissed\". Do not leave lessons to evaporate.
+# F-10 (Performance Recovery, RC-10): do NOT nag on every Stop for a couple of stragglers — that
+# is per-turn context bloat. Only re-inject at turn end when the backlog is genuinely piling up
+# (> 5 pending), and show at most the 3 most recent, each truncated. SessionStart still lists more.
+[ "$COUNT" -gt 5 ] || exit 0
+
+LIST=$(printf '%s\n' "$PENDING" | jq -r '"  · [\(.type)] \(.ts): \(.prompt[0:80])"' 2>/dev/null | tail -3)
+echo "<uncaptured-learnings count=\"$COUNT\">⚠ $COUNT feedback signals are PENDING in .claude/pending-learnings.jsonl (backlog > 5). Capture the reusable ones as feedback memories and set their status to \"captured\", or \"dismissed\" if one-off. Showing the 3 most recent:
 $LIST</uncaptured-learnings>"
 
 exit 0

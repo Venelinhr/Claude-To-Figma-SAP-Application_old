@@ -17,7 +17,7 @@ PENDING=$(jq -c 'select(.status=="pending")' "$LEDGER" 2>/dev/null)
 COUNT=$(printf '%s\n' "$PENDING" | grep -c . )
 
 if [ "$COUNT" -gt 0 ]; then
-  LIST=$(printf '%s\n' "$PENDING" | jq -r '"  · [\(.type)] \(.ts): \(.prompt)"' 2>/dev/null | head -10)
+  LIST=$(printf '%s\n' "$PENDING" | jq -r '"  · [\(.type)] \(.ts): \(.prompt[0:80])"' 2>/dev/null | tail -3)
   # Ground-truth tasks get a distinct, actionable callout (Loop D)
   GT_COUNT=$(printf '%s\n' "$PENDING" | jq -c 'select(.type=="ground-truth")' 2>/dev/null | grep -c .)
   GT_NOTE=""

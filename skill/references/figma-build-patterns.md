@@ -7,6 +7,16 @@ hard-won lessons — each corresponds to a real failure mode in the Figma Plugin
 
 ---
 
+## ⚡ ADAPTIVE EXECUTION — 3–5 min / ≤12k tokens (F-6/7/8, 2026-07-22)
+
+Prioritize reuse, but do not get blocked by it. Decide fast, fail fast.
+- **Clone viable** → clone + inject only what changes. Do NOT rebuild unchanged sections.
+- **Clone blocked** (missing keys · invalid overrides · `appendChild`-into-instance · no canonical) → STOP cloning, rebuild top-down: Shell → Header → Nav → Toolbar → Filters → containers → content → tables/cards/forms → dialogs → footer → spacing.
+- **⛔ FAIL-TWICE-THEN-SWITCH:** same `use_figma` op fails twice → STOP, record why, switch strategy. Never a 3rd identical retry.
+- **Verify by TEXT** (fold QA into the build call's return — counts, instance/native ratio, unbound hex). ONE screenshot at final hand-off only. The blind DPH-strip + stale-screenshot gotchas below multiply screenshots — batch instead.
+
+---
+
 ## ⭐ WHEN LOST — Visual Recovery Protocol (RULE 29)
 
 **If output is wrong, guessing is happening, or user says "that's not right" — STOP and do this:**

@@ -81,11 +81,60 @@ function reuseLevel(score) {
   return { level: 5, action: 'no strong match — build new (state explicitly)' };
 }
 
+// F-4 (Performance Recovery, RC-2): read a request straight from a cached VDI semantic model
+// (semantic-models/<slug>-<sha1>.md) so the scorer reuses the analysis instead of re-deriving it.
+// Parses frontmatter `floorplan:` + the "## Zones" bullets (regions) + the Component column of
+// the "## Components" table (components).
+function requestFromModel(file) {
+  const txt = fs.readFileSync(file, 'utf8');
+  const req = { floorplan: '', regions: [], components: [] };
+
+  const fm = txt.match(/^---\n([\s\S]*?)\n---/);
+  if (fm) {
+    const m = fm[1].match(/^floorplan:\s*(.+)$/m);
+    // Take the leading floorplan name before any " (" or " —" qualifier.
+    if (m) req.floorplan = m[1].split(/\s+[(—-]/)[0].trim();
+  }
+  // Zones: lines under "## Zones" like "- A: Hero ..." or "- A Object Header: ...".
+  const zblock = txt.match(/##\s*Zones\s*\n([\s\S]*?)(\n##\s|$)/);
+  if (zblock) {
+    for (const line of zblock[1].split('\n')) {
+      const zm = line.match(/^-\s*([A-Z0-9]+)\b/);
+      if (zm) req.regions.push(zm[1].trim());
+    }
+  }
+  // Components: support BOTH a markdown table (2nd column) AND a bullet list
+  // ("- DynamicPageHeader — zone A — ...").
+  const cblock = txt.match(/##\s*Components[^\n]*\n([\s\S]*?)(\n##\s|$)/);
+  if (cblock) {
+    for (const line of cblock[1].split('\n')) {
+      let comp = '';
+      if (line.includes('|')) {
+        const cells = line.split('|').map(s => s.trim()).filter(Boolean);
+        if (cells.length >= 2 && !/^zone$/i.test(cells[0]) && !/^-+$/.test(cells[1])) {
+          comp = cells[1];
+        }
+      } else {
+        const bm = line.match(/^-\s*(.+)$/);
+        if (bm) comp = bm[1];
+      }
+      if (!comp) continue;
+      // Take the leading component name: strip icon glyphs, cut at first separator/count.
+      comp = comp.replace(/^[◆✦\s]+/, '').split(/\s*[—|·×]\s*|\s+—|\s+×/)[0].trim().split(/\s{2,}/)[0];
+      // Keep a plausible PascalCase/word component token only.
+      const first = comp.split(/\s/)[0];
+      if (first && /^[A-Za-z]/.test(first) && !req.components.includes(first)) req.components.push(first);
+    }
+  }
+  return req;
+}
+
 function parseArgs(argv) {
   const args = {};
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--json') { return JSON.parse(argv[++i]); }
+    if (a === '--from-model') { return requestFromModel(argv[++i]); }
     if (a === '--floorplan') args.floorplan = argv[++i];
     else if (a === '--regions') args.regions = argv[++i].split(',').map(s => s.trim());
     else if (a === '--components') args.components = argv[++i].split(',').map(s => s.trim());

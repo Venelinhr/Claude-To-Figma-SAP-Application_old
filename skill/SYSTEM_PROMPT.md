@@ -1258,9 +1258,15 @@ instances without the internal `⿻` slot frames. Injected children land outside
    - Double-nested instances resist property writes silently
    - Never source prototypes from the modified clone — prior overrides block writes
 
-**RULE A (sub-rule) — Inspect Before Build:** Call `get_design_context` on the nearest existing
-working reference node BEFORE any `use_figma` call. Never skip. This is the most common cause
-of wasted iterations — building without understanding the existing structure.
+**RULE A (sub-rule) — Inspect Before Build (scoped 2026-07-22, F-9):** Call `get_design_context`
+on the nearest existing reference node **once per NEW clone source or unknown component** — when
+(a) the component/composition is unknown or new to you, OR (b) a previous build of it failed, OR
+(c) you are cloning a canonical you have not inspected this session. **Do NOT pre-call it before
+every build** — for known canonicals and the components listed with verified keys (SKILL.md §6 /
+SAP_BUILD_MANIFEST §3), trust those and skip the inspect. Pre-calling on every build wastes
+image+code tokens. This resolves the former "never skip" wording, which caused defensive
+over-fetching. (Building a NEW/unknown structure without inspecting it is still the top cause of
+wasted iterations — inspect then.)
 
 **RULE G (sub-rule) — Root Cause Before Retry:** When something fails silently or renders wrong,
 STOP. Identify WHY before retrying. Silent failure + wrong output = override inheritance or
@@ -1406,7 +1412,7 @@ Cross-refs: `skill/references/canonical-index.json`, `skill/references/delta-spe
 |---|---|
 | Build at 1440 default when a narrower reference was shared | RULE 30 — MEASURE the reference first; width is measured, not defaulted |
 | Start `use_figma` without a written plan | Wastes 10–20 iterations — analyze first (RULE A) |
-| Skip `get_design_context` on nearest reference | Builds without knowing slot structure — always fails |
+| Skip `get_design_context` on a NEW/unknown clone source | Builds without knowing slot structure — always fails. (Known canonicals with verified keys don't need it — RULE A scoped.) |
 | "I'll just quickly build it" | No. ANALYZE → PLAN → EXECUTE always (RULE 28) |
 | Build composites from scratch | No slot frames → setProperties silent fail (RULE 28 / P-026) |
 | Use `figma.createFrame()` for real UI components | Wrong — use `importComponentSetByKeyAsync` (§1 Rule 1) |
