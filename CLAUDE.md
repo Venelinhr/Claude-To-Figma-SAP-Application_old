@@ -246,10 +246,12 @@ Then Gate 1 (clone/build) → Gate 2 (width) → ⚡ Suggestions → HARD STOP.
 
 ---
 
-## ⭐⭐⭐ SAP FIORI DEFAULT METHODOLOGY (2026-07-22 — from 6 PM-approved references)
+## ⛔⛔⛔ HARD RULE — SAP FIORI METHODOLOGY IS MANDATORY (2026-07-22 — from 6 PM-approved references)
 
-Full doc: `docs/SAP-FIORI-DEFAULT-METHODOLOGY.md`
-**Prime directive:** Match the floorplan to the task shape, keep context visible, disclose progressively, reuse the shell verbatim.
+**User: "save these as hard rule!!!!!!! Dont skipp it - never"**
+Full doc: `docs/SAP-FIORI-DEFAULT-METHODOLOGY.md` | Memory: `feedback_sap_methodology_hard_rules.md`
+
+**⛔ PRIME DIRECTIVE (always, no exceptions):** Match the floorplan to the task shape, keep context visible, disclose progressively, reuse the shell verbatim.
 - **Floorplan quick-pick:** manage-object→Object Page · browse-many→List Report · create-short-linear→Wizard-in-Dialog · commit-once→Dialog · tune-in-context→Drawer · scan-numbers→Overview · order-is-meaning→Flow editor
 - **Component rules:** MultiComboBox not Select (aggregate N with tokens) · Select not radios (closed list) · RadioButton-list not Select (mutually exclusive with bylines) · Wizard not long form · Drawer not Dialog (keep context)
 - **Shell:** ShellBar + 256px SideNav verbatim on EVERY screen
