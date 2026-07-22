@@ -1103,13 +1103,16 @@ The plugin reads those tags and inks the draft. Two actions per screen: Claude b
 
 5. **Root frame**: name it `◆SAP-UNBOUND/<screen name>`. This is the plugin's scan marker.
 
-6. **Position without overlapping existing screens** — two cases, one rule:
-   - **Cloning a canonical (reuse L1–L4, non-destructive):** place the clone *beside* its source so the two can be compared, never overwriting the original: `frame.x = source.x + source.width + 120; frame.y = source.y;`
-   - **Building a new screen (L5) or no source node on canvas:** place *below* all existing content:
+6. **Position BESIDE existing screens — NEVER below (hard rule 2026-07-22)**
+   ⛔ NEVER use `maxY + 200` — it pushes frames to y=130000+ making them invisible and impossible to find.
+   ALWAYS place beside the rightmost frame at y=200 (fixed near top of canvas — always visible):
    ```js
-   const maxY = Math.max(0, ...figma.currentPage.children.map(f => f.y + f.height));
-   frame.x = 12876; frame.y = maxY + 200;
+   const allFrames = figma.currentPage.children.filter(c => c.id !== frame.id && (c.type==='FRAME'||c.type==='SECTION'));
+   const maxRight = allFrames.length > 0 ? Math.max(...allFrames.map(f => f.x + f.width)) : 200;
+   frame.x = maxRight + 200;
+   frame.y = 200; // always near top — never stack downward
    ```
+   Exception: when cloning, place *beside the clone source* specifically: `frame.x = source.x + source.width + 120; frame.y = source.y;`
    Either way: never overlap, never overwrite the source.
 
 7. **NEVER fill-override INSTANCE nodes.** Real SAP kit instances (Button, DatePicker, etc.)
