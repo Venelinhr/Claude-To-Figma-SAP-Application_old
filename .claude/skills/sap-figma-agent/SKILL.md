@@ -74,11 +74,15 @@ If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", o
 | What you need | Search in Assets panel | NEVER substitute with |
 |---|---|---|
 | Text input field | **"Input"** | Frame + text node |
-| Dropdown / combobox | **"Select"** | Frame + arrow icon |
+| Dropdown / combobox | **"Select"** (not "Dropdown" — that name doesn't exist in the Kit) | Frame + arrow icon |
 | Breadcrumb navigation | **"Breadcrumb"** | Row of text links |
 | Wizard step list (left sidebar) | **"Wizard Step"** | Circles drawn with frames |
 | Navigation menu items | **"Standard List Item"** or **"Navigation List Item"** | Frame + text rows |
-| Search field | **"Input"** (with search icon) | Frame + magnifier |
+| Left side navigation panel | **"Side Navigation"** + **"Navigation List Item"** inside it | Frames with text rows |
+| Top app header / shell | **"Shell Bar"** | Frame with logo + icons |
+| Tab navigation bar | **"Icon Tab Bar"** → set Type = **"Shell Navigation"** in properties | Row of custom frames |
+| Form field row (label + input) | **"Label"** instance + **"Input"** instance side by side | Frame containing text + Frame |
+| Search field | **"Input"** (set icon via properties) | Frame + magnifier |
 | Any form field | Real Kit instance | Frame + text node |
 
 ---
@@ -131,7 +135,7 @@ The Kit provides components. Canonicals provide proven business compositions. Us
 5. **Compact form factor.** All instances unless user explicitly asks for Cozy. Never switch to Cozy to fix a11y warnings.
 6. **One Primary button per action group.** Cancel/Close = Tertiary. Row/toolbar icons = Tertiary. Secondary only when a bordered alternative is shown.
 7. **Divider frames in Schedule dialog clones: KEEP.** The SAP canonical uses them — do NOT replace with strokes. In custom layouts: use strokeBottomWeight on parent instead.
-8. **32px side padding.** Never 48px.
+8. **32px side padding. 16px rhythm between elements. 8px tight / 24px section / 32px page.** Never random values.
 9. **Frame placement: BESIDE rightmost at y=200.** Never maxY+200 (makes frames invisible far below).
 10. **Shell = ShellBar + 256px SideNavigation.** Clone verbatim on every screen. Never improvise chrome.
 11. **Actions ON the object.** Contextual menu on the selected node — never in a distant toolbar.
@@ -203,6 +207,11 @@ Report these proactively and offer to fix:
 
 | Violation | Say | Fix |
 |---|---|---|
+| Native frames as form label+input rows | "Frame pair where Label+Input instances should be" | Assets → "Label" instance + "Input" instance placed side by side |
+| Native frames as side navigation | "Frame rows where NavigationListItem should be" | Assets → "Side Navigation" + "Navigation List Item" inside |
+| Native header frame | "Frame where Shell Bar should be" | Assets → "Shell Bar" instance |
+| ObjectStatus inserted but Semantic not set | "ObjectStatus Semantic is default/None — set the correct state" | Right-side panel → Semantic → Success/Warning/Error/Information as appropriate |
+| Padding is not 8/16/24/32px | "Spacing doesn't follow SAP rhythm" | Fix: containers use 8px (tight), 16px (standard), 24px (section), 32px (page) |
 | Layer named "Frame" / "Frame 1" / "Group" / "Rectangle" | "Generic layer name — rename immediately" | Rename to describe role: `Dialog Header`, `Form Section`, `Footer Bar`, `Wizard Stepper`, etc. NEVER leave "Frame" |
 | Native frame used as an input field | "Frame where SAP Input should be" | Assets panel → "Input" → drag real Kit instance → replace |
 | Native frames as wizard step list | "Native stepper — use WizardStep instances" | Assets panel → "Wizard Step" → drag instances |
@@ -229,6 +238,8 @@ Report these proactively and offer to fix:
 - [ ] ⚡ suggestions surfaced
 - [ ] All components from Kit Assets panel (zero native shapes)
 - [ ] All variants set via properties panel (Form Factor=Compact)
+- [ ] ObjectStatus Semantic set correctly (Success/Warning/Error/Information — never None/default)
+- [ ] Spacing: 8px tight / 16px standard / 24px section / 32px page padding (never random values)
 - [ ] All fill layers: `[sapToken]` tag — zero raw hex, zero tags on transparent frames
 - [ ] All native text layers: `[typo:role]` tag
 - [ ] One Primary per action group; rest Tertiary/Secondary
