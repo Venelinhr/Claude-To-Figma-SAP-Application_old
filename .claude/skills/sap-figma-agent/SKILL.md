@@ -46,10 +46,40 @@ FOR EVERY UI ELEMENT:
 3. Set all variants in the right-side properties panel
 4. Name fill layers: Description [sapTokenName]  →  so Bind resolves SAP variables
 5. Name text layers: Description [typo:role]     →  so Bind applies SAP text styles
+6. Rename EVERY layer immediately after creating/placing it — NEVER leave "Frame" as a name
 
 IF you cannot find a component in Assets, or a token in the Kit variables:
-→ STOP. Report what's missing. Ask how to proceed. Never approximate.
+→ STOP. Report what's missing. Ask how to proceed. Never approximate with a native frame.
 ```
+
+### ⛔ LAYER NAMING — NON-NEGOTIABLE
+
+**Every single layer must be renamed. "Frame" is never acceptable as a final layer name.**
+
+Name layers by their role in the screen:
+- Root dialog: `Create MCP Server Dialog [sapBackgroundColor]`
+- Dialog header: `Dialog Header [sapPageHeader_Background]`
+- Tab navigation: `Tab Navigation [sapObjectHeader_Background]`
+- Form section: `MCP Details Section [sapGroup_ContentBackground]`
+- Form row: `Server Name Field Row`
+- Input field: `Server Name Input` (must be a real SAP Input instance — never a Frame)
+- Footer bar: `Dialog Footer [sapPageFooter_Background]`
+- Side stepper: `Wizard Stepper`
+- Content body: `Dialog Content`
+
+If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", or "Auto Layout" — that is a violation. Rename it before moving on.
+
+### ⛔ THESE SPECIFIC COMPONENTS MUST COME FROM THE KIT — NEVER NATIVE FRAMES
+
+| What you need | Search in Assets panel | NEVER substitute with |
+|---|---|---|
+| Text input field | **"Input"** | Frame + text node |
+| Dropdown / combobox | **"Select"** | Frame + arrow icon |
+| Breadcrumb navigation | **"Breadcrumb"** | Row of text links |
+| Wizard step list (left sidebar) | **"Wizard Step"** | Circles drawn with frames |
+| Navigation menu items | **"Standard List Item"** or **"Navigation List Item"** | Frame + text rows |
+| Search field | **"Input"** (with search icon) | Frame + magnifier |
+| Any form field | Real Kit instance | Frame + text node |
 
 ---
 
@@ -173,6 +203,10 @@ Report these proactively and offer to fix:
 
 | Violation | Say | Fix |
 |---|---|---|
+| Layer named "Frame" / "Frame 1" / "Group" / "Rectangle" | "Generic layer name — rename immediately" | Rename to describe role: `Dialog Header`, `Form Section`, `Footer Bar`, `Wizard Stepper`, etc. NEVER leave "Frame" |
+| Native frame used as an input field | "Frame where SAP Input should be" | Assets panel → "Input" → drag real Kit instance → replace |
+| Native frames as wizard step list | "Native stepper — use WizardStep instances" | Assets panel → "Wizard Step" → drag instances |
+| Native frames as nav menu rows | "Native nav items — use Kit list items" | Assets panel → "Standard List Item" or "Navigation List Item" |
 | Text node raw "72" font | "Typography unbound — Bind can't apply styles" | Add `[typo:role]` to all native text layers |
 | Custom hex fill | "Raw hex — won't bind to SAP variables" | Add `[sapTokenName]` to layer name |
 | Token tag on transparent layout frame | "Token tag on container — Bind will paint it grey" | Remove tag; only keep on frames with backgrounds |
@@ -201,7 +235,7 @@ Report these proactively and offer to fix:
 - [ ] Divider frames kept in Schedule clones; strokes on parent in custom layouts
 - [ ] 32px padding · counterAxisAlignItems:CENTER on 2-line stacks
 - [ ] Frame placed BESIDE rightmost at y=200
-- [ ] All layers renamed (no "Frame 1", "Group", "Rectangle")
+- [ ] Every layer renamed — zero layers named "Frame", "Frame 1", "Group", or "Rectangle"
 - [ ] Horizon Light — no dark fills
 - [ ] No "Tab Text" placeholders
 - [ ] Validated Figma URL delivered at end (hyphen format)
