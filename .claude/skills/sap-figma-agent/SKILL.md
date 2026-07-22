@@ -75,8 +75,8 @@ If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", o
 |---|---|---|
 | Text input field | **"Input"** | Frame + text node |
 | Dropdown / combobox | **"Select"** (not "Dropdown" — that name doesn't exist in the Kit) | Frame + arrow icon |
-| Radio button choice | **"Radio Button"** from Kit — for Create/Upload toggles clone Form Item `219:124204` | Custom circles |
-| Script / code text area | Clone **Script Input** `219:124635` — has syntax highlighting and line numbers | Plain textarea frame |
+| Radio button choice | **"Radio Button"** from Kit — reference `219:124204` for the correct Form Item + RadioButton layout | Custom circles |
+| Script / code text area | Search "Code Editor" or similar in Assets — reference `219:124635` for syntax highlighting + line number pattern | Plain textarea frame |
 | Breadcrumb navigation | **"Breadcrumb"** | Row of text links |
 | Wizard step list (left sidebar) | **"Wizard Step"** | Circles drawn with frames |
 | Navigation menu items | **"Standard List Item"** or **"Navigation List Item"** | Frame + text rows |
@@ -108,6 +108,16 @@ If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", o
 ## CANONICAL COMPOSITIONS — CLONE THESE (file `p7zm5EMBk5DRRZdxNeJ4f5`)
 
 The Kit provides components. Canonicals provide proven business compositions. Use both.
+
+**⚠ REFERENCE nodes (study the pattern, use Kit components — do NOT clone):**
+- `219:124511` / `219:124513` — **WizardStep pattern**: 32×32px tab circle + 12px Bold label + 1px connector line. Use "Wizard Step" from Assets panel, set State=Current or Future via properties.
+- `219:124204` — **Form Item + RadioButton pattern**: `Label` (at ~33% width) + two `Radio Button` instances side by side. Use "Label" + "Radio Button" instances from Assets. Layout: Label left-aligned at 33% col, inputs at 67%. Touch area 32px (Compact).
+- `219:124635` — **Script Input pattern**: code editor area with syntax highlighting, line numbers, monospace font. Use this as the reference for any API/YAML/script input — it is a specific approved composition. Assets panel → search for a matching component; if not found, reference this node's structure.
+
+**Composition rules learned from references:**
+- **WizardStep:** circle (32×32, `[sapList_SelectionBorderColor]` for active, grey for inactive) + label (12px Bold `[sapTextColor]`) + connector (`[sapList_HighlightColor]` active / `[sapList_BorderColor]` inactive)
+- **Form Item RadioButton:** `Label` instance at ~33% width + multiple `Radio Button` instances in a row. Selected radio has filled inner circle `[sapContent_Selected_ForegroundColor]`. Font: 14px Regular `[sapField_TextColor]`.
+- **Form Item general:** always use the SAP Form Item component from the Kit — it has the correct Label/Input layout grid (33%/67% split). Never build label+input rows with native frames.
 
 | For this... | Clone | Node |
 |---|---|---|
