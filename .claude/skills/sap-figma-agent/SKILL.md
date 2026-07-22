@@ -326,7 +326,7 @@ All Schedule dialogs: `560px wide`, `border-radius: 8px`, `sapGroup_ContentBackg
 
 **Section separators:** 1px native FRAME named "Divider" with `sapList_BorderColor #E5E5E5` fill — this IS correct in Schedule clones. Do NOT replace with strokes.
 
-**Labels ABOVE fields** (not left-aligned). Required `*` = separate element in `sapNegativeColor #AA0808`. Header padding `20/24/16/24px`. Footer `60px`, `justify-content: flex-end`.
+**Labels ABOVE fields** (not left-aligned). Required `*` = separate element tagged `[sapNegativeColor]` (= `#BD2920` from SAP source). Header padding `20/24/16/24px`. Footer `60px`, `justify-content: flex-end`.
 
 **Footer buttons (ALWAYS):** Tertiary "Cancel" + Primary "Save schedule". No third button.
 
@@ -367,7 +367,7 @@ All Schedule dialogs: `560px wide`, `border-radius: 8px`, `sapGroup_ContentBackg
 
 **Content area (top: 140px, left/right: 48px):** `sapGroup_ContentBackground white`, `border-radius: 12px`, `padding: 16px`, `gap: 10px`.
 **Form pattern: LEFT-label (~195px) / RIGHT-field** (Layout Grid) — NOT labels-above-fields.
-**Required asterisk:** `Shell/Standard/sapField_RequiredColor #BA066C` (different from Schedule's `#AA0808`).
+**Required asterisk:** `[sapNegativeColor]` (= `#BD2920` — the SAP source token for error/required indicators). Same token as Schedule dialogs — `sapNegativeColor` is always correct for required markers.
 
 **Footer (40px):** `sapPageFooter_Background white`, `border-top: sapPageFooter_BorderColor #D9D9D9`, `gap: 8px`, `justify-content: flex-end`.
 **Three buttons:** Tertiary "Previous" + **Emphasized "Next"** + Tertiary "Cancel".
