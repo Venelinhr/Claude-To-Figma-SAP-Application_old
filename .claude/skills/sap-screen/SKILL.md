@@ -78,7 +78,26 @@ Building composites from scratch loses internal `⿻` slot frames → `setProper
 
 **Record the decision** so the reuse gate passes: `echo '{"level":N,"score":S,"baseCanonical":"<id-or-none>","deltaSpec":null}' > .claude/.reuse-declared` (levels must match the scale above — the gate re-validates: L1 needs ≥85, L5 needs <60).
 
-**Canonical clone sources** (file `p7zm5EMBk5DRRZdxNeJ4f5` unless noted):
+**⛔ Gate 0.7 — ALSO record the canonical reference** (hard-blocked by `guard-reference-gate.sh`): after scoring, commit the chosen reference:
+```
+node build/record-reference.js --node "<id>" --score <n> --rationale "<one line>" --effort "<low/med/high + what changes>"
+```
+The build is blocked until `.reference-selected` exists. If nothing scores ≥60, record the low score AND get the user's OK (`.scratch-approved`) first. **When unsure which reference, use the curated gold set below / default anchor `9-1550` for dialogs.**
+
+**⭐ PRIMARY gold-standard clone sources — file `E083sNBH7JNEOBFrG7Bqge` (user-confirmed 2026-07-22):**
+| Screen | Node | Use for | Width |
+|---|---|---|---|
+| Side Navigation | `68-3262` | left nav rail / shell | 260 |
+| Yanatest Steps | `68-2578` | Object Page narrow (DPH + IconTabBar) | 320 |
+| Activities View | `68-2928` | narrow List Report (Progress Row) | 320 |
+| Validate System | `42-2348` | Log / message / severity panel | 678 |
+| Schedule Op — State A/B/C/D/B2 | `9-1470`/`9-1498`/`9-1550`/`9-1609`/`9-1696` | any Define/Schedule/recurrence dialog (**default anchor `9-1550`**) | 560 |
+| Outage List Overview | `30-2741` | desktop List Report (8-col table) | 1440 |
+| Flight Result Card | `2-5355` | card | 751 |
+| Multi-Source Selection (MCP config) | `219-120887` (p7zm5) | config screen w/ MultiComboBox source-type | 1711 |
+| Select API Dialog | `1114-136067` (p7zm5) | detail screen: ShellBar+SideNav+IconTabBar+Table | 1711 |
+
+**Legacy clone sources** (file `p7zm5EMBk5DRRZdxNeJ4f5` — historical mirrors, prefer the E083 gold set above):
 | Screen | Node | Use for | Native width |
 |---|---|---|---|
 | Schedule Operation dialog (PERFECT) | `727:42563` | Any Define/Schedule/recurrence **dialog** | 560 |

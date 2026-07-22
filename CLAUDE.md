@@ -119,6 +119,7 @@ Every SAP build follows this order; each gate is PASS/FAIL and BLOCKS on fail (e
 
 ```
 Gate 0 Analyze reference (VDI)
+Gate 0.7 SELECT & RECORD canonical reference → record-reference.js  [guard-reference-gate.sh]  ⛔ HARD BLOCK — no build until a scored reference is committed
 Gate 1 SEARCH CANONICAL FIRST → clone if a match exists   [guard-reuse-gate.sh]  ⛔ build-from-scratch forbidden if canonical exists
 Gate 2 Measure width
 Gate 3 ASCII wireframe + L1–L5 layer tree → USER APPROVAL  [guard-wireframe-gate.sh]  ⛔ HARD STOP
@@ -127,6 +128,8 @@ Gate 5 Build (real SAP instances / clone canonical)        [guard-figma-code.sh]
 Gate 6 Verify invariants — tokens bound + zero native frames + layer naming (post-build tree walk)  [verify-invariants.js]  ⛔ fix or STOP
 Gate 7 Hand off ONLY if verify.json overallPass:true — validated URL + Bind SAP Tokens  [lint-on-stop.sh]  RULE 27
 ```
+
+> **Gate 0.7 — Canonical Reference Selection (2026-07-23):** the single highest-leverage decision. Before any build, SELECT the gold reference to clone and RECORD it: `node build/score-canonical.js …` → pick → `node build/record-reference.js --node "<id>" --score <n> --rationale "…" --effort "…"`. `guard-reference-gate.sh` hard-blocks the build until `.reference-selected` exists (score ≥60), or — if nothing scores ≥60 — until the recorded low score is paired with `.scratch-approved` (user OK for from-scratch). **The curated gold fallback set + default anchor (`9:1550` for dialogs) live in memory: `reference_gold_standard_screen_set.md` (13 nodes).** Picking the right reference here is what prevents the wizard-style 35k-token cascade. See `docs/superpowers/specs/2026-07-22-gate0-canonical-reference-selection-design.md`.
 
 The 5 invariants: (1) zero native frames, (2) zero raw hex, (3) zero non-SAP typography, (4) clone-first when a canonical exists, (5) fail-closed on any SAP resource error. Approval markers (`.wireframe-approved`, `.scratch-approved`) are written ONLY by the user's own words (capture-approvals.sh) — Claude cannot self-echo them to skip a gate. If a gate blocks you, READ its stderr for the exact missing step.
 

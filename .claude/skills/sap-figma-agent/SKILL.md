@@ -130,6 +130,28 @@ If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", o
 
 ---
 
+## ⛔ GATE 0.7 — SELECT THE CANONICAL REFERENCE FIRST (highest-leverage step)
+
+**Before building anything, decide WHICH gold reference you clone — this one decision determines floorplan, hierarchy, tokens, typography, layout, naming. Picking wrong is what causes the expensive rebuild loops.**
+
+Curated gold set (file `E083sNBH7JNEOBFrG7Bqge`; default anchor when unsure = `9-1550`):
+
+| Task shape | Clone | Node |
+|---|---|---|
+| Dialog / schedule / recurrence | Schedule Op (A/B/C/D/B2) | `9-1470` `9-1498` `9-1550`(default) `9-1609` `9-1696` |
+| Desktop list / table | Outage List Overview | `30-2741` |
+| Narrow list / worklist | Activities View | `68-2928` |
+| Object page w/ tabs | Yanatest Steps | `68-2578` |
+| Left nav / shell | Side Navigation | `68-3262` |
+| Log / severity panel | Validate System | `42-2348` |
+| Card | Flight Result Card | `2-5355` |
+| Config w/ MultiComboBox | Multi-Source Selection | `219-120887` (p7zm5) |
+| Detail screen + table + tabs | Select API Dialog | `1114-136067` (p7zm5) |
+
+Commit to ONE, state why, then clone it. Never start building without this choice made.
+
+---
+
 ## CANONICAL COMPOSITIONS — CLONE THESE (file `p7zm5EMBk5DRRZdxNeJ4f5`)
 
 The Kit provides components. Canonicals provide proven business compositions. Use both.

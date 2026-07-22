@@ -34,7 +34,8 @@ if [ "$EVENT" = "Stop" ] && ls "$PROJ"/output/*-verify.json >/dev/null 2>&1; the
   NEWEST_VERIFY=$(ls -t "$PROJ"/output/*-verify.json 2>/dev/null | head -1)
   if [ -n "$NEWEST_VERIFY" ] && [ "$NEWEST_VERIFY" -nt "$PROJ/.claude/.wireframe-approved" ] 2>/dev/null; then
     rm -f "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" \
-          "$PROJ/.claude/.architect-approved" "$PROJ/.claude/.last-build-node" 2>/dev/null
+          "$PROJ/.claude/.architect-approved" "$PROJ/.claude/.reference-selected" \
+          "$PROJ/.claude/.last-build-node" 2>/dev/null
   fi
 fi
 
@@ -44,7 +45,7 @@ fi
 if [ "$EVENT" = "SessionStart" ]; then
   rm -f "$PROJ/.claude/.reuse-declared" "$PROJ/.claude/.delta-spec.json" \
         "$PROJ/.claude/.wireframe-approved" "$PROJ/.claude/.scratch-approved" \
-        "$PROJ/.claude/.architect-approved" \
+        "$PROJ/.claude/.architect-approved" "$PROJ/.claude/.reference-selected" \
         "$PROJ/.claude/.inspect-done" "$PROJ/.claude/.canonical-selected" \
         "$PROJ/.claude/.agent-turn1" "$PROJ/.claude/.last-build-node" 2>/dev/null
 fi

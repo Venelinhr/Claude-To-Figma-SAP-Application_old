@@ -1,0 +1,63 @@
+#!/bin/bash
+# guard-reference-gate.sh — PreToolUse(use_figma) hook · GATE 0 (Canonical Reference Selection). BLOCKING.
+#
+# The single highest-leverage decision in the workflow is WHICH canonical reference to clone. Picking
+# wrong cascades into manual patching, silent failures, screenshot loops, and 30k+ wasted tokens (the
+# wizard disaster, 2026-07-22). This gate makes that decision mandatory and explicit BEFORE any build:
+# a use_figma BUILD is blocked (exit 2) unless a scored reference decision has been recorded via
+# build/record-reference.js (writes .claude/.reference-selected).
+#
+# Fires BEFORE guard-wireframe-gate.sh so the reference is locked before the wireframe reflects it.
+#
+# Pass conditions:
+#   • .reference-selected exists AND its score >= 60                          → PASS (a real match chosen)
+#   • .reference-selected exists AND score < 60 AND .scratch-approved exists   → PASS (user OK'd scratch)
+#   • otherwise                                                                → BLOCK (exit 2)
+#
+# The marker is written ONLY by record-reference.js (agent runs score-canonical.js, then records the
+# chosen node). Raw-Bash writes of the marker are blocked by the marker-write guard (settings.json),
+# so this cannot be self-forged.
+INPUT=$(cat)
+TOOL=$(echo "$INPUT" | jq -r '.tool_name // empty')
+echo "$TOOL" | grep -qi "use_figma" || exit 0
+
+CODE=$(echo "$INPUT" | jq -r '.tool_input.code // ""')
+PROJ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
+
+# Only gate BUILDS (node-creating / cloning). Read-only inspects pass silently.
+echo "$CODE" | grep -qE "createInstance|createFrame|importComponentSetByKeyAsync|\.clone\(|appendChild|insertChild|setProperties" || exit 0
+
+MARKER="$PROJ/.claude/.reference-selected"
+
+if [ ! -f "$MARKER" ]; then
+  echo "⛔ GATE 0 BLOCKED — no canonical reference has been selected for this build." >&2
+  echo "" >&2
+  echo "Reference selection is the highest-leverage decision — pick it BEFORE building:" >&2
+  echo "  1. Understand the task shape (dialog / list / object page / nav / card / log panel)." >&2
+  echo "  2. Score candidates:  node build/score-canonical.js --floorplan \"<fp>\" --regions <r> --components <c>" >&2
+  echo "     (or from a cached VDI model:  node build/score-canonical.js --from-model semantic-models/<file>.md)" >&2
+  echo "  3. Pick the best gold reference. When unsure, the curated gold set + default anchor (9:1550" >&2
+  echo "     for dialogs) are in memory: reference_gold_standard_screen_set.md." >&2
+  echo "  4. Record it:  node build/record-reference.js --node \"<id>\" --score <n> --rationale \"...\" --effort \"...\"" >&2
+  echo "" >&2
+  echo "If NO reference scores >= 60, this is a from-scratch build — record the low score AND get the" >&2
+  echo "user's explicit OK (writes .scratch-approved) before building." >&2
+  exit 2
+fi
+
+# Read the recorded score.
+SCORE=$(jq -r '.score // 0' "$MARKER" 2>/dev/null)
+# Integer compare (floor). Default 0 if unparseable.
+SCORE_INT=$(printf '%.0f' "$SCORE" 2>/dev/null || echo 0)
+
+if [ "${SCORE_INT:-0}" -lt 60 ]; then
+  if [ ! -f "$PROJ/.claude/.scratch-approved" ]; then
+    echo "⛔ GATE 0 BLOCKED — recorded reference score is $SCORE (< 60): no suitable match, so this is a" >&2
+    echo "from-scratch build. That requires the user's explicit OK first (writes .scratch-approved)." >&2
+    echo "Present the situation ('no canonical scores >=60; propose building from scratch, reusing" >&2
+    echo "compositions X/Y') and wait for the user to approve before building." >&2
+    exit 2
+  fi
+fi
+
+exit 0

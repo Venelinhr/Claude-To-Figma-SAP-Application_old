@@ -57,6 +57,7 @@ semantic-models/project-knowledge-*.md
 .claude/.agent-turn1
 .claude/.bridge-token
 .claude/.manifest-sync-ok
+.claude/.reference-selected
 
 # Bridge runtime artifacts (source is committed; these are local/secret)
 bridge/*.bak.*
