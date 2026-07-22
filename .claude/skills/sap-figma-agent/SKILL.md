@@ -190,35 +190,180 @@ All states: 560px · `border-radius:8px` · `sapGroup_ContentBackground` · `1px
 
 ---
 
-## ⚡ PROACTIVE SUGGESTIONS (check every request)
 
+## ⚡ PROACTIVE SUGGESTIONS — SCAN EVERY REQUEST
+
+Before executing, check the current screen and request against these. Surface any matches with a one-line rationale.
+**Verb vocabulary:** Create · Move · Replace · Swap · Convert · Wrap · Merge · Split · Group · Clone · Inject · Reuse · Optimize · Validate · Repair
+
+### Components
 | Trigger | Suggest | Why |
 |---|---|---|
-| Status as plain text | Object Status + correct Semantic | Theme-bound, accessible |
-| More than 1 Primary button | One primary; rest Tertiary | SAP: single primary per group |
-| Long single dialog | Wizard or Object Page sections | Break complex tasks into steps |
-| In-context config in a Dialog | Docked Drawer instead | Keep context visible |
-| Custom hex fill | `[sapToken]` tag | Must bind to SAP variable |
-| Native frame as component | Real Kit instance from Assets | Bind will reject native |
-| Free-text Input for fixed values | Select | Constrains to valid options |
-| Many options in Select | ComboBox | Type-ahead over long lists |
-| Row actions as text buttons | Tertiary IconButtons | Compact, less clutter |
-| Irreversible action, no guard | Confirmation Dialog | Safety for destructive ops |
+| Status as plain text | **ObjectStatus** (correct Semantic) | Semantic color + icon, theme-safe |
+| Custom green/red pill for status | **ObjectStatus** | Native pill is not SAP-bound |
+| Grid Table for read-mostly data | **Responsive Table** | Adapts across breakpoints |
+| List with columnar data | **Table** | Columns need a Table, not a List |
+| Panel as content container | **Card** | SAP surface for grouped content |
+| Custom control (hand-built) | **Real SAP Kit instance from Assets** | Inherits tokens + a11y |
+| Native frame as UI element | **SAP Web UI Kit instance** | Must be a real instance |
+| Multiple controls doing one job | **One SAP component** | Simplify composition |
+
+### Navigation
+| Trigger | Suggest | Why |
+|---|---|---|
+| Many Segmented Buttons as top nav | **IconTabBar** (Shell Navigation) | Scales, supports overflow + counts |
+| Flat tabs for a deep app | **Side Navigation** | Hierarchical, room for groups |
+| Deep hierarchy without wayfinding | **Breadcrumbs** | Orientation for nested screens |
+| Long single dialog | **Wizard or Object Page sections** | Break complex tasks into steps |
+| In-context config in a Dialog | **Docked Drawer instead** | Keep context visible |
+
+### Actions
+| Trigger | Suggest | Why |
+|---|---|---|
+| More than 1 Primary button | **One primary; rest Tertiary/Secondary** | SAP: single primary per group |
+| Destructive action inline + prominent | **Move to overflow menu** | Prevents accidental data loss |
+| Text buttons for row actions | **Tertiary IconButtons** | Compact, less visual clutter |
+| Scattered related actions | **Group into toolbar / overflow** | Consistent action affordance |
+| Irreversible action, no guard | **Add confirmation dialog** | Safety for destructive operations |
+
+### Semantic States
+| Trigger | Suggest | Why |
+|---|---|---|
+| Custom color for status | **SAP semantic token** | Theme-switchable, Bind-clean |
+| Error shown as Success/neutral | **Error** semantic | Correct meaning |
+| Warning shown as Information | **Warning** semantic | Correct meaning |
+| ObjectStatus with wrong Semantic | **Correct the Semantic prop** | Semantic ≠ decoration |
+
+### Forms
+| Trigger | Suggest | Why |
+|---|---|---|
+| Free-text Input for fixed values | **Select** | Constrains to valid options |
+| Select with many options | **ComboBox** | Type-ahead over long lists |
+| Reference to another entity | **Value Help** | Standard SAP entity picker |
+| One field, multiple values | **Multi Input** | Tokenized multi-value entry |
+| Unordered / ungrouped fields | **Group + order by task** | Faster completion |
+| Required fields not marked | **Mark mandatory** | Clear validation intent |
+
+### Tables
+| Trigger | Suggest | Why |
+|---|---|---|
+| All columns equal priority | **Column priority + hide low-priority** | Focus on what matters |
+| No way to narrow results | **Filters + sort + group** | Findability at scale |
+| Per-row work needed | **Row actions** | Direct manipulation |
+| Bulk work needed | **Row selection + mass actions** | Efficiency for queues |
+
+### Layout
+| Trigger | Suggest | Why |
+|---|---|---|
+| Cramped / inconsistent spacing | **32px padding, 16px rhythm** | SAP spacing standards |
+| Everything one column | **Two/three-column** for summary cards | Scan efficiency |
+| Header + content ad-hoc | **DynamicPage / Object Page** | SAP floorplan structure |
+| Visual clutter | **Simplify / regroup sections** | Reduce cognitive load |
+
+### Content
+| Trigger | Suggest | Why |
+|---|---|---|
+| Placeholder / lorem text | **Realistic business data** | Every screen supports a real process |
+| "Tab Text" / generic labels | **Meaningful labels** | The placeholder-tab bug |
+| Vague button text | **Action-oriented verb labels** | Clarity of outcome |
+| Generic section names | **Business-oriented terminology** | Domain fit |
+
+### Reuse First
+| Score | Level | Action |
+|---|---|---|
+| ≥ 85 | L1 | Clone canonical directly, inject content only |
+| 70–84 | L2 | Clone nearest + delta |
+| 60–69 | L3 | Clone for floorplan + adapt content |
+| < 60 | L5 | Build new (state explicitly; ask before scratch) |
+
+### Business Logic
+| Trigger | Suggest | Why |
+|---|---|---|
+| Screen ends with no next step | **Add next logical action** | Guide the workflow |
+| Status changes with no trail | **Add activity timeline / audit history** | Traceability |
+| Approval-shaped process | **Add approval flow + status transitions** | Model the real process |
 
 ---
 
-## COMPLIANCE CHECKLIST
+| From | Action | Next screen |
+|---|---|---|
+| List Report / Worklist | Click a row | **Object Page** (entity detail) |
+| Object Page | Edit | **Fullscreen edit mode** or **Dialog** |
+| Object Page | Related action | **Dialog** or nested **Object Page** |
+| Wizard step N | Next | **Wizard step N+1** → Summary → **Confirmation** |
+| Confirmation | Done / Back | Back to **List Report**, or new **Object Page** |
+| List Report | Create | **Wizard-in-Dialog** (multi-step) or **Dialog** (single-step) |
 
-- [ ] Task shape classified → floorplan picked from rules table (not defaulted)
-- [ ] Scored against canonicals → cloned if ≥60
-- [ ] Presented VDI table + floorplan tree + confidence table + ASCII wireframe → got approval
-- [ ] All components from Kit Assets panel (zero native shapes)
-- [ ] All variants set via right-side panel (Form Factor=Compact)
-- [ ] All fill layers named with `[sapToken]` tag
-- [ ] All native text nodes named with `[typo:role]` tag
-- [ ] One Primary button per action group
-- [ ] Frame placed BESIDE rightmost at y=200 (not maxY below)
-- [ ] Validated Figma URL delivered at end (hyphen format)
+**Object Page section order (SAP convention):** General Information → Line Items / Details → Status / Workflow → History / Attachments.
+
+---
+
+## COMPONENT PROPERTIES — KIT GOTCHAS
+
+Even with the Kit attached, some components need special handling:
+
+- **Text into component:** Use the properties panel text field — the Kit shows the exact prop name. Never try to edit text by double-clicking inside an instance; use the properties panel.
+- **ObjectStatus / ObjectNumber / ObjectAttribute / MessageStrip:** These have NO text property in the panel — click into the instance, find the Text sublayer, double-click to edit. Do NOT set Form Factor on them (they lack it).
+- **SegmentedButton:** Enable the 3rd/4th Button boolean props BEFORE editing their labels, or extra buttons stay hidden.
+- **DatePicker / TimePicker Calendars:** The calendar popover is hidden by default — do NOT make it visible unless showing the open state.
+- **Form fields (Input, Select, DatePicker):** After placing, expand them to fill the column width — select the instance → right panel → set width to Fill.
+- **Dialog:** Never insert Dialog as an instance from the Kit — slot injection fails. Always duplicate from canonical `448:162293` or `1023:133810`.
+
+---
+
+## COMPLIANCE CHECKLIST — EVERY OUTPUT MUST SATISFY ALL
+
+### Methodology
+- [ ] Task shape classified → floorplan picked from rules table (never defaulted)
+- [ ] Shell = ShellBar + 256px SideNav cloned verbatim
+- [ ] Selected screen analyzed first (floorplan, components, states, tokens, width)
+- [ ] Scored against canonical screens → CLONED if ≥60
+- [ ] Presented: VDI table + floorplan tree (sap.x notation) + confidence table + ASCII wireframe → got explicit approval
+- [ ] Surfaced ⚡ suggestions
+
+### SAP Fidelity
+- [ ] All components from Assets panel — zero native shapes used as UI
+- [ ] All variants set via properties panel — Form Factor=Compact on everything
+- [ ] ObjectStatus / ObjectAttribute / MessageStrip text edited via sublayer (no text prop)
+- [ ] No `Form Factor` on ObjectStatus / ObjectNumber / ObjectAttribute / Avatar
+- [ ] Every native text node named with `[typo:role]` tag (exact string)
+- [ ] Every fill layer named with `[sapToken]` tag — zero raw hex fills
+- [ ] No `[sapToken]` tag on transparent layout/wrapper frames
+- [ ] Divider frames KEPT in Schedule dialog clones; strokes on parent in custom layouts
+- [ ] Compact form factor on all instances
+- [ ] Two-line stacked text → `counterAxisAlignItems: CENTER` on parent
+- [ ] 32px side padding (never 48)
+- [ ] Tertiary for all row/toolbar action icon buttons
+- [ ] Form fields expanded to fill column width after placing
+- [ ] One `Type: Primary` button per action group; rest = Tertiary or Secondary
+- [ ] After cloning: renamed root frame + every repurposed child frame
+- [ ] L1–L5 semantic layer naming — no "Frame 1", "Group", "Rectangle"
+- [ ] Horizon Light only — no dark hex fills
+- [ ] Correct nav tab labels — no "Tab Text" placeholders
+- [ ] Frame placed BESIDE rightmost at y=200 (NEVER maxY+200 below canvas)
+- [ ] Validated Figma URL to exact node at the end (hyphen format `NNNN-NNNNN`)
+
+---
+
+## DETECTING AND FIXING VIOLATIONS
+
+When you see these in the current screen, report them and offer to fix:
+
+| Violation | What to say | Fix |
+|---|---|---|
+| Text node shows raw "72" font family | "Typography is unbound — Bind cannot apply styles" | Add `[typo:role]` tags to all native text nodes |
+| Frame named "Divider" (1px) in a **custom layout** | "Native Divider frame in custom layout — use strokes instead" | Remove frame, apply `strokeBottomWeight=1` to parent |
+| Frame named "Divider" (1px) in a **cloned Schedule dialog** | ✅ CORRECT — SAP canonical uses Divider frames | Keep as-is — do NOT replace with strokes |
+| IconTabBar shows "Tab Text" | "Placeholder tab labels detected" | Open instance properties → set real label text for each tab |
+| More than 1 Primary button | "Two primary buttons — only one allowed per action group" | Change all but one to Tertiary (Cancel/Close) or Secondary (bordered action) |
+| Native pill / coloured frame for status | "Native status pill — not SAP-bound" | Assets panel → "Object Status" → drag instance → set Semantic property |
+| Native frame drawn as a button | "Native frame where a Button should be" | Assets panel → "Button" → drag → set Type=Secondary or Tertiary |
+| Native frame drawn as a table | "Native frame where a Table should be" | Assets panel → "Table" (Responsive) → drag |
+| Custom hex fill (raw color in fill) | "Raw hex fill — will not bind to SAP variables" | Rename layer to include `[sapTokenName]` — e.g. `Row [sapList_Background]` |
+| Dark hex fills (#1D2D3E, #1B3346, #162433) | "Dark theme fill — has no SAP variable, breaks Bind" | Replace fill with Horizon Light token tag |
+| Fill token tag on a transparent layout frame | "Token tag on transparent container — Bind will paint it" | Remove `[sapToken]` from layout/wrapper frames; only keep on frames with actual backgrounds |
+| `Form Factor` set on ObjectStatus / ObjectAttribute / Avatar | "These components have no Form Factor prop — setProperties will throw" | Remove the Form Factor property call |
+| Two-line stack top-aligned | "Stacked text should be CENTER aligned" | Set `counterAxisAlignItems: CENTER` on the parent frame |
 
 ---
 
