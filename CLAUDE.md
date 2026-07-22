@@ -49,12 +49,48 @@ cd "/Users/C5408360/Downloads/Task to Figma SAP layouts components" && claude
 | **Repair existing screen** | `/sap-fix <nodeId>` | Fix bind errors, native frames, raw hex, wrong typo tags |
 | **Validate spec JSON** | `/sap-spec-validate` | Before pasting spec into plugin |
 | **Update registry** | `/sap-registry-update <ComponentName>` | Fix variant props, add slots, correct tokens |
-| **Figma Agent skill** | Add via Figma → Agent → Skills | SAP designer knowledge inside Figma's own AI Agent (NOT a Claude Code `/` command) |
+| **Figma Agent skill** | See setup below ↓ | SAP designer inside Figma's AI Agent (NOT a Claude Code command) |
 
 **`/sap-screen` encodes ALL 31 rules.** It enforces: dark-ref→build-light, real SAP instances only, wireframe hard gate, L1-L5 naming, 32px padding, no Divider frames, no spacer frames, Compact always, one Primary button, FILL after appendChild, validated URL at end.
 
 ---
 
+## 🤖 FIGMA AGENT SETUP (v3 Kit-Native — 2026-07-22)
+
+The Figma AI Agent becomes a trained SAP Fiori Product Designer when the skill and design system are correctly loaded. **Both steps are required every session.**
+
+### Step 1 — Load the skill
+1. Open the **Agent** panel in Figma (AI chat icon in the toolbar)
+2. Click the **`+`** button → **Skills**
+3. If `sap-figma-agent` is already listed → verify it is **v3** (274 lines, last updated 2026-07-22). If outdated → update.
+4. If not listed → click **Add Skill** → upload `.claude/skills/sap-figma-agent/SKILL.md` from this repo
+5. The skill is now active for all Agent requests — no slash command needed
+
+### Step 2 — Attach the SAP Web UI Kit as a Library
+1. In the Agent panel, click **`+`** → **Libraries**
+2. Select **SAP Web UI Kit** ✓ (must show a checkmark)
+3. Also verify: **Created in this file** ✓
+
+> **Why both are required:** The skill provides the *methodology, rules, and canonical references*. The Kit provides the *live component palette, tokens, and variants*. Without the Kit, the Agent will use inlined data (stale). Without the skill, the Agent has no SAP design reasoning or hard rules.
+
+### Step 3 — Verify it's working
+Ask the Agent: *"What SAP floorplan should I use for a screen that lets users browse and filter a list of purchase orders?"*
+Expected: It should answer "List Report" with a rationale from the SAP methodology — not guess "Dialog" or "Form".
+
+### Skill update rule
+**Whenever any rule, canonical node, token, or methodology changes → re-upload `.claude/skills/sap-figma-agent/SKILL.md` to Figma.** The Agent only knows what is in the skill file. Stale skill = wrong output.
+
+### What the Figma Agent can do (v3)
+- ✅ Build screens using real SAP Web UI Kit components from the Assets panel
+- ✅ Follow SAP Fiori methodology (floorplan decision rules, X-not-Y composition)
+- ✅ Clone approved canonical compositions as base, then adapt
+- ✅ Present wireframe + VDI analysis before building (Gate 0→3)
+- ✅ Suggest SAP-reasoned variants when asked to re-order/improve a screen
+- ✅ Detect and fix violations (native frames, wrong layer names, missing token tags)
+- ❌ Cannot run the Bind plugin (that requires Claude Code + `/sap-screen`)
+- ❌ Cannot run `verify-invariants.js` — use Claude Code for post-build verification
+
+---
 
 This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **155 guideline JSONs** (100% coverage), a Figma plugin enforcing an **81-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
 
