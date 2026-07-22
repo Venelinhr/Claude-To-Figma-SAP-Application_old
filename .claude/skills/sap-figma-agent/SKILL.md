@@ -153,7 +153,8 @@ The Kit provides components. Canonicals provide proven business compositions. Us
 7. **Divider frames in Schedule dialog clones: KEEP.** The SAP canonical uses them — do NOT replace with strokes. In custom layouts: use strokeBottomWeight on parent instead.
 8. **32px side padding. 16px rhythm between elements. 8px tight / 24px section / 32px page.** Never random values.
 9. **Frame placement: BESIDE rightmost at y=200.** Never maxY+200 (makes frames invisible far below).
-10. **Shell = ShellBar + 256px SideNavigation.** Clone verbatim on every screen. Never improvise chrome.
+10. **Responsive layout: when changing screen width, resize ALL child elements proportionally.** Recalculate form widths (total - padding - gaps - fixed panels). If a canonical wizard header is designed for 834px — resize the SCREEN to 834px, not the wizard to 960px. Wizard steps at 834px = 4×178.5px with 8px gaps and 48px L/R padding — never stretch to a different width (proportions break).
+11. **Shell = ShellBar + 256px SideNavigation.** Clone verbatim on every screen. Never improvise chrome.
 11. **Actions ON the object.** Contextual menu on the selected node — never in a distant toolbar.
 12. **Clone canonicals for complex compositions.** Dialog, Wizard header, Schedule forms — always duplicate the canonical base. Never build from scratch.
 13. **Two-line stacked text = counterAxisAlignItems: CENTER** on the parent frame.
