@@ -78,7 +78,7 @@ If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", o
 | Radio button choice | **"Radio Button"** from Kit — reference `219:124204` for the correct Form Item + RadioButton layout | Custom circles |
 | Script / code text area | Search "Code Editor" or similar in Assets — reference `219:124635` for syntax highlighting + line number pattern | Plain textarea frame |
 | Breadcrumb navigation | **"Breadcrumb"** | Row of text links |
-| Wizard step list (left sidebar) | **"Wizard Step"** | Circles drawn with frames |
+| Wizard step list (left sidebar) | **"Wizard Step"** — clone from a reference that already has the exact step count needed. **Never add steps by cloning a step instance** — circle backgrounds are image assets that break when cloned manually. For 4-step wizard at 834px clone `219:114694` (step 4 active). For 3-step clone `219:114511` (step 2 active). | Circles drawn with frames, or manually cloned steps |
 | Navigation menu items | **"Standard List Item"** or **"Navigation List Item"** | Frame + text rows |
 | Left side navigation panel | **"Side Navigation"** + **"Navigation List Item"** inside it | Frames with text rows |
 | Top app header / shell | **"Shell Bar"** | Frame with logo + icons |
