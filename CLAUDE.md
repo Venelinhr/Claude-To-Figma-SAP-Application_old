@@ -14,11 +14,18 @@
 > | Canonical screen structure/patterns to clone | the gold-standard `.fig` nodes (SAP_BUILD_MANIFEST §3b) |
 > This file (CLAUDE.md) declares the hierarchy and is always loaded. When two docs seem to conflict, pick by scope above — they are not competing, they are scoped.
 
-> ⛔⛔⛔ **HARD RULE — REFERENCE IMAGE = MANDATORY WIREFRAME FIRST**
+> ⛔⛔⛔ **HARD RULE — REFERENCE IMAGE = MANDATORY WIREFRAME FIRST (format updated 2026-07-22)**
 > Whenever the user attaches a reference image (any image, screenshot, sketch, wireframe),
-> you MUST run the full Gate 0→3 pipeline and show the ASCII wireframe + L1–L5 layer tree
-> BEFORE writing anything else. This is the visual confirmation that you understood the image.
+> you MUST run the full Gate 0→3 pipeline and show ALL FOUR MANDATORY SECTIONS in this exact order BEFORE writing anything else:
+>
+> **1. Gate 0 — VDI Sector Analysis TABLE** (`| Zone | Content | SAP Component | Key properties |` — every visible zone A/B/C… mapped to a real SAP component)
+> **2. Floorplan recommendation TREE** (use `sap.x.ComponentName` tree notation with `└─ ├─ │` branch characters — NOT the "L1–L5 prefix" format. Show every component, container, and relationship.)
+> **3. Confidence table** (`| Area | Conf.% | Notes |` — all major areas rated with % and a concrete note)
+> **4. ASCII wireframe** (full box-drawing layout)
+>
+> Then Gate 1 (clone/build), Gate 2 (width), HARD STOP waiting for approval.
 > No exceptions — not for clones, not for "same screen", not for "obvious" layouts.
+> EVERYTIME. User confirmed 2026-07-22: "Hard rules! EVERYTIME!!!!!!"
 > Enforced by `enforce-wireframe-first.sh` (UserPromptSubmit hook, fires on every image reference).
 
 > ⛔ **BEFORE ANY Figma SAP task — new screen, improvement, next step, edit, or variant —

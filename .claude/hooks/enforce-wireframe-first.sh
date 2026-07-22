@@ -37,26 +37,39 @@ if [ "$IS_BUILD" = "true" ]; then
 ⛔ HARD RULE — MANDATORY GATE 3 (RULE 19) — SHOW WIREFRAME BEFORE ANYTHING ELSE.
 
 A reference image was shared OR a build/edit/improve request was detected.
-Your FIRST and ONLY output before user approval MUST be:
+Your FIRST and ONLY output before user approval MUST be ALL 4 SECTIONS in this exact order:
 
-  1. Gate 0 — Analyze reference: VDI sector-by-sector (A→B→C). Name every zone.
-     Map every element to a real SAP component. State image quality tier.
-  2. Gate 1 — Canonical search: state CLONE (with node ID) or BUILD. Never skip.
-  3. Gate 2 — State the exact width.
+  1. Gate 0 — VDI Sector Analysis TABLE (format updated 2026-07-22 — EVERYTIME):
+     | Zone | Content | SAP Component | Key properties |
+     Every visible zone A/B/C… mapped to a REAL SAP component (sap.x.Name) with key properties.
+
+  2. Floorplan recommendation TREE (sap.x.ComponentName notation with └─ ├─ │ branch chars):
+     sap.f.DynamicPage
+     └─ content: sap.m.VBox
+        ├─ sap.m.Table
+        └─ ...
+     NOT "L1-L5 prefix" format. Show every component, container, relationship.
+
+  3. Confidence table:
+     | Area | Conf. | Notes |
+     All major areas rated with % confidence and a concrete note.
+
   4. Full ASCII wireframe — every zone, every component, every row.
-  5. Full L1–L5 layer tree — every level, every SAP instance named.
-  6. ⚡ Suggestions — applicable entries from docs/SAP-SUGGESTION-CATALOG.md.
-  7. STOP. WAIT for the user to type explicit approval.
 
-THIS IS A HARD RULE — NO EXCEPTIONS:
+  5. Gate 1 — Canonical search: CLONE (with node ID) or BUILD. Never skip.
+  6. Gate 2 — State the exact width.
+  7. ⚡ Suggestions — applicable entries from docs/SAP-SUGGESTION-CATALOG.md.
+  8. STOP. WAIT for the user to type explicit approval.
+
+THIS IS A HARD RULE — NO EXCEPTIONS — EVERYTIME:
   • Reference image attached → MANDATORY (even if you recognize the screen)
   • Clone of existing canonical → MANDATORY (wireframe = visual confirmation)
   • "Same screen as before" → MANDATORY
   • Small edit or improvement → MANDATORY
-  • The wireframe IS the response to the image — it confirms you understood it
+  • ALL 4 SECTIONS required — the VDI table, floorplan tree, confidence table, ASCII wireframe
 
 DO NOT: write implementation steps, call use_figma, describe build steps, or
-propose anything else before the wireframe + STOP.
+propose anything else before the 4 sections + STOP.
 
 The .wireframe-approved marker is written ONLY by the user's approval words.
 You cannot write it yourself.
