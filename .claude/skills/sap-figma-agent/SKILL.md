@@ -71,9 +71,66 @@ For every request (new screen, improvement, variant, next step, edit):
 3. **Score against canonical screens** (≥85 L1 clone · 70-84 L2 · 60-69 L3 · <60 new). CLONE if a match exists.
 4. **⛔ HARD STOP — present: VDI table + floorplan tree (sap.x notation with └─ ├─) + confidence table + ASCII wireframe. WAIT for approval.** Every request — new screen, clone, variant, small edit. Never build before the user approves.
 5. **Surface ⚡ suggestions** from the catalog below.
-6. **Execute** — real SAP Web UI Kit instances, all hard rules. Dialog = clone `727:42563`.
-7. **When user selects a just-built screen and asks "suggest variant" or "re-order components":** → Act as a Senior SAP Product Designer. Apply the SAP methodology: (a) identify what business task the screen serves; (b) suggest 2-3 concrete variants with their SAP rationale (e.g. "switch from Dialog to Wizard because this task has ordered dependencies"; "promote Status column for better scan efficiency"; "add ObjectAttribute rows to surface key metadata"); (c) for each variant, state which component/floorplan changes and why it better serves the user's task — reference the gold-standard patterns. Never suggest arbitrary changes — every suggestion must have a UX reason tied to SAP best practices.
+6. **Execute using the FIGMA AGENT EXECUTION PROTOCOL below** — never draw native shapes.
+7. **When user selects a just-built screen and asks "suggest variant" or "re-order components":** → Act as a Senior SAP Product Designer. Apply the SAP methodology: (a) identify what business task the screen serves; (b) suggest 2-3 concrete variants with their SAP rationale (e.g. "switch from Dialog to Wizard because this task has ordered dependencies"; "promote Status column for better scan efficiency"; "add ObjectAttribute rows to surface key metadata"); (c) for each variant, state which component/floorplan changes and why it better serves the user's task — reference the gold-standard patterns. **Then execute the chosen variant using the FIGMA AGENT EXECUTION PROTOCOL** — never native shapes.
 8. **End with a summary** and the validated Figma URL to the exact node (`node-id=NNNN-NNNNN` with hyphen).
+
+---
+
+## ⛔⛔⛔ FIGMA AGENT EXECUTION PROTOCOL — ALWAYS FOLLOW THIS, NEVER DRAW NATIVE SHAPES
+
+**THE FUNDAMENTAL RULE: You are a Figma AI Agent. You DO NOT draw rectangles, frames, or shapes to represent UI components. Every UI element must be a REAL SAP Web UI Kit instance from the library. If you can't get a real instance, STOP and ask — never approximate with a native shape.**
+
+### How to insert SAP components (the ONLY correct methods)
+
+**Method A — Assets Panel (preferred for most components):**
+1. Open the Assets panel (left sidebar → Assets tab, or press Shift+I)
+2. Search for the component by name (e.g. "Button", "Input", "Select", "ObjectStatus")
+3. The SAP Web UI Kit must be enabled as a Library (Assets → Libraries → SAP Web UI Kit ✓)
+4. Drag the exact component instance onto the canvas
+5. Set variants/properties using the right-sidebar properties panel (Form Factor, Type, State, etc.)
+6. Set the fill name tag: select the frame → rename layer to include `[sapTokenName]` for the Bind plugin
+
+**Method B — Duplicate from canonical (for Dialogs, Wizard headers, complex composites):**
+1. In the Figma file `p7zm5EMBk5DRRZdxNeJ4f5`, navigate to the canonical node
+2. Select it → Cmd/Ctrl+D to duplicate → move beside the original
+3. Clear the slot content → inject new content
+4. NEVER build Dialog, Wizard header, or complex forms from scratch — always start from a canonical clone
+
+**Method C — Copy component from approved screen:**
+1. Find the equivalent component in an approved screen (e.g. `1023:133810`, `448:162293`, `727:42563`)
+2. Copy the exact SAP instance → paste into the new location
+3. Update properties and text to match the new context
+
+### What you MUST do for every element
+| Element type | Correct action | WRONG action |
+|---|---|---|
+| Button | Assets panel → "Button" → drag → set Type=Primary/Secondary/Tertiary | Draw a rectangle, add text |
+| Input field | Assets panel → "Input" → drag → set form factor Compact | Draw a frame with text inside |
+| Select / Dropdown | Assets panel → "Select" → drag | Draw a rectangle with arrow |
+| Section title | Assets panel → "Label" → drag; OR copy from approved screen | Create a text node with custom font |
+| Form row | Copy from canonical form (e.g. `1023:133821`) | Create HBox with Label + Input |
+| Dialog surface | Duplicate canonical `1023:133810` or `448:162293` | Draw a rounded rectangle |
+| Wizard header | Duplicate canonical `1023:133814` | Draw circles connected by lines |
+| Status indicator | Assets panel → "Object Status" → set Semantic | Colored rectangle or text |
+| Table | Assets panel → "Table" → drag | Grid of rectangles |
+| Navigation step | Assets panel → "Wizard Step" (set key `2c23606836ea876f6f6cf1409da1bf33d2679e70`) | Circle + text |
+
+### Layer naming (always — the Bind plugin needs these)
+- Every container with a background fill: add `[sapTokenName]` to the layer name — e.g. `Dialog Surface [sapGroup_ContentBackground]`
+- Every native text node: add `[typo:role]` — e.g. `Section Title [typo:title]`
+- Every fill layer: name must tell Bind which SAP variable to use — e.g. `Active Step [sapContent_Selected_ForegroundColor]`
+
+### Token tags for fills (the SAP variable binding)
+When you set a fill colour on any frame/shape, you MUST also name it correctly so Bind resolves to the SAP variable. Tag format: `Description [sapTokenName]`. Examples:
+- White background: `Content Area [sapGroup_ContentBackground]`
+- Grey page bg: `Page Background [sapBackgroundColor]`
+- Blue border: `Active Step Border [sapList_SelectionBorderColor]`
+- Green status: `Success Indicator [sapPositiveElementColor]`
+
+**If you cannot use a real SAP instance or proper token tag — do NOT create a native approximation. Instead: (1) describe what should go there, (2) flag it as needing a real SAP component, (3) ask the user how to proceed.**
+
+---
 
 ---
 
@@ -526,7 +583,8 @@ When you see these in the current screen, report them and offer to fix:
 | Violation | What to say | Fix |
 |---|---|---|
 | Text node shows raw "72" font | "Typography is unbound — Bind cannot apply styles" | Add `[typo:role]` tags to all native text nodes |
-| Frame named "Divider" (1px) | "Native Divider frame — hard rule violation" | Remove frame, apply `strokeBottomWeight=1` to parent |
+| Frame named "Divider" (1px) in a CUSTOM layout | "Native Divider frame in custom layout — use strokes instead" | Remove frame, apply `strokeBottomWeight=1` to parent container |
+| Frame named "Divider" (1px) in a CLONED Schedule dialog | ✅ This is CORRECT — the SAP canonical uses Divider frames | Keep as-is — do NOT replace with strokes |
 | IconTabBar shows "Tab Text" | "Placeholder tab labels detected" | Inject real labels, set correct active state |
 | More than 1 Primary button | "Two primary buttons — only one allowed" | Set all but one to `Type: Secondary` |
 | Native pill for status | "Native status pill — not SAP-bound" | Replace with ObjectStatus (key `748d609…`), set Semantic |
