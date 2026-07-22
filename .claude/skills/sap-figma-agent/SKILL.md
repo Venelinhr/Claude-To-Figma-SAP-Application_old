@@ -75,6 +75,8 @@ If the Agent creates ANY layer named "Frame", "Frame 1", "Group", "Rectangle", o
 |---|---|---|
 | Text input field | **"Input"** | Frame + text node |
 | Dropdown / combobox | **"Select"** (not "Dropdown" — that name doesn't exist in the Kit) | Frame + arrow icon |
+| Radio button choice | **"Radio Button"** from Kit — for Create/Upload toggles clone Form Item `219:124204` | Custom circles |
+| Script / code text area | Clone **Script Input** `219:124635` — has syntax highlighting and line numbers | Plain textarea frame |
 | Breadcrumb navigation | **"Breadcrumb"** | Row of text links |
 | Wizard step list (left sidebar) | **"Wizard Step"** | Circles drawn with frames |
 | Navigation menu items | **"Standard List Item"** or **"Navigation List Item"** | Frame + text rows |
@@ -109,6 +111,10 @@ The Kit provides components. Canonicals provide proven business compositions. Us
 
 | For this... | Clone | Node |
 |---|---|---|
+| Wizard step — current state | WizardStep Current ✅ | `219:124511` |
+| Wizard step — inactive state | WizardStep Inactive ✅ | `219:124513` |
+| Script / code input area | Script Input ✅ | `219:124635` |
+| Form Item with RadioButton (Create/Upload toggle) | Form Item RadioButton ✅ | `219:124204` |
 | Wizard + Dialog (creation flow) | Create MCP Server ✅ PM | `1023:133810` |
 | Wizard Page Header only | Wizard Header | `1023:133814` |
 | Schedule form — Monthly + End Date | Schedule State C ✅ PM | `448:162293` |
