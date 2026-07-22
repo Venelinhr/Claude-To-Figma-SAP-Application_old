@@ -34,10 +34,31 @@
 > source screen first; use only real SAP components/tokens/text-styles. Applies to follow-up
 > edits and "improve this" requests too — repair existing screens with `/sap-fix <nodeId>`.
 
+---
+
+## ⭐ SKILLS — INVOKE THESE, NOT RAW INSTRUCTIONS
+
+**Launch Claude from the project folder first** (so all hooks are active):
+```bash
+cd "/Users/C5408360/Downloads/Task to Figma SAP layouts components" && claude
+```
+
+| Skill | Command | When to use |
+|---|---|---|
+| **Build new SAP screen** | `/sap-screen <image> <Figma URL>` | Any new screen from reference image or description |
+| **Repair existing screen** | `/sap-fix <nodeId>` | Fix bind errors, native frames, raw hex, wrong typo tags |
+| **Validate spec JSON** | `/sap-spec-validate` | Before pasting spec into plugin |
+| **Update registry** | `/sap-registry-update <ComponentName>` | Fix variant props, add slots, correct tokens |
+| **Figma Agent skill** | Add via Figma → Agent → Skills | SAP designer knowledge inside Figma's own AI Agent (NOT a Claude Code `/` command) |
+
+**`/sap-screen` encodes ALL 31 rules.** It enforces: dark-ref→build-light, real SAP instances only, wireframe hard gate, L1-L5 naming, 32px padding, no Divider frames, no spacer frames, Compact always, one Primary button, FILL after appendChild, validated URL at end.
+
+---
+
 
 This project converts business requirements into real SAP Fiori screens in Figma using a **v2 AI SAP Solution Architect pipeline** with **8 MCP servers** (5 official + 3 custom), a **152-component registry** (100% enriched), **155 guideline JSONs** (100% coverage), a Figma plugin enforcing an **81-token SAP semantic whitelist** and 4 §7 accessibility validators (run on BOTH build paths), and a reasoning pipeline governed by **31 mandatory RULEs**, **9 specialized agents**, and **8 canonical doctrine docs**.
 
-> **Last updated: 2026-07-22** — COMPREHENSIVE BUILD SESSION: deep pipeline audit (10 critical fixes, 5 new guards), SSOT "generate-don't-duplicate" system, architect-first reasoning gate (Gate 0.5), mandatory Gate 0→3 format (VDI table + floorplan tree + confidence table + ASCII), placement hard rule (beside not below), and gold-standard design-reasoning study. Local commits ahead: `66f363f` and back to `3118bb9` (8 commits, not pushed). All gaps confirmed closed. Previous (2026-07-21): S807–S816 audit arc on both remotes at `b9d717e`. ⛔ Figma Plugin v2 OUT of GitHub — local branch `agent-v2-wip`.
+> **Last updated: 2026-07-22** — COMPREHENSIVE BUILD SESSION: deep pipeline audit (10 critical fixes, 5 new guards), SSOT "generate-don't-duplicate" system, architect-first reasoning gate (Gate 0.5), mandatory Gate 0→3 format (VDI table + floorplan tree + confidence table + ASCII), placement hard rule (beside not below), and gold-standard design-reasoning study. **Skills + hooks complete audit (2026-07-22 evening):** `/sap-screen` skill created with all 31 rules; `~/.claude/settings.json` now has all 5 hook events (SessionStart×4, UserPromptSubmit×4, Stop×4, PreToolUse×9, PostToolUse×4) — requires Claude Code restart to activate. Local commits ahead: `66f363f` and back to `3118bb9` (8 commits, not pushed). All gaps confirmed closed. Previous (2026-07-21): S807–S816 audit arc on both remotes at `b9d717e`. ⛔ Figma Plugin v2 OUT of GitHub — local branch `agent-v2-wip`.
 
 ## ⛔ THE CANONICAL GATE SEQUENCE (authoritative build order — top of skill/SYSTEM_PROMPT.md)
 
