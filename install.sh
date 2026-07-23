@@ -213,7 +213,8 @@ if [ ! -f "$BANNER_FILE" ]; then
    Claude analyzes it, creates an SAP Fiori layout, and builds it in Figma using
    real SAP components and tokens. Refine or iterate anytime with the Figma Agent.
 
-  ─────────────────────────────────────────────────────────────────────────────
+   ───────────────────────────────────────────────────────────────────────────────
+
    From Claude to Figma SAP screens
    Built by Venelin Hristov
 
