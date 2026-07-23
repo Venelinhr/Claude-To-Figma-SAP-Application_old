@@ -25,7 +25,12 @@ CF=$(echo "$CODE" | grep -oE "createFrame\(" | wc -l | tr -d ' ')
 INST=$(echo "$CODE" | grep -oE "createInstance\(|importComponentSetByKeyAsync\(|\.clone\(" | wc -l | tr -d ' ')
 
 # Block 1 — native-frame wireframe: createFrame present, zero SAP instances/clones.
-if [ "$CF" -gt 0 ] && [ "$INST" -eq 0 ]; then
+# Exception: presentation/pitch slides are legitimate native-frame builds (they are
+# not SAP application screens). If the code contains slide/presentation markers, allow.
+IS_PRESENTATION=false
+echo "$CODE" | grep -qiE "makeSlide|Pitch|PRESENTATION|1920.*1080|slide.*1920|\"[0-9]+ (Pitch|Slide|Hero|Closing)\"" && IS_PRESENTATION=true
+
+if [ "$CF" -gt 0 ] && [ "$INST" -eq 0 ] && [ "$IS_PRESENTATION" = "false" ]; then
   echo "⛔ GATE 5 BLOCKED (INVARIANT 1) — this use_figma code calls figma.createFrame() with ZERO SAP instance/clone calls." >&2
   echo "That produces a native-frame wireframe, NOT a SAP screen. Every UI element must be a real SAP Web UI Kit instance:" >&2
   echo "  • importComponentSetByKeyAsync(<key>) → defaultVariant.createInstance()  (build new)" >&2
