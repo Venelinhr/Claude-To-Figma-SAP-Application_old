@@ -209,9 +209,8 @@ It ships with the repo. Every build clones from it. No exceptions.
 > 1. **Performance Recovery (F-1..F-10)** — 10 structural fixes. Target: 3-5 min / ≤12k tokens. See `docs/PERFORMANCE-RECOVERY.md`.
 > 2. **Gate 0 — Canonical Reference Selection** — hard-blocking gate before every build. 13 gold nodes in memory + skills. Default anchor: `9-1550`. Spec: `docs/superpowers/specs/2026-07-22-gate0-canonical-reference-selection-design.md`.
 > 3. **Wizard header fix** — screen `1026-51156` at 834px. Lesson: clone from reference with exact step count.
-> 4. **5 pitch slides** built in Figma (`1118:55586`–`1118:55733`): Workflow, Plugin, Figma Agent, Token Optimisation, Loop Learning.
-> 5. **Session banner** — SAP + FIGMA ASCII logos + description + separator line. Ships via `install.sh`. Edit `.claude/hooks/.sap-session-banner.txt` to customise.
-> 6. **guard-figma-code.sh** — presentation-mode bypass added (pitch slides are legitimate native-frame builds).
+> 4. **Session banner** — SAP + FIGMA ASCII logos + description + separator line. Ships via `install.sh`. Edit `.claude/hooks/.sap-session-banner.txt` to customise.
+> 5. **guard-figma-code.sh** — presentation-mode bypass added (pitch slides are legitimate native-frame builds).
 >
 > **⚠ Two manual steps required on restart:**
 > 1. **Restart Claude Code** → activates all new hooks (Gate 0 + F-1..F-10)
