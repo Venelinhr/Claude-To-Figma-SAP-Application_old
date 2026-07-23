@@ -202,23 +202,20 @@ BANNER_FILE="$SKILL_DIR/.claude/hooks/.sap-session-banner.txt"
 if [ ! -f "$BANNER_FILE" ]; then
   cat > "$BANNER_FILE" << 'BANNER'
 
- ╔══════════════════════════════════════════════════════════════════════════════════════╗
- ║                                                                                      ║
- ║   ░██████╗  █████╗  ██████╗         ███████╗██╗ ██████╗ ███╗   ███╗ █████╗           ║
- ║   ██╔════╝ ██╔══██╗ ██╔══██╗  ╋     ██╔════╝██║██╔════╝ ████╗ ████║██╔══██╗          ║
- ║   ╚█████╗  ███████║ ██████╔╝        █████╗  ██║██║  ███╗██╔████╔██║███████║          ║
- ║    ╚═══██╗ ██╔══██║ ██╔═══╝         ██╔══╝  ██║██║   ██║██║╚██╔╝██║██╔══██║          ║
- ║   ██████╔╝ ██║  ██║ ██║             ██║     ██║╚██████╔╝██║ ╚═╝ ██║██║  ██║          ║
- ║   ╚═════╝  ╚═╝  ╚═╝ ╚═╝             ╚═╝     ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝          ║
- ║                                                                                      ║
- ║   Describe your business use case or attach a screenshot / Figma reference.          ║
- ║   Claude analyzes it, creates an SAP Fiori layout, and builds it in Figma using      ║
- ║   real SAP components and tokens. Refine or iterate anytime with the Figma Agent.    ║
- ║                                                                                      ║
- ╠══════════════════════════════════════════════════════════════════════════════════════╣
- ║   From Claude to Figma SAP screens                                                   ║
- ║   Built by Venelin Hristov                                                           ║
- ╚══════════════════════════════════════════════════════════════════════════════════════╝
+   ░██████╗  █████╗  ██████╗         ███████╗██╗ ██████╗ ███╗   ███╗ █████╗
+   ██╔════╝ ██╔══██╗ ██╔══██╗  ╋     ██╔════╝██║██╔════╝ ████╗ ████║██╔══██╗
+   ╚█████╗  ███████║ ██████╔╝        █████╗  ██║██║  ███╗██╔████╔██║███████║
+    ╚═══██╗ ██╔══██║ ██╔═══╝         ██╔══╝  ██║██║   ██║██║╚██╔╝██║██╔══██║
+   ██████╔╝ ██║  ██║ ██║             ██║     ██║╚██████╔╝██║ ╚═╝ ██║██║  ██║
+   ╚═════╝  ╚═╝  ╚═╝ ╚═╝             ╚═╝     ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝
+
+   Describe your business use case or attach a screenshot / Figma reference.
+   Claude analyzes it, creates an SAP Fiori layout, and builds it in Figma using
+   real SAP components and tokens. Refine or iterate anytime with the Figma Agent.
+
+  ─────────────────────────────────────────────────────────────────────────────
+   From Claude to Figma SAP screens
+   Built by Venelin Hristov
 
 BANNER
   echo "✓ Session banner created → edit $BANNER_FILE to customise your logo and text"
