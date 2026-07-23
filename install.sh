@@ -196,3 +196,32 @@ echo "  │  Skip: 11 shipped canonical screens are available as       │"
 echo "  │  starting points without any Figma file connection.        │"
 echo "  └────────────────────────────────────────────────────────────┘"
 echo ""
+
+# ── Session banner (shown every time Claude Code starts in this project) ──
+BANNER_FILE="$SKILL_DIR/.claude/hooks/.sap-session-banner.txt"
+if [ ! -f "$BANNER_FILE" ]; then
+  cat > "$BANNER_FILE" << 'BANNER'
+
+ ███████╗ █████╗ ██████╗      ███████╗██╗ ██████╗ ██████╗ ██╗
+ ██╔════╝██╔══██╗██╔══██╗     ██╔════╝██║██╔═══██╗██╔══██╗██║
+ ███████╗███████║██████╔╝     █████╗  ██║██║   ██║██████╔╝██║
+ ╚════██║██╔══██║██╔═══╝      ██╔══╝  ██║██║   ██║██╔══██╗██║
+ ███████║██║  ██║██║          ██║     ██║╚██████╔╝██║  ██║██║
+ ╚══════╝╚═╝  ╚═╝╚═╝          ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝
+
+ ── A · I  ·  D · E · S · I · G · N · E · R ──────────────────────
+
+ ┌─────────────────────────────────────────────────────────────┐
+ │   From business requirement to production-ready SAP Fiori   │
+ │   screen — real components, real tokens, 5 minutes.         │
+ │                         ── v1.0.0 ──                        │
+ └─────────────────────────────────────────────────────────────┘
+
+ Built by Venelin Hristov  ·  SAP Fiori Design System  ·  2026
+ GitHub: github.com/Venelinhr/Claude-To-Figma-SAP-Application
+
+BANNER
+  echo "✓ Session banner created → edit $BANNER_FILE to customise your logo and text"
+else
+  echo "  Session banner already exists — skipping (edit $BANNER_FILE to customise)"
+fi
