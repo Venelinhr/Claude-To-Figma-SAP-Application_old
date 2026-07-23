@@ -205,18 +205,19 @@ It ships with the repo. Every build clones from it. No exceptions.
 
 ## Current State (2026-07-23)
 
-> **COMPLETED 2026-07-23 — both remotes at `6726936`:**
-> 1. **Performance Recovery (F-1..F-10)** — 10 structural fixes cut build overhead. Target: 3-5 min / ≤12k tokens at same quality. De-dup hooks (were firing 2×), build-scoped approval markers (no re-approval treadmill), short-form gate for edits, wired VDI cache (`recall-vdi.sh`), drift gate cached (18× faster warm), adaptive execution + fail-twice-then-switch, resolved 2 doctrine contradictions, drained learnings backlog. See `docs/PERFORMANCE-RECOVERY.md`.
-> 2. **Gate 0 — Canonical Reference Selection** — hard-blocking gate (guard-reference-gate.sh) forces the agent to commit to a scored gold reference BEFORE building. 13 gold nodes catalogued in memory + skills. Default anchor: `9-1550`. Spec: `docs/superpowers/specs/2026-07-22-gate0-canonical-reference-selection-design.md`. 7/7 mechanism tests pass.
-> 3. **Wizard header fix** — screen `1026-51156` resized to 834px, wizard cloned from gold `219:114511`. Lesson: clone from reference with exact step count; never add wizard steps manually (circle backgrounds are image assets).
+> **COMPLETED 2026-07-23 — both remotes at `7c87500`:**
+> 1. **Performance Recovery (F-1..F-10)** — 10 structural fixes. Target: 3-5 min / ≤12k tokens. See `docs/PERFORMANCE-RECOVERY.md`.
+> 2. **Gate 0 — Canonical Reference Selection** — hard-blocking gate before every build. 13 gold nodes in memory + skills. Default anchor: `9-1550`. Spec: `docs/superpowers/specs/2026-07-22-gate0-canonical-reference-selection-design.md`.
+> 3. **Wizard header fix** — screen `1026-51156` at 834px. Lesson: clone from reference with exact step count.
+> 4. **5 pitch slides** built in Figma (`1118:55586`–`1118:55733`): Workflow, Plugin, Figma Agent, Token Optimisation, Loop Learning.
+> 5. **Session banner** — SAP + FIGMA ASCII logos + description + separator line. Ships via `install.sh`. Edit `.claude/hooks/.sap-session-banner.txt` to customise.
+> 6. **guard-figma-code.sh** — presentation-mode bypass added (pitch slides are legitimate native-frame builds).
 >
 > **⚠ Two manual steps required on restart:**
 > 1. **Restart Claude Code** → activates all new hooks (Gate 0 + F-1..F-10)
-> 2. **Re-upload `sap-figma-agent` skill to Figma** → Figma Agent gets Gate 0.7 + 13-node gold table + adaptive execution
+> 2. **Re-upload `sap-figma-agent` skill to Figma** → Figma Agent gets Gate 0.7 + 13-node gold table
 >
 > **NEXT TASK (not started): Figma Make Compatibility**
-> User wants the whole workflow compatible with Figma Make. No research, no plan, no code yet.
-> Key question to answer first: what IS Figma Make (prompt-to-code generating React/HTML vs Figma canvas instances)?
 
 
 >
