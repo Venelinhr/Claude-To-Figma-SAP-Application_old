@@ -203,11 +203,22 @@ It ships with the repo. Every build clones from it. No exceptions.
 
 ---
 
-## Current State (2026-07-21)
+## Current State (2026-07-23)
 
-> **COMPLETED 2026-07-22 (LOCAL — 8 commits ahead, not pushed):** Deep pipeline audit + production-readiness audit (all gaps confirmed re-verified closed). New systems: SSOT generator (`build/generate-derived.js`) + CI drift gate (`build/ci-drift-gate.sh`) — "generate don't duplicate", hex/typo sync from source, 247-entry checker 0 fails. Architect-first reasoning gate (Gate 0.5): `guard-architect-gate.sh` blocks new-from-text builds until business→IA→floorplan brief approved; step reordered in `reasoning-brain.md` + `SYSTEM_PROMPT.md` + `sap-screen/SKILL.md`. `mark-build.sh` PostToolUse hook: verifier no longer optional (fail-closed). New hard rules: NEVER place frame below (maxY) — always beside rightmost at y=200; NEVER add token tags to transparent layout frames (Bind paints them grey); mandatory Gate 0→3 format (VDI table + floorplan tree SAP-notation + confidence table + ASCII, every time). Gold-standard study of 6 PM-approved AI Gateway sections → `docs/SAP-FIORI-DEFAULT-METHODOLOGY.md` (floorplan rules, component X-not-Y, 11 reusable compositions, 10-step procedure). Schedule dialog gold standard saved to memory (Divider=native 1px FRAME correct; labels ABOVE fields; inactive row opacity:0.45). Live build smoke test: Schedule Operation Monthly + Live Preview at `1026-51156` — 29 fills + 28 text styles bound, "After Bind — great".
+> **COMPLETED 2026-07-23 — both remotes at `6726936`:**
+> 1. **Performance Recovery (F-1..F-10)** — 10 structural fixes cut build overhead. Target: 3-5 min / ≤12k tokens at same quality. De-dup hooks (were firing 2×), build-scoped approval markers (no re-approval treadmill), short-form gate for edits, wired VDI cache (`recall-vdi.sh`), drift gate cached (18× faster warm), adaptive execution + fail-twice-then-switch, resolved 2 doctrine contradictions, drained learnings backlog. See `docs/PERFORMANCE-RECOVERY.md`.
+> 2. **Gate 0 — Canonical Reference Selection** — hard-blocking gate (guard-reference-gate.sh) forces the agent to commit to a scored gold reference BEFORE building. 13 gold nodes catalogued in memory + skills. Default anchor: `9-1550`. Spec: `docs/superpowers/specs/2026-07-22-gate0-canonical-reference-selection-design.md`. 7/7 mechanism tests pass.
+> 3. **Wizard header fix** — screen `1026-51156` resized to 834px, wizard cloned from gold `219:114511`. Lesson: clone from reference with exact step count; never add wizard steps manually (circle backgrounds are image assets).
 >
-> **COMPLETED 2026-07-21 (audit arc committed + pushed):** S807–S816 audit work landed on both remotes at `b9d717e`. Enforcement hardened (fail-closed Stop gate exits 2; workflow-contract `.workflow-loaded` marker is unforgeable — agent cannot self-echo; wireframe/scratch approval single-use per turn). MCP servers secured (stderr-only stack traces, `safeRegistryPath` path-traversal guard, `unhandledRejection` handlers). DOC AUTHORITY HIERARCHY declared (per-scope authority; OPERATING-MANIFEST is a MAP, never restates rules). `validateBuildRules` bind-time reality gate added to plugin (Horizon-Light / 32px padding / Tertiary icon buttons, folded into hardViolations). P-029 repair pattern added. `.gitignore` catches root-level runtime-artifact leaks. ⛔ **Figma Plugin v2 kept OUT of GitHub** — force-removed after accidental push; preserved on local branch `agent-v2-wip`.
+> **⚠ Two manual steps required on restart:**
+> 1. **Restart Claude Code** → activates all new hooks (Gate 0 + F-1..F-10)
+> 2. **Re-upload `sap-figma-agent` skill to Figma** → Figma Agent gets Gate 0.7 + 13-node gold table + adaptive execution
+>
+> **NEXT TASK (not started): Figma Make Compatibility**
+> User wants the whole workflow compatible with Figma Make. No research, no plan, no code yet.
+> Key question to answer first: what IS Figma Make (prompt-to-code generating React/HTML vs Figma canvas instances)?
+
+
 >
 > **COMPLETED 2026-07-20:** Workflow enforcement system fully shipped — `WORKFLOW-CONTRACT.md`, SessionStart auto-load hook (`load-workflow-contract.sh`), pre-edit gate (`guard-workflow-contract.sh`), `/sap-fix` skill, wireframe-first enforcement (`enforce-wireframe-first.sh`), SAP Suggestion Catalog, Order Detail `936:48470` fixed.
 
